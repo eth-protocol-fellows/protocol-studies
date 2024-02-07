@@ -1,0 +1,553 @@
+.app-nav:not(:empty)~main .markdown-section {
+  padding-top: 5.0rem;
+}
+
+.pagination-item, .pagination-item-title {
+  opacity: .9 !important;
+}
+
+.pagination-item:not(:last-child) a .pagination-item-label, .pagination-item:not(:last-child) a .pagination-item-subtitle, .pagination-item:not(:last-child) a .pagination-item-title {
+  opacity: .9 !important;
+  transition: all .2s;
+}
+
+.markdown-section {
+  padding: 1rem 40px;
+}
+
+.markdown-section .alert, .markdown-section blockquote {
+  overflow: visible;
+  margin: 1em 0;
+  padding: 1em;
+  border-width: var(--blockquote-border-width, 0);
+  border-style: var(--blockquote-border-style);
+  border-color: var(--blockquote-border-color);
+  border-radius: var(--blockquote-border-radius);
+  background: var(--blockquote-background);
+  color: var(--blockquote-color);
+  font-family: var(--blockquote-font-family);
+  font-size: var(--blockquote-font-size);
+  font-style: var(--blockquote-font-style);
+  font-weight: var(--blockquote-font-weight);
+  quotes: "“""”""‘""’";
+}
+
+.markdown-section ul {
+  list-style: square outside none;
+}
+
+.markdown-section .alert ul, .markdown-section blockquote ul {
+  list-style: none;
+  margin-top: .8em;
+}
+
+.markdown-section .alert ul li, .markdown-section blockquote ul li {
+  margin: 2px 0;
+}
+
+.markdown-section .alert ul li:before, .markdown-section blockquote ul li:before {
+  position: absolute;
+  content: '\2B29';
+  margin-left: -18px;
+}
+
+.markdown-section .button {
+  cursor: pointer;
+  color: var(--base-background-color);
+  height: auto;
+  display: inline-block;
+  margin-top: 4px;
+  padding: 10px;
+  font-family: -apple-system, "Segoe UI", "Helvetica Neue", sans-serif;
+  line-height: 1.2rem;
+  background-color: var(--link-color);
+  text-decoration: none;
+  border-radius: .25rem;
+}
+
+.markdown-section a.button {
+  cursor: pointer;
+  color: var(--base-background-color);
+  text-decoration: none !important;
+}
+
+.markdown-section .button-rounded {
+  cursor: pointer;
+  color: var(--base-background-color);
+  height: auto;
+  display: inline-block;
+  padding: 10px min(20px, 5%) 10px min(20px, 5%);
+  font-family: -apple-system, "Segoe UI", "Helvetica Neue", sans-serif;
+  line-height: 1.2rem;
+  background-color: var(--link-color);
+  text-decoration: none;
+  border-radius: 1.2rem;
+}
+
+.markdown-section a.button-rounded {
+  cursor: pointer;
+  color: var(--base-background-color);
+  text-decoration: none !important;
+}
+
+.markdown-section .navpill {
+  cursor: pointer;
+  color: var(--base-color);
+  height: auto;
+  display: inline-block;
+  border: 1px solid var(--base-color);
+  border-radius: 4rem;
+  padding: 4px 14px 4px 14px;
+  margin-bottom: 4px;
+  margin-right: 6px;
+  font-size: .8rem;
+  line-height: .9rem;
+  background-color: --base-background-color;
+  font-family: -apple-system, "Segoe UI", "Helvetica Neue", sans-serif;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.markdown-section a.navpill {
+  cursor: pointer;
+  color: var(--base-color);
+  border: 1px solid var(--base-color);
+  text-decoration: none !important;
+}
+
+.markdown-section .badge {
+  color: var(--base-background-color);
+  background-color: color-mix(in srgb, var(--base-color) 70%, transparent);
+  display: inline-block;
+  padding: .25em .4em .25em .4em;
+  font-family: -apple-system, "Segoe UI", "Helvetica Neue", sans-serif;
+  font-size: 75%;
+  font-weight: 700;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  margin-top: -0.4em;
+  border-radius: .25rem;
+  transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+  text-decoration: none;
+}
+
+.markdown-section .badge a {
+  color: var(--base-background-color)!important;
+  text-decoration: none !important;
+}
+
+.markdown-section a[href$="?id=a"], .markdown-section a[href$='?id=b'], .markdown-section a[href$="?id=c"], .markdown-section a[href$="?id=d"], .markdown-section a[href$="?id=e"], .markdown-section a[href$="?id=f"], .markdown-section a[href$="?id=g"], .markdown-section a[href$="?id=h"], .markdown-section a[href$="?id=i"], .markdown-section a[href$="?id=j"], .markdown-section a[href$="?id=k"], .markdown-section a[href$="?id=l"], .markdown-section a[href$="?id=m"], .markdown-section a[href$="?id=n"], .markdown-section a[href$="?id=o"], .markdown-section a[href$="?id=p"], .markdown-section a[href$="?id=q"], .markdown-section a[href$="?id=r"], .markdown-section a[href$="?id=s"], .markdown-section a[href$="?id=t"], .markdown-section a[href$="?id=u"], .markdown-section a[href$="?id=v"], .markdown-section a[href$="?id=w"], .markdown-section a[href$="?id=x"], .markdown-section a[href$="?id=y"], .markdown-section a[href$="?id=z"] {
+  display: inline-flex;
+  padding-top: 0px;
+  padding-right: 6px;
+  padding-bottom: 0px;
+  padding-left: 6px;
+  line-height: 1.2em;
+}
+
+.markdown-section #a, .markdown-section #b, .markdown-section #c, .markdown-section #d, .markdown-section #e, .markdown-section #f, .markdown-section #g, .markdown-section #h, .markdown-section #i, .markdown-section #j, .markdown-section #k, .markdown-section #l, .markdown-section #m, .markdown-section #n, .markdown-section #o, .markdown-section #p, .markdown-section #q, .markdown-section #r, .markdown-section #s, .markdown-section #t, .markdown-section #u, .markdown-section #v, .markdown-section #w, .markdown-section #x, .markdown-section #y, .markdown-section #z {
+  width: 2em;
+  color: var(--base-background-color);
+  font-weight: 700;
+  margin-top: 1.00rem;
+  padding-left: 0.25rem;
+  background: color-mix(in srgb, var(--base-color) 70%, transparent);
+}
+
+.markdown-section .accordion {
+  margin-top: 1.05rem;
+  position: relative;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-clip: border-box;
+  border: 1px solid #CCCCCC;
+  border-radius: .15rem;
+}
+
+.markdown-section details {
+  padding: .75rem 1.25rem;
+  margin-bottom: 0;
+  border-bottom: 1px solid #CCCCCC;
+}
+
+.markdown-section summary {
+  cursor: pointer;
+  color: var(--link-color);
+  padding: 0;
+
+  h1, h2, h3 {
+    margin: 0;
+    display: inline-block;
+  }
+}
+
+.markdown-section code {
+  white-space: pre-wrap!important;
+}
+
+.markdown-section pre code {
+  word-break: break-all!important;
+}
+
+.markdown-section .fa-fw {
+  text-align: left;
+}
+
+.markdown-section .video-container-4by3 {
+  position: relative;
+  padding-bottom: 75%;
+  height: 0;
+  overflow: hidden;
+  max-width: 100%;
+}
+
+.markdown-section .video-container-16by9 {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+  max-width: 100%;
+}
+
+.video-container-16by9 iframe, .video-container-4by3 iframe, .embed-container object, .embed-container embed {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 93%;
+}
+
+.markdown-section .responsive-container iframe {
+  max-width: 100%;
+}
+
+.markdown-section .banner-image {
+  width: 100%;
+  height: 125px;
+  object-fit: cover;
+  object-position: 50% 50%;
+}
+
+@media (min-width: 576px) {
+  .markdown-section .banner-image {
+    height: 250px;
+  }
+}
+
+.markdown-section .banner-tall-image {
+  width: 100%;
+  height: 175px;
+  object-fit: cover;
+  object-position: 50% 50%;
+}
+
+@media (min-width: 576px) {
+  .markdown-section .banner-tall-image {
+    height: 350px;
+  }
+}
+
+.markdown-section .header-image-fade {
+  width: 100%;
+  margin: 0px auto;
+  position: absolute;
+  top: 0px;
+  left: 0;
+  -webkit-mask-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,1)), to(rgba(0,0,0,0)));
+  mask-image: linear-gradient(to bottom, rgba(0,0,0,1), rgba(0,0,0,0));
+  opacity: 0.4;
+  z-index: -1;
+}
+
+@media screen and (max-width: 980px) {
+  .markdown-section .header-image-fade {
+    top: -20px;
+  }
+}
+
+/* CSS currently only works with sidebar and standalone pages */
+.markdown-section .header-image-full-width {
+  margin-top: -2rem;
+  left: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  max-width: 100vw;
+  position: relative;
+  right: 50%;
+  width: 100vw;
+  height: 30dvh;
+  object-fit: cover;
+  object-position: center 50%;
+}
+
+.markdown-section .header-tall-image-full-width {
+  margin-top: -2rem;
+  left: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  max-width: 100vw;
+  position: relative;
+  right: 50%;
+  width: 100vw;
+  height: 40dvh;
+  object-fit: cover;
+  object-position: center 50%;
+}
+
+.markdown-section .image-75 {
+  width: 75%;
+  height: auto;
+}
+
+.markdown-section .image-50 {
+  width: 75%;
+  height: auto;
+}
+
+.markdown-section .image-25 {
+  width: 75%;
+  height: auto;
+}
+
+.markdown-section .image-75-border {
+  width: 75%;
+  height: auto;
+  border: 1px solid #dfdfdf;
+}
+
+.markdown-section .image-50-border {
+  width: 75%;
+  height: auto;
+  border: 1px solid #dfdfdf;
+}
+
+.markdown-section .image-25-border {
+  width: 75%;
+  height: auto;
+  border: 1px solid #dfdfdf;
+}
+
+.markdown-section .image-border {
+  border: 1px solid #dfdfdf;
+}
+
+.markdown-section .image-border-rounded {
+  border-radius: 0.35em;
+  border: 1px solid #dfdfdf;
+}
+
+.markdown-section .column {
+  float: left;
+  padding-right: 1rem;
+  width: 50%;
+}
+
+.markdown-section .column img {
+  padding-top: .35rem;
+}
+
+.markdown-section .reverse-columns .column {
+  float: right;
+}
+
+.markdown-section .row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+@media screen and (max-width:800px) {
+  .markdown-section .column {
+    width: 100%;
+  }
+
+  .markdown-section .image-75, .markdown-section .image-50, .markdown-section .image-25, .markdown-section .image-75-border, .markdown-section .image-50-border, .markdown-section .image-25-border {
+    width: 100%;
+    height: auto;
+  }
+}
+
+.markdown-section figure, .markdown-section p, .markdown-section ol, .markdown-section ul {
+  margin: 1em 0em .5em 0em;
+}
+
+.markdown-section h1 {
+  line-height: 1.75rem;
+}
+
+.markdown-section h2 {
+  line-height: 1.55rem;
+}
+
+.markdown-section .h3 {
+  line-height: 1.35rem;
+}
+
+.markdown-section h4 {
+  line-height: 1.3rem;
+}
+
+.markdown-section h5 {
+  line-height: 1.25rem;
+}
+
+.markdown-section h6 {
+  line-height: 1.2rem;
+}
+
+.markdown-section .alert hr, .markdown-section blockquote hr {
+  margin: 1em 0;
+}
+
+.markdown-section .alert h1, .markdown-section blockquote h1 {
+  font-size: 1.5rem;
+  line-height: 1.6rem;
+}
+
+.markdown-section .alert  h2, .markdown-section blockquote h2 {
+  font-size: 1.35rem;
+  line-height: 1.45rem;
+}
+
+.markdown-section .alert  h3, .markdown-section blockquote h3 {
+  font-size: 1.2rem;
+  line-height: 1.3rem;
+}
+
+.markdown-section .alert  h4, .markdown-section blockquote h4 {
+  font-size: 1.15rem;
+  line-height: 1.25rem;
+}
+
+.markdown-section .alert  h5, .markdown-section blockquote h5 {
+  font-size: 1.1rem;
+  line-height: 1.2rem;
+}
+
+.markdown-section .alert  h6, .markdown-section blockquote h6 {
+  font-size: 1rem;
+  line-height: 1.1rem;
+}
+
+body .app-nav {
+  margin-right: -10px;
+}
+
+body .docsify-pagination-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  overflow: hidden;
+  margin: 3em 0 1em;
+  border-top: 0px solid rgba(0, 0, 0, .07);
+}
+
+.progress {
+  background-color: var(--blockquote-border-color);
+}
+
+@media only screen and (max-width: 480px) {
+
+  .markdown-section h1 {
+    font-size: 1.45rem;
+    line-height: 1.5rem;
+  }
+
+  .markdown-section h2 {
+    font-size: 1.35rem;
+    line-height: 1.4rem;
+  }
+
+  .markdown-section h3 {
+    font-size: 1.25rem;
+    line-height: 1.3rem;
+  }
+
+  .markdown-section h4 {
+    font-size: 1.15rem;
+    line-height: 1.2rem;
+  }
+
+  .markdown-section h5 {
+    font-size: 1.1rem;
+    line-height: 1.15rem;
+  }
+
+  .markdown-section h6 {
+    font-size: 1rem;
+    line-height: 1.05rem;
+  }
+
+  .markdown-section .alert h1, .markdown-section blockquote h1 {
+    font-size: 1.3rem;
+    line-height: 1.4rem;
+  }
+
+  .markdown-section .alert h2, .markdown-section blockquote h2 { 
+    font-size: 1.2rem;
+    line-height: 1.3rem;
+  }
+
+  .markdown-section .alert h3, .markdown-section blockquote h3 {
+    font-size: 1.15rem;
+    line-height: 1.25rem;
+  }
+
+  .markdown-section .alert h4, .markdown-section blockquote h4 {
+    font-size: 1.1rem;
+    line-height: 1.2rem;
+  }
+
+  .markdown-section .alert h5, .markdown-section blockquote h5 {
+    font-size: 1.05rem;
+    line-height: 1.1rem;
+  }
+
+  .markdown-section .alert h6, .markdown-section blockquote h6 {
+    font-size: 1rem;
+    line-height: 1.05rem;
+  }
+
+}
+
+/* Dark mode colours for use with Simple light + dark theme (uncomment to use) */
+@media (prefers-color-scheme: dark) {
+/*
+  :root {
+    --link-color: #1BA1EE!important;
+
+    --sidebar-name-color: #1BA1EE!important;
+    --sidebar-nav-link-color--active: #1BA1EE!important;
+    --sidebar-nav-link-border-color--active: #1BA1EE!important;
+
+    --sidebar-nav-pagelink-background--active:
+        no-repeat 0px center / 5px 6px
+        linear-gradient(225deg, transparent 2.75px, #1BA1EE 2.75px 4.25px, transparent 4.25px),
+        no-repeat 5px center / 5px 6px
+        linear-gradient(135deg, transparent 2.75px, #1BA1EE 2.75px 4.25px, transparent 4.25px)!important;
+    --sidebar-nav-pagelink-background--collapse:
+        no-repeat 2px calc(50% - 2.5px) / 6px 5px
+        linear-gradient(45deg, transparent 2.75px, #1BA1EE 2.75px 4.25px, transparent 4px),
+        no-repeat 2px calc(50% + 2.5px) / 6px 5px
+        linear-gradient(135deg, transparent 2.75px, #1BA1EE 2.75px 4.25px, transparent 4px)!important;
+    --sidebar-nav-pagelink-background--loaded:
+        no-repeat 0px center / 5px 6px
+        linear-gradient(225deg, transparent 2.75px, #1BA1EE 2.75px 4.25px, transparent 4.25px),
+        no-repeat 5px center / 5px 6px
+        linear-gradient(135deg, transparent 2.75px, #1BA1EE 2.75px 4.25px, transparent 4.25px)!important;
+
+    --navbar-root-color--active: #1BA1EE!important;
+    --navbar-root-color--active: #1BA1EE!important;
+
+    --blockquote-border-color: #1BA1EE!important;
+    
+    --pagination-title-color: #1BA1EE!important;
+  }
+}
+*/

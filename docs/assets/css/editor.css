@@ -1,0 +1,92 @@
+/*
+===============================================================================================================================
+CSS for better Markdown previews within a text editor.
+===============================================================================================================================
+*/
+
+.badge {
+  color: #fff;
+  background-color: #6c757d;
+  display: inline-block;
+  padding: .25em .4em .25em .4em;
+  font-size: 75%;
+  font-weight: 700;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  margin-top: -0.4em;
+  border-radius: .25rem;
+  transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+  text-decoration: none;
+}
+
+.badge a {
+  color: white;
+  text-decoration: none !important;
+}
+
+ul {
+  list-style: square outside none;
+}
+
+.alert {
+  overflow: visible;
+  margin: 2em 0;
+  padding: 1.5em;
+  background: #f7f7f7;
+}
+
+.alert ul {
+  list-style: none;
+  margin-top: .8em;
+}
+
+.alert ul li {
+  margin: 2px 0;
+}
+
+.alert ul li:before {
+  position: absolute;
+  content: '\2B29';
+  margin-left: -18px;
+}
+
+.blockquote ul {
+  list-style: none;
+  margin-top: .8em;
+}
+
+.blockquote ul li {
+  margin: 2px 0;
+}
+
+.blockquote ul li:before {
+  position: absolute;
+  content: '\2B29';
+  margin-left: -18px;
+}
+
+.video-container-4by3 {
+  position: relative;
+  padding-bottom: 75%;
+  height: 0;
+  overflow: hidden;
+  max-width: 100%;
+}
+
+.video-container-16by9 {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+  max-width: 100%;
+}
+
+.video-container-16by9 iframe, .video-container-4by3 iframe, .embed-container object, .embed-container embed {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 93%;
+}

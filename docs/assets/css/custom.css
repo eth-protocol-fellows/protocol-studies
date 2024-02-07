@@ -1,0 +1,157 @@
+/* File for custom CSS
+
+/* CSS to better visually match Docsify pages within Canvas LMS (uncomment to use) */
+/*
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+body .markdown-section {
+    font-family: "Lato Extended","Lato","Helvetica Neue",Arial,sans-serif;
+    line-height: 1.4;
+    font-size: 16px;
+}
+*/
+
+/* Link colors to match SFU branding visual styling (uncomment to use) */
+/*
+:root {
+    --link-color: #CC0633!important;
+    --link-text-decoration: none!important;
+    --link-text-decoration--hover: underline!important;
+
+    --sidebar-name-color: #CC0633!important;
+    --sidebar-nav-link-color: #757575!important;
+    --sidebar-nav-link-color--active: #CC0633!important;
+    --sidebar-nav-link-border-color--active: #CC0633!important;
+
+    --sidebar-nav-pagelink-background--active:
+        no-repeat 0px center / 5px 6px
+        linear-gradient(225deg, transparent 2.75px, #CC0633 2.75px 4.25px, transparent 4.25px),
+        no-repeat 5px center / 5px 6px
+        linear-gradient(135deg, transparent 2.75px, #CC0633 2.75px 4.25px, transparent 4.25px)!important;
+    --sidebar-nav-pagelink-background--collapse:
+        no-repeat 2px calc(50% - 2.5px) / 6px 5px
+        linear-gradient(45deg, transparent 2.75px, #CC0633 2.75px 4.25px, transparent 4px),
+        no-repeat 2px calc(50% + 2.5px) / 6px 5px
+        linear-gradient(135deg, transparent 2.75px, #CC0633 2.75px 4.25px, transparent 4px)!important;
+    --sidebar-nav-pagelink-background--loaded:
+        no-repeat 0px center / 5px 6px
+        linear-gradient(225deg, transparent 2.75px, #CC0633 2.75px 4.25px, transparent 4.25px),
+        no-repeat 5px center / 5px 6px
+        linear-gradient(135deg, transparent 2.75px, #CC0633 2.75px 4.25px, transparent 4.25px)!important;
+
+    --navbar-root-color: #757575!important;
+    --navbar-root-color--active: #CC0633!important;
+
+    --blockquote-border-color: #757b7f!important;
+
+    --pagination-title-color: #CC0633!important;
+}
+*/
+
+/* Dark mode colours to match SFU branding visual styling for use with light + dark theme (uncomment to use) */
+/*
+@media (prefers-color-scheme: dark) {
+:root {
+
+    --link-color: #EA7688!important;
+    --link-text-decoration: none!important;
+    --link-text-decoration--hover: underline!important;
+
+    --sidebar-name-color: #EA7688!important;
+    --sidebar-nav-link-color: #B2B4B4!important;
+    --sidebar-nav-link-color--active: #EA7688!important;
+    --sidebar-nav-link-border-color--active: #EA7688!important;
+
+    --sidebar-nav-pagelink-background--active:
+        no-repeat 0px center / 5px 6px linear-gradient(225deg, transparent 2.75px, #EA7688 2.75px 4.25px, transparent 4.25px), no-repeat 5px center / 5px 6px linear-gradient(135deg, transparent 2.75px, #EA7688 2.75px 4.25px, transparent 4.25px)!important;
+    --sidebar-nav-pagelink-background--collapse:
+        no-repeat 2px calc(50% - 2.5px) / 6px 5px linear-gradient(45deg, transparent 2.75px, #EA7688 2.75px 4.25px, transparent 4px), no-repeat 2px calc(50% + 2.5px) / 6px 5px linear-gradient(135deg, transparent 2.75px, #EA7688 2.75px 4.25px, transparent 4px)!important;
+    --sidebar-nav-pagelink-background--loaded:
+        no-repeat 0px center / 5px 6px linear-gradient(225deg, transparent 2.75px, #EA7688 2.75px 4.25px, transparent 4.25px), no-repeat 5px center / 5px 6px linear-gradient(135deg, transparent 2.75px, #EA7688 2.75px 4.25px, transparent 4.25px)!important;
+
+    --navbar-root-color: #B2B4B4!important;
+    --navbar-root-color--active: #EA7688!important;
+
+    --blockquote-border-color: #757B7F!important;
+
+    --pagination-title-color: #EA7688!important;
+    }
+}
+*/
+
+/* Link colors to match visual styling of Moodle LMS (uncomment to use) */
+/*
+:root {
+    --link-color: #0F6CBF!important;
+
+    --sidebar-name-color: #0F6CBF!important;
+    --sidebar-nav-link-color--active: #0F6CBF!important;
+    --sidebar-nav-link-border-color--active: #0F6CBF!important;
+
+    --sidebar-nav-pagelink-background--active:
+        no-repeat 0px center / 5px 6px
+        linear-gradient(225deg, transparent 2.75px, #0F6CBF 2.75px 4.25px, transparent 4.25px),
+        no-repeat 5px center / 5px 6px
+        linear-gradient(135deg, transparent 2.75px, #0F6CBF 2.75px 4.25px, transparent 4.25px)!important;
+    --sidebar-nav-pagelink-background--collapse:
+        no-repeat 2px calc(50% - 2.5px) / 6px 5px
+        linear-gradient(45deg, transparent 2.75px, #0F6CBF 2.75px 4.25px, transparent 4px),
+        no-repeat 2px calc(50% + 2.5px) / 6px 5px
+        linear-gradient(135deg, transparent 2.75px, #0F6CBF 2.75px 4.25px, transparent 4px)!important;
+    --sidebar-nav-pagelink-background--loaded:
+        no-repeat 0px center / 5px 6px
+        linear-gradient(225deg, transparent 2.75px, #0F6CBF 2.75px 4.25px, transparent 4.25px),
+        no-repeat 5px center / 5px 6px
+        linear-gradient(135deg, transparent 2.75px, #0F6CBF 2.75px 4.25px, transparent 4.25px)!important;
+    --navbar-root-color--active: #0F6CBF!important;
+
+    --blockquote-border-color: #0F6CBF!important;
+
+    --pagination-title-color: #0F6CBF!important;
+}
+*/
+
+/* Link colors to match visual styling of Sakai LMS (uncomment to use) */
+/*
+:root {
+    --link-color: #0B1660!important;
+
+    --sidebar-name-color: #0B1660!important;
+    --sidebar-nav-link-color--active: #0B1660!important;
+    --sidebar-nav-link-border-color--active: #0B1660!important;
+
+    --sidebar-nav-pagelink-background--active:
+        no-repeat 0px center / 5px 6px
+        linear-gradient(225deg, transparent 2.75px, #0B1660 2.75px 4.25px, transparent 4.25px),
+        no-repeat 5px center / 5px 6px
+        linear-gradient(135deg, transparent 2.75px, #0B1660 2.75px 4.25px, transparent 4.25px)!important;
+    --sidebar-nav-pagelink-background--collapse:
+        no-repeat 2px calc(50% - 2.5px) / 6px 5px
+        linear-gradient(45deg, transparent 2.75px, #0B1660 2.75px 4.25px, transparent 4px),
+        no-repeat 2px calc(50% + 2.5px) / 6px 5px
+        linear-gradient(135deg, transparent 2.75px, #0B1660 2.75px 4.25px, transparent 4px)!important;
+    --sidebar-nav-pagelink-background--loaded:
+        no-repeat 0px center / 5px 6px
+        linear-gradient(225deg, transparent 2.75px, #0B1660 2.75px 4.25px, transparent 4.25px),
+        no-repeat 5px center / 5px 6px
+        linear-gradient(135deg, transparent 2.75px, #0B1660 2.75px 4.25px, transparent 4.25px)!important;
+
+    --navbar-root-color--active: #0B1660!important;
+    --navbar-root-color--active: #0B1660!important;
+
+    --blockquote-border-color: #0B1660!important;
+    
+    --pagination-title-color: #0B1660!important;
+}
+*/
+
+/* CSS to better visually match Docsify pages within Sakai LMS (uncomment to use) */
+/*
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap');
+
+body .markdown-section {
+    font-family: "Open Sans",sans-serif;
+    line-height: 1.3;
+    font-size: 14px;
+}
+*/
