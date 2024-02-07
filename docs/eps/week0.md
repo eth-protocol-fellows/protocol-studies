@@ -4,7 +4,7 @@ Week 0 marks all the time before the program begins. Use this time to prepare yo
 
 ## Town Hall
 
-Join us for a town hall call on Monday, Feb 12, 4PM UTC.
+Join us for an online town hall on Monday, Feb 12, 4PM UTC.
 
 The call will go over the details and schedule of the program. Come to learn more about the program, ask questions or post suggestions. 
 
