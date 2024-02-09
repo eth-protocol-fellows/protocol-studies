@@ -12,7 +12,7 @@ The first half is dedicated to general understanding of the internal mechanisms 
 
 Each online session will be led by core developers and researchers, come with pre-meeting reading material to get you familiar with the topic and terminology as well as a post-meeting activity to strengthen and solidify your understanding.
 
-Checkout the study group content in this folder, start with [Week 0](week0.md).
+Checkout the study group content in this folder, start with [Week 0](eps/week0.md).
 
 ## Participate
 
