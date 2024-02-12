@@ -6,11 +6,7 @@ First, please checkout the [announcement blog post](https://blog.ethereum.org/20
 
 ## Town Hall
 
-Join us for an online town hall on [Monday, Feb 12, 4PM UTC](https://savvytime.com/converter/utc-to-germany-berlin-united-kingdom-london-ny-new-york-city-ca-san-francisco-china-shanghai-japan-tokyo-australia-sydney/feb-12-2024/4pm).
-
-The call will go over the program details, schedule and answer your questions. Come to learn more about the program, ask anything you are interested in or post suggestions. 
-
-> Town hall will be held at Jitsi call in following link: https://meet.ethquokkaops.io/EPFsgTownHall
+The call discussed the program details, schedule and answer your questions. Recording will be here soon.
 
 ## Pre-reading
 
