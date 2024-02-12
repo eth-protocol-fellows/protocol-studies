@@ -66,7 +66,7 @@
 - [Protocol Fellowship](/wiki/epf.md)
 
 - **Wiki Info**
-  - [GitHub Repository](https://github.com/taxmeifyoucan/protocol-wiki-test)
+  - [GitHub Repository](https://github.com/eth-protocol-fellows/protocol-studies)
 
 
 <form action="https://eth-protocol-fellows.github.io/protocol-studies/#/eps/intro" target="_blank">
