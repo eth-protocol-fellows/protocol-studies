@@ -14,6 +14,8 @@ Before you start with editing, please read the code of conduct, following guide 
 
 The wiki source is hosted in github repository at github.com/eth-protocol-fellows/protocol-wiki. Mirrored at //TODO
 
+> The wiki is served from `wiki-pages` branch. When contributing, open a PR to `main` branch (repo default branch). After a while, all updates are collectively upstreamed to `wiki-pages` to update the website.
+
 You can explore existing issues or open a new one for missing content, suggest improving existing content or wiki frontend features. If you identify missing or unfinished content, feel free to open a PR. 
 
 We are not aiming to recreate other existing wikis. If the same content is well explained elsewhere, just link it and provide additional context. 
@@ -43,7 +45,7 @@ Install docsify, clone the repository and host it locally.
 ```
 npm i docsify-cli -g
 git clone https://github.com/eth-protocol-fellows/protocol-wiki.git
-cd protocol-wiki
+cd protocol-wiki/docs
 docsify serve docs
 ```
 
