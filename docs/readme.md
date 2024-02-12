@@ -4,7 +4,7 @@ The protocol wiki is a collection of technical resources about the Ethereum prot
 
 > :warning: Protocol Wiki is under contruction, [join us](study-group.md) and [contribute](contributing.md). 
 
-![](/docs/images/epfsg_hero.jpg)
+![](https://raw.githubusercontent.com/eth-protocol-fellows/protocol-studies/wiki-pages/docs/images/epfsg_hero.jpg)
 
 ## Protocol Studies
 
