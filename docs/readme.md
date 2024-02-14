@@ -2,7 +2,7 @@
 
 The protocol wiki is a collection of technical resources about the Ethereum protocol. This includes information about the core protocol theory, client development and ongoing research. It's not intented for smart contract or other high level development. 
 
-> :warning: Protocol Wiki is under contruction, [join us](study-group.md) and [contribute](contributing.md). 
+> :warning: Protocol Wiki is under contruction, [join us](/eps/intro.md) and [contribute](contributing.md). 
 
 ![](https://raw.githubusercontent.com/eth-protocol-fellows/protocol-studies/wiki-pages/docs/images/epfsg_hero.jpg)
 
