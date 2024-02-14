@@ -25,3 +25,8 @@ Before the program, you should be familiar with some general concepts from Ether
     - As a dapp developer
 
 These are just general suggestions of domain knowledge you will need. More detailed learning resources will be provided during the program. 
+
+## Helpful Resources if you're stuck on where to research
+- <a href="https://summerofprotocols.com/wp-content/uploads/2023/12/53-BEIKO-001-2023-12-13.pdf">Cryptography</a>
+- <a href="https://youtu.be/V6gLY-1G4Mc?si=W1ncsNYUSHjm5U4y">Merkle trees</a>
+- <a href="https://youtu.be/ie-qRQIQT4I?si=eYKzMbn7PGk-Il9M">Networking & p2p</a>
