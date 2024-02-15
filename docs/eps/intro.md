@@ -54,7 +54,7 @@ For our weekly meetings, we are using a selfhosted FOSS platform Jitsi. Even tho
 - Try a different browser (especially if you are using a Chromium based, try Firefox and vice versa)
 - Use the [mobile Jitsi app](https://jitsi.org/downloads/) instead of desktop (you just need to point it to our domain)
 - Check your network and firewall settings, make sure your browser allows WebRTC
-- Use Jitsi [community forum](https://community.jitsi.org/) to search for specific issue or report your problem
+- Visit Jitsi [community forum](https://community.jitsi.org/) to search for specific issue or report your problem
 
 ## FAQ
 
