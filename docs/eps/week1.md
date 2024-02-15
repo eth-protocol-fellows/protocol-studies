@@ -2,16 +2,16 @@
 
 The first week of the study group is dedicated to a general introduction to the protocol and R&D ecosystem. 
 
-Come to see the presentation by Mário Havel on [Monday, February 19, 4PM UTC](https://savvytime.com/converter/utc-to-germany-berlin-united-kingdom-london-ny-new-york-city-ca-san-francisco-china-shanghai-japan-tokyo-australia-sydney/feb-12-2024/4pm). The recording will be shared here.
+Come to see the presentation by Mário Havel on [Monday, February 19, 4PM UTC](https://savvytime.com/converter/utc-to-germany-berlin-united-kingdom-london-ny-new-york-city-ca-san-francisco-china-shanghai-japan-tokyo-australia-sydney/feb-12-2024/4pm). Join the call at this time at https://meet.ethquokkaops.io/EPFsg. The recording will be shared here.
 
 ## Pre-reading
 
-This is an introductory talk which doesn't assume a lot of prior knowledge. Here are a few introductory materials to get you started:
+This is an introductory talk which doesn't assume a lot of prior knowledge. Check some general requirements in [week 0](week0.md). Here are few more introductory materials to get you started:
 - [Inevitable Ethereum - World Computer](https://inevitableeth.com/home/ethereum/world-computer)
 - [Ethereum in 30 minutes](https://www.youtube.com/watch?v=UihMqcj-cqc)
 - [Ethereum.org docs](https://ethereum.org/what-is-ethereum)
 
-Check out resources within the following text and additional reading. They will be explained in the week 1 presentation.
+Check out resources within the following text and additional reading. All resources will be explained in the week 1 presentation.
 
 ## Prehistory and Philosophy
 
@@ -36,10 +36,12 @@ The invention of [asymmetric cryptography](https://www-ee.stanford.edu/~hellman/
 
 ## Ethereum Protocol Design 
 
-Originally outlined in its [Whitepaper](https://ethereum.org/whitepaper#ethereum-whitepaper), Ethereum draws inspiration from Bitcoin and its background (explained above) to create a general blockchain based computation platform. The design was technically specified in [Yellowpaper](https://ethereum.github.io/yellowpaper/paper.pdf) and evolved over time. Current specifications and changes are tracked in the community process of [EIPs](https://eips.ethereum.org) and implemented in Python as: 
+Originally outlined in its [Whitepaper](https://ethereum.org/whitepaper#ethereum-whitepaper), Ethereum draws inspiration from Bitcoin and its background (explained above) to create a general blockchain based computation platform. The design was technically specified in [Yellowpaper](https://ethereum.github.io/yellowpaper/paper.pdf) and evolved over time. Changes are tracked in the community process of [EIPs](https://eips.ethereum.org) and current specification is implemented in Python as: 
 
 - [Execution specs](https://github.com/ethereum/execution-specs)
 - [Consensus specs](https://github.com/ethereum/execution-specs)
+
+The specification is purely technical and doesn't provide any context or explanation for the reader. For learning about the consensus, check the annotated version [by Ben](https://benjaminion.xyz/eth2-annotated-spec/) and [by V](https://github.com/ethereum/annotated-spec). 
 
 The protocol changes over time, with each network upgrade bringing new improvements. Despite its constant changes, the architecture evolution reflects certain fundamental principles. These can be summarized as follows: 
 
@@ -103,3 +105,10 @@ To explore various parts of the Ethereum protocol, check out what people have be
 https://github.com/eth-protocol-fellows/cohort-three/tree/master/projects
 https://github.com/eth-protocol-fellows/cohort-four/tree/master/projects
 
+Few books I recommend: 
+
+If you are interested in early days of Ethereum, the story of its founders and creation, check out book [The Infinate Machine](https://www.camirusso.com/book). Another similar one is [Out of the Ethe ](https://www.goodreads.com/book/show/55360267-out-of-the-ether) (ping me to provide epub). 
+
+A very recent publication providing a comprehensive insight is [Absolute Essentials of Ethereum](https://www.routledge.com/Absolute-Essentials-of-Ethereum/Dylan-Ennis/p/book/9781032334189). It a covers [variety of topics](https://www.coindesk.com/consensus-magazine/2024/02/07/absolute-essentials-of-ethereum-by-paul-dylan-ennis-an-excerpt/) and I can strongly recommend it. 
+
+[Mastering Ethereum](https://github.com/ethereumbook/ethereumbook) is one of the great blockchain books by aantop covering everything from basics to technical details. It's few years old and already outdated but still can be a good inspiration. 

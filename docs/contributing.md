@@ -46,7 +46,7 @@ Install docsify, clone the repository and host it locally.
 npm i docsify-cli -g
 git clone https://github.com/eth-protocol-fellows/protocol-studies.git
 cd protocol-studies
-docsify serve docs
+docsify serve ./docs
 ```
 
 ## Style guide
