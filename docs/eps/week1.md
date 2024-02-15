@@ -105,9 +105,11 @@ To explore various parts of the Ethereum protocol, check out what people have be
 https://github.com/eth-protocol-fellows/cohort-three/tree/master/projects
 https://github.com/eth-protocol-fellows/cohort-four/tree/master/projects
 
+[Devcon archive](archive.devcon.org) is full of incredible talks diving into various technical and non-technical aspects of Ethereum.
+
 Few books I recommend: 
 
-If you are interested in early days of Ethereum, the story of its founders and creation, check out book [The Infinate Machine](https://www.camirusso.com/book). Another similar one is [Out of the Ethe ](https://www.goodreads.com/book/show/55360267-out-of-the-ether) (ping me to provide epub). 
+If you are interested in early days of Ethereum, the story of its founders and creation, check out book [The Infinite Machine](https://www.camirusso.com/book). Another similar one is [Out of the Ether](https://www.goodreads.com/book/show/55360267-out-of-the-ether). (ping me for epubs)
 
 A very recent publication providing a comprehensive insight is [Absolute Essentials of Ethereum](https://www.routledge.com/Absolute-Essentials-of-Ethereum/Dylan-Ennis/p/book/9781032334189). It a covers [variety of topics](https://www.coindesk.com/consensus-magazine/2024/02/07/absolute-essentials-of-ethereum-by-paul-dylan-ennis-an-excerpt/) and I can strongly recommend it. 
 
