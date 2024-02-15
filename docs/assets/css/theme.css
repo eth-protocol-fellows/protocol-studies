@@ -517,7 +517,7 @@ body .docsify-pagination-container {
 }
 
 /* Dark mode colours for use with Simple light + dark theme (uncomment to use) */
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) { */
 /*
   :root {
     --link-color: #1BA1EE!important;

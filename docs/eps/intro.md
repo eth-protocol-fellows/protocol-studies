@@ -40,3 +40,31 @@ Study group participants will collaboratively develop a comprehensive wiki, serv
 
 While this program is designed to act as a precursor to the Ethereum Protocol Fellowship, the study group is for anyone that is interested in learning more about the inner workings of the Ethereum Protocol. Those that have some general knowledge or use of Ethereum and/or blockchains as well as those that have some computer science, technical, or developer experience will get the most from this program.
 
+## Important links
+
+- Discord server: https://discord.gg/dqNM9zN5
+- Weekly calls: https://meet.ethquokkaops.io/EPFsg
+- EPF mailing list: https://groups.google.com/a/ethereum.org/g/protocol-fellowship-group
+
+## Calls troubleshooting
+
+For our weekly meetings, we are using a selfhosted FOSS platform Jitsi. Even though we are doing our best, some people might experience problems during these calls, here are few tips on troubleshooting:
+
+- Restart your browser and rejoin
+- Try a different browser (especially if you are using a Chromium based, try Firefox and vice versa)
+- Use the [mobile Jitsi app](https://jitsi.org/downloads/) instead of desktop (you just need to point it to our domain)
+- Check your network and firewall settings, make sure your browser allows WebRTC
+- Use Jitsi [community forum](https://community.jitsi.org/) to search for specific issue or report your problem
+
+## FAQ
+
+- **Will I learn to develop applications on the Ethereum blockchain?**
+    - No. This program is not focused on Solidity or development of decentralized applications. 
+- **When does it start and is the duration?**
+    - Program will start in Februray 2024 and continue for 10 weeks, finishing by end of April. 
+- **Am I automatically accepted to EPF after attending EPFsg**
+    - No. The study group is a great way to prepare for EPF but it doesn't guarantee anyting. However, EPF is a permissionless program so you can always participate. 
+- **Where is the study group located?**
+    - As all core Ethereum teams, EPFsg is distributed around the globe. We will do our best to accomodate call times for the program participants.
+- **Do I need to apply and be accepted?**
+    - The program is fully open, anyone can participate. We only ask you to submit a [form](https://forms.gle/7TqmryC217EPwgqr9) to let us know about your preferences but it doesn't have any effect on your participation. 
