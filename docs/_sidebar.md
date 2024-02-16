@@ -11,7 +11,6 @@
   - [Overview](/wiki/protocol/overview.md)
   - [History](/wiki/protocol/history.md)
   - [Coordination](/wiki/protocol/pm.md)
-  - [Scalability](/wiki/protocol/scalability.md)
   - [CS Resources]
 - Execution Layer
   - [EL Clients](/wiki/EL/el-clients.md)
@@ -39,7 +38,7 @@
   - Formal Verification
 - Research
   - [Roadmap overview](/wiki/research/roadmap.md)
-  - Scaling
+  - [Scaling](/wiki/research/scaling.md)
     - Blobs
     - Sharding
     - Statelessness

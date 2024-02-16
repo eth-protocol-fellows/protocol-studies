@@ -1,4 +1,4 @@
-# Scalability
+# Scaling
 In computer systems, scalability refers to the ability of a system to perform well under increased or expanding workloads. The primary purpose of blockchain is to handle users' transactions and manage network's ledger state. An increase in workload may result from either a higher demand for transactions by existing users or an increase in the volume of users.
 > **we can define the scalability of a specific blockchain as its capacity to perform well under an increase in user transaction demands or/and in the volume of users**.
 
