@@ -39,7 +39,7 @@ The invention of [asymmetric cryptography](https://www-ee.stanford.edu/~hellman/
 Originally outlined in its [Whitepaper](https://ethereum.org/whitepaper#ethereum-whitepaper), Ethereum draws inspiration from Bitcoin and its background (explained above) to create a general blockchain based computation platform. The design was technically specified in [Yellowpaper](https://ethereum.github.io/yellowpaper/paper.pdf) and evolved over time. Changes are tracked in the community process of [EIPs](https://eips.ethereum.org) and current specification is implemented in Python as: 
 
 - [Execution specs](https://github.com/ethereum/execution-specs)
-- [Consensus specs](https://github.com/ethereum/execution-specs)
+- [Consensus specs](https://github.com/ethereum/consensus-specs)
 
 The specification is purely technical and doesn't provide any context or explanation for the reader. For learning about the consensus, check the annotated version [by Ben](https://benjaminion.xyz/eth2-annotated-spec/) and [by V](https://github.com/ethereum/annotated-spec). 
 
