@@ -74,7 +74,7 @@ Tests are generated based on specifications and create various scenarios. Some a
 > Here is a short list of repositories dedicated to testing: 
 > - https://github.com/ethereum/tests
 > - https://github.com/ethereum/retesteth
-> - https://github.cosm/ethereum/execution-spec-tests
+> - https://github.com/ethereum/execution-spec-tests
 > - https://github.com/ethereum/hive
 > - https://github.com/kurtosis-tech/kurtosis
 > - https://github.com/MariusVanDerWijden/FuzzyVM
