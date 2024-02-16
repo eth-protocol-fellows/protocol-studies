@@ -2,7 +2,7 @@
 In computer systems, scalability refers to the ability of a system to perform well under increased or expanding workloads. The primary purpose of blockchain is to handle users' transactions and manage network's ledger state. An increase in workload may result from either a higher demand for transactions by existing users or an increase in the volume of users.
 > **Scalability of a blockchain system can be defined as its capacity to process increasing volumes operations, i.e. more transactions from users without raising demands on network operators**.
 
-## Blockchain Scalability Limits
+## Scalability Limits
 Consensus mechanics require most of validator nodes in the network to publicly agree on the next valid block. This directly affects the block latency, which is the time it takes for a new block to be created and validated. The block latency and block size directly determine the transactional throughput of the blockchain, which is measured by the **TPS** (transactions per second) metric.  Block latency can be influenced by a variety of factors, such as the computational power of the network nodes, the complexity of the consensus mechanism, the network traffic and the block size. Hence, a network made up of a few high-performance nodes tightly connected to each other and using large block sizes can result in an exceptional blockchain with high TPS and remarkably low block latency. However, such a network would likely be highly centralized and require users to make significant trust assumptions.
 
 Note the tight relationship between the design and tuning of a blockchain (consensus mechanics, node requirements, state structure and size… ) and its capabilities of decentralization. High hardware or network bandwidth requirements to run a node result in harsh and expensive conditions that make it difficult to do so, directly impacting the number of nodes a blockchain will have. **To ensure decentralization, it is essential to make running a node affordable and feasible for everyone and incentivize users to do it.** Therefore, a game-theory sustainable incentive mechanism must be included by design.
@@ -17,7 +17,7 @@ Another obstacle to decentralization is the size of the blockchain state. **The 
 This problem is widely known as the **Blockchain Trilemma**, which states that blockchain networks must sacrifice either security, decentralization, or scalability, and maximizing all three at once is difficult. The holy grail of blockchain technology is to create a secure and decentralized transactional network that can achieve a high TPS rate.
 
 
-<img src="wiki/protocol/img/scalability/trilemma.png" alt="Blockchain trilemma - Bankless.com" width="500"/>
+!["Blockchain trilemma - Bankless.com"](./img/scaling/blockchain-trilemma.png "Blockchain trilemma - Bankless.com")
 
 ##  Blockchain Modularity
 Modern blockchain designs propose a "divide et impera" approach dividing the system into different specific functional components to independently maximize each vertex of the trilemma. This approach encapsulates the complexity in each part of the system and reduces the systemic complexity through the definition of simpler interaction interfaces for system components. 
@@ -43,7 +43,7 @@ On September 15, 2022, Ethereum implemented EIP-3675 (Upgrade consensus to Proof
 
 As result, an Ethereum node requires running two different software components: an execution client (or execution engine) driven by a consensus client through an internal communication protocol (Engine API). Note, that no additional trust assumptions need to be made for the execution Layer to follow and execute consensus decisions since each execution client receives information from the consensus Layer through its corresponding twin consensus client, and both clients operate within the same node’s trust domain.
 
-<img src="wiki/protocol/img/scalability/ethereum-nodes.png" alt="Ethereum Nodes" width="500"/>
+!["Ethereum Nodes"](./img/scaling/ethereum-nodes.png "Ethereum Nodes")
 
 Open source and public specifications for each client enhance client diversity. This is because a node can be set up with different combinations of client implementations from various software companies and developer communities. The goal is to achieve a client diversity in which the network is not dominated by a specific combination of execution client + consensus client implementation. This enhances the resilience of the network in case of bugs in the client implementations.
 
