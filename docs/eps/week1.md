@@ -47,11 +47,11 @@ The protocol changes over time, with each network upgrade bringing new improveme
 
 - Simplicity, Universality, Modularity, Non-discrimination, Agility
 
-These core tenets have always led the Ethereum development and should be considered with every decision on design change. In addition to this, it manages growing complexity but encapsulating it and/or sandwiching it. The current network architecture is the result of many iterations of [network upgrade history](https://ethereum.org/history).
+These core tenets have always led the Ethereum development and should be considered with every decision on design change. In addition to this, it manages growing complexity by encapsulating it and/or sandwiching it. The current network architecture is the result of many iterations of [network upgrade history](https://ethereum.org/history).
 
 > Read more about Ethereum design principles in [the archive](https://web.archive.org/web/20220815014507mp_/https://ethereumbuilders.gitbooks.io/guide/content/en/design_philosophy.html) and consider rewriting it for [this wiki](/wiki/protocol/design-rationale.md)
 
-Ethereum continues evolving to address the latest research, new and always present challenges. To maintain security and decentralization, blockchain technology has certain limits, mainly its scalability. Because Ethereum needs to always adhere to its principles, it motivates us to find clever for these problems rather than accepting trade-offs. 
+Ethereum network leverage decentralization to become permissionless, credible neutral and censorship resistant. It continues evolving to address the latest research, new and always present challenges. To maintain security and decentralization, blockchain technology has certain limits, mainly its scalability. Because Ethereum needs to always adhere to its principles, it motivates us to find clever for these problems rather than accepting trade-offs. 
 
 The current research and development is summarized by the [roadmap](https://twitter.com/VitalikButerin/status/1741190491578810445/photo/1) overview, however cannot be fully accurate. There is no single path for Ethereum R&D, the [roadmap](https://ethroadmap.com/) only sums up its current landscape. The core ecosystem is an always growing [infinite garden](https://ethereum.foundation/infinitegarden). However, with more and more progress, Ethereum might slowly approach its ossification. 
 
@@ -74,7 +74,7 @@ Tests are generated based on specifications and create various scenarios. Some a
 > Here is a short list of repositories dedicated to testing: 
 > - https://github.com/ethereum/tests
 > - https://github.com/ethereum/retesteth
-> - https://github.cosm/ethereum/execution-spec-tests
+> - https://github.com/ethereum/execution-spec-tests
 > - https://github.com/ethereum/hive
 > - https://github.com/kurtosis-tech/kurtosis
 > - https://github.com/MariusVanDerWijden/FuzzyVM
@@ -106,6 +106,8 @@ https://github.com/eth-protocol-fellows/cohort-three/tree/master/projects
 https://github.com/eth-protocol-fellows/cohort-four/tree/master/projects
 
 [Devcon archive](archive.devcon.org) is full of incredible talks diving into various technical and non-technical aspects of Ethereum.
+
+A [retrospective document](https://notes.ethereum.org/@mikeneuder/rcr2vmsvftv) on recent roadmap by Alex and Mike comes with great insights into Etheruem development, values and goals.
 
 Few books I recommend: 
 
