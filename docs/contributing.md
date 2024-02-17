@@ -10,9 +10,9 @@ Write contributions based on what you learned about the protocol along the way, 
 
 ## Contributing
 
-Before you start with editing, please read the code of conduct, following guide and make yourself familiar wit the overall wiki structure. 
+Before you start with editing, please read the code of conduct, following guide and make yourself familiar with the overall wiki structure. 
 
-The wiki source is hosted in github repository at github.com/eth-protocol-fellows/protocol-wiki. Mirrored at //TODO
+The wiki source is hosted in github repository at [github.com/eth-protocol-fellows/protocol-studies](https://github.com/eth-protocol-fellows/protocol-studies). Mirrored at //TODO
 
 > The wiki is served from `wiki-pages` branch. When contributing, open a PR to `main` branch (repo default branch). After a while, all updates are collectively upstreamed to `wiki-pages` to update the website.
 
@@ -61,7 +61,7 @@ The audience of this wiki is technical and the content should reflect that. Ther
     - Use concise and clear statements 
     - Break down your text using blockquotes, bullet points or images 
 - Always link your resources and verify them
-- Use bullet points or tables for topics which require enumarating 
+- Use bullet points or tables for topics which require enumerating 
 - Highlight keywords to support scanning and skimming through the article
 - Provide visualizations to explain the topic better
 - When using acronyms or a technical jargon, make sure to introduce it first 
@@ -74,7 +74,7 @@ Goal is to produce a credible neutral text which is formal, well-structured, and
 
 ### Content standardization
 
-The wiki uses American English over British spelling. Terminology, capitalization and nomencluture should match across all pages. Use [Ethereum.org guide](https://ethereum.org/contributing/style-guide/content-standardization) for the reference. 
+The wiki uses American English over British spelling. Terminology, capitalization and nomenclature should match across all pages. Use [Ethereum.org guide](https://ethereum.org/contributing/style-guide/content-standardization) for the reference. 
 
 Usage of images and visualizations is encouraged. If you are using an image created by a third party, make sure its licence allows it and provide link to the original. For creating your own visualizations, we suggest [excalidraw.com](https://github.com/excalidraw/excalidraw). 
 
