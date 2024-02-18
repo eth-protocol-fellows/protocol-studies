@@ -17,17 +17,17 @@ Check out resources within the following text and additional reading. All resour
 
 To understand Ethereum design, we need to learn about predecessors and the culture it builds upon. The modern cryptocurrency ecosystem stands on decades of work by computer scientists, cryptographers and activists. 
 
-Starting all the way back in the 1960s, UNIX is an operating system and philosophy that redifined the entire paradigm of computation. This is the paradigm we have been using for over 50 years and has never really changed. Its fundamental concept of modularity is important to Ethereum design and open collaborative environment of Bell Labs is similar to Ethereum core development today. 
+Starting all the way back in the 1960s, UNIX is an operating system and philosophy that redefined the entire paradigm of computation. This is the paradigm we have been using for over 50 years and has never really changed. Its fundamental concept of modularity is important to Ethereum design and open collaborative environment of Bell Labs is similar to Ethereum core development today. 
 
 > Check this documentary with Dennis Ritchie and Ken Thompson, which perfectly captures spirit and ideas behind UNIX: https://yewtu.be/watch?v=tc4ROCJYbm0
 
-The Free Software movement is fundamental to Ethereum and all cryptocurrencies. The open, independent and collaborative development culture of Ethereum is strongly rooted in FOSS (Free and Open Source Software). Ethereum needs to be transparently implemented in software that gives full freedom to its users. Using any FOSS can empower every user and developer but it's necessary for security, neutrality and trustless nature of Ethereum. 
+The Free Software movement is fundamental to Ethereum and all cryptocurrencies. The open, independent and collaborative development culture of Ethereum is strongly rooted in FOSS (Free and Open Source Software). Ethereum needs to be transparently implemented in software that gives full freedom to its users. Using any FOSS can empower every user and developer, but it's necessary for security, neutrality and trustless nature of Ethereum. 
 
 > To understand its importance, watch this talk by Richard Stallman, the founder of Free Software and GNU project:
 > - https://yewtu.be/watch?v=Ag1AKIl_2GM
 > - More reading: https://www.gnu.org/philosophy/free-sw.html, *The Cathedral and the Bazaar* book: http://www.catb.org/~esr/writings/cathedral-bazaar/
 
-The invention of [asymmetric cryptography](https://www-ee.stanford.edu/~hellman/publications/24.pdf) marks the birth of a new paradigm for cryptography applications. Later, the rise of cryptography in computation for general public enabled everyone to utilize tools for digital privacy, secure communication and fundamentaly transformed cybersecurity. While nation states did not have a framework for these new concepts, [Crypto Wars](https://en.wikipedia.org/wiki/Crypto_Wars) resulted in activist movements advocating and building cryptography tools. Ultimately, these were people inventing tools and ideas which became fundamental building blocks of modern cryptocurrencies. 
+The invention of [asymmetric cryptography](https://www-ee.stanford.edu/~hellman/publications/24.pdf) marks the birth of a new paradigm for cryptography applications. Later, the rise of cryptography in computation for general public enabled everyone to utilize tools for digital privacy, secure communication and fundamentally transformed cybersecurity. While nation states did not have a framework for these new concepts, [Crypto Wars](https://en.wikipedia.org/wiki/Crypto_Wars) resulted in activist movements advocating and building cryptography tools. Ultimately, these were people inventing tools and ideas which became fundamental building blocks of modern cryptocurrencies. 
 
 > Get inspiration from early Cypherpunks who envisioned an independent digital realm built on trustless and borderless technologies:
 > - https://activism.net/cypherpunk/manifesto.html
@@ -59,7 +59,7 @@ The current research and development is summarized by the [roadmap](https://twit
 
 ## Implementations and Development
 
-Everything mentioned above - the ideas, design and specifications comes down to the actual application here, in its implementation. An implementation of the execution layer (EL) or consensus layer (CL) is called a *client*. A computer running this client and connecting to the network is called a *node*. A node is therefore an a pair of EL and CL clients actively participating in the network. 
+Everything mentioned above - the ideas, design and specifications comes down to the actual application here, in its implementation. An implementation of the execution layer (EL) or consensus layer (CL) is called a *client*. A computer running this client and connecting to the network is called a *node*. A node is therefore a pair of EL and CL clients actively participating in the network. 
 
 Since Ethereum is formally specified, it can be implemented in different ways in any language. This results in a variety of implementations throughout the years with some already deprecated and some just being developed. The current list of production ready implementations can be found in the [docs on Nodes and clients](https://ethereum.org/en/developers/docs/nodes-and-clients#execution-clients) and week 1 presentation. 
 
@@ -69,7 +69,7 @@ Since Ethereum is formally specified, it can be implemented in different ways in
 
 With regular changes and multiple client implementations, testing is fundamental to the network security. There are a variety of testing tools and scenarios which are all heavily utilized before any network upgrade. 
 
-Tests are generated based on specifications and create various scenarios. Some are testing clients individualy, some are simulating a testnet with all client pairs. There are different testing tools used for different parts of development cycles and parts of clients. This includes state transition testing, fuzzing, shadow forks, RPC tests, client unit tests and CI/CD, etc. 
+Tests are generated based on specifications and create various scenarios. Some are testing clients individually, some are simulating a testnet with all client pairs. There are different testing tools used for different parts of development cycles and parts of clients. This includes state transition testing, fuzzing, shadow forks, RPC tests, client unit tests and CI/CD, etc. 
 
 > Here is a short list of repositories dedicated to testing: 
 > - https://github.com/ethereum/tests
@@ -107,7 +107,7 @@ https://github.com/eth-protocol-fellows/cohort-four/tree/master/projects
 
 [Devcon archive](archive.devcon.org) is full of incredible talks diving into various technical and non-technical aspects of Ethereum.
 
-A [retrospective document](https://notes.ethereum.org/@mikeneuder/rcr2vmsvftv) on recent roadmap by Alex and Mike comes with great insights into Etheruem development, values and goals.
+A [retrospective document](https://notes.ethereum.org/@mikeneuder/rcr2vmsvftv) on recent roadmap by Alex and Mike comes with great insights into Ethereum development, values and goals.
 
 Few books I recommend: 
 
