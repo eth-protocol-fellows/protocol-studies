@@ -31,3 +31,5 @@ These are just general suggestions of domain knowledge you will need. More intro
 - [Intro to Cryptography](https://summerofprotocols.com/wp-content/uploads/2023/12/53-BEIKO-001-2023-12-13.pdf)
 - [Merkle trees](https://youtu.be/V6gLY-1G4Mc?si=W1ncsNYUSHjm5U4y), [in Bitcoin](https://www.youtube.com/watch?v=bBC-nXj3Ng4)
 - [Networking & p2p](https://youtu.be/ie-qRQIQT4I?si=eYKzMbn7PGk-Il9M), [in Bittorrent](https://www.youtube.com/watch?v=xH00ikD1oDo)
+- More on P2P Networks: https://www.computerworld.com/article/2588287/networking-peer-to-peer-network.html
+
