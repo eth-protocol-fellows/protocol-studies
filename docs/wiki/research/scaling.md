@@ -32,7 +32,7 @@ Functional components of a blockchain:
 - Data availability: Data availability mechanics that ensures that the data is available to be queried when it is required.
 - Settlement: Mechanics that guarantee the finality and immutability of transactions.
 
-Modular blockchain approach suggests the separation of a blockchain system into different logical layers which are designed to perform well as a few specific functional components. The result is a scalable blockchain architecture with simpler and more efficient modular components, rather than a large and complex monolithic blockchain that cannot scale effectively.
+Modular blockchain approach suggests dividing a blockchain system into different logical layers. This results in a design with reduced systemic complexity, and simpler components that can be more easily optimized and re-enginered to introduce new scaling solutions.
 
 ## Scaling Ethereum
 The core Ethereum protocol (Layer 1) is continuously developed by the community through EIPs, which open up the possibility of introducing changes to the base protocol to enhance network scalability.  Furthermore, Ethereum's high level of programmability makes it possible to create scalable solutions on top of the platform (Layers 2).
