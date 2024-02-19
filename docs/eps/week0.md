@@ -2,7 +2,7 @@
 
 Week 0 marks all the time before the program begins. Use this time to prepare yourself and get head start. 
 
-First, please checkout the [announcement blog post](https://blog.ethereum.org/2024/02/07/epf-study-group) and fill the [registration form](https://forms.gle/7TqmryC217EPwgqr9).
+First, please check out the [announcement blog post](https://blog.ethereum.org/2024/02/07/epf-study-group) and fill the [registration form](https://forms.gle/7TqmryC217EPwgqr9).
 
 ## Town Hall
 
@@ -19,7 +19,7 @@ Before the program, you should be familiar with some general concepts from Ether
     - Merkle trees
 - Networking, p2p and distributed systems
 - Software development basics
-    - Programming langauges, compilers
+    - Programming languages, compilers
 - Ethereum as a platform
     - From a user perspective
     - As a dapp developer
