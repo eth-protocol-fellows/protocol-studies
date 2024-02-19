@@ -31,7 +31,7 @@ Ethereum state is stored in four different modified merkle patricia tries (MMPTs
 - World State Trie
 - Storage Trie
 
-The main parent node is called Root, hence the hash inside is Root Hash. There is no way to create two different states with the same root hash, and any attempt to modify state with different values will result in a different state root hash.
+The main parent node is called Root, hence the hash inside is Root Hash. There is infinitesimally small chance(1 in 1.16x10^77 for a single SHA-256 hash) to create two different states with the same root hash, and any attempt to modify state with different values will result in a different state root hash.
 
 At each block there is one transaction, receipt, and state trie which are referenced by their root hashes in the block Header.
 For every contract deployed on Ethereum there is a storage trie used to hold that contract's persistent variables, each storage trie is referenced by their root hash in the state account object stored in the state trie leaf node corresponding to that contract's address.
