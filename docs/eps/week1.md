@@ -109,10 +109,15 @@ https://github.com/eth-protocol-fellows/cohort-four/tree/master/projects
 
 A [retrospective document](https://notes.ethereum.org/@mikeneuder/rcr2vmsvftv) on recent roadmap by Alex and Mike comes with great insights into Ethereum development, values and goals.
 
-Few books I recommend: 
+Read more about history of Unix and Bell Labs: 
+https://www.theregister.com/2024/02/16/what_is_unix/
+https://www.deusinmachina.net/p/history-of-unix
+
+Few more books I recommend: 
 
 If you are interested in early days of Ethereum, the story of its founders and creation, check out book [The Infinite Machine](https://www.camirusso.com/book). Another similar one is [Out of the Ether](https://www.goodreads.com/book/show/55360267-out-of-the-ether). (ping me for epubs)
 
 A very recent publication providing a comprehensive insight is [Absolute Essentials of Ethereum](https://www.routledge.com/Absolute-Essentials-of-Ethereum/Dylan-Ennis/p/book/9781032334189). It a covers [variety of topics](https://www.coindesk.com/consensus-magazine/2024/02/07/absolute-essentials-of-ethereum-by-paul-dylan-ennis-an-excerpt/) and I can strongly recommend it. 
 
 [Mastering Ethereum](https://github.com/ethereumbook/ethereumbook) is one of the great blockchain books by aantop covering everything from basics to technical details. It's few years old and already outdated but still can be a good inspiration. 
+

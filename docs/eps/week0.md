@@ -6,7 +6,7 @@ First, please check out the [announcement blog post](https://blog.ethereum.org/2
 
 ## Town Hall
 
-The call discussed the program details, schedule and answer your questions. Recording will be here soon.
+The call discussed the program details, schedule and answer your questions. Recording can be found at https://streameth.org/watch?event=epf_study_group&session=65cf9aaa4097e3a08efd1a28. 
 
 ## Pre-reading
 
