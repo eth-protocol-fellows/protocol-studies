@@ -21,7 +21,7 @@ Weekly topics, their presentations and materials can be all found in this folder
 The first part of the program consists of 5 weeks with introductions to high level domains of the protocol. 
 
 | Date        | Topic                              | Speaker                 |
-| ----------- | ---------------------------------- | ----------------------- |
+|-------------|------------------------------------|-------------------------|
 | February 19 | Intro to EPS and Ethereum protocol | Josh Davis, Mario Havel |
 | February 26 | Execution Layer                    | Lightclient             |
 | March 4     | Consensus layer                    | Alex Stokes             |
@@ -32,7 +32,7 @@ The second part of the program offers two distinct tracks focused on development
 
 ## Participate
 
-The first instance of EPF study group is starting in February 2024. It's completely open and permissionlesss and it is up to each participant as to how they want to approach it. Whether you want to learn as much as possible, focus only on certain topics or share your knowledge with others, you are welcomed. Altough it's opened, [you can register](https://forms.gle/7TqmryC217EPwgqr9) to help us tailor the experience better.
+The first instance of EPF study group is starting in February 2024. It's completely open and permissionless, and it is up to each participant as to how they want to approach it. Whether you want to learn as much as possible, focus only on certain topics or share your knowledge with others, you are welcomed. Although it's opened, [you can register](https://forms.gle/7TqmryC217EPwgqr9) to help us tailor the experience better.
 
 > Join our community [Discord server](https://discord.gg/HnCjCvCN)
 
@@ -48,7 +48,7 @@ While this program is designed to act as a precursor to the Ethereum Protocol Fe
 
 ## Calls troubleshooting
 
-For our weekly meetings, we are using a selfhosted FOSS platform Jitsi. Even though we are doing our best, some people might experience problems during these calls, here are few tips on troubleshooting:
+For our weekly meetings, we are using a self-hosted FOSS platform Jitsi. Even though we are doing our best, some people might experience problems during these calls, here are few tips on troubleshooting:
 
 - Restart your browser and rejoin
 - Try a different browser (especially if you are using a Chromium based, try Firefox and vice versa)
@@ -61,10 +61,10 @@ For our weekly meetings, we are using a selfhosted FOSS platform Jitsi. Even tho
 - **Will I learn to develop applications on the Ethereum blockchain?**
     - No. This program is not focused on Solidity or development of decentralized applications. 
 - **When does it start and is the duration?**
-    - Program will start in Februray 2024 and continue for 10 weeks, finishing by end of April. 
+    - Program will start in February 2024 and continue for 10 weeks, finishing by end of April. 
 - **Am I automatically accepted to EPF after attending EPFsg**
-    - No. The study group is a great way to prepare for EPF but it doesn't guarantee anyting. However, EPF is a permissionless program so you can always participate. 
+    - No. The study group is a great way to prepare for EPF, but it doesn't guarantee anything. However, EPF is a permissionless program, so you can always participate. 
 - **Where is the study group located?**
-    - As all core Ethereum teams, EPFsg is distributed around the globe. We will do our best to accomodate call times for the program participants.
+    - As all core Ethereum teams, EPFsg is distributed around the globe. We will do our best to accommodate call times for the program participants.
 - **Do I need to apply and be accepted?**
-    - The program is fully open, anyone can participate. We only ask you to submit a [form](https://forms.gle/7TqmryC217EPwgqr9) to let us know about your preferences but it doesn't have any effect on your participation. 
+    - The program is fully open, anyone can participate. We only ask you to submit a [form](https://forms.gle/7TqmryC217EPwgqr9) to let us know about your preferences, but it doesn't have any effect on your participation. 
