@@ -35,9 +35,24 @@ Functional components of a blockchain:
 Modular blockchain approach suggests dividing a blockchain system into different logical layers. This results in a design with reduced systemic complexity, and simpler components that can be more easily optimized and re-enginered to introduce new scaling solutions.
 
 ## Scaling Ethereum
-The core Ethereum protocol (Layer 1) is continuously developed by the community through EIPs, which open up the possibility of introducing changes to the base protocol to enhance network scalability.  Furthermore, Ethereum's high level of programmability makes it possible to create scalable solutions on top of the platform (Layers 2).
+The primary objective of Ethereum's scalability efforts is to increase TPS metric without compromising decentralization or security. 
 
-### Ethereum Layer 1 scaling
+Layer 1 scaling is the set of all those techniques that increases the TPS of the underlying blockchain protocol itself. blockchains with "bigger blocks" have a major TPS but are more difficult to verify and likely to become more centralized. For this reason, an increase in the capacity of each block must be accompanied by various modifications to the protocol that allow decentralization to be maintained. Examples of layer 1 scaling solutions include Sharding, Proof-Of-Stake consensus mechanisms, and protocol upgrades aimed at optimizing block processing efficiency.
+
+!["Layer 1 Scaling"](./img/scaling/layer-1-scaling.png "Layer 1 Scaling")
+
+> In Ethereum, an increase of gas limits will effectively expand the amount of computation and data that Ethereum can hold but will also raise the demands on network node operators.
+
+Layer 2 scaling is the set of solutions built on top of Layer 1 blockchain protocols that can achieve a higher TPS without requiring an increase in Layer 1 resource consumption, while still relying on its security model. These solutions typically process transactions off-chain or by using alternative consensus mechanisms that are faster and more scalable than the main blockchain. Examples of Layer 2 scaling solutions include, State Channels, Plasma Chains, or Rollups.
+
+!["Layer 2 Scaling"](./img/scaling/layer-2-scaling.png "Layer 2 Scaling")
+
+ The solution predominantly adopted by the Ethereum community to solve the scalability problem is a multi-rollup-centric approach. Here,  Ethereum acts as fundamental secure layer of Settlement, and Data Availability, while the majority of Execution tasks are delegated to upper layers referred to as Rollups.R ollups bundle multiple Layer 2 transactions into a single Layer 1 transaction. These transactions are stored in Layer 1, but the their execution is delegated to off-chain mechanisms. This allows for significant scalability improvements without sacrificing security. Ethereum's high level of programmability makes possible to create scalable solutions on top of the platform through Ethereum smart contracts. As previously mentioned, to maintain a high level of decentralization, Ethereum imposes limitations on the computational and storage resources that can use the transactions included in the blocks through gas limitations. 
+
+> **Rollups can be seen as a way to compress transaction execution, reducing the computational burden on the Layer 1 blockchain, thereby providing the possibility to increase the TPS while still maintaining the security level of Layer 1 for the Layer2 transactions.**
+
+
+
 #### Split consensus from execution (The Merge).
 On September 15, 2022, Ethereum implemented [EIP-3675](https://eips.ethereum.org/EIPS/eip-3675) (Upgrade consensus to Proof-of-Stake) through an event known as The Merge. The Merge has resulted in the deprecation of the Proof-of-Work consensus, which was previously implemented in the same logic layer as execution. Instead, it has been replaced by a much more complex and sophisticated Proof-of-Stake consensus that eliminates the need for energy-intensive mining. New Proof-of-Stake consensus Gasper runs on its own tech stack and p2p network, this new abstraction layer is known as Beacon Chain. The Beacon Chain has been running and achieving consensus since December 1st, 2020. After a prolonged period of consistent performance without any failures, it was deemed ready to become Ethereum's consensus provider, The Merge gets its name from the union of the two networks.
 
@@ -79,6 +94,8 @@ Resources:
 [Vitalik The Limits to Blockchain Scalability](https://vitalik.eth.limo/general/2021/05/23/scaling.html), [archived](https://web.archive.org/web/20240205202358/https://vitalik.eth.limo/general/2021/05/23/scaling.html)
 
 [Ethereum Scaling](https://ethereum.org/en/developers/docs/scaling), [archived](https://web.archive.org/web/20240209083702/https://ethereum.org/en/developers/docs/scaling)
+
+[An Incomplete Guide to Rollups](https://vitalik.eth.limo/general/2021/01/05/rollup.html), [archived](https://web.archive.org/web/20240212014637/https://vitalik.eth.limo/general/2021/01/05/rollup.html)
 
 [Gemini Cryptopedia The Blockchain Trilemma: Fast, Secure, and Scalable Networks](https://www.gemini.com/cryptopedia/blockchain-trilemma-decentralization-scalability-definition), [archived](https://web.archive.org/web/20240209073156/https://www.gemini.com/cryptopedia/blockchain-trilemma-decentralization-scalability-definition)
 
