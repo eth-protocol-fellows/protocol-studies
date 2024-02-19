@@ -41,7 +41,7 @@ Originally outlined in its [Whitepaper](https://ethereum.org/whitepaper#ethereum
 - [Execution specs](https://github.com/ethereum/execution-specs)
 - [Consensus specs](https://github.com/ethereum/consensus-specs)
 
-The specification is purely technical and doesn't provide any context or explanation for the reader. For learning about the consensus, check the annotated version [by Ben](https://benjaminion.xyz/eth2-annotated-spec/) and [by V](https://github.com/ethereum/annotated-spec). 
+The specification is purely technical and doesn't provide any context or explanation for the reader. For learning about the consensus, check the annotated version [by Ben](https://eth2book.info/capella/annotated-spec/) and [by V](https://github.com/ethereum/annotated-spec). 
 
 The protocol changes over time, with each network upgrade bringing new improvements. Despite its constant changes, the architecture evolution reflects certain fundamental principles. These can be summarized as follows: 
 
