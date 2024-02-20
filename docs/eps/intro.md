@@ -34,7 +34,7 @@ The second part of the program offers two distinct tracks focused on development
 
 The first instance of EPF study group is starting in February 2024. It's completely open and permissionless, and it is up to each participant as to how they want to approach it. Whether you want to learn as much as possible, focus only on certain topics or share your knowledge with others, you are welcomed. Although it's opened, [you can register](https://forms.gle/7TqmryC217EPwgqr9) to help us tailor the experience better.
 
-> Join our community [Discord server](https://discord.gg/HnCjCvCN)
+> Join our community [Discord server](https://discord.gg/epfsg)
 
 Study group participants will collaboratively develop a comprehensive wiki, serving as an evolving knowledge base for current and future core developers. This will provide students with practical experience in contributing to open source resources, while gaining invaluable experience in documentation and community-driven development.
 
@@ -42,7 +42,7 @@ While this program is designed to act as a precursor to the Ethereum Protocol Fe
 
 ## Important links
 
-- Discord server: https://discord.gg/dqNM9zN5
+- Discord server: https://discord.gg/epfsg
 - Weekly calls: https://meet.ethquokkaops.io/EPFsg
 - Sessions calendar: https://calendar.google.com/calendar/u/0?cid=ZXBmc3R1ZHlncm91cEBnbWFpbC5jb20 ([ics format](https://calendar.google.com/calendar/ical/epfstudygroup%40gmail.com/public/basic.ics))
 
