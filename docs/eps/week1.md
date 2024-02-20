@@ -2,7 +2,7 @@
 
 The first week of the study group is dedicated to a general introduction to the protocol and R&D ecosystem. 
 
-Come to see the presentation by Mário Havel on [Monday, February 19, 4PM UTC](https://savvytime.com/converter/utc-to-germany-berlin-united-kingdom-london-ny-new-york-city-ca-san-francisco-china-shanghai-japan-tokyo-australia-sydney/feb-12-2024/4pm). Join the call at this time at https://meet.ethquokkaops.io/EPFsg. The recording will be shared here.
+Come to see the presentation by Mário Havel on [Thursday, February 22, 7AM UTC](https://savvytime.com/converter/utc-to-germany-berlin-united-kingdom-london-ny-new-york-city-ca-san-francisco-china-shanghai-japan-tokyo-australia-sydney/feb-22-2024/7am). *This talk will be conducted again in the same format as before*. We encourage you to join the talk if you haven't seen it already on Monday or if you are in easter time zones. The link to stream will be provided here and in [Discord group](https://discord.gg/epfsg). 
 
 ## Pre-reading
 
@@ -56,6 +56,8 @@ Ethereum network leverage decentralization to become permissionless, credible ne
 The current research and development is summarized by the [roadmap](https://twitter.com/VitalikButerin/status/1741190491578810445/photo/1) overview, however cannot be fully accurate. There is no single path for Ethereum R&D, the [roadmap](https://ethroadmap.com/) only sums up its current landscape. The core ecosystem is an always growing [infinite garden](https://ethereum.foundation/infinitegarden). However, with more and more progress, Ethereum might slowly approach its ossification. 
 
 > Simplified overview of the current Ethereum design can be found documentation on [node architecture](https://ethereum.org/developers/docs/nodes-and-clients/node-architecture) and in the week 1 presentation
+
+As hinted above, the main high level components of Ethereum are execution and consensus layer. These are 2 networks which are connected and dependent on each other. Execution layer provides the execution engine, handles user transaction and all state (address, contract data) while consensus implements the proof-of-stake mechanism ensuring security and [fault tolerance](https://inevitableeth.com/home/concepts/bft).
 
 ## Implementations and Development
 

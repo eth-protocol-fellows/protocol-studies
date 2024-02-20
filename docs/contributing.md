@@ -30,7 +30,7 @@ It **does not** cover onchain protocols/dapps, layer 2s/rollups or any other too
 
 The wiki is supposed to cover all important parts of Ethereum core protocol and its development. The protocol architecture and related topics is reflected in the wiki format. The whole wiki lives under `/docs/wiki` and the [sidebar](_sidebar.md) defines the main documentation structure. High level areas are abstracted to directories which include all subtopics. 
 
-For contributors, we recommend focusing on specific topics contained in corresponding documents. It's best to own a single topic and work out all the details. Create a new document and add the topic to the sidebar if it's not there yet. Join the [discord server](https://discord.gg/HnCjCvCN), let others know what you are working on in the group channel and collaborate with other contributors writing about related topics. If you are working with multiple people on a significant piece of content, you can have a dedicated branch in the repo for easier coordination. 
+For contributors, we recommend focusing on specific topics contained in corresponding documents. It's best to own a single topic and work out all the details. Create a new document and add the topic to the sidebar if it's not there yet. Join the [discord server](https://discord.gg/epfsg), let others know what you are working on in the group channel and collaborate with other contributors writing about related topics. If you are working with multiple people on a significant piece of content, you can have a dedicated branch in the repo for easier coordination. 
 
 ## Editing wiki
 
