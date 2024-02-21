@@ -1,4 +1,4 @@
-# Week 1
+# Study Group Week 1
 
 The first week of the study group is dedicated to a general introduction to the protocol and R&D ecosystem. 
 
@@ -6,7 +6,7 @@ Come to see the presentation by Mário Havel on [Thursday, February 22, 7AM UTC]
 
 ## Pre-reading
 
-This is an introductory talk which doesn't assume a lot of prior knowledge. Check some general requirements in [week 0](week0.md). Here are few more introductory materials to get you started:
+This is an introductory talk which doesn't assume a lot of prior knowledge. Check some general requirements in [week 0](/eps/week0.md). Here are few more introductory materials to get you started:
 - [Inevitable Ethereum - World Computer](https://inevitableeth.com/home/ethereum/world-computer)
 - [Ethereum in 30 minutes](https://www.youtube.com/watch?v=UihMqcj-cqc)
 - [Ethereum.org docs](https://ethereum.org/what-is-ethereum)
