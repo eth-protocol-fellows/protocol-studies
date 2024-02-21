@@ -56,5 +56,5 @@ Additionally, you should read through the following documents to prepare for the
 
 ## Additional reading and exercises 
 
-https://blog.ethereum.org/2022/01/24/the-great-eth2-renaming
-https://blog.ethereum.org/2021/11/29/how-the-merge-impacts-app-layer
+- https://blog.ethereum.org/2022/01/24/the-great-eth2-renaming
+- https://blog.ethereum.org/2021/11/29/how-the-merge-impacts-app-layer

@@ -2,7 +2,12 @@
 
 The first week of the study group is dedicated to a general introduction to the protocol and R&D ecosystem. 
 
-Come to see the presentation by Mário Havel on [Thursday, February 22, 7AM UTC](https://savvytime.com/converter/utc-to-germany-berlin-united-kingdom-london-ny-new-york-city-ca-san-francisco-china-shanghai-japan-tokyo-australia-sydney/feb-22-2024/7am). *This talk will be conducted again in the same format as before*. We encourage you to join the talk if you haven't seen it already on Monday or if you are in easter time zones. The link to stream will be provided here and in [Discord group](https://discord.gg/epfsg). 
+Come to see the presentation by Mário Havel on [Thursday, February 22, 7AM UTC](https://savvytime.com/converter/utc-to-germany-berlin-united-kingdom-london-ny-new-york-city-ca-san-francisco-china-shanghai-japan-tokyo-australia-sydney/feb-22-2024/7am). 
+*This talk will be conducted again in the same format as before*. We encourage you to join the talk if you haven't seen it already on Monday or if you are in easter time zones. 
+
+__The talk will be streamed at: https://streameth.org/65cf97e702e803dbd57d823f/epf_study_group__
+
+For discussion and questions during the talk, use corresponding thread in `#study-group` channel of [Discord server](https://discord.gg/epfsg). 
 
 ## Pre-reading
 
