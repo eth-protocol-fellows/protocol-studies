@@ -43,7 +43,7 @@ While this program is designed to act as a precursor to the Ethereum Protocol Fe
 ## Important links
 
 - Discord server: https://discord.gg/epfsg
-- Weekly calls: https://meet.ethquokkaops.io/EPFsg
+- Weekly talks stream: https://streameth.org/65cf97e702e803dbd57d823f/epf_study_group
 - Sessions calendar: https://calendar.google.com/calendar/u/0?cid=ZXBmc3R1ZHlncm91cEBnbWFpbC5jb20 ([ics format](https://calendar.google.com/calendar/ical/epfstudygroup%40gmail.com/public/basic.ics))
 
 - EPF mailing list: https://groups.google.com/a/ethereum.org/g/protocol-fellowship-group
