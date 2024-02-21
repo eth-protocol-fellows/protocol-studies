@@ -26,7 +26,7 @@
   - [CL Specs](/wiki/CL/cl-specs.md)
   - [Proof-of-Stake]
   - [Beacon API]
-  - [libp2p]
+  - [Networking](/wiki/CL/cl-networking.md)
   - Client architecture
 - Development
   - [Core development](/wiki/dev/core.md)
