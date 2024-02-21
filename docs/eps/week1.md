@@ -2,7 +2,7 @@
 
 The first week of the study group is dedicated to a general introduction to the protocol and R&D ecosystem. 
 
-Come to see the presentation by Mário Havel on [Monday, February 19, 4PM UTC](https://savvytime.com/converter/utc-to-germany-berlin-united-kingdom-london-ny-new-york-city-ca-san-francisco-china-shanghai-japan-tokyo-australia-sydney/feb-12-2024/4pm). Join the call at this time at https://meet.ethquokkaops.io/EPFsg. The recording will be shared here.
+Come to see the presentation by Mário Havel on [Thursday, February 22, 7AM UTC](https://savvytime.com/converter/utc-to-germany-berlin-united-kingdom-london-ny-new-york-city-ca-san-francisco-china-shanghai-japan-tokyo-australia-sydney/feb-22-2024/7am). *This talk will be conducted again in the same format as before*. We encourage you to join the talk if you haven't seen it already on Monday or if you are in easter time zones. The link to stream will be provided here and in [Discord group](https://discord.gg/epfsg). 
 
 ## Pre-reading
 
@@ -57,6 +57,8 @@ The current research and development is summarized by the [roadmap](https://twit
 
 > Simplified overview of the current Ethereum design can be found documentation on [node architecture](https://ethereum.org/developers/docs/nodes-and-clients/node-architecture) and in the week 1 presentation
 
+As hinted above, the main high level components of Ethereum are execution and consensus layer. These are 2 networks which are connected and dependent on each other. Execution layer provides the execution engine, handles user transaction and all state (address, contract data) while consensus implements the proof-of-stake mechanism ensuring security and [fault tolerance](https://inevitableeth.com/home/concepts/bft).
+
 ## Implementations and Development
 
 Everything mentioned above - the ideas, design and specifications comes down to the actual application here, in its implementation. An implementation of the execution layer (EL) or consensus layer (CL) is called a *client*. A computer running this client and connecting to the network is called a *node*. A node is therefore a pair of EL and CL clients actively participating in the network. 
@@ -109,10 +111,15 @@ https://github.com/eth-protocol-fellows/cohort-four/tree/master/projects
 
 A [retrospective document](https://notes.ethereum.org/@mikeneuder/rcr2vmsvftv) on recent roadmap by Alex and Mike comes with great insights into Ethereum development, values and goals.
 
-Few books I recommend: 
+Read more about history of Unix and Bell Labs: 
+https://www.theregister.com/2024/02/16/what_is_unix/
+https://www.deusinmachina.net/p/history-of-unix
+
+Few more books I recommend: 
 
 If you are interested in early days of Ethereum, the story of its founders and creation, check out book [The Infinite Machine](https://www.camirusso.com/book). Another similar one is [Out of the Ether](https://www.goodreads.com/book/show/55360267-out-of-the-ether). (ping me for epubs)
 
 A very recent publication providing a comprehensive insight is [Absolute Essentials of Ethereum](https://www.routledge.com/Absolute-Essentials-of-Ethereum/Dylan-Ennis/p/book/9781032334189). It a covers [variety of topics](https://www.coindesk.com/consensus-magazine/2024/02/07/absolute-essentials-of-ethereum-by-paul-dylan-ennis-an-excerpt/) and I can strongly recommend it. 
 
 [Mastering Ethereum](https://github.com/ethereumbook/ethereumbook) is one of the great blockchain books by aantop covering everything from basics to technical details. It's few years old and already outdated but still can be a good inspiration. 
+
