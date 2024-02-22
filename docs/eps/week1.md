@@ -2,12 +2,13 @@
 
 The first week of the study group is dedicated to a general introduction to the protocol and R&D ecosystem. 
 
-Come to see the presentation by Mário Havel on [Thursday, February 22, 7AM UTC](https://savvytime.com/converter/utc-to-germany-berlin-united-kingdom-london-ny-new-york-city-ca-san-francisco-china-shanghai-japan-tokyo-australia-sydney/feb-22-2024/7am). 
-*This talk will be conducted again in the same format as before*. We encourage you to join the talk if you haven't seen it already on Monday or if you are in easter time zones. 
+## Recording
 
-__The talk will be streamed at: https://streameth.org/65cf97e702e803dbd57d823f/epf_study_group__
+Watch *Ethereum Protocol 101* talk by Mario Havel [on StreamEth](https://streameth.org/watch?event=&session=65d77e4f437a5c85775fef9d). [Slides](https://github.com/eth-protocol-fellows/protocol-studies/tree/main/docs/eps/presentations/week1_protocol_intro.pdf) 
 
-For discussion and questions during the talk, use corresponding thread in `#study-group` channel of [Discord server](https://discord.gg/epfsg). 
+[recording](https://streameth.org/embed/?playbackId=9bc1ekw2jk5sz6c7&vod=true&streamId=&playerName=Intro+to+Ethereum+%7C+Mario+Havel+%7C+Week+1 ':include :type=iframe width=100% height=520 frameborder="0" allow="fullscreen" allowfullscreen')
+
+For archive of the discussion during the talk, check the corresponding thread in `#study-group` channel of [Discord server](https://discord.gg/epfsg). 
 
 ## Pre-reading
 

@@ -26,7 +26,7 @@ The first part of the program consists of 5 weeks with introductions to high lev
 | February 26 | Execution Layer                    | Lightclient             |
 | March 4     | Consensus layer                    | Alex Stokes             |
 | March 11    | Testing and security               | Mario Vega              |
-| March 18    | Roadmap and research               | Domotheus               |
+| March 18    | Roadmap and research               | Domothy                 |
 
 The second part of the program offers two distinct tracks focused on development and research with deeper dive into each topic. Detailed schedule coming soon.
 
