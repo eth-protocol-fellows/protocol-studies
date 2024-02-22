@@ -42,6 +42,16 @@ data structure.
 It's main design considerations prioritize compression/decompression speed,
 while still having a reasonable compression ratio.
 
+## Related R&D
+
+- [EIP-7594][peerdas-eip] - Peer Data Availability Sampling (PeerDAS)
+
+  A networking protocol that allows beacon nodes to perform data availability
+  sampling (DAS) to ensure that blob data has been made available while
+  downloading only a subset of the data.
+  - [Consensus Specs][peerdas-specs]
+  - [ETH Research][peerdas-ethresearch]
+
 [consensus-networking]: https://github.com/ethereum/consensus-specs/blob/dev/specs/phase0/p2p-interface.md
 [discv5]: https://github.com/ethereum/devp2p/blob/master/discv5/discv5.md
 [libp2p-and-eth]: https://blog.libp2p.io/libp2p-and-ethereum/
@@ -51,6 +61,9 @@ while still having a reasonable compression ratio.
 [noise-patterns]: https://noiseexplorer.com/patterns/
 [noise-specification]: https://noiseprotocol.org/noise.html
 [noise-xx]: https://noiseexplorer.com/patterns/XX/
+[peerdas-eip]: https://github.com/ethereum/EIPs/pull/8105
+[peerdas-ethresearch]: https://ethresear.ch/t/peerdas-a-simpler-das-approach-using-battle-tested-p2p-components/16541
+[peerdas-specs]: https://github.com/ethereum/consensus-specs/pull/3574
 [rlp]: https://ethereum.org/developers/docs/data-structures-and-encoding/rlp
 [snappy]: https://en.wikipedia.org/wiki/Snappy_(compression)
 [ssz]: https://ethereum.org/developers/docs/data-structures-and-encoding/ssz
