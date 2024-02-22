@@ -12,3 +12,20 @@ Alice needs a robust mechanism that allows:
 2. ensure that postcard's message has not been tampered with.
 
 Mathematics, as always, comes to the rescue. With a little help of **Elliptic Curves** Alice could cryptographically sign the contents of the message addressing both requirements.
+
+# Elliptic Curves
+
+An elliptic curve is a curve **described by the equation**:
+
+$$
+y^2 = x^3 + ax+b
+$$
+
+Here is what an elliptic curve looks like for the equation $y^2 = x^3 +2x +3$ (i.e $a=2$ and $b=3$):
+
+<iframe src="https://www.desmos.com/calculator/rlm2bda0dz?embed" width="500" height="500" style="border: 1px solid #ccc" frameborder=0></iframe>
+
+Ethereum uses a standard curve known as [secp256k1](http://www.secg.org/sec2-v2.pdf) with parameters $a=0$, and $b=7$; which is the curve:
+$$y^2=x^3+7$$
+
+<iframe src="https://www.desmos.com/calculator/4yfo6djcyb?embed" width="500" height="500" style="border: 1px solid #ccc" frameborder=0></iframe>

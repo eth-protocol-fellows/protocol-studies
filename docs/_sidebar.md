@@ -58,8 +58,7 @@
   - Portal Network
 - [Cryptography](/wiki/Cryptography/intro.md)
   - [Elliptic Curve Cryptography](/wiki/Cryptography/elliptic-curve-cryptography.md)
-    - ECDSA
-    - BLS
+  - BLS
   - [Commitments]
     - Polynomials
     - Commitment schemes
