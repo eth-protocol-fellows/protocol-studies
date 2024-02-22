@@ -7,10 +7,10 @@ Come to see the presentation by Mário Havel on [Thursday, February 22, 7AM UTC]
 
 __The talk will be streamed at: https://streameth.org/65cf97e702e803dbd57d823f/epf_study_group__
 
+For discussion and questions during the talk, use corresponding thread in `#study-group` channel of [Discord server](https://discord.gg/epfsg). 
+
 ## Recording
 [Watch on StreamEth](https://streameth.org/watch?event=&session=65d77e4f437a5c85775fef9d)
-
-For discussion and questions during the talk, use corresponding thread in `#study-group` channel of [Discord server](https://discord.gg/epfsg). 
 
 ## Pre-reading
 
