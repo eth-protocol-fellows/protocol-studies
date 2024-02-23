@@ -42,7 +42,14 @@ The invention of [asymmetric cryptography](https://www-ee.stanford.edu/~hellman/
 
 ## Ethereum Protocol Design 
 
-Originally outlined in its [Whitepaper](https://ethereum.org/whitepaper#ethereum-whitepaper), Ethereum draws inspiration from Bitcoin and its background (explained above) to create a general blockchain based computation platform. The design was technically specified in [Yellowpaper](https://ethereum.github.io/yellowpaper/paper.pdf) and evolved over time. Changes are tracked in the community process of [EIPs](https://eips.ethereum.org) and current specification is implemented in Python as: 
+Originally outlined in its [Whitepaper](https://ethereum.org/whitepaper#ethereum-whitepaper), Ethereum draws inspiration from Bitcoin and its background (explained above) to create a general blockchain based computation platform. The design was technically specified in [Yellowpaper](https://ethereum.github.io/yellowpaper/paper.pdf) and evolved over time. 
+
+We need to understand what the blockchain is and how the blockchain is working. Blockchain is a shared, immutable ledger that facilitates the process of recording transactions and tracking assets in a public/private network. Blockchain is ideal for delivering that information because it provides immediate, shared and completely transparent information stored on an immutable ledger that can be accessed only by permissioned network members. A Blockchain network can track orders, payments, accounts, production and much more.[Blockchain] (https://www.ibm.com/topics/blockchain).
+
+The Ethereum blockchain can be conceptualized with distinct layers, each with its own role and purpose in the functioning of the network.[ Ethereum blockchain layers ] (https://veridelisi.substack.com/p/understanding-ethereum-ethereum-blockchain-tech)
+
+
+Changes are tracked in the community process of [EIPs](https://eips.ethereum.org) and current specification is implemented in Python as: 
 
 - [Execution specs](https://github.com/ethereum/execution-specs)
 - [Consensus specs](https://github.com/ethereum/consensus-specs)
