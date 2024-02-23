@@ -1,6 +1,6 @@
 # A Brief Introduction to Elliptic Curve Cryptography
 
-Cryptography can often seem like an abstract and theoretical field, but its applications are deeply woven into the fabric of our everyday lives. Let's consider a real-world scenario to understand how cryptography, specifically Elliptic Curve Cryptography (ECC), can be used to safeguard critical interactions.
+Cryptography can often seem like an abstract subject, but its applications are deeply woven into the fabric of our everyday lives. Let's consider a real-world scenario to understand how cryptography, specifically Elliptic Curve Cryptography (ECC), can be used to safeguard critical interactions.
 
 Alice, a diligent businesswoman, has been abducted and held captive on a remote island. Her captors demand a hefty ransom of $1 million for her release. With limited options for communication, they provide a single postcard for her to instruct her associate, Bob, to transfer the funds.
 
@@ -50,7 +50,7 @@ Elliptic curves are interesting because the points form a field, the result of "
 <br />
 <img src="images/elliptic-curves/addition.gif" width="500"/>
 
-A point (**P**) to can also be added to itself($P+P$), in which case the straight line becomes a tangent to P that reflects the sum (**2P**).
+A point (**P**) can also be added to itself ($P+P$), in which case the straight line becomes a tangent to **P** that reflects the sum (**2P**).
 
 <br />
 <img src="images/elliptic-curves/scalar-multiplication.png" width="500"/>
@@ -78,7 +78,24 @@ The analogy of a clock helps illustrate the desired one-way nature. Imagine a ta
 <br />
 <img src="images/elliptic-curves/clock.gif" width="500"/>
 
-Over modulo prime number, this is especially hard and is known as **discrete logarithm problem**.
+Over prime modulo number, this is especially hard and is known as **discrete logarithm problem**.
+
+# Elliptic curves over finite field
+
+So far, we have implicitly assumed elliptic curves over the rational field ($\mathbb{R}$). Ensuring **secret key 🔑** security through the discrete logarithm problem requires a transition to elliptic curves over finite fields defined by a **prime modulus**. This essentially restricts the points on the curve to a finite set by performing modular reduction with a specific prime number.
+
+For the sake of this discussion, we will consider the **secp256k1** curve defined over an **arbitrary finite field** with prime modulus **997**:
+
+$$
+y^2 = x^3 + 7 \pmod {997}
+$$
+
+<img src="images/elliptic-curves/finite-field.png" width="500"/>
+
+While the geometric representation of the curve in the finite field may appear abstract compared to a continuous curve, its symmetry remains intact. Additionally, scalar multiplication remains closed, although the "tangent" now "wraps around" given the modulus nature.
+
+<br />
+<img src="images/elliptic-curves/finite-scalar-multiplication.gif" width="500"/>
 
 # Further reading
 
@@ -87,6 +104,7 @@ Over modulo prime number, this is especially hard and is known as **discrete log
 - 📝 Standards for Efficient Cryptography Group (SECG), ["SEC 1: Elliptic Curve Cryptography."](http://www.secg.org/sec2-v2.pdf)
 - 🎥 Fullstack Academy, ["Understanding ECC through the Diffie-Hellman Key Exchange."](https://www.youtube.com/watch?v=gAtBM06xwaw)
 - 📝 Andrea Corbellini, ["Elliptic Curve Cryptography: a gentle introduction."](https://andrea.corbellini.name/2015/05/17/elliptic-curve-cryptography-a-gentle-introduction/)
+- 📝 William A. Stein, ["Elliptic Curves."](https://wstein.org/simuw06/ch6.pdf)
 - 📝 Khan Academy, ["Modular Arithmetic."]("https://www.khanacademy.org/computing/computer-science/cryptography/modarithmetic/a/what-is-modular-arithmetic")
 - 🎥 Khan Academy, ["The discrete logarithm problem."](https://www.youtube.com/watch?v=SL7J8hPKEWY)
 
