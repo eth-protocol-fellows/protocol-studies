@@ -112,6 +112,14 @@ class BlobTransaction: # the class name may change
 EIP-4844 will introduce two more fields in the Transaction class, which are `max_fee_per_blob_gas` and `blob_versioned_hashes`.
 EIP-4844 introduced a new transaction type where `TransactionType == BLOB_TX_TYPE` and the `TransactionPayload` is the rlp encoding of the above class.
 
+### Changes on the Execution Specs
+
+TODO
+
+### Changes on the Consensus Specs
+
+TODO
+
 ## EIP-4488
 
 Initally [EIP-4488](https://eips.ethereum.org/EIPS/eip-4488) was proposed to decrease the gas cost of calldata, and to add a limit of how much total transaction calldata can be in a block. The goal was to make Rollups transactions cheaper.
