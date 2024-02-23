@@ -97,6 +97,44 @@ While the geometric representation of the curve in the finite field may appear a
 <br />
 <img src="images/elliptic-curves/finite-scalar-multiplication.gif" width="500"/>
 
+# Generating key pair
+
+Alice can finally generate a key pair using elliptic curve over finite field. All computations will be done using [sage](https://www.sagemath.org/).
+
+First, define the elliptic curve over the finite field of prime modulus 997.
+
+```python
+sage: E = EllipticCurve(GF(997),[0,7])
+Elliptic Curve defined by y^2 = x^3 + 7 over Finite Field of size 997
+```
+
+Define the generator point $G$ by selecting an arbitrary point on the curve.
+
+```python
+sage: G = E.random_point()
+(174 : 487 : 1)
+```
+
+A key pair consisting of:
+
+- Public key ($P$): A point on the curve, the result of scalar multiplication of **secret key 🔑**($K$) and generator point ($G$). Allows anyone to verify Alice's signature.
+- **Secret key 🔑**($K$): A random integer used for scalar multiplication, which ensures nobody but Alice should be able to produce valid signatures.
+
+Alice randomly choses **42** as the **secret key 🔑**.
+
+```python
+sage: K = 42
+```
+
+Compute the public key using scalar multiplication.
+
+```python
+sage: P = K*G
+(858 : 832 : 1)
+```
+
+We have established that $G = (174, 487)$, and Alice's key pair $=[P, K] = [(858, 832), 42]$.
+
 # Further reading
 
 **Elliptic curve cryptography**
@@ -111,6 +149,7 @@ While the geometric representation of the curve in the finite field may appear a
 **Mathematics of Elliptic Curves**
 
 - 📘 Joseph H. Silverman, ["The Arithmetic of Elliptic Curves."](https://books.google.co.in/books?id=6y_SmPc9fh4C&redir_esc=y)
+- 📝 Joseph H. Silverman, ["An Introduction to the Theory of Elliptic Curves."](https://www.math.brown.edu/johsilve/Presentations/WyomingEllipticCurve.pdf)
 - 📝 Rareskills.io, ["Elliptic Curve Point Addition."](https://www.rareskills.io/post/elliptic-curve-addition)
 - 📝 John D. Cook, ["Finite fields."]("https://www.johndcook.com/blog/finite-fields/")
 
