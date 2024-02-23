@@ -27,12 +27,27 @@ Examples:
 
 <img src="images/elliptic-curves/examples.gif" width="500"/>
 
+Observe that elliptic curves are symmetric about the x-axis.
+
 Ethereum uses a standard curve known as [secp256k1](http://www.secg.org/sec2-v2.pdf) with parameters $a=0$, and $b=7$; which is the curve:
 $$y^2=x^3+7$$
 
-<iframe src="https://www.desmos.com/calculator/4yfo6djcyb?embed" width="500" height="500" style="border: 1px solid #ccc" frameborder=0></iframe>
+<img src="images/elliptic-curves/secp256k1.png" width="500"/>
 
-Observe that elliptic curves are symmetric about the x-axis.
+# Fields
+
+In mathematics, a **field** is a set $F$, containing at least two elements, which is closed under two binary operations usually referred to as **addition** ($+$), and **multiplication**($\times$). A set is closed under an operation when the result of the operation is also a member of the set.
+
+The set of real numbers $\mathbb{R}$ is a familiar example of field, since arithmetic addition of two real numbers is closed.
+
+$$
+ 3 \in \mathbb{R},  5 \in \mathbb{R} \\
+ 3 + 5 = 8 \in \mathbb{R}
+$$
+
+Elliptic curves are interesting because the points form a field, the result of "addition" of two points remains on the curve. This geometric addition, distinct from arithmetic counterparts, involves drawing a line through chosen points (**P** and **Q**) and reflecting the resulting curve intersection(**R'**) across the x-axis to yield their sum (**R**).
+
+<img src="images/elliptic-curves/addition.gif" width="500"/>
 
 # Further reading
 
@@ -46,6 +61,7 @@ Observe that elliptic curves are symmetric about the x-axis.
 
 - 📘 Joseph H. Silverman, ["The Arithmetic of Elliptic Curves."](https://books.google.co.in/books?id=6y_SmPc9fh4C&redir_esc=y)
 - 📝 Rareskills.io, ["Elliptic Curve Point Addition."](https://www.rareskills.io/post/elliptic-curve-addition)
+- 📝 John D. Cook, ["Finite fields."]("https://www.johndcook.com/blog/finite-fields/")
 
 **Useful tools**
 
