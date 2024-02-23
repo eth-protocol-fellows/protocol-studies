@@ -47,7 +47,19 @@ $$
 
 Elliptic curves are interesting because the points form a field, the result of "addition" of two points remains on the curve. This geometric addition, distinct from arithmetic counterparts, involves drawing a line through chosen points (**P** and **Q**) and reflecting the resulting curve intersection(**R'**) across the x-axis to yield their sum (**R**).
 
+<br />
 <img src="images/elliptic-curves/addition.gif" width="500"/>
+
+A point (**P**) to can also be added to itself($P+P$), in which case the straight line becomes a tangent to P that reflects the sum (**2P**).
+
+<br />
+<img src="images/elliptic-curves/scalar-multiplication.png" width="500"/>
+
+Repeated point-addition is known as **scalar multiplication**:
+
+$$
+nP = \underbrace{P + P + \cdots + P}_{n\ \text{times}}
+$$
 
 # Further reading
 
@@ -67,6 +79,7 @@ Elliptic curves are interesting because the points form a field, the result of "
 
 - 🎥 Tommy Occhipinti, ["Elliptic curves in Sage."](https://www.youtube.com/watch?v=-fRWR_QKzuI)
 - 🎥 Desmos, ["Introduction to the Desmos Graphing Calculator."](https://www.youtube.com/watch?v=RKbZ3RoA-x4)
+- 🧮 Andrea Corbellini, ["Interactive Elliptic Curve addition and multiplication."](https://andrea.corbellini.name/ecc/interactive/reals-add.html)
 
 # Credits
 
