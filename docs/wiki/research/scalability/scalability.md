@@ -9,10 +9,28 @@ To accomplish scalability, the idea was initially to decrease transaction callda
 
 But before talking about the changes introduced by the EIP-4844, let's first understand the structure of an Ethereum transaction.
 
-## Current transaction data structure
+## EIP-2718
+
+[EIP-2718](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-2718.md) introduced an envelope transaction type. The envelope makes possible to incapsulate transaction in a common header structure, allowing to change the transaction fields without breaking backwards compatibility.
+
+The envelope transaction type is defined as follows:
+
+`TransactionType || TransactionPayload`
+
+Where `TransactionType` is a 1 byte field identyfing the format of the transaction, and `TransactionPayload` is a variable length field which contains the actual transaction content.
+
+Same concept apply to receipts:
+
+`TransactionType || ReceiptPayload`
+
+Please note that the `||` is the byte/byte-array concatenation operator.
+
+This way, when defining new standards for a new type of transaction, the only concern is to ensure there are not duplicated `TransactionType` numbers.
+
+## Transaction data structure before EIP-4844
 
 The following is the current transaction data structure of Ethereum as for the London upgrade (which included the latest update to the transaction format in EIP-1559).
-The following python code can be found in the [ethereum-specs repository](https://github.com/ethereum/execution-specs).
+The following python code can be found in the [ethereum exeuction-specs repository](https://github.com/ethereum/execution-specs).
 
 ```python
 @slotted_freezable
@@ -68,7 +86,7 @@ The "calldata" is encoded inside the `data` field of the Transaction class. The 
 
 ## EIP-4844
 
-[EIP-4844](https://eips.ethereum.org/EIPS/eip-4844) introduces Blobs, a new space to store data that will be much cheaper that calldata.
+[EIP-4844](https://eips.ethereum.org/EIPS/eip-4844) introduces Blobs, a new space to store data that will be much cheaper than calldata because they will have a new type of gas that is independent of normal gas and follows its own targeting rule.
 With the EIP-4844, the new Transaction data structure will be the following.
 
 ```python
@@ -92,6 +110,7 @@ class BlobTransaction: # the class name may change
 ```
 
 EIP-4844 will introduce two more fields in the Transaction class, which are `max_fee_per_blob_gas` and `blob_versioned_hashes`.
+EIP-4844 introduced a new transaction type where `TransactionType == BLOB_TX_TYPE` and the `TransactionPayload` is the rlp encoding of the above class.
 
 ## EIP-4488
 
