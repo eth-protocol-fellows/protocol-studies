@@ -61,6 +61,25 @@ $$
 nP = \underbrace{P + P + \cdots + P}_{n\ \text{times}}
 $$
 
+# Discrete logarithm problem
+
+Let's leverage scalar multiplication to generate the **secret key 🔑**. This key, denoted by $k$, represents the number of times a base point $P$ is added to itself, yielding the resulting public point $Q$:
+
+$$
+Q = k*P
+$$
+
+Given $Q$ and $P$ it is possible derive the secret key $k$ by effectively reversing the multiplication, similar to the **logarithm problem**.
+
+We need to ensure that scalar multiplication does not leak our **secret key 🔑**. That is scalar multiplication should be "easy" one way and "untraceable" the other way around.
+
+The analogy of a clock helps illustrate the desired one-way nature. Imagine a task starting at 12 noon and ending at 3. Knowing only the final time (3) makes it impossible to determine the exact duration without additional information. This is because **modular arithmetic** introduces a "wrap-around" effect. The task could have taken 3 hours, 15 hours, or even 27 hours, all resulting in the same final time modulo 12.
+
+<br />
+<img src="images/elliptic-curves/clock.gif" width="500"/>
+
+Over modulo prime number, this is especially hard and is known as **discrete logarithm problem**.
+
 # Further reading
 
 **Elliptic curve cryptography**
@@ -68,6 +87,8 @@ $$
 - 📝 Standards for Efficient Cryptography Group (SECG), ["SEC 1: Elliptic Curve Cryptography."](http://www.secg.org/sec2-v2.pdf)
 - 🎥 Fullstack Academy, ["Understanding ECC through the Diffie-Hellman Key Exchange."](https://www.youtube.com/watch?v=gAtBM06xwaw)
 - 📝 Andrea Corbellini, ["Elliptic Curve Cryptography: a gentle introduction."](https://andrea.corbellini.name/2015/05/17/elliptic-curve-cryptography-a-gentle-introduction/)
+- 📝 Khan Academy, ["Modular Arithmetic."]("https://www.khanacademy.org/computing/computer-science/cryptography/modarithmetic/a/what-is-modular-arithmetic")
+- 🎥 Khan Academy, ["The discrete logarithm problem."](https://www.youtube.com/watch?v=SL7J8hPKEWY)
 
 **Mathematics of Elliptic Curves**
 
