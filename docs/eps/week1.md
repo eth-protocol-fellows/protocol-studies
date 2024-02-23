@@ -42,6 +42,8 @@ The invention of [asymmetric cryptography](https://www-ee.stanford.edu/~hellman/
 
 ## Ethereum Protocol Design 
 
+Ethereum is an open source, globally decentralized computing infrastructure that executes programs called smart contracts. It uses a Blockchain to synchronize and store the system’s state changes, along with a crypto‐ currency called ether and constrain execution resource costs.[Mastering Ethereum](https://github.com/ethereumbook/ethereumbook)
+
 Originally outlined in its [Whitepaper](https://ethereum.org/whitepaper#ethereum-whitepaper), Ethereum draws inspiration from Bitcoin and its background (explained above) to create a general blockchain based computation platform. The design was technically specified in [Yellowpaper](https://ethereum.github.io/yellowpaper/paper.pdf) and evolved over time. Changes are tracked in the community process of [EIPs](https://eips.ethereum.org) and current specification is implemented in Python as: 
 
 - [Execution specs](https://github.com/ethereum/execution-specs)
