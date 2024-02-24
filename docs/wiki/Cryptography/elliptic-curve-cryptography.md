@@ -161,6 +161,8 @@ For ECDSA to work, Alice and Bob must establish a common set of domain parameter
 | The generator point, $G$.             | (174, 487)      |
 | The order of the subgroup, $n$.       | 1057            |
 
+Importantly, Bob is confident that the public key $P = (858, 832)$ actually belongs to Alice.
+
 ## Signing
 
 Alice intends to sign the message **"Send $1 million"**, by following the steps:
@@ -200,6 +202,43 @@ sage: s = mod(eK**-1 * (m + r*K), n)
 ```
 
 The tuple $(r,s) =  (215, 160)$ is the **signature pair**.
+
+## Verification
+
+Bob verifies the signature by independently calculating the **exact same ephemeral public key** from the signature pair **$(r,s)$**, message, and Alice's public key **$P$**.
+
+1. Compute the cryptographic hash **$m$**.
+
+```python
+sage: m = hash("Send $1 million")
+-7930066429007744594
+```
+
+2. Compute the ephemeral public key **$R$**, and compare it with **$r$**:
+
+$$R =  (es^{−1} \pmod n)*G + (rs^{−1} \pmod n)*P$$
+
+```python
+sage: R = int(mod(m*s^-1,n)) * G  + int(mod(r*s^-1,n)) * P
+(215 : 295 : 1)
+# Compare the x-coordinate of the ephemeral public key.
+sage: R[0] == r
+True # Signature is valid ✅
+```
+
+Tampering with the message by Alice's captors would alter its cryptographic hash, leading to verification failure due to the mismatch with the original signature.
+
+```python
+sage: m = hash("Send $5 million")
+7183426991750327432 # Hash is different!
+sage: R = int(mod(m*s^-1,n)) * G  + int(mod(r*s^-1,n)) * P
+(892 : 284 : 1)
+# Compare the x-coordinate of the ephemeral public key.
+sage: R[0] == r
+False # Signature is invalid ❌
+```
+
+Verification of the signature assures Bob of the message's authenticity, enabling him to transfer the funds and rescue Alice. Elliptic curves saves the day!
 
 # Further reading
 
