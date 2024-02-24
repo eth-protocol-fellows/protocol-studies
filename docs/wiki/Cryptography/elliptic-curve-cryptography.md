@@ -99,9 +99,9 @@ While the geometric representation of the curve in the finite field may appear a
 
 # Generating key pair
 
-Alice can finally generate a key pair using elliptic curve over finite field. All computations will be done using [sage](https://www.sagemath.org/).
+Alice can finally generate a key pair using elliptic curve over finite field.
 
-First, define the elliptic curve over the finite field of prime modulus 997.
+Let's define the elliptic curve over the finite field of prime modulus 997 in [Sage.](https://www.sagemath.org/)
 
 ```python
 sage: E = EllipticCurve(GF(997),[0,7])
@@ -115,10 +115,23 @@ sage: G = E.random_point()
 (174 : 487 : 1)
 ```
 
+Scalar multiplication over an elliptic curve defines a cyclic **subgroup of order $n$**. This means that repeatedly adding any point in the subgroup $n$ times results in the point at infinity ($O$), which acts as the identity element.
+
+$$
+nP  = O
+$$
+
+```python
+sage: n = E.order()
+1057
+# Illustrating that n*G (or any point) equals O, represented by (0 : 1 : 0)
+sage: n*G
+(0 : 1 : 0)
+```
+
 A key pair consisting of:
 
-- Public key ($P$): A point on the curve, the result of scalar multiplication of **secret key 🔑**($K$) and generator point ($G$). Allows anyone to verify Alice's signature.
-- **Secret key 🔑**($K$): A random integer used for scalar multiplication, which ensures nobody but Alice should be able to produce valid signatures.
+1. **Secret key 🔑**($K$): The key is a random integer chosen from the order of the subgroup $n$. Ensures only Alice can produce valid signatures.
 
 Alice randomly choses **42** as the **secret key 🔑**.
 
@@ -126,20 +139,34 @@ Alice randomly choses **42** as the **secret key 🔑**.
 sage: K = 42
 ```
 
-Compute the public key using scalar multiplication.
+2. **Public key** ($P$): A point on the curve, the result of scalar multiplication of **secret key 🔑**($K$) and generator point ($G$). Allows anyone to verify Alice's signature.
 
 ```python
 sage: P = K*G
 (858 : 832 : 1)
 ```
 
-We have established that $G = (174, 487)$, and Alice's key pair $=[P, K] = [(858, 832), 42]$.
+We have established that Alice's key pair $=[P, K] = [(858, 832), 42]$.
+
+# Elliptic Curve digital signature algorithm (ECDSA)
+
+ECDSA is a variant of the Digital Signature Algorithm (DSA). It creates a signature based on a "fingerprint" of the message using a cryptographic hash.
+
+For ECDSA to work, Alice and Bob must establish a common set of domain parameters. Domain parameters for this example are:
+
+| Parameter                             | Value           |
+| ------------------------------------- | --------------- |
+| The elliptic curve equation.          | $y^2 = x^3 + 7$ |
+| The prime modulo of the finite field. | 997             |
+| The generator point, $G$.             | (174, 487)      |
+| The order of the subgroup, $n$.       | 1057            |
 
 # Further reading
 
 **Elliptic curve cryptography**
 
-- 📝 Standards for Efficient Cryptography Group (SECG), ["SEC 1: Elliptic Curve Cryptography."](http://www.secg.org/sec2-v2.pdf)
+- 📝 Standards for Efficient Cryptography Group (SECG), ["SEC 1: Elliptic Curve Cryptography."](http://www.secg.org/sec1-v2.pdf)
+- 📝 Standards for Efficient Cryptography Group (SECG), ["SEC 2: Recommended Elliptic Curve Domain Parameters."](http://www.secg.org/sec2-v2.pdf)
 - 🎥 Fullstack Academy, ["Understanding ECC through the Diffie-Hellman Key Exchange."](https://www.youtube.com/watch?v=gAtBM06xwaw)
 - 📝 Andrea Corbellini, ["Elliptic Curve Cryptography: a gentle introduction."](https://andrea.corbellini.name/2015/05/17/elliptic-curve-cryptography-a-gentle-introduction/)
 - 📝 William A. Stein, ["Elliptic Curves."](https://wstein.org/simuw06/ch6.pdf)
