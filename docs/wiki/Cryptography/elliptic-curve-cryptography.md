@@ -124,7 +124,7 @@ $$
 ```python
 sage: n = E.order()
 1057
-# Illustrating that n*G (or any point) equals O, represented by (0 : 1 : 0)
+# Illustrating that n*G (or any point) equals O, represented by (0 : 1 : 0).
 sage: n*G
 (0 : 1 : 0)
 ```
@@ -160,6 +160,46 @@ For ECDSA to work, Alice and Bob must establish a common set of domain parameter
 | The prime modulo of the finite field. | 997             |
 | The generator point, $G$.             | (174, 487)      |
 | The order of the subgroup, $n$.       | 1057            |
+
+## Signing
+
+Alice intends to sign the message **"Send $1 million"**, by following the steps:
+
+1. Compute the cryptographic hash **$m$**.
+
+```python
+sage: m = hash("Send $1 million")
+-7930066429007744594
+```
+
+2. For every signature, a random **ephemeral key pair [$eK$, $eP$]** is generated to mitigate an [attack](https://youtu.be/DUGGJpn2_zY?si=4FZ3ZlQZTG9-eah9&t=2117) exposing her **secret key 🔑**.
+
+```python
+# Randomly selected ephemeral secret key.
+sage: eK = 10
+# Ephemeral public key.
+sage: eP = eK*G
+(215 : 295 : 1)
+```
+
+Ephemeral key pair $=[eK, eP] = [10, (215, 295)]$.
+
+3. Compute signature component **$s$**:
+
+$$ s = k^{−1} (e + rK ) \pmod n$$
+
+Where $r$ is the x-coordinate of the ephemeral public key **(eP)**, i.e **215**. Notice the signature uses both Alice's **secret key 🔑 ($K$)** and the ephemeral key pair **[$eK$, $eP$]**.
+
+```python
+# x-coordinate of the ephemeral public key.
+sage: r = int(eP[0])
+215
+# Signature component, s.
+sage: s = mod(eK**-1 * (m + r*K), n)
+160
+```
+
+The tuple $(r,s) =  (215, 160)$ is the **signature pair**.
 
 # Further reading
 
