@@ -240,6 +240,14 @@ False # Signature is invalid ❌
 
 Verification of the signature assures Bob of the message's authenticity, enabling him to transfer the funds and rescue Alice. Elliptic curves saves the day!
 
+## Wrapping up
+
+Just like Alice, every account on the Ethereum blockchain uses ECDSA to sign transactions. However, ECC in Ethereum involves additional security considerations. While the core principles remain the same, we use secure hash functions like keccak256 and much larger prime field, boasting 78 digits - $2^{256}-2^{32}-977$.
+
+This discussion is a preliminary treatment of Elliptic Curve Cryptography. For a nuanced understanding, consider checking out the resources below.
+
+And finally: **never roll your own crypto!** Use trusted libraries and protocols to protect your data and transactions.
+
 # Further reading
 
 **Elliptic curve cryptography**
@@ -256,6 +264,7 @@ Verification of the signature assures Bob of the message's authenticity, enablin
 
 - 📘 Joseph H. Silverman, ["The Arithmetic of Elliptic Curves."](https://books.google.co.in/books?id=6y_SmPc9fh4C&redir_esc=y)
 - 📝 Joseph H. Silverman, ["An Introduction to the Theory of Elliptic Curves."](https://www.math.brown.edu/johsilve/Presentations/WyomingEllipticCurve.pdf)
+- 📘 Neal Koblitz, ["A Course in Number Theory and Cryptography."]("https://link.springer.com/book/10.1007/978-1-4419-8592-7")
 - 📝 Rareskills.io, ["Elliptic Curve Point Addition."](https://www.rareskills.io/post/elliptic-curve-addition)
 - 📝 John D. Cook, ["Finite fields."]("https://www.johndcook.com/blog/finite-fields/")
 
