@@ -13,7 +13,7 @@ Alice needs a robust approach that allows:
 
 The goal of this exercise is device a method for Alice to create a **secret key 🔑** known only to her. This key will be crucial for her to prove her identity and ensure the message's authenticity to Bob.
 
-Mathematics, as always, comes to the rescue. Through ingenious use of **Elliptic Curves**, let's explore how Alice can generate the secret key.
+Mathematics, as always, comes to the rescue. Through ingenious use of **Elliptic Curves**, let's explore how Alice can generate the **secret key 🔑**.
 
 # Elliptic curves
 
@@ -63,22 +63,22 @@ $$
 
 # Discrete logarithm problem
 
-Let's leverage scalar multiplication to generate the **secret key 🔑**. This key, denoted by $k$, represents the number of times a base point $P$ is added to itself, yielding the resulting public point $Q$:
+Let's leverage scalar multiplication to generate the **secret key 🔑**. This key, denoted by $K$, represents the number of times a base point $G$ is added to itself, yielding the resulting public point $P$:
 
 $$
-Q = k*P
+P = K*G
 $$
 
-Given $Q$ and $P$ it is possible derive the secret key $k$ by effectively reversing the multiplication, similar to the **logarithm problem**.
+Given $P$ and $G$ it is possible derive the secret key $K$ by effectively reversing the multiplication, similar to the **logarithm problem**.
 
-We need to ensure that scalar multiplication does not leak our **secret key 🔑**. That is scalar multiplication should be "easy" one way and "untraceable" the other way around.
+We need to ensure that scalar multiplication does not leak our **secret key 🔑**. In other words, scalar multiplication should be "easy" one way and "untraceable" the other way around.
 
 The analogy of a clock helps illustrate the desired one-way nature. Imagine a task starting at 12 noon and ending at 3. Knowing only the final time (3) makes it impossible to determine the exact duration without additional information. This is because **modular arithmetic** introduces a "wrap-around" effect. The task could have taken 3 hours, 15 hours, or even 27 hours, all resulting in the same final time modulo 12.
 
 <br />
 <img src="images/elliptic-curves/clock.gif" width="500"/>
 
-Over prime modulo number, this is especially hard and is known as **discrete logarithm problem**.
+Over a **prime modulus**, this is especially hard and is known as **discrete logarithm problem**.
 
 # Elliptic curves over finite field
 
@@ -129,9 +129,9 @@ sage: n*G
 (0 : 1 : 0)
 ```
 
-A key pair consisting of:
+A key pair consists of:
 
-1. **Secret key 🔑**($K$): The key is a random integer chosen from the order of the subgroup $n$. Ensures only Alice can produce valid signatures.
+1. **Secret key 🔑**($K$): A random integer chosen from the order of the subgroup $n$. Ensures only Alice can produce valid signatures.
 
 Alice randomly choses **42** as the **secret key 🔑**.
 
@@ -209,7 +209,7 @@ Alice then writes the message and signature to the postcard.
 
 ## Verification
 
-Bob verifies the signature by independently calculating the **exact same ephemeral public key** from the signature pair **$(r,s)$**, message, and Alice's public key **$P$**.
+Bob verifies the signature by independently calculating the **exact same ephemeral public key** from the signature pair **$(r,s)$**, message, and Alice's public key **$P$**:
 
 1. Compute the cryptographic hash **$m$**.
 
@@ -230,7 +230,7 @@ sage: R[0] == r
 True # Signature is valid ✅
 ```
 
-Tampering with the message by Alice's captors would alter its cryptographic hash, leading to verification failure due to the mismatch with the original signature.
+If Alice's captors were to modify the message, it would alter the cryptographic hash, leading to verification failure due to the mismatch with the original signature.
 
 ```python
 sage: m = hash("Send $5 million")
@@ -246,9 +246,9 @@ Verification of the signature assures Bob of the message's authenticity, enablin
 
 ## Wrapping up
 
-Just like Alice, every account on the Ethereum blockchain uses ECDSA to sign transactions. However, ECC in Ethereum involves additional security considerations. While the core principles remain the same, we use secure hash functions like keccak256 and much larger prime field, boasting 78 digits - $2^{256}-2^{32}-977$.
+Just like Alice, every account on the Ethereum uses ECDSA to sign transactions. However, ECC in Ethereum involves additional security considerations. While the core principles remain the same, we use secure hash functions like keccak256 and much larger prime field, boasting 78 digits: $2^{256}-2^{32}-977$.
 
-This discussion is a preliminary treatment of Elliptic Curve Cryptography. For a nuanced understanding, consider checking out the resources below.
+This discussion is a preliminary treatment of Elliptic Curve Cryptography. For a nuanced understanding, consider the resources below.
 
 And finally: **never roll your own crypto!** Use trusted libraries and protocols to protect your data and transactions.
 
