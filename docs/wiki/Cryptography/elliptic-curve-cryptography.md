@@ -203,6 +203,10 @@ sage: s = mod(eK**-1 * (m + r*K), n)
 
 The tuple $(r,s) =  (215, 160)$ is the **signature pair**.
 
+Alice then writes the message and signature to the postcard.
+
+<img src="images/elliptic-curves/postcard.jpg" width="500"/>
+
 ## Verification
 
 Bob verifies the signature by independently calculating the **exact same ephemeral public key** from the signature pair **$(r,s)$**, message, and Alice's public key **$P$**.
