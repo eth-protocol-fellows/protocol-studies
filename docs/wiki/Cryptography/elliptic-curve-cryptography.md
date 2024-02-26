@@ -15,7 +15,7 @@ The goal of this exercise is device a method for Alice to create a **secret key 
 
 Mathematics, as always, comes to the rescue. Through ingenious use of **Elliptic Curves**, let's explore how Alice can generate the **secret key 🔑**.
 
-# Elliptic curves
+## Elliptic curves
 
 An elliptic curve is a curve **described by the equation**:
 
@@ -34,7 +34,7 @@ $$y^2=x^3+7$$
 
 <img src="images/elliptic-curves/secp256k1.png" width="500"/>
 
-# Fields
+## Fields
 
 In mathematics, a **field** is a set $F$, containing at least two elements, which is closed under two binary operations usually referred to as **addition** ($+$), and **multiplication**($\times$). A set is closed under an operation when the result of the operation is also a member of the set.
 
@@ -80,7 +80,7 @@ The analogy of a clock helps illustrate the desired one-way nature. Imagine a ta
 
 Over a **prime modulus**, this is especially hard and is known as **discrete logarithm problem**.
 
-# Elliptic curves over finite field
+## Elliptic curves over finite field
 
 So far, we have implicitly assumed elliptic curves over the rational field ($\mathbb{R}$). Ensuring **secret key 🔑** security through the discrete logarithm problem requires a transition to elliptic curves over finite fields defined by a **prime modulus**. This essentially restricts the points on the curve to a finite set by performing modular reduction with a specific prime number.
 
@@ -97,7 +97,7 @@ While the geometric representation of the curve in the finite field may appear a
 <br />
 <img src="images/elliptic-curves/finite-scalar-multiplication.gif" width="500"/>
 
-# Generating key pair
+## Generating key pair
 
 Alice can finally generate a key pair using elliptic curve over finite field.
 
@@ -133,7 +133,7 @@ A key pair consists of:
 
 1. **Secret key 🔑**($K$): A random integer chosen from the order of the subgroup $n$. Ensures only Alice can produce valid signatures.
 
-Alice randomly choses **42** as the **secret key 🔑**.
+Alice randomly chooses **42** as the **secret key 🔑**.
 
 ```python
 sage: K = 42
@@ -148,7 +148,7 @@ sage: P = K*G
 
 We have established that Alice's key pair $=[P, K] = [(858, 832), 42]$.
 
-# Elliptic Curve digital signature algorithm (ECDSA)
+## Elliptic Curve digital signature algorithm (ECDSA)
 
 ECDSA is a variant of the Digital Signature Algorithm (DSA). It creates a signature based on a "fingerprint" of the message using a cryptographic hash.
 
@@ -163,7 +163,7 @@ For ECDSA to work, Alice and Bob must establish a common set of domain parameter
 
 Importantly, Bob is confident that the public key $P = (858, 832)$ actually belongs to Alice.
 
-## Signing
+### Signing
 
 Alice intends to sign the message **"Send $1 million"**, by following the steps:
 
@@ -207,7 +207,7 @@ Alice then writes the message and signature to the postcard.
 
 <img src="images/elliptic-curves/postcard.jpg" width="500"/>
 
-## Verification
+### Verification
 
 Bob verifies the signature by independently calculating the **exact same ephemeral public key** from the signature pair **$(r,s)$**, message, and Alice's public key **$P$**:
 
@@ -252,7 +252,7 @@ This discussion is a preliminary treatment of Elliptic Curve Cryptography. For a
 
 And finally: **never roll your own crypto!** Use trusted libraries and protocols to protect your data and transactions.
 
-# Further reading
+## Further reading
 
 **Elliptic curve cryptography**
 
@@ -278,6 +278,6 @@ And finally: **never roll your own crypto!** Use trusted libraries and protocols
 - 🎥 Desmos, ["Introduction to the Desmos Graphing Calculator."](https://www.youtube.com/watch?v=RKbZ3RoA-x4)
 - 🧮 Andrea Corbellini, ["Interactive Elliptic Curve addition and multiplication."](https://andrea.corbellini.name/ecc/interactive/reals-add.html)
 
-# Credits
+## Credits
 
 - Thanks to Michael Driscoll for his work on [animated elliptic curves.](https://github.com/syncsynchalt/animated-curves)
