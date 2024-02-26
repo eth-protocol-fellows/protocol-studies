@@ -29,7 +29,7 @@
   - [Networking](/wiki/CL/cl-networking.md)
   - Client architecture
 - Development
-  - [Core development](/wiki/dev/core.md)
+  - [Core development](/wiki/dev/core-development.md)
   - [Network upgrades](/wiki/dev/upgrades.md)
 - Testing and security
   - [Testing overview](/wiki/testing/overview.md)
