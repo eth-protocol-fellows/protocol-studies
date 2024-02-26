@@ -19,8 +19,8 @@ Additionally, you should read through the following documents to prepare for the
 ###  Overview of the execution layer node
 * Block validation
     * in overly simplistic terms, ELs process the state transition
-    * each transaction is validate by the client, executed, and it's result accumulated into the state trie
-    * there are additional mechanism which also must be updated each block, such as the EIP-1559 base fee, the EIP-4844 excess blob gas, the EIP-4844 beacon root ring buffer, beacon chain withdrawals, etc.
+    * each transaction is validated by the client, executed, and its result accumulated into the state trie
+    * there are additional mechanisms which also must be updated each block, such as the EIP-1559 base fee, the EIP-4844 excess blob gas, the EIP-4844 beacon root ring buffer, beacon chain withdrawals, etc.
     * new nodes must also be able to join the network without too much friction, so ELs provide efficient syncing mechanism to bootstrap others
 * Block building
     * ELs also build blocks based on transactions they see around the network
