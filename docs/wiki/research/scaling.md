@@ -70,8 +70,6 @@ Resources:
 
 [Ethereum Consensus Mechanism](https://ethereum.org/developers/docs/consensus-mechanisms), [archived](https://web.archive.org/web/20240214225609/https://ethereum.org/developers/docs/consensus-mechanisms)
 
-[Gasper](https://ethereum.org/developers/docs/consensus-mechanisms/pos/gasper), [archived](https://web.archive.org/web/20240214225630/https://ethereum.org/developers/docs/consensus-mechanisms/pos/gasper)
-
 [Ethereum Proof-of-Stake Consensus Specifications](https://github.com/ethereum/consensus-specs/tree/dev?tab=readme-ov-file#ethereum-proof-of-stake-consensus-specifications), [archived](https://web.archive.org/web/20240208050731/https://github.com/ethereum/consensus-specs/tree/dev)
 
 [Ethereum Proof-of-Stake Consensus Specifications](https://ethereum.github.io/consensus-specs/), [archived](https://web.archive.org/web/20240217155014/https://ethereum.github.io/consensus-specs/)
