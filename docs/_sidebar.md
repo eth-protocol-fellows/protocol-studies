@@ -26,10 +26,10 @@
   - [CL Specs](/wiki/CL/cl-specs.md)
   - [Proof-of-Stake]
   - [Beacon API]
-  - [libp2p]
+  - [Networking](/wiki/CL/cl-networking.md)
   - Client architecture
 - Development
-  - [Core development](/wiki/dev/core.md)
+  - [Core development](/wiki/dev/core-development.md)
   - [Network upgrades](/wiki/dev/upgrades.md)
 - Testing and security
   - [Testing overview](/wiki/testing/overview.md)
@@ -69,7 +69,6 @@
 - **Wiki Info**
   - [GitHub Repository](https://github.com/eth-protocol-fellows/protocol-studies)
 
-
-<form action="https://eth-protocol-fellows.github.io/protocol-studies/#/eps/intro" target="_blank">
+<form action="https://epf.wiki/#/eps/intro" target="_blank">
   <input type="submit" value="Join the protocol" style="cursor: pointer;margin-top:12px;padding:8px;background-color:#FFFFFF;border:1px solid #0374B5;border-radius:.25rem;color:#0374B5;display:inline-block;text-align:center;text-decoration:none;width:250px;-webkit-text-size-adjust:none;mso-hide:all;" />
 </form>
