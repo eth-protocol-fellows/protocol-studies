@@ -4,7 +4,9 @@ During the second week, we will dive into the Execution layer of Ethereum.
 
 Come to see the presentation by [lightclient](https://twitter.com/lightclients/) on [Monday, February 26, 4PM UTC](https://savvytime.com/converter/utc-to-germany-berlin-united-kingdom-london-ny-new-york-city-ca-san-francisco-china-shanghai-japan-tokyo-australia-sydney/feb-26-2024/4pm). 
 
-The link to stream will be provided here and announced in [Discord group](https://discord.gg/epfsg). 
+Watch the talk stream here: https://streameth.org/65cf97e702e803dbd57d823f/epf_study_group
+
+Join our [Discord group](https://discord.gg/epfsg) to ask questions and participate in discussion during the talk. 
 
 ## Pre-reading
 
