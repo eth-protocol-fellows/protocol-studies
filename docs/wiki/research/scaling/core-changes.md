@@ -114,9 +114,32 @@ EIP-4844 introduced a new transaction type where `TransactionType == BLOB_TX_TYP
 
 ### Changes on the Execution Specs
 
-TODO
+The upgrade which will introduce EIP-4844 into the Execution Layer has been labeled **Cancun**.
+
+#### 1. Add checks inside the State Transition Function
+
+The EL now must check that the blob specific fields are valid for each transaction that is going to be executed in the State Transition Function (STF).
+
+The checks include:
+
+- check that the signer has enough balance to cover the cost of both transaction gas fee and blob gas fees
+- check that the blob transaction contains at least 1 valid `blob_versioned_hash` (see CL changes) and that they are formatted correctly
+- check that the user is willing to pay at least the current blob base fee
+
+Finally, the EL STF must keep track of the gas being gas used for blob transactions (same as it already happens for EIP1559 transactions).
+
+For the specs code, see [here](https://eips.ethereum.org/EIPS/eip-4844#execution-layer-validation)
 
 ### Changes on the Consensus Specs
+
+The upgrade which will introduce EIP-4844 into the Consensus Layer has been labeled **Deneb**.
+
+#### Custom types
+
+| Name            | SSZ equivalent | Description              |
+| --------------- | -------------- | ------------------------ |
+| `VersionedHash` | `Bytes32`      | _[New in Deneb:EIP4844]_ |
+| `BlobIndex`     | `uint64`       | _[New in Deneb:EIP4844]_ |
 
 #### 1. Inclusion of KZG Committment versioned hashes
 
@@ -135,6 +158,11 @@ With EIP-4844, the `process_execution_payload` adds the parameter `versioned_has
 `versioned_hashes` is an array of [hashes](https://github.com/ethereum/consensus-specs/blob/dev/specs/deneb/beacon-chain.md#modified-process_execution_payload) for each blob of KZG Committment, which are a type of cryptographic commitment particularly useful for their efficiency in creating and verifying proofs of data availability and correctness.
 
 KZG commitments provide the ability to prove that specific pieces of data are included in the set without revealing the entire dataset. This is particularly useful for scalability solutions because it does not require for every node to store the whole blockchain to prove transactions correcteness.
+
+#### 2. New Block Header checks
+
+TODO
+see go-ethereum file consensus.go also mentioned in [week2](https://youtu.be/pniTkWo70OY?t=2773)
 
 ## EIP-4488
 
