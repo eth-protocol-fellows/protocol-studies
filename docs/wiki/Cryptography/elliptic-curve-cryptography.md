@@ -23,6 +23,13 @@ $$
 y^2 = x^3 + ax+b
 $$
 
+Such that $4a^3 + 27b^2 \ne 0$ to ensure the curve is non-singular.
+The equation above is what is called the **Weierstrass normal form** of the long equation:
+
+$$
+y^2 + a_1 xy + a_3 y = x^3 + a_2 x^2 + a_4 x + a_6
+$$
+
 Examples:
 
 <img src="images/elliptic-curves/examples.gif" width="500"/>
@@ -267,17 +274,17 @@ And finally: **never roll your own crypto!** Use trusted libraries and protocols
 - 🎥 Fullstack Academy, ["Understanding ECC through the Diffie-Hellman Key Exchange."](https://www.youtube.com/watch?v=gAtBM06xwaw)
 - 📝 Andrea Corbellini, ["Elliptic Curve Cryptography: a gentle introduction."](https://andrea.corbellini.name/2015/05/17/elliptic-curve-cryptography-a-gentle-introduction/)
 - 📝 William A. Stein, ["Elliptic Curves."](https://wstein.org/simuw06/ch6.pdf)
-- 📝 Khan Academy, ["Modular Arithmetic."]("https://www.khanacademy.org/computing/computer-science/cryptography/modarithmetic/a/what-is-modular-arithmetic")
+- 📝 Khan Academy, ["Modular Arithmetic."](https://www.khanacademy.org/computing/computer-science/cryptography/modarithmetic/a/what-is-modular-arithmetic)
 - 🎥 Khan Academy, ["The discrete logarithm problem."](https://www.youtube.com/watch?v=SL7J8hPKEWY)
 
 **Mathematics of Elliptic Curves**
 
 - 📘 Joseph H. Silverman, ["The Arithmetic of Elliptic Curves."](https://books.google.co.in/books?id=6y_SmPc9fh4C&redir_esc=y)
 - 📝 Joseph H. Silverman, ["An Introduction to the Theory of Elliptic Curves."](https://www.math.brown.edu/johsilve/Presentations/WyomingEllipticCurve.pdf)
-- 📘 Neal Koblitz, ["A Course in Number Theory and Cryptography."]("https://link.springer.com/book/10.1007/978-1-4419-8592-7")
-- 📝 Ben Lynn, ["Stanford Crypto: Elliptic Curves."]("https://crypto.stanford.edu/pbc/notes/elliptic/")
+- 📘 Neal Koblitz, ["A Course in Number Theory and Cryptography."](https://link.springer.com/book/10.1007/978-1-4419-8592-7)
+- 📝 Ben Lynn, ["Stanford Crypto: Elliptic Curves."](https://crypto.stanford.edu/pbc/notes/elliptic/)
 - 📝 Rareskills.io, ["Elliptic Curve Point Addition."](https://www.rareskills.io/post/elliptic-curve-addition)
-- 📝 John D. Cook, ["Finite fields."]("https://www.johndcook.com/blog/finite-fields/")
+- 📝 John D. Cook, ["Finite fields."](https://www.johndcook.com/blog/finite-fields/)
 
 **Useful tools**
 
