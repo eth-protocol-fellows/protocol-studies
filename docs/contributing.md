@@ -53,7 +53,9 @@ docsify serve ./docs
 
 Wiki pages follow standard Markdown which can be rendered by Github or Docsify. For details on using it, look into the Markdown [guide](https://www.markdownguide.org/). 
 
-The audience of this wiki is technical and the content should reflect that. There are many guides on technical and documentation writing you can learn from. Here are few guidelines to follow when writing this wiki:
+The audience of this wiki is technical and the content should reflect that. There are many guides on technical and documentation writing you can learn from, for example you can check [this lecture](https://www.youtube.com/watch?v=vtIzMaLkCaM) to get started.
+
+ Here are main guidelines to follow when writing this wiki:
 
 - Write in an objective, clear and explanatory tone
 - Avoid unnecessary simplifications, describe the technical reality
@@ -72,6 +74,7 @@ The audience of this wiki is technical and the content should reflect that. Ther
 - For mathematical notations, you can use Katex
 
 Goal is to produce a credible neutral text which is formal, well-structured, and maintains a clear progression of ideas. The content should be purely technical and shouldn't waste space on introducing high level/well known concepts. Introductory topics are necessary and can use comparisons, historical anecdotes, and concrete examples to make complex concepts more accessible.
+
 
 ### Content standardization
 
