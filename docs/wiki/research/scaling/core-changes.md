@@ -134,14 +134,14 @@ For the specs code, see [here](https://eips.ethereum.org/EIPS/eip-4844#execution
 
 The upgrade which will introduce EIP-4844 into the Consensus Layer has been labeled **Deneb**.
 
-#### Custom types
+#### 1. Custom types
 
 | Name            | SSZ equivalent | Description              |
 | --------------- | -------------- | ------------------------ |
 | `VersionedHash` | `Bytes32`      | _[New in Deneb:EIP4844]_ |
 | `BlobIndex`     | `uint64`       | _[New in Deneb:EIP4844]_ |
 
-#### 1. Inclusion of KZG Committment versioned hashes
+#### 2. Inclusion of KZG Committment versioned hashes
 
 The Consensus Layer (CL, also called Beacon chain) calls the [`process_execution_payload`](https://github.com/ethereum/consensus-specs/blob/dev/specs/deneb/beacon-chain.md#modified-process_execution_payload) function when a new block payload is submitted to the chain. This function is responsible to perform some validity checks on the block's payload and then invoke the Execution Layer (EL) via the `verify_and_notify_new_payload` function.
 
@@ -159,7 +159,7 @@ With EIP-4844, the `process_execution_payload` adds the parameter `versioned_has
 
 KZG commitments provide the ability to prove that specific pieces of data are included in the set without revealing the entire dataset. This is particularly useful for scalability solutions because it does not require for every node to store the whole blockchain to prove transactions correcteness.
 
-#### 2. New Block Header checks
+#### 3. New Block Header checks
 
 TODO
 see go-ethereum file consensus.go also mentioned in [week2](https://youtu.be/pniTkWo70OY?t=2773)
