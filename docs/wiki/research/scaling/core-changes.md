@@ -3,7 +3,7 @@
 ## Introduction
 
 L2 Rollups need to enable the permissionless reconstruction of the L2 state. To achieve this, they must ensure Data Availability, which refers to the global ordering of inputs for transactions that have altered the state.
-Until EIP-4844 goes live on the Mainnet (expected in March 2023), Rollups have been storing Data Availability within a section of the transaction known as "calldata". Currently, this "calldata" represents the primary bottleneck for scaling Ethereum, as storing data in calldata is expensive.
+Until EIP-4844 goes live on the Mainnet (expected in March 2024), Rollups have been storing Data Availability within a section of the transaction known as "calldata". Currently, this "calldata" represents the primary bottleneck for scaling Ethereum, as storing data in calldata is expensive.
 
 To accomplish scalability, the idea was initially to decrease transaction calldata gas cost with EIP-4488. However, this EIP is now irrelevant because EIP-4844 has been implemented instead, which as we will see in the following section, introduces a new data section inside the transactions called Blob.
 
@@ -118,7 +118,23 @@ TODO
 
 ### Changes on the Consensus Specs
 
-TODO
+#### 1. Inclusion of KZG Committment versioned hashes
+
+The Consensus Layer (CL, also called Beacon chain) calls the [`process_execution_payload`](https://github.com/ethereum/consensus-specs/blob/dev/specs/deneb/beacon-chain.md#modified-process_execution_payload) function when a new block payload is submitted to the chain. This function is responsible to perform some validity checks on the block's payload and then invoke the Execution Layer (EL) via the `verify_and_notify_new_payload` function.
+
+Once invoked, the EL will:
+
+- validate the block payload
+- execute transactions inside the block payload
+- update the state, which is the result of executing transactions
+- build the new block
+- return the new block to the CL
+
+With EIP-4844, the `process_execution_payload` adds the parameter `versioned_hashes` to be passed to the `verify_and_notify_new_payload` function.
+
+`versioned_hashes` is an array of [hashes](https://github.com/ethereum/consensus-specs/blob/dev/specs/deneb/beacon-chain.md#modified-process_execution_payload) for each blob of KZG Committment, which are a type of cryptographic commitment particularly useful for their efficiency in creating and verifying proofs of data availability and correctness.
+
+KZG commitments provide the ability to prove that specific pieces of data are included in the set without revealing the entire dataset. This is particularly useful for scalability solutions because it does not require for every node to store the whole blockchain to prove transactions correcteness.
 
 ## EIP-4488
 
