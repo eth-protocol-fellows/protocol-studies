@@ -73,7 +73,7 @@ The audience of this wiki is technical and the content should reflect that. Ther
 
 Goal is to produce a credible neutral text which is formal, well-structured, and maintains a clear progression of ideas. The content should be purely technical and shouldn't waste space on introducing high level/well known concepts. Introductory topics are necessary and can use comparisons, historical anecdotes, and concrete examples to make complex concepts more accessible.
 
-We suggest [this lecuture](https://www.youtube.com/watch?v=vtIzMaLkCaM) to get you started with processs of writing.
+We suggest [this lecture](https://www.youtube.com/watch?v=vtIzMaLkCaM) to get you started with the process of writing.
 
 ### Content standardization
 
