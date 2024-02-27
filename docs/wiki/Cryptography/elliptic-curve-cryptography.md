@@ -34,18 +34,24 @@ $$y^2=x^3+7$$
 
 <img src="images/elliptic-curves/secp256k1.png" width="500"/>
 
-## Fields
+## Groups and Fields
 
-In mathematics, a **field** is a set $F$, containing at least two elements, which is closed under two binary operations usually referred to as **addition** ($+$), and **multiplication**($\times$). A set is closed under an operation when the result of the operation is also a member of the set.
+### Group
+In mathematics, a **GROUP** is a set $G$, containing at least two elements, which is closed under a binary operation usually referred to as **addition** ($+$). A set is closed under an operation when the result of the operation is also a member of the set. 
 
-The set of real numbers $\mathbb{R}$ is a familiar example of field, since arithmetic addition of two real numbers is closed.
+The set of real numbers $\mathbb{R}$ is a familiar example of a group, since arithmetic addition of two real numbers is closed.
 
 $$
  3 \in \mathbb{R},  5 \in \mathbb{R} \\
  3 + 5 = 8 \in \mathbb{R}
 $$
 
-Elliptic curves are interesting because the points form a field, the result of "addition" of two points remains on the curve. This geometric addition, distinct from arithmetic counterparts, involves drawing a line through chosen points (**P** and **Q**) and reflecting the resulting curve intersection(**R'**) across the x-axis to yield their sum (**R**).
+## Field
+Similarly, a **FIELD** is a set $F$, containing at least two elements, which is closed under two binary operations usually referred to as **addition** ($+$), and **multiplication**($\times$). 
+
+In other words, A **FIELD** is a **GROUP** under both addition and multiplication.
+
+Elliptic curves are interesting because the points on the curve form a group, i.e the result of "addition" of two points remains on the curve. This geometric addition, distinct from arithmetic counterparts, involves drawing a line through chosen points (**P** and **Q**) and reflecting the resulting curve intersection(**R'**) across the x-axis to yield their sum (**R**).
 
 <br />
 <img src="images/elliptic-curves/addition.gif" width="500"/>
@@ -269,6 +275,7 @@ And finally: **never roll your own crypto!** Use trusted libraries and protocols
 - 📘 Joseph H. Silverman, ["The Arithmetic of Elliptic Curves."](https://books.google.co.in/books?id=6y_SmPc9fh4C&redir_esc=y)
 - 📝 Joseph H. Silverman, ["An Introduction to the Theory of Elliptic Curves."](https://www.math.brown.edu/johsilve/Presentations/WyomingEllipticCurve.pdf)
 - 📘 Neal Koblitz, ["A Course in Number Theory and Cryptography."]("https://link.springer.com/book/10.1007/978-1-4419-8592-7")
+- 📝 Ben Lynn, ["Stanford Crypto: Elliptic Curves."]("https://crypto.stanford.edu/pbc/notes/elliptic/")
 - 📝 Rareskills.io, ["Elliptic Curve Point Addition."](https://www.rareskills.io/post/elliptic-curve-addition)
 - 📝 John D. Cook, ["Finite fields."]("https://www.johndcook.com/blog/finite-fields/")
 
