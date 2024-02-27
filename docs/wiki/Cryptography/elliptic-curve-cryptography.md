@@ -74,7 +74,7 @@ $$
 nP = \underbrace{P + P + \cdots + P}_{n\ \text{times}}
 $$
 
-# Discrete logarithm problem
+## Discrete logarithm problem
 
 Let's leverage scalar multiplication to generate the **secret key 🔑**. This key, denoted by $K$, represents the number of times a base point $G$ is added to itself, yielding the resulting public point $P$:
 
