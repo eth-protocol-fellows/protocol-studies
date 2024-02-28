@@ -2,12 +2,13 @@
 
 During the second week, we will dive into the Execution layer of Ethereum. 
 
-Watch the presentation diving into EL internals with Lightclient on [StreamEth](https://streameth.org/watch?event=&session=65dcdef0a6d370a1ab326de1) or [Youtube](https://www.youtube.com/watch?v=pniTkWo70OY). The overview document is available here. 
+Watch the presentation diving into EL internals with Lightclient on [StreamEth](https://streameth.org/watch?event=&session=65dcdef0a6d370a1ab326de1) or [Youtube](https://www.youtube.com/watch?v=pniTkWo70OY). 
+
+The overview document created in the presentation is [available here](https://github.com/eth-protocol-fellows/protocol-studies/blob/main/docs/eps/presentations/week2_notes.md?plain=1).
 
 [recording](https://streameth.org/embed/?playbackId=70f6rq6un48dy74q&vod=true&streamId=&playerName=Execution+Layer+Overview+%7C+lightclient+%7C+Week+2 ':include :type=iframe width=100% height=520 frameborder="0" allow="fullscreen" allowfullscreen')
 
 For archive of the discussion during the talk, check [this thread](https://discord.com/channels/1205546645496795137/1210292746817110027/1210292751158222848) in our [Discord server](https://discord.gg/epfsg). 
-
 
 ## Pre-reading
 
@@ -67,7 +68,6 @@ Additionally, you should read through the following documents to prepare for the
 - https://github.com/ethereum/execution-apis
 - https://blog.ethereum.org/2022/01/24/the-great-eth2-renaming
 - https://blog.ethereum.org/2021/11/29/how-the-merge-impacts-app-layer
-- [How The Execution Client and the Consensus Client Can Work Together](https://www.youtube.com/watch?v=91-GArv6lKo)
 - [Engine API: A Visual Guide](https://hackmd.io/@danielrachi/engine_api) by [Daniel Ramirez](https://hackmd.io/@danielrachi)
 
 Lightclient's vim and shell setup https://github.com/lightclient/dotfiles
