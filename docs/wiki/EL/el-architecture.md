@@ -1,6 +1,7 @@
-# Overview
+# Overview 
 
-## Block Insertion And Validation Pipeline
+## Block Insertion and Validation Pipeline
 
 > [!NOTE]
-> This topic is open for collaboration on a separate branch
+> This Topic is open for collaboration on a separate branch 
+
