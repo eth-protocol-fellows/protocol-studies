@@ -69,5 +69,6 @@ Additionally, you should read through the following documents to prepare for the
 - https://blog.ethereum.org/2022/01/24/the-great-eth2-renaming
 - https://blog.ethereum.org/2021/11/29/how-the-merge-impacts-app-layer
 - [Engine API: A Visual Guide](https://hackmd.io/@danielrachi/engine_api) by [Daniel Ramirez](https://hackmd.io/@danielrachi)
+- [Understanding Ethereum by studying its source code](https://gisli.hamstur.is/2020/08/understanding-ethereum-by-studying-the-source-code/)
 
 Lightclient's vim and shell setup https://github.com/lightclient/dotfiles
