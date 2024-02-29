@@ -57,7 +57,7 @@
   - EOF
   - Portal Network
 - [Cryptography](/wiki/Cryptography/intro.md)
-  - [Elliptic Curve Cryptography](/wiki/Cryptography/elliptic-curve-cryptography.md)
+  - [ECDSA](/wiki/Cryptography/ecdsa.md)
   - BLS
   - [Commitments]
     - Polynomials

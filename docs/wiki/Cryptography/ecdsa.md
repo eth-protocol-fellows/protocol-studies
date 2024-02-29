@@ -1,6 +1,15 @@
-# A Brief Introduction to Elliptic Curve Cryptography
+# A Brief Introduction to ECDSA
 
-Cryptography can often seem like an abstract subject, but its applications are deeply woven into the fabric of our everyday lives. Let's consider a real-world scenario to understand how cryptography, specifically Elliptic Curve Cryptography (ECC), can be used to safeguard critical interactions.
+It is impossible to overstate how modern cryptography redefines trust for all our digital interactions - from securing bank account logins with encryption to verifying the authenticity of your favorite apps through digital certificates.
+
+Public key cryptography is a key concept empowering these interactions. It consists of two key pairs:
+
+**Public key**: Widely distributed and used by anyone to verify an entity's identity.
+**Private key**: Confidential and known only to the owner, used for encryption and signing messages.
+
+**Elliptic curve cryptography (ECC)** is a specific type of public key cryptography that uses mathematics of elliptic curves to create smaller, and more efficient keys. This is especially beneficial in resource-constrained environments like Ethereum. Within Ethereum, the **Elliptic Curve Digital Signature Algorithm (ECDSA)** helps verify the legitimacy of submitted transactions.
+
+Let's consider a real-world scenario to understand how ECDSA works in action.
 
 Alice, a diligent businesswoman, has been abducted and held captive on a remote island. Her captors demand a hefty ransom of $1 million for her release. With limited options for communication, they provide a single postcard for her to instruct her associate, Bob, to transfer the funds.
 
@@ -161,7 +170,7 @@ sage: P = K*G
 
 We have established that Alice's key pair $=[P, K] = [(858, 832), 42]$.
 
-## Elliptic Curve digital signature algorithm (ECDSA)
+## ECDSA in action
 
 ECDSA is a variant of the Digital Signature Algorithm (DSA). It creates a signature based on a "fingerprint" of the message using a cryptographic hash.
 
@@ -259,7 +268,9 @@ Verification of the signature assures Bob of the message's authenticity, enablin
 
 ## Wrapping up
 
-Just like Alice, every account on the Ethereum uses ECDSA to sign transactions. However, ECC in Ethereum involves additional security considerations. While the core principles remain the same, we use secure hash functions like keccak256 and much larger prime field, boasting 78 digits: $2^{256}-2^{32}-977$.
+Just like Alice, every account on the [Ethereum uses ECDSA to sign transactions](https://web.archive.org/web/20240229045603/https://lsongnotes.wordpress.com/2018/01/14/signing-an-ethereum-transaction-the-hard-way/). However, ECC in Ethereum involves additional security considerations. While the core principles remain the same, we use secure hash functions like keccak256 and much larger prime field, boasting 78 digits: $2^{256}-2^{32}-977$.
+
+
 
 This discussion is a preliminary treatment of Elliptic Curve Cryptography. For a nuanced understanding, consider the resources below.
 
@@ -271,6 +282,7 @@ And finally: **never roll your own crypto!** Use trusted libraries and protocols
 
 - 📝 Standards for Efficient Cryptography Group (SECG), ["SEC 1: Elliptic Curve Cryptography."](http://www.secg.org/sec1-v2.pdf)
 - 📝 Standards for Efficient Cryptography Group (SECG), ["SEC 2: Recommended Elliptic Curve Domain Parameters."](http://www.secg.org/sec2-v2.pdf)
+- 📘 Alfred J. Menezes, Paul C. van Oorschot and Scott A. Vanstone, [Handbook of Applied Cryptography](https://cacr.uwaterloo.ca/hac/)
 - 🎥 Fullstack Academy, ["Understanding ECC through the Diffie-Hellman Key Exchange."](https://www.youtube.com/watch?v=gAtBM06xwaw)
 - 📝 Andrea Corbellini, ["Elliptic Curve Cryptography: a gentle introduction."](https://andrea.corbellini.name/2015/05/17/elliptic-curve-cryptography-a-gentle-introduction/)
 - 📝 William A. Stein, ["Elliptic Curves."](https://wstein.org/simuw06/ch6.pdf)
