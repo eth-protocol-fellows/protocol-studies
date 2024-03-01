@@ -120,15 +120,35 @@ The upgrade which will introduce EIP-4844 into the Execution Layer has been labe
 
 The EL now must check that the blob specific fields are valid for each transaction that is going to be executed in the State Transition Function (STF).
 
-The checks include:
+The checks include (For the specs code, see [here](https://eips.ethereum.org/EIPS/eip-4844#execution-layer-validation)):
 
 - check that the signer has enough balance to cover the cost of both transaction gas fee and blob gas fees
+
+```python
+# modify the check for sufficient balance
+max_total_fee = tx.gas * tx.max_fee_per_gas
+if get_tx_type(tx) == BLOB_TX_TYPE:
+    max_total_fee += get_total_blob_gas(tx) * tx.max_fee_per_blob_gas
+assert signer(tx).balance >= max_total_fee
+```
+
 - check that the blob transaction contains at least 1 valid `blob_versioned_hash` (see CL changes) and that they are formatted correctly
+
+```python
+assert len(tx.blob_versioned_hashes) > 0
+```
+
 - check that the user is willing to pay at least the current blob base fee
+
+```python
+assert tx.max_fee_per_blob_gas >= get_blob_base_fee(block.header)
+```
 
 Finally, the EL STF must keep track of the gas being gas used for blob transactions (same as it already happens for EIP1559 transactions).
 
-For the specs code, see [here](https://eips.ethereum.org/EIPS/eip-4844#execution-layer-validation)
+```python
+blob_gas_used += get_total_blob_gas(tx)
+```
 
 ### Changes on the Consensus Specs
 
