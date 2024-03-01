@@ -11,6 +11,7 @@
   - [Overview](/wiki/protocol/overview.md)
   - [History](/wiki/protocol/history.md)
   - [Coordination](/wiki/protocol/pm.md)
+  - [Data Structures](/wiki/protocol/data-structures.md)
   - [CS Resources]
 - Execution Layer
   - [EL Clients](/wiki/EL/el-clients.md)
