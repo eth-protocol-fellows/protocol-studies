@@ -26,11 +26,11 @@ The sponge function, central to Keccak's design, operates in two distinct phases
 For a deeper understanding of Keccak's internal workings, the [Keccak reference](https://keccak.team/files/CSF-0.1.pdf) provides detailed insights into its algorithms and security features.
 
 ## EVM Implementation
-While SHA-3 is the official version of the algorithm, Ethereum utilizes a modified variant known as Keccak256. This version is tailored for a maximum input of 256 bits. The [Ethereum Virtual Machine (EVM)](https://ethereum.org/en/developers/docs/evm/), a Turing-complete virtual machine, employs Keccak256 for data hashing. 
+The EVM (Ethereum Virtual Machine) processes the excution of transactions for the Ethereum blockchain with a stack based architecture. EVM opcodes are predefined instructions that the EVM interprets and subsequently executes to fulfill transaction and run the smart contracts. There are arthmetic, environmental, control flow, and stack operations Opcodes. Now there is no keccak256 opcode, but there is a SHA3 opcode. The SHA3 opcode is used to encrypt input data from the stack and outputs a Keccak256 hash.
 
-## Usage in Block Creation and Root Data Structure
-Keccak256 plays a vital role in Ethereum's block creation and in its root data structures. According to the [Ethereum Yellow Paper](https://ethereum.github.io/yellowpaper/paper.pdf), the function is used in several key ways:
+The [Ethereum Yellow Paper](https://ethereum.github.io/yellowpaper/paper.pdf), outlines other implementations of Keccak256 in the Ethereum blockchain:
 
+### Usage in Block Creation and Root Data Structure
 - **Block Header Fields**: Various fields in the block header, such as `parentHash` and `stateRoot`, use the Keccak 256-bit hash. This includes hashing the entire header of the parent block, the root node of the state trie, and the root nodes of the trie structures for transactions and receipts.
 - **Merkle Patricia Tree**: Ethereum employs a Merkle Patricia Tree to encode its state, where each node in the tree is identified through the Keccak 256-bit hash of its content. This structure underpins the stateRoot field in the block header.
 - **Storage Contents Encoding**: The hash is used to encode the storage contents of accounts, mapping the Keccak 256-bit hash of integer keys to the RLP-encoded integer values.
@@ -38,5 +38,6 @@ Keccak256 plays a vital role in Ethereum's block creation and in its root data s
 In all these instances, Keccak256's role is critical for ensuring data integrity, facilitating efficient data retrieval, and supporting the blockchain's underlying security mechanisms.
 
 ## References
-- [NIST SHA-3 Competition](https://csrc.nist.gov/projects/hash-functions/nist-hash-function-competition)
+- [NIST SHA-3 Competition](https://keccak.team/files/Keccak-submission-3.pdf)
 - [Ethereum Yellow Paper](https://ethereum.github.io/yellowpaper/paper.pdf)
+- [EVM Opcodes](https://www.evm.codes/?fork=shanghai)
