@@ -1,7 +1,5 @@
 # Data Structures in Ethereum
 
-<br />
-
 ## Primer on Merkle Tree
 
 Merkle tree is a hash-based data structure which is very effecient at data integrity and verification. It is a tree based structure where the leaf nodes hold the data values and each non-leaf node is a hash of its child nodes.
@@ -16,6 +14,8 @@ To learn more about Hashing, you may refer to [this](https://github.com/ethereum
 
 Merkle Root is stored in the **Block Header**. Read more about the strucutre of a Block inside Ethereum (_will be linked this to relevant doc once its ready_)
 
+The main parent node is called Root, hence the hash inside is Root Hash. There is infinitesimally small chance(1 in 1.16x10^77 for a single SHA-256 hash) to create two different states with the same root hash, and any attempt to modify state with different values will result in a different state root hash.
+
 The image below depicts a simplified version of the working of a Merkle Tree:
 
 - The lead nodes contain the actual data(for simplicity, we have taken numbers)
@@ -28,7 +28,6 @@ The image below depicts a simplified version of the working of a Merkle Tree:
 More on [Merkle Trees in Ethereum](https://blog.ethereum.org/2015/11/15/merkling-in-ethereum)
 
 ![Merkle Tree](../../images/merkle-tree.jpg)
-<br />
 
 ## Primer on Patricia Tree
 
@@ -39,8 +38,6 @@ Simply put, Patricia Tries is a tree data structure where all the data is store 
 Patricia tries are designed to be more space-efficient than traditional trie structures by eliminating redundant nodes with single children. They achieve compactness by sharing prefixes among keys. This means that common prefixes are shared among different keys, reducing the overall storage requirements.
 
 ##### **TODO: Patricia Tree Diagram**
-
-<br />
 
 # Ethereum
 
@@ -53,7 +50,7 @@ Ethereum state is stored in four different modified merkle patricia tries (MMPTs
 - World State Trie
 - Storage Trie
 
-The main parent node is called Root, hence the hash inside is Root Hash. There is infinitesimally small chance(1 in 1.16x10^77 for a single SHA-256 hash) to create two different states with the same root hash, and any attempt to modify state with different values will result in a different state root hash.
+![Tries](../../images/tries.png)
 
 At each block there is one transaction, receipt, and state trie which are referenced by their root hashes in the block Header.
 For every contract deployed on Ethereum there is a storage trie used to hold that contract's persistent variables, each storage trie is referenced by their root hash in the state account object stored in the state trie leaf node corresponding to that contract's address.
@@ -66,15 +63,9 @@ For every contract deployed on Ethereum there is a storage trie used to hold tha
 
 ##### TODO: Explain Storage Trie
 
-<br />
-
 ## Future Implementations
 
-<br />
-
 ##### TODO: Primer on Verkle Tree
-
-<br />
 
 ## Resources
 
