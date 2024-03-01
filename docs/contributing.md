@@ -28,7 +28,8 @@ It **does not** cover onchain protocols/dapps, layer 2s/rollups or any other too
 
 ### Structure and collaboration
 
-The wiki is supposed to cover all important parts of Ethereum core protocol and its development. The protocol architecture and related topics is reflected in the wiki format. The whole wiki lives under `/docs/wiki` and the [sidebar](_sidebar.md) defines the main documentation structure. High level areas are abstracted to directories which include all subtopics. 
+The wiki is supposed to cover all important parts of Ethereum core protocol and its development. The protocol architecture and related topics is reflected in the wiki format. The whole wiki lives under `/docs/wiki` and the [sidebar](_sidebar.md) defines the main documentation structure. 
+High level areas are abstracted to directories which include all subtopics. Focus your contributions to wiki itself. Week pages in `eps` directory are meant for weekly presentations information, not main place for resources. 
 
 For contributors, we recommend focusing on specific topics contained in corresponding documents. It's best to own a single topic and work out all the details. Create a new document and add the topic to the sidebar if it's not there yet. Join the [discord server](https://discord.gg/epfsg), let others know what you are working on in the group channel and collaborate with other contributors writing about related topics. If you are working with multiple people on a significant piece of content, you can have a dedicated branch in the repo for easier coordination. 
 
@@ -53,7 +54,9 @@ docsify serve ./docs
 
 Wiki pages follow standard Markdown which can be rendered by Github or Docsify. For details on using it, look into the Markdown [guide](https://www.markdownguide.org/). 
 
-The audience of this wiki is technical and the content should reflect that. There are many guides on technical and documentation writing you can learn from. Here are few guidelines to follow when writing this wiki:
+The audience of this wiki is technical and the content should reflect that. There are many guides on technical and documentation writing you can learn from, for example you can check [this lecture](https://www.youtube.com/watch?v=vtIzMaLkCaM) to get started.
+
+ Here are main guidelines to follow when writing this wiki:
 
 - Write in an objective, clear and explanatory tone
 - Avoid unnecessary simplifications, describe the technical reality
@@ -72,6 +75,7 @@ The audience of this wiki is technical and the content should reflect that. Ther
 - For mathematical notations, you can use Katex
 
 Goal is to produce a credible neutral text which is formal, well-structured, and maintains a clear progression of ideas. The content should be purely technical and shouldn't waste space on introducing high level/well known concepts. Introductory topics are necessary and can use comparisons, historical anecdotes, and concrete examples to make complex concepts more accessible.
+
 
 ### Content standardization
 

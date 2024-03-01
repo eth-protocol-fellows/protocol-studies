@@ -113,7 +113,7 @@ To explore various parts of the Ethereum protocol, check out what people have be
 https://github.com/eth-protocol-fellows/cohort-three/tree/master/projects
 https://github.com/eth-protocol-fellows/cohort-four/tree/master/projects
 
-[Devcon archive](archive.devcon.org) is full of incredible talks diving into various technical and non-technical aspects of Ethereum.
+[Devcon archive](https://archive.devcon.org/archive/) is full of incredible talks diving into various technical and non-technical aspects of Ethereum.
 
 A [retrospective document](https://notes.ethereum.org/@mikeneuder/rcr2vmsvftv) on recent roadmap by Alex and Mike comes with great insights into Ethereum development, values and goals.
 
