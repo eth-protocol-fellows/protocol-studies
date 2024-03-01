@@ -6,7 +6,7 @@ Learn more about the EPFsg in announcement blog post and join the study group: h
 
 ## Protocol Studies Wiki
 
-You can visit the wiki at https://eth-protocol-fellows.github.io/protocol-studies or head to `/docs` for the source. 
+You can visit the wiki at https://epf.wiki or head to `/docs` for the source. 
 
 The wiki is mostly build by contributors from the EPF Study Group. Join us to learn about the protocol and start [contributing](/docs/contributing.md). 
 

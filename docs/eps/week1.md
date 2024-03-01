@@ -1,12 +1,18 @@
-# Week 1
+# Study Group Week 1 | Protocol Intro
 
 The first week of the study group is dedicated to a general introduction to the protocol and R&D ecosystem. 
 
-Come to see the presentation by Mário Havel on [Thursday, February 22, 7AM UTC](https://savvytime.com/converter/utc-to-germany-berlin-united-kingdom-london-ny-new-york-city-ca-san-francisco-china-shanghai-japan-tokyo-australia-sydney/feb-22-2024/7am). *This talk will be conducted again in the same format as before*. We encourage you to join the talk if you haven't seen it already on Monday or if you are in easter time zones. The link to stream will be provided here and in [Discord group](https://discord.gg/epfsg). 
+## Recording
+
+Watch *Ethereum Protocol 101* talk by Mario Havel [on StreamEth](https://streameth.org/watch?event=&session=65d77e4f437a5c85775fef9d). [Slides](https://github.com/eth-protocol-fellows/protocol-studies/tree/main/docs/eps/presentations/week1_protocol_intro.pdf) 
+
+[recording](https://streameth.org/embed/?playbackId=9bc1ekw2jk5sz6c7&vod=true&streamId=&playerName=Intro+to+Ethereum+%7C+Mario+Havel+%7C+Week+1 ':include :type=iframe width=100% height=520 frameborder="0" allow="fullscreen" allowfullscreen')
+
+For archive of the discussion during the talk, check the corresponding thread in `#study-group` channel of [Discord server](https://discord.gg/epfsg). 
 
 ## Pre-reading
 
-This is an introductory talk which doesn't assume a lot of prior knowledge. Check some general requirements in [week 0](week0.md). Here are few more introductory materials to get you started:
+This is an introductory talk which doesn't assume a lot of prior knowledge. Check some general requirements in [week 0](/eps/week0.md). Here are few more introductory materials to get you started:
 - [Inevitable Ethereum - World Computer](https://inevitableeth.com/home/ethereum/world-computer)
 - [Ethereum in 30 minutes](https://www.youtube.com/watch?v=UihMqcj-cqc)
 - [Ethereum.org docs](https://ethereum.org/what-is-ethereum)
@@ -107,7 +113,7 @@ To explore various parts of the Ethereum protocol, check out what people have be
 https://github.com/eth-protocol-fellows/cohort-three/tree/master/projects
 https://github.com/eth-protocol-fellows/cohort-four/tree/master/projects
 
-[Devcon archive](archive.devcon.org) is full of incredible talks diving into various technical and non-technical aspects of Ethereum.
+[Devcon archive](https://archive.devcon.org/archive/) is full of incredible talks diving into various technical and non-technical aspects of Ethereum.
 
 A [retrospective document](https://notes.ethereum.org/@mikeneuder/rcr2vmsvftv) on recent roadmap by Alex and Mike comes with great insights into Ethereum development, values and goals.
 

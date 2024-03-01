@@ -26,7 +26,7 @@ The first part of the program consists of 5 weeks with introductions to high lev
 | February 26 | Execution Layer                    | Lightclient             |
 | March 4     | Consensus layer                    | Alex Stokes             |
 | March 11    | Testing and security               | Mario Vega              |
-| March 18    | Roadmap and research               | Domotheus               |
+| March 18    | Roadmap and research               | Domothy                 |
 
 The second part of the program offers two distinct tracks focused on development and research with deeper dive into each topic. Detailed schedule coming soon.
 
@@ -43,7 +43,7 @@ While this program is designed to act as a precursor to the Ethereum Protocol Fe
 ## Important links
 
 - Discord server: https://discord.gg/epfsg
-- Weekly calls: https://meet.ethquokkaops.io/EPFsg
+- Weekly talks stream: https://streameth.org/65cf97e702e803dbd57d823f/epf_study_group
 - Sessions calendar: https://calendar.google.com/calendar/u/0?cid=ZXBmc3R1ZHlncm91cEBnbWFpbC5jb20 ([ics format](https://calendar.google.com/calendar/ical/epfstudygroup%40gmail.com/public/basic.ics))
 
 - EPF mailing list: https://groups.google.com/a/ethereum.org/g/protocol-fellowship-group
