@@ -8,6 +8,8 @@ The overview document created in the presentation is [available here](https://gi
 
 [recording](https://streameth.org/embed/?playbackId=70f6rq6un48dy74q&vod=true&streamId=&playerName=Execution+Layer+Overview+%7C+lightclient+%7C+Week+2 ':include :type=iframe width=100% height=520 frameborder="0" allow="fullscreen" allowfullscreen')
 
+For written summary of week 2 presentation, check the [notes](https://ab9jvcjkej.feishu.cn/docx/BRDdd8kP9o00a2x6F4scRo0fnJh)
+
 For archive of the discussion during the talk, check [this thread](https://discord.com/channels/1205546645496795137/1210292746817110027/1210292751158222848) in our [Discord server](https://discord.gg/epfsg). 
 
 ## Pre-reading
