@@ -8,7 +8,7 @@ The link to stream will be provided here and announced in [Discord group](https:
 
 ## Pre-reading
 
-Before starting with the week 3 content, make yourself familiar with resources in [week 2](/eps/week1.md). 
+Before starting with the week 3 content, make yourself familiar with resources in [week 2](/eps/week2.md). 
 
 Additionally, you can read get ready by reading following resources:
 - [Ethereum.org docs on Proof-of-stake](https://ethereum.org/developers/docs/consensus-mechanisms/pos) and its subtopics
