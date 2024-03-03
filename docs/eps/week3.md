@@ -12,6 +12,8 @@ Before starting with the week 3 content, make yourself familiar with resources i
 
 Additionally, you can read get ready by reading following resources:
 - [Ethereum.org docs on Proof-of-stake](https://ethereum.org/developers/docs/consensus-mechanisms/pos) and its subtopics
+- [Beacon Chain explainer](https://ethos.dev/beacon-chain)
+
 
 ## Outline
 
@@ -19,3 +21,6 @@ Additionally, you can read get ready by reading following resources:
 
 - [Gasper paper](https://arxiv.org/pdf/2003.03052.pdf)
 - [Eth2book, annotated spec](https://eth2book.info/)
+- [Stuff you should know about PoS by Domothy](https://domothy.com/proof-of-stake/)
+
+After learning about both EL and CL, run a client pair. Spin a pair of one execution and consensus client, read their logs to learn how they operate. 
