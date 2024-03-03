@@ -66,6 +66,7 @@
     - Commitment schemes
   - ZK
 - [Protocol Fellowship](/wiki/epf.md)
+- [Protocol Guild](https://protocol-guild.readthedocs.io/en/latest/)
 
 - **Wiki Info**
   - [GitHub Repository](https://github.com/eth-protocol-fellows/protocol-studies)
