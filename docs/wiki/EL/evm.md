@@ -12,6 +12,8 @@ A familiar example of a state machine is the vending machine, an automated syste
 
 We can model the vending machine existing in three distinct states: idle, awaiting user selection, and dispensing a product. Inputs such as coin insertion or product selection trigger transitions between these states, as depicted in the state diagram:
 
+<img src="images/evm/vending-machine.gif" width="800" alt="Vending machine"/>
+
 ## Virtual machine paradigm
 
 ## Stack
