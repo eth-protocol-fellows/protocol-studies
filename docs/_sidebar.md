@@ -5,12 +5,14 @@
   - [Week 0](/eps/week0.md)
   - [Week 1](/eps/week1.md)
   - [Week 2](/eps/week2.md)
+  - [Week 3](/eps/week3.md)
 - [Contributing](contributing.md)
 - **Protocol Wiki**
 - The Protocol
   - [Overview](/wiki/protocol/overview.md)
   - [History](/wiki/protocol/history.md)
   - [Coordination](/wiki/protocol/pm.md)
+  - [Data Structures](/wiki/protocol/data-structures.md)
   - [CS Resources]
 - Execution Layer
   - [EL Clients](/wiki/EL/el-clients.md)
@@ -56,10 +58,9 @@
   - ASE
   - EOF
   - Portal Network
-- Cryptography
-  - Eliptic curves
-    - ECDSA
-    - BLS
+- [Cryptography](/wiki/Cryptography/intro.md)
+  - [ECDSA](/wiki/Cryptography/ecdsa.md)
+  - BLS
   - [Commitments]
     - Polynomials
     - Commitment schemes
