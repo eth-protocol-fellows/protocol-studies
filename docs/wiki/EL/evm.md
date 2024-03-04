@@ -46,7 +46,9 @@ Ethereum, as a whole, can be viewed as a **transaction-based state machine**. It
 
 Let's consider a simple Ethereum application - an NFT marketplace.
 
-In the current world state **S3** (green), Alice owns an NFT. The animation below shows a transaction transferring ownership to you (**S3** ➡️ **S4**). Similarly, selling the NFT back to Alice would transition the state to **S5**.
+In the current world state **S3** (green), Alice owns an NFT. The animation below shows a transaction transferring ownership to you (**S3** ➡️ **S4**). Similarly, selling the NFT back to Alice would transition the state to **S5**:
+
+<img src="images/evm/ethereum-state-machine.gif" width="800" alt="Ethereum state machine"/>
 
 Notice that the world state is animated _as a pulsating green bubble_.
 
