@@ -1,6 +1,6 @@
 # The Ethereum Virtual Machine (EVM)
 
-You have likely observed that Ethereum transactions take some time to finalise, around 13 seconds at the time of writing. A series of crucial steps occur during this timeframe. The transaction is first queued in a pool. Then, it is selected by a node and executed by a special program - **the Ethereum Virtual Machine (EVM)**, the result of which is stored on the blockchain.
+You have likely observed that Ethereum transactions take some time to finalise, [around 12 seconds](https://web.archive.org/web/20240304145956/https://etherscan.io/chart/blocktime) at the time of writing. A series of crucial steps occur during this timeframe. The transaction is first queued in a pool. Then, it is selected by a node and executed by a special program - **the Ethereum Virtual Machine (EVM)**, the result of which is stored on the blockchain.
 
 This article describes the role of EVM in ethereum ecosystem and how it works. As the EVM executes transactions, it modifies the overall state of ethereum. In that regard, ethereum can be modeled as a **state machine**.
 
@@ -39,6 +39,22 @@ $$\Upsilon (Selection,SelectDrink) \Longrightarrow Dispensing $$
 $$\Upsilon (Idle,SelectDrink) \Longrightarrow Idle $$
 
 Notice in the last case, the current state transitions back to itself.
+
+### Ethereum as a state machine
+
+Ethereum, as a whole, can be viewed as a **transaction-based state machine**. It receives transactions as inputs and transitions into a new state. The current state of Ethereum is referred to as the **world state**.
+
+Let's consider a simple Ethereum application - an NFT marketplace.
+
+In the current world state **S3** (green), Alice owns an NFT. The animation below shows a transaction transferring ownership to you (**S3** ➡️ **S4**). Similarly, selling the NFT back to Alice would transition the state to **S5**.
+
+Notice that the world state is animated _as a pulsating green bubble_.
+
+In the model above, each transaction is committed to a new state. However, in reality, a group of transactions is bundled into a **block**, and the resulting state is added to the chain of previous states. It must be apparent now why this technology is called **blockchain**.
+
+Considering the definition of the state transition function, we draw the following conclusion:
+
+> **EVM is the state transition function of the Ethereum state machine. It determines how Ethereum transitions into a new (world) state based on input (transactions) and current state.**
 
 ## Virtual machine paradigm
 
