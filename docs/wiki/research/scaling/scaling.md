@@ -21,7 +21,7 @@ As part of the game-theory mechanism, to maintain the network sustainability, us
 This problem is widely known as the **Blockchain Trilemma**, which states that blockchain networks must sacrifice either security, decentralization, or scalability, and maximizing all three at once is difficult. The holy grail of blockchain technology is to create a secure and decentralized transactional network that can achieve a high TPS rate.
 
 
-!["Blockchain trilemma - Bankless.com"](./img/scaling/blockchain-trilemma.png "Blockchain trilemma - Bankless.com")
+!["Blockchain trilemma - Bankless.com"](../img/scaling/blockchain-trilemma.png "Blockchain trilemma - Bankless.com")
 
 ##  Blockchain Modularity
 Modern blockchain designs propose a "divide et impera" approach dividing the system into different specific functional components to independently maximize each vertex of the trilemma. This approach encapsulates the complexity in each part of the system and reduces the systemic complexity through the definition of simpler interaction interfaces for system components. 
@@ -39,17 +39,20 @@ The primary objective of Ethereum's scalability efforts is to increase TPS metri
 
 Layer 1 scaling is the set of all those techniques that increases the TPS of the underlying blockchain protocol itself. blockchains with "bigger blocks" have a major TPS but are more difficult to verify and likely to become more centralized. For this reason, an increase in the capacity of each block must be accompanied by various modifications to the protocol that allow decentralization to be maintained. Examples of layer 1 scaling solutions include Sharding, Proof-Of-Stake consensus mechanisms, and protocol upgrades aimed at optimizing block processing efficiency.
 
-!["Layer 1 Scaling"](./img/scaling/layer-1-scaling.png "Layer 1 Scaling")
+!["Layer 1 Scaling"](../img/scaling/layer-1-scaling.png "Layer 1 Scaling")
 
-> In Ethereum, an increase of gas limits will effectively expand the amount of computation and data that Ethereum can hold but will also raise the demands on network node operators.
+> **An increase of gas limits will effectively expand the amount of computation and data that Ethereum can hold but will also raise the demands on network node operators. Another design choice that will directly affect the block size is the gas pricing of operations. Cheaper operations will allow the inclusion of a greater number of and more complex transactions within the same gas limits boundary.**
 
 Layer 2 scaling is the set of solutions built on top of Layer 1 blockchain protocols that can achieve a higher TPS without requiring an increase in Layer 1 resource consumption, while still relying on its security model. These solutions typically process transactions off-chain or by using alternative consensus mechanisms that are faster and more scalable than the main blockchain. Examples of Layer 2 scaling solutions include, State Channels, Plasma Chains, or Rollups.
 
-!["Layer 2 Scaling"](./img/scaling/layer-2-scaling.png "Layer 2 Scaling")
+!["Layer 2 Scaling"](../img/scaling/layer-2-scaling.png "Layer 2 Scaling")
 
- The solution predominantly adopted by the Ethereum community to solve the scalability problem is a multi-rollup-centric approach. Here,  Ethereum acts as fundamental secure layer of Settlement, and Data Availability, while the majority of Execution tasks are delegated to upper layers referred to as Rollups.Rollups bundle multiple Layer 2 transactions into a single Layer 1 transaction. These transactions are stored in Layer 1, but the their execution is delegated to off-chain mechanisms. This allows for significant scalability improvements without sacrificing security. Ethereum's high level of programmability makes possible to create scalable solutions on top of the platform through Ethereum smart contracts. As previously mentioned, to maintain a high level of decentralization, Ethereum imposes limitations on the computational and storage resources that transactions included in the blocks can use, through gas limitations. Therefore, the data stored in L1 is minimized, and only raw transactions are stored along with a hash root of the L2 state tree.
+ The solution predominantly adopted by the Ethereum community to solve the scalability problem is a multi-rollup-centric approach. Here,  Ethereum acts as fundamental secure layer of Settlement, and Data Availability, while the majority of Execution tasks are delegated to upper layers referred to as Rollups. Rollups bundle multiple Layer 2 transactions into a single Layer 1 transaction. These transactions are stored in Layer 1, but their execution is delegated to off-chain mechanisms. This allows for significant scalability improvements without sacrificing security. Ethereum's high level of programmability makes possible to create scalable solutions on top of the platform through Ethereum smart contracts. As previously mentioned, to maintain a high level of decentralization, Ethereum imposes limitations on the computational and storage resources that transactions included in the blocks can use, through gas limitations. Therefore, the data stored in Layer 1 is minimized, with only raw transactions being stored along with a hash commitment of the Layer 2 state resulting from the execution of those transactions.
 
-> **Rollups can be seen as a way to compress transaction execution, reducing the computational burden on the Layer 1 blockchain, thereby providing the possibility to increase the TPS while still maintaining the security level of Layer 1 for the Layer2 transactions.**
+> **Rollups can be seen as a way to compress transaction execution, thereby reducing the computational burden on the Layer 1 blockchain. This provides the possibility to increase the TPS while still maintaining the security level of Layer 1 for the Layer 2 transactions, as their data and Layer 2 state transition commitments are stored in Layer 1.**
+
+## Ethereum Core Changes Towards a Rollup-Centric Roadmap
+
 
 
 
