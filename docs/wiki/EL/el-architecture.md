@@ -1,11 +1,3 @@
-<<<<<<< HEAD
-# Overview
-
-## Block Insertion And Validation Pipeline
-
-> [!NOTE]
-> This topic is open for collaboration on a separate branch
-=======
 > [!NOTE]
 > This topic is open for collaboration on a separate branch
 
@@ -21,4 +13,3 @@ The Execution Layer focuses exclusively on executing the state transition functi
 ## Block Insertion And Validation Pipeline: Clients Perspective
 
 [¹]: https://archive.devcon.org/archive/watch/6/eels-the-future-of-execution-layer-specifications/?tab=YouTube
->>>>>>> test
