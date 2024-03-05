@@ -66,6 +66,8 @@ To execute software on a target computer, it needs to be translated into the mac
 
 Ensuring functionality within a fragmented ecosystem of diverse hardware and operating systems is a major hurdle. Traditionally, software had to be compiled into native binaries for each specific target platform:
 
+<img src="images/evm/platform-dependent-execution.jgp" width="800" alt="Platform dependent execution" />
+
 ## Stack
 
 ## Memory
