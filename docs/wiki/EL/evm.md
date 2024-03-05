@@ -60,6 +60,12 @@ Considering the definition of the state transition function, we draw the followi
 
 ## Virtual machine paradigm
 
+Given our grasp of state machines, the next challenge is **implementation**.
+
+To execute software on a target computer, it needs to be translated into the machine language understood by the hardware. This machine language specification is referred to as the Instruction Set Architecture (ISA) and varies depending on the target hardware processor, such as Intel or Apple silicon. Additionally, modern software relies on the host operating system to handle essential functions like memory management.
+
+Ensuring functionality within a fragmented ecosystem of diverse hardware and operating systems is a major hurdle. Traditionally, software had to be compiled into native binaries for each specific target platform:
+
 ## Stack
 
 ## Memory
