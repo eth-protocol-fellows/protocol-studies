@@ -56,7 +56,7 @@ Additionally, you should read through the following documents to prepare for the
 
 ### JSON-RPC
 * the "interface" to ethereum
-    * the vision is that all clients provide the exact same API and users can run any client the choose and have perfect integration with all tooling
+    * the vision is that all clients provide the exact same API and users can run any client they choose and have perfect integration with all tooling
     * not quite there, but we are fairly close
 * review main RPC methods
 
