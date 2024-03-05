@@ -23,7 +23,7 @@
   - [DevP2P]
   - [MPT]
   - [JSON-RPC]
-- Consensus Layer
+- [Consensus Layer](/wiki/CL/overview.md)
   - [CL Clients](/wiki/CL/cl-clients.md)
   - [CL Specs](/wiki/CL/cl-specs.md)
   - [Proof-of-Stake]
