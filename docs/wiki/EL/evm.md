@@ -62,7 +62,7 @@ Considering the definition of the state transition function, we draw the followi
 
 Given our grasp of state machines, the next challenge is **implementation**.
 
-To execute software on a target computer, it needs to be translated into the machine language understood by the hardware. This machine language specification is referred to as the Instruction Set Architecture (ISA) and varies depending on the target hardware processor, such as Intel or Apple silicon. Additionally, modern software relies on the host operating system to handle essential functions like memory management.
+Software needs conversion to the target processor's machine language (Instruction Set Architecture, ISA) for execution. This ISA varies across hardware (e.g., Intel vs. Apple silicon). Modern software also relies on the host operating system for memory management and other essentials.
 
 Ensuring functionality within a fragmented ecosystem of diverse hardware and operating systems is a major hurdle. Traditionally, software had to be compiled into native binaries for each specific target platform:
 
@@ -72,7 +72,11 @@ To address this challenge, a two-part solution is employed.
 
 First, the implementation targets a **virtual machine**, an abstraction layer. Source code is compiled into **bytecode**, a sequence of bytes representing instructions. Each bytecode maps to a specific operation the virtual machine executes.
 
-The second part involves a platform-specific virtual machine that translates the bytecode into native code for execution. This offers two key benefits: portability (bytecode runs on different platforms without recompiling) and abstraction (separates hardware complexities from software). Developers can thus write code for a single, virtual machine:
+The second part involves a platform-specific virtual machine that translates the bytecode into native code for execution.
+
+This offers two key benefits: portability (bytecode runs on different platforms without recompiling) and abstraction (separates hardware complexities from software). Developers can thus write code for a single, virtual machine:
+
+<img src="images/evm/virtual-machine-paradigm.jpg" width="800" alt="Virtual machine paradigm" />
 
 ## Stack
 
