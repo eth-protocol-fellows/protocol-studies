@@ -78,6 +78,12 @@ This offers two key benefits: portability (bytecode runs on different platforms 
 
 <img src="images/evm/virtual-machine-paradigm.jpg" width="800" alt="Virtual machine paradigm" />
 
+## EVM and the world state
+
+This virtual machine concept serves as an abstraction. Ethereum Virtual Machine (EVM) is a specific software implementation of this abstraction:
+
+For clarity, the figure above simplifies the Ethereum state. The actual state includes additional elements like Message Frames and Transient Storage.
+
 ## Stack
 
 ## Memory
