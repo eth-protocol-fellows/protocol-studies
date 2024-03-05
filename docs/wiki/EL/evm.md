@@ -82,6 +82,8 @@ This offers two key benefits: portability (bytecode runs on different platforms 
 
 This virtual machine concept serves as an abstraction. Ethereum Virtual Machine (EVM) is a specific software implementation of this abstraction:
 
+<img src="images/evm/evm-anatomy.jpg" width="800" alt="EVM anatomy" />
+
 For clarity, the figure above simplifies the Ethereum state. The actual state includes additional elements like Message Frames and Transient Storage.
 
 ## Stack
