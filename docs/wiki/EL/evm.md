@@ -66,7 +66,13 @@ To execute software on a target computer, it needs to be translated into the mac
 
 Ensuring functionality within a fragmented ecosystem of diverse hardware and operating systems is a major hurdle. Traditionally, software had to be compiled into native binaries for each specific target platform:
 
-<img src="images/evm/platform-dependent-execution.jgp" width="800" alt="Platform dependent execution" />
+<img src="images/evm/platform-dependent-execution.jpg" width="800" alt="Platform dependent execution" />
+
+To address this challenge, a two-part solution is employed.
+
+First, the implementation targets a **virtual machine**, an abstraction layer. Source code is compiled into **bytecode**, a sequence of bytes representing instructions. Each bytecode maps to a specific operation the virtual machine executes.
+
+The second part involves a platform-specific virtual machine that translates the bytecode into native code for execution. This offers two key benefits: portability (bytecode runs on different platforms without recompiling) and abstraction (separates hardware complexities from software). Developers can thus write code for a single, virtual machine:
 
 ## Stack
 
