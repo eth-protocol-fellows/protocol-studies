@@ -86,6 +86,10 @@ This virtual machine concept serves as an abstraction. Ethereum Virtual Machine 
 
 For clarity, the figure above simplifies the Ethereum state. The actual state includes additional elements like Message Frames and Transient Storage.
 
+> In Ethereum, the world state is essentially a mapping of 20-byte addresses to account states.
+
+<img src="images/evm/ethereum-world-state.jpg" width="800" alt="Ethereum world state" />
+
 ## Stack
 
 ## Memory
