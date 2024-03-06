@@ -110,7 +110,9 @@ EVM bytecode is a representation of a program as a sequence of [**bytes** (8 bit
 
 ![Binary bytecode](../../images/evm/opcode-binary.jpg)
 
-For brevity, EVM bytecode is commonly expressed in hexadecimal notation:
+For brevity, EVM bytecode is commonly expressed in [**hexadecimal**](https://en.wikipedia.org/wiki/Hexadecimal) notation:
+
+![Hexadecimal bytecode](../../images/evm/opcode-hex.jpg)
 
 ## Stack
 
