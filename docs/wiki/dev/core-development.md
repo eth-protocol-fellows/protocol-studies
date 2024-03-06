@@ -8,3 +8,4 @@ https://lkml.iu.edu/hypermail/linux/kernel/2401.3/04208.html
 https://www.youtube.com/watch?v=R-Xr1JRF6bY
 https://www.coindesk.com/consensus-magazine/2023/02/22/a-day-in-the-life-of-a-dev-ethereums-justin-florentine/
 https://protocol-guild.readthedocs.io/en/latest/
+https://www.youtube.com/watch?v=0lBrd2_fPPU&ab_channel=ETHGlobal
