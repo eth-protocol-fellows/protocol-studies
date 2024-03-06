@@ -39,7 +39,7 @@ The specified procedure for the state transition function in the code documentat
    - **Gas Used**: The total gas consumed by executing all transactions in the block.
    - **Trie Roots**: The roots of the tries for all transactions and receipts contained in the block.
    - **Logs Bloom**: A bloom filter of logs from all transactions within the block.
-   - **State Class**: The state of the blockchain after executing all transactions.
+   - **State Object**: The state, as specified in the execution specs, after executing all transactions.
 5. **Header Parameters Verification**: Confirm that the parameters returned from executing the block are present in the block header. This includes comparing the state's root with the `state_root` field in the block header.
 6. **Block Addition**: If all checks are successful, append the block to the blockchain.
 7. **Pruning Old Blocks**: Remove blocks that are older than the most recent 255 blocks from the blockchain.
@@ -62,3 +62,4 @@ TODO
 
 
 [¹]: https://archive.devcon.org/archive/watch/6/eels-the-future-of-execution-layer-specifications/?tab=YouTube
+$$
