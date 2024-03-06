@@ -12,7 +12,7 @@ A familiar example of a state machine is the vending machine, an automated syste
 
 We can model the vending machine existing in three distinct states: idle, awaiting user selection, and dispensing a product. Inputs such as coin insertion or product selection trigger transitions between these states, as depicted in the state diagram:
 
-<img src="images/evm/vending-machine.gif" width="800" alt="Vending machine"/>
+![Vending machine](../../images/evm/vending-machine.gif)
 
 Let's formally define the components of a state machine:
 
@@ -48,7 +48,7 @@ Let's consider a simple Ethereum application - an NFT marketplace.
 
 In the current world state **S3** (green), Alice owns an NFT. The animation below shows a transaction transferring ownership to you (**S3** ➡️ **S4**). Similarly, selling the NFT back to Alice would transition the state to **S5**:
 
-<img src="images/evm/ethereum-state-machine.gif" width="800" alt="Ethereum state machine"/>
+![Ethereum state machine](../../images/evm/ethereum-state-machine.gif)
 
 Notice that the world state is animated _as a pulsating green bubble_.
 
@@ -66,7 +66,7 @@ Software needs conversion to the target processor's machine language (Instructio
 
 Ensuring functionality within a fragmented ecosystem of diverse hardware and operating systems is a major hurdle. Traditionally, software had to be compiled into native binaries for each specific target platform:
 
-<img src="images/evm/platform-dependent-execution.jpg" width="800" alt="Platform dependent execution" />
+![Platform dependent execution](../../images/evm/platform-dependent-execution.jpg)
 
 To address this challenge, a two-part solution is employed.
 
@@ -76,19 +76,19 @@ The second part involves a platform-specific virtual machine that translates the
 
 This offers two key benefits: portability (bytecode runs on different platforms without recompiling) and abstraction (separates hardware complexities from software). Developers can thus write code for a single, virtual machine:
 
-<img src="images/evm/virtual-machine-paradigm.jpg" width="800" alt="Virtual machine paradigm" />
+![Virtual machine paradigm](../../images/evm/virtual-machine-paradigm.jpg)
 
 ## EVM and the world state
 
 This virtual machine concept serves as an abstraction. Ethereum Virtual Machine (EVM) is a specific software implementation of this abstraction. The anatomy of the EVM is described below:
 
-<img src="images/evm/evm-anatomy.jpg" width="800" alt="EVM anatomy" />
+![EVM anatomy](../../images/evm/evm-anatomy.jpg)
 
 _For clarity, the figure above simplifies the Ethereum state. The actual state includes additional elements like Message Frames and Transient Storage._
 
 > In Ethereum, the world state is essentially a mapping of 20-byte addresses to account states.
 
-<img src="images/evm/ethereum-world-state.jpg" width="800" alt="Ethereum world state" />
+![Ethereum world state](../../images/evm/ethereum-world-state.jpg)
 
 Each account state consists of various components such as storage, code, balance among other data and is associated with a specific address.
 
@@ -112,3 +112,10 @@ In a real-world scenario, EVM may execute transactions involving multiple accoun
 ## Wrapping up
 
 ## Resources
+
+### State machines and theory of computation
+
+- 📝 Mark Shead, ["Understanding State Machines."](https://medium.com/free-code-camp/state-machines-basics-of-computer-science-d42855debc66) • [archived](https://web.archive.org/web/20210309014946/https://medium.com/free-code-camp/state-machines-basics-of-computer-science-d42855debc66)
+- 🎥 Prof. Harry Porter, ["Theory of computation."](https://www.youtube.com/playlist?list=PLbtzT1TYeoMjNOGEiaRmm_vMIwUAidnQz)
+- 📘 Michael Sipser, ["Introduction to the Theory of Computation."](https://books.google.com/books/about/Introduction_to_the_Theory_of_Computatio.html?id=4J1ZMAEACAAJ)
+- 🎥 Shimon Schocken et al., ["Build a Modern Computer from First Principles: From Nand to Tetris"](https://www.coursera.org/learn/build-a-computer)
