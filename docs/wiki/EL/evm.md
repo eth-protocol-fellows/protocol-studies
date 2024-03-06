@@ -101,6 +101,15 @@ In the anatomy described above, EVM is shown to be manipulating the storage, cod
 
 In a real-world scenario, EVM may execute transactions involving multiple accounts (each with independent storage, code, and balance) enabling complex interactions on Ethereum.
 
+## EVM bytecode
+
+EVM bytecode is a representation of a program as a sequence of [**bytes** (8 bits).](https://en.wikipedia.org/wiki/Byte) Each byte within the bytecode is either:
+
+- an instruction known as **opcode**, or
+- input to an opcode known as **operand**.
+
+For brevity, EVM bytecode is commonly expressed in hexadecimal notation:
+
 ## Stack
 
 ## Memory
