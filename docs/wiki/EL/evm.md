@@ -80,15 +80,26 @@ This offers two key benefits: portability (bytecode runs on different platforms 
 
 ## EVM and the world state
 
-This virtual machine concept serves as an abstraction. Ethereum Virtual Machine (EVM) is a specific software implementation of this abstraction:
+This virtual machine concept serves as an abstraction. Ethereum Virtual Machine (EVM) is a specific software implementation of this abstraction. The anatomy of the EVM is described below:
 
 <img src="images/evm/evm-anatomy.jpg" width="800" alt="EVM anatomy" />
 
-For clarity, the figure above simplifies the Ethereum state. The actual state includes additional elements like Message Frames and Transient Storage.
+_For clarity, the figure above simplifies the Ethereum state. The actual state includes additional elements like Message Frames and Transient Storage._
 
 > In Ethereum, the world state is essentially a mapping of 20-byte addresses to account states.
 
 <img src="images/evm/ethereum-world-state.jpg" width="800" alt="Ethereum world state" />
+
+Each account state consists of various components such as storage, code, balance among other data and is associated with a specific address.
+
+Ethereum has two kinds of accounts:
+
+- **External account:** An account [controlled by an associated private key](/wiki/Cryptography/ecdsa.md) and empty EVM code.
+- **Contract account:** An account controlled by an associated non-empty EVM code. The EVM code as part of such an account is colloquially known as a _smart contract._
+
+In the anatomy described above, EVM is shown to be manipulating the storage, code, and balance of an account instance.
+
+In a real-world scenario, EVM may execute transactions involving multiple accounts (each with independent storage, code, and balance) enabling complex interactions on Ethereum.
 
 ## Stack
 
