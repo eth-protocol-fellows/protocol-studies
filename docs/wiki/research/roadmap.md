@@ -1,59 +1,54 @@
-
-# ETHERUM PROTOCOL ROADMAP
+# Ethereum Protocol Roadmap
 ---
 ## The Infinite Garden
-***Abstract***
 
 *Ethereum is NOT a zero sum game, but rather a game that we want to play continuously. For that to be a reality, the Infinite Garden needs to upgrade regulary, on topics like its security, scalability or sustainability, untill it will reach ossification. After that point there will probably be, just some trims - here and there.*
 
-**Where are we now?**
+## Ethereum evolution 
 
-At the moment, according to community consent, we are at about 55% into the roadmap. 
+The philosophy of Ethereum is opened to certain risk aversion and the protocol design keeps evolving. As our knowledge and experience of Ethereum grows, researchers and developers are crafting ideas how to tackle challenges and limitations of the network. There has been [many changes](/wiki/protocol/history.md) to the core protocol over many years of its existence. Most of these changes are part of some common goals we could call a roadmap. 
 
-**How does Ethereum evolve?**
+Even though there is no official roadmap and no authority which could dictate it, there are wide community dicsussions steering the protocol development in certain ways. By agreeing on some goals and reaching consensus about current of the development, the community, dev and research team work together to progress in this abstract roadmap. 
 
-The roadmap is mostly the result of years of work by researchers and developers, [according to the Ethereum Foundation](https://ethereum.org/en/roadmap/#why-does-ethereum-need-a-roadmap)
+## Core R&D
 
-New ideeas emerge constantly from within the protocol's permissionless [research and development](#resources) communities/groups. 
-When new ideas mature, they grow up to be Ethereum Improvement Proposals [(EIPs)](https://github.com/ethereum/EIPs/tree/master?tab=readme-ov-file#ethereum-improvement-proposals-eips).
+The discussion, resources and all research and development on the core protocol is fully open, free and public. Anyone can learn about it (as you are probably doing in this wiki) and further more, anyone can participate. There is no set of individuals which could push core protocol changes, the Ethereum community can raise the voice to help steer the discussion. To learn more about the core R&D shaping the protocol, read the [wiki page about it](/wiki/dev/core-development.md).
 
-The EIPs that are related to core Ethereum protocol are named [core EIPs](https://eips.ethereum.org/core)
+## Roadmap overview 
 
-**Who participates?**
+While there is not a single roadmap that Ethereum development follows, we can track the current R&D efforts to map what changes are happening and might happen in the future. 
+A great overview mapping many domains of the core development is Vitalik's view on how the roadmap looks like at December 2023:
 
-* motivated, Ethereum passionate community members
-* entities/organizations working in the application layer
-* end-users that want to help mitigating frictions like transaction speeds and cost, etc 
+![Ethereum roadmap updated by V.B. Dec2023](/docs/images/roadmap_2024/full_roadmap2024.jpeg)
 
-## Main Roadmap 'urges' 
-**Grouped by expected effects on protocol architecture**:
+In this overview, different domains are coupled to related categories forming various 'urges'. Here is what those mean: 
 
-**the Merge** - upgrades relating to the switch from proof-of-work to proof-of-stake. [[zoom diagram]](/docs/images/roadmap_2024/the_Merge_SSF.png)
+### The Merge
 
-**the Surge** - upgrades related to scalability by rollups and data sharding [[zoom diagram]](/docs/images/roadmap_2024/the_Surge.jpeg)
+Upgrades relating to the switch from proof-of-work to proof-of-stake. The Merge was succesfully achieved at Thu Sep 15 06:42:42 2022 UTC but this category tracks subsequent upgrades which can be done to improve the consensus mechanism and smooth issues we encounter after The Merge. 
 
-**the Scourge** - upgrades related to censorship resistance, decentralization and protocol risks from MEV [[zoom diagram]](/docs/images/roadmap_2024/the_Scourge.jpeg)
+- SSLE
+- SSF 
+..TODO elaborate on each
 
-**the Verge** - upgrades related to verifying blocks more easily [[zoom diagram]](/docs/images/roadmap_2024/the_Verge.jpeg)
+### Surge
 
-**the Purge** - upgrades related to reducing the computational costs of running nodes and simplifying the protocol [[zoom diagram]](/docs/images/roadmap_2024/the_Purge.png)
+Upgrades related to scalability by rollups and data sharding. 
 
-**the Splurge** - other upgrades that don't fit well into the previous categories [[zoom diagram]](/docs/images/roadmap_2024/the_Splurge.png)
+**the Scourge** - upgrades related to censorship resistance, decentralization and protocol risks from MEV. 
 
-## State of the art
+**the Verge** - upgrades related to verifying blocks more easily
+
+**the Purge** - upgrades related to reducing the computational costs of running nodes and simplifying the protocol
+
+**the Splurge** - other upgrades that don't fit well into the previous categories
+
+## Current research
 
 | Upgrade | Part of | Description | Expected effect | State of the art |
 | :-----| :-----: | :----: | :-------: | :------- |
 | Sigle slot finality (SSF)| the Merge | Blocks could get proposed and finalized in the same slot | More convenient for apps and much more difficult to attack| in research |
 | Proto-danksharding | the Surge | We can move the data into a temporary 'blob' storage that gets deleted from Ethereum once is no longer needed. | Reduced transaction costs | [EIP-4844](https://eips.ethereum.org/EIPS/eip-4844) |
-
-## Timeline
-
-It's hard to predict the timing of all the protocol level upgrades, because they happen often in paralel, and at different speeds. Some roadmap tracks get urgented others delayed, based on  the protocol's need to adapt to external factors and threaths, much like a biological organism/structure responds to stimulus and stress.
-
-Here's Vitalik's view on how the roadmap looks like at December 2023 level and how advanced each "urge" / track is:
-
-![Ethereum roadmap updated by V.B. Dec2023](/docs/images/roadmap_2024/full_roadmap2024.jpeg)
 
 ## Resources:
 
@@ -61,8 +56,8 @@ Here's Vitalik's view on how the roadmap looks like at December 2023 level and h
 
 [Ethereum-Magicians](https://ethereum-magicians.org/)
 
-[R&D discord server](https://discord.gg/UKj24QUuNB)
-
 [ethereum/EIPs github repository](https://github.com/ethereum/EIPs/tree/master#ethereum-improvement-proposals-eips)
 
-[Roadmap by Ethereum foundation](https://ethereum.org/en/roadmap/)
+[Roadmap on Ethereum.org](https://ethereum.org/en/roadmap/)
+
+https://ethroadmap.com/
