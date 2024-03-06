@@ -31,4 +31,28 @@ In the equation, each symbol represents a specific concept related to the blockc
 
 Furthermore, it's crucial to understand that $\sigma$ should not be confused with the `State` class defined in the Python specification. Rather than being stored in a specific location, the system's state is dynamically derived through the application of the state collapse function. This distinction emphasizes the conceptual separation between the mathematical model of blockchain state transitions and the practical implementation details within software specifications.
 
+The specified procedure for the state transition function in the code documentation includes the following steps:
+
+1. **Retrieve the Header**: Obtain the header of the most recent block stored on the chain, referred to as the parent block.
+2. **Header Validation**: Compare and validate the current block's header against that of the parent block.
+3. **Ommers Field Check**: Verify that the ommers field in the current block is empty. Note: "ommers" is the gender-neutral term that replaces the previously used term "uncles."
+4. **Block Execution**: Execute the transactions within the block, which yields the following outputs:
+    - **Gas Used**: The total gas consumed by executing all transactions in the block.
+    - **Trie Roots**: The roots of the tries for all transactions and receipts contained in the block.
+    - **Logs Bloom**: A bloom filter of logs from all transactions within the block.
+    - **State Class**: The state of the blockchain after executing all transactions.
+5. **Header Parameters Verification**: Confirm that the parameters returned from executing the block are present in the block header. This includes comparing the state's root with the `state_root` field in the block header.
+6. **Block Addition**: If all checks are successful, append the block to the blockchain.
+7. **Pruning Old Blocks**: Remove blocks that are older than the most recent 255 blocks from the blockchain.
+8. **Error Handling**: If any validation checks fail, raise an "Invalid Block" error. Otherwise, return None.
+
+## Header Validation
+
+TODO
+
+## Block Execution
+
+TODO
+
+
 [¹]: https://archive.devcon.org/archive/watch/6/eels-the-future-of-execution-layer-specifications/?tab=YouTube
