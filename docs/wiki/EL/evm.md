@@ -114,6 +114,10 @@ For brevity, EVM bytecode is commonly expressed in [**hexadecimal**](https://en.
 
 ![Hexadecimal bytecode](../../images/evm/opcode-hex.jpg)
 
+To further enhance comprehension, opcodes have human-readable mnemonics. This simplified bytecode, called **EVM assembly**, is the lowest human-readable form of EVM code:
+
+![EVM Assembly](../../images/evm/opcode-assembly.jpg)
+
 ## Stack
 
 ## Memory
