@@ -56,6 +56,7 @@ In the model above, each transaction is committed to a new state. However, in re
 
 Considering the definition of the state transition function, we draw the following conclusion:
 
+> ℹ️ Note  
 > **EVM is the state transition function of the Ethereum state machine. It determines how Ethereum transitions into a new (world) state based on input (transactions) and current state.**
 
 ## Virtual machine paradigm
@@ -101,6 +102,13 @@ In the anatomy described above, EVM is shown to be manipulating the storage, cod
 
 In a real-world scenario, EVM may execute transactions involving multiple accounts (each with independent storage, code, and balance) enabling complex interactions on Ethereum.
 
+With a better grasp of virtual machines, lets extend our definition:
+
+> ℹ️ Note  
+> EVM is the state transition function of the Ethereum state machine. It determines how Ethereum transitions into a new (world) state based on
+> input (transactions) and current state. **It is implemented as a virtual machine so that it can run on any platform, independent of the
+> underlying hardware.**
+
 ## EVM bytecode
 
 EVM bytecode is a representation of a program as a sequence of [**bytes** (8 bits).](https://en.wikipedia.org/wiki/Byte) Each byte within the bytecode is either:
@@ -117,6 +125,35 @@ For brevity, EVM bytecode is commonly expressed in [**hexadecimal**](https://en.
 To further enhance comprehension, opcodes have human-readable mnemonics. This simplified bytecode, called **EVM assembly**, is the lowest human-readable form of EVM code:
 
 ![EVM Assembly](../../images/evm/opcode-assembly.jpg)
+
+Identifying opcodes from operands is straightforward. Currently, only `PUSH*` opcodes have operands (this might change with [EOF](https://eips.ethereum.org/EIPS/eip-7569)). `PUSHX` defines operand length (X bytes after PUSH).
+
+Select Opcodes used in this discussion:
+
+During our discussion, we will use the following opcodes:
+
+| Opcode | Name     | Description                                        |
+| ------ | -------- | -------------------------------------------------- |
+| 60     | PUSH1    | Push 1 byte on the stack                           |
+| 01     | ADD      | Add the top 2 values of the stack                  |
+| 02     | MUL      | Multiply the top 2 values of the stack             |
+| 39     | CODECOPY | Copy code running in current environment to memory |
+| 51     | MLOAD    | Load word from memory                              |
+| 52     | MSTORE   | Store word to memory                               |
+| 53     | MSTORE8  | Store byte to memory                               |
+| 59     | MSIZE    | Get the byte size of the expanded memory           |
+| 54     | SLOAD    | Load word from storage                             |
+| 55     | SSTORE   | Store word to storage                              |
+| 56     | JUMP     | Alter the program counter                          |
+| 5B     | JUMPDEST | Mark destination for jumps                         |
+| f3     | RETURN   | Halt execution returning output data               |
+
+Refer [Appendix H of Yellow Paper](https://ethereum.github.io/yellowpaper/paper.pdf) for a comprehensive list.
+
+> ℹ️ Note  
+> [EIPs](https://eips.ethereum.org/) can propose EVM modifications. For instance, [https://eips.ethereum.org/EIPS/eip-1153](https://eips.ethereum.org/EIPS/eip-1153) introduced `TSTORE`, and `TSTORE` opcodes.
+
+We have covered **what** EVM is, let's explore **how** it works.
 
 ## Stack
 
