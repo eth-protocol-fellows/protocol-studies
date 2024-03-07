@@ -1,10 +1,17 @@
 # Block building, processing, and applying transaction to state:
+## Intro
 
+Block building is a crucial task for the Ethereum blockchain's functionality, involving various processes determining how a validator acquires a block before proposing it. You may already know that to participate in the network post-merge, one must run two client softwares. The first is the consensus client (CL), and the second is the execution client (EL). Both are essential for network participation. While the execution client (EL) has numerous important functionalities you can study more about it in the "el-architecture", a key focus here is its role in constructing blocks for consumption by CL.
+
+When a validator is selected to propose a block during a slot, it looks for the block produced by CL. Importantly, a validator isn't limited to broadcasting a block solely from its own EL. It can also broadcast a block produced by external builders; for details, refer to [PBS](https://ethereum.org/en/roadmap/pbs/). This article specifically explores how a block is produced by EL and the elements contributing to its successful production and transaction execution.
+
+## Code Walkthrough
+For the following code walkthrough I have chosen GETH as an EL client. 
  1. Firstly when a validator is chosen as a block builder it calls `engine_forkchoiceUpdatedV2` function via Engine API on the EL. Here, EL initiates the block building process.  
     - https://github.com/ethereum/go-ethereum/blob/0a2f33946b95989e8ce36e72a88138adceab6a23/eth/catalyst/api.go#L398 
  2. Most of the the core logic of block building, and transaction execution resides in `miner` module of Geth. The `buildPayload` function initially creates an empty block so the node doesn't miss the slot and has something to propose. The function implementation also starts a go routine process whose job is to potentially fill the block which we left empty and then later update it with filled transactions concurrently.
     - https://github.com/ethereum/go-ethereum/blob/0a2f33946b95989e8ce36e72a88138adceab6a23/miner/payload_building.go#L180                                                                        - https://github.com/ethereum/go-ethereum/blob/0a2f33946b95989e8ce36e72a88138adceab6a23/miner/payload_building.go#L204
- 3. In the `buildPayload` function, the go routine is waiting on multiple communication operations "cases" and in the first case it calls `getSealingBlock` with params which explicitly specifie that the block should not be empty. Look at the `fullParams` variable i.e `noTxs:False`.
+ 3. In the `buildPayload` function, the go routine is waiting on multiple communication operations "cases" and in the first case it calls `getSealingBlock` with params which explicitly specifiy that the block should not be empty. Look at the `fullParams` variable i.e `noTxs:False`.
  4. In the definition for `getSealingBlock`, the request is being sent on `getWorkCh` channel. This channel is being listened on in order to retrieve data from it and generate work. 
     - [https://github.com/ethereum/goethereum/blob/master/miner/worker.go#L1222](https://github.com/ethereum/go-ethereum/blob/0a2f33946b95989e8ce36e72a88138adceab6a23/miner/worker.go#L1222)
  5. This `getWorkCh` channel is being listened on inside `mainLoop` function in the same file. The data which comes from the `getWorkCh` channel is then sent to `w.generateWork`.
@@ -28,3 +35,6 @@ https://github.com/ethereum/go-ethereum/blob/master/miner/worker.go#L1072
 14. From this point on after, all transactions are executed one by one. The transactions are then bundled into a block.  
 15. CL then requests EL via Engine API to get this transaction filled with a payload `getPayload`. EL returns this payload to the CL which puts this payload to the beacon block and propagates it.
  
+## Resources
+1. [GETH codebase](https://github.com/ethereum/go-ethereum)
+2. [Engine API: A Visual Guide](https://hackmd.io/@danielrachi/engine_api)
