@@ -179,7 +179,9 @@ In the example above, the values on the left of the assembly code represent the 
 | 60 07    | PUSH1 07 | 2                              | 02            |
 | 01       | ADD      | 1                              | 04            |
 
-EVM **program counter** stores the byte offset of the next instruction to be executed.
+EVM **program counter** stores the byte offset of the next instruction (highlighted) to be executed.
+
+![EVM program counter](../../images/evm/program-counter.gif)
 
 ## Gas
 
