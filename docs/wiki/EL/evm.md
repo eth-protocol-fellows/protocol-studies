@@ -171,6 +171,16 @@ Let's take a moment to celebrate our first EVM assembly code 🎉.
 
 ## Program counter
 
+In the example above, the values on the left of the assembly code represent the byte offset (starting at 0) of each opcode within the bytecode:
+
+| Bytecode | Assembly | Length of Instruction in bytes | Offset in hex |
+| -------- | -------- | ------------------------------ | ------------- |
+| 60 06    | PUSH1 06 | 2                              | 00            |
+| 60 07    | PUSH1 07 | 2                              | 02            |
+| 01       | ADD      | 1                              | 04            |
+
+EVM **program counter** stores the byte offset of the next instruction to be executed.
+
 ## Gas
 
 ## Memory
