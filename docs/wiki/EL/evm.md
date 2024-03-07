@@ -200,6 +200,12 @@ The EVM's **gas** mechanism tackles such threats by acting as a currency for com
 
 This protects the network from getting clogged by resource-intensive or malicious activities. Since gas restricts computations to a finite number of steps, the EVM is considered **quasi Turing complete**.
 
+![EVM Gas](../../images/evm/evm-gas.gif)
+
+Our example assumed 1 unit of gas per opcode for simplicity, but the actual cost varies based on complexity. The core concept, however, remains unchanged.
+
+Refer [Appendix G of Yellow Paper](https://ethereum.github.io/yellowpaper/paper.pdf) for specific gas costs.
+
 ## Memory
 
 ## Storage
