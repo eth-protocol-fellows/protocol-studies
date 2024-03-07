@@ -130,8 +130,6 @@ Identifying opcodes from operands is straightforward. Currently, only `PUSH*` op
 
 Select Opcodes used in this discussion:
 
-During our discussion, we will use the following opcodes:
-
 | Opcode | Name     | Description                                        |
 | ------ | -------- | -------------------------------------------------- |
 | 60     | PUSH1    | Push 1 byte on the stack                           |
@@ -156,6 +154,8 @@ Refer [Appendix H of Yellow Paper](https://ethereum.github.io/yellowpaper/paper.
 We have covered **what** EVM is, let's explore **how** it works.
 
 ## Stack
+
+Stack is a simple data structure with two operations: **PUSH** and **POP**. Push adds an item to top of the stack, while pop removes the top-most item. Stack operates on Last-In-First-Out (LIFO) principle - the last element added is the first removed.
 
 ## Memory
 
