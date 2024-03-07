@@ -5,12 +5,15 @@
   - [Week 0](/eps/week0.md)
   - [Week 1](/eps/week1.md)
   - [Week 2](/eps/week2.md)
+  - [Week 3](/eps/week3.md)
+  - [Week 4](/eps/week4.md)
 - [Contributing](contributing.md)
 - **Protocol Wiki**
 - The Protocol
   - [Overview](/wiki/protocol/overview.md)
   - [History](/wiki/protocol/history.md)
   - [Coordination](/wiki/protocol/pm.md)
+  - [Data Structures](/wiki/protocol/data-structures.md)
   - [CS Resources]
 - Execution Layer
   - [EL Clients](/wiki/EL/el-clients.md)
@@ -21,7 +24,7 @@
   - [DevP2P]
   - [MPT]
   - [JSON-RPC]
-- Consensus Layer
+- [Consensus Layer](/wiki/CL/overview.md)
   - [CL Clients](/wiki/CL/cl-clients.md)
   - [CL Specs](/wiki/CL/cl-specs.md)
   - [Proof-of-Stake]
