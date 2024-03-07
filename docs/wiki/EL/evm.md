@@ -157,11 +157,21 @@ We have covered **what** EVM is, let's explore **how** it works.
 
 Stack is a simple data structure with two operations: **PUSH** and **POP**. Push adds an item to top of the stack, while pop removes the top-most item. Stack operates on Last-In-First-Out (LIFO) principle - the last element added is the first removed. If you try to pop from an empty stack, a **stack underflow error** occurs.
 
-![EVM Stack](../../images/evm/stack.gif)
+![EVM stack](../../images/evm/stack.gif)
 
 > The EVM stack has a maximum size of 1024 items.
 
 During bytecode execution, EVM stack functions as a _scratchpad_: opcodes consume data from the top and push results back (See the `ADD` opcode below). Consider a simple addition program:
+
+![EVM stack addition](../../images/evm/stack-addition.gif)
+
+Reminder: All values are in hexadecimal, so `0x06 + 0x07 = 0x0d (decimal: 13)`.
+
+Let's take a moment to celebrate our first EVM assembly code 🎉.
+
+## Program counter
+
+## Gas
 
 ## Memory
 
