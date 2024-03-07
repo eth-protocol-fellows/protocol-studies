@@ -157,6 +157,8 @@ We have covered **what** EVM is, let's explore **how** it works.
 
 Stack is a simple data structure with two operations: **PUSH** and **POP**. Push adds an item to top of the stack, while pop removes the top-most item. Stack operates on Last-In-First-Out (LIFO) principle - the last element added is the first removed.
 
+![EVM Stack](../../images/evm/stack.gif)
+
 ## Memory
 
 ## Storage
