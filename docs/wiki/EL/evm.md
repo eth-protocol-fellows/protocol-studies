@@ -151,7 +151,7 @@ During our discussion, we will use the following opcodes:
 Refer [Appendix H of Yellow Paper](https://ethereum.github.io/yellowpaper/paper.pdf) for a comprehensive list.
 
 > ℹ️ Note  
-> [EIPs](https://eips.ethereum.org/) can propose EVM modifications. For instance, [https://eips.ethereum.org/EIPS/eip-1153](https://eips.ethereum.org/EIPS/eip-1153) introduced `TSTORE`, and `TSTORE` opcodes.
+> [EIPs](https://eips.ethereum.org/) can propose EVM modifications. For instance, [EIP-1153](https://eips.ethereum.org/EIPS/eip-1153) introduced `TSTORE`, and `TSTORE` opcodes.
 
 We have covered **what** EVM is, let's explore **how** it works.
 
@@ -185,3 +185,6 @@ We have covered **what** EVM is, let's explore **how** it works.
 ### Code / tools
 
 - 💻 Brock Elmore, ["solvm: EVM implemented in solidity."](https://github.com/brockelmore/solvm)
+- 🧮 smlXL, ["evm.codes: Opcode reference and interactive playground."](https://www.evm.codes/)
+- 🧮 smlXL, ["evm.storage: Interactive storage explorer."](https://www.evm.storage/)
+- 🧮 Paradigm, ["Foundry: Ethereum development toolkit."]("https://github.com/foundry-rs/foundry")
