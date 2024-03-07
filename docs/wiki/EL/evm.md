@@ -185,6 +185,13 @@ EVM **program counter** stores the byte offset of the next opcode (highlighted) 
 
 The `JUMP` opcode directly sets the program counter, enabling dynamic control flow and contributing to the EVM's [Turing completeness](https://en.wikipedia.org/wiki/Turing_completeness) by allowing flexible program execution paths.
 
+![EVM JUMP opcode](../../images/evm/jump-opcode.gif)
+
+The code runs in an infinite loop, repeatedly adding 7. It introduces two new opcodes:
+
+- **JUMP**: Sets the program counter to stack top value (02 in our case), determining the next instruction to execute.
+- **JUMPDEST**: Marks the destination of a jump operation, ensuring intended destinations and preventing unwanted control flow disruptions.
+
 ## Gas
 
 ## Memory
