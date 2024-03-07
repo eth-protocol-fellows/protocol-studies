@@ -17,7 +17,7 @@ Additionally, you can read get ready by reading following resources:
 
 ## Outline
 
-- https://github.cosm/ethereum/execution-spec-tests
+- https://github.com/ethereum/execution-spec-tests
 - https://github.com/ethereum/hive
 - https://github.com/ethereum/tests
 - https://github.com/ethereum/retesteth
