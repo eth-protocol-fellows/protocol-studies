@@ -63,6 +63,7 @@ Additionally, you should read through the following documents to prepare for the
 ## Additional reading and exercises 
 
 - https://www.evm.codes/
+- https://ethervm.io/
 - https://github.com/ethereum/go-ethereum
 - https://github.com/ethereum/consensus-specs
 - https://github.com/ethereum/execution-specs

@@ -6,6 +6,7 @@
   - [Week 1](/eps/week1.md)
   - [Week 2](/eps/week2.md)
   - [Week 3](/eps/week3.md)
+  - [Week 4](/eps/week4.md)
 - [Contributing](contributing.md)
 - **Protocol Wiki**
 - The Protocol
