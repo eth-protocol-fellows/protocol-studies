@@ -194,6 +194,12 @@ The code runs in an infinite loop, repeatedly adding 7. It introduces two new op
 
 ## Gas
 
+Our innocent little program may seem harmless. However, infinite loops in EVM pose a significant threat: they can **devour resources**, potentially causing network [**DoS attacks**.](https://en.wikipedia.org/wiki/Denial-of-service_attack)
+
+The EVM's **gas** mechanism tackles such threats by acting as a currency for computational resources. Transactions pay gas in Ether (ETH) to use the EVM, and if they run out of gas before finishing (like an infinite loop), the EVM halts them to prevent resource hogging.
+
+This protects the network from getting clogged by resource-intensive or malicious activities. Since gas restricts computations to a finite number of steps, the EVM is considered **quasi Turing complete**.
+
 ## Memory
 
 ## Storage
