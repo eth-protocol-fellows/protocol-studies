@@ -513,7 +513,13 @@ $ cast storage 0x5fbdb2315678afecb367f032d93f642f64180aa3 0x
 0x000000000000000000000000000000000000000000000000000000000000002a
 ```
 
-Sure enough, the result is [42](<https://simple.wikipedia.org/wiki/42_(answer)>)(0x2a) 🎉.
+Sure enough, the result is indeed [42](<https://simple.wikipedia.org/wiki/42_(answer)>) (0x2a) 🎉.
+
+---
+
+Simulation of contract execution:
+
+![Contract execution](../../images/evm/contract-execution.gif)
 
 ## Wrapping up
 
