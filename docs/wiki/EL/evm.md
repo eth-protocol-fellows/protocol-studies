@@ -388,7 +388,7 @@ $ anvil
     | (_| | | | | |  \ V /  | | | |
      \__,_| |_| |_|   \_/   |_| |_|
 
-    0.1.0 (e488e2b 2024-03-08T15:17:08.108447320Z)
+    0.2.0 (5c3b075 2024-03-08T00:17:08.007462509Z)
     https://github.com/foundry-rs/foundry
 
 Available Accounts
@@ -452,7 +452,15 @@ $ cast balance 0x5fbdb2315678afecb367f032d93f642f64180aa3
 5
 ```
 
+---
+
+Simulation of contract creation:
+
+![Contract creation](../../images/evm/create-contract.gif)
+
 ## Wrapping up
+
+## Appendix A: Transaction signer
 
 ## Resources
 
