@@ -224,6 +224,10 @@ EVM memory writes in 32-byte chunks (`MSTORE`) or single bytes (`MSTORE8`), but 
 
 `MSIZE` reports currently used memory size (in bytes) on the stack (32 bytes or 20 hex in this case).
 
+`MSTORE8` takes same arguments as `MSTORE`, but writes 1 byte instead of 1 word.
+
+![MSTORE8](../../images/evm/mstore8.gif)
+
 ## Storage
 
 ## Transaction
