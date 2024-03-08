@@ -280,6 +280,32 @@ The example above shows only a small section of the account's storage. Like memo
 
 A **transaction** is a cryptographically-signed instruction issued by **an external account**, broadcasted to the entire network using [JSON-RPC](/wiki/EL/json-rpc.md).
 
+A transaction contains following fields:
+
+- **nonce ($T_n$)**: An integer value equal to the number of transactions sent by the sender. Nonce is used to:
+
+  - **Prevent replay attack**: Let's say Alice sends 1 ETH to Bob in a transaction, Bob might try to rebroadcast the same transaction into the network to get additional funds from Alice's account. Since the transaction is signed with a unique nonce, EVM will simply reject it if Bob sends it again. Thus safeguarding Alice's account from unauthorized duplicate transactions.
+  - **Determine contract account address**: In `contract creation` mode, nonce along with the sender's address is used to determine the contract account address.
+  - **Replace a transaction**: When a transaction gets stuck due to low gas price, miners often allow a replacement transaction that has the same nonce. Some wallets may provide the option to cancel a transaction by exploiting this behavior. Essentially, a new transaction with the same nonce, higher gas price, and 0 value is sent, effectively overshadowing the original pending transaction. However, it's crucial to understand that the success of replacing a pending transaction is not guaranteed, as it relies on the behavior of miners and network conditions.
+
+- **gasPrice ($T_p$)**: An integer value equal to the number wei to be paid per unit of gas. **Wei** is the smallest denomination of ether. $1 ETH = 10^{18} Wei$. Gas price is used to prioritize the execution of a transaction. Higher the gas price, more likely that a miner will include the transaction as part of a block.
+
+- **gasLimit ($T_g$)**: An integer value equal to the maximum amount of gas to be used in execution of this transaction. Execution of this transaction will stop if the gasLimit is exhausted.
+
+- **to ($T_t$)**: The 20 byte address of the recipient of this transaction. The `to` also field determines the mode or purpose of the transaction:
+
+| Value of `to`    | Transaction Mode   | Description                                               |
+| ---------------- | ------------------ | --------------------------------------------------------- |
+| _Empty_          | Contract creation  | The transaction creates a new contract account.           |
+| External Account | Value transfer     | The transaction transfers Ether to an external account.   |
+| Contract Account | Contract execution | The transaction invokes the existing smart contract code. |
+
+- **value ($T_v$)**: An integer value equal to the number of Wei to be transferred to this transaction's recipient. In `Contract creation` mode, value becomes the initial balance of the newly created contract account.
+
+- **data ($T_d$) or init($T_i$)**: An unlimited size byte array specifying the input to the EVM. In contract `creation mode`, this value is considered as `init bytecode`, otherwise byte array of `input data`.
+
+- **Signature ($T_v, T_r, T_s$)**: [ECDSA](/wiki/Cryptography/ecdsa.md) signature of the sender.
+
 ## Wrapping up
 
 ## Resources
