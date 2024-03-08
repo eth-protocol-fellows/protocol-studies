@@ -417,7 +417,7 @@ f864808477359400830138808005946008600c60003960086000f360066007026000551ca0144631
 
 Finally, submit the transaction using [cast](https://book.getfoundry.sh/cast/):
 
-```bash
+```javascript
 $ cast publish f864808477359400830138808005946008600c60003960086000f360066007026000551ca01446316c9bdcbe0cb87fac0b08a00e59552634c96d0d6e2bd522ea0db827c1d0a0170680b6c348610ef150c1b443152214203c7f66288ea6332579c0cdfa86cc3f
 
 {
@@ -440,14 +440,14 @@ $ cast publish f864808477359400830138808005946008600c60003960086000f360066007026
 
 Querying the local `anvil` node confirms that code is deployed:
 
-```
+```bash
 $ cast code 0x5fbdb2315678afecb367f032d93f642f64180aa3
 0x6006600702600055
 ```
 
 And the initial balance is available:
 
-```
+```bash
 $ cast balance 0x5fbdb2315678afecb367f032d93f642f64180aa3
 5
 ```
@@ -526,6 +526,47 @@ Simulation of contract execution:
 ## Appendix A: Transaction signer
 
 `signer.js`: A simple [node.js](https://nodejs.org/) script for signing transactions. See comments for explanation:
+
+```javascript
+/**
+ * Utility script to sign a transaction payload array.
+ * Usage: node sign.js '[payload]' [private key]
+ */
+
+const { rlp, keccak256, ecsign } = require("ethereumjs-util");
+
+// Parse command-line arguments
+const payload = JSON.parse(process.argv[2]);
+const privateKey = Buffer.from(process.argv[3].replace("0x", ""), "hex");
+
+//valdiate privatekey length
+if (privateKey.length != 32) {
+  console.error("Private key must be 64 characters long!");
+  process.exit(1);
+}
+
+// STEP 1: Encode payload to RLP
+// Learn more: https://ethereum.org/en/developers/docs/data-structures-and-encoding/rlp/
+const unsignedRLP = rlp.encode(payload);
+
+// STEP 2: Hash the RLP encoded payload
+// Learn more: https://ethereum.org/en/glossary/#keccak-256
+const messageHash = keccak256(unsignedRLP);
+
+// STEP 3: Sign the message
+// Learn more: https://epf.wiki/#/wiki/Cryptography/ecdsa
+const { v, r, s } = ecsign(messageHash, privateKey);
+
+// STEP 4: Append signature to payload
+payload.push(
+  "0x".concat(v.toString(16)),
+  "0x".concat(r.toString("hex")),
+  "0x".concat(s.toString("hex"))
+);
+
+// STEP 5: Output RLP encoded signed transaction
+console.log(rlp.encode(payload).toString("hex"));
+```
 
 ## Resources
 
