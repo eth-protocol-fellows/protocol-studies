@@ -525,6 +525,8 @@ Simulation of contract execution:
 
 ## Appendix A: Transaction signer
 
+`signer.js`: A simple [node.js](https://nodejs.org/) script for signing transactions. See comments for explanation:
+
 ## Resources
 
 ### State machines and theory of computation
