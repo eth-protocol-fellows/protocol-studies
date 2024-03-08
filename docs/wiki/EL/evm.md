@@ -214,8 +214,6 @@ EVM memory is designed as a **word-addressed byte array**. In computer architect
 
 Unlike stack, which provides data to individual instructions, memory stores data that is relevant to the entire program.
 
-EVM memory writes in 32-byte chunks (`MSTORE`) or single bytes (`MSTORE8`), but reads happen only in 32-byte chunks (`MLOAD`).
-
 ### Writing to memory
 
 `MSTORE` takes two values from the stack: an address **offset** and a 32-byte **value**. It then writes the value to memory at the specified offset.
@@ -239,6 +237,16 @@ In EVM, memory is dynamically allocated in multiples of 1 word “pages”. Gas 
 ![Memory expansion](../../images/evm/memory-expansion.gif)
 
 Writing a word at a 1-byte offset overflows the initial memory page, triggering an expansion to 2 words (64 bytes or 0x40).
+
+### Reading from memory
+
+`MLOAD` reads a value from memory and pushes it onto the stack.
+
+![MLOAD](../../images/evm/mload.gif)
+
+EVM doesn't have a direct equivalent to `MSTORE8` for reading. You must read the entire word using `MLOAD` and then extract the desired byte using a [mask](<https://en.wikipedia.org/wiki/Mask_(computing)>).
+
+> EVM memory is shown as blocks of 32 bytes to illustrate how memory expansion works. In reality, it is a seamless sequence of bytes, without any inherent divisions or blocks.
 
 ## Storage
 
