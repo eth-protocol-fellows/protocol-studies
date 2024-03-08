@@ -268,6 +268,14 @@ Again, it’s important to note that storage is not part of the EVM itself, rath
 
 The example above shows only a small section of the account's storage. Like memory, all the values in storage are well-defined as zero.
 
+### Reading from storage
+
+`SLOAD` takes the storage **slot** from the stack and loads its value back onto it.
+
+![EVM Storage read](../../images/evm/sload.gif)
+
+> Notice that the storage value persists between examples. This demonstrating its persistence within the world state. Since the world state is replicated across all nodes, storage operations are gas expensive.
+
 ## Transaction
 
 ## Wrapping up
