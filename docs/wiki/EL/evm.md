@@ -250,6 +250,12 @@ EVM doesn't have a direct equivalent to `MSTORE8` for reading. You must read the
 
 ## Storage
 
+Storage is designed as a **word-addressed word array**. Unlike memory, storage is associated with an Ethereum account and is **persisted** across transactions as part of the world state.
+
+![EVM Storage](../../images/evm/evm-storage.jpg)
+
+Storage can only be accessed via the code of its associated account. External accounts don't have code and therefore cannot access their own storage.
+
 ## Transaction
 
 ## Wrapping up
