@@ -429,7 +429,7 @@ $ cast publish f864808477359400830138808005946008600c60003960086000f360066007026
   "to": null,
   "cumulativeGasUsed": "0xd67e",
   "gasUsed": "0xd67e",
-  // Newly created contract address
+  // Newly created contract address 👇
   "contractAddress": "0x5fbdb2315678afecb367f032d93f642f64180aa3",
   "logs": [],
   "status": "0x1",
@@ -457,6 +457,63 @@ $ cast balance 0x5fbdb2315678afecb367f032d93f642f64180aa3
 Simulation of contract creation:
 
 ![Contract creation](../../images/evm/create-contract.gif)
+
+### Contract code execution
+
+Our simple contract multiplies 6 and 7, then stores the result to storage slot 0. Let's execute the contract code with another transaction.
+
+The transaction payload is similar, except `to` address points to the smart contract, `value` and `data` is empty:
+
+```javascript
+[
+  "0x1", // nonce (increased by 1)
+  "0x77359400", // gasPrice (we're paying 2000000000 wei per unit of gas)
+  "0x13880", // gasLimit (80000 is standard gas for deployment)
+  "0x5fbdb2315678afecb367f032d93f642f64180aa3", // to address ( address of our smart contract)
+  "0x", // value (empty; not sending any ether)
+  "0x", // data (empty)
+];
+```
+
+Sign the transaction:
+
+```bash
+
+$ node sign.js '[ "0x1", "0x77359400", "0x13880", "0x5fbdb2315678afecb367f032d93f642f64180aa3", "0x", "0x"]' ac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80
+
+f86401847735940083013880945fbdb2315678afecb367f032d93f642f64180aa380801ba047ae110d52f7879f0ad214784168406f6cbb6e72e0cab59fa4df93da6494b578a02c72fcdea5b7838b520664186707d1465596e4ad4eaf8781a721530f8b8dd5f2
+```
+
+Publish the transaction:
+
+```bash
+$ cast publish f86401847735940083013880945fbdb2315678afecb367f032d93f642f64180aa380801ba047ae110d52f7879f0ad214784168406f6cbb6e72e0cab59fa4df93da6494b578a02c72fcdea5b7838b520664186707d1465596e4ad4eaf8781a721530f8b8dd5f2
+
+{
+  "transactionHash": "0xc82a658b947c6083de71a0c587322e8335448e65e7310c04832e477558b2b0ef",
+  "transactionIndex": "0x0",
+  "blockHash": "0x40dc37d9933773598094ec0147bef5dfe72e9654025bfaa80c4cdbf634421384",
+  "blockNumber": "0x2",
+  "from": "0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266",
+  "to": "0x5fbdb2315678afecb367f032d93f642f64180aa3",
+  "cumulativeGasUsed": "0xa86a",
+  "gasUsed": "0xa86a",
+  "contractAddress": null,
+  "logs": [],
+  "status": "0x1",
+  "logsBloom": "0x0...",
+  "effectiveGasPrice": "0x77359400"
+}
+```
+
+Read storage **slot 0** using cast:
+
+```
+$ cast storage 0x5fbdb2315678afecb367f032d93f642f64180aa3 0x
+0x000000000000000000000000000000000000000000000000000000000000002a
+```
+
+Sure enough, the result is [42](<https://simple.wikipedia.org/wiki/42_(answer)>)(0x2a) 🎉.
 
 ## Wrapping up
 
