@@ -306,6 +306,75 @@ A transaction contains following fields:
 
 - **Signature ($T_v, T_r, T_s$)**: [ECDSA](/wiki/Cryptography/ecdsa.md) signature of the sender.
 
+### Contract creation
+
+Let's deploy the following code onto a new contract account:
+
+```bash
+[00] PUSH1 06 // Push 06
+[02] PUSH1 07 // Push 07
+[04] MUL      // Multiply
+[05] PUSH1 0  // Push 00 (storage address)
+[07] SSTORE   // Store result to storage location 00
+```
+
+The brackets indicate instruction offset. The corresponding bytecode becomes:
+
+```bash
+6006600702600055
+```
+
+Now, let's prepare the `init` value of our transaction to deploy this bytecode. Init actually consists of two fragments:
+
+```
+<init bytecode> <runtime bytecode>
+```
+
+`init` is executed by EVM only once at account creation. The return value of init code execution is the **runtime bytecode**, which is stored as part of the contract account. Runtime bytecode is executed every time a contract account receives a transaction.
+
+Let's prepare our init code such that it returns our runtime code:
+
+```bash
+// 1. Copy to memory
+[00] PUSH1 08 // PUSH1 08 (length of our runtime code)
+[02] PUSH1 0c // PUSH1 0c (offset of the runtime code in init)
+[04] PUSH1 00 // PUSH1 00 (destination in memory)
+[06] CODECOPY // Copy code running in current environment to memory
+// 2. Return from memory
+[07] PUSH1 08 // PUSH1 08 (length of return data)
+[09] PUSH1 00 // PUSH1 00 (memory location to return from)
+[0b] RETURN   // Return the runtime code and halt execution
+// 3. Runtime code (8 bytes long)
+[0c] PUSH1 06
+[0e] PUSH1 07
+[10] MUL
+[11] PUSH1 0
+[13] SSTORE
+```
+
+The code does 2 simple things: First, copy the runtime bytecode to memory and then return the runtime bytecode from memory.
+
+Init bytecode becomes:
+
+```javascript
+6008600c60003960086000f36006600702600055
+```
+
+Next, prepare the transaction payload:
+
+```javascript
+[
+  "0x", // nonce (zero nonce, since first transaction)
+  "0x77359400", // gasPrice (we're paying 2000000000 wei per unit of gas)
+  "0x13880", // gasLimit (80000 is standard gas for deployment)
+  "0x", // to address (empty in contract creation mode)
+  "0x05", //value (we'll be nice and send 5 wei to our new contract)
+  "0x6008600c60003960086000f36006600702600055", // init code
+];
+```
+
+> Order of the values in the payload is important!
+
 ## Wrapping up
 
 ## Resources
