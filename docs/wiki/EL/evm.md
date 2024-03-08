@@ -208,6 +208,14 @@ Refer [Appendix G of Yellow Paper](https://ethereum.github.io/yellowpaper/paper.
 
 ## Memory
 
+EVM memory is designed as a **word-addressed byte array**. In computer architecture, a word refers to a fixed-size unit of data that the CPU can process at once. EVM has a word size of **32 bytes**.
+
+![EVM Memory](../../images/evm/evm-memory.jpg)
+
+Unlike stack, which provides data to individual instructions, memory stores data that is relevant to the entire program.
+
+EVM memory writes in 32-byte chunks (`MSTORE`) or single bytes (`MSTORE8`), but reads happen only in 32-byte chunks (`MLOAD`).
+
 ## Storage
 
 ## Transaction
