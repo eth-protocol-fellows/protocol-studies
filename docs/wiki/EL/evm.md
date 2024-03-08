@@ -278,6 +278,8 @@ The example above shows only a small section of the account's storage. Like memo
 
 ## Transaction
 
+A **transaction** is a cryptographically-signed instruction issued by **an external account**, broadcasted to the entire network using [JSON-RPC](/wiki/EL/json-rpc.md).
+
 ## Wrapping up
 
 ## Resources
