@@ -256,6 +256,18 @@ Storage is designed as a **word-addressed word array**. Unlike memory, storage i
 
 Storage can only be accessed via the code of its associated account. External accounts don't have code and therefore cannot access their own storage.
 
+## Writing to storage
+
+`SSTORE` takes two values from the stack: a storage **slot** and a 32-byte **value**. It then writes the value to storage of the account.
+
+![EVM Storage write](../../images/evm/sstore.gif)
+
+We've been running a contract account's bytecode all this time. Only now we see the account and the world state, and it matches the code inside the EVM.
+
+Again, it’s important to note that storage is not part of the EVM itself, rather the currently executing contract account.
+
+The example above shows only a small section of the account's storage. Like memory, all the values in storage are well-defined as zero.
+
 ## Transaction
 
 ## Wrapping up
