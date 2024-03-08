@@ -228,6 +228,18 @@ EVM memory writes in 32-byte chunks (`MSTORE`) or single bytes (`MSTORE8`), but 
 
 ![MSTORE8](../../images/evm/mstore8.gif)
 
+Notice: When writing 07 to memory, the existing value (06) remains unchanged. It's written to the adjacent byte offset.
+
+The size of active memory is still 1 word.
+
+### Memory expansion
+
+In EVM, memory is dynamically allocated in multiples of 1 word “pages”. Gas is charged for the number of pages expanded. All locations in memory are well-defined initially as zero.
+
+![Memory expansion](../../images/evm/memory-expansion.gif)
+
+Writing a word at a 1-byte offset overflows the initial memory page, triggering an expansion to 2 words (64 bytes or 0x40).
+
 ## Storage
 
 ## Transaction
