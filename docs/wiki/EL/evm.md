@@ -216,6 +216,12 @@ Unlike stack, which provides data to individual instructions, memory stores data
 
 EVM memory writes in 32-byte chunks (`MSTORE`) or single bytes (`MSTORE8`), but reads happen only in 32-byte chunks (`MLOAD`).
 
+### Writing to memory
+
+`MSTORE` takes two values from the stack: an address **offset** and a 32-byte **value**. It then writes the value to memory at the specified offset.
+
+![MSTORE](../../images/evm/mstore.gif)
+
 ## Storage
 
 ## Transaction
