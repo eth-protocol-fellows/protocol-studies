@@ -1,9 +1,20 @@
 > [!NOTE]
 > This topic is open for collaboration on a separate branch
 
-# Overview
+# Execution Layer Specifications
 
-The Execution Layer focuses exclusively on executing the state transition function (STF). This role encompasses addressing two primary questions[¹]:
+The Execution Layer Client is built upon a variety of distinct specifications, each detailed in various documents and contributing uniquely to its overall functionality. This document seeks to offer a thorough analysis of each specification, delving deep into their respective roles and contributions. For insights into how these specifications are synergistically integrated within the Execution Layer Client, please refer to the companion document, [Execution Layer Architecture](/wiki/EL/el-architecture.md).
+
+This document will provide annotations for the following specifications:
+
+- EELS
+- Engine API
+- Devp2p
+- JSON-RPC
+
+## Ethereum Execution Layer Specification (EELS)
+
+The Execution Layer, from the EELS perspective, focuses exclusively on executing the state transition function (STF). This role encompasses addressing two primary questions[¹]:
 
 - Is it possible to append the block to the end of the blockchain?
 - How does the state change as a result?
@@ -45,7 +56,7 @@ The specified procedure for the state transition function in the code documentat
 7. **Pruning Old Blocks**: Remove blocks that are older than the most recent 255 blocks from the blockchain.
 8. **Error Handling**: If any validation checks fail, raise an "Invalid Block" error. Otherwise, return None.
 
-## Header Validation
+### Header Validation
 
 Block Header validity as defined in the yellow paper:
 
@@ -56,7 +67,7 @@ $$\land $$ $$ H_{gasLimit} > P(H)_{H_{gasLimit'}} - \left\lfloor \frac{P(H)_{H_{
 
 TODO
 
-## Block Execution
+### Block Execution
 
 TODO
 
