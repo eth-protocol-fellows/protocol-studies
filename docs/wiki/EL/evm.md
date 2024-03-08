@@ -375,6 +375,83 @@ Next, prepare the transaction payload:
 
 > Order of the values in the payload is important!
 
+Install [foundry](https://getfoundry.sh/) to deploy the transaction locally and launch [anvil](https://book.getfoundry.sh/anvil/) local node.
+
+```
+$ anvil
+
+
+                             _   _
+                            (_) | |
+      __ _   _ __   __   __  _  | |
+     / _` | | '_ \  \ \ / / | | | |
+    | (_| | | | | |  \ V /  | | | |
+     \__,_| |_| |_|   \_/   |_| |_|
+
+    0.1.0 (e488e2b 2024-03-08T15:17:08.108447320Z)
+    https://github.com/foundry-rs/foundry
+
+Available Accounts
+==================
+
+(0) "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266" (10000.000000000000000000 ETH)
+.....
+
+Private Keys
+==================
+
+(0) 0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80
+.....
+Listening on 127.0.0.1:8545
+```
+
+Sign the transaction using one of anvil's dummy account:
+
+```bash
+$ node sign.js '[ "0x", "0x77359400", "0x13880", "0x", "0x05", "0x6008600c60003960086000f36006600702600055" ]' ac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80
+
+f864808477359400830138808005946008600c60003960086000f360066007026000551ca01446316c9bdcbe0cb87fac0b08a00e59552634c96d0d6e2bd522ea0db827c1d0a0170680b6c348610ef150c1b443152214203c7f66288ea6332579c0cdfa86cc3f
+```
+
+> See **Appendix A** below for the source of `sign.js` helper script.
+
+Finally, submit the transaction using [cast](https://book.getfoundry.sh/cast/):
+
+```bash
+$ cast publish f864808477359400830138808005946008600c60003960086000f360066007026000551ca01446316c9bdcbe0cb87fac0b08a00e59552634c96d0d6e2bd522ea0db827c1d0a0170680b6c348610ef150c1b443152214203c7f66288ea6332579c0cdfa86cc3f
+
+{
+  "transactionHash": "0xdfaf2817f19963846490b330ae33eba7b42872e8c8bd111c8d7ea3846c84cd51",
+  "transactionIndex": "0x0",
+  "blockHash": "0xfde1475a716583d847f858c5db3e54156983b39e3dbefaa5829416e6e60a788a",
+  "blockNumber": "0x1",
+  "from": "0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266",
+  "to": null,
+  "cumulativeGasUsed": "0xd67e",
+  "gasUsed": "0xd67e",
+  // Newly created contract address
+  "contractAddress": "0x5fbdb2315678afecb367f032d93f642f64180aa3",
+  "logs": [],
+  "status": "0x1",
+  "logsBloom": "0x0...",
+  "effectiveGasPrice": "0x77359400"
+}
+```
+
+Querying the local `anvil` node confirms that code is deployed:
+
+```
+$ cast code 0x5fbdb2315678afecb367f032d93f642f64180aa3
+0x6006600702600055
+```
+
+And the initial balance is available:
+
+```
+$ cast balance 0x5fbdb2315678afecb367f032d93f642f64180aa3
+5
+```
+
 ## Wrapping up
 
 ## Resources
