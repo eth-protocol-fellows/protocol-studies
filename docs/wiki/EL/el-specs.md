@@ -1,9 +1,12 @@
-> [!NOTE]
-> This topic is open for collaboration on a separate branch
-
 # Execution Layer Specifications
 
-The Execution Layer Client is built upon a variety of distinct specifications, each detailed in various documents and contributing uniquely to its overall functionality. This document seeks to offer a thorough analysis of each specification, delving deep into their respective roles and contributions. For insights into how these specifications are synergistically integrated within the Execution Layer Client, please refer to the companion document, [Execution Layer Architecture](/wiki/EL/el-architecture.md).
+Execution Layer at its core is responsible for executing 3 types of transactions legacy, Type 1 and Type 2 . The transactions are processed in a quasi-turing complete Ethereum Virtual Machine , which means you can do any kind of computation on it limited by gas. This characteristic empowers it to serve a decentralized world computer , facilitating the operation of decentralized applications (DApps). Beyond transaction processing , The Execution Layer it is also responsible for Storing the data structures in the State DB that give the layer the capability to observe the current state or revert to any historical state.
+
+<img src="images/el-architecture/state.png" width="800"/>
+
+In addition to its primary function , the layer is also responsible for syncing its own copy of the blockchain , gossiping with other EL clients and addressing the requirements of the consensus api that actually drives the execution layer.
+
+Furthermore, the Execution Layer Client is built upon a variety of distinct specifications, each detailed in various documents and contributing uniquely to its overall functionality. This document seeks to offer a thorough analysis of each specification, delving deep into their respective roles and contributions. For insights into how these specifications are synergistically integrated within the Execution Layer Client, please refer to the companion document, [Execution Layer Architecture](/wiki/EL/el-architecture.md).
 
 This document will provide annotations for the following specifications:
 
@@ -73,4 +76,7 @@ TODO
 
 
 [¹]: https://archive.devcon.org/archive/watch/6/eels-the-future-of-execution-layer-specifications/?tab=YouTube
+
+> [!NOTE]
+> All the topics in this PR are open for collaboration on a separate branch
 $$
