@@ -462,7 +462,7 @@ Simulation of contract creation:
 
 ### Contract code execution
 
-Our simple contract multiplies 6 and 7, then stores the result to storage slot 0. Let's execute the contract code with another transaction.
+Our simple contract multiplies 6 and 7, then stores the result to storage **slot 0**. Let's execute the contract code with another transaction.
 
 The transaction payload is similar, except `to` address points to the smart contract, `value` and `data` is empty:
 
@@ -525,7 +525,7 @@ Simulation of contract execution:
 
 ## Wrapping up
 
-Developers rarely write EVM assembly code directly unless performance optimization is crucial. Instead, most developers work with higher-level languages like Solidity, which is then compiled into bytecode.
+Developers rarely write EVM assembly code directly unless performance optimization is crucial. Instead, most developers work with higher-level languages like [Solidity](https://soliditylang.org/), which is then compiled into bytecode.
 
 Ethereum is a continuously evolving protocol e.g., [EIP-155](https://eips.ethereum.org/EIPS/eip-155) extends transaction payload. While the fundamentals we've discussed will remain largely relevant, following [Ethereum Improvement Proposals (EIPs)](https://eips.ethereum.org/) is encouraged to stay informed of the latest developments in the Ethereum ecosystem.
 
