@@ -192,6 +192,8 @@ The code runs in an infinite loop, repeatedly adding 7. It introduces two new op
 - **JUMP**: Sets the program counter to stack top value (02 in our case), determining the next instruction to execute.
 - **JUMPDEST**: Marks the destination of a jump operation, ensuring intended destinations and preventing unwanted control flow disruptions.
 
+> High level languages like [Solidity](https://soliditylang.org/) leverage jumps for constructs like if conditions, for loops, and internal functions calls.
+
 ## Gas
 
 Our innocent little program may seem harmless. However, infinite loops in EVM pose a significant threat: they can **devour resources**, potentially causing network [**DoS attacks**.](https://en.wikipedia.org/wiki/Denial-of-service_attack)
@@ -522,6 +524,10 @@ Simulation of contract execution:
 ![Contract execution](../../images/evm/contract-execution.gif)
 
 ## Wrapping up
+
+Developers rarely write EVM assembly code directly unless performance optimization is crucial. Instead, most developers work with higher-level languages like Solidity, which is then compiled into bytecode.
+
+Ethereum is a continuously evolving protocol e.g., [EIP-155](https://eips.ethereum.org/EIPS/eip-155) extends transaction payload. While the fundamentals we've discussed will remain largely relevant, following [Ethereum Improvement Proposals (EIPs)](https://eips.ethereum.org/) is encouraged to stay informed of the latest developments in the Ethereum ecosystem.
 
 ## Appendix A: Transaction signer
 
