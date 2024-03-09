@@ -1,6 +1,6 @@
 # Execution Layer Specifications
 
-Execution Layer at its core is responsible for executing 3 types of transactions legacy, Type 1 and Type 2 . The transactions are processed in a quasi-turing complete Ethereum Virtual Machine , which means you can do any kind of computation on it limited by gas. This characteristic empowers it to serve a decentralized world computer , facilitating the operation of decentralized applications (DApps). Beyond transaction processing , The Execution Layer it is also responsible for Storing the data structures in the State DB that give the layer the capability to observe the current state or revert to any historical state.
+Execution Layer at its core is responsible for executing 3 types of transactions legacy, Type 1 and Type 2 . The transactions are processed in a quasi-turing complete Ethereum Virtual Machine , which means you can do any kind of computation on it limited by gas. This characteristic empowers it to serve a decentralized world computer , facilitating the operation of decentralized applications (DApps). Beyond transaction processing , The Execution Layer is also responsible for Storing the data structures in the State DB that give the layer the capability to observe the current state or revert to any historical state.
 
 <img src="images/el-architecture/state.png" width="800"/>
 
@@ -8,7 +8,7 @@ In addition to its primary function , the layer is also responsible for syncing 
 
 Furthermore, the Execution Layer Client is built upon a variety of distinct specifications, each detailed in various documents and contributing uniquely to its overall functionality. This document seeks to offer a thorough analysis of each specification, delving deep into their respective roles and contributions. For insights into how these specifications are synergistically integrated within the Execution Layer Client, please refer to the companion document, [Execution Layer Architecture](/wiki/EL/el-architecture.md).
 
-This document will provide annotations for the following specifications:
+This document will provide annotations or links for the following specifications:
 
 - EELS
 - Engine API
@@ -16,6 +16,11 @@ This document will provide annotations for the following specifications:
 - JSON-RPC
 
 ## Ethereum Execution Layer Specification (EELS)
+
+> **Where is it specified?**
+>
+> - [Yellow Paper paris version 705168a – 2024-03-04](https://ethereum.github.io/yellowpaper/paper.pdf)
+> - [Python Execution Layer specification](https://ethereum.github.io/execution-specs/)
 
 The Execution Layer, from the EELS perspective, focuses exclusively on executing the state transition function (STF). This role encompasses addressing two primary questions[¹]:
 
