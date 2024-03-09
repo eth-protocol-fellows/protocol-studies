@@ -591,16 +591,33 @@ console.log(rlp.encode(payload).toString("hex"));
 - 📝 Shafu, ["EVM from scratch."](https://evm-from-scratch.xyz/)
 - 📝 NOXX, ["3 part series: EVM Deep Dives - The Path to Shadowy Super Coder."](https://noxx.substack.com/p/evm-deep-dives-the-path-to-shadowy) • [archived](https://web.archive.org/web/20240106034644/https://noxx.substack.com/p/evm-deep-dives-the-path-to-shadowy)
 - 📝LeftAsExercise, ["Smart contracts and the Ethereum virtual machine."](https://leftasexercise.com/2021/08/08/q-smart-contracts-and-the-ethereum-virtual-machine/) • [archived](https://web.archive.org/web/20230324200211/https://leftasexercise.com/2021/08/08/q-smart-contracts-and-the-ethereum-virtual-machine/)
+- 📝 Femboy Capital, ["A Playdate with the EVM"](https://femboy.capital/evm-pt1) • [archived](https://web.archive.org/web/20221001113802/https://femboy.capital/evm-pt1)
 - 📝 OpenZeppelin, ["6 part series: Deconstructing a Solidity"](https://blog.openzeppelin.com/deconstructing-a-solidity-contract-part-i-introduction-832efd2d7737) • [archived](https://web.archive.org/web/20240121025651/https://blog.openzeppelin.com/deconstructing-a-solidity-contract-part-i-introduction-832efd2d7737)
-- Femboy Capital, ["A Playdate with the EVM"](https://femboy.capital/evm-pt1) • [archived](https://web.archive.org/web/20221001113802/https://femboy.capital/evm-pt1)
+- 📝 TrustLook, ["Understand EVM bytecode"](https://blog.trustlook.com/understand-evm-bytecode-part-1/) • [archived](https://web.archive.org/web/20230603080857/https://blog.trustlook.com/understand-evm-bytecode-part-1/)
+- Random Notes, ["Signing transactions the hard way"](https://lsongnotes.wordpress.com/2018/01/14/signing-an-ethereum-transaction-the-hard-way/) • [archived](https://web.archive.org/web/20240229045603/https://lsongnotes.wordpress.com/2018/01/14/signing-an-ethereum-transaction-the-hard-way/)
+- Degatchi, ["A Low-Level Guide To Solidity's Storage Management"](https://degatchi.com/articles/low_level_guide_to_soliditys_storage_management) • [archived](https://web.archive.org/web/20231202105650/https://degatchi.com/articles/low_level_guide_to_soliditys_storage_management/)
 - 🎥 Jordan McKinney, ["Ethereum Explained: The EVM"](https://www.youtube.com/watch?v=kCswGz9naZg)
 - 🎥 Whiteboard Crypto, ["EVM: An animated non-technical introduction"](https://youtu.be/sTOcqS4msoU)
 
-### Code / tools
+### Tools / puzzles
 
 - 🧮 smlXL, ["evm.codes: Opcode reference and interactive playground."](https://www.evm.codes/)
 - 🧮 smlXL, ["evm.storage: Interactive storage explorer."](https://www.evm.storage/)
-- 💻 Brock Elmore, ["solvm: EVM implemented in solidity."](https://github.com/brockelmore/solvm)
 - 🧮 Paradigm, ["Foundry: Ethereum development toolkit."](https://github.com/foundry-rs/foundry)
 - 🎥 Austin Griffith, ["ETH.BUILD"](https://www.youtube.com/watch?v=30pa790tIIA&list=PLJz1HruEnenCXH7KW7wBCEBnBLOVkiqIi)
-- 🧮 Franco Victorio, ["EVM puzzles"](https://github.com/fvictorio/evm-puzzles)
+- 💻 Franco Victorio, ["EVM puzzles"](https://github.com/fvictorio/evm-puzzles)
+
+## Implementations
+
+- 💻 Solidity: Brock Elmore, ["solvm: EVM implemented in solidity."](https://github.com/brockelmore/solvm)
+- 💻 Go: [Geth](https://github.com/ethereum/go-ethereum)
+- 💻 C++: [EVMONE](https://github.com/ethereum/evmone)
+- 💻 Python: [py-evm](https://github.com/ethereum/py-evm)
+- 💻 Rust: [revm](https://github.com/bluealloy/revm)
+- 💻 Js/CSS: Riley, ["The Ethereum Virtual Machine"](https://github.com/jtriley-eth/the-ethereum-virtual-machine)
+
+### EVM based programming languages
+
+- 🗄 [Solidity](https://soliditylang.org/)
+- 🗄 [Huff](https://github.com/huff-language/)
+- 🗄 [Vyper](https://docs.vyperlang.org/en/stable/)
