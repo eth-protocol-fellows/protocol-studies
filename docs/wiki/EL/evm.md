@@ -2,15 +2,15 @@
 
 You have likely observed that Ethereum transactions take some time to finalise, [around 12 seconds](https://web.archive.org/web/20240304145956/https://etherscan.io/chart/blocktime) at the time of writing. A series of crucial steps occur during this timeframe. The transaction is first queued in a pool. Then, it is selected by a node and executed by a special program - **the Ethereum Virtual Machine (EVM)**, the result of which is stored on the blockchain.
 
-This article describes the role of EVM in ethereum ecosystem and how it works. As the EVM executes transactions, it modifies the overall state of ethereum. In that regard, ethereum can be modeled as a **state machine**.
+This article describes the role of EVM in Ethereum ecosystem and how it works. As the EVM executes transactions, it modifies the overall state of Ethereum. In that regard, Ethereum can be modeled as a **state machine**.
 
 ## The Ethereum state machine
 
 In computer science, **state machine** is an abstraction used to model the behavior of a system. It illustrates how a system can be represented by a set of distinct states and how inputs can drive changes in the state.
 
-A familiar example of a state machine is the vending machine, an automated system dispensing products upon receiving payment.
+A familiar is a vending machine, an automated system for dispensing products upon receiving payment.
 
-We can model the vending machine existing in three distinct states: idle, awaiting user selection, and dispensing a product. Inputs such as coin insertion or product selection trigger transitions between these states, as depicted in the state diagram:
+We can model a vending machine existing in three distinct states: idle, awaiting user selection, and dispensing a product. Inputs such as coin insertion or product selection trigger transitions between these states, as depicted in the state diagram:
 
 ![Vending machine](../../images/evm/vending-machine.gif)
 
@@ -44,13 +44,13 @@ Notice in the last case, the current state transitions back to itself.
 
 Ethereum, as a whole, can be viewed as a **transaction-based state machine**. It receives transactions as inputs and transitions into a new state. The current state of Ethereum is referred to as the **world state**.
 
-Let's consider a simple Ethereum application - an NFT marketplace.
+Consider a simple Ethereum application - an [NFT](https://ethereum.org/en/nft/) marketplace.
 
 In the current world state **S3** (green), Alice owns an NFT. The animation below shows a transaction transferring ownership to you (**S3** ➡️ **S4**). Similarly, selling the NFT back to Alice would transition the state to **S5**:
 
 ![Ethereum state machine](../../images/evm/ethereum-state-machine.gif)
 
-Notice that the world state is animated _as a pulsating green bubble_.
+Notice the current world state is animated _as a pulsating green bubble_.
 
 In the model above, each transaction is committed to a new state. However, in reality, a group of transactions is bundled into a **block**, and the resulting state is added to the chain of previous states. It must be apparent now why this technology is called **blockchain**.
 
@@ -198,7 +198,7 @@ The code runs in an infinite loop, repeatedly adding 7. It introduces two new op
 
 Our innocent little program may seem harmless. However, infinite loops in EVM pose a significant threat: they can **devour resources**, potentially causing network [**DoS attacks**.](https://en.wikipedia.org/wiki/Denial-of-service_attack)
 
-The EVM's **gas** mechanism tackles such threats by acting as a currency for computational resources. Transactions pay gas in Ether (ETH) to use the EVM, and if they run out of gas before finishing (like an infinite loop), the EVM halts them to prevent resource hogging.
+The EVM's **gas** mechanism tackles such threats by acting as a currency for computational resources. Transactions pay gas in **Ether (ETH)** to use the EVM, and if they run out of gas before finishing (like an infinite loop), the EVM halts them to prevent resource hogging.
 
 This protects the network from getting clogged by resource-intensive or malicious activities. Since gas restricts computations to a finite number of steps, the EVM is considered **quasi Turing complete**.
 
@@ -276,7 +276,7 @@ The example above shows only a small section of the account's storage. Like memo
 
 ![EVM Storage read](../../images/evm/sload.gif)
 
-> Notice that the storage value persists between examples. This demonstrating its persistence within the world state. Since the world state is replicated across all nodes, storage operations are gas expensive.
+> Notice that the storage value persists between examples, demonstrating its persistence within the world state. Since the world state is replicated across all nodes, storage operations are gas expensive.
 
 ## Transaction
 
@@ -290,11 +290,11 @@ A transaction contains following fields:
   - **Determine contract account address**: In `contract creation` mode, nonce along with the sender's address is used to determine the contract account address.
   - **Replace a transaction**: When a transaction gets stuck due to low gas price, miners often allow a replacement transaction that has the same nonce. Some wallets may provide the option to cancel a transaction by exploiting this behavior. Essentially, a new transaction with the same nonce, higher gas price, and 0 value is sent, effectively overshadowing the original pending transaction. However, it's crucial to understand that the success of replacing a pending transaction is not guaranteed, as it relies on the behavior of miners and network conditions.
 
-- **gasPrice ($T_p$)**: An integer value equal to the number wei to be paid per unit of gas. **Wei** is the smallest denomination of ether. $1 ETH = 10^{18} Wei$. Gas price is used to prioritize the execution of a transaction. Higher the gas price, more likely that a miner will include the transaction as part of a block.
+- **gasPrice ($T_p$)**: An integer value equal to the number wei to be paid per unit of gas. **Wei** is the smallest denomination of ether. $1  \textnormal{ETH} = 10^{18} \textnormal{Wei}$. Gas price is used to prioritize the execution of a transaction. Higher the gas price, more likely that a miner will include the transaction as part of a block.
 
 - **gasLimit ($T_g$)**: An integer value equal to the maximum amount of gas to be used in execution of this transaction. Execution of this transaction will stop if the gasLimit is exhausted.
 
-- **to ($T_t$)**: The 20 byte address of the recipient of this transaction. The `to` also field determines the mode or purpose of the transaction:
+- **to ($T_t$)**: The 20-byte address of the recipient of this transaction. The `to` also field determines the mode or purpose of the transaction:
 
 | Value of `to`    | Transaction Mode   | Description                                               |
 | ---------------- | ------------------ | --------------------------------------------------------- |
@@ -317,10 +317,10 @@ Let's deploy the following code onto a new contract account:
 [02] PUSH1 07 // Push 07
 [04] MUL      // Multiply
 [05] PUSH1 0  // Push 00 (storage address)
-[07] SSTORE   // Store result to storage location 00
+[07] SSTORE   // Store result to storage slot 00
 ```
 
-The brackets indicate instruction offset. The corresponding bytecode becomes:
+The brackets indicate instruction offset. Corresponding bytecode:
 
 ```bash
 6006600702600055
@@ -356,7 +356,7 @@ Let's prepare our init code such that it returns our runtime code:
 
 The code does 2 simple things: First, copy the runtime bytecode to memory and then return the runtime bytecode from memory.
 
-Init bytecode becomes:
+`init` bytecode:
 
 ```javascript
 6008600c60003960086000f36006600702600055
