@@ -6,15 +6,15 @@ Execution Layer at its core is responsible for executing 3 types of transactions
 
 The actions in the above image come from the yellow paper(paris version) :
 
-1. $$ TRIE(L_s^*(\sigma[a]_s)) \equiv \sigma[a]_s \tag{7}$$
-   This gives the root of the Trie after mapping each node (referred to as collapse function $L_s^*$)  with the function $$ L_1((k,v)) \equiv (KEC(k), RLP(v)) \tag{8} $$
-2. The account state is described in the yellow paper page 4 paragraph 1. 
+1. $$TRIE(L_s^*(\sigma[a]_s)) \equiv \sigma[a]_s \tag{7}$$
+   This gives the root of the account storage Trie after mapping each node (referred to as collapse function $L_s^*$)  with the function $$ L_1((k,v)) \equiv (KEC(k), RLP(v)) \tag{8} $$
+2. The account state $ \sigma[a] $ is described in the yellow paper page 4 paragraph 1.
 3. This is the world state collapse function , applied to all accounts considered not empty:
-$$  L_s(\sigma) \equiv \{p(a) : \sigma[a] \neq \empty \} \tag{10}$$
-4. The equation below defines the Parent block's state root header and the **TRIE** function gives us the root of the TRIE
-5. $$ TRIE(L_s(\sigma)) = P(B_H)_{H_{stateRoot}} \tag{36}$$ 
- where $P(B_H)$ is the Parent Block 
-6. $$ H_{stateRoot} \equiv TRIE(L_s(\Pi(\sigma, B))) \tag{33b} $$ this gives us the state root of the current block
+   $$ L_s(\sigma) \equiv \{p(a) : \sigma[a] \neq \empty \} \tag{10}$$
+4. The equation below defines the Parent block's state root header and the TRIE function gives us the root of the TRIE
+5. $$ TRIE(L_s(\sigma)) = P(B_H)_{H_{stateRoot}} \tag{36}$$
+   where $P(B_H)$ is the Parent Block
+6. $$ H\_{stateRoot} \equiv TRIE(L_s(\Pi(\sigma, B))) \tag{33b} $$ this gives us the state root of the current block
 
 In addition to its primary function , the layer is also responsible for syncing its own copy of the blockchain , gossiping with other EL clients and addressing the requirements of the consensus api that actually drives the execution layer.
 
@@ -25,7 +25,6 @@ This document will provide annotations or links for the following specifications
 - EELS
 - Engine API
 - Devp2p
-- JSON-RPC
 
 ## Ethereum Execution Layer Specification (EELS)
 
