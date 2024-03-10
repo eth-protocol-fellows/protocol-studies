@@ -31,8 +31,9 @@ This document will provide annotations or links for the following specifications
 
 > **Where is it specified?**
 >
-> - [Yellow Paper paris version 705168a – 2024-03-04](https://ethereum.github.io/yellowpaper/paper.pdf)
+> - [Yellow Paper paris version 705168a – 2024-03-04](https://ethereum.github.io/yellowpaper/paper.pdf) (note: This is outdated does not take into account post merge updates)
 > - [Python Execution Layer specification](https://ethereum.github.io/execution-specs/)
+> - EIPs
 
 The Execution Layer, from the EELS perspective, focuses exclusively on executing the state transition function (STF). This role encompasses addressing two primary questions[¹]:
 
