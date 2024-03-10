@@ -11,7 +11,7 @@ While the EL can be used for direct L1 dApp transactions, the goal, as mentioned
 
 The CL will be used by rollups for Data Availability (DA) and to store proofs of validity, especially for ZK rollups. To achieve scalability and reduce gas costs, storing data on the CL blocks must be affordable in the long term. To accomplish this ambitious roadmap, the development of the CL can be outlined in the following phases:
 
-- Proto-danksharding ([EIP-4844](https://eips.ethereum.org/EIPS/eip-4844)), the upgrade introducing blobs (live on March 14, 2024).
+- Proto-danksharding ([EIP-4844](https://eips.ethereum.org/EIPS/eip-4844)), the upgrade introducing blobs (live on March 14th, 2024).
 - Increasing [blob count & gas modifications](https://ethresear.ch/t/on-increasing-the-block-gas-limit/18567) (planned for EOY 2024).
 - Addition of [PeerDAS](https://ethresear.ch/t/peerdas-a-simpler-das-approach-using-battle-tested-p2p-components/16541).
 - Full implementation of [Danksharding](https://ethresear.ch/t/from-4844-to-danksharding-a-path-to-scaling-ethereum-da/18046).
