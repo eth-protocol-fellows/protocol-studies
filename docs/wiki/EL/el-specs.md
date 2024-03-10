@@ -1,8 +1,20 @@
 # Execution Layer Specifications
 
-Execution Layer at its core is responsible for executing 3 types of transactions legacy, Type 1 and Type 2 . The transactions are processed in a quasi-turing complete Ethereum Virtual Machine , which means you can do any kind of computation on it limited by gas. This characteristic empowers it to serve a decentralized world computer , facilitating the operation of decentralized applications (DApps). Beyond transaction processing , The Execution Layer is also responsible for Storing the data structures in the State DB that give the layer the capability to observe the current state or revert to any historical state.
+Execution Layer at its core is responsible for executing 3 types of transactions legacy, Type 1 and Type 2 . The transactions are processed in a quasi-turing complete Ethereum Virtual Machine , which means you can do any kind of computation on it limited by gas. This characteristic empowers it to serve as a decentralized world computer , facilitating the operation of decentralized applications (DApps) or simple transactions that are recorded in an immutable decentralized ledger. Beyond transaction processing , The Execution Layer is also responsible for Storing the data structures in the State DB that give the layer the capability to observe the current state or revert to any historical state.
 
 <img src="images/el-architecture/state.png" width="800"/>
+
+The actions in the above image come from the yellow paper(paris version) :
+
+1. $$ TRIE(L_s^*(\sigma[a]_s)) \equiv \sigma[a]_s \tag{7}$$
+   This gives the root of the Trie after mapping each node (referred to as collapse function $L_s^*$)  with the function $$ L_1((k,v)) \equiv (KEC(k), RLP(v)) \tag{8} $$
+2. The account state is described in the yellow paper page 4 paragraph 1. 
+3. This is the world state collapse function , applied to all accounts considered not empty:
+$$  L_s(\sigma) \equiv \{p(a) : \sigma[a] \neq \empty \} \tag{10}$$
+4. The equation below defines the Parent block's state root header and the **TRIE** function gives us the root of the TRIE
+5. $$ TRIE(L_s(\sigma)) = P(B_H)_{H_{stateRoot}} \tag{36}$$ 
+ where $P(B_H)$ is the Parent Block 
+6. $$ H_{stateRoot} \equiv TRIE(L_s(\Pi(\sigma, B))) \tag{33b} $$ this gives us the state root of the current block
 
 In addition to its primary function , the layer is also responsible for syncing its own copy of the blockchain , gossiping with other EL clients and addressing the requirements of the consensus api that actually drives the execution layer.
 
@@ -66,11 +78,11 @@ The specified procedure for the state transition function in the code documentat
 
 ### Header Validation
 
-Block Header validity as defined in the yellow paper:
+Block Header validity as defined in the yellow paper (here $P(H)$ is the parent block):
 
 $$
-V(H) \equiv H_{gasUsed} \leq H_{gasLimit} \tag{57a}$$ $$\land$$ $$ H_{gasLimit} < P(H)_{H_{gasLimit'}} + \left\lfloor \frac{P(H)_{H_{gasLimit'}}}{1024} \right\rfloor\tag{57b}$$
-$$\land $$ $$ H_{gasLimit} > P(H)_{H_{gasLimit'}} - \left\lfloor \frac{P(H)_{H_{gasLimit'}}}{1024} \right\rfloor \tag{57c}$$ $$\land$$ $$ H_{gasLimit} > 5000\tag{57d}$$ $$ \land  $$  $$H_{timeStamp} > P(H)_{H_{timeStamp'}} \tag{57e}$$ $$\land$$ $$ H_{numberOfAncestors} = P(H)_{H_{numberOfAncestors'}} + 1 \tag{57f}$$ $$\land$$ $$ \|H_{extraData}\| \leq 32 \tag{57g}$$ $$\land$$ $$ H_{baseFeePerGas} = F(H) \tag{57h}$$ $$\land$$ $$ H_{ommersHash} = KEC(RLP(())) \tag{57j}$$ $$\land$$ $$ H_{difficulty} = 0\tag{57k}$$ $$\land $$ $$H_{nonce} = 0x0000000000000000 \tag{57l}$$ $$\land$$ $$ H_{prevRandao} = PREVRANDAO() \tag{57m}$$
+V(H) \equiv H_{gasUsed} \leq H_{gasLimit} \tag{57a}$$ $$\land$$ $$ H_{gasLimit} < P(H)_{H_{gasLimit'}} + floor(\frac{P(H)_{H_{gasLimit'}}}{1024} ) \tag{57b}$$
+$$\land $$ $$ H_{gasLimit} > P(H)_{H_{gasLimit'}} - floor(\frac{P(H)_{H_{gasLimit'}}}{1024} ) \tag{57c}$$ $$\land$$ $$ H_{gasLimit} > 5000\tag{57d}$$ $$ \land  $$  $$H_{timeStamp} > P(H)_{H_{timeStamp'}} \tag{57e}$$ $$\land$$ $$ H_{numberOfAncestors} = P(H)_{H_{numberOfAncestors'}} + 1 \tag{57f}$$ $$\land$$ $$ size(H_{extraData}) \leq 32_{bytes} \tag{57g}$$ $$\land$$ $$ H_{baseFeePerGas} = F(H) \tag{57h}$$ $$\land$$ $$ H_{ommersHash} = KEC(RLP(())) \tag{57j}$$ $$\land$$ $$ H_{difficulty} = 0\tag{57k}$$ $$\land $$ $$H_{nonce} = 0x0000000000000000 \tag{57l}$$ $$\land$$ $$ H_{prevRandao} = PREVRANDAO() \tag{57m}$$
 
 
 TODO
@@ -79,6 +91,9 @@ TODO
 
 TODO
 
+### Block  Wholistic Validity
+
+TODO
 
 [¹]: https://archive.devcon.org/archive/watch/6/eels-the-future-of-execution-layer-specifications/?tab=YouTube
 
