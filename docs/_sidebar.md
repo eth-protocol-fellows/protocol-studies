@@ -41,7 +41,9 @@
   - Formal Verification
 - Research
   - [Roadmap overview](/wiki/research/roadmap.md)
-  - Scaling
+  - [Scaling](/wiki/research/scaling/scaling.md)
+    - [Core Changes](/wiki/research/scaling/core-changes/core-changes.md)
+      - [EIP-4844](/wiki/research/scaling/core-changes/eip-4844.md)
     - Blobs
     - Sharding
     - Statelessness
