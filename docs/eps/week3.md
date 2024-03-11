@@ -33,6 +33,7 @@ Additionally, you can read get ready by reading following resources:
 - [Bitwise LMD GHOST: An efficient CBC Casper fork choice rule](https://medium.com/@aditya.asgaonkar/bitwise-lmd-ghost-an-efficient-cbc-casper-fork-choice-rule-6db924e57d1f)
 - [Eth2book, annotated spec](https://eth2book.info/)
 - [Stuff you should know about PoS by Domothy](https://domothy.com/proof-of-stake/)
+- [Slashing scenario explanation by Dankrad Feist](https://dankradfeist.de/ethereum/2022/03/24/run-the-majority-client-at-your-own-peril.html)
 - [Beacon Chain design mistakes by Justin Drake](https://www.youtube.com/watch?v=10Ym34y3Eoo)
 - [Casper and Consensus from Devcon 3](https://archive.devcon.org/archive/watch/3/casper-and-consensus/?tab=YouTube)
 
