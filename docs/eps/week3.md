@@ -22,6 +22,7 @@ Additionally, you can read get ready by reading following resources:
 - [Gasper paper](https://arxiv.org/pdf/2003.03052.pdf)
 - [Eth2book, annotated spec](https://eth2book.info/)
 - [Stuff you should know about PoS by Domothy](https://domothy.com/proof-of-stake/)
+- [Slashing scenario explanation by Dankrad Feist](https://dankradfeist.de/ethereum/2022/03/24/run-the-majority-client-at-your-own-peril.html)
 - [Beacon Chain design mistakes by Justin Drake](https://www.youtube.com/watch?v=10Ym34y3Eoo)
 
 After learning about both EL and CL, run a client pair. Spin a pair of one execution and consensus client, read their logs to learn how they operate. 
