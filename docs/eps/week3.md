@@ -1,12 +1,12 @@
 # Study Group Week 3 | Consensus Layer
 
-The third week will dive into the Consensus layer of Ethereum. 
+The third week of EPFsg dives into the Consensus layer of Ethereum. 
 
-Join the presentation by [Alex Stokes](https://twitter.com/ralexstokes) on [Monday, March 4, 4PM UTC](https://savvytime.com/converter/utc-to-germany-berlin-united-kingdom-london-ny-new-york-city-ca-san-francisco-china-shanghai-japan-tokyo-australia-sydney/mar-04-2024/4pm). 
+Watch the presentation on overview of the CL with Alex Stokes on [StreamEth](https://streameth.org/watch?event=&session=65e9f54579935301489a01eb) or [Youtube](https://www.youtube.com/watch?v=FqKjWYt6yWk). Presentations slides are [available here](https://github.com/eth-protocol-fellows/protocol-studies/tree/main/docs/eps/presentations/week3_presentation.pdf). 
 
-Watch the presentation diving into an overview of the CL with Alex Stokes on [StreamEth](https://streameth.org/watch?event=&session=65e9f54579935301489a01eb) or [Youtube](https://www.youtube.com/watch?v=FqKjWYt6yWk).
+[recording](https://streameth.org/embed/?playbackId=66a30awapcuiok0z&vod=true&streamId=&playerName=Consensus+Layer+Overview+%7C+Alex+Stokes+%7C+Week+3 ':include :type=iframe width=100% height=520 frameborder="0" allow="fullscreen" allowfullscreen')
 
-The link to stream will be provided here and announced in [Discord group](https://discord.gg/epfsg). 
+For archive of the discussion during the talk, check [this thread](https://discord.com/channels/1205546645496795137/1214219045205835776/1214219052969492541) in our Discord server.
 
 ## Pre-reading
 
