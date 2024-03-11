@@ -30,7 +30,7 @@ $$ I\in \set {InsertCoin, SelectDrink, CollectDrink} $$
 
 $$\Upsilon (S,I) \Longrightarrow S'  $$
 
-> Where S' = next state, S= current state and, I= input.
+> Where S' = next state, S= current state, and I= input.
 
 Example state transition for the vending machine:
 
@@ -42,7 +42,7 @@ Notice in the last case, the current state transitions back to itself.
 
 ### Ethereum as a state machine
 
-Ethereum, as a whole, can be viewed as a **transaction-based state machine**. It receives transactions as inputs and transitions into a new state. The current state of Ethereum is referred to as the **world state**.
+Ethereum, as a whole, can be viewed as a **transaction-based state machine**. It receives transactions as input and transitions into a new state. The current state of Ethereum is referred to as the **world state**.
 
 Consider a simple Ethereum application - an [NFT](https://ethereum.org/en/nft/) marketplace.
 
@@ -52,7 +52,7 @@ In the current world state **S3** (green), Alice owns an NFT. The animation belo
 
 Notice the current world state is animated _as a pulsating green bubble_.
 
-In the model above, each transaction is committed to a new state. However, in reality, a group of transactions is bundled into a **block**, and the resulting state is added to the chain of previous states. It must be apparent now why this technology is called **blockchain**.
+In the figure above, each transaction is committed to a new state. However, in reality, a group of transactions is bundled into a **block**, and the resulting state is added to the chain of previous states. It must be apparent now why this technology is called **blockchain**.
 
 Considering the definition of the state transition function, we draw the following conclusion:
 
@@ -81,7 +81,7 @@ This offers two key benefits: portability (bytecode runs on different platforms 
 
 ## EVM and the world state
 
-This virtual machine concept serves as an abstraction. Ethereum Virtual Machine (EVM) is a specific software implementation of this abstraction. The anatomy of the EVM is described below:
+This virtual machine concept serves as an abstraction. Ethereum Virtual Machine (EVM) is a _specific_ software implementation of this abstraction. The anatomy of the EVM is described below:
 
 ![EVM anatomy](../../images/evm/evm-anatomy.jpg)
 
@@ -102,7 +102,7 @@ In the anatomy described above, EVM is shown to be manipulating the storage, cod
 
 In a real-world scenario, EVM may execute transactions involving multiple accounts (each with independent storage, code, and balance) enabling complex interactions on Ethereum.
 
-With a better grasp of virtual machines, lets extend our definition:
+With a better grasp of virtual machines, let's extend our definition:
 
 > ℹ️ Note  
 > EVM is the state transition function of the Ethereum state machine. It determines how Ethereum transitions into a new (world) state based on
@@ -581,7 +581,7 @@ console.log(rlp.encode(payload).toString("hex"));
 - 📝 Mark Shead, ["Understanding State Machines."](https://medium.com/free-code-camp/state-machines-basics-of-computer-science-d42855debc66) • [archived](https://web.archive.org/web/20210309014946/https://medium.com/free-code-camp/state-machines-basics-of-computer-science-d42855debc66)
 - 🎥 Prof. Harry Porter, ["Theory of computation."](https://www.youtube.com/playlist?list=PLbtzT1TYeoMjNOGEiaRmm_vMIwUAidnQz)
 - 📘 Michael Sipser, ["Introduction to the Theory of Computation."](https://books.google.com/books/about/Introduction_to_the_Theory_of_Computatio.html?id=4J1ZMAEACAAJ)
-- 🎥 Shimon Schocken et al., ["Build a Modern Computer from First Principles: From Nand to Tetris"](https://www.coursera.org/learn/build-a-computer)
+- 🎥 Shimon Schocken et al., ["Build a Modern Computer from First Principles: From Nand to Tetris."](https://www.coursera.org/learn/build-a-computer)
 
 ### EVM
 
@@ -591,21 +591,21 @@ console.log(rlp.encode(payload).toString("hex"));
 - 📝 Shafu, ["EVM from scratch."](https://evm-from-scratch.xyz/)
 - 📝 NOXX, ["3 part series: EVM Deep Dives - The Path to Shadowy Super Coder."](https://noxx.substack.com/p/evm-deep-dives-the-path-to-shadowy) • [archived](https://web.archive.org/web/20240106034644/https://noxx.substack.com/p/evm-deep-dives-the-path-to-shadowy)
 - 📝 LeftAsExercise, ["Smart contracts and the Ethereum virtual machine."](https://leftasexercise.com/2021/08/08/q-smart-contracts-and-the-ethereum-virtual-machine/) • [archived](https://web.archive.org/web/20230324200211/https://leftasexercise.com/2021/08/08/q-smart-contracts-and-the-ethereum-virtual-machine/)
-- 📝 Femboy Capital, ["A Playdate with the EVM"](https://femboy.capital/evm-pt1) • [archived](https://web.archive.org/web/20221001113802/https://femboy.capital/evm-pt1)
-- 📝 OpenZeppelin, ["6 part series: Deconstructing a Solidity"](https://blog.openzeppelin.com/deconstructing-a-solidity-contract-part-i-introduction-832efd2d7737) • [archived](https://web.archive.org/web/20240121025651/https://blog.openzeppelin.com/deconstructing-a-solidity-contract-part-i-introduction-832efd2d7737)
-- 📝 TrustLook, ["Understand EVM bytecode"](https://blog.trustlook.com/understand-evm-bytecode-part-1/) • [archived](https://web.archive.org/web/20230603080857/https://blog.trustlook.com/understand-evm-bytecode-part-1/)
-- 📝 Random Notes, ["Signing transactions the hard way"](https://lsongnotes.wordpress.com/2018/01/14/signing-an-ethereum-transaction-the-hard-way/) • [archived](https://web.archive.org/web/20240229045603/https://lsongnotes.wordpress.com/2018/01/14/signing-an-ethereum-transaction-the-hard-way/)
-- 📝Degatchi, ["A Low-Level Guide To Solidity's Storage Management"](https://degatchi.com/articles/low_level_guide_to_soliditys_storage_management) • [archived](https://web.archive.org/web/20231202105650/https://degatchi.com/articles/low_level_guide_to_soliditys_storage_management/)
-- 🎥 Jordan McKinney, ["Ethereum Explained: The EVM"](https://www.youtube.com/watch?v=kCswGz9naZg)
-- 🎥 Whiteboard Crypto, ["EVM: An animated non-technical introduction"](https://youtu.be/sTOcqS4msoU)
+- 📝 Femboy Capital, ["A Playdate with the EVM."](https://femboy.capital/evm-pt1) • [archived](https://web.archive.org/web/20221001113802/https://femboy.capital/evm-pt1)
+- 📝 OpenZeppelin, ["6 part series: Deconstructing a Solidity."](https://blog.openzeppelin.com/deconstructing-a-solidity-contract-part-i-introduction-832efd2d7737) • [archived](https://web.archive.org/web/20240121025651/https://blog.openzeppelin.com/deconstructing-a-solidity-contract-part-i-introduction-832efd2d7737)
+- 📝 TrustLook, ["Understand EVM bytecode."](https://blog.trustlook.com/understand-evm-bytecode-part-1/) • [archived](https://web.archive.org/web/20230603080857/https://blog.trustlook.com/understand-evm-bytecode-part-1/)
+- 📝 Random Notes, ["Signing transactions the hard way."](https://lsongnotes.wordpress.com/2018/01/14/signing-an-ethereum-transaction-the-hard-way/) • [archived](https://web.archive.org/web/20240229045603/https://lsongnotes.wordpress.com/2018/01/14/signing-an-ethereum-transaction-the-hard-way/)
+- 📝 Degatchi, ["A Low-Level Guide To Solidity's Storage Management."](https://degatchi.com/articles/low_level_guide_to_soliditys_storage_management) • [archived](https://web.archive.org/web/20231202105650/https://degatchi.com/articles/low_level_guide_to_soliditys_storage_management/)
+- 🎥 Jordan McKinney, ["Ethereum Explained: The EVM."](https://www.youtube.com/watch?v=kCswGz9naZg)
+- 🎥 Whiteboard Crypto, ["EVM: An animated non-technical introduction."](https://youtu.be/sTOcqS4msoU)
 
 ### Tools / puzzles
 
 - 🧮 smlXL, ["evm.codes: Opcode reference and interactive playground."](https://www.evm.codes/)
 - 🧮 smlXL, ["evm.storage: Interactive storage explorer."](https://www.evm.storage/)
 - 🧮 Paradigm, ["Foundry: Ethereum development toolkit."](https://github.com/foundry-rs/foundry)
-- 🎥 Austin Griffith, ["ETH.BUILD"](https://www.youtube.com/watch?v=30pa790tIIA&list=PLJz1HruEnenCXH7KW7wBCEBnBLOVkiqIi)
-- 💻 Franco Victorio, ["EVM puzzles"](https://github.com/fvictorio/evm-puzzles)
+- 🎥 Austin Griffith, ["ETH.BUILD."](https://www.youtube.com/watch?v=30pa790tIIA&list=PLJz1HruEnenCXH7KW7wBCEBnBLOVkiqIi)
+- 💻 Franco Victorio, ["EVM puzzles."](https://github.com/fvictorio/evm-puzzles)
 
 ## Implementations
 
@@ -614,7 +614,7 @@ console.log(rlp.encode(payload).toString("hex"));
 - 💻 C++: [EVMONE](https://github.com/ethereum/evmone)
 - 💻 Python: [py-evm](https://github.com/ethereum/py-evm)
 - 💻 Rust: [revm](https://github.com/bluealloy/revm)
-- 💻 Js/CSS: Riley, ["The Ethereum Virtual Machine"](https://github.com/jtriley-eth/the-ethereum-virtual-machine)
+- 💻 Js/CSS: Riley, ["The Ethereum Virtual Machine."](https://github.com/jtriley-eth/the-ethereum-virtual-machine)
 
 ### EVM based programming languages
 
