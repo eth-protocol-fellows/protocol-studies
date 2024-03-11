@@ -4,6 +4,8 @@ The third week will dive into the Consensus layer of Ethereum.
 
 Join the presentation by [Alex Stokes](https://twitter.com/ralexstokes) on [Monday, March 4, 4PM UTC](https://savvytime.com/converter/utc-to-germany-berlin-united-kingdom-london-ny-new-york-city-ca-san-francisco-china-shanghai-japan-tokyo-australia-sydney/mar-04-2024/4pm). 
 
+Watch the presentation diving into an overview of the CL with Alex Stokes on [StreamEth](https://streameth.org/watch?event=&session=65e9f54579935301489a01eb) or [Youtube](https://www.youtube.com/watch?v=FqKjWYt6yWk).
+
 The link to stream will be provided here and announced in [Discord group](https://discord.gg/epfsg). 
 
 ## Pre-reading
