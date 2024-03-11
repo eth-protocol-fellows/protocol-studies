@@ -11,8 +11,7 @@ TODO
 - [Hive: Ethereum end-to-end test harness](https://github.com/ethereum/hive)
 
 ### Execution layer tests
-- [Execution Spec Tests
-: Test cases for execution clients](https://github.com/ethereum/execution-spec-tests)
+- [Execution Spec Tests: Test cases for execution clients](https://github.com/ethereum/execution-spec-tests)
 - [FuzzyVM: Differential fuzzer for EVM](https://github.com/MariusVanDerWijden/FuzzyVM).
 - [retesteth: Test generation tool](https://github.com/ethereum/retesteth)
 - [EVM lab utilities](https://github.com/ethereum/evmlab)
