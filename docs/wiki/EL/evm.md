@@ -1,14 +1,14 @@
 # The Ethereum Virtual Machine (EVM)
 
-You have likely observed that Ethereum transactions take some time to finalise, [around 12 seconds](https://web.archive.org/web/20240304145956/https://etherscan.io/chart/blocktime) at the time of writing. A series of crucial steps occur during this timeframe. The transaction is first queued in a pool. Then, it is selected by a node and executed by a special program - **the Ethereum Virtual Machine (EVM)**, the result of which is stored on the blockchain.
-
-This article describes the role of EVM in Ethereum ecosystem and how it works. As the EVM executes transactions, it modifies the overall state of Ethereum. In that regard, Ethereum can be modeled as a **state machine**.
+The Ethereum Virtual Machine (EVM) is the heart of the Ethereum World Computer. It performs the crucial computations needed to finalise transactions, permanently storing the results on the blockchain. This article explores the EVM's role in the Ethereum ecosystem and how it works.
 
 ## The Ethereum state machine
 
+As the EVM processes transactions, it alters the overall state of Ethereum. In that regard, Ethereum can be viewed as a **state machine**.
+
 In computer science, **state machine** is an abstraction used to model the behavior of a system. It illustrates how a system can be represented by a set of distinct states and how inputs can drive changes in the state.
 
-A familiar is a vending machine, an automated system for dispensing products upon receiving payment.
+A familiar example is a vending machine, an automated system for dispensing products upon receiving payment.
 
 We can model a vending machine existing in three distinct states: idle, awaiting user selection, and dispensing a product. Inputs such as coin insertion or product selection trigger transitions between these states, as depicted in the state diagram:
 
@@ -59,6 +59,19 @@ Considering the definition of the state transition function, we draw the followi
 > ℹ️ Note  
 > **EVM is the state transition function of the Ethereum state machine. It determines how Ethereum transitions into a new (world) state based on input (transactions) and current state.**
 
+In Ethereum, the world state is essentially a mapping of 20-byte addresses to account states.
+
+![Ethereum world state](../../images/evm/ethereum-world-state.jpg)
+
+Each account state consists of various components such as storage, code, balance among other data and is associated with a specific address.
+
+Ethereum has two kinds of accounts:
+
+- **External account:** An account [controlled by an associated private key](/wiki/Cryptography/ecdsa.md) and empty EVM code.
+- **Contract account:** An account controlled by an associated non-empty EVM code. The EVM code as part of such an account is colloquially known as a _smart contract._
+
+Refer [Ethereum data structures](wiki/protocol/data-structures.md) for details on how the world state is implemented.
+
 ## Virtual machine paradigm
 
 Given our grasp of state machines, the next challenge is **implementation**.
@@ -79,24 +92,15 @@ This offers two key benefits: portability (bytecode runs on different platforms 
 
 ![Virtual machine paradigm](../../images/evm/virtual-machine-paradigm.jpg)
 
-## EVM and the world state
+[JVM](https://en.wikipedia.org/wiki/Java_virtual_machine) for Java and LuaVM for Lua are popular examples of Virtual machines. They create platform-neutral bytecode, enabling code to run on various systems without recompiling.
+
+## EVM
 
 This virtual machine concept serves as an abstraction. Ethereum Virtual Machine (EVM) is a _specific_ software implementation of this abstraction. The anatomy of the EVM is described below:
 
 ![EVM anatomy](../../images/evm/evm-anatomy.jpg)
 
 _For clarity, the figure above simplifies the Ethereum state. The actual state includes additional elements like Message Frames and Transient Storage._
-
-> In Ethereum, the world state is essentially a mapping of 20-byte addresses to account states.
-
-![Ethereum world state](../../images/evm/ethereum-world-state.jpg)
-
-Each account state consists of various components such as storage, code, balance among other data and is associated with a specific address.
-
-Ethereum has two kinds of accounts:
-
-- **External account:** An account [controlled by an associated private key](/wiki/Cryptography/ecdsa.md) and empty EVM code.
-- **Contract account:** An account controlled by an associated non-empty EVM code. The EVM code as part of such an account is colloquially known as a _smart contract._
 
 In the anatomy described above, EVM is shown to be manipulating the storage, code, and balance of an account instance.
 
@@ -151,6 +155,8 @@ Refer [Appendix H of Yellow Paper](https://ethereum.github.io/yellowpaper/paper.
 > ℹ️ Note  
 > [EIPs](https://eips.ethereum.org/) can propose EVM modifications. For instance, [EIP-1153](https://eips.ethereum.org/EIPS/eip-1153) introduced `TSTORE`, and `TSTORE` opcodes.
 
+Ethereum clients such as [geth](https://github.com/ethereum/go-ethereum) implement the [EVM specifications](https://github.com/ethereum/execution-specs). This ensures all nodes agree on how transactions alter the system's state, creating a uniform execution environment across the network.
+
 We have covered **what** EVM is, let's explore **how** it works.
 
 ## Stack
@@ -198,7 +204,7 @@ The code runs in an infinite loop, repeatedly adding 7. It introduces two new op
 
 Our innocent little program may seem harmless. However, infinite loops in EVM pose a significant threat: they can **devour resources**, potentially causing network [**DoS attacks**.](https://en.wikipedia.org/wiki/Denial-of-service_attack)
 
-The EVM's **gas** mechanism tackles such threats by acting as a currency for computational resources. Transactions pay gas in **Ether (ETH)** to use the EVM, and if they run out of gas before finishing (like an infinite loop), the EVM halts them to prevent resource hogging.
+The EVM's **gas** mechanism tackles such threats by acting as a currency for computational resources. Gas costs are [designed to mirror](https://web.archive.org/web/20170904200443/https://docs.google.com/spreadsheets/d/15wghZr-Z6sRSMdmRmhls9dVXTOpxKy8Y64oy9MvDZEQ/edit#gid=0) the limitations of hardware, such as storage capacity or processing power. Transactions pay gas in **Ether (ETH)** to use the EVM, and if they run out of gas before finishing (like an infinite loop), the EVM halts them to prevent resource hogging.
 
 This protects the network from getting clogged by resource-intensive or malicious activities. Since gas restricts computations to a finite number of steps, the EVM is considered **quasi Turing complete**.
 
@@ -280,7 +286,7 @@ The example above shows only a small section of the account's storage. Like memo
 
 ## Transaction
 
-A **transaction** is a cryptographically-signed instruction issued by **an external account**, broadcasted to the entire network using [JSON-RPC](/wiki/EL/json-rpc.md).
+A **transaction** is a cryptographically-signed instruction issued by **an external account**, broadcasted to the entire network using [JSON-RPC](/wiki/EL/JSON-RPC.md).
 
 A transaction contains following fields:
 
@@ -377,7 +383,12 @@ Next, prepare the transaction payload:
 
 > Order of the values in the payload is important!
 
-Install [foundry](https://getfoundry.sh/) to deploy the transaction locally and launch [anvil](https://book.getfoundry.sh/anvil/) local node.
+For this example, we'll use [Foundry](https://getfoundry.sh/) to deploy the transaction locally. Foundry is an ethereum development toolkit that provides following cli tools:
+
+- **Anvil** : A local Ethereum node, designed for development.
+- **Cast**: A tool for performing Ethereum RPC calls.
+
+Install and launch [anvil](https://book.getfoundry.sh/anvil/) local node.
 
 ```
 $ anvil
