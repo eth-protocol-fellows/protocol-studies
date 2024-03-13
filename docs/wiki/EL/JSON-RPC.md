@@ -4,12 +4,12 @@
 
 The JSON-RPC specification is a remote procedure call protocol encoded in JSON based on [OpenRPC](https://open-rpc.org/getting-started). It allows calling functions on a remote server, and for the return of the results.
 It is part of the Execution API specification which provides a set of methods to interact with the Ethereum blockchain.
-It is better known to be the way of how the clients interact with the network, even how the consensus layer (CL) and the execution layer (EL) interact.
+It is better known to be the way of how the users interact with the network using a client, even how the consensus layer (CL) and the execution layer (EL) interact through the Engine API.
 This section provides a description of the JSON-RPC methods.
 
-## JSON-RPC Methods
+## API Specification
 
-There are a lot of JSON-RPC methods, but for summarizing purposes here are divided into the following prefix categories: *debug*, *engine* and *eth*, and all of them share a common structure:
+The JSON-RPC methods are grouped by namespaces specified as a method prefix. Even though they all have different purposes, all of them share a common structure and must behave the same across all implementations:
 
 ```json
 {
@@ -26,32 +26,28 @@ Where:
 - `method`: The method to be called.
 - `params`: The parameters for the method. It can be an empty array if the method does not require any parameters. Other ones may have default values if not provided.
 
-Here is a few list of the JSON-RPC methods:
+### Namespaces
 
-### Debug
+Every method is composed of a namespace prefix and the method name, separated by an underscore.
 
-| **Method**               |      **Params**       | **Description**                                                 |
-|--------------------------|:---------------------:|-----------------------------------------------------------------|
-| debug_getBadBlocks       |  no mandatory params  | returns and array of recent bad blocks that the client has seen |
-| debug_getRawBlock        |     block_number      | returns an RLP-encoded block                                    |
-| debug_getRawHeader       |     block_number      | returns an RLP-encoded header                                   |
-| debug_getRawReceipts     |     block_number      | returns an array of EIP-2718 binary-encoded receipts            |
-| debug_getRawTransactions |        tx_hash        | returns an array of EIP-2718 binary-encoded transactions        |
+According to the [Reth book's JSON-RPC documentation](https://paradigmxyz.github.io/reth/jsonrpc/intro.html), the following namespaces are available:
 
-### Engine
-This one is particularly important due to the fact that it is the way of how the EL interacts with the CL after The Merge happened.
+|**Namespace**| **Description**                                                                                      | **Sensitive** |
+|-------------|------------------------------------------------------------------------------------------------------|---------------|
+|eth| 	The eth API allows you to interact with Ethereum.                                                   | Maybe         |
+|web3	| The web3 API provides utility functions for the web3 client.                                         | No            |
+|net	| The net API provides access to network information of the node.                                      | 	No           |
+|txpool| 	The txpool API allows you to inspect the transaction pool.                                          | 	No           |
+|debug	| The debug API provides several methods to inspect the Ethereum state, including Geth-style traces.   | 	No           |
+|trace	| The trace API provides several methods to inspect the Ethereum state, including Parity-style traces. | 	No           |
+|admin	| The admin API allows you to configure your node.                                                     | 	Yes          |
+|rpc	| The rpc API provides information about the RPC server and its modules                                | 	No           |
 
-| **Method**                               |               **Params**               | **Description**                                                           |
-|------------------------------------------|:--------------------------------------:|---------------------------------------------------------------------------|
-| engine_exchangeTransitionConfigurationV1 |        Consensus client config         | exchanges client configuration                                            |
-| engine_forkchoiceUpdatedV1*              |  forkchoice_state, payload attributes  | updates the forkchoice state                                              |
-| engine_getPayloadBodiesByHashV1*         |           block_hash (array)           | given block hashes returns bodies of the corresponding execution payloads |
-| engine_getPayloadV1*                     |  forkchoice_state, payload attributes  | obtains execution payload from payload build process                      |
-| debug_newPayloadV1*                      |                tx_hash                 | returns execution payload validation                                      |
+Sensitive means they could be used to set up the node, such as *admin*, or access account data stored in the node, just like *eth*.
 
-Those methods marked with an asterisk (*) have more than one version. The [Ethereum JSON-RPC specification](https://ethereum.github.io/execution-apis/api-documentation/) provides a detailed description.
+Now, let's take a look at some methods to understand how they are built and what they do:
 
-### Eth
+#### Eth
 
 This one is a particularly one of the most used. Just a brief list of the methods is provided here, but the full list can be found in the [Ethereum JSON-RPC specification](https://ethereum.github.io/execution-apis/api-documentation/).
 
@@ -71,6 +67,46 @@ This one is a particularly one of the most used. Just a brief list of the method
 | eth_getLogs              |  filter object         | returns an array of all logs matching a given filter object       |
 | eth_getStorageAt         |  address, position, block number | returns the value from a storage position at a given address |
 
+#### Debug
+The *debug* namespace provides methods to inspect the Ethereum state:
+
+| **Method**               |      **Params**       | **Description**                                                 |
+|--------------------------|:---------------------:|-----------------------------------------------------------------|
+| debug_getBadBlocks       |  no mandatory params  | returns and array of recent bad blocks that the client has seen |
+| debug_getRawBlock        |     block_number      | returns an RLP-encoded block                                    |
+| debug_getRawHeader       |     block_number      | returns an RLP-encoded header                                   |
+| debug_getRawReceipts     |     block_number      | returns an array of EIP-2718 binary-encoded receipts            |
+| debug_getRawTransactions |        tx_hash        | returns an array of EIP-2718 binary-encoded transactions        |
+
+#### Engine
+This one is particularly important due to the fact that it is the way of how the EL interacts with the CL after The Merge happened.
+
+| **Method**                               |               **Params**               | **Description**                                                           |
+|------------------------------------------|:--------------------------------------:|---------------------------------------------------------------------------|
+| engine_exchangeTransitionConfigurationV1 |        Consensus client config         | exchanges client configuration                                            |
+| engine_forkchoiceUpdatedV1*              |  forkchoice_state, payload attributes  | updates the forkchoice state                                              |
+| engine_getPayloadBodiesByHashV1*         |           block_hash (array)           | given block hashes returns bodies of the corresponding execution payloads |
+| engine_getPayloadV1*                     |  forkchoice_state, payload attributes  | obtains execution payload from payload build process                      |
+| debug_newPayloadV1*                      |                tx_hash                 | returns execution payload validation                                      |
+
+Those methods marked with an asterisk (*) have more than one version. The [Ethereum JSON-RPC specification](https://ethereum.github.io/execution-apis/api-documentation/) provides a detailed description.
+
+## Encoding
+There is a convention for encoding the parameters of the JSON-RPC methods, which is the hex encoding.
+* Quantities are represented as hexadecimal values using a "0x" prefix.
+  * For example, the number 65 is represented as "0x41".
+  * The number 0 is represented as "0x0".
+  * Some invalid usages are "0x" and "ff". Since the first case does not have a following digit and the second one is not prefixed with "0x". 
+* Unformatted data is, such as hashes, account addresses or byte arrays are hex encoded using a "0x" prefix as well.
+  * For example: 0x400 (1014 in decimal)
+  * An invalid case is 0x400 because there are no leading zeroes allowed
+
+## Transport agnostic
+Worth to mention here the JSON-RPC is transport agnostic, meaning it can be used over any transport protocol, such as HTTP, WebSockets (WSS), or even Inter-Process Communication (IPC).
+Their differences can be summarized as it follows:
+* **HTTP** transport provides an unidirectional response-request model, which gets the connection closed after the response is sent.
+* **WSS** is a bidirectional protocol, which means the connection is kept open until either the node or the user explicitly closes it. It allows subscriptions-based model communication such as event-driven interactions.
+* **IPC** transport protocol is used for communication between processes running on the same machine. It is faster than HTTP and WSS, but it is not suitable for remote communication.
 ## Tooling
 
 There are several ways of how to use the JSON-RPC methods. One of them is using the `curl` command. For example, to get the latest block number, you can use the following command:
@@ -104,10 +140,38 @@ const response = await axios.post(node, {
 As you may notice, the JSON-RPC methods are wrapped in a POST request, and the parameters are passed in the body of the request.
 This is a different way to exchange data between the client and the server using the OSI's application layer: the HTTP protocol.
 
+Either way, the most common use to interact with the Ethereum network is using web3 libraries, such as web3py for python or web3.js/ethers.js for JS/TS:
+#### web3py
+```python
+from web3 import Web3
+
+# IPCProvider
+w3 = Web3(Web3.IPCProvider('./path/to/geth/ipc'))
+# HTTPProvider
+w3 = Web3(Web3.HTTPProvider('http://localhost:8545'))
+
+#WSSProvider
+w3 = Web3(Web3.WebsocketProvider('ws://localhost:8546'))
+
+# API
+
+w3.eth.get_balance('0xaddress')
+```
+
+#### ethers.js
+```typescript
+import { ethers } from "ethers";
+
+const provider = new ethers.providers.JsonRpcProvider('http://localhost:8545');
+
+await provider.getBlockNumber();
+```
+
 Usually, all the web3 libraries wrap the JSON-RPC methods providing a more friendly way to interact with the execution layer. Please, look forward in your preferred programming language as the syntax may vary.
 
 ### Further Reading
 * [Ethereum JSON-RPC Specification](https://ethereum.github.io/execution-apis/api-documentation/)
 * [Execution API Specification](https://github.com/ethereum/execution-apis/tree/main)
 * [JSON-RPC | Infura docs](https://docs.infura.io/api/networks/ethereum/json-rpc-methods)
+* [reth book | JSON-RPC](https://paradigmxyz.github.io/reth/jsonrpc/intro.html)
 * [OpenRPC](https://open-rpc.org/getting-started)
