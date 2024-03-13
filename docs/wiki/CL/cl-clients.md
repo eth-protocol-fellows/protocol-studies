@@ -22,6 +22,48 @@ The easiest and faster way to install the client is [using docker](https://docs.
 
 One learns slihtly more about the client by building it [from source](https://docs.prylabs.network/docs/install/install-with-bazel). One also needs to be careful about the hardware specs and [requirements](https://docs.prylabs.network/docs/install/install-with-bazel#review-system-requirements) for the client to run smoothly.
 
+### Sample Run
+
+The following is a sample run of the Prysm client on the Ethereum mainnet with Geth Node as an execution client:
+
+```bash
+TERMS AND CONDITIONS: https://github.com/prysmaticlabs/prysm/blob/develop/TERMS_OF_SERVICE.md
+
+
+Type "accept" to accept this terms and conditions [accept/decline]: (default: decline):
+accept
+[2024-03-10 23:42:11]  INFO Finished reading JWT secret from /home/userDemo/code/jwt.hex
+[2024-03-10 23:42:11]  WARN flags: Running on Ethereum Mainnet
+[2024-03-10 23:42:11]  WARN node: In order to receive transaction fees from proposing blocks, you must provide flag --suggested-fee-recipient with a valid ethereum address when starting your beacon node. Please see our documentation for more information on this requirement (https://docs.prylabs.network/docs/execution-node/fee-recipient).
+[2024-03-10 23:42:11]  INFO node: Checking DB database-path=/home/userDemo/.eth2/beaconchaindata
+[2024-03-10 23:42:11]  INFO db: Opening Bolt DB at /home/userDemo/.eth2/beaconchaindata/beaconchain.db
+[2024-03-10 23:42:12]  WARN genesis: database contains genesis with htr=0x7e76880eb67bbdc86250aa578958e9d0675e64e714337855204fb5abaaf82c2b, ignoring remote genesis state parameter
+[2024-03-10 23:42:21]  INFO detected supported config in remote finalized state, name=mainnet, fork=capella
+[2024-03-10 23:42:22]  INFO Downloaded checkpoint sync state and block. block_root=0xe6c065b28ef4826da69ba234394f1e293473a5fb56fa3e053bd73d650dd6061a block_slot=8607136 state_root=0x42ef0d1f525b019097e0b30904215703cb784474ad7a186087fd7bdf3ba9c25d state_slot=8607136
+[2024-03-10 23:42:22]  INFO db: detected supported config for state & block version, config name=mainnet, fork name=capella
+[2024-03-10 23:42:23]  INFO db: saving checkpoint block to db, w/ root=0xe6c065b28ef4826da69ba234394f1e293473a5fb56fa3e053bd73d650dd6061a
+[2024-03-10 23:42:23]  INFO db: calling SaveState w/ blockRoot=e6c065b28ef4826da69ba234394f1e293473a5fb56fa3e053bd73d650dd6061a
+[2024-03-10 23:42:23]  INFO node: Deposit contract: 0x00000000219ab540356cbb839cbe05303d7705fa
+[2024-03-10 23:42:23]  INFO p2p: Running node with peer id of 16Uiu2HAmPa9EyCpvNwFizaRY7PXdedPgnUPYAuXwdiVcQ83h1uoQ
+[2024-03-10 23:42:24]  INFO rpc: gRPC server listening on port address=127.0.0.1:4000
+[2024-03-10 23:42:24]  WARN rpc: You are using an insecure gRPC server. If you are running your beacon node and validator on the same machines, you can ignore this message. If you want to know how to enable secure connections, see: https://docs.prylabs.network/docs/prysm-usage/secure-grpc
+[2024-03-10 23:42:24]  INFO node: Starting beacon node version=Prysm/v5.0.1/a1a81d1720a0a3b850992d4825d0a023baa8e65a. Built at: 2024-03-08 20:31:40+00:00
+[2024-03-10 23:42:24]  INFO initial-sync: Waiting for state to be initialized
+[2024-03-10 23:42:24]  INFO blockchain: Blockchain data already exists in DB, initializing...
+[2024-03-10 23:42:24]  INFO Backfill service not enabled.
+[2024-03-10 23:42:24]  INFO gateway: Starting gRPC gateway address=127.0.0.1:3500
+[2024-03-10 23:42:24]  INFO initial-sync: Received state initialized event
+[2024-03-10 23:42:24]  INFO initial-sync: Starting initial chain sync...
+[2024-03-10 23:42:24]  INFO initial-sync: Waiting for enough suitable peers before syncing required=3 suitable=0
+[2024-03-10 23:42:24]  INFO p2p: Started discovery v5 ENR=enr:-MK4QLql3XgYbbOfu3gcaUijzcz2RwBE9utUVhR1YhcvqgErfjfjs88JqJIr7FzwpyoclMP8pBXWcUKCWtKKpKnoio-GAY4qiBRfh2F0dG5ldHOIAAAAAAAAAACEZXRoMpC7pNqWBAAAAAAdBAAAAAAAgmlkgnY0gmlwhMCoAZqJc2VjcDI1NmsxoQOiMrSMfZgcZfphI6hjf84nwmq7wMne1wML_H_EQdtn04hzeW5jbmV0cwCDdGNwgjLIg3VkcIIu4A
+[2024-03-10 23:42:24]  INFO p2p: Node started p2p server multiAddr=/ip4/192.168.1.154/tcp/13000/p2p/16Uiu2HAmPa9EyCpvNwFizaRY7PXdedPgnUPYAuXwdiVcQ83h1uoQ
+[2024-03-10 23:42:34]  INFO blockchain: Called new payload with optimistic block payloadBlockHash=0x492df9344dbd slot=8607137
+[2024-03-10 23:42:38]  WARN blockchain: Could not update head error=head at slot 8607136 with weight 97641 is not eligible, finalizedEpoch, justified Epoch 268971, 268972 != 268973, 268973
+[2024-03-10 23:42:38]  WARN blockchain: could not determine node weight root=0x0000000000000000000000000000000000000000000000000000000000000000
+[2024-03-10 23:42:38]  INFO blockchain: Synced new block block=0xc74dfd56... epoch=268973 finalizedEpoch=268973 finalizedRoot=0xe6c065b2... slot=8607137
+[2024-03-10 23:42:38]  INFO blockchain: Finished applying state transition attestations=111 payloadHash=0x492df9344dbd slot=8607137 syncBitsCount=400 txCount=153
+```
+
 #### No Light client support
 
 Currently there is no light client support with Prysm.
