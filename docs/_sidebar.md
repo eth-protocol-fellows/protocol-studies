@@ -51,10 +51,14 @@
   - MEV
     - PBS
     - Censorship
-  - Proof of Stake
+  - Proof of Stake Design
     - Upgrades
     - SSF
     - SSLE
+    - [Inclusion lists](/docs/wiki/research/PoS-design/inclusion-lists.md)
+    - [Raise MAX_EFFECTIVE_BALLANCE](/docs/wiki/research/PoS-design/raise_max-effective-balance.md)
+    - [Preconfirmations](/docs/wiki/research/PoS-design/preconfirmations.md)
+    - [Solutions to liquid staking centralization](/docs/wiki/research/PoS-design/staking-pools-solutions.md)
   - [Light Clients](/wiki/research/light-clients.md)
   - Privacy
   - AA
