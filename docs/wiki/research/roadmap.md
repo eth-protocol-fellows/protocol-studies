@@ -19,7 +19,7 @@ The discussion, resources and all research and development on the core protocol 
 While there is not a single roadmap that Ethereum development follows, we can track the current R&D efforts to map what changes are happening and might happen in the future. 
 A great overview mapping many domains of the core development is Vitalik's view on how the roadmap looks like at December 2023:
 
-![Ethereum roadmap updated by V.B. Dec2023](/docs/images/roadmap_2024/full_roadmap2024.jpeg)
+![Ethereum roadmap updated by V.B. Dec2023](/docs/images/roadmap_2024/full_roadmap2024_1286x1282.png)
 
 In this overview, different domains are coupled to related categories forming various 'urges'. Here is what those mean: 
 
@@ -56,7 +56,7 @@ Upgrades related to scalability by Rollups and Data Availability (DA).
 
 
 ### the Scourge
-Upgrades related to censorship resistance, decentralization and protocol risks from MEV. 
+Upgrades related to censorship resistance, decentralization and mitigating protocol risks from MEV. 
 
 **TODO** 
 | Upgrade | Description | Expected effect | State of the art |
