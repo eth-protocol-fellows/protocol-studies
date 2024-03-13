@@ -1,7 +1,5 @@
 # JSON-RPC
 
----
-
 The JSON-RPC specification is a remote procedure call protocol encoded in JSON based on [OpenRPC](https://open-rpc.org/getting-started). It allows calling functions on a remote server, and for the return of the results.
 It is part of the Execution API specification which provides a set of methods to interact with the Ethereum blockchain.
 It is better known to be the way of how the users interact with the network using a client, even how the consensus layer (CL) and the execution layer (EL) interact through the Engine API.
@@ -30,18 +28,20 @@ Where:
 
 Every method is composed of a namespace prefix and the method name, separated by an underscore.
 
-According to the [Reth book's JSON-RPC documentation](https://paradigmxyz.github.io/reth/jsonrpc/intro.html), the following namespaces are available:
+Ethereum clients must implement the basic minimum set of RPC methods required by spec to interact with the network. On top of that, there are also client specific methods for controlling the node or implementing extra unique features. Always refer to client documentation listing available methods and namespace, for example notice different namespaces in [Geth](https://geth.ethereum.org/docs/interacting-with-geth/rpc) and [Reth](https://paradigmxyz.github.io/reth/jsonrpc/intro.html) docs. 
 
-|**Namespace**| **Description**                                                                                      | **Sensitive** |
-|-------------|------------------------------------------------------------------------------------------------------|---------------|
-|eth| 	The eth API allows you to interact with Ethereum.                                                   | Maybe         |
-|web3	| The web3 API provides utility functions for the web3 client.                                         | No            |
-|net	| The net API provides access to network information of the node.                                      | 	No           |
-|txpool| 	The txpool API allows you to inspect the transaction pool.                                          | 	No           |
-|debug	| The debug API provides several methods to inspect the Ethereum state, including Geth-style traces.   | 	No           |
-|trace	| The trace API provides several methods to inspect the Ethereum state, including Parity-style traces. | 	No           |
-|admin	| The admin API allows you to configure your node.                                                     | 	Yes          |
-|rpc	| The rpc API provides information about the RPC server and its modules                                | 	No           |
+Here are examples of most common namespaces: 
+
+| **Namespace** | **Description**                                                                                      | **Sensitive** |
+| ------------- | ---------------------------------------------------------------------------------------------------- | ------------- |
+| eth           | The eth API allows you to interact with Ethereum.                                                    | Maybe         |
+| web3          | The web3 API provides utility functions for the web3 client.                                         | No            |
+| net           | The net API provides access to network information of the node.                                      | No            |
+| txpool        | The txpool API allows you to inspect the transaction pool.                                           | No            |
+| debug         | The debug API provides several methods to inspect the Ethereum state, including Geth-style traces.   | No            |
+| trace         | The trace API provides several methods to inspect the Ethereum state, including Parity-style traces. | No            |
+| admin         | The admin API allows you to configure your node.                                                     | Yes           |
+| rpc           | The rpc API provides information about the RPC server and its modules                                | No            |
 
 Sensitive means they could be used to set up the node, such as *admin*, or access account data stored in the node, just like *eth*.
 
@@ -49,26 +49,29 @@ Now, let's take a look at some methods to understand how they are built and what
 
 #### Eth
 
-This one is a particularly one of the most used. Just a brief list of the methods is provided here, but the full list can be found in the [Ethereum JSON-RPC specification](https://ethereum.github.io/execution-apis/api-documentation/).
+Eth is probably the most used namespace providing basic access to Ethereum network, e.g. it's necessary for wallets to read balance and create transactions. 
+Just a brief list of the methods is provided here, but the full list can be found in the [Ethereum JSON-RPC specification](https://ethereum.github.io/execution-apis/api-documentation/).
 
-| **Method**               |      **Params**       | **Description**                                                 |
-|--------------------------|:---------------------:|-----------------------------------------------------------------|
-| eth_blockNumber          |  no mandatory params  | returns the number of the most recent block                     |
-| eth_call                 |  transaction object   | executes a new message call immediately without creating a transaction on the block chain |
-| eth_chainId              |  no mandatory params  | returns the current chain id                                     |
-| eth_estimateGas          |  transaction object   | makes a call or transaction, which won't be added to the blockchain and returns the used gas, which can be used for estimating the used gas |
-| eth_gasPrice             |  no mandatory params  | returns the current price per gas in wei                         |
-| eth_getBalance           |  address, block number | returns the balance of the account of the given address          |
-| eth_getBlockByHash       |  block hash, full txs  | returns information about a block by hash                        |
-| eth_getBlockByNumber     |  block number, full txs | returns information about a block by block number                |
-| eth_getBlockTransactionCountByHash | block hash | returns the number of transactions in a block from a block matching the given block hash |
-| eth_getBlockTransactionCountByNumber | block number | returns the number of transactions in a block from a block matching the given block number |
-| eth_getCode              |  address, block number | returns code at a given address in the blockchain                 |
-| eth_getLogs              |  filter object         | returns an array of all logs matching a given filter object       |
-| eth_getStorageAt         |  address, position, block number | returns the value from a storage position at a given address |
+| **Method**                           |           **Params**            | **Description**                                                                                                                             |
+| ------------------------------------ |:-------------------------------:| ------------------------------------------------------------------------------------------------------------------------------------------- |
+| eth_blockNumber                      |       no mandatory params       | returns the number of the most recent block                                                                                                 |
+| eth_call                             |       transaction object        | executes a new message call immediately without creating a transaction on the block chain                                                   |
+| eth_chainId                          |       no mandatory params       | returns the current chain id                                                                                                                |
+| eth_estimateGas                      |       transaction object        | makes a call or transaction, which won't be added to the blockchain and returns the used gas, which can be used for estimating the used gas |
+| eth_gasPrice                         |       no mandatory params       | returns the current price per gas in wei                                                                                                    |
+| eth_getBalance                       |      address, block number      | returns the balance of the account of the given address                                                                                     |
+| eth_getBlockByHash                   |      block hash, full txs       | returns information about a block by hash                                                                                                   |
+| eth_getBlockByNumber                 |     block number, full txs      | returns information about a block by block number                                                                                           |
+| eth_getBlockTransactionCountByHash   |           block hash            | returns the number of transactions in a block from a block matching the given block hash                                                    |
+| eth_getBlockTransactionCountByNumber |          block number           | returns the number of transactions in a block from a block matching the given block number                                                  |
+| eth_getCode                          |      address, block number      | returns code at a given address in the blockchain                                                                                           |
+| eth_getLogs                          |          filter object          | returns an array of all logs matching a given filter object                                                                                 |
+| eth_getStorageAt                     | address, position, block number | returns the value from a storage position at a given address                                                                                |
 
 #### Debug
-The *debug* namespace provides methods to inspect the Ethereum state:
+
+The *debug* namespace provides methods to inspect the Ethereum state. It's direct access to raw data which might be necessary for certain usecases like block explorers or researc purposes. Some of these methods might require a lot of computation to be done on the node and requests for historical states on non-archival node are mostly not feasible. Therefore, providers of public RPCs often restrict this namespace or allow only safe methods. 
+Here are basic examples of debug methods: 
 
 | **Method**               |      **Params**       | **Description**                                                 |
 |--------------------------|:---------------------:|-----------------------------------------------------------------|
@@ -79,7 +82,9 @@ The *debug* namespace provides methods to inspect the Ethereum state:
 | debug_getRawTransactions |        tx_hash        | returns an array of EIP-2718 binary-encoded transactions        |
 
 #### Engine
-This one is particularly important due to the fact that it is the way of how the EL interacts with the CL after The Merge happened.
+
+[Engine API](https://hackmd.io/@danielrachi/engine_api) is different from aforementioned methods. Clients serve Engine API on a different and authenticated endpoint rather than normal http JSON RPC because it is not a user facing API. It's intented for connection between consensus and execution client, making it basically an internal node communication process. 
+Inter-client communication exchanging information about conesnsus, forkchoice, validation of blocks, etc: 
 
 | **Method**                               |               **Params**               | **Description**                                                           |
 |------------------------------------------|:--------------------------------------:|---------------------------------------------------------------------------|
@@ -92,6 +97,7 @@ This one is particularly important due to the fact that it is the way of how the
 Those methods marked with an asterisk (*) have more than one version. The [Ethereum JSON-RPC specification](https://ethereum.github.io/execution-apis/api-documentation/) provides a detailed description.
 
 ## Encoding
+
 There is a convention for encoding the parameters of the JSON-RPC methods, which is the hex encoding.
 * Quantities are represented as hexadecimal values using a "0x" prefix.
   * For example, the number 65 is represented as "0x41".
@@ -102,11 +108,13 @@ There is a convention for encoding the parameters of the JSON-RPC methods, which
   * An invalid case is 0x400 because there are no leading zeroes allowed
 
 ## Transport agnostic
+
 Worth to mention here the JSON-RPC is transport agnostic, meaning it can be used over any transport protocol, such as HTTP, WebSockets (WSS), or even Inter-Process Communication (IPC).
 Their differences can be summarized as it follows:
 * **HTTP** transport provides an unidirectional response-request model, which gets the connection closed after the response is sent.
 * **WSS** is a bidirectional protocol, which means the connection is kept open until either the node or the user explicitly closes it. It allows subscriptions-based model communication such as event-driven interactions.
-* **IPC** transport protocol is used for communication between processes running on the same machine. It is faster than HTTP and WSS, but it is not suitable for remote communication.
+* **IPC** transport protocol is used for communication between processes running on the same machine. It is faster than HTTP and WSS, but it is not suitable for remote communication, e.g. it can be used via local JS console.
+  
 ## Tooling
 
 There are several ways of how to use the JSON-RPC methods. One of them is using the `curl` command. For example, to get the latest block number, you can use the following command:
@@ -141,24 +149,21 @@ As you may notice, the JSON-RPC methods are wrapped in a POST request, and the p
 This is a different way to exchange data between the client and the server using the OSI's application layer: the HTTP protocol.
 
 Either way, the most common use to interact with the Ethereum network is using web3 libraries, such as web3py for python or web3.js/ethers.js for JS/TS:
+
 #### web3py
+
 ```python
 from web3 import Web3
 
-# IPCProvider
-w3 = Web3(Web3.IPCProvider('./path/to/geth/ipc'))
-# HTTPProvider
+# Set up HTTPProvider
 w3 = Web3(Web3.HTTPProvider('http://localhost:8545'))
 
-#WSSProvider
-w3 = Web3(Web3.WebsocketProvider('ws://localhost:8546'))
-
 # API
-
 w3.eth.get_balance('0xaddress')
 ```
 
 #### ethers.js
+
 ```typescript
 import { ethers } from "ethers";
 
