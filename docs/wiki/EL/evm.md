@@ -291,7 +291,11 @@ Notice that the storage value persists between examples, demonstrating its persi
 
 Developers rarely write EVM assembly code directly unless performance optimization is crucial. Instead, most developers work with higher-level languages like [Solidity](https://soliditylang.org/), which is then compiled into bytecode.
 
-Ethereum is a continuously evolving protocol e.g., [EIP-155](https://eips.ethereum.org/EIPS/eip-155) extends transaction payload. While the fundamentals we've discussed will remain largely relevant, following [Ethereum Improvement Proposals (EIPs)](https://eips.ethereum.org/) is encouraged to stay informed of the latest developments in the Ethereum ecosystem.
+Ethereum is a continuously evolving protocol and while the fundamentals we've discussed will remain largely relevant, following [Ethereum Improvement Proposals (EIPs)](https://eips.ethereum.org/) and [network upgrades](https://ethereum.org/history) is encouraged to stay informed of the latest developments in the Ethereum ecosystem.
+
+## EVM upgrades
+
+While Ethereum protocol undergoes many changes in each upgrade, changes in EVM are rather subtle. Major change in EVM might break contracts and languages, requiring keeping multiple versions of EVM which introduces a lot of complexity overhead. There are still certain upgrades done on EVM itself like new opcodes or changes to existing ones which don't break their logic. Some examples are EIPs like [1153](https://eips.ethereum.org/EIPS/eip-1153), [4788](https://eips.ethereum.org/EIPS/eip-4788), [5000](https://eips.ethereum.org/EIPS/eip-5000), [5656](https://eips.ethereum.org/EIPS/eip-5656) and [6780](https://eips.ethereum.org/EIPS/eip-6780). These are proposing to add new opcodes except the last one which is especially interesting because it's neutralizing `SELFDESTRUCT` opcode without breaking compatibility. Another important upgrade to EVM which would mark rather a major change is [EOF](https://notes.ethereum.org/@ipsilon/mega-eof-specification). It creates a format to bytecode which EVM can understand and process more easily, it encompasses various EIPs and has been discussed and polished for quite some time. 
 
 ## Resources
 
@@ -316,6 +320,8 @@ Ethereum is a continuously evolving protocol e.g., [EIP-155](https://eips.ethere
 - 📝 Degatchi, ["A Low-Level Guide To Solidity's Storage Management."](https://degatchi.com/articles/low_level_guide_to_soliditys_storage_management) • [archived](https://web.archive.org/web/20231202105650/https://degatchi.com/articles/low_level_guide_to_soliditys_storage_management/)
 - 🎥 Jordan McKinney, ["Ethereum Explained: The EVM."](https://www.youtube.com/watch?v=kCswGz9naZg)
 - 🎥 Whiteboard Crypto, ["EVM: An animated non-technical introduction."](https://youtu.be/sTOcqS4msoU)
+- [Low level reference for EVM opcodes](https://ethervm.io/)
+
 
 ### Tools / puzzles
 
