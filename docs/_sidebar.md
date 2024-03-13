@@ -23,7 +23,7 @@
   - [Transaction]
   - [DevP2P]
   - [MPT]
-  - [JSON-RPC](/wiki/EL/json-rpc.md)
+  - [JSON-RPC](/wiki/EL/JSON-RPC.md)
 - [Consensus Layer](/wiki/CL/overview.md)
   - [CL Clients](/wiki/CL/cl-clients.md)
   - [CL Specs](/wiki/CL/cl-specs.md)
@@ -41,7 +41,9 @@
   - Formal Verification
 - Research
   - [Roadmap overview](/wiki/research/roadmap.md)
-  - Scaling
+  - [Scaling](/wiki/research/scaling/scaling.md)
+    - [Core Changes](/wiki/research/scaling/core-changes/core-changes.md)
+      - [EIP-4844](/wiki/research/scaling/core-changes/eip-4844.md)
     - Blobs
     - Sharding
     - Statelessness
