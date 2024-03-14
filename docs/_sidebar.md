@@ -7,6 +7,7 @@
   - [Week 2](/eps/week2.md)
   - [Week 3](/eps/week3.md)
   - [Week 4](/eps/week4.md)
+  - [Node Workshop](/eps/nodes_workshop.md)
 - [Contributing](contributing.md)
 - **Protocol Wiki**
 - The Protocol
@@ -19,11 +20,11 @@
   - [EL Clients](/wiki/EL/el-clients.md)
   - [EL Specs](/wiki/EL/el-specs.md)
   - Client architecture
-  - [EVM]
+  - [EVM](/wiki/EL/evm.md)
   - [Transaction]
   - [DevP2P]
   - [MPT]
-  - [JSON-RPC]
+  - [JSON-RPC](/wiki/EL/JSON-RPC.md)
 - [Consensus Layer](/wiki/CL/overview.md)
   - [CL Clients](/wiki/CL/cl-clients.md)
   - [CL Specs](/wiki/CL/cl-specs.md)
