@@ -1,6 +1,6 @@
 # Study Group Week 5 | Using Ethereum clients  
 
-During week 5, we prepared a workshop to give you hands-on experience of using Ethereum clients. We will learn how to spin up an Ethereum node by running execution and consensus client. 
+During week 5, apart of [the regular presentation](https://epf.wiki/#/eps/week5), we prepared a workshop to give you a hands-on experience of using Ethereum clients. We will learn how to spin up an Ethereum node by running execution and consensus client. 
 
 Join the workshop by [Mario Havel](https://github.com/TMIYChao) on [Thursday, March 21, 4PM UTC](https://savvytime.com/converter/utc-to-germany-berlin-united-kingdom-london-ny-new-york-city-ca-san-francisco-china-shanghai-japan-tokyo-australia-sydney/mar-21-2024/4pm).
 
@@ -34,18 +34,18 @@ We will only run a client on testnet so the hardware requirements are minimal. D
     - Compiling a client? 
     - Docker setup? 
 - Client pair setup
-        - Run EL+CL client on Holesky
-        - Running on Ephemery uing custom genesis 
-        - Switching CL or EL client
-            - Nimbus? 
-            - Erigon? 
+    - Run EL+CL client on Holesky
+    - Running on Ephemery uing custom genesis 
+    - Switching CL or EL client
+        - Nimbus? 
+        - Erigon? 
 - Using the client
-        - Accessing the RPC
-            - http, console, wallet
+    - Accessing the RPC
+        - http, console, wallet
         - Adding validators 
 - Additional excercies if there is time
-        - Systemd service
-        - Monitoring node
+    - Systemd service
+    - Monitoring node
 
 ## Additional reading and exercises 
 
