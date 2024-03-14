@@ -7,6 +7,7 @@
   - [Week 2](/eps/week2.md)
   - [Week 3](/eps/week3.md)
   - [Week 4](/eps/week4.md)
+  - [Node Workshop](/eps/nodes_workshop.md)
 - [Contributing](contributing.md)
 - **Protocol Wiki**
 - The Protocol
