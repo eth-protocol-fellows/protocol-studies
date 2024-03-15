@@ -16,11 +16,47 @@ Additionally, you can read get ready by reading following resources:
 
 - https://ethereum.org/en/roadmap/
 - https://notes.ethereum.org/@domothy/roadmap
+- https://members.delphidigital.io/reports/the-hitchhikers-guide-to-ethereum
 - https://ethereum.org/en/community/research/#active-areas-of-ethereum-research
+- https://domothy.com/blobspace/
+- https://vitalik.eth.limo/general/2021/12/06/endgame.html
 
 ## Outline
+
+- Merge
+    - Altair / light client protocol
+    - Merge / Withdrawals
+    - Single Slot Finality
+    - Secret Leader Election
+- Surge
+    - zk/op rollups
+    - KZG Ceremony
+    - EIP-4844
+    - Data Availability Sampling
+    - Cross-rollup interop
+- Scourge
+    - (very) brief overview of MEV
+    - ePBS / Inclusion Lists / MEV Burn
+    - Max EB, Stake capping
+- Verge
+    - Verkle Trees
+    - SNARKify everything:
+        - Beacon fast sync
+        - Beacon state transition
+        - Verkle proofs
+        - EVM
+- Purge
+    - EIP-4444
+    - Protocol simplifications
+- Splurge
+    - EIP-1559 endgame
+    - Account Abstraction
+    - Deep cryptography
 
 ## Additional reading and exercises 
 
 - https://ethroadmap.com/
 - https://notes.ethereum.org/@domothy/roadmap
+- https://vitalik.eth.limo/general/2021/06/18/verkle.html
+- https://scroll.io/blog/kzg
+- [Ethereum data structures](https://arxiv.org/pdf/2108.05513.pdf)
