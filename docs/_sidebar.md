@@ -1,3 +1,5 @@
+<!-- @format -->
+
 - [Home](readme.md)
 - **Study Group**
 - [EPFsg overview](/eps/intro.md)
@@ -49,8 +51,8 @@
     - Sharding
     - Statelessness
     - Purge
-  - MEV
-    - PBS
+  - [MEV](/wiki/research/mev.md)
+    - [PBS](/wiki/research/mev/pbs.md)
     - Censorship
   - Proof of Stake
     - Upgrades
