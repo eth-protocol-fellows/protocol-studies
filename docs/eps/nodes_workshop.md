@@ -47,6 +47,7 @@ We will only run a client on testnet so the hardware requirements are minimal. D
     - Systemd service
     - Monitoring node
 
+
 ## Additional reading and exercises 
 
 There are bunch of things we are not going to demostrate during the workshop so you can try them yourself afterwards. 
