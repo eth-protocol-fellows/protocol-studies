@@ -54,7 +54,7 @@
     - PBS
     - Censorship
   - Proof of Stake
-    - Upgrades
+    - [Upgrades](/docs/wiki/research/Beacon%20Chain%20Upgrades.md)
     - SSF
     - SSLE
   - [Light Clients](/wiki/research/light-clients.md)
