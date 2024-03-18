@@ -55,8 +55,12 @@ Additionally, you can read get ready by reading following resources:
 
 ## Additional reading and exercises 
 
+- [AltExplainer - Ethereum Proof of Stake explained](https://www.youtube.com/watch?v=5gfNUVmX3Es)
+- https://a16zcrypto.com/posts/article/building-helios-ethereum-light-client/
 - https://ethroadmap.com/
 - https://notes.ethereum.org/@domothy/roadmap
 - https://vitalik.eth.limo/general/2021/06/18/verkle.html
 - https://scroll.io/blog/kzg
 - [Ethereum data structures](https://arxiv.org/pdf/2108.05513.pdf)
+- https://ethresear.ch/t/execution-tickets/17944
+- https://notes.ethereum.org/@ipsilon/evm-object-format-overview
