@@ -7,6 +7,7 @@
   - [Week 2](/eps/week2.md)
   - [Week 3](/eps/week3.md)
   - [Week 4](/eps/week4.md)
+  - [Week 5](/eps/week5.md)
   - [Node Workshop](/eps/nodes_workshop.md)
 - [Contributing](contributing.md)
 - **Protocol Wiki**
@@ -44,7 +45,7 @@
   - [Roadmap overview](/wiki/research/roadmap.md)
   - [Scaling](/wiki/research/scaling/scaling.md)
     - [Core Changes](/wiki/research/scaling/core-changes/core-changes.md)
-      - [EIP-4844](/wiki/research/scaling/core-changes/eip-4844.md)
+    - [EIP-4844](/wiki/research/scaling/core-changes/eip-4844.md)
     - Blobs
     - Sharding
     - Statelessness
