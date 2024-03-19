@@ -23,7 +23,7 @@ Prepare your enviroment, update the system and install dependencies so it doesn'
 - The workshop enviroment will be fresh Debian 12 instance but you can use any prefered distro. Process might be very similar on other unix based systems like Mac but you can always setup a VM to replicate the enviroment. 
 - Install basic utils we will need like curl, git, gpg, docker, compilers 
 
-We will only run a client on testnet so the hardware requirements are minimal. Default client pair will be geth+lighthouse but if there is enough time we can demostrate switching the pair. 
+We will only run a client on testnet so the hardware requirements are minimal - the goal of the workshop is not to sync the tip of the chain but only demostrate how the node works. Default client pair will be geth+lighthouse but if there is enough time we can demostrate switching the pair. 
 
 ## Outline
 
@@ -46,6 +46,7 @@ We will only run a client on testnet so the hardware requirements are minimal. D
 - Additional excercies if there is time
     - Systemd service
     - Monitoring node
+
 
 ## Additional reading and exercises 
 
