@@ -31,6 +31,7 @@
   - [Proof-of-Stake]
   - [Beacon API]
   - [Networking](/wiki/CL/cl-networking.md)
+  - [PBS](/wiki/CL/pbs.md)
   - Client architecture
 - Development
   - [Core development](/wiki/dev/core-development.md)
