@@ -285,7 +285,7 @@ The example above shows only a small section of the account's storage. Like memo
 Notice that the storage value persists between examples, demonstrating its persistence within the world state. Since the world state is replicated across all nodes, storage operations are gas expensive.
 
 > ℹ️ Note  
-> Check out the wiki on [transaction](/wiki/protocol/transaction.md) to see EVM in action.
+> Check out the wiki on [transaction](/wiki/EL/transaction.md) to see EVM in action.
 
 ## Wrapping up
 
