@@ -21,7 +21,7 @@ Precompiles are included in the initial `"accessed_addresses"` of a transaction 
 | 0x0a    | KZG POINT EVALUATION | Verifies a KZG proof                       | Cancun ([EIP-4844](https://eips.ethereum.org/EIPS/eip-4844))  |
 
 ## Calling precompiles
-Like contract account, precompiles can be called using `*CALL` family of opcodes. The following assembly code example shows usage of `SHA-256` precompile: 
+Like contract account, precompiles can be called using `*CALL` family of opcodes. The following assembly code example shows usage of `SHA-256` precompile to hash the string "Hello": 
 ```js
 // First place the parameters in memory
 PUSH5 0x48656C6C6F // Hello in UTF-8
