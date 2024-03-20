@@ -28,7 +28,22 @@ The first part of the program consists of 5 weeks with introductions to high lev
 | March 11    | Testing and security               | Mario Vega              |
 | March 18    | Roadmap and research               | Domothy                 |
 
-The second part of the program offers two distinct tracks focused on development and research with deeper dive into each topic. Detailed schedule coming soon.
+The second part of the program offers two distinct tracks focused on development and research with deeper dive into each domain. 
+
+| Date     | Topic                         | Speaker                    | Track       |
+| -------- | ----------------------------- | -------------------------- | ----------- |
+| March 25 | Consensus and Execution specs | Hsiao-Wei Wang, Sam Wilson | Development |
+| March 27 | Sharding and DAS              | Dankrad Feist              | Research    |
+| April 1  | Execution client architecture | Dragan Pilipovic           | Development |
+| April 3  | Verkle trees                  | Josh Rudolf                | Research    |
+| April 8  | Consensus client architecture | Paul Harris                | Development |
+| April 10 | MEV and censorship            | Barnabe Monnot             | Research    |
+| April 15 | Devops and testing            | Paritosh                   | Development |
+| April 17 | Purge and Portal Network      | Piper Merriam              | Research    |
+| April 22 | Cryptographic precompiles     |                            | Development |
+| April 24 | SSF and PoS Upgrades          | Francesco D’Amato          | Research    |
+| April 29 | Wrap up                       |                            |             |
+
 
 ### Streams and recordings
 
