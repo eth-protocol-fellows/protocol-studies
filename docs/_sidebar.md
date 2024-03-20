@@ -24,7 +24,7 @@
   - [EL Specs](/wiki/EL/el-specs.md)
   - Client architecture
   - [EVM](/wiki/EL/evm.md)
-  - [Transaction]
+  - [Transaction](/wiki/EL/transaction.md)
   - [DevP2P]
   - [MPT]
   - [JSON-RPC](/wiki/EL/JSON-RPC.md)
