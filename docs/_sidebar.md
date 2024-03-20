@@ -57,9 +57,11 @@
     - Sharding
     - Statelessness
     - Purge
-  - [MEV](/wiki/research/mev.md)
-    - [PBS](/wiki/research/mev/pbs.md)
-    - Censorship
+  - [PBS](/wiki/research/PBS/pbs.md)
+    - [Current State](/wiki/research/PBS/current-state.md)
+    - [mev-boost](/wiki/research/PBS/mev-boost.md)
+    - [Challenges and Solutions](/wiki/research/PBS/research.md)
+  - Censorship
   - Proof of Stake
     - [Upgrades](/docs/wiki/research/Beacon%20Chain%20Upgrades.md)
     - SSF
