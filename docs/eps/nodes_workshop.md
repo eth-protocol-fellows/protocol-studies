@@ -46,7 +46,7 @@ We will only run a client on testnet so the hardware requirements are minimal - 
 - Additional excercies if there is time
     - Systemd service
     - Monitoring node
-- After the stream, we can switch to jitsi for further discussion and troubleshooting
+- After the stream, we can switch to [jitsi](meet.ethquokkaops.io/EPFsgWorkshop) for further discussion and troubleshooting
 
 ## Additional reading and exercises 
 
