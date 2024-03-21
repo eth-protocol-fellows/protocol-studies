@@ -51,6 +51,12 @@ Talks and calls are announced week in advance based on the schedule above. Recor
 
 Apart of these, there are less regular, ad-hoc hangout calls for informal chats and getting to know each other. Join the Discord group to get notified about all the events. 
 
+### Streams and recordings
+
+Talks and calls are announced week in advance based on the schedule above. Recordings of all talks can be found on [Youtube](https://www.youtube.com/@ethprotocolfellows) or [StreamEth](https://streameth.org/archive?organization=ethereum_protocol_fellowship) archive. 
+
+Apart of these, there are less regular, ad-hoc hangout calls for informal chats and getting to know each other. Join the Discord group to get notified about all the events. 
+
 ## Participate
 
 The first instance of EPF study group is starting in February 2024. It's completely open and permissionless, and it is up to each participant as to how they want to approach it. Whether you want to learn as much as possible, focus only on certain topics or share your knowledge with others, you are welcomed. Although it's opened, [you can register](https://forms.gle/7TqmryC217EPwgqr9) to help us tailor the experience better.
