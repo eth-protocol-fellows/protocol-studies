@@ -73,7 +73,6 @@ Ethereum is a transaction based state machine. This means every action or change
 
 A transaction is mapped in the trie so that the key is a transaction index and the value is the transaction T . Both the
 transaction index and the transaction itself are RLP encoded. It compose a key-value pair, stored in the trie:
-TODO
 `𝑅𝐿𝑃 (𝑖𝑛𝑑𝑒𝑥) → 𝑅𝐿𝑃 (𝑇)`
 
 The structure `T` consists of the following:
