@@ -46,7 +46,7 @@ We will only run a client on testnet so the hardware requirements are minimal - 
 - Additional excercies if there is time
     - Systemd service
     - Monitoring node
-
+- After the stream, we can switch to [jitsi](meet.ethquokkaops.io/EPFsgWorkshop) for further discussion and troubleshooting
 
 ## Additional reading and exercises 
 
@@ -60,3 +60,7 @@ There are bunch of things we are not going to demostrate during the workshop so 
 - https://github.com/eth-educators/ethstaker-guides/blob/main/holesky-node.md
 - https://notes.ethereum.org/@launchpad/node-faq-merge
 - https://www.coincashew.com/coins/overview-eth/guide-or-how-to-setup-a-validator-on-eth2-mainnet/part-i-installation/monitoring-your-validator-with-grafana-and-prometheus
+
+
+
+
