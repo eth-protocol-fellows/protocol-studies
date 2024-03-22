@@ -155,3 +155,131 @@ body .markdown-section {
     font-size: 14px;
 }
 */
+
+/* 
+    ################################
+    ||                            ||
+    ||     🎨 EPF.WIKI Theme      ||
+    ||                            ||
+    ################################
+*/
+/* TODO
+1. Color scheme
+2. Font
+3. Shadow
+5. Footer + modern
+6. Animation?
+*/
+:root {
+  --base-background-color: #190c39;
+  --sidebar-name-color: #ba9afd;
+  --sidebar-background: #190c39;
+  --sidebar-toggle-background: #190c39;
+
+  /* blockquote*/
+  --blockquote-background: #2d1763;
+  --blockquote-color: #fff;
+  --blockquote-border-color: #ba9afd;
+
+  /* link */
+  --link-color: #ba9afd;
+}
+
+/* sidebar */
+li.file {
+  transition: all 0.3s ease-in-out;
+  padding: 8px 15px;
+  margin-bottom: 4px;
+}
+li.file p {
+  margin: 0;
+}
+li.file.active,
+li.file:hover,
+li.file.open {
+  border-radius: 5px;
+  background: #2d1763;
+}
+
+.app-sub-sidebar li.file {
+  padding: 0;
+  margin: 0;
+  animation: tabFade 0.5s;
+}
+
+.sidebar-nav ul.app-sub-sidebar a {
+  border: none;
+  border-left: 4px solid #fff;
+  padding-left: 8px;
+}
+
+.sidebar-nav ul.app-sub-sidebar li.active > a,
+.sidebar-nav ul.app-sub-sidebar li a:hover {
+  border-color: #ba9afd;
+  text-decoration: none;
+  color: #ba9afd;
+  border-left: 4px solid #ba9afd;
+}
+
+.sidebar .search input[type="search"],
+.sidebar .search input[type="search"]:focus {
+  background-color: #190c39;
+}
+.sidebar-nav a:hover {
+  text-decoration: none;
+}
+@keyframes tabFade {
+  0% {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+/* content */
+.markdown-section img {
+  border-radius: 8px;
+}
+.markdown-section h1 a::before,
+.markdown-section h2 a::before,
+.markdown-section h3 a::before,
+.markdown-section h4 a::before,
+.markdown-section h5 a::before,
+.markdown-section h6 a::before {
+  content: "#";
+  color: #ba9afd;
+  margin-right: 5px;
+}
+
+.sidebar-toggle .sidebar-toggle-button {
+  padding: 20px;
+  border-radius: 5px;
+  --sidebar-toggle-icon-height: 8px;
+  --sidebar-toggle-icon-stroke-width: 5px;
+  background: #6e52a9;
+}
+
+.sidebar-toggle span {
+  transition: transform 0.5s ease-in-out;
+}
+
+.sidebar-toggle span:nth-child(1) {
+  transform: rotate(-45deg);
+}
+
+.sidebar-toggle span:nth-child(2) {
+  display: none;
+}
+
+.sidebar-toggle span:nth-child(3) {
+  transform: rotate(45deg);
+}
+
+.ready-fix.close .sidebar-toggle span:nth-child(1) {
+  transform: rotate(45deg);
+}
+
+.ready-fix.close .sidebar-toggle span:nth-child(3) {
+  transform: rotate(135deg);
+}
