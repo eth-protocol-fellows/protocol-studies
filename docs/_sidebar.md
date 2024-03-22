@@ -53,7 +53,7 @@
     - Statelessness
     - Purge
   - MEV
-    - [PBS](/wiki/research/pbs.md)
+    - [PBS](/wiki/research/PBS/pbs.md)
     - Censorship
   - Proof of Stake
     - [Upgrades](/docs/wiki/research/Beacon%20Chain%20Upgrades.md)
