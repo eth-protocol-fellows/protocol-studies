@@ -31,7 +31,7 @@ More on [Merkle Trees in Ethereum](https://blog.ethereum.org/2015/11/15/merkling
 
 ## Primer on Patricia Tree
 
-Patricia Tries(also called Radix tree) are n-ary trees which unlike Merkel Trees,is used for storage of data instead of verification.
+Patricia Tries (also called Radix tree) are n-ary trees which unlike Merkel Trees,is used for storage of data instead of verification.
 
 Simply put, Patricia Tries is a tree data structure where all the data is store in the leaf nodes, and each non-leaf nodes is a character of a unique string identifying the data. Using the unique string we navigate through the character nodes and finally reach the data. Hence, it is very efficient at data retrieval.
 
@@ -98,13 +98,13 @@ The structure `T` consists of the following:
 
 ## Future Implementations
 
-## Verkle Tree
+## Verkle Trees
 
-[Verkle tree](https://verkle.info/) is a new data structure that is being proposed to replace the current Merkle Patricia Trie. It is named after the combination of "Vector commitment" and "Merkle Tree". It is designed to be more efficient and scalable than the current MPT. It is a trie-based data structure that replaces the heavy witness used in the MPT with a lightweight witness. It is a part of The Verge upgrade of [Ethereum Roadmap](https://ethereum.org/en/roadmap/#what-about-the-verge-splurge-etc). It will enable the [stateless](https://ethereum.org/en/roadmap/statelessness/#statelessness) clients to be more efficient and scalable.
+[Verkle tree](https://verkle.info/) is a new data structure that is being proposed to replace the current Merkle Patricia Trie. Named by combining the "Vector commitment" and "Merkle Tree", it is designed to be more efficient and scalable than the current MPT. It is a trie-based data structure that replaces the heavy witness used in the MPT with a lightweight witness. Verkle trees are the key part of The Verge upgrade of [Ethereum Roadmap](https://ethereum.org/en/roadmap/#what-about-the-verge-splurge-etc). They can enable [stateless](https://ethereum.org/en/roadmap/statelessness/#statelessness) clients to be more efficient and scalable.
 
 ### Structure of Verkle Tree
 
-The layout structure of a Verkle tree is just like a MP tree but with different base of the tree i.e. number of children. Just like [MP tree](https://ethereum.org/en/developers/docs/data-structures-and-encoding/patricia-merkle-trie/#optimization) it has root node, inner nodes, extension nodes and leaf nodes. There a slight difference in the key size, on which the tree is made. MP tree uses 20 byte key which Verkle tree uses 32 byte key in which the 31 bytes are used as a stem of the tree while last 1 byte is used for storage with almost the same stem address or neighboring code chunks (opening the same commitment is cheaper). Also due to the fact that while computing the witness data the algorithms take 252 bit as field element so it is convenient to use 31 bytes as a suffix of the tree. Using this, the stem data can commit to two difference commitments ranging from 0-127 and 128-255, aka lower value and upper value of the same key, thus covering the whole suffix space. For more on this refer [here](https://blog.ethereum.org/2021/12/02/verkle-tree-structure).
+The layout structure of a Verkle tree is just like a MPT but with different base of the tree i.e. number of children. Just like [MPT](https://ethereum.org/en/developers/docs/data-structures-and-encoding/patricia-merkle-trie/#optimization) it has root node, inner nodes, extension nodes and leaf nodes. There a slight difference in the key size, on which the tree is made. MPT uses 20 byte key which Verkle tree uses 32 byte key in which the 31 bytes are used as a stem of the tree while last 1 byte is used for storage with almost the same stem address or neighboring code chunks (opening the same commitment is cheaper). Also due to the fact that while computing the witness data the algorithms take 252 bit as field element so it is convenient to use 31 bytes as a suffix of the tree. Using this, the stem data can commit to two difference commitments ranging from 0-127 and 128-255, aka lower value and upper value of the same key, thus covering the whole suffix space. For more on this refer [here](https://blog.ethereum.org/2021/12/02/verkle-tree-structure).
 
 ![Verkle Tree](../../images/verkle_tree_structure.png)
 
@@ -116,11 +116,15 @@ The intermediate nodes of Merkle/MP tree are hashes of the children. The nodes o
 
 ### Why Verkle Trees?
 
-To make a client stateless it is very essential that to validate a block a client should not have to store the entire/previous blockchain state. The incoming block should be able to provide the client with the necessary data to validate the block. Using the information inside the block a client should also be able to maintain/grow a local state with each incoming block. But using this a client should be able to guarantee that for the current block (and succeeding ones that it validates) the state mutation is correct. It doesn't guarantee that the state is correct for the previous blocks that the current block refers, it is maybe due to that block producer knowingly built the block on an invalid block.
+To make a client stateless it is essential that to validate a block, client should not have to store the entire/previous blockchain state. The incoming block should be able to provide the client with the necessary data to validate the block. This extra proof data are called _witness_ enabling a stateless client validating the data without the full state. 
+Using the information inside the block, client should also be able to maintain/grow a local state with each incoming block. Using this a client guarantees that for the current block (and succeeding ones that it validates) the state transition is correct. It doesn't guarantee that the state is correct for the previous blocks that the current block refers to because block producer can build on an invalid or non-canonical block.
 
-Verkle trees are more efficient than MPTs. They are designed to be more efficient in terms of storage and communication cost. For a 1000 leaves/data, a binary Merkle Tree takes around 4MB of witness data, Verkle tree reduces it to 150 kB. If we include the witness data in the block then it will not impact the blocksize that much but it would enable the stateless clients to be more efficient and scalable. Using this the stateless client will be able to trust the computation done without having to store the entire state.
+Verkle trees are designed to be more efficient in terms of storage and communication cost. For a 1000 leaves/data, a binary Merkle Tree takes around 4MB of witness data, Verkle tree reduces it to 150 kB. If we include the witness data in the block then it will not impact the blocksize that much but it would enable the stateless clients to be more efficient and scalable. Using this the stateless client will be able to trust the computation done without having to store the entire state.
+
+The transition to new verkle tree database poses a major challenge. To securily create the new verkle data, clients needs to generate them from the existing MPT which takes a lot of computation and space. Distribution and verification of the verkled databased is currently being researched. 
 
 ## Resources
 
 [More on Merkle Patricia Trie](https://ethereum.org/developers/docs/data-structures-and-encoding/patricia-merkle-trie)
 [More on Verkle Tree](https://notes.ethereum.org/@vbuterin/verkle_tree_eip#Simple-Summary)
+[Verge transition](https://notes.ethereum.org/@parithosh/verkle-transition)
