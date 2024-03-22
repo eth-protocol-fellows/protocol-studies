@@ -1,16 +1,22 @@
 # Consensus Layer Implementations
 
-Resources covering all consensus client implementations, in production or development. Overview of client unique features of each client, architecture, guides and resources.
+This page covers resources on all consensus client implementations, whether in production or development. It provides an overview of unique features of each client, architecture, basic guides and resources.
 
-There are multiple Consensus Layer clients developed to participate in the Ethereum Proof-of-Stake (PoS) mechanism. The most popular ones are [Prysm](https://prysmaticlabs.com/), [Lighthouse](https://lighthouse-book.sigmaprime.io/), [Teku](https://consensys.io/teku), [Nimbus](https://nimbus.team/index.html), and [Lodestar](https://lodestar.chainsafe.io/). These clients are developed in different programming languages and have unique features. One of the most known clients is Prysm, which is developed in Go, Lighthouse in Rust, Teku in Java, Nimbus in Nim, and Lodestar in JavaScript. In this document, we will talk briefly about a few clients. The following list is compiled based on the alphabetic order of the client names.
+> Consensus clients originally used to be called _eth2.0 clients_ which is now a deprecated nomenclature but you can still find this reference in their repositories. 
+
+There are multiple Consensus Layer clients developed to participate in the Ethereum Proof-of-Stake (PoS) mechanism. The most popular, FOSS and production ready are [Lighthouse](https://lighthouse-book.sigmaprime.io/),  [Lodestar](https://lodestar.chainsafe.io/), [Nimbus](https://nimbus.team/index.html), [Prysm](https://prysmaticlabs.com/) and [Teku](https://consensys.io/teku). These clients are developed in different programming languages, provide have unique features and offer different performance profiles. All clients support Ethereum mainnet out of the bo as well as currently active testnets. Variety of implementations allows the network to benefit from client diversity. If you are choosing a client to use, current client diversity should be one of the main factors. 
 
 ## LightHouse
 
-[Lighthouse](https://lighthouse-book.sigmaprime.io/) is a client developed in the Rust programming language. It is a full-featured Ethereum 2.0 client that can be used as a beacon node or a validator client. It is developed by [Sigma Prime](https://sigmaprime.io/). It can work with different execution clients such as Nethermind, Geth, Erigon, Besu, etc. It can work on Ethereum mainnet and testnets such as Goeril, Sepolia, Chiado, and Gnosis. It has a web interface [Siren](https://lighthouse-book.sigmaprime.io/lighthouse-ui.html) to monitor the beacon chain and validator performance.
+[Lighthouse](https://lighthouse-book.sigmaprime.io/) is a client developed in the Rust programming language. It is a full-featured Ethereum consensus client that can be used as a beacon node or a validator client. It is developed by [Sigma Prime](https://sigmaprime.io/). 
+
+### Features
+
+It can also provide a web interface [Siren](https://lighthouse-book.sigmaprime.io/lighthouse-ui.html) enabling to easily monitor the beacon node and validator performance.
 
 ### Installing the client
 
-Client installation is considered as one of the first barriers of entry for new validators or node operators. Lighthouse client can be installed using 3 main ways - using docker, building from source, and using pre-built binaries. They also provide [Raspberry client](https://lighthouse-book.sigmaprime.io/pi.html) and [cross-compiling](https://lighthouse-book.sigmaprime.io/cross-compiling.html) guide. Using additional simple commands, one can supplement the beacon client with [validator](https://lighthouse-book.sigmaprime.io/mainnet-validator.html) role.
+Lighthouse client can be installed in variety of ways - building from source, running pre-built binaries or using docker. They also provide builds for different architectures like [ARM](https://lighthouse-book.sigmaprime.io/pi.html) and a guide for [cross-compiling](https://lighthouse-book.sigmaprime.io/cross-compiling.html). [Validator](https://lighthouse-book.sigmaprime.io/mainnet-validator.html) client is bundled with the main binary.
 
 #### Using Docker
 
@@ -22,7 +28,7 @@ Just like Prysm, it also has multiple hardware and OS support to built the clien
 
 #### Pre-built Binaries
 
-Pre-built binaries are also available for the Lighthouse client. It enables portability and ease of installation without bothering much about the platform level dependencies. The [documentation](https://lighthouse-book.sigmaprime.io/installation-binaries.html) provides the steps to install the client using pre-built binaries.
+Pre-built binaries for many various operating systems and architectures are available. They also provide portable versions which are compromising compiler performence options for a better platform compatibility. Released binaries are signed by gpg key `15E66D941F697E28F49381F426416DC3F30674B0` from security@sigmaprime.io. Read the [documentation](https://lighthouse-book.sigmaprime.io/installation-binaries.html) on the steps to install the client using pre-built binaries.
 
 ### Additional features and security considerations
 
@@ -142,3 +148,7 @@ Perhaps the easiest way to run a client in a production environment is to use pr
 Running a Teku client from a recent state is quite easy and has faster syncing times. Using a recent finalized checkpoint state, Teku can sync within the weak subjectivity period. Ethereum Beacon chain checkpoints list is available [here](https://eth-clients.github.io/checkpoint-sync-endpoints/). For reference on how to run a Teku client using a recent finalized checkpoint state, refer to the [documentation](https://docs.teku.consensys.io/get-started/checkpoint-start).
 
 Teku also provides a slashing protection mechanism, especially in the case where one is migrating from another client to Teku. The [documentation](https://docs.teku.consensys.io/reference/cli/subcommands/slashing-protection#import) provides the steps to migrate from other clients to Teku.
+
+### Aditional reading 
+
+https://mirror.xyz/0x934e6B4D7eee305F8C9C42b46D6EEA09CcFd5EDc/b69LBy8p5UhcGJqUAmT22dpvdkU-Pulg2inrhoS9Mbc
