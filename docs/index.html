@@ -176,7 +176,7 @@
     window.$docsify = {
       // GENERAL SETTINGS
       // -----------------------------------------------------------------
-      name: 'Protocol Wiki',
+      name: '<img class="logo" src="/assets/favicon/favicon.ico"/> Protocol Wiki',
       homepage: 'readme.md',
       loadSidebar: !(getURLParameterByName(['standalone', 'embedded']) || standalone || false),
       loadNavbar: !(getURLParameterByName(['standalone', 'embedded']) && !(getURLParameterByName('navbar')) || standalone && !navbar ||false),
@@ -332,7 +332,7 @@
             } else {
               url = gitLinkRepoURL + '/blob/main/docs/' + vm.route.file
             }
-            var editHtml = '[:memo:' + editThisPageLinkText + '](' + url + ')\n'
+            var editHtml = `<a href="${url}" class="btn-primary"/> :memo:  ${editThisPageLinkText}</a>`
 
             if ((!(getURLParameterByName('hidegitlink'))) && (!!gitLinkRepoURL)) {
               return html + '<br />' + '\n\n' + editHtml
