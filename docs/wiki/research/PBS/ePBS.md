@@ -164,7 +164,7 @@ The discussion around the enshrinement of proposer-builder separation (ePBS) wit
 
 4. **Premature Optimization**: Skeptics suggest that focusing on ePBS might be a case of premature optimization, diverting attention and resources from more pressing issues on Ethereum's roadmap.
 
-5. **Bypassability**: 
+5. **Bypassability**: Bypassability refers to the ability of participants within the Ethereum ecosystem—be it validators, proposers, builders, or others—to sidestep or bypass the rules and mechanisms established by ePBS. This could occur through off-protocol agreements, alternative transaction ordering systems, or other means that effectively operate outside the constraints set by ePBS. The protocol will have no easy way to enforce ePBS rules on them. 
 
 ### If it ain't broke, don't fix it - counterarguments
 
