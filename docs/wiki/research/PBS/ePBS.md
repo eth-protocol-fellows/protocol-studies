@@ -12,7 +12,14 @@ Enshrined Proposer-Builder Separation (ePBS) refers to integrating the PBS mecha
 
 ## [Key References](#key-references)
 - [Why enshrine Proposer-Builder Separation](https://ethresear.ch/t/why-enshrine-proposer-builder-separation-a-viable-path-to-epbs/15710)
-- 
+- [Notes on Proposer-Builder Separation PBS](https://barnabe.substack.com/p/pbs)
+- [Beyond the Basics: The Unanticipated Advantages of ePBS](https://hackmd.io/@potuz/ry9NirU2p)
+- [ePBS design constraints](https://ethresear.ch/t/epbs-design-constraints/18728/1)
+- [Payload Timeliness Committee](https://ethresear.ch/t/payload-timeliness-committee-ptc-an-epbs-design/16054)
+- [PEPC](https://ethresear.ch/t/unbundling-pbs-towards-protocol-enforced-proposer-commitments-pepc/13879)
+- [An Incomplete Guide to PBS - with Mike Neuder and Chris Hager](https://www.youtube.com/watch?v=mEbK9AX7X7o)
+- [ePBS Breakout Room](https://www.youtube.com/watch?v=63juNVzd1P4)
+- [mev-bibliography](https://github.com/michaelneuder/mev-bibliography#readme)
 
 
 ## [Introduction - What is PBS](#introduction---what-is-pbs)
