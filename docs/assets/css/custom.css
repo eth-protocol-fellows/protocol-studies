@@ -163,14 +163,7 @@ body .markdown-section {
     ||                            ||
     ################################
 */
-/* TODO
-1. Color scheme
-2. Font
-3. Shadow
-5. Footer + modern
-6. Animation?
-7. 404?
-*/
+
 :root {
   --base-background-color: #190c39;
   --sidebar-name-color: #ba9afd;
