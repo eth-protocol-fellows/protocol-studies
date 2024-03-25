@@ -85,3 +85,4 @@ Refer the wiki on [EVM](/wiki/EL/evm.md) to understand how assembly code works.
 - [A Prehistory of the Ethereum Protocol](https://vitalik.eth.limo/general/2017/09/14/prehistory.html)
 - ["Stack Exchange: What's a precompiled contract and how are they different from native opcodes?"](https://ethereum.stackexchange.com/questions/440/whats-a-precompiled-contract-and-how-are-they-different-from-native-opcodes)
 - ["Stack Exchange: Why aren't more common algorithms done as precompiles?"](https://ethereum.stackexchange.com/questions/155787/why-arent-more-common-algorithms-done-as-precompiles)
+- [A call, a precompile and a compiler walk into a bar](https://blog.theredguild.org/a-call-a-precompile-and-a-compiler-walk-into-a-bar/)
