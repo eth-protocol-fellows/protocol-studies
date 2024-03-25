@@ -10,7 +10,7 @@ Watch the presentation by [Domothy](https://twitter.com/domothy) on StreamEth or
 
 Before starting with the week 5 content, make yourself familiar with resources in previous weeks. 
 
-Additionally, you can read get ready by reading following resources:
+Additionally, you can read and get ready by studying the following resources:
 
 - https://ethereum.org/en/roadmap/
 - https://notes.ethereum.org/@domothy/roadmap

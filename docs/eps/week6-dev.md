@@ -10,18 +10,22 @@ The talk will be streamed live on [StreamEth](https://streameth.org/65cf97e702e8
 
 Before starting with the week 6 content, make yourself familiar with resources in previous weeks, especially 1-3. 
 
-Additionally, you can read get ready by studying following resources:
+Additionally, you can read and get ready by studying the following resources:
 
-- https://github.com/ethereum/consensus-specs
-- https://blog.ethereum.org/2023/08/29/eel-spec
-- https://github.com/ethereum/execution-specs
+- Consensus specs:
+    - Index: https://github.com/ethereum/consensus-specs
+    - Pyspec tutorial: https://github.com/ethereum/consensus-specs/blob/dev/tests/README.md
+- Execution specs:
+    - https://blog.ethereum.org/2023/08/29/eel-spec
+    - https://github.com/ethereum/execution-specs
 
 ## Outline
 
-- HWW on Consensus specs
-- Sam on EELS
+- Hsiao-Wei Wang on Consensus specs
+- Sam Wilson on EELS
 
 ## Additional reading and exercises 
 
 - https://ethereum.org/en/developers/tutorials/yellow-paper-evm/
-- https://eth2book.info/capella/annotated-spec/
+- Vitalik Buterin’s Annotated spec: https://github.com/ethereum/annotated-spec
+- Ben Edgington’s Upgrading Ethereum Book: https://eth2book.info

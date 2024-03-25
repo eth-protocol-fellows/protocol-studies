@@ -23,6 +23,7 @@
   - [EL Specs](/wiki/EL/el-specs.md)
   - Client architecture
   - [EVM](/wiki/EL/evm.md)
+  - [Precompiled Contracts](/wiki/EL/precompiled-contracts.md)
   - [Transaction](/wiki/EL/transaction.md)
   - [DevP2P]
   - [MPT]
