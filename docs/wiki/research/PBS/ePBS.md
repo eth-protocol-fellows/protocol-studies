@@ -21,6 +21,60 @@ Enshrined Proposer-Builder Separation (ePBS) refers to integrating the PBS mecha
 - [ePBS Breakout Room](https://www.youtube.com/watch?v=63juNVzd1P4)
 - [mev-bibliography](https://github.com/michaelneuder/mev-bibliography#readme)
 
+**Table of Contents**
+- [Envisioning Ethereum's Future: The Path to Enshrined Proposer-Builder Separation (ePBS)](#envisioning-ethereums-future-the-path-to-enshrined-proposer-builder-separation-epbs)
+  - [\[DRAFT MODE - This is work in progress.\]](#draft-mode---this-is-work-in-progress)
+  - [ELI5](#eli5)
+  - [TLDR](#tldr)
+  - [Key References](#key-references)
+  - [Introduction - What is PBS](#introduction---what-is-pbs)
+    - [Proposers](#proposers)
+    - [Builders](#builders)
+    - [Separation Benefits](#separation-benefits)
+  - [Brief overview of ePBS](#brief-overview-of-epbs)
+    - [PBS in historical context](#pbs-in-historical-context)
+    - [Transition from mev-boost to ePBS](#transition-from-mev-boost-to-epbs)
+  - [The Case for ePBS](#the-case-for-epbs)
+    - [Main Reasons for Transition to ePBS](#main-reasons-for-transition-to-epbs)
+    - [Contradiction of Core Values by Reliance on Relays](#contradiction-of-core-values-by-reliance-on-relays)
+    - [Perceived Risks and Inefficiencies with Out-of-Protocol PBS](#perceived-risks-and-inefficiencies-with-out-of-protocol-pbs)
+    - [Sustainability Concerns of Relays](#sustainability-concerns-of-relays)
+    - [Economic Considerations](#economic-considerations)
+    - [Security Considerations](#security-considerations)
+    - [MEV Burn](#mev-burn)
+  - [Counterarguments to ePBS](#counterarguments-to-epbs)
+    - [Primary Counterarguments Against ePBS](#primary-counterarguments-against-epbs)
+    - [If it ain't broke, don't fix it - counterarguments](#if-it-aint-broke-dont-fix-it---counterarguments)
+    - [Proponents' Responses and Advocacy for ePBS](#proponents-responses-and-advocacy-for-epbs)
+    - [The debate on the optimal ePBS mechanism](#the-debate-on-the-optimal-epbs-mechanism)
+  - [Designing ePBS](#designing-epbs)
+    - [Desirable properties of ePBS mechanisms](#desirable-properties-of-epbs-mechanisms)
+    - [The Two-Block HeadLock (TBHL) proposal: An overview](#the-two-block-headlock-tbhl-proposal-an-overview)
+    - [PTC](#ptc)
+    - [PEPC](#pepc)
+    - [Addressing honest builder publication and payment safety](#addressing-honest-builder-publication-and-payment-safety)
+    - [Ensuring permissionlessness and censorship resistance](#ensuring-permissionlessness-and-censorship-resistance)
+    - [Implementation details for PTC](#implementation-details-for-ptc)
+  - [Out-of-protocol proposals](#out-of-protocol-proposals)
+    - [Optimistic Relaying: A Step Towards ePBS](#optimistic-relaying-a-step-towards-epbs)
+      - [Concept and benefits of optimistic relaying](#concept-and-benefits-of-optimistic-relaying)
+      - [The evolution from optimistic relaying v1 to the endgame](#the-evolution-from-optimistic-relaying-v1-to-the-endgame)
+      - [Potential impacts on the relay landscape and ePBS implementation](#potential-impacts-on-the-relay-landscape-and-epbs-implementation)
+    - [PEPC-Boost](#pepc-boost)
+    - [PEPC-DVT](#pepc-dvt)
+    - [MEV-Boost+](#mev-boost)
+    - [MEV-BOOST++](#mev-boost-1)
+  - [Open Questions](#open-questions)
+    - [What does bypassability imply?](#what-does-bypassability-imply)
+    - [What does enshrining aim to achieve?](#what-does-enshrining-aim-to-achieve)
+    - [What are the exact implications of not enshrining?](#what-are-the-exact-implications-of-not-enshrining)
+    - [WHat is the real demand for ePBS?](#what-is-the-real-demand-for-epbs)
+    - [How much can we rely on altruism and the social layer?](#how-much-can-we-rely-on-altruism-and-the-social-layer)
+    - [How important is L1 ePBS in a future with L2s and OFAs?](#how-important-is-l1-epbs-in-a-future-with-l2s-and-ofas)
+    - [What priority should ePBS have in light of other protocol upgrades?](#what-priority-should-epbs-have-in-light-of-other-protocol-upgrades)
+  - [Community Perspectives and Future Directions](#community-perspectives-and-future-directions)
+  - [Frequently Asked Questions on epbs](#frequently-asked-questions-on-epbs)
+
 
 ## [Introduction - What is PBS](#introduction---what-is-pbs)
 
@@ -255,7 +309,7 @@ Determining the minimum viable ePBS involves a delicate balance of these propert
 ### Ensuring permissionlessness and censorship resistance
 ### Implementation details for PTC
 
-## Out-of-protocol proposals
+## [Out-of-protocol proposals](#out-of-protocol-proposals)
 ### [Optimistic Relaying: A Step Towards ePBS](#optimistic-relaying-a-step-towards-epbs)
 #### Concept and benefits of optimistic relaying
 #### The evolution from optimistic relaying v1 to the endgame
@@ -265,7 +319,7 @@ Determining the minimum viable ePBS involves a delicate balance of these propert
 ### MEV-Boost+
 ### MEV-BOOST++
 
-## Open Questions
+## [Open Questions](#open-questions)
 ### What does bypassability imply?
 ### What does enshrining aim to achieve? 
 ### What are the exact implications of not enshrining? 
@@ -274,5 +328,7 @@ Determining the minimum viable ePBS involves a delicate balance of these propert
 ### How important is L1 ePBS in a future with L2s and OFAs? 
 ### What priority should ePBS have in light of other protocol upgrades? 
 
-
 ## [Community Perspectives and Future Directions](#community-perspectives-and-future-directions)
+
+## [Frequently Asked Questions on epbs](#frequently-asked-questions-on-epbs)
+
