@@ -22,7 +22,7 @@ Additionally, you can read and get ready by studying the following resources:
 ## Outline
 
 - Hsiao-Wei Wang on Consensus specs
-- Sam on EELS
+- Sam Wilson on EELS
 
 ## Additional reading and exercises 
 
