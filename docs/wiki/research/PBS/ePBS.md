@@ -113,7 +113,7 @@ The need to enshrine PBS into Ethereum's protocol stems from the desire to mitig
 
 ### [PBS in historical context](#pbs-in-historical-context)
 
-- **Pre-MEV-Geth Era:** Before MEV-Geth, there was a form of proposer-builder separation in the division of labor between a mining pool operator and the workers. The mining pool operator would construct the block body, and the workers would hash the block further. This division of labor also involved a commit-reveal scheme 
+- **Pre-MEV-Geth Era:** Before MEV-Geth, there was a form of PBS in the division of labor between a mining pool operator and the workers. The mining pool operator would construct the block body, and the workers would hash the block further. This division of labor also involved a commit-reveal scheme 
  
 - **Before the Merge (Proof of Work Era):** The concept of PBS was more explicit in the MEV-Geth world, where a few large mining pools controlled a significant portion of the hash rate. MEV-Geth allowed searchers to send bundles to miners without worrying about the miners stealing them, as the miners' reputation was worth more than the potential gain from stealing the contents of the bundle. This interaction was simpler due to the fewer number of block producers. 
 
@@ -129,7 +129,7 @@ The need to enshrine PBS into Ethereum's protocol stems from the desire to mitig
 
  
 ### [Transition from mev-boost to ePBS](#transition-from-mev-boost-to-epbs)
-The transition from MEV-Boost to enshrined proposer-builder separation (ePBS) represents a pivotal evolution in Ethereum's approach to handling Miner/Maximal Extractable Value (MEV) and improving the network's efficiency and fairness. Here's a detailed look into this transition:
+The transition from MEV-Boost to ePBS represents a pivotal evolution in Ethereum's approach to handling Miner/Maximal Extractable Value (MEV) and improving the network's efficiency and fairness. Here's a detailed look into this transition:
 
 **MEV-Boost: A Precursor to ePBS**
 MEV-Boost, introduced as an interim solution, allows validators to outsource the construction of blocks to external builders, who bid for the right to propose block contents. This setup created a marketplace for block space, reducing the negative impacts of MEV by making the process more competitive and transparent. However, MEV-Boost operates off-chain and relies on centralized relays, introducing potential centralization and security risks.
@@ -167,7 +167,7 @@ Moving from MEV-Boost to ePBS is a complex but necessary step towards a more dec
 The transition to ePBS from the current MEV-Boost system is motivated by several key reasons that align with Ethereum's core values of decentralization, security, and efficiency. Proponents of ePBS highlight the importance of integrating PBS directly into the Ethereum protocol to address several concerns arising from the reliance on relays and out-of-protocol mechanisms for block construction. Here's a detailed explanation of these aspects:
 
 ### [Main Reasons for Transition to ePBS](#main-reasons-for-transition-to-epbs)
-1. **Decentralization**: ePBS aims to reduce the reliance on a few centralized relays by embedding the proposer-builder separation mechanism directly within the Ethereum protocol. This move seeks to distribute the responsibility for block construction across a broader set of participants, enhancing the network's resilience and reducing central points of failure.
+1. **Decentralization**: ePBS aims to reduce the reliance on a few centralized relays by embedding the PBS mechanism directly within the Ethereum protocol. This move seeks to distribute the responsibility for block construction across a broader set of participants, enhancing the network's resilience and reducing central points of failure.
 2. **Security**: By integrating PBS into the Ethereum protocol, ePBS ensures that the entire block construction process is governed by the same consensus rules and security guarantees that protect other aspects of the network. This contrasts with the current system, where off-chain relays operate without the direct oversight of Ethereum's consensus mechanisms.
 3. **Efficiency and Fairness**: ePBS proposes to create a more transparent and competitive marketplace for block space, potentially reducing the inefficiencies and inequities associated with MEV extraction. It aims to ensure that validators have more control and visibility over the blocks they propose, contributing to a fairer distribution of MEV rewards.
 
@@ -183,7 +183,7 @@ The transition to ePBS from the current MEV-Boost system is motivated by several
 - **Operational Sustainability**: The long-term operational viability of relays is uncertain, as they depend on continuous participation and support from the community. Any disruption in relay services could significantly impact the network's ability to process transactions efficiently.
 - **Financial Model**: The financial sustainability of relays is also a concern. If the costs of running relays exceed the revenue generated from their operation, it could lead to a reduction in the number of relays, increasing centralization risks and affecting the competitive marketplace for block space.
 
-The transition towards enshrined proposer-builder separation (ePBS) involves critical economic and security considerations, especially in the context of Miner Extractable Value (MEV) and proposals like MEV burn. These considerations shape the debate around ePBS, highlighting its potential impact on the Ethereum ecosystem. Here's an exploration of these aspects:
+The transition towards ePBS involves critical economic and security considerations, especially in the context of Miner Extractable Value (MEV) and proposals like MEV burn. These considerations shape the debate around ePBS, highlighting its potential impact on the Ethereum ecosystem. Here's an exploration of these aspects:
 
 ### [Economic Considerations](#economic-considerations)
 1. **MEV Distribution**: One of the primary economic concerns revolves around how MEV is distributed among validators, builders, and users. ePBS aims to create a more transparent and equitable MEV market by ensuring that validators are fairly compensated for the blocks they propose. This could potentially alter the current dynamics, where certain participants may disproportionately benefit from MEV.
@@ -207,7 +207,7 @@ The transition to ePBS from the current MEV-Boost system is driven by a combinat
 
 ## [Counterarguments to ePBS](#counterarguments-to-epbs)
 
-The discussion around the enshrinement of proposer-builder separation (ePBS) within Ethereum's protocol has stirred significant debate, with various counterarguments presented by its critics [quote the Mike's talk with uncommon core]. Proponents of ePBS, however, offer robust responses to these concerns, advocating for its necessity and integration into Ethereum's roadmap. Additionally, the discourse explores alternative methods for addressing miner extractable value (MEV), weighing their sufficiency against the proposed ePBS system.
+The discussion around the enshrinement of PBS (ePBS) within Ethereum's protocol has stirred significant debate, with various counterarguments presented by its critics [quote the Mike's talk with uncommon core]. Proponents of ePBS, however, offer robust responses to these concerns, advocating for its necessity and integration into Ethereum's roadmap. Additionally, the discourse explores alternative methods for addressing miner extractable value (MEV), weighing their sufficiency against the proposed ePBS system.
 
 ### [Primary Counterarguments Against ePBS](#primary-counterarguments-against-epbs)
 
@@ -223,7 +223,7 @@ The discussion around the enshrinement of proposer-builder separation (ePBS) wit
 
 ### [If it ain't broke, don't fix it - counterarguments](#if-it-aint-broke-dont-fix-it---counterarguments)
 
-The "If it ain't broke, don't fix it" perspective emerges as a significant counterargument against the enshrinement of proposer-builder separation (ePBS) within Ethereum's protocol. This viewpoint is grounded in caution and a preference for maintaining the status quo unless there's an unequivocal necessity for change. Here’s how this perspective shapes the counterarguments against ePBS:
+The "If it ain't broke, don't fix it" perspective emerges as a significant counterargument against the ePBS within Ethereum's protocol. This viewpoint is grounded in caution and a preference for maintaining the status quo unless there's an unequivocal necessity for change. Here’s how this perspective shapes the counterarguments against ePBS:
 
 **Reliance on Existing Systems**
 
