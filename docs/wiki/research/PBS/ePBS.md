@@ -46,7 +46,6 @@ Enshrined Proposer-Builder Separation (ePBS) refers to integrating the PBS mecha
     - [Primary Counterarguments Against ePBS](#primary-counterarguments-against-epbs)
     - [If it ain't broke, don't fix it - counterarguments](#if-it-aint-broke-dont-fix-it---counterarguments)
     - [Proponents' Responses and Advocacy for ePBS](#proponents-responses-and-advocacy-for-epbs)
-    - [The debate on the optimal ePBS mechanism](#the-debate-on-the-optimal-epbs-mechanism)
   - [Designing ePBS](#designing-epbs)
     - [Desirable properties of ePBS mechanisms](#desirable-properties-of-epbs-mechanisms)
     - [The Two-Block HeadLock (TBHL) proposal: An overview](#the-two-block-headlock-tbhl-proposal-an-overview)
@@ -269,7 +268,10 @@ ePBS proponents argue that while these alternatives offer partial solutions, the
 The debate over ePBS encapsulates a broader discussion about Ethereum's future direction, balancing innovation with caution. While counterarguments emphasize risks and alternatives, ePBS advocates underline its alignment with Ethereum's core principles and its necessity for ensuring a fair, secure, and efficient blockchain ecosystem.
 
 
-### [The debate on the optimal ePBS mechanism](#the-debate-on-the-optimal-epbs-mechanism)
+
+## [Designing ePBS](#designing-epbs)
+
+### [Desirable properties of ePBS mechanisms](#desirable-properties-of-epbs-mechanisms)
 The debate on the optimal ePBS mechanism and the concept of a minimum viable ePBS (MVePBS) revolves around identifying the core features and properties that such a system must possess to effectively address the challenges it aims to solve within the Ethereum ecosystem. This involves balancing the goals of decentralization, efficiency, security, and fairness, while also considering the practical implications of implementation and adoption. Here's a look at the central aspects of this debate and the properties considered essential for a minimum viable ePBS.
 
 **Core Properties of MVePBS**
@@ -284,10 +286,22 @@ The debate on the optimal ePBS mechanism and the concept of a minimum viable ePB
 
 5. **Reduced Trust Requirements:** By enshrining PBS into the protocol, the system aims to reduce reliance on trust between different parties (e.g., between proposers and builders, or between users and relays). The design should minimize opportunities for off-protocol agreements that could bypass the intended fairness of the system.
 
+6. **Fairness in MEV Distribution:** ePBS should aim to level the playing field regarding access to MEV, ensuring that opportunities for value extraction are fairly distributed among participants. This involves creating mechanisms that prevent monopolistic control over MEV opportunities by a few large players.
+
+7. **Minimal Trust Assumptions:** The design should minimize the need for trust between proposers, builders, and validators. By enshrining PBS into the Ethereum protocol, ePBS mechanisms should leverage cryptographic and game-theoretic principles to ensure that participants can operate in a trust-minimized environment.
+
+8. **Economic Viability:** ePBS mechanisms must be economically viable for all participants, including proposers, builders, and validators. This involves ensuring that the costs associated with participating in the ePBS ecosystem (e.g., staking requirements, transaction fees) do not outweigh the potential benefits, thus encouraging broad participation.
+
+9. **Flexibility and Compatibility:** The ePBS framework should be flexible enough to accommodate future innovations and changes within the Ethereum ecosystem, including upgrades and new layer-2 solutions. It should also be compatible with existing infrastructure to facilitate a smooth transition.
+
+10. **Reduced Complexity for Users:** While ePBS introduces additional complexity at the protocol level, it should strive to minimize the impact of this complexity on end-users and developers. The system should be designed so that interacting with Ethereum remains as intuitive and straightforward as possible.
+
+11. **Incentive Alignment:** The incentives within the ePBS mechanism should be carefully designed to align the interests of all network participants, including users, proposers, builders, and validators. This alignment is crucial for ensuring the long-term health and stability of the network.
+
 
 **Debating the Optimal Mechanism**
 
-The debate on the optimal ePBS mechanism involves weighing various design choices against these core properties, often requiring trade-offs:
+The debate on the optimal ePBS mechanism involves weighing various design choices against these core properties, often requiring trade-offs[quote the recent ePBS call from Ethereum]:
 
 1. **Auction Mechanisms:** There's significant discussion around the best way to conduct auctions for block space and MEV opportunities—whether through second-price auctions, or more complex mechanisms like frequent batch auctions. Each has implications for fairness, efficiency, and vulnerability to manipulation.
 
@@ -299,9 +313,6 @@ The debate on the optimal ePBS mechanism involves weighing various design choice
 
 Determining the minimum viable ePBS involves a delicate balance of these properties, necessitating a mechanism that promotes decentralization, ensures security and efficiency, maintains transparency and fairness, and reduces reliance on trust. Ongoing discussions and research within the Ethereum community are crucial for refining these concepts and moving towards a consensus on the optimal ePBS mechanism.
 
-
-## [Designing ePBS](#designing-epbs)
-### Desirable properties of ePBS mechanisms
 ### The Two-Block HeadLock (TBHL) proposal: An overview
 ### PTC 
 ### PEPC
