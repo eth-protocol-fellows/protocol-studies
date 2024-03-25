@@ -28,15 +28,15 @@ Proposer-Builder Separation (PBS) is a design philosophy[quote Barnable here] an
 
 Here’s a breakdown of the roles and the rationale behind PBS:
 
-### Proposers
+### [Proposers](#proposers)
 - **Role**: Validators chosen by the protocol to propose a new block to the blockchain.
 - **Traditional Challenge**: In a system without PBS, the proposer must both select which transactions to include in a block and order them. This task becomes increasingly complex and specialized as the proposer needs to understand the current state of the blockchain deeply and identify the most profitable transactions to include, often related to MEV.
 
-### Builders
+### [Builders](#builders)
 - **Role**: Specialized actors responsible for constructing blocks. They listen to the network for transactions, order them in a way that maximizes the value extracted from the block (MEV), and bid for their block to be chosen by the proposer.
 - **Rationale**: Builders are specialized and equipped with sophisticated strategies and algorithms to efficiently order transactions to maximize MEV. Their specialization allows for more efficient and profitable block construction than a generalist proposer could achieve.
 
-### Separation Benefits
+### [Separation Benefits](#separation-benefits)
 - **Decentralization and Security**: By allowing proposers to remain unsophisticated entities, PBS aids in maintaining a more decentralized network. It lowers the barrier to entry for becoming a proposer, as they no longer need the infrastructure or knowledge to optimize transaction ordering for MEV.
 - **Efficiency and Specialization**: Separating the roles allows each actor to specialize in their respective tasks, leading to more efficient block construction and potentially higher network throughput.
 - **Fairness and MEV Distribution**: PBS can help in creating a more competitive and fair environment for MEV extraction, as multiple builders compete to have their blocks chosen by proposers.
@@ -57,7 +57,7 @@ In the ePBS framework:
 The need to enshrine PBS into Ethereum's protocol stems from the desire to mitigate risks associated with external, trust-dependent services, improve the decentralization and security of block production, and better manage the complexities around MEV extraction. By formalizing these roles within the Ethereum protocol, ePBS seeks to ensure a fair, efficient, and transparent process for transaction ordering and block construction, aligned with Ethereum's ethos of decentralization and open participation.
 
 
-### [PBS in historical context]
+### [PBS in historical context](#pbs-in-historical-context)
 
 - **Pre-MEV-Geth Era:** Before MEV-Geth, there was a form of proposer-builder separation in the division of labor between a mining pool operator and the workers. The mining pool operator would construct the block body, and the workers would hash the block further. This division of labor also involved a commit-reveal scheme 
  
@@ -74,7 +74,7 @@ The need to enshrine PBS into Ethereum's protocol stems from the desire to mitig
 - **Current Status Post-Merge:** Immediately after the merge, there were about three or four relays running. Now, there are around 8-10 relays that facilitate most of the MEV-Boost blocks. About 95% of validators are connected to one of these relays and use their connection to source their block production.
 
  
-### [Transition from mev-boost to ePBS]
+### [Transition from mev-boost to ePBS](#transition-from-mev-boost-to-epbs)
 The transition from MEV-Boost to enshrined proposer-builder separation (ePBS) represents a pivotal evolution in Ethereum's approach to handling Miner/Maximal Extractable Value (MEV) and improving the network's efficiency and fairness. Here's a detailed look into this transition:
 
 **MEV-Boost: A Precursor to ePBS**
@@ -112,49 +112,50 @@ Moving from MEV-Boost to ePBS is a complex but necessary step towards a more dec
 
 The transition to ePBS from the current MEV-Boost system is motivated by several key reasons that align with Ethereum's core values of decentralization, security, and efficiency. Proponents of ePBS highlight the importance of integrating PBS directly into the Ethereum protocol to address several concerns arising from the reliance on relays and out-of-protocol mechanisms for block construction. Here's a detailed explanation of these aspects:
 
-### Main Reasons for Transition to ePBS
+### [Main Reasons for Transition to ePBS](#main-reasons-for-transition-to-epbs)
 1. **Decentralization**: ePBS aims to reduce the reliance on a few centralized relays by embedding the proposer-builder separation mechanism directly within the Ethereum protocol. This move seeks to distribute the responsibility for block construction across a broader set of participants, enhancing the network's resilience and reducing central points of failure.
 2. **Security**: By integrating PBS into the Ethereum protocol, ePBS ensures that the entire block construction process is governed by the same consensus rules and security guarantees that protect other aspects of the network. This contrasts with the current system, where off-chain relays operate without the direct oversight of Ethereum's consensus mechanisms.
 3. **Efficiency and Fairness**: ePBS proposes to create a more transparent and competitive marketplace for block space, potentially reducing the inefficiencies and inequities associated with MEV extraction. It aims to ensure that validators have more control and visibility over the blocks they propose, contributing to a fairer distribution of MEV rewards.
 
-### Contradiction of Core Values by Reliance on Relays
+### [Contradiction of Core Values by Reliance on Relays](#contradiction-of-core-values-by-reliance-on-relays)
 - **Centralization Risks**: The current reliance on a limited number of relays introduces centralization into a network that prizes decentralization as a core principle. Centralized relays can become single points of failure or control, undermining the network's distributed nature.
 - **Security Vulnerabilities**: External relays, operating outside of Ethereum's consensus rules, could potentially be manipulated or attacked, posing security risks to the network. This external dependency contradicts Ethereum's goal of achieving robust, protocol-enshrined security.
 
-### Perceived Risks and Inefficiencies with Out-of-Protocol PBS
+### [Perceived Risks and Inefficiencies with Out-of-Protocol PBS](#perceived-risks-and-inefficiencies-with-out-of-protocol-pbs)
 - **MEV-Related Manipulations**: The current PBS mechanism, reliant on external relays, may not adequately protect against manipulative practices associated with MEV extraction, leading to unfair advantages and potential network instability.
 - **Opaque Operations**: The operation of relays outside the Ethereum protocol can lead to a lack of transparency and accountability, making it difficult to monitor and regulate block construction practices effectively.
 
-### Sustainability Concerns of Relays
+### [Sustainability Concerns of Relays](#sustainability-concerns-of-relays)
 - **Operational Sustainability**: The long-term operational viability of relays is uncertain, as they depend on continuous participation and support from the community. Any disruption in relay services could significantly impact the network's ability to process transactions efficiently.
 - **Financial Model**: The financial sustainability of relays is also a concern. If the costs of running relays exceed the revenue generated from their operation, it could lead to a reduction in the number of relays, increasing centralization risks and affecting the competitive marketplace for block space.
 
 The transition towards enshrined proposer-builder separation (ePBS) involves critical economic and security considerations, especially in the context of Miner Extractable Value (MEV) and proposals like MEV burn. These considerations shape the debate around ePBS, highlighting its potential impact on the Ethereum ecosystem. Here's an exploration of these aspects:
 
-### Economic Considerations
+### [Economic Considerations](#economic-considerations)
 1. **MEV Distribution**: One of the primary economic concerns revolves around how MEV is distributed among validators, builders, and users. ePBS aims to create a more transparent and equitable MEV market by ensuring that validators are fairly compensated for the blocks they propose. This could potentially alter the current dynamics, where certain participants may disproportionately benefit from MEV.
 2. **Market Efficiency**: By integrating PBS directly into the Ethereum protocol, ePBS is expected to foster a more competitive and efficient marketplace for block space. This could lead to better pricing mechanisms for transaction inclusion, benefiting users with fairer transaction costs and potentially reducing the prevalence of gas price auctions that lead to network congestion.
 3. **Sustainability of Relays**: ePBS addresses the operational and financial sustainability concerns of relays by potentially reducing their role in the MEV extraction process. A protocol-level solution could offer a more stable and predictable framework for handling MEV, alleviating the need for external relays and their associated costs.
 
-### Security Considerations
+### [Security Considerations](#security-considerations)
 1. **Centralization Risks**: The current reliance on a limited set of MEV-Boost relays introduces centralization risks, making the network more vulnerable to attacks or manipulations. ePBS seeks to mitigate these risks by decentralizing the process of block proposal and construction, aligning with Ethereum's security ethos.
 2. **Manipulative Practices**: External relays and opaque MEV extraction mechanisms can lead to manipulative practices, such as transaction reordering or sandwich attacks, that undermine network integrity. ePBS aims to provide a more regulated and transparent environment for handling MEV, enhancing overall network security.
 3. **Protocol-Enshrined Security**: Incorporating PBS directly into the Ethereum protocol ensures that block construction adheres to the same rigorous consensus and security standards that govern other aspects of the network. This unified approach to security is seen as a significant improvement over the current system, where external components like relays operate without direct protocol oversight.
 
-### MEV Burn
+### [MEV Burn](#mev-burn)
 The concept of MEV burn involves redirecting a portion of MEV profits towards burning Ether, reducing the overall supply and potentially increasing the value of the remaining Ether. This mechanism has been proposed as a way to align the interests of validators, builders, and the wider Ethereum community by ensuring that excessive MEV extraction does not lead to inflationary pressures or disproportionate benefits for certain network participants.
+
 1. **Inflationary Pressure Mitigation**: By burning a part of the MEV, Ethereum could potentially control inflationary pressures arising from new Ether issuance for block rewards.
 2. **Economic Stability**: MEV burn could contribute to the economic stability of Ethereum by ensuring that the benefits of MEV extraction are more evenly distributed across the ecosystem, including Ether holders who are not directly involved in MEV strategies.
 3. **Alignment of Incentives**: Implementing an MEV burn mechanism could help align the incentives of various network participants, ensuring that the pursuit of MEV does not compromise network security or efficiency.
 
-In summary, the transition to ePBS from the current MEV-Boost system is driven by a combination of economic and security considerations, including concerns about MEV distribution, market efficiency, centralization risks, and the operational sustainability of relays. The potential implementation of an MEV burn mechanism further reflects Ethereum's commitment to aligning economic incentives with its core values of decentralization, security, and efficiency. This transition marks a pivotal moment in Ethereum's evolution, potentially reshaping the landscape of transaction ordering and MEV extraction in favor of a more secure, efficient, and equitable ecosystem.
+The transition to ePBS from the current MEV-Boost system is driven by a combination of economic and security considerations, including concerns about MEV distribution, market efficiency, centralization risks, and the operational sustainability of relays. The potential implementation of an MEV burn mechanism further reflects Ethereum's commitment to aligning economic incentives with its core values of decentralization, security, and efficiency. This transition marks a pivotal moment in Ethereum's evolution, potentially reshaping the landscape of transaction ordering and MEV extraction in favor of a more secure, efficient, and equitable ecosystem.
 
 
 ## [Counterarguments to ePBS](#counterarguments-to-epbs)
 
-The discussion around the enshrinement of proposer-builder separation (ePBS) within Ethereum's protocol has stirred significant debate, with various counterarguments presented by its critics. Proponents of ePBS, however, offer robust responses to these concerns, advocating for its necessity and integration into Ethereum's roadmap. Additionally, the discourse explores alternative methods for addressing miner extractable value (MEV), weighing their sufficiency against the proposed ePBS system.
+The discussion around the enshrinement of proposer-builder separation (ePBS) within Ethereum's protocol has stirred significant debate, with various counterarguments presented by its critics [quote the Mike's talk with uncommon core]. Proponents of ePBS, however, offer robust responses to these concerns, advocating for its necessity and integration into Ethereum's roadmap. Additionally, the discourse explores alternative methods for addressing miner extractable value (MEV), weighing their sufficiency against the proposed ePBS system.
 
-### Primary Counterarguments Against ePBS
+### [Primary Counterarguments Against ePBS](#primary-counterarguments-against-epbs)
 
 1. **Complexity and Technical Risk**: Critics argue that incorporating ePBS into Ethereum's core protocol significantly increases its complexity and introduces new technical risks, potentially jeopardizing network stability and security.
 
@@ -166,7 +167,7 @@ The discussion around the enshrinement of proposer-builder separation (ePBS) wit
 
 5. **Bypassability**: Bypassability refers to the ability of participants within the Ethereum ecosystem—be it validators, proposers, builders, or others—to sidestep or bypass the rules and mechanisms established by ePBS. This could occur through off-protocol agreements, alternative transaction ordering systems, or other means that effectively operate outside the constraints set by ePBS. The protocol will have no easy way to enforce ePBS rules on them. 
 
-### If it ain't broke, don't fix it - counterarguments
+### [If it ain't broke, don't fix it - counterarguments](#if-it-aint-broke-dont-fix-it---counterarguments)
 
 The "If it ain't broke, don't fix it" perspective emerges as a significant counterargument against the enshrinement of proposer-builder separation (ePBS) within Ethereum's protocol. This viewpoint is grounded in caution and a preference for maintaining the status quo unless there's an unequivocal necessity for change. Here’s how this perspective shapes the counterarguments against ePBS:
 
@@ -191,7 +192,7 @@ This perspective demands a higher standard of proof for the necessity of ePBS. C
 Finally, the "If it ain't broke, don't fix it" argument is rooted in a preference for evolutionary rather than revolutionary changes within the Ethereum protocol. Proponents of this view prefer incremental improvements and optimizations to existing systems over wholesale architectural changes, advocating for a cautious approach that values stability and predictability.
 
 
-### Proponents' Responses and Advocacy for ePBS
+### [Proponents' Responses and Advocacy for ePBS](#proponents-responses-and-advocacy-for-epbs)
 
 1. **Mitigating Complexity and Technical Risk**: ePBS advocates argue that while the proposal introduces new elements to the protocol, these are manageable and outweighed by the benefits of enhanced fairness, security, and MEV distribution efficiency. Rigorous testing and phased implementation are proposed to mitigate risks.
 
@@ -214,8 +215,7 @@ ePBS proponents argue that while these alternatives offer partial solutions, the
 The debate over ePBS encapsulates a broader discussion about Ethereum's future direction, balancing innovation with caution. While counterarguments emphasize risks and alternatives, ePBS advocates underline its alignment with Ethereum's core principles and its necessity for ensuring a fair, secure, and efficient blockchain ecosystem.
 
 
-
-### [The debate on the optimal ePBS mechanism]
+### [The debate on the optimal ePBS mechanism](#the-debate-on-the-optimal-epbs-mechanism)
 The debate on the optimal ePBS mechanism and the concept of a minimum viable ePBS (MVePBS) revolves around identifying the core features and properties that such a system must possess to effectively address the challenges it aims to solve within the Ethereum ecosystem. This involves balancing the goals of decentralization, efficiency, security, and fairness, while also considering the practical implications of implementation and adoption. Here's a look at the central aspects of this debate and the properties considered essential for a minimum viable ePBS.
 
 **Core Properties of MVePBS**
