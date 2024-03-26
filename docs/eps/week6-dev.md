@@ -2,9 +2,10 @@
 
 The development track of week 6 will provide a deeper insight into consensus and execution layer specification. 
 
-Join the presentation by [Hsiao-Wei](https://twitter.com/icebearhww) and [Sam](https://twitter.com/_SamWilsn_) on [Monday, March 25, 2PM UTC](https://savvytime.com/converter/utc-to-germany-berlin-united-kingdom-london-ny-new-york-city-ca-san-francisco-china-shanghai-japan-tokyo-australia-sydney/mar-18-2024/4pm). (Note it's 2 hour earlier than our regular calls!)
 
-The talk will be streamed live on [StreamEth](https://streameth.org/65cf97e702e803dbd57d823f/epf_study_group) and Youtube, links will be provided before the call in the [Discord server](https://discord.gg/addwpQbhpq). Discord also serves for the discussion and questions during the stream. 
+Watch presentations from [Hsiao-Wei](https://twitter.com/icebearhww) and [Sam](https://twitter.com/_SamWilsn_) on StreamEth or Youtube.
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/_mb0LFJY8t0?si=M74zgvUuewCrUtJF" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ## Pre-reading
 
@@ -26,6 +27,8 @@ Additionally, you can read and get ready by studying the following resources:
 
 ## Additional reading and exercises 
 
+- Following instructions from Hsiao-Wei's talk, write and run your own pyspec program
+- As an excercise for EL specs, follow Sam's demo on adding an opcode and add your own
 - https://ethereum.org/en/developers/tutorials/yellow-paper-evm/
 - Vitalik Buterin’s Annotated spec: https://github.com/ethereum/annotated-spec
 - Ben Edgington’s Upgrading Ethereum Book: https://eth2book.info

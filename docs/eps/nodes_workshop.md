@@ -2,9 +2,10 @@
 
 During week 5, apart of [the regular presentation](https://epf.wiki/#/eps/week5), we prepared a workshop to give you a hands-on experience of using Ethereum clients. We will learn how to spin up an Ethereum node by running execution and consensus client. 
 
-Join the workshop by [Mario Havel](https://github.com/TMIYChao) on [Thursday, March 21, 4PM UTC](https://savvytime.com/converter/utc-to-germany-berlin-united-kingdom-london-ny-new-york-city-ca-san-francisco-china-shanghai-japan-tokyo-australia-sydney/mar-21-2024/4pm).
 
-The workshop be streamed live on [StreamEth](https://streameth.org/65cf97e702e803dbd57d823f/epf_study_group) and Youtube, links will be provided before the call in the [Discord server](https://discord.gg/Tg2PryVJ). The workshop will be live so you can prepare your own setup, follow the workshop and ask questions in discord group. 
+Watch the recording of the workshop by [Mario](https://twitter.com/TMIYChao) on StreamEth or Youtube. 
+
+[recording](https://www.youtube.com/embed/KxXowOZ2DLs?si=yLpNoczrUmxj4kE4 ':include :type=iframe width=100% height=560 frameborder="0" allow="fullscreen" allowfullscreen encrypted-media gyroscope picture-in-picture web-share')
 
 Make sure to prepare your enviroment and learn basics necessary to understand the process: 
 
