@@ -22,11 +22,9 @@ The KZG commitment scheme is like a cryptographic vault for securely locking awa
     - [Cryptographic Assumptions needed for KZG Scheme](#cryptographic-assumptions-needed-for-kzg-scheme)
     - [Pairing Function](#pairing-function)
   - [Important Properties of Commitments](#important-properties-of-commitments)
-    - [Binding Property](#binding-property)
-    - [Hiding Property](#hiding-property)
   - [KZG Protocol Flow](#kzg-protocol-flow)
-    - [Initial Configuration](#initial-configuration)
     - [Trusted Setup](#trusted-setup)
+    - [Initial Configuration](#initial-configuration)
     - [Commitment of the polynomial](#commitment-of-the-polynomial)
     - [Opening](#opening)
     - [Verification](#verification)
@@ -229,10 +227,12 @@ Non-degenerate means, if we apply pairing function to teh same element, it doesn
 Let's define these properties a bit more rigorously.
 
 A pairing function $e:$  $\mathbb G_1 X \mathbb G_2 \rightarrow \mathbb G_T$  such that it satisfies,
-Bilinear property: $e(g^a, g^b) = e(g, g^{ab}) = e(g^{ab}, g) = e(g,g)^{ab}$
-Non-degenerate property: $e(g,g) \neq 1$, means it is not an identity element.
 
-When $\mathbb G_1$ and $\mathbb G_2$ are the same Group, we call this symmetric pairing function. Otherwise, it is a assymetric pairing function. 
+Bilinear property: $e(g^a, g^b) = e(g, g^{ab}) = e(g^{ab}, g) = e(g,g)^{ab}$
+
+Non-degenerate property: $e(g,g) \neq 1$, means the output is not an identity element.
+
+When $\mathbb G_1$ and $\mathbb G_2$ are the same Group, we call this symmetric pairing function. Otherwise, it is an assymetric pairing function. 
 
 **Developing an intuition for Pairing function**
 
@@ -242,7 +242,7 @@ Here's how to think about this pairing function without getting bogged down by t
 
 - **Two Groups:** Think of the Unicorns and Dragons as belonging to two different groups (in mathematical terms, these are usually called groups $\mathbb G_1$ and $\mathbb G_2$.
 - **Pairing Function:** The magical bridge acts as the pairing function. When a Unicorn and a Dragon meet on this bridge, the pairing function combines them into a Dracorn. This Dracorn has a special glow that uniquely corresponds to the combination of that specific Unicorn and Dragon (reversable).
-- **Unique Outcome:** Just like every Unicorn and Dragon pair produces a Dracorn with a unique glow, in mathematics, a pairing function takes one element from each group and produces a unique output in a third group (often denoted as $\mathbb G_T$)).
+- **Unique Outcome:** Just like every Unicorn and Dragon pair produces a Dracorn with a unique glow, in mathematics, a pairing function takes one element from each group and produces a unique output in a third group (often denoted as $\mathbb G_T$).
 
 **Why is this magical?** Because even though there are countless possible combinations of Unicorns and Dragons, each combination (pairing) produces a unique Dracorn. This is powerful in cryptography because it allows for complex operations that underpin many security protocols, ensuring that each combination is distinct and traceable to its original pair.
 
@@ -254,7 +254,82 @@ Pairing functions enable advanced cryptographic techniques, such as those used i
 
 ## [Important Properties of Commitments](#important-properties-of-commitments)
 
-Let $F(x) = f_0 + f_1x + f_2x^2 + \ldots + f_dx^d$
+Commitment schemes are like the secret-keeping wizards of the digital world. They let someone make a promise about a piece of information (we'll call this the secret message) in a way that ties them to their promise without letting anyone else know what the secret is. Here's how it works:
+
+1. **Making the Promise (Commitment):** You decide on a secret message and use a special spell (the commitment scheme) to create a magic seal (the commitment). This seal proves you have a secret, but it keeps the secret hidden.
+
+2. **Keeping It Secret (Hiding):** Even though you've made this seal, nobody else can see what your secret message is. It's like you've locked it in a chest and only you have the key.
+
+3. **Proving You're Honest (Binding):** The magic of the commitment is that you can't change your secret message later without breaking the seal. This means once you've made your commitment, you're bound to it.
+
+Later, when the time comes to reveal your secret, you can show the original message and prove that it matches the seal you made before. This lets someone else (the verifier) check and confirm that your secret message is the same one you committed to in the beginning, proving that you kept your word.
+
+The Binding and Hiding properties are extremely important and they tie back to the above cryptographic assumptions we made with the Discrete Logarithm and Strong Diffie-Hellman assumptions.
+
+But for now, we don't need to go deep into the technicalities. 
+
+With this background, we are ready to explain KZG protocol flow and understand its construction.
+
+
+## [KZG Protocol Flow](#kzg-protocol-flow)
+
+Let us reiterate on what is the problem we are solving with KZG protocol.
+
+We want prove that we know a specific evaluation of a function or polynomial at a point $x=a$ without revealing it.
+
+In the KZG commitment scheme, the roles of the Trusted Third Party, Prover, and Verifier are critical to its function and security. Here's how each contributes to the process:
+
+1. **Trusted Third Party (Setup Authority):** This entity is responsible for the initial setup phase of the KZG scheme. They generate the public parameters (PP) that will be used in the commitments and proofs, based on a secret that only they know. This secret is crucial for the construction of commitments but must be discarded (or kept extremely secure) after the setup to ensure the system's integrity. The trust in this party is fundamental because if the secret is mishandled or leaked, it could compromise the entire system.
+
+2. **Prover:** The Prover is the one who wants to commit to a certain piece of data (like a polynomial) without revealing it. Using the public parameters provided by the Trusted Third Party, the Prover computes a commitment to their data. When it's time to prove certain properties of their data (like a polynomial evaluation at a specific point), the Prover can generate a proof based on their commitment. This proof shows that their data has certain properties without revealing the data itself.
+
+3. **Verifier:** The Verifier is the party interested in checking the Prover's claims about their secret data. The Verifier uses the proof provided by the Prover, along with the public parameters from the Trusted Third Party, to verify that the Prover's claim about their data is true. This is done without the Verifier ever directly accessing the secret data. The strength of the KZG scheme ensures that if the proof verifies correctly, the Verifier can be confident in the Prover's claim, assuming the Trusted Third Party has correctly performed their role and the secret has not been compromised.
+
+This interaction between the three parties allows for secure and efficient verification of data properties in a variety of cryptographic applications, including blockchain protocols and secure computation, providing a balance between transparency and privacy.
+
+Below is a detailed sequence diagram that explains the flow in a typical KZG protocol.
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant TP as Trusted Party
+    Actor P as Prover 
+    Actor V as Verifier
+
+    rect rgb(255, 190, 152)
+    note right of TP: Generates a ∈ F_p,  <br /> computes PP = <g, g^a, ..., g^a^t>  <br /> and DELETES a 
+    TP->>P: Sends PP
+    TP->>V: Sends PP
+    rect rgb(128,182,223)
+    note right of P: P Chooses f(x) ∈ F_p[X] and computes C(f(a)) = g^f(a) ∈ F_p using PP.
+    P->>V:  Sends C(f(a))
+    V-->>P: Asks to open at b ∈ F_p
+    rect rgb(224,128,135)
+    note right of P: P Computes Q_b(x) = (f(x) - f(b)) / (x - b) and computes C(Q_b) = g^Q_b(a).
+    P->>V: Sends (b, f(b), C(Q_b))
+    V->>P: Checks if e(C(f), g) == e(C(Q_b), g^(a-b)) * e(g, g)^f(b)
+    end
+    end
+    end
+```
+### [Trusted Setup](#trusted-setup)
+
+
+### [Initial Configuration](#initial-configuration)
+
+Say we have a function or polynomial $f(x)$ defined as $f(x) = f_0 + f_1x + f_2x^2 + \ldots + f_dx^t$ in a finite field $\mathbb F_p$. The degree of $f(x)$ is $t$ which is less than $p$, the order of the finite field $\mathbb F_p$.
+
+We often denote this as $f(x) \in \mathbb{F}_p[x]$.
+
+Often, the prime order $p$ is choosen such that $p \gt 2^k$, for some security parameter k. The prime number $p$ is very large in practice.
+
+Prover also picks a pairing function that satisfies both bilinear and non-degenerate properties.
+
+To simplify this step, Prover picks a polynomial f(x) \in \mathbb{F}_p[x]$, the degree of $f(x)$ is at most $t$ which is less than $p$, the order of the finite field $\mathbb{F}_p$. Prover also picks a pairing function $e$.
+
+
+### [Commitment of the polynomial](#commitment-of-the-polynomial)
+
 
 $F(a) = f_0 + f_1a + f_2a^2 + \ldots + f_da^d$
 
@@ -262,18 +337,6 @@ So $C_F = F(a) \cdot G = (f_0 + f_1a + f_2a^2 + \ldots + f_da^d) \cdot G$
 
 $C_F = f_0 \cdot G + f_1a \cdot G + f_2a^2 \cdot G + \ldots + f_da^d \cdot G$
 
-### [Binding Property](#binding-property)
-
-### [Hiding Property](#hiding-property)
-
-
-## [KZG Protocol Flow](#kzg-protocol-flow)
-
-### [Initial Configuration](#initial-configuration)
-
-### [Trusted Setup](#trusted-setup)
-
-### [Commitment of the polynomial](#commitment-of-the-polynomial)
 
 ### [Opening](#opening)
 
