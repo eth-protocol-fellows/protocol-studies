@@ -2,12 +2,51 @@
 
 ## [DRAFT MODE - WORK IN PROGRESS]
 
-## [TLDR]
+## [TLDR](#tldr)
 The KZG commitment scheme is like a cryptographic vault for securely locking away polynomials (mathematical equations) so that you can later prove you have them without giving away their secrets. It's like making a sealed promise that you can validate without ever having to open it up and show the contents. Using advanced math based on elliptic curves, it enables efficient, verifiable commitments that are a key part of making blockchain transactions more private and scalable. This scheme is especially important for Ethereum's upgrades, where it helps to verify transactions quickly and securely without compromising on privacy.
 
-## [Motivation]
+**Table of Contents**
+- [KZG Commitments Unveiled: A Beginner's Guide](#kzg-commitments-unveiled-a-beginners-guide)
+  - [\[DRAFT MODE - WORK IN PROGRESS\]](#draft-mode---work-in-progress)
+  - [TLDR](#tldr)
+  - [Motivation](#motivation)
+    - [ZKSNARKs](#zksnarks)
+    - [Ethereum Danksharding](#ethereum-danksharding)
+  - [Goal](#goal)
+  - [What we need to know before we discuss KZG](#what-we-need-to-know-before-we-discuss-kzg)
+    - [Modular Arithmetic](#modular-arithmetic)
+    - [Finite Field of order prime $p$, $\\mathbb F\_p$](#finite-field-of-order-prime-p-mathbb-f_p)
+    - [Multiplicative Group ($\\mathbb G^\*, .)$](#multiplicative-group-mathbb-g-)
+    - [Generator of a Group](#generator-of-a-group)
+    - [Why choosing a prime number for modulo operations in finite fields](#why-choosing-a-prime-number-for-modulo-operations-in-finite-fields)
+    - [Cryptographic Assumptions needed for KZG Scheme](#cryptographic-assumptions-needed-for-kzg-scheme)
+    - [Pairing Function](#pairing-function)
+  - [Important Properties of Commitments](#important-properties-of-commitments)
+    - [Binding Property](#binding-property)
+    - [Hiding Property](#hiding-property)
+  - [KZG Protocol Flow](#kzg-protocol-flow)
+    - [Initial Configuration](#initial-configuration)
+    - [Trusted Setup](#trusted-setup)
+    - [Commitment of the polynomial](#commitment-of-the-polynomial)
+    - [Opening](#opening)
+    - [Verification](#verification)
+  - [KZG by Hands](#kzg-by-hands)
+    - [KZG by Hands - Initial Configuration](#kzg-by-hands---initial-configuration)
+    - [KZG by Hands - Trusted Setup](#kzg-by-hands---trusted-setup)
+    - [KZG by Hands - Commitment of the polynomial](#kzg-by-hands---commitment-of-the-polynomial)
+    - [KZG by Hands - Opening](#kzg-by-hands---opening)
+    - [KZG by Hands - Verification](#kzg-by-hands---verification)
+  - [Security of KZG - Deleting the toxic waste](#security-of-kzg---deleting-the-toxic-waste)
+  - [Implementing KZG in Sagemath](#implementing-kzg-in-sagemath)
+  - [KZG using Assymetic Pairing Fuctions](#kzg-using-assymetic-pairing-fuctions)
+  - [KZG Batch Mode Single Polynomial, multiple points](#kzg-batch-mode-single-polynomial-multiple-points)
+  - [KZG Batch Mode Multiple Polynomials, same point](#kzg-batch-mode-multiple-polynomials-same-point)
+  - [KZG Batch Mode Multiple Polynomials, multiple points](#kzg-batch-mode-multiple-polynomials-multiple-points)
 
-### [ZKSNARKs]
+
+## [Motivation](#motivation)
+
+### [ZKSNARKs](#zksnarks)
 Learning about Polynomial Commitment Schemes (PCS) is important because they play a key role in creating Zero-Knowledge Succinct Non-Interactive Arguments of Knowledge (ZKSNARKs). ZKSNARKs are special cryptographic methods that allow someone (the prover) to show to someone else (the verifier) that they know a specific piece of information (like a number) without revealing that information. This is done by using PCS and Interactive Oracle Proofs (IOP) together.
 
 *Modern ZKSNARK = Functional Commitment Scheme + Compatible Interactive Oracle Proof (IOP)*
@@ -18,7 +57,7 @@ IOP is another method that helps in proving that you know a secret value without
 
 To make ZKSNARKs, you need to choose a PCS and IOP that work well together. The PCS is used to commit to a polynomial and prove the evaluation of the polynomial at a certain point without revealing the polynomial. The IOP is used to create a proof of knowledge, which is then turned into a non-interactive proof using a method called the Fiat-Shamir heuristic. This makes it possible to generate and verify the proof without needing to communicate in real-time, making ZKSNARKs useful for blockchain and distributed systems.
 
-### [Ethereum Danksharding]
+### [Ethereum Danksharding](#ethereum-danksharding)
 KZG commitment scheme has emerged as a pivotal technology in the Ethereum ecosystem, particularly in the context of Proto-Danksharding and its anticipated evolution into Danksharding. This commitment scheme is a cornerstone of many Zero-Knowledge (ZK) related applications within Ethereum, enabling efficient and secure verification of data without revealing the underlying information.
 
 The adoption of KZG commitments in Proto-Danksharding and its future application in Danksharding represents a significant step towards Ethereum's full sharding implementation. Sharding is a long-term scaling solution for Ethereum, aiming to improve the network's scalability and capacity by dividing the network into smaller, more manageable pieces. The KZG commitment scheme plays a vital role in this process by facilitating the efficient verification of data across shards, thereby enhancing the overall security and performance of the Ethereum network.
@@ -26,7 +65,7 @@ The adoption of KZG commitments in Proto-Danksharding and its future application
 Moreover, the KZG commitment scheme is not only limited to Ethereum but has broader applications in the blockchain and cryptographic communities. Its ability to commit to a polynomial and verify evaluations of the polynomial without revealing the polynomial itself makes it a versatile tool for various cryptographic protocols and applications. 
 
 
-## [Goal]
+## [Goal](#goal)
 Now that we are motivated to learn PCS, let us get started with defining what is our goal i.e. what is the exact problem we want to solve with KZG scheme. 
 
 Say we have a function or polynomial $f(x)$ defined as $f(x) = f_0 + f_1x + f_2x^2 + \ldots + f_dx^t$.
@@ -37,17 +76,17 @@ In practice what we exactly do is that we prove that we know a specific evaluati
 
 We write this, $f(a)$, for some $x=a$. 
 
-## [What we need to know before we discuss KZG]
+## [What we need to know before we discuss KZG](#what-we-need-to-know-before-we-discuss-kzg)
 
 There are some important concepts we need to know before we can move further to understand KZG scheme. Fortunately, we can get an Engineering level understanding of the KZG scheme from just enough high school mathematics. We will try to gain some intuition on advanced concepts and their important properties without knowing them intimately. This can help us see the KZG protocol flow without bogged down by the advanced mathematics.
 
 We need to know:
 
-### [Modular Arithmetic]
+### [Modular Arithmetic](#modular-arithmetic)
 - Can you read a clock? Can you add/subtract two time values? In general can you do clock arithmetic? This is called Modular arithmetic. We know only need to know how to add, subtract, multiply or divide numbers and apply modulus operation (the clock scale). 
 - We usually write this mod $p$ to mean modulo $p$, where $p$ is some number. 
 
-### [Finite Field of order prime $p$, $\mathbb F_p$]
+### [Finite Field of order prime $p$, $\mathbb F_p$](#finite-field-of-order-prime)
 
 A finite field of order prime $p$, we denote it by $\mathbb F_p$, is a special set of numbers where you can do all the usual math operations (addition, subtraction, multiplication, and division, except by zero) and still follow the rules of arithmetic. 
 
@@ -57,23 +96,23 @@ When we do modular arithmetic operations in the finite field $\mathbb F_p$, we h
 
 In genral, when we define a finite field, we define, the order $p$ of the field and an arithemetic operation like addition or multiplication. If it is addition, we denote the field by $(\mathbb F_p, +)$. If it is multiplication, we denote it by $(\mathbb F^*_p, +)$. The `*` is telling us to exclude the zero element from our field so that we can satisfy all the required properties of the finite field i.e. mainly we can divide the numbers and find inverse of all elements. If we include the zero element, we can't find the inverse of zero element.
 
-### [Multiplicative Group ($\mathbb G^*, .)$]
+### [Multiplicative Group ($\mathbb G^*, .)$](#multiplicative-group)
 The group is a similar to finite field with some small changes. In a Group, we only have arithmetic operation on the set, usually addition or multiplication as opposed to in a finite field we have addition and multiplication both. We denote a Group by ($\mathbb G, +)$ for a Group with addition as the group operation, ($\mathbb G^*, .)$ for Group with multiplication operation; the `*` is telling to exclude zero element to avoid division by zero.
 
-### [Generator of a Group]
+### [Generator of a Group](#generator-of-a-group)
 
 
-### [Why choosing a prime number for modulo operations in finite fields]
+### [Why choosing a prime number for modulo operations in finite fields](#why-choosing-a-prime-number-for-modulo-operations-in-finite-fields)
 
-### [Cryptographic Assumptions needed for KZG Scheme]
+### [Cryptographic Assumptions needed for KZG Scheme](#cryptographic-assumptions-needed-for-kzg-scheme)
 
 **Discrete Logarithm**
 
 **String Diffie-Hellman**
 
-### [Pairing Function]
+### [Pairing Function](#pairing-function)
 
-## [Important properties of Commitments]
+## [Important Properties of Commitments](#important-properties-of-commitments)
 
 Let $F(x) = f_0 + f_1x + f_2x^2 + \ldots + f_dx^d$
 
@@ -83,46 +122,46 @@ So $C_F = F(a) \cdot G = (f_0 + f_1a + f_2a^2 + \ldots + f_da^d) \cdot G$
 
 $C_F = f_0 \cdot G + f_1a \cdot G + f_2a^2 \cdot G + \ldots + f_da^d \cdot G$
 
-### [Binding Property]
+### [Binding Property](#binding-property)
 
-### [Hiding Property]
+### [Hiding Property](#hiding-property)
 
 
-## [KZG Protocol Flow]
+## [KZG Protocol Flow](#kzg-protocol-flow)
 
-### [Initial Configuration]
+### [Initial Configuration](#initial-configuration)
 
-### [Trusted Setup]
+### [Trusted Setup](#trusted-setup)
 
-### [Commitment of the polynomial]
+### [Commitment of the polynomial](#commitment-of-the-polynomial)
 
-### [Opening]
+### [Opening](#opening)
 
-### [Verification]
+### [Verification](#verification)
 
-## [KZG by Hands]
+## [KZG by Hands](#kzg-by-hands)
 
-### KZG by Hands - [Initial Configuration]
+### [KZG by Hands - Initial Configuration](#kzg-by-hands---initial-configuration)
 
-### [KZG by Hands - Trusted Setup]
+### [KZG by Hands - Trusted Setup](#kzg-by-hands---trusted-setup)
 
-### [KZG by Hands - Commitment of the polynomial]
+### [KZG by Hands - Commitment of the polynomial](#kzg-by-hands---commitment-of-the-polynomial)
 
-### [KZG by Hands - Opening]
+### [KZG by Hands - Opening](#kzg-by-hands---opening)
 
-### [KZG by Hands - Verification]
+### [KZG by Hands - Verification](#kzg-by-hands---verification)
 
-## [Security of KZG - Deleting the toxic waste]
+## [Security of KZG - Deleting the toxic waste](#security-of-kzg---deleting-the-toxic-waste)
 
-## [Implementing KZG in Sagemath]
+## [Implementing KZG in Sagemath](#implementing-kzg-in-sagemath)
 
-## [KZG using Assymetic Pairing Fuctions]
+## [KZG using Assymetic Pairing Fuctions](#kzg-using-assymetic-pairing-fuctions)
 
-## [KZG Batch Mode Single Polynomial, multiple points]
+## [KZG Batch Mode Single Polynomial, multiple points](#kzg-batch-mode-single-polynomial-multiple-points)
 
-## [KZG Batch Mode Multiple Polynomials, same point]
+## [KZG Batch Mode Multiple Polynomials, same point](#kzg-batch-mode-multiple-polynomials-same-point)
 
-## [KZG Batch Mode Multiple Polynomials, multiple points]
+## [KZG Batch Mode Multiple Polynomials, multiple points](#kzg-batch-mode-multiple-polynomials-multiple-points)
 
 
 
