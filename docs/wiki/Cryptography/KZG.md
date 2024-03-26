@@ -25,7 +25,7 @@ The KZG commitment scheme is like a cryptographic vault for securely locking awa
   - [KZG Protocol Flow](#kzg-protocol-flow)
     - [Trusted Setup](#trusted-setup)
     - [Initial Configuration](#initial-configuration)
-    - [Commitment of the polynomial](#commitment-of-the-polynomial)
+    - [Commitment of the Polynomial](#commitment-of-the-polynomial)
     - [Opening](#opening)
     - [Verification](#verification)
   - [KZG by Hands](#kzg-by-hands)
@@ -314,7 +314,7 @@ sequenceDiagram
 ```
 
 ### [Trusted Setup](#trusted-setup)
-A trusted third party picks a random element $a \in \mathbb{F}_p$. They compute the public parameter (PP) or common reference string (CRS)., as < $g, g^{a^1}, g^{a^2}, \ldots, g^{a^t}$ >. Then, they **delete** $a$. This step of deleteing $a$ is extremely important to secure the system.
+A trusted third party picks a random element $a \in \mathbb{F}_p$. They compute the public parameter (PP) or common reference string (CRS), as < $g, g^{a^1}, g^{a^2}, \ldots, g^{a^t}$ >. Then, they **delete** $a$. This step of deleteing $a$ is extremely important to secure the system.
 
 Then, the trusted party sends the public paramters to the Prover and the Verifier.
 
@@ -326,26 +326,36 @@ Modern protocols often use a powers-of-tau setup, which involves hundreds of par
 
 ### [Initial Configuration](#initial-configuration)
 
-Say we have a function or polynomial $f(x)$ defined as $f(x) = f_0 + f_1x + f_2x^2 + \ldots + f_dx^t$ in a finite field $\mathbb F_p$. The degree of $f(x)$ is $t$ which is less than $p$, the order of the finite field $\mathbb F_p$.
+Say the Prover has a function or polynomial $f(x)$ defined as $f(x) = f_0 + f_1x + f_2x^2 + \ldots + f_dx^t$ in a finite field $\mathbb F_p$. The degree of $f(x)$ is $t$ which is less than $p$, the order of the finite field $\mathbb F_p$.
 
 We often denote this as $f(x) \in \mathbb{F}_p[x]$.
 
+$\mathbb{G}_p$ is an Elliptic Curve group of order $p$ with a generator $g$.
+
 Often, the prime order $p$ is choosen such that $p \gt 2^k$, for some security parameter k. The prime number $p$ is very large in practice.
 
-Prover also picks a pairing function that satisfies both bilinear and non-degenerate properties.
+Prover also picks a pairing function that satisfies both bilinear and non-degenerate properties. The pairing is denoted as below:
 
-To simplify this step, Prover picks a polynomial $f(x) \in \mathbb{F}_p[x]$, the degree of $f(x)$ is at most $t$ which is less than $p$, the order of the finite field $\mathbb{F}_p$. Prover also picks a pairing function $e$.
+$e:$  $\mathbb G_1 X \mathbb G_2 \rightarrow \mathbb G_T$ 
+
+To simplify this step, Prover picks a polynomial $f(x) \in \mathbb{F}_p[x]$, the degree of $f(x)$ is at most $t$ which is less than $p$, the order of the finite field $\mathbb{F}_p$. Prover also picks a pairing function $e$ on the Elliptic Curve group $\mathbb{G}_p$.
 
 
-### [Commitment of the polynomial](#commitment-of-the-polynomial)
+### [Commitment of the Polynomial](#commitment-of-the-polynomial)
 
+Say, the commitment of the polynomial $f(x)$ is denoted as $C_f$. The commitment is like hash function. 
 
-$F(a) = f_0 + f_1a + f_2a^2 + \ldots + f_da^d$
+So $C_f = g ^ {f(a)}  = g^{(f_0 + f_1a + f_2a^2 + \ldots + f_ta^t)}$. Here $f(a)$ is the polynomial evaluted at $x=a$.
 
-So $C_F = F(a) \cdot G = (f_0 + f_1a + f_2a^2 + \ldots + f_da^d) \cdot G$
+Though, the Prover doesn't know $a$, he or she can still cmpute the commitment of the polynomial at $x=a$.
 
-$C_F = f_0 \cdot G + f_1a \cdot G + f_2a^2 \cdot G + \ldots + f_da^d \cdot G$
+So we have, $C_f = g ^ {f(a)}  = g^{(f_0 + f_1a + f_2a^2 + \ldots + f_ta^t)}$.
 
+$C_f =  g^{f_0} \cdot g^{f_1a} \cdot g^{f_2a^2}  \ldots  g^{f_ta^t}$.
+
+$C_f =  (g)^{f_0} \cdot (g^a)^{f_1} \cdot (g^{a^2})^{f_2}  \ldots  (g^{a^t})^{f_t}$.
+
+From the CRS, the Prover knows these values < $g, g^{a^1}, g^{a^2}, \ldots, g^{a^t}$ >, he or she can compute this value as commitment of the polynomial, $C_f$ and sends to the Verifier.
 
 ### [Opening](#opening)
 
