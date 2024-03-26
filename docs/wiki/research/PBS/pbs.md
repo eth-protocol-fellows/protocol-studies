@@ -1,52 +1,55 @@
-# Proposer-Builder Separation 
+# Proposer-Builder Separation
 
-Ever since the Beacon Chain Merge in September 15th, 2022, Ethereum has been a proof-of-stake network. On that day, miners were replaced by validators who, instead of solving the proof of work, stake their ether for a chance to add the next block to the chain, thus earning the corresponding reward. In principle, just as in PoW Ethereum, both bundling the validated transactions into a block and proposing said block for the next slot would be done by the same node. 
+This wiki entry examines different aspects of PBS, including how it works, why it is relevant or how it may impact the future of Ethereum.
+
+The block creation in Ethereum is one of the fundamental pieces of the consensus. New blocks are produced every few seconds by being built from a set of mempool transaction and then proposed, broadcasted to the rest of the network. It's an incentivized role which has been done by mining pools in the past and since the Merge, each block is created by a random staking validator. 
 
 A high-level overview of vanilla block creation, in which all tasks are carried out by the proposing validator, would be as follows:
-- The mempool is searched for transactions that have been broadcast through the gossip network of execution clients.
-- The transactions are bundled together forming a block.
-- The block is added to the chain.
+- The mempool is contains transactions that have been broadcasted from wallets through the gossip network of execution clients
+- The transactions are validated and bundled together in a merkle tree
+- Its root and other data (hash of previous block, consensus data, etc) create the header
+- The block is broadcasted over consensus p2p, nodes verify it and if correct, add it as a tip of the chain
 
-However, separating these tasks has been predominant practice for years, already was before The Merge (although not formally recognized as PBS, since only miners could create actual blocks) and is likely to become standard for the Ethereum consensus mechanism. This way of creating new blocks is known as Proposer-Builder Separation, often referred to as PBS, and it consists of having two different entities involved in the process of new block generation. Instead of the validator pseudo-randomly selected for block proposal adding a block it created itself, in PBS we have:
+Altough this is the default behaviour, separating these tasks has been predominant practice for years. Out of the protocol solutions enabled miners and validators to offer space in block their are producing. This way of creating new blocks is known as Proposer-Builder Separation, often referred to as PBS, and it consists of having two different entities involved in the process of new block generation. Instead of the validator pseudo-randomly selected for block proposal adding a block it created itself, in PBS we have:
 
 - Builder: The entity that aggregates transactions creating a block.
-- Proposer: The entity (validator) that proposes the block built by the builder for the next slot of the chain. It can also propose its own block instead of the builder's if necessary.
 - Relay: The entity responsible for escrowing blocks from builders to proposers.
+- Proposer: The entity (validator) that proposes the block built by the builder for the next slot of the chain.
 
-In this entry we will examine different aspects of PBS, including how it works, why it is relevant or how it may impact the future of Ethereum.
+It's important to note that proposer is only listening to relays and can always propose its own block instead of using external builder.
 
 ## PBS and Consensus
 
-PBS being an emergent approach to consensus on Ethereum, it is important to examine in detail how the process integrates into the Beacon Chain, Ethereum's consensus layer. 
+Altough not formally recognized in the protocol, PBS is an emergent approach to consensus on Ethereum and becomes an important part of its design.
 
-As eloquently explained in the [Beacon Chain Explainer](https://ethos.dev/beacon-chain), slots are the time frames allowed in the consensus layer for a block to be added to the chain, they last 12 seconds and there are 32 of them per epoch. For each slot, a validator is chosen through [RANDAO](https://inevitableeth.com/home/ethereum/network/consensus/randao) to propose a block. Once proposed and added to the canonical chain, the validators chosen for that slot's committees attest to the validity of the block, which shall eventually reach finality. This whole process, which is core to the Ethereum protocol, happens irrespectively of whether the node that proposed the block was also the one who built it. Thus, PBS is irrelevant for consensus, implementing it or not is up to each validator and they are free to do so in whichever way they see fit, as long as the blocks proposed are valid.
+Beacon Chain divides time into epochs and each epoch in 32 slots. For each slot, a validator is chosen through [RANDAO](https://inevitableeth.com/home/ethereum/network/consensus/randao) to propose a block. Once proposed and added to the canonical chain, the validators chosen for that slot's committees attest to the validity of the block, which shall eventually reach finality. This whole process, which is core to the Ethereum protocol, happens irrespectively of whether the node that proposed the block was also the one who built it. Thus, PBS is irrelevant for consensus, practicing it or not is up to each validator and they are free to do so in whichever way they see fit, as long as the blocks proposed are valid.
 
 ## Origins of PBS
 
-As explained in this [BlockNative post](https://www.blocknative.com/blog/ethereum-block-building), before the merge miners were in charge of both building the new blocks and adding them to the chain. This allowed them to control the flow of transactions to profit from on-chain activities, prioritizing those with higher priority fees. This gave rise to the concept of Miner Extractable Value (MEV). As increasingly sophisticated activity occurred on Ethereum, MEV searchers started to emerge, who specialized in monitoring the mempool looking for opportunities to profit by strategically ordering the contents of a block, to then sell that bundle of transactions to a miner (win-win). 
+Since before the Merge, mining pools were in charge of both building the new blocks and adding them to the chain. This allowed them to control the flow of transactions to profit from on-chain activities, prioritizing those with higher priority fees. This gave rise to the concept of Miner Extractable Value (MEV). As increasingly sophisticated activity occurred on Ethereum, MEV searchers started to emerge, who specialized in monitoring the mempool looking for opportunities to profit by strategically ordering the contents of a block, to then sell that bundle of transactions to a miner (win-win). 
 
-Since being a good searcher required highly specialized knowledge, it was rare for mining pool operators to have this know-how, and therefore collaboration between searchers and miners was required. For this, the necessary communication channel was provided by [Flashbots](https://docs.flashbots.net/), whose open MEV marketplace allowed searchers to submit transaction bundles to miners (with whom MEV profit was shared) for inclusion in blocks. Specialized clients such as [MEV-Geth](https://github.com/flashbots/mev-geth) made it possible for miners to build blocks with the transactions they picked from the mempool themselves or the bundles created by searchers.
+Since being a good searcher required highly specialized knowledge, it was rare for mining pool operators to have this know-how, and therefore collaboration between searchers and miners was required. To do this, direct communication channels with miners became necessary. For example, provided by [Flashbots](https://docs.flashbots.net/), whose open MEV marketplace allowed searchers to submit transaction bundles to miners (with whom MEV profit was shared) for inclusion in blocks. Using modified clients such as [MEV-Geth](https://github.com/flashbots/mev-geth) made it possible for miners to build blocks with the transactions they picked from the mempool themselves or the bundles created by searchers.
 
-This was very attractive to miners, who this way achieved higher incomes, due to the higher transaction fees accrued. Unsurprisingly, according to Flashbots, [over 90% of Ethereum miners outsourced some of their block construction](https://writings.flashbots.net/why-run-mevboost/) to them, as of June, 2022.
+This was very attractive to miners seeking higher incomes from extra fee paid by the external builder. Unsurprisingly, according to Flashbots, [over 90% of Ethereum miners outsourced some of their block construction](https://writings.flashbots.net/why-run-mevboost/) to them, as of June, 2022.
 
 However, in post-merge Ethereum, the entry barrier for participating in consensus decreased significantly. Although still considerable, it became endogenous to the network (32 ETH, instead of mining rigs) and physically more convenient (removing the need for equipment powering, storage, maintenance, etc.), thus paving the way for hobbyist/solo validators and increasing Ethereum's decentralization. 
 
-Another key difference between PoW and PoS Ethereum is that before the merge only miners could build blocks, since they had to find the right nonce for the proof of work hash. Also, due to the computational difficulty this entailed and the low probability that a single miner would successfully create a new block on its own, miners would need to pool together in a collaborative effort to find the correct nonce. Thus, all searchers could do was suggest transaction bundles for them to include in a block. 
+Another key difference between PoW and PoS Ethereum is that before the Merge, solo mining was basically impossible and all mining was centralized in pools which distribute work to each miner. Individual miners just accept this part of work created by the pool instead of mining independently and deciding on the block themselves. Only pools could actually create a new block and therefore, there was only few proposer entiti. Searchers could just connect directly to one of the few pools.
 
-In contrast, in PoS Ethereum the landscape of block production has shifted dramatically. Now, anyone can build a complete block for a validator to propose for the next slot. This democratization, together with the increase in the number of validators, most of which lack the skill to build maximally profitable blocks, gave rise to the role of block builders.
+In contrast, in PoS Ethereum the landscape of block production has shifted dramatically. Now, anyone can build a complete block for a validator to propose for the next slot. With hundreds of thousands of validators and significant part of them running without any pooling, the block proposer entities are much more distributed. This poses a challenge for both parties - for validators to be able to profit from external builders without joining a pool and for builders being able to connect to the actual block proposer. Under these conditions, PBS became more important than ever. 
 
 ## PBS Block Creation
 
-The process of block creation through PBS works as explained below.
+The process of block creation through PBS works as follows:
 
 ### Block Construction
 
 - Builders continuously monitor the transaction pool (mempool) for new transactions. They assess these transactions based on potential MEV opportunities. They select the transactions that best align with their MEV optimization criteria. Also, block builders can take transaction bundles from private orderflows, or from MEV searchers, just as miners did in PoW Ethereum with the original Flashbots auctions. In the latter case, builders accept sealed-price bids from searchers and include their bundles in the block.
-- Once the transactions are selected, builders assemble them into a block ensuring that the block adheres to the Ethereum protocol's rules, e. g., the gas limit is not surpassed.
+- Once the transactions are selected, builders assemble them into a block ensuring that the block adheres to the Ethereum protocol's rules, e. g., txs are valid, the gas limit is not surpassed.
 
 ### Block Auction
 
-Although builders can directly offer their assembled blocks to validators, specifying a price, the standard practice is to use relays. Relays validate the transaction bundles before passing them onto the proposer (validator). Also, implementations like MEV Boost introduce escrows responsible for providing data availability by storing blocks sent by builders and commitments sent by validators. The auction process works as follows:
+Instead of builders directly offering their assembled blocks to validators with a specified price, the standard practice is to use relays. Relays validate the transaction bundles before passing them onto the proposer (validator). Also, implementations can introduce escrows responsible for providing data availability by storing blocks sent by builders and commitments sent by validators. The auction process works as follows:
 - Builders submit their constructed blocks to relays. This submission includes the block's data (transactions, execution payload, etc.) and a bid that they are willing to pay to have their block proposed.
 - Relays receive blocks from multiple builders, confirm their validity and submit the valid block with the highest bid to the escrow for the validator to sign.
 - Proposers, who can connect to multiple relays, review the blocks submitted by each relay, and select the most profitable one. Once they have chosen a block, they sign its header by sending its hash back to the relay's escrow. This is the commitment that they will add that block to the chain: by sending the block's header's hash (signing it), they are committing to that specific block. 
@@ -64,14 +67,14 @@ This whole process is illustrated in the figure below. See [Flashbots' docs](htt
 
 ### Rewards Distribution
 
-- Once the block is successfully added to the blockchain, the proposer receives the block rewards (ether new issuance) and the priority fees payed by the users who got their transactions included in that block. 
+- Once the block is successfully added to the blockchain, the proposer receives the block rewards (new issuance of ether) and the priority fees payed by the users who got their transactions included in that block. 
 - Once received, the proposer shares with the builder the portion of these rewards agreed upon through the auction.
 
 ### MEV-Boost
 
-In today's Ethereum, most validators use the [MEV-Boost](https://github.com/flashbots/mev-boost) client for PBS (MEV now meaning Maximal Extractable Value), which allows them to source high-MEV blocks from a competitive builder marketplace, in a similar fashion as MEV-Geth did with transaction bundles in PoW Ethereum. This Ethereum client makes it possible for validators to create such bundles taking transactions directly from the mempool, however, this is becoming less frequent, as specialized builders provide more profitable blocks to proposers.
+In today's Ethereum, most validators use the [MEV-Boost](https://github.com/flashbots/mev-boost) client for PBS (MEV now meaning Maximal Extractable Value), which allows them to source high-MEV blocks from a competitive builder marketplace, in a similar fashion as MEV-Geth did with transaction bundles in PoW Ethereum. The Ethereum client makes it possible for validators to create such bundles taking transactions directly from the mempool but with mev-boost, they are able to connect to a relay and receive a more profitable block from an external builder. 
 
-The process of block creation with the MEV-Boost client works as outlined in the following diagram.
+The process of block creation with the MEV-Boost works as outlined in the following diagram.
 
 <figure style="text-align: center;">
   <img src="../../images/PBS-outline.png" alt="PBS outline">
@@ -88,13 +91,13 @@ Last but not least, PBS gives rise to an increase in validator rewards, since sp
 
 ## PBS' Future
 
-Although not directly ingrained in the Ethereum protocol, PBS is a very relevant topic, not only due to its many current benefits, but also because it stands to play a significant role in the future of Ethereum. As explained in the [ethereum.org](https://ethereum.org/en/roadmap/pbs/) entry for PBS, outsourcing block construction to specialized builders will probably become even more beneficial when full Danksharding is implemented. This arises from the requirement to compute proofs of up to 64 MB in less than a second, which will take up significant hardware resources, giving rise to centralization issues, were block building and proposal not separated. This being as an inevitable reality, PBS makes it possible to keep block validation decentralized, even if building decentralization is bound to decrease.
+Although not directly ingrained in the Ethereum protocol, PBS is a very relevant topic, not only due to its many current benefits, but also because it stands to play a significant role in the future of Ethereum. As explained in the [ethereum.org](https://ethereum.org/en/roadmap/pbs/) docs entry for PBS, outsourcing block construction to specialized builders will probably become even more beneficial when full Danksharding is implemented. This arises from the requirement to compute proofs of up to 64 MB in less than a second, which will take up significant hardware resources, giving rise to centralization issues if block building and proposal not separated. This being as an inevitable reality, PBS makes it possible to keep block validation decentralized, even if building decentralization is bound to decrease.
 
 Thus, Danksharding being one of the key milestones in Ethereum's roadmap, the fact that it can benefit from PBS, just like many other Ethereum upgrades, makes PBS stand out as an advisable practice to keep Ethereum decentralized. 
 
 ## PBS' Challenges
 
-Although as explained above, PBS has many benefits and stands to become essential for the Ethereum protocol, its increasing popularity shall also pose some challenges that will need to be addressed. 
+Although PBS has many benefits and stands to become essential for the Ethereum protocol, its increasing popularity shall also pose some challenges that will need to be addressed. 
 
 ### Builder Centralization
 
@@ -116,7 +119,7 @@ A case can be made that relays oppose the following Ethereum's core tenets:
 
 ### Third party dependency
 
-On a similar note, the fact that PBS entails outsourcing the building of the blocks to entities that do not directly participate in Ethereum consensus could potentially lead to unexpected or unwanted consequences stemming from relying on third parties, such as trust issues, operational dependency and the introduction of single points of failure. Particularly the fact that the use of MEV-Boost is so widespread could be viewed as a dangerous third party dependency, since such a huge portion of Ethereum's new blocks are created using Flashbot's software client.
+On a similar note, the fact that PBS entails outsourcing the building of the blocks to entities that do not directly participate in Ethereum consensus could potentially lead to unexpected or unwanted consequences stemming from relying on third parties, such as trust issues, operational dependency and the introduction of single points of failure. Particularly the fact that the use of MEV-Boost is so widespread could be viewed as a dangerous third party dependency, since such a huge portion of Ethereum's new blocks are created using Flashbot's software.
 
 ### Security Concerns
 
