@@ -100,6 +100,68 @@ In genral, when we define a finite field, we define, the order $p$ of the field 
 The group is a similar to finite field with some small changes. In a Group, we only have arithmetic operation on the set, usually addition or multiplication as opposed to in a finite field we have addition and multiplication both. We denote a Group by ($\mathbb G, +)$ for a Group with addition as the group operation, ($\mathbb G^*, .)$ for Group with multiplication operation; the `*` is telling to exclude zero element to avoid division by zero.
 
 ### [Generator of a Group](#generator-of-a-group)
+A generator is an element within a group that, when combined with itself repeatedly through the group's operation, can eventually produce every other element within the group. 
+
+In mathematical sense, if you have a group $(G, .)$ and an element $g$ in $G$, we say that $g$ is a generator of $G$ if the set of all powers of $g$, $(g, g^2, g^3, ...)$, is equal to $G$ for a finite group, or covers all elements of $G$ through this repeated operation in the case of an infinite group.
+
+*Remember, a group only has one operation*
+
+This concept is best explained with an example.
+
+We will work with $(G_7, +) and $(G_7, .)$, the group of elements ${1,2,3,4,5,6}$ with modulo operation of addition and multiplication.
+
+**Generator of Additive Group $(G_7, +)**
+
+This is a Group because it satisfies the definition of a Group.
+
+**Closure:** When you add any two numbers in the set and take the remainder when divided by $7$, you end up with a result that's still in the set.
+**Associativity:** For any numbers $a, b$ and $c$ in the set, $(a+b)+c$ is always the same as $a+(b+c)$, even with modulo $7$.
+**Identity element:** The number $0$ acts as an identity element because when you add $0$ to any number in the set, you get the same number back.
+**Inverse elements:** Every number in the set has an inverse such that when you add them together, you end up back at the identity element $0$. For example, the inverse of $3$ is $4$ because $3 + 4 = 7$, which is $0$ modulo $7$.
+
+Now, for the generator. Since our group has a prime order $7$, any element except for the identity element $0$ is a generator. Let's pick the element $1$ as our generator i.e $g = 1$. Since we are working with an additive group, our group elements with generator g will be $\{0, g, 2g, 3g, 4g, 5g, 6g\}$.
+
+
+Starting with $1$ and adding it to itself modulo $7$, we get:
+- $1 + 1 = 2$ (which is $2*1$ modulo 7)
+- $1 + 1 + 1 = 3$ (which is $3*1$ modulo 7)
+- $1 + 1 + 1 + 1 = 4$ (which is $4*1$ modulo 7)
+- $1 + 1 + 1 + 1 + 1 = 5$ (which is $5*1$ modulo 7)
+- $1 + 1 + 1 + 1 + 1 + 1 = 6$ (which is $6*1$ modulo 7)
+- $1 + 1 + 1 + 1 + 1 + 1 + 1 = 7$, which is $0$ modulo 7 (which is $7*1$ modulo 7)
+
+As you can see, by repeatedly adding $1$ modulo $7$, we can generate every other element in the group. Hence, $1$ is a generator of the group $G_7$. Similarly, we could pick $2, 3, 4, 5, or 6$ as our generator, and by performing repeated addition modulo $7$, we would still generate the entire group. This is a special property of groups with a prime number of elements.
+
+
+**Generator of Multiplicative Group $(G_7, .)**
+For the multiplicative group of integers modulo a prime $p$, the group $G$ consists of the integers ${1, 2, 3, \ldots, p-1}$, where the operation is multiplication modulo $p$. We'll choose a small prime to make it simple, say $p = 7$. So, our group $(G^*_7, .)$ under multiplication modulo 7 consists of the elements ${1, 2, 3, 4, 5, 6}$. Remember, division by zero element is not excluded, that's why we have $G^*_7 as notation.
+
+Here's the group structure:
+
+- **Closure:** The product of any two elements, when reduced modulo $7$, is still an element of the set.
+- **Associativity:** For any numbers $a, b, c$ in the set, $(a \cdot b) \cdot c$ is always the same as $a \cdot (b \cdot c)$, even when considering modulo $7$.
+- **Identity element:** The number $1$ acts as an identity element because when you multiply any number in the set by $1$, you get the same number back.
+- **Inverse elements:** Every number in the set has a multiplicative inverse in the set such that when you multiply them together, you get the identity element $1$. For example, the multiplicative inverse of $3$ is $5$ because $3 \cdot 5 = 15$, which is $1$ modulo $7$.
+
+Let's verify that each element is indeed a generator by multiplying it repeatedly modulo $7$:
+
+- Starting with $2$, we multiply by $2$ each time and take the result modulo $7$:
+  - $2^1 = 2$
+  - $2^2 = 4$
+  - $2^3 = 8 \equiv 1 \mod 7$
+  - $2^4 = 16 \equiv 2 \mod 7$ (and here we cycle back to the beginning, showing that $2$ is not a generator)
+
+- Let's try $3$:
+  - $3^1 = 3$
+  - $3^2 = 9 \equiv 2 \mod 7$
+  - $3^3 = 27 \equiv 6 \mod 7$
+  - $3^4 = 81 \equiv 4 \mod 7$
+  - $3^5 = 243 \equiv 5 \mod 7$
+  - $3^6 = 729 \equiv 1 \mod 7$ (and since we've reached the identity after hitting all elements, $3$ is a generator)
+
+You can verify that $5$ is also a generator for our multiplicative group $G^*_7$ modulo $7$. 
+
+In the next section, you will learn how generators enable the KZG commitment scheme to function as an efficient, secure, and verifiable method of committing to polynomials, making it a powerful tool for cryptographic protocols, particularly in blockchain technologies where these qualities are very important.
 
 
 ### [Why choosing a prime number for modulo operations in finite fields](#why-choosing-a-prime-number-for-modulo-operations-in-finite-fields)
