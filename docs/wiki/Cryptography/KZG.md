@@ -312,8 +312,17 @@ sequenceDiagram
     end
     end
 ```
-### [Trusted Setup](#trusted-setup)
 
+### [Trusted Setup](#trusted-setup)
+A trusted third party picks a random element $a \in \mathbb{F}_p$. They compute the public parameter (PP) or common reference string (CRS)., as < $g, g^{a^1}, g^{a^2}, \ldots, g^{a^t}$ >. Then, they **delete** $a$. This step of deleteing $a$ is extremely important to secure the system.
+
+Then, the trusted party sends the public paramters to the Prover and the Verifier.
+
+In practice, this process is wrapped around a multi-party computation (MPC) where a secret is generated in such a way that, as long as at least one participant remains honest, the randomness of the secret can be guaranteed. 
+
+The trusted setup is a one-time procedure that generates a piece of data necessary for the cryptographic protocol to function. This data must be used every time the protocol is run, but once generated and the secrets are forgotten, no further participation from the creators of the ceremony is required. The trust in the setup comes from the fact that the secrets used to generate the data are securely discarded after the setup, ensuring that the data remains secure for future use
+
+Modern protocols often use a powers-of-tau setup, which involves hundreds of participants. The security of the final output depends on the honesty of at least one participant who does not publish their secret. This approach is considered "close enough to trustless" in practice, making it a practical solution for cryptographic protocols that require a trusted setup
 
 ### [Initial Configuration](#initial-configuration)
 
@@ -325,7 +334,7 @@ Often, the prime order $p$ is choosen such that $p \gt 2^k$, for some security p
 
 Prover also picks a pairing function that satisfies both bilinear and non-degenerate properties.
 
-To simplify this step, Prover picks a polynomial f(x) \in \mathbb{F}_p[x]$, the degree of $f(x)$ is at most $t$ which is less than $p$, the order of the finite field $\mathbb{F}_p$. Prover also picks a pairing function $e$.
+To simplify this step, Prover picks a polynomial $f(x) \in \mathbb{F}_p[x]$, the degree of $f(x)$ is at most $t$ which is less than $p$, the order of the finite field $\mathbb{F}_p$. Prover also picks a pairing function $e$.
 
 
 ### [Commitment of the polynomial](#commitment-of-the-polynomial)
