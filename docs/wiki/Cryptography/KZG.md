@@ -15,8 +15,8 @@ The KZG commitment scheme is like a cryptographic vault for securely locking awa
   - [Goal](#goal)
   - [What we need to know before we discuss KZG](#what-we-need-to-know-before-we-discuss-kzg)
     - [Modular Arithmetic](#modular-arithmetic)
-    - [Finite Field of order prime $p$, $\\mathbb F\_p$](#finite-field-of-order-prime-p-mathbb-f_p)
-    - [Multiplicative Group ($\\mathbb G^\*, .)$](#multiplicative-group-mathbb-g-)
+    - [Finite Field of order prime p](#finite-field-of-order-prime-p)
+    - [Group](#group)
     - [Generator of a Group](#generator-of-a-group)
     - [Why choosing a prime number for modulo operations in finite fields](#why-choosing-a-prime-number-for-modulo-operations-in-finite-fields)
     - [Cryptographic Assumptions needed for KZG Scheme](#cryptographic-assumptions-needed-for-kzg-scheme)
@@ -86,7 +86,7 @@ We need to know:
 - Can you read a clock? Can you add/subtract two time values? In general can you do clock arithmetic? This is called Modular arithmetic. We know only need to know how to add, subtract, multiply or divide numbers and apply modulus operation (the clock scale). 
 - We usually write this mod $p$ to mean modulo $p$, where $p$ is some number. 
 
-### [Finite Field of order prime $p$, $\mathbb F_p$](#finite-field-of-order-prime)
+### [Finite Field of order prime p](#finite-field-of-order-prime)
 
 A finite field of order prime $p$, we denote it by $\mathbb F_p$, is a special set of numbers where you can do all the usual math operations (addition, subtraction, multiplication, and division, except by zero) and still follow the rules of arithmetic. 
 
@@ -96,8 +96,10 @@ When we do modular arithmetic operations in the finite field $\mathbb F_p$, we h
 
 In genral, when we define a finite field, we define, the order $p$ of the field and an arithemetic operation like addition or multiplication. If it is addition, we denote the field by $(\mathbb F_p, +)$. If it is multiplication, we denote it by $(\mathbb F^*_p, +)$. The `*` is telling us to exclude the zero element from our field so that we can satisfy all the required properties of the finite field i.e. mainly we can divide the numbers and find inverse of all elements. If we include the zero element, we can't find the inverse of zero element.
 
-### [Multiplicative Group ($\mathbb G^*, .)$](#multiplicative-group)
+### [Group](#group)
 The group is a similar to finite field with some small changes. In a Group, we only have arithmetic operation on the set, usually addition or multiplication as opposed to in a finite field we have addition and multiplication both. We denote a Group by ($\mathbb G, +)$ for a Group with addition as the group operation, ($\mathbb G^*, .)$ for Group with multiplication operation; the `*` is telling to exclude zero element to avoid division by zero.
+
+In the next section we use an example to define a Group. This will help develop an intuition on when we call a set of numbers a Group.
 
 ### [Generator of a Group](#generator-of-a-group)
 A generator is an element within a group that, when combined with itself repeatedly through the group's operation, can eventually produce every other element within the group. 
@@ -110,7 +112,7 @@ This concept is best explained with an example.
 
 We will work with $(G_7, +) and $(G_7, .)$, the group of elements ${1,2,3,4,5,6}$ with modulo operation of addition and multiplication.
 
-**Generator of Additive Group $(G_7, +)**
+**Generator of Additive Group**
 
 This is a Group because it satisfies the definition of a Group.
 
@@ -133,7 +135,7 @@ Starting with $1$ and adding it to itself modulo $7$, we get:
 As you can see, by repeatedly adding $1$ modulo $7$, we can generate every other element in the group. Hence, $1$ is a generator of the group $G_7$. Similarly, we could pick $2, 3, 4, 5, or 6$ as our generator, and by performing repeated addition modulo $7$, we would still generate the entire group. This is a special property of groups with a prime number of elements.
 
 
-**Generator of Multiplicative Group $(G_7, .)**
+**Generator of Multiplicative Group**
 For the multiplicative group of integers modulo a prime $p$, the group $G$ consists of the integers ${1, 2, 3, \ldots, p-1}$, where the operation is multiplication modulo $p$. We'll choose a small prime to make it simple, say $p = 7$. So, our group $(G^*_7, .)$ under multiplication modulo 7 consists of the elements ${1, 2, 3, 4, 5, 6}$. Remember, division by zero element is not excluded, that's why we have $G^*_7 as notation.
 
 Here's the group structure:
