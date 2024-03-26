@@ -83,12 +83,12 @@ There are some important concepts we need to know before we can move further to 
 We need to know:
 
 ### [Modular Arithmetic](#modular-arithmetic)
-- Can you read a clock? Can you add/subtract two time values? In general can you do clock arithmetic? This is called Modular arithmetic. We know only need to know how to add, subtract, multiply or divide numbers and apply modulus operation (the clock scale). 
+- Can you read a clock? Can you add/subtract two time values? In general can you do clock arithmetic? This is called Modular arithmetic. We only need to know how to add, subtract, multiply or divide numbers and apply modulus operation (the clock scale). 
 - We usually write this mod $p$ to mean modulo $p$, where $p$ is some number. 
 
 ### [Finite Field of order prime p](#finite-field-of-order-prime)
 
-A finite field of order prime $p$, we denote it by $\mathbb F_p$, is a special set of numbers where you can do all the usual math operations (addition, subtraction, multiplication, and division, except by zero) and still follow the rules of arithmetic. 
+A finite field of order prime $p$, we denote it by $\mathbb F_p$, is a special set of numbers, $\{1, 2, 3, \ldots, p-1\}$,  where you can do all the usual math operations (addition, subtraction, multiplication, and division, except by zero) and still follow the rules of arithmetic. 
 
 The "order" of this set is the number of elements it contains, and for a finite field of order prime $p$, this number is a prime number. The most common way to create a $\mathbb F_p$ is by taking the set of all integers greathan or equal to $0$ and dividing them by $p$, keeping only the remainders. This gives us a set of numbers from $0$ to $p-1$ that can be used for arithmetic operations. For example, if $p = 5$, the set would be {0, 1, 2, 3, 4}, and you can add, subtract, multiply, and divide these numbers in a way that follows the rules of arithmetic. This set is a finite field of order 5, we denote this by $\mathbb F_5$, because it has exactly 5 elements, and it's a prime number.
 
@@ -97,24 +97,24 @@ When we do modular arithmetic operations in the finite field $\mathbb F_p$, we h
 In genral, when we define a finite field, we define, the order $p$ of the field and an arithemetic operation like addition or multiplication. If it is addition, we denote the field by $(\mathbb F_p, +)$. If it is multiplication, we denote it by $(\mathbb F^*_p, +)$. The `*` is telling us to exclude the zero element from our field so that we can satisfy all the required properties of the finite field i.e. mainly we can divide the numbers and find inverse of all elements. If we include the zero element, we can't find the inverse of zero element.
 
 ### [Group](#group)
-The group is a similar to finite field with some small changes. In a Group, we only have arithmetic operation on the set, usually addition or multiplication as opposed to in a finite field we have addition and multiplication both. We denote a Group by ($\mathbb G, +)$ for a Group with addition as the group operation, ($\mathbb G^*, .)$ for Group with multiplication operation; the `*` is telling to exclude zero element to avoid division by zero.
+The group is a similar concept as finite field with some small changes. In a Group, we only have one arithmetic operation on the set, usually addition or multiplication as opposed to in a finite field we have addition and multiplication both and this group must satisfy few properties which we will below with an example. We denote a Group by ($\mathbb G, +)$ for a Group with addition as the group operation, ($\mathbb G^*, .)$ for Group with multiplication operation; the `*` is telling to exclude zero element to avoid division by zero.
 
 In the next section we use an example to define a Group. This will help develop an intuition on when we call a set of numbers a Group.
 
 ### [Generator of a Group](#generator-of-a-group)
 A generator is an element within a group that, when combined with itself repeatedly through the group's operation, can eventually produce every other element within the group. 
 
-In mathematical sense, if you have a group $(G, .)$ and an element $g$ in $G$, we say that $g$ is a generator of $G$ if the set of all powers of $g$, $(g, g^2, g^3, ...)$, is equal to $G$ for a finite group, or covers all elements of $G$ through this repeated operation in the case of an infinite group.
+In mathematical sense, if you have a group ($\mathbb G, .)$  and an element $g$ in $\mathbb G$  we say that $g$ is a generator of $\mathbb G$ if the set of all powers of $g$, $(g, g^2, g^3, ...)$, is equal to $\mathbb G$ for a finite group, or covers all elements of $\mathbb G$ through this repeated operation in the case of an infinite group.
 
 *Remember, a group only has one operation*
 
 This concept is best explained with an example.
 
-We will work with $(G_7, +) and $(G_7, .)$, the group of elements ${1,2,3,4,5,6}$ with modulo operation of addition and multiplication.
+We will work with ($\mathbb G_7, +)$ and ($\mathbb G^*_7, .)$, the group of elements ${0,1,2,3,4,5,6}$ and ${1,2,3,4,5,6}$ respectively.
 
 **Generator of Additive Group**
 
-This is a Group because it satisfies the definition of a Group.
+Our set ($\mathbb G_7, +)$ with elements  ${0,1,2,3,4,5,6}$ is a Group because it satisfies the definition of a Group.
 
 **Closure:** When you add any two numbers in the set and take the remainder when divided by $7$, you end up with a result that's still in the set.
 **Associativity:** For any numbers $a, b$ and $c$ in the set, $(a+b)+c$ is always the same as $a+(b+c)$, even with modulo $7$.
@@ -132,11 +132,11 @@ Starting with $1$ and adding it to itself modulo $7$, we get:
 - $1 + 1 + 1 + 1 + 1 + 1 = 6$ (which is $6*1$ modulo 7)
 - $1 + 1 + 1 + 1 + 1 + 1 + 1 = 7$, which is $0$ modulo 7 (which is $7*1$ modulo 7)
 
-As you can see, by repeatedly adding $1$ modulo $7$, we can generate every other element in the group. Hence, $1$ is a generator of the group $G_7$. Similarly, we could pick $2, 3, 4, 5, or 6$ as our generator, and by performing repeated addition modulo $7$, we would still generate the entire group. This is a special property of groups with a prime number of elements.
+As you can see, by repeatedly adding $1$ modulo $7$, we can generate every other element in the group. Hence, $1$ is a generator of the group ($\mathbb G_7, +)$. Similarly, we could pick $2, 3, 4, 5, or 6$ as our generator, and by performing repeated addition modulo $7$, we would still generate the entire group. This is a special property of groups with a prime number of elements.
 
 
 **Generator of Multiplicative Group**
-For the multiplicative group of integers modulo a prime $p$, the group $G$ consists of the integers ${1, 2, 3, \ldots, p-1}$, where the operation is multiplication modulo $p$. We'll choose a small prime to make it simple, say $p = 7$. So, our group $(G^*_7, .)$ under multiplication modulo 7 consists of the elements ${1, 2, 3, 4, 5, 6}$. Remember, division by zero element is not excluded, that's why we have $G^*_7 as notation.
+For the multiplicative group of integers modulo a prime $p$, the group ($\mathbb G_p, .)$ consists of the integers ${1, 2, 3, \ldots, p-1}$, where the operation is multiplication modulo $p$. We'll choose a small prime to make it simple, say $p = 7$. So, our group ($\mathbb G^*_7, .)$ under multiplication modulo $7$ consists of the elements ${1, 2, 3, 4, 5, 6}$. Remember, division by zero element is excluded, that's why we have `*` in the notation.
 
 Here's the group structure:
 
@@ -161,7 +161,7 @@ Let's verify that each element is indeed a generator by multiplying it repeatedl
   - $3^5 = 243 \equiv 5 \mod 7$
   - $3^6 = 729 \equiv 1 \mod 7$ (and since we've reached the identity after hitting all elements, $3$ is a generator)
 
-You can verify that $5$ is also a generator for our multiplicative group $G^*_7$ modulo $7$. 
+You can verify that $5$ is also a generator for our multiplicative group ($\mathbb G^*_7, .)$ modulo $7$. 
 
 In the next section, you will learn how generators enable the KZG commitment scheme to function as an efficient, secure, and verifiable method of committing to polynomials, making it a powerful tool for cryptographic protocols, particularly in blockchain technologies where these qualities are very important.
 
