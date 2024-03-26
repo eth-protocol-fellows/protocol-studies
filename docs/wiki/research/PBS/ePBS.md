@@ -50,10 +50,10 @@ Enshrined Proposer-Builder Separation (ePBS) refers to integrating the PBS mecha
     - [Desirable properties of ePBS mechanisms](#desirable-properties-of-epbs-mechanisms)
     - [The Two-Block HeadLock (TBHL) proposal](#the-two-block-headlock-tbhl-proposal)
     - [PTC](#ptc)
+    - [Implementation details for PTC](#implementation-details-for-ptc)
     - [PEPC](#pepc)
     - [Addressing honest builder publication and payment safety](#addressing-honest-builder-publication-and-payment-safety)
     - [Ensuring permissionlessness and censorship resistance](#ensuring-permissionlessness-and-censorship-resistance)
-    - [Implementation details for PTC](#implementation-details-for-ptc)
   - [Out-of-protocol proposals](#out-of-protocol-proposals)
     - [Optimistic Relaying: A Step Towards ePBS](#optimistic-relaying-a-step-towards-epbs)
       - [Concept and benefits of optimistic relaying](#concept-and-benefits-of-optimistic-relaying)
@@ -368,10 +368,11 @@ Implementing TBHL proposal introduces several nuanced challenges and engineering
 The TBHL proposal stands as a testament to the ongoing efforts to refine Ethereum's PBS mechanisms, striving for a balance between operational efficiency, security, and the overarching ethos of decentralization. By addressing the nuances of proposer-builder dynamics and introducing robust safeguards, TBHL marks a significant step forward in the evolution of Ethereum's protocol design, offering a promising avenue for mitigating the challenges posed by MEV while enhancing the network's resilience and integrity.
 
 ### PTC 
+### Implementation details for PTC
 ### PEPC
 ### Addressing honest builder publication and payment safety
 ### Ensuring permissionlessness and censorship resistance
-### Implementation details for PTC
+
 
 ## [Out-of-protocol proposals](#out-of-protocol-proposals)
 ### [Optimistic Relaying: A Step Towards ePBS](#optimistic-relaying-a-step-towards-epbs)
