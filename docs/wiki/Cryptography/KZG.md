@@ -192,11 +192,11 @@ In order to work with KZG commitment scheme, we need two additional assumptions.
 
 **Discrete Logarithm**
 
-Say we have a generator $g$ in $\mathbb G^*_p$ and $a$ and $g^a$ are any two elements in the finite field $\mathbb F^*_p$. The Discrete Logarithm assumption says that it is practically impossible to find $a$, for given $g$ and $g^a$. This means we can't easily find the exponent $a$ that will give us these elements.
+Say we have a generator $g$ in the group $\mathbb G^\*_p$ and $a$ and $g^a$ are any two elements in the finite field $\mathbb F^*_p$. The Discrete Logarithm assumption says that it is practically impossible to find $a$, for given $g$ and $g^a$. This means we can't easily find the exponent $a$ that will give us these elements.
 
 **Developing an intuition for Discrete Logarithm Problem**
 
-Imagine you have a special kind of lock that works with numbers (let's call this lock a "generator", and we'll name it $g$). This lock is part of a magic set of locks and keys, all living in a magical land called $\mathbb G^*_p$. Now, you pick a secret number $a$ and use it to turn your lock $g$ a certain number of times. The lock ends up in a new position, let's call this $g^a$.
+Imagine you have a special kind of lock that works with numbers (let's call this lock a "generator", and we'll name it $g$). This lock is part of a magic set of locks and keys, all living in a magical land called $\mathbb G^\*_p$. Now, you pick a secret number $a$ and use it to turn your lock $g$ a certain number of times. The lock ends up in a new position, let's call this $g^a$.
 
 If someone walks by and sees your lock at $g^a$, even if they know it started at $g$ and the magical land it belongs to, figuring out how many times you turned it (finding your secret number $a$) is incredibly difficult. 
 
