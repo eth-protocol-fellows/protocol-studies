@@ -192,7 +192,7 @@ In order to work with KZG commitment scheme, we need two additional assumptions.
 
 **Discrete Logarithm**
 
-Say we have a generator $g$ in the group $\mathbb G^\*_p$ and $a$ and $g^a$ are any two elements in the finite field $\mathbb F^*_p$. The Discrete Logarithm assumption says that it is practically impossible to find $a$, for given $g$ and $g^a$. This means we can't easily find the exponent $a$ that will give us these elements.
+Say we have a generator $g$ in the group $\mathbb G^\*_p$ and $a$ is any element in the finite field $\mathbb F^*_p$ and $g^a$ is some element in the group $\mathbb G^\*_p$. The Discrete Logarithm assumption says that it is practically impossible to find $a$, for given $g$ and $g^a$. This means we can't easily find the exponent $a$ that will give us these elements.
 
 **Developing an intuition for Discrete Logarithm Problem**
 
@@ -202,7 +202,21 @@ If someone walks by and sees your lock at $g^a$, even if they know it started at
 
 In simpler terms, the Discrete Logarithm problem tells us that even though it's easy to turn the lock around if you know your secret number, going backwards — seeing the result and trying to guess the secret number — is like finding a needle in a haystack. This concept is crucial in cryptography, ensuring that some secrets are incredibly hard to uncover.
 
-**String Diffie-Hellman**
+**Strong Diffie-Hellman**
+
+Say we have a generator $g$ in the group $\mathbb G^\*_p$ and $a, b$ are any elements in the finite field $\mathbb F^*_p$ and $g^a, g^b$ are some elements in the group $\mathbb G^\*_p$. The Strong Diffie-Hellman assumption says that $g^a and g^b$ are indistinguishable from $g^{ab}$. This means we can't extract any extra information aboout $g^{ab}$ given $g^a and g^b$.
+
+
+**Developing an intuition for Strong Diffie-Hellman**
+
+Imagine you're in a world, famous for its magical cookies, and there's a secret ingredient (our "generator", $g$) that makes them special. Two master bakers, Alice and Bob, each know a unique twist to using this ingredient, represented by their own secret recipes $a$ and $b$, respectively.
+
+When Alice bakes her cookies using her secret recipe, she creates a special batch $g^a$). Bob does the same with his recipe, resulting in another unique batch $g^b$.
+
+Now, suppose Alice and Bob decide to collaborate and combine their secret recipes to create a super-secret batch of cookies $g^{ab}$. The Strong Diffie-Hellman assumption is saying that even if someone has tasted both Alice's and Bob's individual batches, they can't decipher what their combined super-secret batch would taste like. The flavors of the combined recipe are indistinguishable from any other batch without knowing the exact combination of Alice's and Bob's recipes.
+
+So, in essence, the Strong Diffie-Hellman assumption tells us that just knowing the outcomes of individual secrets (recipes) doesn't help anyone crack the result of combining those secrets. This is a cornerstone of secure communication, ensuring that even if someone knows the separate pieces, the combined secret remains safe and unguessable.
+
 
 ### [Pairing Function](#pairing-function)
 
