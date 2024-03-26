@@ -88,7 +88,7 @@ We need to know:
 
 ### [Finite Field of order prime p](#finite-field-of-order-prime)
 
-A finite field of order prime $p$, we denote it by $\mathbb F_p$, is a special set of numbers, $\{1, 2, 3, \ldots, p-1\}$,  where you can do all the usual math operations (addition, subtraction, multiplication, and division, except by zero) and still follow the rules of arithmetic. 
+A finite field of order prime $p$, we denote it by $\mathbb F_p$, is a special set of numbers, { $\{1, 2, 3, \ldots, p-1\}$ },  where you can do all the usual math operations (addition, subtraction, multiplication, and division, except by zero) and still follow the rules of arithmetic. 
 
 The "order" of this set is the number of elements it contains, and for a finite field of order prime $p$, this number is a prime number. The most common way to create a $\mathbb F_p$ is by taking the set of all integers greathan or equal to $0$ and dividing them by $p$, keeping only the remainders. This gives us a set of numbers from $0$ to $p-1$ that can be used for arithmetic operations. For example, if $p = 5$, the set would be {0, 1, 2, 3, 4}, and you can add, subtract, multiply, and divide these numbers in a way that follows the rules of arithmetic. This set is a finite field of order 5, we denote this by $\mathbb F_5$, because it has exactly 5 elements, and it's a prime number.
 
@@ -110,11 +110,11 @@ In mathematical sense, if you have a group ($\mathbb G, .)$  and an element $g$ 
 
 This concept is best explained with an example.
 
-We will work with ($\mathbb G_7, +)$ and ($\mathbb G^*_7, .)$, the group of elements ${0,1,2,3,4,5,6}$ and ${1,2,3,4,5,6}$ respectively.
+We will work with ($\mathbb G_7, +)$ and ($\mathbb G^*_7, .)$, and their the group elements { ${0,1,2,3,4,5,6}$ } and { ${1,2,3,4,5,6}$ } respectively.
 
 **Generator of Additive Group**
 
-Our set ($\mathbb G_7, +)$ with elements  ${0,1,2,3,4,5,6}$ is a Group because it satisfies the definition of a Group.
+Our set ($\mathbb G_7, +)$ with elements { ${0,1,2,3,4,5,6}$ } is a Group because it satisfies the definition of a Group.
 
 **Closure:** When you add any two numbers in the set and take the remainder when divided by $7$, you end up with a result that's still in the set.
 **Associativity:** For any numbers $a, b$ and $c$ in the set, $(a+b)+c$ is always the same as $a+(b+c)$, even with modulo $7$.
