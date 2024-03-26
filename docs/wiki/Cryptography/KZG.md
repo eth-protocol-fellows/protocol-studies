@@ -204,14 +204,14 @@ In simpler terms, the Discrete Logarithm problem tells us that even though it's 
 
 **Strong Diffie-Hellman**
 
-Say we have a generator $g$ in the group $\mathbb G^\*_p$ and $a, b$ are any elements in the finite field $\mathbb F^*_p$ and $g^a, g^b$ are some elements in the group $\mathbb G^\*_p$. The Strong Diffie-Hellman assumption says that $g^a and g^b$ are indistinguishable from $g^{ab}$. This means we can't extract any extra information aboout $g^{ab}$ given $g^a and g^b$.
+Say we have a generator $g$ in the group $\mathbb G^\*_p$ and $a, b$ are any elements in the finite field $\mathbb F^*_p$ and $g^a$, $g^b$ are some elements in the group $\mathbb G^\*_p$. The Strong Diffie-Hellman assumption says that $g^a$ and $g^b$ are indistinguishable from $g^{ab}$. This means we can't extract any extra information aboout $g^{ab}$ given $g^a$ and $g^b$.
 
 
 **Developing an intuition for Strong Diffie-Hellman**
 
 Imagine you're in a world, famous for its magical cookies, and there's a secret ingredient (our "generator", $g$) that makes them special. Two master bakers, Alice and Bob, each know a unique twist to using this ingredient, represented by their own secret recipes $a$ and $b$, respectively.
 
-When Alice bakes her cookies using her secret recipe, she creates a special batch $g^a$). Bob does the same with his recipe, resulting in another unique batch $g^b$.
+When Alice bakes her cookies using her secret recipe, she creates a special batch $g^a$. Bob does the same with his recipe, resulting in another unique batch $g^b$.
 
 Now, suppose Alice and Bob decide to collaborate and combine their secret recipes to create a super-secret batch of cookies $g^{ab}$. The Strong Diffie-Hellman assumption is saying that even if someone has tasted both Alice's and Bob's individual batches, they can't decipher what their combined super-secret batch would taste like. The flavors of the combined recipe are indistinguishable from any other batch without knowing the exact combination of Alice's and Bob's recipes.
 
@@ -219,6 +219,38 @@ So, in essence, the Strong Diffie-Hellman assumption tells us that just knowing 
 
 
 ### [Pairing Function](#pairing-function)
+Say we have a generator $g$ in the group $\mathbb G^\*_p$ and $a, b$ are any elements in the finite field $\mathbb F^*_p$ and $g^a$, $g^b$ are some elements in the group $\mathbb G^\*_p$. 
+
+A pairing function is a special kind of function that takes two inputs and produces a single output with two important properties, biliner and non-degenrate.
+
+Bilinear means, we can move around in a reversible way. 
+Non-degenerate means, if we apply pairing function to teh same element, it doesn't result in the identity element of the Group.
+
+Let's define these properties a bit more rigorously.
+
+A pairing function $e:$  $\mathbb G_1 X \mathbb G_2 \rightarrow \mathbb G_T$  such that it satisfies,
+Bilinear property: $e(g^a, g^b) = e(g, g^{ab}) = e(g^{ab}, g) = e(g,g)^{ab}$
+Non-degenerate property: $e(g,g) \neq 1$, means it is not an identity element.
+
+When $\mathbb G_1$ and $\mathbb G_2$ are the same Group, we call this symmetric pairing function. Otherwise, it is a assymetric pairing function. 
+
+**Developing an intuition for Pairing function**
+
+Imagine two separate islands, each inhabited by a unique species of magical creatures. The first island is home to Unicorns, each with a distinct color, and the second island is inhabited by Dragons, each with a unique fire color. A pairing function is like a magical bridge that connects a Unicorn with a Dragon, creating a unique, new magical creature, a Dracorn, that embodies characteristics of both.
+
+Here's how to think about this pairing function without getting bogged down by technicalities:
+
+- **Two Groups:** Think of the Unicorns and Dragons as belonging to two different groups (in mathematical terms, these are usually called groups $\mathbb G_1$ and $\mathbb G_2$.
+- **Pairing Function:** The magical bridge acts as the pairing function. When a Unicorn and a Dragon meet on this bridge, the pairing function combines them into a Dracorn. This Dracorn has a special glow that uniquely corresponds to the combination of that specific Unicorn and Dragon (reversable).
+- **Unique Outcome:** Just like every Unicorn and Dragon pair produces a Dracorn with a unique glow, in mathematics, a pairing function takes one element from each group and produces a unique output in a third group (often denoted as $\mathbb G_T$)).
+
+**Why is this magical?** Because even though there are countless possible combinations of Unicorns and Dragons, each combination (pairing) produces a unique Dracorn. This is powerful in cryptography because it allows for complex operations that underpin many security protocols, ensuring that each combination is distinct and traceable to its original pair.
+
+**In simpler terms,** imagine you have two sets of keys (Unicorns and Dragons), and when you combine one key from each set, you get a unique lock (Dracorn). The magic is in how predictable yet secure this combination is, allowing for secure interactions that rely on the certainty of these unique outcomes without revealing the original keys.
+
+Pairing functions enable advanced cryptographic techniques, such as those used in certain types of digital signatures and encryption, by allowing this kind of "cross-group" interaction to occur securely and predictably.
+
+
 
 ## [Important Properties of Commitments](#important-properties-of-commitments)
 
