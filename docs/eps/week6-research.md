@@ -2,7 +2,8 @@
 
 Week 6 research track is going to be a dive into data availability sampling and danksharding. 
 
-Join the presentation by [Dankrad](https://twitter.com/dankrad) on [Wednesday, March 27, 4PM UTC](https://savvytime.com/converter/utc-to-germany-berlin-united-kingdom-london-ny-new-york-city-ca-san-francisco-china-shanghai-japan-tokyo-australia-sydney/mar--2024/4pm). (Note it's 2 hour earlier than our regular calls!)
+Join the presentation by [Dankrad](https://twitter.com/dankrad) on [Wednesday, March 27, 4PM UTC](https://savvytime.com/converter/utc-to-germany-berlin-united-kingdom-london-ny-new-york-city-ca-san-francisco-china-shanghai-japan-tokyo-australia-sydney/mar-27-2024/4pm).
+
 
 The talk will be streamed live on [StreamEth](https://streameth.org/65cf97e702e803dbd57d823f/epf_study_group) and Youtube, links will be provided before the call in the [Discord server](https://discord.gg/addwpQbhpq). Discord also serves for the discussion and questions during the stream. 
 
@@ -18,7 +19,9 @@ Additionally, you can read and get ready by studying the following resources:
 
 ## Outline
 
-- 
+- Polynomial commitment schemes
+- Data availability
+- Sharding
 
 ## Additional reading and exercises 
 
