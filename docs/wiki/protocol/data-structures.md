@@ -9,10 +9,10 @@ A Merkle tree stores all the transactions in a block by producing a digital fing
 It is important to note that Merkle trees are in a **binary tree**, so it requires an even number of leaf nodes. If there is an odd number of transactions, the last hash will be duplicated once to create an even number of leaf nodes.
 
 Merkle Trees provide a tamper-proof structure to store transaction data. Hash functions have an Avalanche Effect i.e. a small change in the data will result in a huge change in the resulting hash. Hence, if the data in the leaf nodes are ever modified, the Root Hash will not match the expected value.
-You can try out [SHA-256](https://emn178.github.io/online-tools/sha256.html) hashing function youself as well.
+You can try out [SHA-256](https://emn178.github.io/online-tools/sha256.html) hashing function yourself as well.
 To learn more about Hashing, you may refer to [this](https://github.com/ethereumbook/ethereumbook/blob/develop/04keys-addresses.asciidoc)
 
-Merkle Root is stored in the **Block Header**. Read more about the strucutre of a Block inside Ethereum (_will be linked this to relevant doc once its ready_)
+Merkle Root is stored in the **Block Header**. Read more about the structure of a Block inside Ethereum (_will be linked this to relevant doc once its ready_)
 
 The main parent node is called Root, hence the hash inside is Root Hash. There is infinitesimally small chance(1 in 1.16x10^77 for a single SHA-256 hash) to create two different states with the same root hash, and any attempt to modify state with different values will result in a different state root hash.
 
@@ -31,7 +31,7 @@ More on [Merkle Trees in Ethereum](https://blog.ethereum.org/2015/11/15/merkling
 
 ## Primer on Patricia Tree
 
-Patricia Tries (also called Radix tree) are n-ary trees which unlike Merkel Trees,is used for storage of data instead of verification.
+Patricia Tries (also called Radix tree) are n-ary trees which unlike Merkle Trees,is used for storage of data instead of verification.
 
 Simply put, Patricia Tries is a tree data structure where all the data is store in the leaf nodes, and each non-leaf nodes is a character of a unique string identifying the data. Using the unique string we navigate through the character nodes and finally reach the data. Hence, it is very efficient at data retrieval.
 
@@ -83,7 +83,7 @@ The structure `T` consists of the following:
 - **maxFeePerGas** - the maximum fee per unit of gas willing to be paid for the transaction (including baseFeePerGas and maxPriorityFeePerGas)
 - **from** – The address of the sender, that will be signing the transaction. This must be an externally-owned account as contract accounts cannot send transactions.
 - **to**: Address of an account to receive funds, or zero for contract creation.
-- **value**: amount of ETH to transfer from sender to recipien.
+- **value**: amount of ETH to transfer from sender to recipient.
 - **input data** – optional field to include arbitrary data
 - **data**: Input data for a message call together with the message signature.
 - **(v, r, s)**: Values encoding signature of a sender. Serves as identifier of the sender
@@ -121,7 +121,7 @@ Using the information inside the block, client should also be able to maintain/g
 
 Verkle trees are designed to be more efficient in terms of storage and communication cost. For a 1000 leaves/data, a binary Merkle Tree takes around 4MB of witness data, Verkle tree reduces it to 150 kB. If we include the witness data in the block then it will not impact the blocksize that much but it would enable the stateless clients to be more efficient and scalable. Using this the stateless client will be able to trust the computation done without having to store the entire state.
 
-The transition to new verkle tree database poses a major challenge. To securily create the new verkle data, clients needs to generate them from the existing MPT which takes a lot of computation and space. Distribution and verification of the verkled databased is currently being researched. 
+The transition to new verkle tree database poses a major challenge. To securily create the new verkle data, clients needs to generate them from the existing MPT which takes a lot of computation and space. Distribution and verification of the verkled database is currently being researched. 
 
 ## Resources
 

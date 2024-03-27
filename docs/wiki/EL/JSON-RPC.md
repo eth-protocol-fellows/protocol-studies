@@ -83,8 +83,8 @@ Here are basic examples of debug methods:
 
 #### Engine
 
-[Engine API](https://hackmd.io/@danielrachi/engine_api) is different from aforementioned methods. Clients serve Engine API on a different and authenticated endpoint rather than normal http JSON RPC because it is not a user facing API. It's intented for connection between consensus and execution client, making it basically an internal node communication process. 
-Inter-client communication exchanging information about conesnsus, forkchoice, validation of blocks, etc: 
+[Engine API](https://hackmd.io/@danielrachi/engine_api) is different from aforementioned methods. Clients serve Engine API on a different and authenticated endpoint rather than normal http JSON RPC because it is not a user facing API. It's intended for connection between consensus and execution client, making it basically an internal node communication process. 
+Inter-client communication exchanging information about consensus, forkchoice, validation of blocks, etc: 
 
 | **Method**                               |               **Params**               | **Description**                                                           |
 |------------------------------------------|:--------------------------------------:|---------------------------------------------------------------------------|
