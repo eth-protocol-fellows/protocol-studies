@@ -1,4 +1,4 @@
-# KZG Commitments Unveiled: A Beginner's Guide 
+# KZG Polynomial Commitment Scheme
 
 ## [TLDR](#tldr)
 The KZG commitment scheme is like a cryptographic vault for securely locking away polynomials (mathematical equations) so that you can later prove you have them without giving away their secrets. It's like making a sealed promise that you can validate without ever having to open it up and show the contents. Using advanced math based on elliptic curves, it enables efficient, verifiable commitments that are a key part of making blockchain transactions more private and scalable. This scheme is especially important for Ethereum's upgrades, where it helps to verify transactions quickly and securely without compromising on privacy.
