@@ -26,13 +26,13 @@ The KZG commitment scheme is like a cryptographic vault for securely locking awa
     - [Trusted Setup](#trusted-setup)
     - [Initial Configuration](#initial-configuration)
     - [Commitment of the Polynomial](#commitment-of-the-polynomial)
-    - [Opening](#opening)
+    - [Opening of the Polynomial](#opening-of-the-polynomial)
     - [Verification](#verification)
   - [KZG by Hands](#kzg-by-hands)
     - [KZG by Hands - Initial Configuration](#kzg-by-hands---initial-configuration)
     - [KZG by Hands - Trusted Setup](#kzg-by-hands---trusted-setup)
     - [KZG by Hands - Commitment of the polynomial](#kzg-by-hands---commitment-of-the-polynomial)
-    - [KZG by Hands - Opening](#kzg-by-hands---opening)
+    - [KZG by Hands - Opening of the Polynomial](#kzg-by-hands---opening-of-the-polynomial)
     - [KZG by Hands - Verification](#kzg-by-hands---verification)
   - [Security of KZG - Deleting the toxic waste](#security-of-kzg---deleting-the-toxic-waste)
   - [Implementing KZG in Sagemath](#implementing-kzg-in-sagemath)
@@ -134,7 +134,7 @@ As you can see, by repeatedly adding $1$ modulo $7$, we can generate every other
 
 
 **Generator of Multiplicative Group**
-For the multiplicative group of integers modulo a prime $p$, the group ($\mathbb G_p, .)$ consists of the integers { ${1, 2, 3, \ldots, p-1}$ }, where the operation is multiplication modulo $p$. We'll choose a small prime to make it simple, say $p = 7$. So, our group ($\mathbb G^*_7, .)$ under multiplication modulo $7$ consists of the elements ${1, 2, 3, 4, 5, 6}$. Remember, division by zero element is excluded, that's why we have `*` in the notation.
+For the multiplicative group of integers modulo a prime $p$, the group ($\mathbb G_p, .$) consists of the integers { ${1, 2, 3, \ldots, p-1}$ }, where the operation is multiplication modulo $p$. We'll choose a small prime to make it simple, say $p = 7$. So, our group ($\mathbb G^*_7, .)$ under multiplication modulo $7$ consists of the elements { ${1, 2, 3, 4, 5, 6}$ }. Remember, division by zero element is excluded, that's why we have `*` in the notation.
 
 Here's the group structure:
 
@@ -357,9 +357,35 @@ $C_f =  (g)^{f_0} \cdot (g^a)^{f_1} \cdot (g^{a^2})^{f_2}  \ldots  (g^{a^t})^{f_
 
 From the CRS, the Prover knows these values < $g, g^{a^1}, g^{a^2}, \ldots, g^{a^t}$ >, he or she can compute this value as commitment of the polynomial, $C_f$ and sends to the Verifier.
 
-### [Opening](#opening)
+### [Opening of the Polynomial](#opening-of-the-polynomial)
+
+Upon receiving a commitment to a polynomial, denoted by $C_f$, from the Prover, the Verifier takes the next step in the protocol by selecting a random point, which we'll call $b$, from the field $\mathbb F_p$. The Verifier then requests the Prover to open or reveal the value of the polynomial at this specific point.
+
+**What does 'opening the polynomial' mean?**
+Opening the polynomial at $x=b$ involves calculating the value of the polynomial at that point, which is mathematically represented as $f(b)$. This is done by evaluating the polynomial using the chosen point $b$:
+
+$f(b) = f_0 + f_1b + f_2b^2 + \ldots + f_tb^t$.
+
+Let's assume that this computation results in $f(b) = d$. The Prover's task is now to provide the Verifier with an Evaluation Proof, which is evidence that $f(b)$ truly equals $d$.
+
+Let's unpack this step by step. 
+
+**Calculating the Evaluation Proof:**
+The Prover determines the Quotient polynomial, which we will denote as $Q(x)$, and computes a commitment to it. This step is essential for creating a verifiable proof. Since we know $f(b)=d$, the polynomial $(f(x)−d)$ will have a root at $x=b$, meaning that $(f(x)−d)$ is divisible by $x−b$ with no remainder—this is a consequence of Little Bezout’s Theorem.
+
+Expressed in mathematical terms, the Quotient polynomial is:
+$Q(x) = \frac{f(x) - f(b)}{x - b} = \frac{f(x) - d}{x - b}$
+
+The commitment to the Quotient Polynomial, $Q(x)$, is represented by $C_Q$. Using the Common Reference String (CRS) provided during the Trusted Setup, the Prover calculates $C_Q$:
+$C_Q = g^{Q(a)}$.
+
+The Prover can calculate $C_Q$ as long as $(f(x) - f(b))$ is divisible by $(x−b)$. If this were not the case, $Q(x)$ would not be a proper polynomial i.e. the Quotient polynomial will have a denominator and some negative exponents, and the Prover could not compute the Evaluation Proof $C_Q$ using only the CRS.
+
+Finally, the Prover sends the tuple < $b, f(b), C_Q$ > to the Verifier, completing this stage of the protocol.
+
 
 ### [Verification](#verification)
+
 
 ## [KZG by Hands](#kzg-by-hands)
 
@@ -369,7 +395,7 @@ From the CRS, the Prover knows these values < $g, g^{a^1}, g^{a^2}, \ldots, g^{a
 
 ### [KZG by Hands - Commitment of the polynomial](#kzg-by-hands---commitment-of-the-polynomial)
 
-### [KZG by Hands - Opening](#kzg-by-hands---opening)
+### [KZG by Hands - Opening of the Polynomial](#kzg-by-hands---opening-of-the-polynomial)
 
 ### [KZG by Hands - Verification](#kzg-by-hands---verification)
 
