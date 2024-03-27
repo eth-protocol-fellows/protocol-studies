@@ -3,7 +3,7 @@
 ## [TLDR](#tldr)
 The KZG commitment scheme is like a cryptographic vault for securely locking away polynomials (mathematical equations) so that you can later prove you have them without giving away their secrets. It's like making a sealed promise that you can validate without ever having to open it up and show the contents. Using advanced math based on elliptic curves, it enables efficient, verifiable commitments that are a key part of making blockchain transactions more private and scalable. This scheme is especially important for Ethereum's upgrades, where it helps to verify transactions quickly and securely without compromising on privacy.
 
-The KZG Polynomial Commitment Scheme ensures that both commitments and evaluation proofs are of a fixed size, regardless of the polynomial's length, offering consistent and space-efficient cryptographic operations.
+The KZG Polynomial Commitment Scheme ensures that both commitments and evaluation proofs are of a fixed size, regardless of the polynomial's length, offering consistent and space-efficient cryptographic operations[^5].
 
 ## [Motivation](#motivation)
 
@@ -75,10 +75,10 @@ We will work with ($\mathbb G_7, +)$ of group elements { ${0,1,2,3,4,5,6}$ } and
 
 Our set ($\mathbb G_7, +)$ with elements { ${0,1,2,3,4,5,6}$ } is a Group because it satisfies the definition of a Group.
 
-**Closure:** When you add any two numbers in the set and take the remainder when divided by $7$, you end up with a result that's still in the set.
-**Associativity:** For any numbers $a, b$ and $c$ in the set, $(a+b)+c$ is always the same as $a+(b+c)$, even with modulo $7$.
-**Identity element:** The number $0$ acts as an identity element because when you add $0$ to any number in the set, you get the same number back.
-**Inverse elements:** Every number in the set has an inverse such that when you add them together, you end up back at the identity element $0$. For example, the inverse of $3$ is $4$ because $3 + 4 = 7$, which is $0$ modulo $7$.
+- **Closure:** When you add any two numbers in the set and take the remainder when divided by $7$, you end up with a result that's still in the set.
+- **Associativity:** For any numbers $a, b$ and $c$ in the set, $(a+b)+c$ is always the same as $a+(b+c)$, even with modulo $7$.
+- **Identity element:** The number $0$ acts as an identity element because when you add $0$ to any number in the set, you get the same number back.
+- **Inverse elements:** Every number in the set has an inverse such that when you add them together, you end up back at the identity element $0$. For example, the inverse of $3$ is $4$ because $3 + 4 = 7$, which is $0$ modulo $7$.
 
 Now, for the generator. Since our group has a prime order $7$, any element except for the identity element $0$ is a generator. Let's pick the element $1$ as our generator i.e $g = 1$. Since we are working with an additive group, our group elements with generator g will be $\{0, g, 2g, 3g, 4g, 5g, 6g\}$.
 
@@ -91,7 +91,7 @@ Starting with $1$ and adding it to itself modulo $7$, we get:
 - $1 + 1 + 1 + 1 + 1 + 1 = 6$ (which is $6*1$ modulo 7)
 - $1 + 1 + 1 + 1 + 1 + 1 + 1 = 7$, which is $0$ modulo 7 (which is $7*1$ modulo 7)
 
-As you can see, by repeatedly adding $1$ modulo $7$, we can generate every other element in the group. Hence, $1$ is a generator of the group ($\mathbb G_7, +)$. Similarly, we could pick $2, 3, 4, 5, or 6$ as our generator, and by performing repeated addition modulo $7$, we would still generate the entire group. This is a special property of groups with a prime number of elements.
+As you can see, by repeatedly adding $1$ modulo $7$, we can generate every other element in the group. Hence, $1$ is a generator of the group ($\mathbb G_7, +)$. Similarly, we could pick any number in $2, 3, 4, 5, 6$ as our generator, and by performing repeated addition modulo $7$, we would still generate the entire group. This is a special property of groups with a prime number of elements.
 
 
 **Generator of Multiplicative Group**
@@ -183,7 +183,7 @@ Say we have a generator $g$ in the group $\mathbb G^\*_p$ and $a, b$ are any ele
 A pairing function is a special kind of function that takes two inputs and produces a single output with two important properties, biliner and non-degenrate.
 
 Bilinear means, we can move around in a reversible way. 
-Non-degenerate means, if we apply pairing function to teh same element, it doesn't result in the identity element of the Group.
+Non-degenerate means, if we apply pairing function to the same element, it doesn't result in the identity element of the Group.
 
 Let's define these properties a bit more rigorously.
 
@@ -195,13 +195,15 @@ Non-degenerate property: $e(g,g) \neq 1$, means the output is not an identity el
 
 When $\mathbb G_1$ and $\mathbb G_2$ are the same Group, we call this symmetric pairing function. Otherwise, it is an assymetric pairing function. 
 
+Here is a great resource to learn more about pairing functions from a practical POV[^3].
+
 **Developing an intuition for Pairing function**
 
 Imagine two separate islands, each inhabited by a unique species of magical creatures. The first island is home to Unicorns, each with a distinct color, and the second island is inhabited by Dragons, each with a unique fire color. A pairing function is like a magical bridge that connects a Unicorn with a Dragon, creating a unique, new magical creature, a Dracorn, that embodies characteristics of both.
 
 Here's how to think about this pairing function without getting bogged down by technicalities:
 
-- **Two Groups:** Think of the Unicorns and Dragons as belonging to two different groups (in mathematical terms, these are usually called groups $\mathbb G_1$ and $\mathbb G_2$.
+- **Two Groups:** Think of the Unicorns and Dragons as belonging to two different groups (in mathematical terms, these are usually called groups $\mathbb G_1$ and $\mathbb G_2$).
 - **Pairing Function:** The magical bridge acts as the pairing function. When a Unicorn and a Dragon meet on this bridge, the pairing function combines them into a Dracorn. This Dracorn has a special glow that uniquely corresponds to the combination of that specific Unicorn and Dragon (reversable).
 - **Unique Outcome:** Just like every Unicorn and Dragon pair produces a Dracorn with a unique glow, in mathematics, a pairing function takes one element from each group and produces a unique output in a third group (often denoted as $\mathbb G_T$).
 
@@ -217,17 +219,15 @@ Pairing functions enable advanced cryptographic techniques, such as those used i
 
 Commitment schemes are like the secret-keeping wizards of the digital world. They let someone make a promise about a piece of information (we'll call this the secret message) in a way that ties them to their promise without letting anyone else know what the secret is. Here's how it works:
 
-1. **Making the Promise (Commitment):** You decide on a secret message and use a special spell (the commitment scheme) to create a magic seal (the commitment). This seal proves you have a secret, but it keeps the secret hidden.
+- **Making the Promise (Commitment):** You decide on a secret message and use a special spell (the commitment scheme) to create a magic seal (the commitment). This seal proves you have a secret, but it keeps the secret hidden.
+- **Keeping It Secret (Hiding):** Even though you've made this seal, nobody else can see what your secret message is. It's like you've locked it in a chest and only you have the key.
+- **Proving You're Honest (Binding):** The magic of the commitment is that you can't change your secret message later without breaking the seal. This means once you've made your commitment, you're bound to it.
 
-2. **Keeping It Secret (Hiding):** Even though you've made this seal, nobody else can see what your secret message is. It's like you've locked it in a chest and only you have the key.
-
-3. **Proving You're Honest (Binding):** The magic of the commitment is that you can't change your secret message later without breaking the seal. This means once you've made your commitment, you're bound to it.
-
-Later, when the time comes to reveal your secret, you can show the original message and prove that it matches the seal you made before. This lets someone else (the verifier) check and confirm that your secret message is the same one you committed to in the beginning, proving that you kept your word.
+Later, when the time comes to reveal your secret, you can show the original message and prove that it matches the seal you made before. This lets someone else (the Verifier) check and confirm that your secret message is the same one you committed to in the beginning, proving that you kept your word.
 
 The Binding and Hiding properties are extremely important and they tie back to the above cryptographic assumptions we made with the Discrete Logarithm and Strong Diffie-Hellman assumptions.
 
-But for now, we don't need to go deep into the technicalities. 
+But for now, we don't need to go deep into the technicalities. In case, you want to learn more, here is a great resource for PCS from Prof. Dan Boneh[^4].
 
 With this background, we are ready to explain KZG protocol flow and understand its construction.
 
@@ -277,13 +277,15 @@ sequenceDiagram
 ### [Trusted Setup](#trusted-setup)
 A trusted third party picks a random element $a \in \mathbb{F}_p$. They compute the public parameter (PP) or common reference string (CRS), as < $g, {a^1}.g, {a^2}.g, \ldots, {a^t}.g$ >. Then, they **delete** $a$. This step of deleteing $a$ is extremely important to secure the system.
 
-Then, the trusted party sends the public paramters to the Prover and the Verifier.
+Then, the trusted party sends the CRS to the Prover and the Verifier.
 
 In practice, this process is wrapped around a multi-party computation (MPC) where a secret is generated in such a way that, as long as at least one participant remains honest, the randomness of the secret can be guaranteed. 
 
 The trusted setup is a one-time procedure that generates a piece of data necessary for the cryptographic protocol to function. This data must be used every time the protocol is run, but once generated and the secrets are forgotten, no further participation from the creators of the ceremony is required. The trust in the setup comes from the fact that the secrets used to generate the data are securely discarded after the setup, ensuring that the data remains secure for future use
 
-Modern protocols often use a powers-of-tau setup, which involves hundreds of participants. The security of the final output depends on the honesty of at least one participant who does not publish their secret. This approach is considered "close enough to trustless" in practice, making it a practical solution for cryptographic protocols that require a trusted setup
+Modern protocols often use a powers-of-tau setup, which involves hundreds of participants. The security of the final output depends on the honesty of at least one participant who does not publish their secret. This approach is considered "close enough to trustless" in practice, making it a practical solution for cryptographic protocols that require a trusted setup. 
+
+Ethereum has a very detailed documentation of the Trusted Setup ceremony for more detail[^2].
 
 ### [Initial Configuration](#initial-configuration)
 
@@ -308,7 +310,7 @@ Say, the commitment of the polynomial $f(x)$ is denoted as $C_f$. The commitment
 
 So $C_f = {f(a)} \cdot g  = {(f_0 + f_1a + f_2a^2 + \ldots + f_ta^t)} \cdot g$. Here $f(a)$ is the polynomial evaluted at $x=a$.
 
-Though, the Prover doesn't know $a$, he or she can still cmpute the commitment of the polynomial at $x=a$.
+Though, the Prover doesn't know $a$, he or she can still compute the commitment of the polynomial at $x=a$.
 
 So we have, $C_f = {f(a)} \cdot g  = {(f_0 + f_1a + f_2a^2 + \ldots + f_ta^t)} \cdot g$.
 
@@ -332,7 +334,7 @@ Let's assume that this computation results in $f(b) = d$. The Prover's task is n
 Let's unpack this step by step. 
 
 **Calculating the Evaluation Proof:**
-The Prover determines the Quotient polynomial, which we will denote as $Q(x)$, and computes a commitment to it. This step is essential for creating a verifiable proof. Since we know $f(b)=d$, the polynomial $(f(x)−d)$ will have a root at $x=b$, meaning that $(f(x)−d)$ is divisible by $x−b$ with no remainder—this is a consequence of Little Bezout’s Theorem.
+The Prover determines the Quotient polynomial, which we will denote as $Q(x)$, and computes a commitment to it. This step is essential for creating a verifiable proof. Since we know $f(b)=d$, the polynomial $(f(x)−d)$ will have a root at $x=b$, meaning that $(f(x)−d)$ is divisible by $x−b$ with no remainder—this is a consequence of Little Bezout’s Theorem[^1].
 
 Expressed in mathematical terms, the Quotient polynomial is:
 $Q(x) = \frac{f(x) - f(b)}{x - b} = \frac{f(x) - d}{x - b}$
@@ -514,3 +516,9 @@ Here $a \cdot g_2$ will be the part of CRS of $\mathbb G_2$ and everything else 
 One key benefit of the KZG Polynomial Commitment Scheme is its efficient use of space. No matter the length or complexity of the polynomial we're working with, the commitment to that polynomial—essentially its cryptographic "footprint"—is always a single, fixed-size element within a mathematical group, $\mathbb G$. This means that as the polynomial grows in degree, the size of the commitment does not increase. The same principle applies to the evaluation proof, which is the evidence we provide to show that our commitment is accurate. Whether we're verifying just one value or many at once (in batch mode), the proof will always be of a consistent size. This consistency in size translates to predictable and efficient storage requirements, an important feature for practical applications in cryptography.
 
 
+## [References](#references)
+[^1] https://en.wikipedia.org/wiki/Polynomial_remainder_theorem
+[^2] https://github.com/ethereum/kzg-ceremony 
+[^3] https://www.rareskills.io/post/bilinear-pairing
+[^4] https://www.youtube.com/watch?v=WyT5KkKBJUw
+[^5] https://www.iacr.org/archive/asiacrypt2010/6477178/6477178.pdf 
