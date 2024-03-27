@@ -410,7 +410,9 @@ We still can't calculate $a-b$ as nobody knows $a$. But we can use the bilinear 
 $e(g^a, g^b) = e(g, g^{ab}) = e(g^{ab}, g) = e(g,g)^{ab}$
 
 So we can rewrite the equality constraint as
+
 $e(C_Q, (a−b) \cdot g) = e(C_f − d \cdot g, g)$
+
 $e(C_Q, a \cdot g − b \cdot g) = e(C_f − d \cdot g, g)$
 
 Though the Verifier doesn’t know $a$, he or she knows $a \cdot g$ from the Common Reference String. So now the Verifier can check whether the above equality is true or not. This ends the verification of the Evaluation Proof.
@@ -427,19 +429,52 @@ Though the Verifier doesn’t know $a$, he or she knows $a \cdot g$ from the Com
   - This means the Prover reveals the polynomial's value at a single specific point.
   - This partial revelation is known as the Evaluation Proof.
 
-
-
 ## [KZG by Hands](#kzg-by-hands)
+Now, let us practically dervie the steps in KZG protocol using a small finite field. We can compute all finite field operations and pairing operations by hand and get a feel for the KZG protocol flow and verifying polynomial commitments.
 
 ### [KZG by Hands - Initial Configuration](#kzg-by-hands---initial-configuration)
+- We will work with the finite field $(\mathbb F_{11}, + )$. So, the prime order $p = 11$. This means all finite field operations are done modulo 11. 
+- The finite field set is {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10}. 
+- The generator $g = 2$ in $(\mathbb G_{11}, +)$. 
+- This means that the group operation is addition with modulo 11.
+- The Prover selects the polynomial $f(x) = 3x^2 + 5x + 7$. 
+- Then we have the degree of the polynomial $f(x)$ as $t = 2$.
+- The pairing function $e(x, y) = xy$ over $(\mathbb G_{11}, +)$.
 
 ### [KZG by Hands - Trusted Setup](#kzg-by-hands---trusted-setup)
+- The Trusted Party choses a secret number randomly. Say, $a = 3$ is the secret number.
+- They generate the public parameter or the common reference string (CRS) < $g, {a^1}.g, {a^2}.g, \ldots, {a^t}.g$ >.
+- This is equal to < $2, 3 \cdot 2, {3^2} \cdot 2$ > which is equal to < $2, 6, 7$ > after applying modulo 11.
+- The Trusted Party **deletes** the secret number $a$.
+- The Trusted Party sends the CRS to the Prover and Verifier. 
 
 ### [KZG by Hands - Commitment of the polynomial](#kzg-by-hands---commitment-of-the-polynomial)
+- The Prover calculates the commitment of the polynomial, $C_f$.
+- $C_f = f(a) \cdot g = {f_0} \cdot g +  {f_1} \cdot (ag) + {f_2} \cdot ({a^2}g) $.
+- $C_f = 7 \cdot g + 5 \cdot (ag) + 3 \cdot a^2g = 7.2 + 5.6 + 3.7 = 65 = 10$ (mod 11).
+- The Provers sends the commitment of the polynomial $C_f = 10$ to the Verifier.
 
 ### [KZG by Hands - Opening of the Polynomial](#kzg-by-hands---opening-of-the-polynomial)
+- The Verifier asks the Prover to open the polynomial at $x = 1$.
+- The Prover computes the Quotient polynomial $Q(x) = \frac{f(x) - f(1)}{x - 1} = \frac{f(x) - d}{x - b}$.
+- Compute $f(1) = d = 3.1^2 + 5.1 + 7 = 4$ (mod $11$).
+- $Q(x) = \frac{3x^2 + 5x + 7 - 4}{x - 1} = \frac{3x^2 + 5x + 3}{x - 1}$.
+- **Divide the Leading Term:** $3x^2$ divided by $x$ gives us $3x$. We write $3x$ above the division bar.
+- **Multiply the Divisor by the Quotient's Leading Term:** Multiply $x - 1$ by $3x$ to get $3x^2 - 3x$.
+- **Subtract from the Polynomial:** Subtract $3x^2 - 3x$ from $3x^2 + 5x$ to get $8x$.
+- **Bring Down the Next Term:** Bring down the $+3$ to get $8x + 3$.
+- **Divide the Next Term:**  $8x$ divided by $x$ is $8$. Write $+8$ above the division bar next to $3x$.
+- **Multiply Again:** Multiply $x - 1$ by $8$ to get $8x - 8$.
+- **Subtract Subtract:** $8x - 8$ from $8x + 3$ to get $11$.
+- **Apply Modulo 11:** We reduce each term modulo $11$. Since $11$ is $0$ modulo $11$, the remainder is $0$.
+- The Prover computes the commitment of $C_Q = Q(a) \cdot g = 3 \cdot ag + 8 \cdot g = 3.6 + 8.2 = 34 = 1$ (mod 11).
+- The Prover sends to the Verifier < $1, f(1), C_Q$ > = < $1, 4, 1$ >.
 
 ### [KZG by Hands - Verification](#kzg-by-hands---verification)
+- The Verified must check the pairing constraint $e(C_Q, a \cdot g − b \cdot g) = e(C_f − d \cdot g, g)$
+- L.H.S (left hand side): $e(1, 6 - 1.2) = e(1, 4) = 1.4 = 4 (mod 11)$
+- R.H.S (right hand side): $e(10 - 4.2, 2) = e(2, 2) = 2.2 = 4 (mod 11)$.
+- This proves the equality constraint is true, hence the Evaluation Proof is verified.
 
 ## [Security of KZG - Deleting the toxic waste](#security-of-kzg---deleting-the-toxic-waste)
 
