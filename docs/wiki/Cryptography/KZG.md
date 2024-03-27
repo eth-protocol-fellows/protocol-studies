@@ -517,8 +517,8 @@ One key benefit of the KZG Polynomial Commitment Scheme is its efficient use of 
 
 
 ## [References](#references)
-[^1] https://en.wikipedia.org/wiki/Polynomial_remainder_theorem
-[^2] https://github.com/ethereum/kzg-ceremony 
-[^3] https://www.rareskills.io/post/bilinear-pairing
-[^4] https://www.youtube.com/watch?v=WyT5KkKBJUw
-[^5] https://www.iacr.org/archive/asiacrypt2010/6477178/6477178.pdf 
+[^1]: https://en.wikipedia.org/wiki/Polynomial_remainder_theorem
+[^2]: https://github.com/ethereum/kzg-ceremony 
+[^3]: https://www.rareskills.io/post/bilinear-pairing
+[^4]: https://www.youtube.com/watch?v=WyT5KkKBJUw
+[^5]: https://www.iacr.org/archive/asiacrypt2010/6477178/6477178.pdf 
