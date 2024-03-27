@@ -483,9 +483,28 @@ Now, let us practically dervie the steps in KZG protocol using a small finite fi
 - This breaks the binding property of the commitment scheme leading to fradulent proofs by the malicious Prover.
 - Hence, it is extremely important to **delete** the secret number $a$ by the Trusted Party after generating the CRS.
 
-## [Implementing KZG in Sagemath](#implementing-kzg-in-sagemath)
-
 ## [KZG using Assymetic Pairing Fuctions](#kzg-using-assymetic-pairing-fuctions)
+An assymetric pairing function is denoted as:
+
+$e:$  $\mathbb G_1 X \mathbb G_2 \rightarrow \mathbb G_T$.
+
+Let the generators of $\mathbb G_1$ be $g_1$ and $\mathbb G_2$ be $g_2$. 
+
+The Prover has to check the equality $(a−b) \cdot Q(a) = f(a) − d$.
+
+Multiplying both sides by $g_1$, we get
+$(a−b) \cdot Q(a) \cdot g_1 = f(a) \cdot g_1 − d \cdot g_1$
+$(a−b) \cdot C_Q = C_f − d \cdot g_1$
+
+Applying the assymetric pairing function on both sides, we get
+$e((a−b) \cdot C_Q, g_2) = e(C_f − d \cdot g_1, g_2)$
+
+Using the bilinear property, we get
+$e(C_Q, (a−b) \cdot g_2) = e(C_f − d \cdot g_1, g_2)$
+$e(C_Q, a \cdot g_2 − b \cdot g_2 ) = e(C_f − d \cdot g_1, g_2)$
+
+Here $a \cdot g_2$ will be the part of CRS of $\mathbb G_2$ and everything else can be either computed or part of CRS of $\mathbb G_1$.
+
 
 ## [KZG Batch Mode Single Polynomial, multiple points](#kzg-batch-mode-single-polynomial-multiple-points)
 
