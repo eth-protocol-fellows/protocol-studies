@@ -3,7 +3,7 @@
 ## [TLDR](#tldr)
 The KZG commitment scheme is like a cryptographic vault for securely locking away polynomials (mathematical equations) so that you can later prove you have them without giving away their secrets. It's like making a sealed promise that you can validate without ever having to open it up and show the contents. Using advanced math based on elliptic curves, it enables efficient, verifiable commitments that are a key part of making blockchain transactions more private and scalable. This scheme is especially important for Ethereum's upgrades, where it helps to verify transactions quickly and securely without compromising on privacy.
 
-The KZG Polynomial Commitment Scheme ensures that both commitments and evaluation proofs are of a fixed size, regardless of the polynomial's length, offering consistent and space-efficient cryptographic operations[^5].
+The KZG Polynomial Commitment Scheme ensures that both commitments and evaluation proofs are of a fixed size, regardless of the polynomial's length, offering consistent and space-efficient cryptographic operations[^5][^6][^7].
 
 ## [Motivation](#motivation)
 
@@ -195,7 +195,7 @@ Non-degenerate property: $e(g,g) \neq 1$, means the output is not an identity el
 
 When $\mathbb G_1$ and $\mathbb G_2$ are the same Group, we call this symmetric pairing function. Otherwise, it is an assymetric pairing function. 
 
-Here is a great resource to learn more about pairing functions from a practical POV[^3].
+Here are some great resources to learn more about pairing functions from a practical POV[^3][^8][^9].
 
 **Developing an intuition for Pairing function**
 
@@ -522,3 +522,7 @@ One key benefit of the KZG Polynomial Commitment Scheme is its efficient use of 
 [^3]: https://www.rareskills.io/post/bilinear-pairing
 [^4]: https://www.youtube.com/watch?v=WyT5KkKBJUw
 [^5]: https://www.iacr.org/archive/asiacrypt2010/6477178/6477178.pdf 
+[^6]: https://dankradfeist.de/ethereum/2020/06/16/kate-polynomial-commitments.html 
+[^7]: https://www.youtube.com/watch?v=uGeIDNEwHjs&t=520s
+[^8]: https://www.youtube.com/watch?v=8WDOpzxpnTE 
+[^9]: https://vitalik.eth.limo/general/2017/01/14/exploring_ecp.html
