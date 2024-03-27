@@ -395,7 +395,7 @@ The Prover has to check he equality $(a−b) \cdot C_Q = C_f − d \cdot g$.
 The pairing function takes any two elements from the group $\mathbb G$ and maps it to an element in $\mathbb G_T$. 
 
 - A commitment, like $C_f$ or $C_Q$, is obtained by multiplying a number (a scalar) with the group's generator, $g$.
-- Since both $C_f$ and $C_Q$) are the result of this operation, they belong to the group $\mathbb G$.
+- Since both $C_f$ and $C_Q$ are the result of this operation, they belong to the group $\mathbb G$.
 - When we multiply $C_Q$ by the difference of two numbers $a$ and $b$, which is also a scalar, the result, $(a−b) \cdot C_Q$, stays within the group $\mathbb G$.
 - Similarly, $C_f$ is a group element, and so is $d \cdot g$ because it's the generator multiplied by a scalar.
 - Subtracting $d \cdot g$  from $C_f$ gives us another element in the group, $C_f − d \cdot g$.
@@ -477,6 +477,11 @@ Now, let us practically dervie the steps in KZG protocol using a small finite fi
 - This proves the equality constraint is true, hence the Evaluation Proof is verified.
 
 ## [Security of KZG - Deleting the toxic waste](#security-of-kzg---deleting-the-toxic-waste)
+- Imagine the Prover somehow finds out the secret number $a$ or the Trusted Party leaks $a$ to a malicious Prover.
+- The Prover computes $f_1(x) = 3x^2 + 5x + 7$ at $x=3$. So we get, $f_1(2) = 3.3^2 + 5.3 + 7 = 49 = 5 mod(11)$
+- The Prover computes $f_2(x) = 2x^2 + 7x + 10$ at $x=3$. So we get, $f_2(2) = 2.3^2 + 7.3 + 10 = 49 = 5 mod(11)$
+- This breaks the binding property of the commitment scheme leading to fradulent proofs by the malicious Prover.
+- Hence, it is extremely important to **delete** the secret number $a$ by the Trusted Party after generating the CRS.
 
 ## [Implementing KZG in Sagemath](#implementing-kzg-in-sagemath)
 
