@@ -5,43 +5,6 @@
 ## [TLDR](#tldr)
 The KZG commitment scheme is like a cryptographic vault for securely locking away polynomials (mathematical equations) so that you can later prove you have them without giving away their secrets. It's like making a sealed promise that you can validate without ever having to open it up and show the contents. Using advanced math based on elliptic curves, it enables efficient, verifiable commitments that are a key part of making blockchain transactions more private and scalable. This scheme is especially important for Ethereum's upgrades, where it helps to verify transactions quickly and securely without compromising on privacy.
 
-**Table of Contents**
-- [KZG Commitments Unveiled: A Beginner's Guide](#kzg-commitments-unveiled-a-beginners-guide)
-  - [\[DRAFT MODE - WORK IN PROGRESS\]](#draft-mode---work-in-progress)
-  - [TLDR](#tldr)
-  - [Motivation](#motivation)
-    - [ZKSNARKs](#zksnarks)
-    - [Ethereum Danksharding](#ethereum-danksharding)
-  - [Goal](#goal)
-  - [What we need to know before we discuss KZG](#what-we-need-to-know-before-we-discuss-kzg)
-    - [Modular Arithmetic](#modular-arithmetic)
-    - [Finite Field of order prime p](#finite-field-of-order-prime-p)
-    - [Group](#group)
-    - [Generator of a Group](#generator-of-a-group)
-    - [Why choosing a prime number for modulo operations in finite fields](#why-choosing-a-prime-number-for-modulo-operations-in-finite-fields)
-    - [Cryptographic Assumptions needed for KZG Scheme](#cryptographic-assumptions-needed-for-kzg-scheme)
-    - [Pairing Function](#pairing-function)
-  - [Important Properties of Commitments](#important-properties-of-commitments)
-  - [KZG Protocol Flow](#kzg-protocol-flow)
-    - [Trusted Setup](#trusted-setup)
-    - [Initial Configuration](#initial-configuration)
-    - [Commitment of the Polynomial](#commitment-of-the-polynomial)
-    - [Opening of the Polynomial](#opening-of-the-polynomial)
-    - [Verification](#verification)
-  - [KZG by Hands](#kzg-by-hands)
-    - [KZG by Hands - Initial Configuration](#kzg-by-hands---initial-configuration)
-    - [KZG by Hands - Trusted Setup](#kzg-by-hands---trusted-setup)
-    - [KZG by Hands - Commitment of the polynomial](#kzg-by-hands---commitment-of-the-polynomial)
-    - [KZG by Hands - Opening of the Polynomial](#kzg-by-hands---opening-of-the-polynomial)
-    - [KZG by Hands - Verification](#kzg-by-hands---verification)
-  - [Security of KZG - Deleting the toxic waste](#security-of-kzg---deleting-the-toxic-waste)
-  - [Implementing KZG in Sagemath](#implementing-kzg-in-sagemath)
-  - [KZG using Assymetic Pairing Fuctions](#kzg-using-assymetic-pairing-fuctions)
-  - [KZG Batch Mode Single Polynomial, multiple points](#kzg-batch-mode-single-polynomial-multiple-points)
-  - [KZG Batch Mode Multiple Polynomials, same point](#kzg-batch-mode-multiple-polynomials-same-point)
-  - [KZG Batch Mode Multiple Polynomials, multiple points](#kzg-batch-mode-multiple-polynomials-multiple-points)
-
-
 ## [Motivation](#motivation)
 
 ### [ZKSNARKs](#zksnarks)
@@ -297,24 +260,24 @@ sequenceDiagram
     Actor V as Verifier
 
     rect rgb(255, 190, 152)
-    note right of TP: Generates a ∈ F_p,  <br /> computes PP = <g, g^a, ..., g^a^t>  <br /> and DELETES a 
+    note right of TP: Generates a ∈ F_p,  <br /> computes PP = <g, a.g, a^2.g, ..., a^t.g>  <br /> and DELETES a 
     TP->>P: Sends PP
     TP->>V: Sends PP
     rect rgb(128,182,223)
-    note right of P: P Chooses f(x) ∈ F_p[X] and computes C(f(a)) = g^f(a) ∈ F_p using PP.
-    P->>V:  Sends C(f(a))
-    V-->>P: Asks to open at b ∈ F_p
+    note right of P: P Chooses f(x) ∈ F_p[X] and computes C_f = C(f(a)) = f(a).g ∈ F_p using PP.
+    P->>V:  Sends C_f
+    V-->>P: V Asks to open at b ∈ F_p
     rect rgb(224,128,135)
-    note right of P: P Computes Q_b(x) = (f(x) - f(b)) / (x - b) and computes C(Q_b) = g^Q_b(a).
-    P->>V: Sends (b, f(b), C(Q_b))
-    V->>P: Checks if e(C(f), g) == e(C(Q_b), g^(a-b)) * e(g, g)^f(b)
+    note right of P: P Computes Q_b(x) = (f(x) - f(b)) / (x - b) and computes C_Q = C(Q_b) = Q_b(a).g.
+    P->>V: Sends (b, f(b), C_Q)
+    V->>P: Checks if e(C_f - f(b).g, g) == e(C_Q, ag - bg)
     end
     end
     end
 ```
 
 ### [Trusted Setup](#trusted-setup)
-A trusted third party picks a random element $a \in \mathbb{F}_p$. They compute the public parameter (PP) or common reference string (CRS), as < $g, g^{a^1}, g^{a^2}, \ldots, g^{a^t}$ >. Then, they **delete** $a$. This step of deleteing $a$ is extremely important to secure the system.
+A trusted third party picks a random element $a \in \mathbb{F}_p$. They compute the public parameter (PP) or common reference string (CRS), as < $g, {a^1}.g, {a^2}.g, \ldots, {a^t}.g$ >. Then, they **delete** $a$. This step of deleteing $a$ is extremely important to secure the system.
 
 Then, the trusted party sends the public paramters to the Prover and the Verifier.
 
@@ -345,17 +308,17 @@ To simplify this step, Prover picks a polynomial $f(x) \in \mathbb{F}_p[x]$, the
 
 Say, the commitment of the polynomial $f(x)$ is denoted as $C_f$. The commitment is like hash function. 
 
-So $C_f = g ^ {f(a)}  = g^{(f_0 + f_1a + f_2a^2 + \ldots + f_ta^t)}$. Here $f(a)$ is the polynomial evaluted at $x=a$.
+So $C_f = {f(a)} \cdot g  = {(f_0 + f_1a + f_2a^2 + \ldots + f_ta^t)} \cdot g$. Here $f(a)$ is the polynomial evaluted at $x=a$.
 
 Though, the Prover doesn't know $a$, he or she can still cmpute the commitment of the polynomial at $x=a$.
 
-So we have, $C_f = g ^ {f(a)}  = g^{(f_0 + f_1a + f_2a^2 + \ldots + f_ta^t)}$.
+So we have, $C_f = {f(a)} \cdot g  = {(f_0 + f_1a + f_2a^2 + \ldots + f_ta^t)} \cdot g$.
 
-$C_f =  g^{f_0} \cdot g^{f_1a} \cdot g^{f_2a^2}  \ldots  g^{f_ta^t}$.
+$C_f =  {f_0} \cdot g + {f_1a} \cdot g + {f_2a^2} \cdot g + \ldots + {f_ta^t} \cdot g $.
 
-$C_f =  (g)^{f_0} \cdot (g^a)^{f_1} \cdot (g^{a^2})^{f_2}  \ldots  (g^{a^t})^{f_t}$.
+$C_f =  {f_0} \cdot g +  {f_1} \cdot (ag) + {f_2} \cdot ({a^2}g) + \ldots  + {f_t} \cdot ({a^t}g)$.
 
-From the CRS, the Prover knows these values < $g, g^{a^1}, g^{a^2}, \ldots, g^{a^t}$ >, he or she can compute this value as commitment of the polynomial, $C_f$ and sends to the Verifier.
+From the CRS, the Prover knows these values < $g, {a^1}.g, {a^2}.g, \ldots, {a^t}.g$ >, he or she can compute this value as commitment of the polynomial, $C_f$ and sends to the Verifier.
 
 ### [Opening of the Polynomial](#opening-of-the-polynomial)
 
@@ -377,14 +340,82 @@ Expressed in mathematical terms, the Quotient polynomial is:
 $Q(x) = \frac{f(x) - f(b)}{x - b} = \frac{f(x) - d}{x - b}$
 
 The commitment to the Quotient Polynomial, $Q(x)$, is represented by $C_Q$. Using the Common Reference String (CRS) provided during the Trusted Setup, the Prover calculates $C_Q$:
-$C_Q = g^{Q(a)}$.
+$C_Q = {Q(a)} \cdot g$.
 
 The Prover can calculate $C_Q$ as long as $(f(x) - f(b))$ is divisible by $(x−b)$. If this were not the case, $Q(x)$ would not be a proper polynomial i.e. the Quotient polynomial will have a denominator and some negative exponents, and the Prover could not compute the Evaluation Proof $C_Q$ using only the CRS.
 
 Finally, the Prover sends the tuple < $b, f(b), C_Q$ > to the Verifier, completing this stage of the protocol.
 
 
-### [Verification](#verification)
+### [Verification Proof](#verification-proof)
+Let's first summarize what data does the Verifier has so far in the protocol. 
+
+**Data in hand:** The Verifier knows:
+- The commitment of the polynomial, $C_f$.
+- The opening point $b$.
+- The value of the polynomial at $b$, denoted as $f(b)$.
+- The commitment to the Quotient polynomial at $b$, denoted as $C_Q = {Q(a)} \cdot g$.
+
+**Properties of a commitment scheme:**
+- **Completeness:** A commitment scheme is said to be **complete** if anything which is true is provable. 
+- **Soundness:** It is said to be **sound** if everything which is provable is true - i.e. anything which is false cannot be proven by the scheme.
+
+**Quotient polynomial and verification:**
+
+Recall that the Quotient polynomial is given by
+$Q(x) = \frac{f(x) - f(b)}{x - b} = \frac{f(x) - d}{x - b}$.
+
+So, $(x - b) \cdot Q(x) = f(x) - d$
+
+Evaluating this at $x=a$, we get
+$(a - b) \cdot Q(a) = f(a) - d$
+
+Multiplying both sides by the generator $g$, we get
+
+$(a−b) \cdot Q(a) \cdot g = f(a) \cdot g − d \cdot g$
+
+Now, the Verifier knows that $C_Q = Q(a) \cdot g$ and $C_f = f(a) \cdot g$.
+
+So substituting, we get
+
+$(a−b) \cdot C_Q = C_f − d \cdot g$
+
+If the verifier can confirm the validity of the above equality, it means the commitment has been verified. However, since the verifier is unaware of the value of $a$, they cannot directly validate the truth of this equality.
+
+However, the Verifier can use Elliptic Curve Pairings as outlined above to verify the equality constraint even without knowing $a$. Remember that the pairing function is denoted as:
+
+$e:$  $\mathbb G_1 X \mathbb G_2 \rightarrow \mathbb G_T$  such that it satisfies,
+
+Bilinear property: $e(g^a, g^b) = e(g, g^{ab}) = e(g^{ab}, g) = e(g,g)^{ab}$
+
+Non-degenerate property: $e(g,g) \neq 1$, means the output is not an identity element.
+
+Let us for now, use a symmetric pairing function where $e:$  $\mathbb G X \mathbb G \rightarrow \mathbb G_T$ 
+
+The Prover has to check he equality $(a−b) \cdot C_Q = C_f − d \cdot g$.
+
+The pairing function takes any two elements from the group $\mathbb G$ and maps it to an element in $\mathbb G_T$. 
+
+- A commitment, like $C_f$ or $C_Q$, is obtained by multiplying a number (a scalar) with the group's generator, $g$.
+- Since both $C_f$ and $C_Q$) are the result of this operation, they belong to the group $\mathbb G$.
+- When we multiply $C_Q$ by the difference of two numbers $a$ and $b$, which is also a scalar, the result, $(a−b) \cdot C_Q$, stays within the group $\mathbb G$.
+- Similarly, $C_f$ is a group element, and so is $d \cdot g$ because it's the generator multiplied by a scalar.
+- Subtracting $d \cdot g$  from $C_f$ gives us another element in the group, $C_f − d \cdot g$.
+- All these resulting elements are part of the group $\mathbb G$ and can be used in the pairing function.
+
+So, applying the pairing function on the both sides using the generator $g$ as the second parameter, the equality constraint becomes, 
+
+$e((a−b) \cdot C_Q, g) = e(C_f − d \cdot g, g)$
+
+We still can't calculate $a-b$ as nobody knows $a$. But we can use the bilinear property of the pairing function 
+
+$e(g^a, g^b) = e(g, g^{ab}) = e(g^{ab}, g) = e(g,g)^{ab}$
+
+So we can rewrite the equality constraint as
+$e(C_Q, (a−b) \cdot g) = e(C_f − d \cdot g, g)$
+$e(C_Q, a \cdot g − b \cdot g) = e(C_f − d \cdot g, g)$
+
+Though the Verifier doesn’t know $a$, he or she knows $a \cdot g$ from the Common Reference String. So now the Verifier can check whether the above equality is true or not. This ends the verification of the Evaluation Proof.
 
 
 ## [KZG by Hands](#kzg-by-hands)
