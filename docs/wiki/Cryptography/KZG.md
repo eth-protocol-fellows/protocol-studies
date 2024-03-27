@@ -5,6 +5,8 @@
 ## [TLDR](#tldr)
 The KZG commitment scheme is like a cryptographic vault for securely locking away polynomials (mathematical equations) so that you can later prove you have them without giving away their secrets. It's like making a sealed promise that you can validate without ever having to open it up and show the contents. Using advanced math based on elliptic curves, it enables efficient, verifiable commitments that are a key part of making blockchain transactions more private and scalable. This scheme is especially important for Ethereum's upgrades, where it helps to verify transactions quickly and securely without compromising on privacy.
 
+The KZG Polynomial Commitment Scheme ensures that both commitments and evaluation proofs are of a fixed size, regardless of the polynomial's length, offering consistent and space-efficient cryptographic operations.
+
 ## [Motivation](#motivation)
 
 ### [ZKSNARKs](#zksnarks)
@@ -510,14 +512,7 @@ $e(C_Q, a \cdot g_2 − b \cdot g_2 ) = e(C_f − d \cdot g_1, g_2)$
 
 Here $a \cdot g_2$ will be the part of CRS of $\mathbb G_2$ and everything else can be either computed or part of CRS of $\mathbb G_1$.
 
-
-## [KZG Batch Mode Single Polynomial, multiple points](#kzg-batch-mode-single-polynomial-multiple-points)
-
-## [KZG Batch Mode Multiple Polynomials, same point](#kzg-batch-mode-multiple-polynomials-same-point)
-
-## [KZG Batch Mode Multiple Polynomials, multiple points](#kzg-batch-mode-multiple-polynomials-multiple-points)
-
-
-
+### [Unwavering Compactness](#unwavering-compactness)
+One key benefit of the KZG Polynomial Commitment Scheme is its efficient use of space. No matter the length or complexity of the polynomial we're working with, the commitment to that polynomial—essentially its cryptographic "footprint"—is always a single, fixed-size element within a mathematical group, $\mathbb G$. This means that as the polynomial grows in degree, the size of the commitment does not increase. The same principle applies to the evaluation proof, which is the evidence we provide to show that our commitment is accurate. Whether we're verifying just one value or many at once (in batch mode), the proof will always be of a consistent size. This consistency in size translates to predictable and efficient storage requirements, an important feature for practical applications in cryptography.
 
 
