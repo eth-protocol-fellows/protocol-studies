@@ -493,14 +493,17 @@ Let the generators of $\mathbb G_1$ be $g_1$ and $\mathbb G_2$ be $g_2$.
 The Prover has to check the equality $(a−b) \cdot Q(a) = f(a) − d$.
 
 Multiplying both sides by $g_1$, we get
+
 $(a−b) \cdot Q(a) \cdot g_1 = f(a) \cdot g_1 − d \cdot g_1$
 
 $(a−b) \cdot C_Q = C_f − d \cdot g_1$
 
 Applying the assymetric pairing function on both sides, we get
+
 $e((a−b) \cdot C_Q, g_2) = e(C_f − d \cdot g_1, g_2)$
 
 Using the bilinear property, we get
+
 $e(C_Q, (a−b) \cdot g_2) = e(C_f − d \cdot g_1, g_2)$
 
 $e(C_Q, a \cdot g_2 − b \cdot g_2 ) = e(C_f − d \cdot g_1, g_2)$
