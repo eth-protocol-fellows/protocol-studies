@@ -11,7 +11,7 @@ Enshrined Proposer-Builder Separation (ePBS) refers to integrating the PBS mecha
 Proposer-Builder Separation (PBS) is a design philosophy[^1] and mechanism in within the context of Ethereum, that aims to decouple the roles of proposing blocks (proposers) and constructing the content of those blocks (builders). This separation addresses various challenges and inefficiencies associated with block production, and in the context of maximizing extractable value (MEV). You can learn more about PBS at (/wiki/research/PBS/pbs.md).
 
 
-## [Brief overview of ePBS](#brief-overview-of-epbs)
+## [Overview of ePBS](#overview-of-epbs)
 
 Enshrined Proposer-Builder Separation (ePBS) is a protocol-level enhancement for Ethereum that institutionalizes the division of labor between block proposers and block builders. Unlike the existing off-chain solutions like MEV-Boost, which operate on a trust-based model with relays, ePBS integrates this separation directly into Ethereum's core protocol, aiming to streamline and secure the process.
 
