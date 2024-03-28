@@ -1,100 +1,15 @@
-# Envisioning Ethereum's Future: The Path to Enshrined Proposer-Builder Separation (ePBS)
+# Enshrined Proposer-Builder Separation (ePBS)
 
 ## [DRAFT MODE - This is work in progress.]
-
-## [ELI5](#eli5)
-
-Imagine Ethereum as a busy city where builders create buildings (blocks) on plots of land given by city planners (proposers). Right now, a few big companies have most of the control over building, which isn’t ideal for our city's future. The document talks about making this process part of the city’s rules, so everyone has a fair chance to build. It’s like making sure the city grows in a way that’s best for everyone, not just the big players.
 
 ## [TLDR](#tldr)
 
 Enshrined Proposer-Builder Separation (ePBS) refers to integrating the PBS mechanism directly into the Ethereum blockchain protocol itself, rather than having it operate through external services or add-ons. This integration aims to formalize and standardize the separation between the roles of block proposers and block builders within the core protocol rules, enhancing the system's efficiency, security, and decentralization.
 
-## [Key References](#key-references)
-- [Why enshrine Proposer-Builder Separation](https://ethresear.ch/t/why-enshrine-proposer-builder-separation-a-viable-path-to-epbs/15710)
-- [Notes on Proposer-Builder Separation PBS](https://barnabe.substack.com/p/pbs)
-- [Beyond the Basics: The Unanticipated Advantages of ePBS](https://hackmd.io/@potuz/ry9NirU2p)
-- [ePBS design constraints](https://ethresear.ch/t/epbs-design-constraints/18728/1)
-- [Payload Timeliness Committee](https://ethresear.ch/t/payload-timeliness-committee-ptc-an-epbs-design/16054)
-- [PEPC](https://ethresear.ch/t/unbundling-pbs-towards-protocol-enforced-proposer-commitments-pepc/13879)
-- [An Incomplete Guide to PBS - with Mike Neuder and Chris Hager](https://www.youtube.com/watch?v=mEbK9AX7X7o)
-- [ePBS Breakout Room](https://www.youtube.com/watch?v=63juNVzd1P4)
-- [mev-bibliography](https://github.com/michaelneuder/mev-bibliography#readme)
+## [What is PBS](#what-is-pbs)
 
-**Table of Contents**
-- [Envisioning Ethereum's Future: The Path to Enshrined Proposer-Builder Separation (ePBS)](#envisioning-ethereums-future-the-path-to-enshrined-proposer-builder-separation-epbs)
-  - [\[DRAFT MODE - This is work in progress.\]](#draft-mode---this-is-work-in-progress)
-  - [ELI5](#eli5)
-  - [TLDR](#tldr)
-  - [Key References](#key-references)
-  - [Introduction - What is PBS](#introduction---what-is-pbs)
-    - [Proposers](#proposers)
-    - [Builders](#builders)
-    - [Separation Benefits](#separation-benefits)
-  - [Brief overview of ePBS](#brief-overview-of-epbs)
-    - [PBS in historical context](#pbs-in-historical-context)
-    - [Transition from mev-boost to ePBS](#transition-from-mev-boost-to-epbs)
-  - [The Case for ePBS](#the-case-for-epbs)
-    - [Main Reasons for Transition to ePBS](#main-reasons-for-transition-to-epbs)
-    - [Contradiction of Core Values by Reliance on Relays](#contradiction-of-core-values-by-reliance-on-relays)
-    - [Perceived Risks and Inefficiencies with Out-of-Protocol PBS](#perceived-risks-and-inefficiencies-with-out-of-protocol-pbs)
-    - [Sustainability Concerns of Relays](#sustainability-concerns-of-relays)
-    - [Economic Considerations](#economic-considerations)
-    - [Security Considerations](#security-considerations)
-    - [MEV Burn](#mev-burn)
-  - [Counterarguments to ePBS](#counterarguments-to-epbs)
-    - [Primary Counterarguments Against ePBS](#primary-counterarguments-against-epbs)
-    - [If it ain't broke, don't fix it - counterarguments](#if-it-aint-broke-dont-fix-it---counterarguments)
-    - [Proponents' Responses and Advocacy for ePBS](#proponents-responses-and-advocacy-for-epbs)
-  - [Designing ePBS](#designing-epbs)
-    - [Desirable properties of ePBS mechanisms](#desirable-properties-of-epbs-mechanisms)
-    - [The Two-Block HeadLock (TBHL) proposal](#the-two-block-headlock-tbhl-proposal)
-    - [PTC](#ptc)
-    - [Implementation details for PTC](#implementation-details-for-ptc)
-    - [PEPC](#pepc)
-    - [Addressing honest builder publication and payment safety](#addressing-honest-builder-publication-and-payment-safety)
-    - [Ensuring permissionlessness and censorship resistance](#ensuring-permissionlessness-and-censorship-resistance)
-  - [Out-of-protocol proposals](#out-of-protocol-proposals)
-    - [Optimistic Relaying: A Step Towards ePBS](#optimistic-relaying-a-step-towards-epbs)
-      - [Concept and benefits of optimistic relaying](#concept-and-benefits-of-optimistic-relaying)
-      - [The evolution from optimistic relaying v1 to the endgame](#the-evolution-from-optimistic-relaying-v1-to-the-endgame)
-      - [Potential impacts on the relay landscape and ePBS implementation](#potential-impacts-on-the-relay-landscape-and-epbs-implementation)
-    - [PEPC-Boost](#pepc-boost)
-    - [PEPC-DVT](#pepc-dvt)
-    - [MEV-Boost+](#mev-boost)
-    - [MEV-BOOST++](#mev-boost-1)
-  - [Open Questions](#open-questions)
-    - [What does bypassability imply?](#what-does-bypassability-imply)
-    - [What does enshrining aim to achieve?](#what-does-enshrining-aim-to-achieve)
-    - [What are the exact implications of not enshrining?](#what-are-the-exact-implications-of-not-enshrining)
-    - [WHat is the real demand for ePBS?](#what-is-the-real-demand-for-epbs)
-    - [How much can we rely on altruism and the social layer?](#how-much-can-we-rely-on-altruism-and-the-social-layer)
-    - [How important is L1 ePBS in a future with L2s and OFAs?](#how-important-is-l1-epbs-in-a-future-with-l2s-and-ofas)
-    - [What priority should ePBS have in light of other protocol upgrades?](#what-priority-should-epbs-have-in-light-of-other-protocol-upgrades)
-  - [Community Perspectives and Future Directions](#community-perspectives-and-future-directions)
-  - [Frequently Asked Questions on epbs](#frequently-asked-questions-on-epbs)
+Proposer-Builder Separation (PBS) is a design philosophy[^1] and mechanism in within the context of Ethereum, that aims to decouple the roles of proposing blocks (proposers) and constructing the content of those blocks (builders). This separation addresses various challenges and inefficiencies associated with block production, and in the context of maximizing extractable value (MEV). You can learn more about PBS at (/wiki/research/PBS/pbs.md).
 
-
-## [Introduction - What is PBS](#introduction---what-is-pbs)
-
-Proposer-Builder Separation (PBS) is a design philosophy[quote Barnable here] and mechanism in blockchain networks, particularly within the context of Ethereum, that aims to decouple the roles of proposing blocks (proposers) and constructing the content of those blocks (builders). This separation addresses various challenges and inefficiencies associated with block production, especially in proof-of-stake (PoS) systems and in the context of maximizing extractable value (MEV).
-
-Here’s a breakdown of the roles and the rationale behind PBS:
-
-### [Proposers](#proposers)
-- **Role**: Validators chosen by the protocol to propose a new block to the blockchain.
-- **Traditional Challenge**: In a system without PBS, the proposer must both select which transactions to include in a block and order them. This task becomes increasingly complex and specialized as the proposer needs to understand the current state of the blockchain deeply and identify the most profitable transactions to include, often related to MEV.
-
-### [Builders](#builders)
-- **Role**: Specialized actors responsible for constructing blocks. They listen to the network for transactions, order them in a way that maximizes the value extracted from the block (MEV), and bid for their block to be chosen by the proposer.
-- **Rationale**: Builders are specialized and equipped with sophisticated strategies and algorithms to efficiently order transactions to maximize MEV. Their specialization allows for more efficient and profitable block construction than a generalist proposer could achieve.
-
-### [Separation Benefits](#separation-benefits)
-- **Decentralization and Security**: By allowing proposers to remain unsophisticated entities, PBS aids in maintaining a more decentralized network. It lowers the barrier to entry for becoming a proposer, as they no longer need the infrastructure or knowledge to optimize transaction ordering for MEV.
-- **Efficiency and Specialization**: Separating the roles allows each actor to specialize in their respective tasks, leading to more efficient block construction and potentially higher network throughput.
-- **Fairness and MEV Distribution**: PBS can help in creating a more competitive and fair environment for MEV extraction, as multiple builders compete to have their blocks chosen by proposers.
-
-PBS is fundamentally a recognition that different roles in the blockchain ecosystem can have distinct capabilities and incentives, and that separating these roles can lead to improved efficiency, security, and fairness (division of labor). This concept has been explored and implemented in various ways, including through external services like MEV-Boost in Ethereum, which facilitates the interaction between proposers and builders outside the core protocol.
 
 ## [Brief overview of ePBS](#brief-overview-of-epbs)
 
@@ -106,8 +21,6 @@ In the ePBS framework:
 - **Proposers** are validators responsible for proposing new blocks to the network. Their role is limited to choosing which block to propose, without the need to construct the block themselves.
 - **Builders** are entities or algorithms that assemble blocks, optimizing the transaction order for profitability (e.g., maximizing MEV extraction) and offering these blocks to proposers through a transparent auction mechanism.
 - **Relays**, in the traditional MEV-Boost context, serve as intermediaries that facilitate the communication between proposers and builders. Under ePBS, the reliance on external relays is diminished or redefined, as the protocol itself facilitates the direct interaction between proposers and builders.
-
-The need to enshrine PBS into Ethereum's protocol stems from the desire to mitigate risks associated with external, trust-dependent services, improve the decentralization and security of block production, and better manage the complexities around MEV extraction. By formalizing these roles within the Ethereum protocol, ePBS seeks to ensure a fair, efficient, and transparent process for transaction ordering and block construction, aligned with Ethereum's ethos of decentralization and open participation.
 
 
 ### [PBS in historical context](#pbs-in-historical-context)
@@ -397,3 +310,5 @@ The TBHL proposal stands as a testament to the ongoing efforts to refine Ethereu
 
 ## [Frequently Asked Questions on epbs](#frequently-asked-questions-on-epbs)
 
+## [References]
+[^1]: https://barnabe.substack.com/p/pbs 
