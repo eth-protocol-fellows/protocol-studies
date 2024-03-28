@@ -37,6 +37,22 @@ As explained in this [article](https://ethos.dev/beacon-chain), slots are the ti
 - **Efficiency and Specialization**: Separating the roles allows each actor to specialize in their respective tasks, leading to more efficient block construction and potentially higher network throughput.
 - **Fairness and MEV Distribution**: PBS can help in creating a more competitive and fair environment for MEV extraction, as multiple builders compete to have their blocks chosen by proposers.
 
+### PBS in historical context
+
+- **Pre-MEV-Geth Era:** Before MEV-Geth, there was a form of PBS in the division of labor between a mining pool operator and the workers. The mining pool operator would construct the block body, and the workers would hash the block further. This division of labor also involved a commit-reveal scheme 
+ 
+- **Before the Merge (Proof of Work Era):** The concept of PBS was more explicit in the MEV-Geth world, where a few large mining pools controlled a significant portion of the hash rate. MEV-Geth allowed searchers to send bundles to miners without worrying about the miners stealing them, as the miners' reputation was worth more than the potential gain from stealing the contents of the bundle. This interaction was simpler due to the fewer number of block producers. 
+
+- **Approaching the Merge:** As the merge approached, there was significant discussion about PBS as a general approach. The idea was considered for inclusion in the merge hard fork, but it was eventually discarded due to the complexity it would add to the software and specification, which could slow down the merge process.
+
+- **Introduction of MEV-Boost:**
+ - **April 2022:** Stefan from Flashbots posted the original MEV-Boost specification, outlining how proposers could interact with an external block-building network. Work began in the background at the Devconnect meeting on MEV-Day in Amsterdam in '22, finalizing all necessary APIs.
+ - **Summer 2022:** Efforts were made to deliver a permissionless relay on open-source software, allowing other relay operators to run it. This was completed just in time for the merge, which included permissionless builder access.
+
+- **MEV-Boost as a Software Solution:** MEV-Boost facilitates the auction between the proposer and the builder, ensuring that the block produced by the builder is valid and accurately pays the proposer. This is achieved through a relay that sits between the proposer and the builder, facilitating the auction process.
+
+- **Current Status Post-Merge:** Immediately after the merge, there were about three or four relays running. Now, there are around 8-10 relays that facilitate most of the MEV-Boost blocks. About 95% of validators are connected to one of these relays and use their connection to source their block production.
+
 
 ## Current State and Solutions
 
