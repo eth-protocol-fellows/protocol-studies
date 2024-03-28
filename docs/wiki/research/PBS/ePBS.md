@@ -260,8 +260,8 @@ The TBHL proposal stands as a testament to the ongoing efforts to refine Ethereu
 ### Ensuring permissionlessness and censorship resistance
 
 
-## [Out-of-protocol proposals](#out-of-protocol-proposals)
-### [Optimistic Relaying: A Step Towards ePBS](#optimistic-relaying-a-step-towards-epbs)
+## Out-of-protocol proposals
+### Optimistic Relaying: A Step Towards ePBS
 #### Concept and benefits of optimistic relaying
 #### The evolution from optimistic relaying v1 to the endgame
 #### Potential impacts on the relay landscape and ePBS implementation
@@ -270,7 +270,7 @@ The TBHL proposal stands as a testament to the ongoing efforts to refine Ethereu
 ### MEV-Boost+
 ### MEV-BOOST++
 
-## [Open Questions](#open-questions)
+## Open Questions
 ### What does bypassability imply?
 ### What does enshrining aim to achieve? 
 ### What are the exact implications of not enshrining? 
@@ -279,9 +279,6 @@ The TBHL proposal stands as a testament to the ongoing efforts to refine Ethereu
 ### How important is L1 ePBS in a future with L2s and OFAs? 
 ### What priority should ePBS have in light of other protocol upgrades? 
 
-## [Community Perspectives and Future Directions](#community-perspectives-and-future-directions)
-
-## [Frequently Asked Questions on epbs](#frequently-asked-questions-on-epbs)
 
 ## [References]
 [^1]: https://barnabe.substack.com/p/pbs 
