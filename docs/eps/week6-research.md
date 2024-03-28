@@ -2,10 +2,9 @@
 
 Week 6 research track is going to be a dive into data availability sampling and danksharding. 
 
-Join the presentation by [Dankrad](https://twitter.com/dankrad) on [Wednesday, March 27, 4PM UTC](https://savvytime.com/converter/utc-to-germany-berlin-united-kingdom-london-ny-new-york-city-ca-san-francisco-china-shanghai-japan-tokyo-australia-sydney/mar-27-2024/4pm).
+Watch the presentations by [Dakrad](https://twitter.com/dankrad) on StreamEth or Youtube. Slides are [available here](https://github.com/eth-protocol-fellows/protocol-studies/blob/main/docs/eps/presentations/week6_research.pdf). 
 
-
-The talk will be streamed live on [StreamEth](https://streameth.org/65cf97e702e803dbd57d823f/epf_study_group) and Youtube, links will be provided before the call in the [Discord server](https://discord.gg/addwpQbhpq). Discord also serves for the discussion and questions during the stream. 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/ro2AGRkLC2s?si=IaNwL7OXl5tQvqOM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ## Pre-reading
 
@@ -14,14 +13,13 @@ Before starting with the week 6 content, make yourself familiar with resources i
 Additionally, you can read and get ready by studying the following resources:
 
 - [Data availability problem](https://www.youtube.com/watch?v=OJT_fR7wexw)
-- [Danksharding by Dankrad, 2022](https://www.youtube.com/watch?v=1Cg2iu4C4sU)
 - [Sharding and DAS proposal](https://hackmd.io/@vbuterin/sharding_proposal)
 
 ## Outline
 
-- Polynomial commitment schemes
+- Ethereum scalability
+- History of sharding and path forward
 - Data availability
-- Sharding
 
 ## Additional reading and exercises 
 
