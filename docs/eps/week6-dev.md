@@ -2,7 +2,6 @@
 
 The development track of week 6 will provide a deeper insight into consensus and execution layer specification. 
 
-
 Watch presentations from [Hsiao-Wei](https://twitter.com/icebearhww) and [Sam](https://twitter.com/_SamWilsn_) on StreamEth or Youtube. Slides are available for both [consensus specs](https://github.com/eth-protocol-fellows/protocol-studies/blob/main/docs/eps/presentations/week6_cl_specs.pdf) and [execution specs](https://github.com/eth-protocol-fellows/protocol-studies/blob/main/docs/eps/presentations/week6_el_specs.pdf) talks.
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/_mb0LFJY8t0?si=M74zgvUuewCrUtJF" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
