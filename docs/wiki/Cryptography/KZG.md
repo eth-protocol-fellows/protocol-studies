@@ -14,7 +14,7 @@ Learning about Polynomial Commitment Schemes (PCS) is important because they pla
 *Modern ZKSNARK = Functional Commitment Scheme + Compatible Interactive Oracle Proof (IOP)*
 
 
-### [Ethereum Danksharding](#ethereum-danksharding)
+### [Use cases in Ethereum Ecosystem](#use-cases-in-ethereum-ecosystem)
 KZG commitment scheme has emerged as a pivotal technology in the Ethereum ecosystem, particularly in the context of Proto-Danksharding and its anticipated evolution into Danksharding. This commitment scheme is a cornerstone of many Zero-Knowledge (ZK) related applications within Ethereum, enabling efficient and secure verification of data without revealing the underlying information.
 
 Ethereum-based applications utilizing the KZG (Kate, Zaverucha, and Goldberg) scheme include:
@@ -23,7 +23,7 @@ Ethereum-based applications utilizing the KZG (Kate, Zaverucha, and Goldberg) sc
 
 - **Data Availability Sampling**: PCS enable a critical feature known as Data Availability Sampling (DAS) in Ethereum roadmap, which allows validators to confirm the correctness and availability of data blobs without downloading the entire data. This capability is facilitated by the unique properties of PCS, enabling efficient verification processes in blockchain applications like Ethereum's Danksharding.
 
-- **PSE's Summa, Proof of Solvenecy Protocol**: Ethereum Foundation's PSE group project Summa, Proof of Solvency protocol, uses KZG commitments to proove the centralized exchanges and other custodians total assets are greater than their liabilities without revealing any information about users' balances.
+- **PSE's Summa, Proof of Solvenecy Protocol**: Ethereum Foundation's PSE group project, Summa, leverages KZG commitments in its Proof of Solvency protocol. This allows centralized exchanges and custodians to demonstrate that their total assets exceed their liabilities, all while keeping user balance information private.
   
 - **Scroll's zkRollups**: Scroll, a native zkEVM Layer 2 for Ethereum, uses KZG to generate commitments to a collection of polynomials that encapsulate computations. This allows verifiers to request evaluations at random points to validate the accuracy of the computation represented by the polynomials.
 
@@ -219,9 +219,7 @@ Here's how to think about this pairing function without getting bogged down by t
 
 Pairing functions enable advanced cryptographic techniques, such as those used in certain types of digital signatures and encryption, by allowing this kind of "cross-group" interaction to occur securely and predictably.
 
-
-
-## [Important Properties of Commitments](#important-properties-of-commitments)
+## [Properties of Commitments](#properties-of-commitments)
 
 Commitment schemes are like the secret-keeping wizards of the digital world. They let someone make a promise about a piece of information (we'll call this the secret message) in a way that ties them to their promise without letting anyone else know what the secret is. Here's how it works:
 
