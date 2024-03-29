@@ -22,7 +22,9 @@ Proposer-Builder Separation (PBS) also introduces a more intricate relationship 
 1. **Builders:**
    - Builders are specialized entities that focus on constructing blocks with optimal transaction ordering and inclusion. They compete with each other to create the most profitable block for the proposer, taking into account factors like gas fees, transaction priority, and potential MEV (Maximal Extractable Value).
    - Builders do not directly interact with the blockchain. Instead, they submit their constructed blocks to relays.
+   - This submission includes the block's data (transactions, execution payload, etc.) and a bid that they are willing to pay to have their block proposed.
 2. **Relays:**
+   - Relays receive blocks from multiple builders, confirm their validity and submit the valid block with the highest bid to the escrow for the validator to sign.
    - Relays act as intermediaries between builders and proposers. They receive blocks from builders and forward them to proposers.
    - Relays can perform additional functions like block validation and filtering to ensure that only valid and high-quality blocks are sent to proposers.
    - Some relays may specialize in specific types of blocks, such as those with high MEV potential.
@@ -30,6 +32,13 @@ Proposer-Builder Separation (PBS) also introduces a more intricate relationship 
    - Under PBS, validators take on the role of proposers. They receive blocks from relays and choose the best one based on predefined criteria, typically the block that offers the highest reward.
    - Once the proposer selects a block, they propose it to the network for validation and inclusion in the blockchain.
    - Validators are still responsible for securing the network and ensuring consensus on the blockchain's state.
+
+This whole process is illustrated in the figure below. See [Flashbots' docs](https://docs.flashbots.net/) for further explanations.
+
+<figure style="text-align: center;">
+  <img src="../../images/mev-boost-architecture.png" alt="MEV-Boost architecture">
+  <figcaption style="text-align: center;">Outline of the communication between the MEV-Boost PBS participants. Source: <a href="https://ethresear.ch/t/mev-boost-merge-ready-flashbots-architecture/11177">ethresear.ch</a></figcaption>
+</figure>
 
 This separation of roles creates a more dynamic and specialized block-building process. Builders can focus on optimizing block construction and extracting MEV, while proposers can focus on selecting the best block and maintaining network security.
 
