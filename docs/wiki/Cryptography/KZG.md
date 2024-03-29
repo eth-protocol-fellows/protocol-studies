@@ -1,9 +1,10 @@
 # KZG Polynomial Commitment Scheme
 
 ## [TLDR](#tldr)
-The KZG commitment scheme is like a cryptographic vault for securely locking away polynomials (mathematical equations) so that you can later prove you have them without giving away their secrets. It's like making a sealed promise that you can validate without ever having to open it up and show the contents. Using advanced math based on elliptic curves, it enables efficient, verifiable commitments that are a key part of making blockchain transactions more private and scalable. This scheme is especially important for Ethereum's upgrades, where it helps to verify transactions quickly and securely without compromising on privacy.
+The KZG (Kate, Zaverucha, and Goldwasser) commitment scheme is like a cryptographic vault for securely locking away polynomials (mathematical equations) so that you can later prove you have them without giving away their secrets. It's like making a sealed promise that you can validate without ever having to open it up and show the contents. Using advanced math based on elliptic curves, it enables efficient, verifiable commitments that are a key part of making blockchain transactions more private and scalable. This scheme is especially important for Ethereum's upgrades, where it helps to verify transactions quickly and securely without compromising on privacy.
 
-The KZG Polynomial Commitment Scheme ensures that both commitments and evaluation proofs are of a fixed size, regardless of the polynomial's length, offering consistent and space-efficient cryptographic operations[^5][^6][^7].
+KZG is a powerful cryptographic tool that supports a wide range of applications within the Ethereum ecosystem and other cryptographic applications. Its distinctive features are leveraged in proving schemes to enhance scalability and privacy in various applications.
+
 
 ## [Motivation](#motivation)
 
@@ -12,18 +13,23 @@ Learning about Polynomial Commitment Schemes (PCS) is important because they pla
 
 *Modern ZKSNARK = Functional Commitment Scheme + Compatible Interactive Oracle Proof (IOP)*
 
-PCS is a way to prove that you know a secret function (represented by a polynomial) without showing the function itself. It's like promising to show a secret recipe to someone, but you only show them the final dish without revealing the recipe. This is crucial for ZKSNARKs because it allows the prover to prove they know a secret function without revealing it.
-
-IOP is another method that helps in proving that you know a secret value without revealing it. It's used along with PCS to make a ZKSNARK. The IOP helps in proving the knowledge, while PCS makes the proof short and easy to check. This combination allows for creating efficient ZKSNARKs that can be used in many areas, like blockchain and privacy-preserving computations.
-
-To make ZKSNARKs, you need to choose a PCS and IOP that work well together. The PCS is used to commit to a polynomial and prove the evaluation of the polynomial at a certain point without revealing the polynomial. The IOP is used to create a proof of knowledge, which is then turned into a non-interactive proof using a method called the Fiat-Shamir heuristic. This makes it possible to generate and verify the proof without needing to communicate in real-time, making ZKSNARKs useful for blockchain and distributed systems.
 
 ### [Ethereum Danksharding](#ethereum-danksharding)
 KZG commitment scheme has emerged as a pivotal technology in the Ethereum ecosystem, particularly in the context of Proto-Danksharding and its anticipated evolution into Danksharding. This commitment scheme is a cornerstone of many Zero-Knowledge (ZK) related applications within Ethereum, enabling efficient and secure verification of data without revealing the underlying information.
 
-The adoption of KZG commitments in Proto-Danksharding and its future application in Danksharding represents a significant step towards Ethereum's full sharding implementation. Sharding is a long-term scaling solution for Ethereum, aiming to improve the network's scalability and capacity by dividing the network into smaller, more manageable pieces. The KZG commitment scheme plays a vital role in this process by facilitating the efficient verification of data across shards, thereby enhancing the overall security and performance of the Ethereum network.
+Ethereum-based applications utilizing the KZG (Kate, Zaverucha, and Goldberg) scheme include:
 
-Moreover, the KZG commitment scheme is not only limited to Ethereum but has broader applications in the blockchain and cryptographic communities. Its ability to commit to a polynomial and verify evaluations of the polynomial without revealing the polynomial itself makes it a versatile tool for various cryptographic protocols and applications. 
+- **Proto-Danksharding (EIP-4844)**: This proposal aims to reduce the cost of posting data on Ethereum's Layer 1 for rollups by using KZG for its polynomial commitment scheme. It introduces a "blob-carrying transaction" type to accommodate substantial data blobs, with only a commitment to the data blob being accessible from the execution layer.
+
+- **Data Availability Sampling**: PCS enable a critical feature known as Data Availability Sampling (DAS) in Ethereum roadmap, which allows validators to confirm the correctness and availability of data blobs without downloading the entire data. This capability is facilitated by the unique properties of PCS, enabling efficient verification processes in blockchain applications like Ethereum's Danksharding.
+
+- **PSE's Summa, Proof of Solvenecy Protocol**: Ethereum Foundation's PSE group project Summa, Proof of Solvency protocol, uses KZG commitments to proove the centralized exchanges and other custodians total assets are greater than their liabilities without revealing any information about users' balances.
+  
+- **Scroll's zkRollups**: Scroll, a native zkEVM Layer 2 for Ethereum, uses KZG to generate commitments to a collection of polynomials that encapsulate computations. This allows verifiers to request evaluations at random points to validate the accuracy of the computation represented by the polynomials.
+
+- **Jellyfish**: Jellyfish employs the KZG commitment scheme to generate commitments to polynomials during the commitment phase. It leverages the homomorphic properties of KZG for efficient evaluation of the polynomial at any point without revealing its coefficients.
+
+- **Hyperplonk**: Hyperplonk utilizes the multi-linear KZG commitment, indicating its application in scenarios requiring multi-linear polynomial commitments.
 
 
 ## [Goal](#goal)
@@ -31,21 +37,21 @@ Now that we are motivated to learn PCS, let us get started with defining what is
 
 Say we have a function or polynomial $f(x)$ defined as $f(x) = f_0 + f_1x + f_2x^2 + \ldots + f_dx^t$. The degree of $f(x)$ is $t$.
 
-Our main goal with KZG scheme is that we want to prove to someone that we know this polynomial without revealing the polynomial. What do we mean by without revealing by polynomial? We meant that without revealing the coefficients of the polynomial. 
+Our main goal with KZG scheme is that we want to prove to someone that we know this polynomial without revealing the polynomial, i.e. coefficients of the polynomial.
 
 In practice what we exactly do is that we prove that we know a specific evaluation of this polynomial at a point $x=a$. 
 
 We write this, $f(a)$, for some $x=a$. 
 
-## [What we need to know before we discuss KZG](#what-we-need-to-know-before-we-discuss-kzg)
+## [Prerequisite Knowledge](#prerequisite-knowledge)
 
 There are some important concepts we need to know before we can move further to understand KZG scheme. Fortunately, we can get an Engineering level understanding of the KZG scheme from just enough high school mathematics. We will try to gain some intuition on advanced concepts and their important properties without knowing them intimately. This can help us see the KZG protocol flow without bogged down by the advanced mathematics.
 
 We need to know:
 
 ### [Modular Arithmetic](#modular-arithmetic)
-- Can you read a clock? Can you add/subtract two time values? In general can you do clock arithmetic? This is called Modular arithmetic. We only need to know how to add, subtract, multiply or divide numbers and apply modulus operation (the clock scale). 
-- We usually write this mod $p$ to mean modulo $p$, where $p$ is some number. 
+An analog clock illustrates modular arithmetic as hours cycle back after reaching their limit. For KZG, it's enough to know simple arithmetic—adding, subtracting, multiplying, and dividing—along with using the modulus operation, just like a clock resets after 12 or 24 hours.
+
 
 ### [Finite Field of order prime p](#finite-field-of-order-prime)
 
@@ -125,7 +131,7 @@ You can verify that $5$ is also a generator for our multiplicative group ($\math
 In the next section, we will learn how generators enable the KZG commitment scheme to function as an efficient, secure, and verifiable method of committing to polynomials, making it a powerful tool for cryptographic protocols, particularly in blockchain technologies where these qualities are very important.
 
 
-### [Why choosing a prime number for modulo operations in finite fields](#why-choosing-a-prime-number-for-modulo-operations-in-finite-fields)
+### [Why Primes for Modulo Operations in Fields](#why-primes-for-modulo-operations-in-fields)
 
 Choosing a prime number as the modulus for operations in a finite field offers several benefits and simplifies various aspects of field arithmetic:
 
@@ -145,7 +151,7 @@ Choosing a prime number as the modulus for operations in a finite field offers s
 Using a prime number as the modulus for finite fields simplifies the field arithmetic and ensures that all field properties are satisfied, which is essential for both theoretical and practical applications, particularly in cryptography.
 
 
-### [Cryptographic Assumptions needed for KZG Scheme](#cryptographic-assumptions-needed-for-kzg-scheme)
+### [Cryptographic Assumptions](#cryptographic-assumptions)
 
 In order to work with KZG commitment scheme, we need two additional assumptions. We won't go deep into why these assumptions are needed but we will give an intuition to why these cryptographic assumptions are needed to make KZG more secure.
 
@@ -478,14 +484,16 @@ Now, let us practically dervie the steps in KZG protocol using a small finite fi
 - R.H.S (right hand side): $e(10 - 4.2, 2) = e(2, 2) = 2.2 = 4 (mod 11)$.
 - This proves the equality constraint is true, hence the Evaluation Proof is verified.
 
-## [Security of KZG - Deleting the toxic waste](#security-of-kzg---deleting-the-toxic-waste)
+## [Security of KZG](#security-of-kzg)
+**Deleting toxic waste during the Trusted Setup Ceremony**
+
 - Imagine the Prover somehow finds out the secret number $a$ or the Trusted Party leaks $a$ to a malicious Prover.
 - The Prover computes $f_1(x) = 3x^2 + 5x + 7$ at $x=3$. So we get, $f_1(2) = 3.3^2 + 5.3 + 7 = 49 = 5 mod(11)$
 - The Prover computes $f_2(x) = 2x^2 + 7x + 10$ at $x=3$. So we get, $f_2(2) = 2.3^2 + 7.3 + 10 = 49 = 5 mod(11)$
 - This breaks the binding property of the commitment scheme leading to fradulent proofs by the malicious Prover.
 - Hence, it is extremely important to **delete** the secret number $a$ by the Trusted Party after generating the CRS.
 
-## [KZG using Assymetic Pairing Fuctions](#kzg-using-assymetic-pairing-fuctions)
+## [Assymetic Pairing Fuctions](#assymetic-pairing-fuctions)
 An assymetric pairing function is denoted as:
 
 $e:$  $\mathbb G_1 X \mathbb G_2 \rightarrow \mathbb G_T$.
@@ -513,6 +521,9 @@ $e(C_Q, a \cdot g_2 − b \cdot g_2 ) = e(C_f − d \cdot g_1, g_2)$
 Here $a \cdot g_2$ will be the part of CRS of $\mathbb G_2$ and everything else can be either computed or part of CRS of $\mathbb G_1$.
 
 ### [Unwavering Compactness](#unwavering-compactness)
+
+The KZG Polynomial Commitment Scheme ensures that both commitments and evaluation proofs are of a fixed size, regardless of the polynomial's length, offering consistent and space-efficient cryptographic operations[^5][^6][^7].
+
 One key benefit of the KZG Polynomial Commitment Scheme is its efficient use of space. No matter the length or complexity of the polynomial we're working with, the commitment to that polynomial—essentially its cryptographic "footprint"—is always a single, fixed-size element within a mathematical group, $\mathbb G$. This means that as the polynomial grows in degree, the size of the commitment does not increase. The same principle applies to the evaluation proof, which is the evidence we provide to show that our commitment is accurate. Whether we're verifying just one value or many at once (in batch mode), the proof will always be of a consistent size. This consistency in size translates to predictable and efficient storage requirements, an important feature for practical applications in cryptography.
 
 
