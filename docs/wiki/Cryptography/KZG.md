@@ -245,7 +245,7 @@ We want prove that we know a specific evaluation of a function or polynomial at 
 
 In the KZG commitment scheme, the roles of the Trusted Third Party, Prover, and Verifier are critical to its function and security. Here's how each contributes to the process:
 
-1. **Trusted Third Party (Setup Authority):** This entity is responsible for the initial setup phase of the KZG scheme. They generate the public parameters (PP) or Common Reference String (CRS) that will be used in the commitments and proofs, based on a secret that only they know. This secret is crucial for the construction of commitments but must be discarded (or kept extremely secure) after the setup to ensure the system's integrity. The trust in this party is fundamental because if the secret is mishandled or leaked, it could compromise the entire system. This party's role ends after generating CRS and sharing it with the Prover and Verifier i.e. they no longer involved in either proving or verifying steps of the protocol flow.
+1. **Trusted Third Party (Setup Authority):** This entity is responsible for the initial setup phase of the KZG scheme. They generate the public parameters (PP) or Common Reference String (CRS) that will be used in the commitments and proofs, based on a secret that only they know. This secret is crucial for the construction of commitments but must be discarded (or kept extremely secure) after the setup to ensure the system's integrity. The trust in this party is fundamental because if the secret is mishandled or leaked, it could compromise the entire system. The role of this party concludes once they have generated the CRS and distributed it to both the Prover and the Verifier. After this point, they are not involved in any further steps of the protocol, whether it be in proving or verifying.
 
 2. **Prover:** The Prover is the one who wants to commit to a certain piece of data (like a polynomial) without revealing it. Using the CRS provided by the Trusted Third Party, the Prover computes a commitment to their data. When it's time to prove certain properties of their data (like a polynomial evaluation at a specific point), the Prover can generate a proof based on their commitment. This proof shows that their data has certain properties without revealing the data itself.
 
@@ -519,11 +519,48 @@ $e(C_Q, a \cdot g_2 − b \cdot g_2 ) = e(C_f − d \cdot g_1, g_2)$
 
 Here $a \cdot g_2$ will be the part of CRS of $\mathbb G_2$ and everything else can be either computed or part of CRS of $\mathbb G_1$.
 
-### [Unwavering Compactness](#unwavering-compactness)
+## [Unwavering Compactness](#unwavering-compactness)
 
 The KZG Polynomial Commitment Scheme ensures that both commitments and evaluation proofs are of a fixed size, regardless of the polynomial's length, offering consistent and space-efficient cryptographic operations[^5][^6][^7].
 
 One key benefit of the KZG Polynomial Commitment Scheme is its efficient use of space. No matter the length or complexity of the polynomial we're working with, the commitment to that polynomial—essentially its cryptographic "footprint"—is always a single, fixed-size element within a mathematical group, $\mathbb G$. This means that as the polynomial grows in degree, the size of the commitment does not increase. The same principle applies to the evaluation proof, which is the evidence we provide to show that our commitment is accurate. Whether we're verifying just one value or many at once (in batch mode), the proof will always be of a consistent size. This consistency in size translates to predictable and efficient storage requirements, an important feature for practical applications in cryptography.
+
+## [KZG Batch Mode]
+
+KZG commitments can also be opened and verified at multiple points or using multiple polynmials or any combination of them. This is called batch mode in practice.
+
+### [Batch Mode Single Polynomial, Multiple Points]
+
+In batch mode, the Verifier requests the Prover to validate a set of points $B =$ { $b_1, b_2, b_3, \ldots, b_n$ } with $n < t$, where $t$ is the degree of the polynomial $f(x)$. For these points, the Prover computes the values $f(b_1) = d_1, f(b_2) = d_2, \ldots, f(b_n) = d_n$ and forms the set $D =$ { $d_1, d_2, d_3, \ldots, d_n$ }.
+
+The Prover then creates a Polynomial $P(x) = (x - b_1)(x - b_2)\ldots(x - b_n)$. Given that $n < t$, it's possible to divide $f(x)$ by $P(x)$, resulting in $f(x) = P(x)Q(x) + R(x)$, where $Q(x)$ is the quotient polynomial and $R(x)$ is the remainder. This division suggests that $f(x)$ can be represented as such, not implying direct divisibility by $Q(x)$.
+
+The commitment for $Q(x)$, denoted as $C_Q$, alongside the set $B$, is sent to the Verifier by the Prover. Optionally, the Prover may also send the remainder polynomial $R(x)$ to the Verifier. However, the Verifier has the capability to independently compute $R(x)$, considering that for any $b_i$ in $B$, $P(x)$ evaluates to zero, leading to $f(x) = R(x)$ for all $b_i$ in $B$.
+
+As the degree of $Q(x)$ is $n$ and $R(x)$'s degree is less than $n$, the Verifier, knowing $R(x)$'s evaluation at $n$ points, can determine $R(x)$ via Lagrange’s Interpolation.
+
+The Verifier also computes the polynomials $P(x)$ and $R(x)$, alongside their commitments $C_P = P(a) \cdot g$ and $C_R = R(a) \cdot g$. They proceed to verify the Batch Evaluation by ensuring that $f(b_i) = R(b_i)$ for all $b_i$ in $B$ and that the equality $f(x) = P(x)Q(x) + R(x)$ holds.
+
+The Verifier needs to evaluate the above constraint to verify the proof. However, since the secret opening at $x = a$ is unknown, hence she or he cannot evaluate it directly. But like before, the Verifier can use pairings to solve this.
+
+To verify, the Verifier checks:
+- $f(b_i) = R(b_i)$ for each $b_i$ in $B$, comparing the Prover's provided $D$ values with their computation of $R(x)$ at each $b_i$.
+
+- The equality $f(x) \cdot g - R(x) \cdot g = P(x)Q(x) \cdot g$ when evaluated at $x = a$, simplifying to $C_f - C_R = P(a) \cdot C_Q$ using known commitments and the secret $a$.
+
+Despite not knowing $a$, the Verifier utilizes pairings to assess the proof:
+- Since both $C_f$ and $C_R$ belong to $\mathbb G$, their difference does too.
+- Given $C_Q$'s membership in $\mathbb G$ and $P(a)$ as a scalar, $P(a) \cdot C_Q$ remains within $\mathbb G$.
+
+Applying the pairing function yields:
+
+$e(C_f − C_R, g) = e(P(a) \cdot C_Q, g)$
+
+Applying the bilinearity property, we get 
+
+$e(C_f - C_R, g) = e(C_Q, C_P)$
+
+where $C_P = P(a) \cdot g$. Given this, the Verifier can confirm the truth of the equality, thereby verifying the proof.
 
 
 ## [References](#references)
