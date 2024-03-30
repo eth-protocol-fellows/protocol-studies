@@ -525,11 +525,11 @@ The KZG Polynomial Commitment Scheme ensures that both commitments and evaluatio
 
 One key benefit of the KZG Polynomial Commitment Scheme is its efficient use of space. No matter the length or complexity of the polynomial we're working with, the commitment to that polynomial—essentially its cryptographic "footprint"—is always a single, fixed-size element within a mathematical group, $\mathbb G$. This means that as the polynomial grows in degree, the size of the commitment does not increase. The same principle applies to the evaluation proof, which is the evidence we provide to show that our commitment is accurate. Whether we're verifying just one value or many at once (in batch mode), the proof will always be of a consistent size. This consistency in size translates to predictable and efficient storage requirements, an important feature for practical applications in cryptography.
 
-## [KZG Batch Mode]
+## KZG Batch Mode
 
 KZG commitments can also be opened and verified at multiple points or using multiple polynmials or any combination of them. This is called batch mode in practice.
 
-### [Batch Mode Single Polynomial, Multiple Points]
+### Batch Mode Single Polynomial, Multiple Points
 
 In batch mode, the Verifier requests the Prover to validate a set of points $B =$ { $b_1, b_2, b_3, \ldots, b_n$ } with $n < t$, where $t$ is the degree of the polynomial $f(x)$. For these points, the Prover computes the values $f(b_1) = d_1, f(b_2) = d_2, \ldots, f(b_n) = d_n$ and forms the set $D =$ { $d_1, d_2, d_3, \ldots, d_n$ }.
 
