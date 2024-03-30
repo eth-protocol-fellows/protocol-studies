@@ -44,7 +44,6 @@ In practice what we exactly do is that we prove that we know a specific evaluati
 We write this, $f(a)$, for some $x=a$. 
 
 ## [Prerequisite Knowledge](#prerequisite-knowledge)
-
 There are some important concepts we need to know before we can move further to understand KZG scheme. Fortunately, we can get an Engineering level understanding of the KZG scheme from just enough high school mathematics. We will try to gain some intuition on advanced concepts and their important properties without knowing them intimately. This can help us see the KZG protocol flow without bogged down by the advanced mathematics.
 
 We need to know:
@@ -54,7 +53,6 @@ An analog clock illustrates modular arithmetic as hours cycle back after reachin
 
 
 ### [Finite Field of order prime p](#finite-field-of-order-prime)
-
 A finite field of order prime $p$, we denote it by $\mathbb F_p$, is a special set of numbers, { $\{1, 2, 3, \ldots, p-1\}$ },  where you can do all the usual math operations (addition, subtraction, multiplication, and division, except by zero) and still follow the rules of arithmetic. 
 
 The "order" of this set is the number of elements it contains, and for a finite field of order prime $p$, this number is a prime number. The most common way to create a $\mathbb F_p$ is by taking the set of all integers greater than or equal to $0$ and dividing them by $p$, keeping only the remainders. This gives us a set of numbers from $0$ to $p-1$ that can be used for arithmetic operations. For example, if $p = 5$, the set would be {0, 1, 2, 3, 4}, and you can add, subtract, multiply, and divide these numbers in a way that follows the rules of arithmetic. This set is a finite field of order 5, we denote this by $\mathbb F_5$, because it has exactly 5 elements, and it's a prime number.
@@ -133,7 +131,6 @@ Let's verify that each element is indeed a generator by multiplying it repeatedl
 You can verify that $5$ is also a generator for our multiplicative group ($\mathbb G^*_7, .)$ modulo $7$. 
 
 ### [Why Primes for Modulo Operations in Fields](#why-primes-for-modulo-operations-in-fields)
-
 Choosing a prime number as the modulus for operations in a finite field offers several benefits and simplifies various aspects of field arithmetic:
 
 1. **Well-defined Division:** In a finite field, every non-zero element must have a multiplicative inverse. If the modulus is prime, every number in the set  { ${1, 2, 3, \ldots, p-1}$ } has a multiplicative inverse modulo $p$. This property allows for well-defined division operations within the field, which wouldn't be possible if the modulus wasn't prime (except in special cases like Galois fields of order $p^n$, where $p$ is prime).
@@ -153,7 +150,6 @@ Using a prime number as the modulus for finite fields simplifies the field arith
 
 
 ### [Cryptographic Assumptions](#cryptographic-assumptions)
-
 In order to work with KZG commitment scheme, we need two additional assumptions. We won't go deep into why these assumptions are needed but we will give an intuition to why these cryptographic assumptions are needed to make KZG more secure.
 
 **Discrete Logarithm**
@@ -221,7 +217,6 @@ Here's how to think about this pairing function without getting bogged down by t
 Pairing functions enable advanced cryptographic techniques, such as those used in certain types of digital signatures and encryption, by allowing this kind of "cross-group" interaction to occur securely and predictably.
 
 ## [Properties of Commitments](#properties-of-commitments)
-
 Commitment schemes are like the secret-keeping wizards of the digital world. They let someone make a promise about a piece of information (we'll call this the secret message) in a way that ties them to their promise without letting anyone else know what the secret is. Here's how it works:
 
 - **Making the Promise (Commitment):** You decide on a secret message and use a special spell (the commitment scheme) to create a magic seal (the commitment). This seal proves you have a secret, but it keeps the secret hidden.
@@ -238,7 +233,6 @@ With this background, we are ready to explain KZG protocol flow and understand i
 
 
 ## [KZG Protocol Flow](#kzg-protocol-flow)
-
 Let us reiterate on what is the problem we are solving with KZG protocol.
 
 We want prove that we know a specific evaluation of a function or polynomial at a point $x=a$ without revealing it.
@@ -293,7 +287,6 @@ Modern protocols often use a powers-of-tau setup, which involves even thousands 
 Ethereum has a very detailed documentation of the Trusted Setup ceremony for more detail[^2].
 
 ### [Initial Configuration](#initial-configuration)
-
 Say the Prover has a function or polynomial $f(x)$ defined as $f(x) = f_0 + f_1x + f_2x^2 + \ldots + f_dx^t$ in a finite field $\mathbb F_p$. The degree of $f(x)$ is $t$ which is less than $p$, the order of the finite field $\mathbb F_p$.
 
 We often denote this as $f(x) \in \mathbb{F}_p[x]$.
@@ -310,7 +303,6 @@ To simplify this step, Prover picks a polynomial $f(x) \in \mathbb{F}_p[x]$, the
 
 
 ### [Commitment of the Polynomial](#commitment-of-the-polynomial)
-
 Say, the commitment of the polynomial $f(x)$ is denoted as $C_f$. The commitment is like hash function. 
 
 So $C_f = {f(a)} \cdot g  = {(f_0 + f_1a + f_2a^2 + \ldots + f_ta^t)} \cdot g$. Here $f(a)$ is the polynomial evaluted at $x=a$.
@@ -326,7 +318,6 @@ $C_f =  {f_0} \cdot g +  {f_1} \cdot (ag) + {f_2} \cdot ({a^2}g) + \ldots  + {f_
 From the CRS, the Prover knows these values < $g, {a^1}.g, {a^2}.g, \ldots, {a^t}.g$ >, he or she can compute this value as commitment of the polynomial, $C_f$ and sends to the Verifier.
 
 ### [Opening of the Polynomial](#opening-of-the-polynomial)
-
 Upon receiving a commitment to a polynomial, denoted by $C_f$, from the Prover, the Verifier takes the next step in the protocol by selecting a random point, which we'll call $b$, from the field $\mathbb F_p$. The Verifier then requests the Prover to open or reveal the value of the polynomial at this specific point.
 
 **What does 'opening the polynomial' mean?**
@@ -520,17 +511,14 @@ $e(C_Q, a \cdot g_2 − b \cdot g_2 ) = e(C_f − d \cdot g_1, g_2)$
 Here $a \cdot g_2$ will be the part of CRS of $\mathbb G_2$ and everything else can be either computed or part of CRS of $\mathbb G_1$.
 
 ## [Unwavering Compactness](#unwavering-compactness)
-
 The KZG Polynomial Commitment Scheme ensures that both commitments and evaluation proofs are of a fixed size, regardless of the polynomial's length, offering consistent and space-efficient cryptographic operations[^5][^6][^7].
 
 One key benefit of the KZG Polynomial Commitment Scheme is its efficient use of space. No matter the length or complexity of the polynomial we're working with, the commitment to that polynomial—essentially its cryptographic "footprint"—is always a single, fixed-size element within a mathematical group, $\mathbb G$. This means that as the polynomial grows in degree, the size of the commitment does not increase. The same principle applies to the evaluation proof, which is the evidence we provide to show that our commitment is accurate. Whether we're verifying just one value or many at once (in batch mode), the proof will always be of a consistent size. This consistency in size translates to predictable and efficient storage requirements, an important feature for practical applications in cryptography.
 
 ## [KZG Batch Mode](#kzg-batch-mode)
-
 KZG commitments can also be opened and verified at multiple points or using multiple polynmials or any combination of them. This is called batch mode in practice.
 
 ### [Single Polynomial, Multiple Points](#single-polynomial-multiple-points)
-
 In batch mode, the Verifier requests the Prover to validate a set of points $B =$ { $b_1, b_2, b_3, \ldots, b_n$ } with $n < t$, where $t$ is the degree of the polynomial $f(x)$. For these points, the Prover computes the values $f(b_1) = d_1, f(b_2) = d_2, \ldots, f(b_n) = d_n$ and forms the set $D =$ { $d_1, d_2, d_3, \ldots, d_n$ }.
 
 The Prover then creates a Polynomial $P(x) = (x - b_1)(x - b_2)\ldots(x - b_n)$. Given that $n < t$, it's possible to divide $f(x)$ by $P(x)$, resulting in $f(x) = P(x)Q(x) + R(x)$, where $Q(x)$ is the quotient polynomial and $R(x)$ is the remainder. This division suggests that $f(x)$ can be represented as such, not implying direct divisibility by $Q(x)$.
