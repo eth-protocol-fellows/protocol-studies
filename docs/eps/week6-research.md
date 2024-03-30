@@ -2,7 +2,7 @@
 
 Week 6 research track is going to be a dive into data availability sampling and danksharding. 
 
-Watch the presentations by [Dakrad](https://twitter.com/dankrad) on StreamEth or Youtube. Slides are [available here](https://github.com/eth-protocol-fellows/protocol-studies/blob/main/docs/eps/presentations/week6_research.pdf). 
+Watch the presentations by [Dankrad](https://twitter.com/dankrad) on StreamEth or Youtube. Slides are [available here](https://github.com/eth-protocol-fellows/protocol-studies/blob/main/docs/eps/presentations/week6_research.pdf). 
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/ro2AGRkLC2s?si=IaNwL7OXl5tQvqOM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
