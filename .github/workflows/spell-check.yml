@@ -1,0 +1,75 @@
+name: 🥢 Spell check 
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  typo_check:
+    name: 🥢 Spell check
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+    env: 
+      TYPOS: ""
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          fetch-depth: 2
+
+      - name: Install aspell
+        run: sudo apt-get update && sudo apt-get install -y aspell
+
+      - name: Find and check typos in Markdown files
+        id: find_typos
+        run: |
+          echo "Checking for typos..."
+          for file in $(find . -name "*.md" ); do
+            output="$(aspell --lang=en_US --mode=markdown --home-dir=. --personal=wordlist.txt --ignore-case=true list <$file | sed 's/^/    1. /')"
+            if [[ -n "$output" ]]; then
+              TYPOS+="- 📄 $file:"
+              TYPOS+=$'\n'
+              TYPOS+="$output"
+              TYPOS+=$'\n'
+            fi
+          done
+          {
+            echo 'TYPOS<<EOF'
+            echo "$TYPOS"
+            echo EOF
+          } >> "$GITHUB_ENV"
+
+      - name: Comment on pull request
+        if: env.TYPOS != ''
+        uses: actions/github-script@v4
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const author = '${{github.event.pull_request.user.login}}';
+            const typos = `${{ env.TYPOS }}`;
+            const body = `
+            Hi @${author},
+
+            Following typos were found in the pull request:
+            
+            ${typos}
+
+            ## ℹ️ Here's how to fix them:
+            - **Fix typos:** Open the relevant files and fix any identified typos.
+            - **Update wordlist:** If a flagged word is actually a project-specific term add it to \`wordlist.txt\` in the project root.
+                Each word should be listed on a separate line and must not have any spaces before or after it.
+            `;
+
+            github.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: body
+            });
+
+            core.setFailed('🥢 Spell check: Typos found in docs. Please fix them.');
