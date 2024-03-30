@@ -57,14 +57,18 @@ An analog clock illustrates modular arithmetic as hours cycle back after reachin
 
 A finite field of order prime $p$, we denote it by $\mathbb F_p$, is a special set of numbers, { $\{1, 2, 3, \ldots, p-1\}$ },  where you can do all the usual math operations (addition, subtraction, multiplication, and division, except by zero) and still follow the rules of arithmetic. 
 
-The "order" of this set is the number of elements it contains, and for a finite field of order prime $p$, this number is a prime number. The most common way to create a $\mathbb F_p$ is by taking the set of all integers greathan or equal to $0$ and dividing them by $p$, keeping only the remainders. This gives us a set of numbers from $0$ to $p-1$ that can be used for arithmetic operations. For example, if $p = 5$, the set would be {0, 1, 2, 3, 4}, and you can add, subtract, multiply, and divide these numbers in a way that follows the rules of arithmetic. This set is a finite field of order 5, we denote this by $\mathbb F_5$, because it has exactly 5 elements, and it's a prime number.
+The "order" of this set is the number of elements it contains, and for a finite field of order prime $p$, this number is a prime number. The most common way to create a $\mathbb F_p$ is by taking the set of all integers greater than or equal to $0$ and dividing them by $p$, keeping only the remainders. This gives us a set of numbers from $0$ to $p-1$ that can be used for arithmetic operations. For example, if $p = 5$, the set would be {0, 1, 2, 3, 4}, and you can add, subtract, multiply, and divide these numbers in a way that follows the rules of arithmetic. This set is a finite field of order 5, we denote this by $\mathbb F_5$, because it has exactly 5 elements, and it's a prime number.
 
 When we do modular arithmetic operations in the finite field $\mathbb F_p$, we have a nice "wrap around" property i.e. the field behaves as if it "wraps around" after reaching $(p - 1)$. 
 
 In genral, when we define a finite field, we define, the order $p$ of the field and an arithemetic operation like addition or multiplication. If it is addition, we denote the field by $(\mathbb F_p, +)$. If it is multiplication, we denote it by $(\mathbb F^*_p, +)$. The `*` is telling us to exclude the zero element from our field so that we can satisfy all the required properties of the finite field i.e. mainly we can divide the numbers and find inverse of all elements. If we include the zero element, we can't find the inverse of zero element.
 
+In the next section, we will learn how generators of a Group enable the KZG commitment scheme to function as an efficient, secure, and verifiable method of committing to polynomials, making it a powerful tool for cryptographic protocols, particularly in blockchain technologies where these properties are very important.
+
 ### [Group](#group)
-A Group is a similar concept as finite field with some small changes. In a Group, we only have one arithmetic operation on the set, usually addition or multiplication as opposed to in a finite field we have addition and multiplication both and this group must satisfy few properties which we will discuss below with an example. We denote a Group by ($\mathbb G, +)$ for a Group with addition as the group operation, ($\mathbb G^*, .)$ for Group with multiplication operation; the `*` is telling to exclude zero element to avoid division by zero.
+A Group is conceptually similar to a finite field, although with a few minor variations.  An important difference is that in a group, we only have one arithmetic operation on the set, typically addition or multiplication as opposed to finite field with both addition and multiplication. Similarly to finite field, group elements must have an inverse and meet all its requirements, explained in the example below.
+
+The notation is ($\mathbb G, +)$ for a Group with addition as the group operation, ($\mathbb G^*, .)$ for Group with multiplication operation; the `*` is telling to exclude zero element to avoid division by zero.
 
 In the next section we use an example to define a Group. This will help develop an intuition on when we call a set of numbers a Group.
 
@@ -128,9 +132,6 @@ Let's verify that each element is indeed a generator by multiplying it repeatedl
 
 You can verify that $5$ is also a generator for our multiplicative group ($\mathbb G^*_7, .)$ modulo $7$. 
 
-In the next section, we will learn how generators enable the KZG commitment scheme to function as an efficient, secure, and verifiable method of committing to polynomials, making it a powerful tool for cryptographic protocols, particularly in blockchain technologies where these qualities are very important.
-
-
 ### [Why Primes for Modulo Operations in Fields](#why-primes-for-modulo-operations-in-fields)
 
 Choosing a prime number as the modulus for operations in a finite field offers several benefits and simplifies various aspects of field arithmetic:
@@ -139,7 +140,7 @@ Choosing a prime number as the modulus for operations in a finite field offers s
 
 2. **Simplicity of Construction:** When the modulus is a prime number, the field's construction is straightforward. The elements of the field are simply the set of integers  { ${1, 2, 3, \ldots, p-1}$ }, and the field operations (addition, subtraction, multiplication, and division) are performed modulo $p$. For non-prime moduli, constructing a field requires more complex structures, such as polynomial rings.
 
-3. **Guaranteed Field Properties:** The use of a prime modulus guarantees the satisfaction of field properties. A finite field (also known as a Galois field) is a field that contains a finite number of elements. For a set to be a field, it must satisfy several properties, including the existence of additive and multiplicative identities, the existence of additive and multiplicative inverses for every element, and the commutative, associative, and distributive laws for addition and multiplication. A prime modulus ensures all these properties are met.
+3. **Guaranteed Field Properties:** The use of a prime modulus guarantees the satisfaction of required field properties. These include - the existence of additive and multiplicative identities, the existence of additive and multiplicative inverses for every element, and the commutative, associative, and distributive laws for addition and multiplication. A prime modulus ensures all these properties are met.
 
 4. **Uniform Distribution of Non-zero Elements:** In a finite field with a prime modulus, the non-zero elements have a uniform distribution with respect to multiplication. This means that the multiplication table of the field does not have any 'gaps' and every element appears exactly once in each row and column of the multiplication table (except the row and column for the zero element).
 
@@ -186,10 +187,10 @@ So, in essence, the Strong Diffie-Hellman assumption tells us that just knowing 
 ### [Pairing Function](#pairing-function)
 Say we have a generator $g$ in the group $\mathbb G^\*_p$ and $a, b$ are any elements in the finite field $\mathbb F^*_p$ and $g^a$, $g^b$ are some elements in the group $\mathbb G^\*_p$. 
 
-A pairing function is a special kind of function that takes two inputs and produces a single output with two important properties, biliner and non-degenrate.
+A pairing function is a mathematical function that takes two inputs and produces a single output by mapping distinct pairs of inputs to a distinct value. It has two important properties, bilinearity and non-degeneracy. 
 
-Bilinear means, we can move around in a reversible way. 
-Non-degenerate means, if we apply pairing function to the same element, it doesn't result in the identity element of the Group.
+- Bilinearity means, we can move around in a reversible way. 
+- Non-degeneracy means, if we apply pairing function to the same element, it doesn't result in the identity element of the Group.
 
 Let's define these properties a bit more rigorously.
 
@@ -244,7 +245,7 @@ We want prove that we know a specific evaluation of a function or polynomial at 
 
 In the KZG commitment scheme, the roles of the Trusted Third Party, Prover, and Verifier are critical to its function and security. Here's how each contributes to the process:
 
-1. **Trusted Third Party (Setup Authority):** This entity is responsible for the initial setup phase of the KZG scheme. They generate the public parameters (PP) or Common Reference String (CRS) that will be used in the commitments and proofs, based on a secret that only they know. This secret is crucial for the construction of commitments but must be discarded (or kept extremely secure) after the setup to ensure the system's integrity. The trust in this party is fundamental because if the secret is mishandled or leaked, it could compromise the entire system.
+1. **Trusted Third Party (Setup Authority):** This entity is responsible for the initial setup phase of the KZG scheme. They generate the public parameters (PP) or Common Reference String (CRS) that will be used in the commitments and proofs, based on a secret that only they know. This secret is crucial for the construction of commitments but must be discarded (or kept extremely secure) after the setup to ensure the system's integrity. The trust in this party is fundamental because if the secret is mishandled or leaked, it could compromise the entire system. This party's role ends after generating CRS and sharing it with the Prover and Verifier i.e. they no longer involved in either proving or verifying steps of the protocol flow.
 
 2. **Prover:** The Prover is the one who wants to commit to a certain piece of data (like a polynomial) without revealing it. Using the CRS provided by the Trusted Third Party, the Prover computes a commitment to their data. When it's time to prove certain properties of their data (like a polynomial evaluation at a specific point), the Prover can generate a proof based on their commitment. This proof shows that their data has certain properties without revealing the data itself.
 
@@ -287,7 +288,7 @@ In practice, this process is wrapped around a multi-party computation (MPC) wher
 
 The trusted setup is a one-time procedure that generates a piece of data necessary for the cryptographic protocol to function. This data must be used every time the protocol is run, but once generated and the secrets are forgotten, no further participation from the creators of the ceremony is required. The trust in the setup comes from the fact that the secrets used to generate the data are securely discarded after the setup, ensuring that the data remains secure for future use
 
-Modern protocols often use a powers-of-tau setup, which involves hundreds of participants. The security of the final output depends on the honesty of at least one participant who does not publish their secret. This approach is considered "close enough to trustless" in practice, making it a practical solution for cryptographic protocols that require a trusted setup. 
+Modern protocols often use a powers-of-tau setup, which involves even thousands of participants. The security of the final output depends on the honesty of at least one participant who does not publish their secret. This approach is considered "close enough to trustless" in practice, making it a practical solution for cryptographic protocols that require a trusted setup. 
 
 Ethereum has a very detailed documentation of the Trusted Setup ceremony for more detail[^2].
 
@@ -465,19 +466,19 @@ Now, let us practically dervie the steps in KZG protocol using a small finite fi
 - The Prover computes the Quotient polynomial $Q(x) = \frac{f(x) - f(1)}{x - 1} = \frac{f(x) - d}{x - b}$.
 - Compute $f(1) = d = 3.1^2 + 5.1 + 7 = 4$ (mod $11$).
 - $Q(x) = \frac{3x^2 + 5x + 7 - 4}{x - 1} = \frac{3x^2 + 5x + 3}{x - 1}$.
-- **Divide the Leading Term:** $3x^2$ divided by $x$ gives us $3x$. We write $3x$ above the division bar.
-- **Multiply the Divisor by the Quotient's Leading Term:** Multiply $x - 1$ by $3x$ to get $3x^2 - 3x$.
-- **Subtract from the Polynomial:** Subtract $3x^2 - 3x$ from $3x^2 + 5x$ to get $8x$.
-- **Bring Down the Next Term:** Bring down the $+3$ to get $8x + 3$.
-- **Divide the Next Term:**  $8x$ divided by $x$ is $8$. Write $+8$ above the division bar next to $3x$.
-- **Multiply Again:** Multiply $x - 1$ by $8$ to get $8x - 8$.
-- **Subtract Subtract:** $8x - 8$ from $8x + 3$ to get $11$.
-- **Apply Modulo 11:** We reduce each term modulo $11$. Since $11$ is $0$ modulo $11$, the remainder is $0$.
+- Divide the Leading Term: $3x^2$ divided by $x$ gives us $3x$. We write $3x$ above the division bar.
+- Multiply the Divisor by the Quotient's Leading Term: Multiply $x - 1$ by $3x$ to get $3x^2 - 3x$.
+- Subtract from the Polynomial: Subtract $3x^2 - 3x$ from $3x^2 + 5x$ to get $8x$.
+- Bring Down the Next Term: Bring down the $+3$ to get $8x + 3$.
+- Divide the Next Term:  $8x$ divided by $x$ is $8$. Write $+8$ above the division bar next to $3x$.
+- Multiply Again: Multiply $x - 1$ by $8$ to get $8x - 8$.
+- Subtract Subtract: $8x - 8$ from $8x + 3$ to get $11$.
+- Apply Modulo $11$: We reduce each term modulo $11$. Since $11$ is $0$ modulo $11$, the remainder is $0$.
 - The Prover computes the commitment of $C_Q = Q(a) \cdot g = 3 \cdot ag + 8 \cdot g = 3.6 + 8.2 = 34 = 1$ (mod 11).
 - The Prover sends to the Verifier < $1, f(1), C_Q$ > = < $1, 4, 1$ >.
 
 ### [KZG by Hands - Verification](#kzg-by-hands---verification)
-- The Verified must check the pairing constraint $e(C_Q, a \cdot g − b \cdot g) = e(C_f − d \cdot g, g)$
+- The Verifier must check the pairing constraint $e(C_Q, a \cdot g − b \cdot g) = e(C_f − d \cdot g, g)$
 - L.H.S (left hand side): $e(1, 6 - 1.2) = e(1, 4) = 1.4 = 4 (mod 11)$
 - R.H.S (right hand side): $e(10 - 4.2, 2) = e(2, 2) = 2.2 = 4 (mod 11)$.
 - This proves the equality constraint is true, hence the Evaluation Proof is verified.
