@@ -286,7 +286,7 @@ Then, the trusted party sends the CRS to the Prover and the Verifier.
 
 In practice, this process is wrapped around a multi-party computation (MPC) where a secret is generated in such a way that, as long as at least one participant remains honest, the randomness of the secret can be guaranteed. 
 
-The trusted setup is a one-time procedure that generates a piece of data necessary for the cryptographic protocol to function. This data must be used every time the protocol is run, but once generated and the secrets are forgotten, no further participation from the creators of the ceremony is required. The trust in the setup comes from the fact that the secrets used to generate the data are securely discarded after the setup, ensuring that the data remains secure for future use
+The trusted setup is a one-time procedure that generates a piece of data necessary for the cryptographic protocol to function. This data must be used every time the protocol is run, but once generated and the secrets are forgotten, no further participation from the creators of the ceremony is required. The trust in the setup comes from the fact that the secrets used to generate the data are securely discarded after the setup, ensuring that the data remains secure for future use.
 
 Modern protocols often use a powers-of-tau setup, which involves even thousands of participants. The security of the final output depends on the honesty of at least one participant who does not publish their secret. This approach is considered "close enough to trustless" in practice, making it a practical solution for cryptographic protocols that require a trusted setup. 
 
