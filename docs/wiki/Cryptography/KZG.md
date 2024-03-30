@@ -537,7 +537,7 @@ The Prover then creates a Polynomial $P(x) = (x - b_1)(x - b_2)\ldots(x - b_n)$.
 
 The commitment for $Q(x)$, denoted as $C_Q$, alongside the set $B$, is sent to the Verifier by the Prover. Optionally, the Prover may also send the remainder polynomial $R(x)$ to the Verifier. However, the Verifier has the capability to independently compute $R(x)$, considering that for any $b_i$ in $B$, $P(x)$ evaluates to zero, leading to $f(x) = R(x)$ for all $b_i$ in $B$.
 
-As the degree of $Q(x)$ is $n$ and $R(x)$'s degree is less than $n$, the Verifier, knowing $R(x)$'s evaluation at $n$ points, can determine $R(x)$ via Lagrange’s Interpolation.
+As the degree of $Q(x)$ is $n$ and $R(x)$'s degree is less than $n$, the Verifier, knowing $R(x)$'s evaluation at $n$ points, can determine $R(x)$ via Lagrange’s Interpolation[^10].
 
 The Verifier also computes the polynomials $P(x)$ and $R(x)$, alongside their commitments $C_P = P(a) \cdot g$ and $C_R = R(a) \cdot g$. They proceed to verify the Batch Evaluation by ensuring that $f(b_i) = R(b_i)$ for all $b_i$ in $B$ and that the equality $f(x) = P(x)Q(x) + R(x)$ holds.
 
@@ -573,3 +573,4 @@ where $C_P = P(a) \cdot g$. Given this, the Verifier can confirm the truth of th
 [^7]: https://www.youtube.com/watch?v=uGeIDNEwHjs&t=520s
 [^8]: https://www.youtube.com/watch?v=8WDOpzxpnTE 
 [^9]: https://vitalik.eth.limo/general/2017/01/14/exploring_ecp.html
+[^10]: https://en.wikipedia.org/wiki/Lagrange_polynomial 
