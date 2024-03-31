@@ -2,7 +2,8 @@
 
 # Research and Proposed Solutions
 
-PBS is one of the active research areas in the Ethereum ecosystem. There are several proposed theories and implementation that are being worked upon currently. For a more detailed explanation on the research and ePBS check out this [EPF wiki entry](/wiki/research/PBS/ePBS.md) on the topic.
+PBS is one of the active research areas in the Ethereum ecosystem. It presents several challenges, including potential security vulnerabilities and the risk of centralization. Ongoing research focuses on addressing these concerns through innovations such as enhanced PBS (ePBS), inclusion lists, the Protocol-Enforced proposer commitments (PEPC), forward inclusion lists.
+For a more detailed explanation on the research and ePBS check out this [EPF wiki entry](/wiki/research/PBS/ePBS.md) on the topic.
 
 As explained in this very insightful [ethresear.ch post](https://ethresear.ch/t/why-enshrine-proposer-builder-separation-a-viable-path-to-epbs/15710), Enshrined Proposer-Builder Separation addresses some of the limitations and centralization concerns associated with MEV-Boost, which currently facilitates PBS for about 90% of Ethereum blocks.
 

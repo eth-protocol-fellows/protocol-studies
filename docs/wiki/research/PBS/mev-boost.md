@@ -54,7 +54,3 @@ Ongoing research and development are focused on addressing these challenges and 
 
 It's important to note that mev-boost is just one implementation of PBS. Other implementations with different designs and features are also being developed and explored.
 Overall, mev-boost represents a significant step towards realizing the potential benefits of PBS in Ethereum. However, continuous research and development are crucial to address the challenges and ensure a secure, decentralized, and efficient implementation.
-
-### Challenges and Solutions
-
-PBS presents several challenges, including potential security vulnerabilities and the risk of centralization. Ongoing research focuses on addressing these concerns through innovations such as enhanced PBS (ePBS), inclusion lists, and the Proposal Eligibility Proposals Committee (PEPC).
