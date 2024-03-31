@@ -1,7 +1,7 @@
 ## BEACON CHAIN UPGRADES
 
 ### Inclusion Lists
-### Preconfirmations
+### Pre confirmations
 ### Raise MAX_EFFECTIVE_BALANCE
 ### Staking pools solutions
 

@@ -7,7 +7,7 @@ Watch the recording of the workshop by [Mario](https://twitter.com/TMIYChao) on 
 
 [recording](https://www.youtube.com/embed/KxXowOZ2DLs?si=yLpNoczrUmxj4kE4 ':include :type=iframe width=100% height=560 frameborder="0" allow="fullscreen" allowfullscreen encrypted-media gyroscope picture-in-picture web-share')
 
-Make sure to prepare your enviroment and learn basics necessary to understand the process: 
+Make sure to prepare your environment and learn basics necessary to understand the process: 
 
 ## Prerequisites
 

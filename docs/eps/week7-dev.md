@@ -2,7 +2,7 @@
 
 Week 7 development track is an insight into Ethereum execution layer client codebase, explaining its architecture and highlighting novel approaches. 
 
-The presentation will be given by [Dragan](https://twitter.com/rakitadragan) who will dive into reth client codebase. Join the talk on [Monday, Aprol 1, 4PM UTC](https://savvytime.com/converter/utc-to-germany-berlin-united-kingdom-london-ny-new-york-city-ca-san-francisco-china-shanghai-japan-tokyo-australia-sydney/april-01-2024/4pm).
+The presentation will be given by [Dragan](https://twitter.com/rakitadragan) who will dive into reth client codebase. Join the talk on [Monday, April 1, 4PM UTC](https://savvytime.com/converter/utc-to-germany-berlin-united-kingdom-london-ny-new-york-city-ca-san-francisco-china-shanghai-japan-tokyo-australia-sydney/april-01-2024/4pm).
 
 The talk will be streamed live on [StreamEth](https://streameth.org/65cf97e702e803dbd57d823f/epf_study_group) and [Youtube](https://www.youtube.com/@ethprotocolfellows/streams), links will be provided before the call in the [Discord server](https://discord.gg/addwpQbhpq). Discord also serves for the discussion and questions during the stream. 
 
@@ -25,5 +25,5 @@ Additionally, you can read and get ready by studying the following resources:
 
 ## Additional reading and exercises 
 
-- Erigon is a fork of geth which pioneered the design approached implemented by reth. Kind of a middle ground between geth and reth, tt's a great source of resources about novel execution client designs
-- As an excercise, run reth and set different `DEBUG` options to explore how various client componantes operate on lower level
+- Erigon is a fork of geth which pioneered the design approached implemented by reth. Kind of a middle ground between geth and reth, it's a great source of resources about novel execution client designs
+- As an exercise, run reth and set different `DEBUG` options to explore how various client components operate on lower level
