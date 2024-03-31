@@ -198,7 +198,7 @@ The debate on the optimal ePBS mechanism and the concept of a minimum viable ePB
 
 **Debating the Optimal Mechanism**
 
-The debate on the optimal ePBS mechanism involves weighing various design choices against these core properties, often requiring trade-offs[^9][^3]:
+The debate on the optimal ePBS mechanism involves weighing various design choices against these core properties, often requiring trade-offs[^9][^3].
 
 - **Auction Mechanisms:** There's significant discussion around the best way to conduct auctions for block space and MEV opportunities—whether through second-price auctions, or more complex mechanisms like frequent batch auctions. Each has implications for fairness, efficiency, and vulnerability to manipulation.
 
