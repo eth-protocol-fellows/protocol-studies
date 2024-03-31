@@ -35,3 +35,15 @@ As explained in this [ethereum-magicians.org post](https://ethereum-magicians.or
 This way proposers retain some authority over block building without sacrificing MEV rewards, through a mechanism by which transactions can be forcibly included. The simplest approach would be for the proposer to specify a list of transactions they found themselves in the mempool that must be included by the block builder if they want their block to be proposed for the next slot. Although some issues stem from this, such as incentive incompatibilities and exposure of free-data availability, solutions like forward and multiple inclusion lists have been proposed and are being developed to address these challenges, demonstrating the Ethereum community's commitment to refining and advancing the protocol to uphold its core values of decentralization, fairness, and censorship resistance.
 
 ## Optimistic Relay (oop)
+
+## Further Reading and Resources
+
+Below are some further readings regarding PBS and related topics:
+
+- [Notes on Proposer-Builder Separation (PBS)](https://barnabe.substack.com/p/pbs)
+- [Timing Games and Implications on MEV extraction](https://chorus.one/articles/timing-games-and-implications-on-mev-extraction)
+- [Why ePBS](https://ethresear.ch/t/why-enshrine-proposer-builder-separation-a-viable-path-to-epbs/15710)
+- [Vitalik on pbs censorship](https://notes.ethereum.org/@vbuterin/pbs_censorship_resistance)
+- [Payload timliness committee design for ePBS](https://ethresear.ch/t/payload-timeliness-committee-ptc-an-epbs-design/16054)
+- [2-slot PBS](https://ethresear.ch/t/two-slot-proposer-builder-separation/10980)
+- [Foward Inclusion Lists](https://notes.ethereum.org/@fradamt/forward-inclusion-lists)

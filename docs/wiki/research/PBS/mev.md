@@ -14,4 +14,6 @@ Maximal Extractable Value (MEV) originated during the proof-of-work Era, where i
 
 Although MEV has been around since the inception of Ethereum, it gained significant attention with the Rise of DeFi and Introduction of Flashloans. In the early days, MEV opportunities were primarily seized by outbidding rivals in the public mempool, marking the era known as Priority Gas Auction or PGA. Details about this chaotic era is captured in [Flashboys 2.0](https://arxiv.org/abs/1904.05234).
 
-In the Post-Merge world, the concept of Miners ceased to exist. Validators were now the entities responsible to add blocks to the chain. Anticipating the changes after The Merge, Flashbots, alongwith the client teams and the Ethereum Foundation commenced the development of [mev-boost](/wiki/research/PBS/mev-boost.md). mev-boost is an out-of-protocol implementation of Proposer-builder Sepration.
+In the Post-Merge world, the concept of Miners ceased to exist. Validators were now the entities responsible to add blocks to the chain. Anticipating the changes after The Merge, Flashbots, alongwith the client teams and the Ethereum Foundation commenced the development of [mev-boost](/wiki/research/PBS/mev-boost.md). mev-boost is an out-of-protocol implementation of Proposer-builder Seperation.
+
+See the [Next Section](/wiki/research/PBS/pbs.md).

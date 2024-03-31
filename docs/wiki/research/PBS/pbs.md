@@ -23,15 +23,3 @@ As explained in this [article](https://ethos.dev/beacon-chain), slots are the ti
 ### The Role of the proposer
 
 **Block proposers** take the block bodies provided by the block builders and create a complete block by adding necessary metadata, such as the block header. The header includes details such as the parent block's hash, timestamp, and other data. They also ensure the validity of the blocks by checking the correctness of the block body provided by the builders.
-
-### Further Reading and Resources
-
-Below are some further readings regarding PBS and related topics:
-
-- [Notes on Proposer-Builder Separation (PBS)](https://barnabe.substack.com/p/pbs)
-- [Timing Games and Implications on MEV extraction](https://chorus.one/articles/timing-games-and-implications-on-mev-extraction)
-- [Why ePBS](https://ethresear.ch/t/why-enshrine-proposer-builder-separation-a-viable-path-to-epbs/15710)
-- [Vitalik on pbs censorship](https://notes.ethereum.org/@vbuterin/pbs_censorship_resistance)
-- [Payload timliness committee design for ePBS](https://ethresear.ch/t/payload-timeliness-committee-ptc-an-epbs-design/16054)
-- [2-slot PBS](https://ethresear.ch/t/two-slot-proposer-builder-separation/10980)
-- [Foward Inclusion Lists](https://notes.ethereum.org/@fradamt/forward-inclusion-lists)
