@@ -1,9 +1,5 @@
 <!-- @format -->
 
-<<<<<<< HEAD
-
-<!-- @format -->
-
 # Proposer Builder Separation (PBS) in Ethereum
 
 [comment]: <> (Feel Free to propose changes)
