@@ -42,10 +42,26 @@ This whole process is illustrated in the figure below. See [Flashbots' docs](htt
 
 This separation of roles creates a more dynamic and specialized block-building process. Builders can focus on optimizing block construction and extracting MEV, while proposers can focus on selecting the best block and maintaining network security.
 
-However, this new relationship also introduces new challenges:
+However, this new relationship also introduces new challenges.
 
-- Security: Introducing new actors and dependencies can create new attack vectors and vulnerabilities.
-- Centralization: If only a few powerful builders or relays dominate the ecosystem, it could lead to centralization and censorship concerns.
-- Coordination: Effective communication and coordination between builders, relays, and proposers are crucial for the smooth functioning of PBS.
+### Relay Concerns
+
+A case can be made that relays oppose the following Ethereum's core tenets:
+
+- Decentralization: The fact that [six relays](https://www.relayscan.io/overview?t=7d) handle 99% of MEV-Boost blocks (that being nigh on 90% of Ethereum's blocks) gives rise to justified centralization concerns.
+- Censorship resistance: Relays _can_ censor blocks and, being centralized, can be coerced by regulators to do so. This happened, for instance, when they were pressured to censor transactions interacting with addresses on the [OFAC sanction list](https://home.treasury.gov/news/press-releases/jy0916).
+- Trustlessness: Validators trust relays to provide a valid block header and to publish the full block once signed; builders trust relays not to steal MEV. Although betrayal of either would be detectable, dishonesty can be profitable even through a one-time attack.
+
+### Third party dependency
+
+On a similar note, the fact that PBS entails outsourcing the building of the blocks to entities that do not directly participate in Ethereum consensus could potentially lead to unexpected or unwanted consequences stemming from relying on third parties, such as trust issues, operational dependency and the introduction of single points of failure. Particularly the fact that the use of MEV-Boost is so widespread could be viewed as a dangerous third party dependency, since such a huge portion of Ethereum's new blocks are created using Flashbot's software.
+
+### Security Concerns
+
+As seen in this entry, PBS involves many different entities taking part in the process of adding new blocks to the chain, which inevitably increases the number of potential attack vectors that could be exploited.
+
+As opposed to vanilla block creation in which the validator builds the block and adds it to the chain, PBS brings to the table many possible points of failure, such as the relays or escrows, which could potentially act maliciously or fail in their mission to provide data availability, disrupting the block proposal process, favoring certain builders, etc. Also, the commit-reveal scheme in escrows, if exploited, could give rise to MEV opportunities being stolen from the rightful block builders, undermining their performance.
+
+Of course, validators are still in charge of verifying the data in the blocks to make sure that builders adhere to the rigorous standards that make the Ethereum protocol robust. Thus, the aforementioned concerns are not likely to cause critical issues like the network halting. Nonetheless, the potential for these possible vulnerabilities to impact the fairness and security of block production suggests that they should not be overlooked and further research should be done to have them prevented.
 
 It's important to note that the specific roles and responsibilities of relays and builders may vary depending on the specific PBS implementation.
