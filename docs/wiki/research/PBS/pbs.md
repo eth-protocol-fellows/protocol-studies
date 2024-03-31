@@ -24,44 +24,7 @@ As explained in this [article](https://ethos.dev/beacon-chain), slots are the ti
 
 **Block proposers** take the block bodies provided by the block builders and create a complete block by adding necessary metadata, such as the block header. The header includes details such as the parent block's hash, timestamp, and other data. They also ensure the validity of the blocks by checking the correctness of the block body provided by the builders.
 
-### Undermined Censorship Resistance
-
-Another issue builder centralization might bring is putting at risk Ethereum's censorship resistance and integrity, as these dominant builders could, in theory, collude or be coerced into manipulating transaction flows or excluding specific transactions from being included in blocks, undermining the open and permissionless nature of the Ethereum network.
-
-## Resources
-
-## Current State and Solutions
-
-See the [Next Section](/wiki/research/PBS/current-state.md).
-
-Proposer-builder separation may also reduce the likelihood of frontrunning and other harmful practices, even though it may not eliminate MEV-related issues entirely. -->
-
 ### Further Reading and Resources
-
-https://ethresear.ch/t/two-slot-proposer-builder-separation/10980
-
-https://notes.ethereum.org/@fradamt/H1TsYRfJc#Secondary-auctions
-
-The resources consulted to write this entry have already been linked throughout the text, but here's the full list:
-
-- https://ethos.dev/beacon-chain
-- https://inevitableeth.com/home/ethereum/network/consensus/randao
-- https://www.blocknative.com/blog/ethereum-block-building
-- https://docs.flashbots.net/
-- https://github.com/flashbots/mev-geth
-- https://writings.flashbots.net/why-run-mevboost/
-- https://github.com/flashbots/mev-boost
-- https://docs.flashbots.net/
-- https://ethresear.ch/t/mev-boost-merge-ready-flashbots-architecture/11177
-- https://www.mev.wiki/attack-examples/time-bandit-attack
-- https://ethereum.org/en/roadmap/pbs/
-- https://www.relayscan.io/overview?t=7d
-- https://ethresear.ch/t/why-enshrine-proposer-builder-separation-a-viable-path-to-epbs/15710
-- https://mevboost.pics/
-- https://mirror.xyz/ohotties.eth/lBEXiiU7yK91OuSn8QyJPM9Db8GuyDFzCEUAj60BWyI
-- https://ethereum-magicians.org/t/eip-7547-inclusion-lists/17474
-
-## Further readings
 
 Below are some further readings regarding PBS and related topics:
 
@@ -70,4 +33,5 @@ Below are some further readings regarding PBS and related topics:
 - [Why ePBS](https://ethresear.ch/t/why-enshrine-proposer-builder-separation-a-viable-path-to-epbs/15710)
 - [Vitalik on pbs censorship](https://notes.ethereum.org/@vbuterin/pbs_censorship_resistance)
 - [Payload timliness committee design for ePBS](https://ethresear.ch/t/payload-timeliness-committee-ptc-an-epbs-design/16054)
+- [2-slot PBS](https://ethresear.ch/t/two-slot-proposer-builder-separation/10980)
 - [Foward Inclusion Lists](https://notes.ethereum.org/@fradamt/forward-inclusion-lists)

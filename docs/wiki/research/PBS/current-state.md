@@ -64,4 +64,8 @@ As opposed to vanilla block creation in which the validator builds the block and
 
 Of course, validators are still in charge of verifying the data in the blocks to make sure that builders adhere to the rigorous standards that make the Ethereum protocol robust. Thus, the aforementioned concerns are not likely to cause critical issues like the network halting. Nonetheless, the potential for these possible vulnerabilities to impact the fairness and security of block production suggests that they should not be overlooked and further research should be done to have them prevented.
 
+### Undermined Censorship Resistance
+
+Another issue builder centralization might bring is putting at risk Ethereum's censorship resistance and integrity, as these dominant builders could, in theory, collude or be coerced into manipulating transaction flows or excluding specific transactions from being included in blocks, undermining the open and permissionless nature of the Ethereum network.
+
 It's important to note that the specific roles and responsibilities of relays and builders may vary depending on the specific PBS implementation.
