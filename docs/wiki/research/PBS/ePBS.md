@@ -395,4 +395,4 @@ Honest attestors will consider the payload-timeliness when casting their votes. 
 [^6]: https://hackmd.io/ZNPG7xPFRnmMOf0j95Hl3w
 [^7]: https://ethresear.ch/t/payload-timeliness-committee-ptc-an-epbs-design/16054
 [^8]: https://notes.ethereum.org/@mikeneuder/consider-the-epbs
-[^9] https://www.youtube.com/watch?v=63juNVzd1P4
+[^9]: https://www.youtube.com/watch?v=63juNVzd1P4
