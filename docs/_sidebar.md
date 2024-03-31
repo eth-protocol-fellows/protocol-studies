@@ -61,10 +61,8 @@
   - [MEV](/wiki/research/PBS/mev.md)
     - [PBS](/wiki/research/PBS/pbs.md)
     - [Current State](/wiki/research/PBS/current-state.md)
-    - [Research and Solutions](/wiki/research/PBS/research.md)
     - [mev-boost](/wiki/research/PBS/mev-boost.md)
-    - [Challenges and Solutions](/wiki/research/PBS/research.md)
-    - [Censorship](/wiki/research/PBS/censorship.md)
+    - [Research and Solutions](/wiki/research/PBS/research.md)
   - Proof of Stake
     - [Upgrades](/docs/wiki/research/Beacon%20Chain%20Upgrades.md)
     - SSF

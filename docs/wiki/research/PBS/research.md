@@ -2,7 +2,7 @@
 
 # Research and Proposed Solutions
 
-## Enshrined Proposer-Builder Separation (ePBS)
+PBS is one of the active research areas in the Ethereum ecosystem. There are several proposed theories and implementation that are being worked upon currently. For a more detailed explanation on the research and ePBS check out this [EPF wiki entry](/wiki/research/PBS/ePBS.md) on the topic.
 
 As explained in this very insightful [ethresear.ch post](https://ethresear.ch/t/why-enshrine-proposer-builder-separation-a-viable-path-to-epbs/15710), Enshrined Proposer-Builder Separation addresses some of the limitations and centralization concerns associated with MEV-Boost, which currently facilitates PBS for about 90% of Ethereum blocks.
 
@@ -11,12 +11,14 @@ As explained in this very insightful [ethresear.ch post](https://ethresear.ch/t/
   <figcaption style="text-align: center;">Evolution of the portion of blocks built through MEV-Boost since The Merge. Source: <a href="https://mevboost.pics/">mevboost.pics</a></figcaption>
 </figure>
 
+## Enshrined Proposer-Builder Separation (ePBS)
+
 Enshrined PBS involves embedding PBS mechanisms directly into Ethereum's consensus layer, which would have two main potential advantages:
 
 - Reduction in centralization risks: Moving PBS into the protocol layer could potentially reduce reliance on third parties with a tendency for centralization, aligning with Ethereum’s core values of decentralization and censorship resistance.
 - Security and stability: External dependencies and out-of-protocol software, such as relays, have shown vulnerabilities (e.g., "Low-Carb Crusader" attack). Integrating PBS into the Ethereum protocol can mitigate these risks and reduce the coordination costs associated with maintaining compatibility between various components.
 
-According to the article, ePBS, particularly through Two-Block HeadLock (TBHL) and optimistic relaying, presents a pathway towards addressing current challenges and enhancing the efficiency, security, and decentralization of block production and MEV extraction processes. For a more detailed explanation on ePBS check out the [EPF wiki entry](/wiki/research/PBS/ePBS.md) on the topic.
+According to the article, ePBS, particularly through Two-Block HeadLock (TBHL) and optimistic relaying, presents a pathway towards addressing current challenges and enhancing the efficiency, security, and decentralization of block production and MEV extraction processes.
 
 ## Protocol-Enforced Propose Commitments (PEPC)
 
@@ -33,8 +35,6 @@ All of this would also be complementary to existing out-of-protocol mechanisms l
 As explained in this [ethereum-magicians.org post](https://ethereum-magicians.org/t/eip-7547-inclusion-lists/17474), inclusion lists aim to provide a mechanism to improve the censorship resistance of Ethereum by allowing proposers to specify a set of transactions that must be promptly included for subsequent blocks to be considered valid.
 
 This way proposers retain some authority over block building without sacrificing MEV rewards, through a mechanism by which transactions can be forcibly included. The simplest approach would be for the proposer to specify a list of transactions they found themselves in the mempool that must be included by the block builder if they want their block to be proposed for the next slot. Although some issues stem from this, such as incentive incompatibilities and exposure of free-data availability, solutions like forward and multiple inclusion lists have been proposed and are being developed to address these challenges, demonstrating the Ethereum community's commitment to refining and advancing the protocol to uphold its core values of decentralization, fairness, and censorship resistance.
-
-## Optimistic Relay (oop)
 
 ## Further Reading and Resources
 
