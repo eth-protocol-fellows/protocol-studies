@@ -2,7 +2,7 @@
 
 Week 7 development track is an insight into Ethereum execution layer client codebase, explaining its architecture and highlighting novel approaches. 
 
-The presentation will be given by [Dragan](https://twitter.com/rakitadragan) who will dive into reth client codebase. Join the talk on [Monday, April 1, 4PM UTC](https://savvytime.com/converter/utc-to-germany-berlin-united-kingdom-london-ny-new-york-city-ca-san-francisco-china-shanghai-japan-tokyo-australia-sydney/april-01-2024/4pm).
+The presentation will be given by [Dragan](https://twitter.com/rakitadragan) who will dive into reth client codebase. Join the talk on [Monday, April 1, 3PM UTC](https://savvytime.com/converter/utc-to-germany-berlin-united-kingdom-london-ny-new-york-city-ca-san-francisco-china-shanghai-japan-tokyo-australia-sydney/april-01-2024/3pm).
 
 The talk will be streamed live on [StreamEth](https://streameth.org/65cf97e702e803dbd57d823f/epf_study_group) and [Youtube](https://www.youtube.com/@ethprotocolfellows/streams), links will be provided before the call in the [Discord server](https://discord.gg/addwpQbhpq). Discord also serves for the discussion and questions during the stream. 
 
