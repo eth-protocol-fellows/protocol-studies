@@ -11,6 +11,8 @@
   - [Node Workshop](/eps/nodes_workshop.md)
   - [Week 6 | Dev](/eps/week6-dev.md)
   - [Week 6 | Research](/eps/week6-research.md)
+  - [Week 7 | Dev](/eps/week7-dev.md)
+
 - [Contributing](contributing.md)
 - **Protocol Wiki**
 - The Protocol
