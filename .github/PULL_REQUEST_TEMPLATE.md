@@ -13,5 +13,5 @@
 ℹ️ Fixing typos
 1. Fix typos: Open the relevant files and fix any identified typos.
 2. Update wordlist: If a flagged word is actually a project-specific term add it to `wordlist.txt` in the project root.
-   Each word should be listed on a separate line and must not have any spaces before or after it.
+   Each word should be listed on a separate line and must not have any spaces or special characters before or after it.
 -->

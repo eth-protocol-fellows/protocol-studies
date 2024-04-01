@@ -62,7 +62,7 @@ jobs:
             ## ℹ️ Here's how to fix them:
             - **Fix typos:** Open the relevant files and fix any identified typos.
             - **Update wordlist:** If a flagged word is actually a project-specific term add it to \`wordlist.txt\` in the project root.
-                Each word should be listed on a separate line and must not have any spaces before or after it.
+                Each word should be listed on a separate line and must not have any spaces or special characters before or after it. [Learn more.](http://aspell.net/man-html/Format-of-the-Personal-and-Replacement-Dictionaries.html)
             `;
 
             github.issues.createComment({
