@@ -47,3 +47,10 @@ We require blocks to commit to the Merkle root of this "extended" data, and have
 In case (1), the block is valid and the light client can accept it. In case (2), it is expected that some other node will quickly construct and relay a fraud proof. In case (3), it is also expected that some other node will quickly construct and relay a specialized kind of fraud proof that shows that the erasure code is constructed incorrectly. If a light client receives no fraud proofs for some time, it will take that as evidence that the block is in fact valid.
 
 An interesting implementation to study can be found [here](https://github.com/ethereum/research/tree/master/erasure_code/ec65536).
+
+Other resources:
+
+- https://github.com/ethereum/research/wiki/A-note-on-data-availability-and-erasure-coding#what-is-the-data-availability-problem
+- https://hackmd.io/@alexbeckett/a-brief-data-availability-and-retrievability-faq
+- https://arxiv.org/abs/1809.09044
+- https://ethereum.org/en/developers/docs/data-availability/
