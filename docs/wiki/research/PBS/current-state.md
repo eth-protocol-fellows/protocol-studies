@@ -60,12 +60,12 @@ On a similar note, the fact that PBS entails outsourcing the building of the blo
 
 As seen in this entry, PBS involves many different entities taking part in the process of adding new blocks to the chain, which inevitably increases the number of potential attack vectors that could be exploited.
 
-As opposed to vanilla block creation in which the validator builds the block and adds it to the chain, PBS brings to the table many possible points of failure, such as the relays or escrows, which could potentially act maliciously or fail in their mission to provide data availability, disrupting the block proposal process, favoring certain builders, etc. Also, the commit-reveal scheme in escrows, if exploited, could give rise to MEV opportunities being stolen from the rightful block builders, undermining their performance.
-
-Of course, validators are still in charge of verifying the data in the blocks to make sure that builders adhere to the rigorous standards that make the Ethereum protocol robust. Thus, the aforementioned concerns are not likely to cause critical issues like the network halting. Nonetheless, the potential for these possible vulnerabilities to impact the fairness and security of block production suggests that they should not be overlooked and further research should be done to have them prevented.
+PBS-related vulnerabilities, like faulty relays or escrows, risk causing missed blocks without endangering Ethereum's integrity. These missed blocks can affect users and validators. Despite this, Ethereum clients can revert to conventional block building if external builders fail, ensuring network stability.
 
 ### Undermined Censorship Resistance
 
-Another issue builder centralization might bring is putting at risk Ethereum's censorship resistance and integrity, as these dominant builders could, in theory, collude or be coerced into manipulating transaction flows or excluding specific transactions from being included in blocks, undermining the open and permissionless nature of the Ethereum network.
+Another issue builder centralization might bring is putting at risk Ethereum's censorship resistance and integrity, as these dominant builders could, in theory, collude or be coerced into manipulating transaction flows or excluding specific transactions from being included in blocks, undermining the open and permissionless nature of the Ethereum network. Although in current situation, even majority of parties choose to censor, still cannot prevent from submitting these transactions, but only delay their inclusion.
 
-It's important to note that the specific roles and responsibilities of relays and builders may vary depending on the specific PBS implementation.
+To increase censorship resistance, mechanisms like anonymous block proposals, which would protect participants from being singled out for the transactions they handle, are being considered. Additionally, making commitments to include specific transactions mandatory in block proposals is also being explored to ensure essential transactions cannot be censored. A brief overview can found [here](https://censorship.pics).
+
+For a detailed discussion on these anti-censorship measures within PBS, see [Vitalik Buterin's comprehensive analysis](https://notes.ethereum.org/@vbuterin/pbs_censorship_resistance).
