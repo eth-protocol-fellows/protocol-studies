@@ -56,6 +56,8 @@ A case can be made that relays oppose the following Ethereum's core tenets:
 
 On a similar note, the fact that PBS entails outsourcing the building of the blocks to entities that do not directly participate in Ethereum consensus could potentially lead to unexpected or unwanted consequences stemming from relying on third parties, such as trust issues, operational dependency and the introduction of single points of failure. Particularly the fact that the use of MEV-Boost is so widespread could be viewed as a dangerous third party dependency, since such a huge portion of Ethereum's new blocks are created using Flashbot's software.
 
+On a very recent note, during March 27-28, Ethereum experienced a spike in missed slots due to a delay in blob propagation from blocks relayed by bloXroute, exacerbated by the Lighthouse client's expectation for blobs to accompany blocks from the same source. This issue highlighted the potential vulnerabilities associated with relying on third-party services like bloXroute's Blockchain Distribution Network (BDN) for block building, underscoring the importance of ensuring robustness in blockchain network operations. More details can be found [here](https://gist.github.com/benhenryhunter/687299bcfe064674537dc9348d771e83).
+
 ### Security Concerns
 
 As seen in this entry, PBS involves many different entities taking part in the process of adding new blocks to the chain, which inevitably increases the number of potential attack vectors that could be exploited.
