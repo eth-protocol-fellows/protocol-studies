@@ -2,7 +2,7 @@
 
 Week 7 research talk will be focused on verkle trees, an important domain of current development and research aiming to replace the MPT.
 
-This presentation will have 3 speakers! We will host [Guillaume](https://twitter.com/gballet/), [Ignacio](https://twitter.com/ignaciohagopian) and [Josh](https://twitter.com/rudolf6_) on [Wednesday, April 3, 3PM UTC](https://savvytime.com/converter/utc-to-germany-berlin-united-kingdom-london-ny-new-york-city-ca-san-francisco-china-shanghai-japan-tokyo-australia-sydney/april-01-2024/3pm). (note that this is 1 hour sooner than the default time)
+This presentation will have 3 speakers! We will host [Guillaume](https://twitter.com/gballet/), [Ignacio](https://twitter.com/ignaciohagopian) and [Josh](https://twitter.com/rudolf6_) on [Wednesday, April 3, 3PM UTC](https://savvytime.com/converter/utc-to-germany-berlin-united-kingdom-london-china-shanghai-ny-new-york-city-japan-tokyo-australia-sydney-india-delhi-argentina-buenos-aires/apr-1-2024/3pm). (note that this is 1 hour sooner than the default time)
 
 The talk will be streamed live on [StreamEth](https://streameth.org/65cf97e702e803dbd57d823f/epf_study_group) and [Youtube](https://www.youtube.com/@ethprotocolfellows/streams), links will be provided before the call in the [Discord server](https://discord.gg/addwpQbhpq). Discord also serves for the discussion and questions during the stream. 
 
