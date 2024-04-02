@@ -39,8 +39,11 @@ Quoting ["A Prehistory of the Ethereum Protocol"](https://vitalik.eth.limo/gener
 - [EIP-2537: Precompile for BLS12-381 curve operations](https://eips.ethereum.org/EIPS/eip-2537)
 - [EIP-7212: Precompile for secp256r1 Curve Support](https://eips.ethereum.org/EIPS/eip-7212)
 - [EIP-7545: Verkle proof verification precompile](https://eips.ethereum.org/EIPS/eip-7545)
+- [EIP-5988: Add Poseidon hash function precompile](https://eips.ethereum.org/EIPS/eip-5988)
 
 The introduction of new precompiles requires careful consideration of their network effects. A precompile with miscalculated gas cost could potentially cause denial of service by consuming more resources than anticipated. Additionally, a growing number of precompiles can lead to code bloat within the EVM clients, increasing the burden on validators.
+
+The selection of cryptographic functions and their corresponding parameters for precompiles requires a thorough analysis to balance security and efficiency. Lastly, from a security perspective, rigorous [testing](/wiki/testing/overview.md) is crucial to ensure identical behavior across all precompile implementations (e.g. [MODEXP test specs](https://github.com/ethereum/execution-spec-tests/tree/main/tests/byzantium/eip198_modexp_precompile)). An edge-case bug in execution clients would lead to a network split, ultimately hindering finalization.
 
 ## Calling precompiles
 
