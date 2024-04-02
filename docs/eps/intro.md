@@ -20,29 +20,30 @@ Weekly topics, their presentations and materials can be all found in this folder
 
 The first part of the program consists of 5 weeks with introductions to high level domains of the protocol. 
 
-| Date        | Topic                              | Speaker                 |
-|-------------|------------------------------------|-------------------------|
+| Date        | Topic                              | Speaker                                                                                          |
+| ----------- | ---------------------------------- | ------------------------------------------------------------------------------------------------ |
 | February 19 | Intro to EPS and Ethereum protocol | [Josh Davis](https://github.com/JoshDavisLight), [Mario Havel](https://github.com/taxmeifyoucan) |
-| February 26 | Execution Layer                    | [Lightclient](https://github.com/lightclient)             |
-| March 4     | Consensus layer                    | [Alex Stokes](https://github.com/ralexstokes)             |
-| March 11    | Testing and security               | [Mario Vega](https://github.com/marioevz)              |
-| March 18    | Roadmap and research               | [Domothy](https://github.com/domothyb)                 |
+| February 26 | Execution Layer                    | [Lightclient](https://github.com/lightclient)                                                    |
+| March 4     | Consensus layer                    | [Alex Stokes](https://github.com/ralexstokes)                                                    |
+| March 11    | Testing and security               | [Mario Vega](https://github.com/marioevz)                                                        |
+| March 18    | Roadmap and research               | [Domothy](https://github.com/domothyb)                                                           |
 
 The second part of the program offers two distinct tracks focused on development and research with deeper dive into each domain. 
 
-| Date     | Topic                         | Speaker                    | Track       |
-| -------- | ----------------------------- | -------------------------- | ----------- |
+
+| Date     | Topic                         | Speaker                                                                                | Track       |
+| -------- | ----------------------------- | -------------------------------------------------------------------------------------- | ----------- |
 | March 25 | Consensus and Execution specs | [Hsiao-Wei Wang](https://github.com/hwwhww), [Sam Wilson](https://github.com/SamWilsn) | Development |
-| March 27 | Sharding and DAS              | [Dankrad Feist](https://github.com/dankrad)              | Research    |
-| April 1  | Execution client architecture | [Dragan Pilipovic](https://github.com/dragan2234)           | Development |
-| April 3  | Verkle trees                  | [Josh Rudolf](https://github.com/jrudolf)                | Research    |
-| April 8  | Consensus client architecture | [Paul Harris](https://github.com/rolfyone)                | Development |
-| April 10 | MEV and censorship            | [Barnabe Monnot](https://github.com/barnabemonnot)             | Research    |
-| April 15 | Devops and testing            | [Paritosh](https://github.com/parithosh)                   | Development |
-| April 17 | Purge and Portal Network      | [Piper Merriam](https://github.com/pipermerriam)              | Research    |
-| April 22 | Cryptographic precompiles     |                            | Development |
-| April 24 | SSF and PoS Upgrades          | [Francesco D’Amato](https://github.com/fradamt)          | Research    |
-| April 29 | Wrap up                       |                            |             |
+| March 27 | Sharding and DAS              | [Dankrad Feist](https://github.com/dankrad)                                            | Research    |
+| April 1  | Execution client architecture | [Dragan Pilipovic](https://github.com/dragan2234)                                      | Development |
+| April 3  | Verkle trees                  | [Josh Rudolf](https://github.com/jrudolf)                                              | Research    |
+| April 8  | Consensus client architecture | [Paul Harris](https://github.com/rolfyone)                                             | Development |
+| April 10 | MEV and censorship            | [Barnabe Monnot](https://github.com/barnabemonnot)                                     | Research    |
+| April 15 | Devops and testing            | [Paritosh](https://github.com/parithosh)                                               | Development |
+| April 17 | Purge and Portal Network      | [Piper Merriam](https://github.com/pipermerriam)                                       | Research    |
+| April 22 | Cryptographic precompiles     |                                                                                        | Development |
+| April 24 | SSF and PoS Upgrades          | [Francesco D’Amato](https://github.com/fradamt)                                        | Research    |
+| April 29 | Wrap up                       |                                                                                        |             |
 
 
 ### Streams and recordings
