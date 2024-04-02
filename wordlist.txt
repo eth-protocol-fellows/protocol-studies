@@ -280,11 +280,16 @@ pmod
 POC
 POS
 pre
+preconfirmations
 precompile
 precompiled
 precompiles
 privateKey
 programmability
+Proof-of-stake
+proof-of-stake
+Proof-of-work
+proof-of-work
 proto
 PRs
 PUSHX
