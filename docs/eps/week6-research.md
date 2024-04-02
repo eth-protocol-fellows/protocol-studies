@@ -24,7 +24,7 @@ Additionally, you can read and get ready by studying the following resources:
 ## Additional reading and exercises 
 
 - [Foundations of Data Availability Sampling](https://www.youtube.com/watch?v=KUNE3kR1kwU)
-- [Desing choices in DAS](https://www.youtube.com/watch?v=Al7Jns8bCO4)
+- [Design choices in DAS](https://www.youtube.com/watch?v=Al7Jns8bCO4)
 - [Danksharding workshop, Devcon Bogota](https://www.youtube.com/watch?v=8L2C6RDMV9Q)
 - [Fraud and DA proofs paper](https://arxiv.org/abs/1809.09044)
 - [WIP DAS proposal](https://hackmd.io/@vbuterin/das)

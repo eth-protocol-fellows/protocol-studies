@@ -6,7 +6,7 @@ The Protocol Wiki is an open and collaborative project. Whether you are part of 
 
 When creating contributions, consider whether it doesn't exist in another form elsewhere. Use it and reference it in your text but do not copy its content. Focus on adding it into a big picture, connecting it with related topics. 
 
-Write contributions based on what you learned about the protocol along the way, what experience you gathered and missing pieces that slowed you down. Consider it as explaining to your peers, reflect on your own journey as a core developer/reseacher.
+Write contributions based on what you learned about the protocol along the way, what experience you gathered and missing pieces that slowed you down. Consider it as explaining to your peers, reflect on your own journey as a core developer/researcher.
 
 ## Contributing
 
@@ -22,9 +22,9 @@ We are not aiming to recreate other existing wikis. If the same content is well 
 
 ### What does(n't) belong here
 
-The scope of this wiki is limited to technical resources of the Ethereum core protocol infrastracture. This means its specifications, implementations, testing, research or related tooling. 
+The scope of this wiki is limited to technical resources of the Ethereum core protocol infrastructure. This means its specifications, implementations, testing, research or related tooling. 
 
-It **does not** cover onchain protocols/dapps, layer 2s/rollups or any other tools which are not dependencies of core infrastracture. In other words, stuff which would be covered by EIPs, not ERCs.
+It **does not** cover onchain protocols/dapps, layer 2s/rollups or any other tools which are not dependencies of core infrastructure. In other words, stuff which would be covered by EIPs, not ERCs.
 
 ### Structure and collaboration
 
@@ -81,7 +81,7 @@ Goal is to produce a credible neutral text which is formal, well-structured, and
 
 The wiki uses American English over British spelling. Terminology, capitalization and nomenclature should match across all pages. Use [Ethereum.org guide](https://ethereum.org/contributing/style-guide/content-standardization) for the reference. 
 
-Usage of images and visualizations is encouraged. If you are using an image created by a third party, make sure its licence allows it and provide link to the original. For creating your own visualizations, we suggest [excalidraw.com](https://github.com/excalidraw/excalidraw). 
+Usage of images and visualizations is encouraged. If you are using an image created by a third party, make sure its license allows it and provide link to the original. For creating your own visualizations, we suggest [excalidraw.com](https://github.com/excalidraw/excalidraw). 
 
 Feel free to use [emojis](https://docsify.js.org/#/emoji?id=emoji) or [icons](https://icongr.am/fontawesome) where it fits, for example in blockquotes. 
 

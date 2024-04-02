@@ -25,5 +25,5 @@ Additionally, you can read and get ready by studying the following resources:
 
 ## Additional reading and exercises 
 
-- Erigon is a fork of geth which pioneered the design approached implemented by reth. Kind of a middle ground between geth and reth, tt's a great source of resources about novel execution client designs
-- As an excercise, run reth and set different `DEBUG` options to explore how various client componantes operate on lower level
+- Erigon is a fork of geth which pioneered the design approached implemented by reth. Kind of a middle ground between geth and reth, it's a great source of resources about novel execution client designs
+- As an exercise, run reth and set different `DEBUG` options to explore how various client components operate on lower level
