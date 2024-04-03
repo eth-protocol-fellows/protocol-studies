@@ -1,6 +1,9 @@
-# Checklist
+## Wiki PR Checklist
 
-- [ ] Review changes to ensure there are no typos.
+- [ ] Describe your changes, substitute this text with the information
+- [ ] If you are touching an existing piece of content, ask the original creator for review 
+- [ ] If you need feedback for your content from wider community, share the PR in our Discord
+- [ ] Review changes to ensure there are no typos, see instructions bellow
 
 <!-- 
 ℹ️ Checking for typos locally
