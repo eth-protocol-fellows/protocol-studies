@@ -1,5 +1,7 @@
 ## Wiki PR Checklist
 
+Thank you for contributing to the Protocol Wiki! Before you open a PR, make sure to read [information for contributors](https://epf.wiki/#/contributing) and take a look at following checklist:
+
 - [ ] Describe your changes, substitute this text with the information
 - [ ] If you are touching an existing piece of content, ask the original creator for review 
 - [ ] If you need feedback for your content from wider community, share the PR in our Discord
