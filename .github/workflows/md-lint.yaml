@@ -11,4 +11,4 @@ jobs:
       continue-on-error: true
       with:
         globs: |
-          docs/*.md
+          docs/wiki/*.md
