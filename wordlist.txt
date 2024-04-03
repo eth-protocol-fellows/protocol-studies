@@ -331,6 +331,7 @@ ShareAlike
 Shead
 Shimon
 Silverman
+Shor
 Sipser
 SLOAD
 smlXL
