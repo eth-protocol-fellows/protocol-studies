@@ -10,7 +10,7 @@ The protocol wiki is a collection of technical resources about the Ethereum prot
 
 Ethereum Protocol Fellowship Study Group (EPFsg) is an open study program for anyone interested in learning about internals of the protocol. 
 
-Learn more about EPS in its [announcement blog](https://blog.ethereum.org/2024/02/07/epf-study-group). Join the community in our [Discord server](https://discord.gg/epfsg).
+Learn more about EPS in its [announcement blog](https://blog.ethereum.org/2024/02/07/epf-study-group). Join the community in our [Discord server](https://discord.com/invite/addwpQbhpq).
 
 ## Contributing
 
