@@ -9,7 +9,7 @@ Watch the presentation on Ethereum core testing infrastracture on [Youtube](http
 
 [recording](https://www.youtube.com/embed/PQVW5dJ8J0c?si=fv5ww4_6zInGXpjO ':include :type=iframe width=100% height=560 frameborder="0" allow="fullscreen" allowfullscreen encrypted-media gyroscope picture-in-picture web-share')
 
-For written summary of week 2 presentation, check the [notes](https://ab9jvcjkej.feishu.cn/docx/R1IOdEkDxoiNNHxvA6sclfITnLB)
+For written summary of week 2 presentation, check the [notes](https://github.com/eth-protocol-fellows/protocol-studies/files/14850974/Week.4.EPFsg.Test.Security.Overview.pdf)
 
 For archive of the discussion during the talk, check [this thread](https://discord.com/channels/1205546645496795137/1216771776810455160/1216771782040621118) in our Discord server.
 
