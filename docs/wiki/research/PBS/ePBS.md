@@ -409,42 +409,42 @@ The introduction of Protocol-Enforced Proposer Commitments (PEPC) into Ethereum'
 
 ### Benefits of PEPC
 
-**1. Enhanced Security and Trustlessness:**
+**Enhanced Security and Trustlessness:**
 
 PEPC's primary advantage lies in its ability to enforce agreements between proposers and builders within the Ethereum protocol itself, minimizing trust assumptions. This internalization of commitments enhances security by making it harder for external parties to manipulate transaction inclusion or exploit the proposer-builder relationship.
 
-**2. Increased Flexibility in Block Construction:**
+**Increased Flexibility in Block Construction:**
 
 By allowing for programmable contracts between proposers and builders, PEPC introduces a high degree of flexibility. This can accommodate a variety of block construction scenarios, from full blocks to partial blocks and future slot auctions, enabling more efficient use of block space.
 
-**3. Decentralization of MEV Opportunities:**
+**Decentralization of MEV Opportunities:**
 
 PEPC could potentially lead to a more equitable distribution of Maximal Extractable Value (MEV) opportunities among validators. By embedding diverse commitment mechanisms into the protocol, it reduces the risk of centralizing these opportunities in the hands of a few large operators.
 
-**4. Scalability and Efficiency Improvements:**
+**Scalability and Efficiency Improvements:**
 
 The system aims to optimize the process of block construction and validation, potentially reducing the overhead associated with these tasks. This could contribute to the overall scalability and efficiency of the Ethereum network, aligning with its long-term goals.
 
-**5. Economic Innovation:**
+**Economic Innovation:**
 
 PEPC opens up new avenues for economic innovation within Ethereum. By enabling different types of transactions and block construction contracts, it could foster novel economic models and incentives, enhancing the dynamism and diversity of the Ethereum economy.
 
 
 #### Disadvantages of PEPC
 
-**1. Complexity and Implementation Challenges:**
+**Complexity and Implementation Challenges:**
 The flexible and generalized nature of PEPC introduces significant complexity into the Ethereum protocol. Designing, implementing, and maintaining such a system poses substantial technical challenges, increasing the risk of bugs, vulnerabilities, and unintended consequences.
 
-**2. Increased Computational Overhead:**
+**Increased Computational Overhead:**
 Enforcing proposer commitments within the protocol could lead to increased computational overhead for validators, impacting the network's performance. This might necessitate more powerful hardware or sophisticated optimization techniques to maintain efficiency.
 
-**3. Potential for Centralization:**
+**Potential for Centralization:**
 While PEPC aims to decentralize MEV opportunities, its complexity could inadvertently favor large, technically sophisticated operators capable of navigating the intricacies of the system. This could counteract efforts to decentralize the network further.
 
-**4. Economic Uncertainty:**
+**Economic Uncertainty:**
 The introduction of PEPC could disrupt existing economic models and incentives within Ethereum, leading to uncertainty. Adjusting to new mechanisms for transaction inclusion and block construction may require time, potentially impacting network stability and user experience.
 
-**5. Difficulty in Balancing Flexibility and Security:**
+**Difficulty in Balancing Flexibility and Security:**
 Finding the right balance between the flexibility offered by PEPC and the need to maintain a secure, reliable network is challenging. Too much flexibility could make the system unwieldy and difficult to secure, while too little could stifle innovation and efficiency.
 
 
@@ -511,7 +511,7 @@ sequenceDiagram
 ```
 
 
-![PEPC Workflow](/docs/wiki/research/img/scaling/PEPC workflow.png)
+![PEPC Workflow](/docs/wiki/research/img/scaling/PEPC-workflow.png)
 
 *Figure – PEPC flow.*
 
@@ -556,48 +556,48 @@ PEPC offers several compelling use cases[^11]:
 
 **Full-Block Auctions**
 
-- **Description:** Validators auction the right to construct entire blocks to builders. This mirrors the current MEV-Boost mechanism but with enhanced security and trustlessness by embedding the auction within the Ethereum protocol.
-- **Benefits:** Ensures a transparent and fair process for block construction, potentially leading to more competitive bidding and better rewards for validators.
+- Validators auction the right to construct entire blocks to builders. This mirrors the current MEV-Boost mechanism but with enhanced security and trustlessness by embedding the auction within the Ethereum protocol.
+- Ensures a transparent and fair process for block construction, potentially leading to more competitive bidding and better rewards for validators.
 
 **Partial Block Auctions**
 
-- **Description:** Validators can auction portions of a block's space to different builders, allowing multiple parties to contribute to a single block's construction.
-- **Benefits:** Increases block space utilization efficiency and encourages diversity in transaction inclusion, mitigating potential centralization in block construction.
+- Validators can auction portions of a block's space to different builders, allowing multiple parties to contribute to a single block's construction.
+- Increases block space utilization efficiency and encourages diversity in transaction inclusion, mitigating potential centralization in block construction.
 
 **Parallel Block Auctions**
 
-- **Description:** Similar to partial block auctions but with the auction focused on separate, parallel components of block space, enabling a more granular approach to block construction.
-- **Benefits:** Offers validators more control over block contents and structure, potentially optimizing for various factors like gas usage, transaction priority, and MEV extraction.
+- Similar to partial block auctions but with the auction focused on separate, parallel components of block space, enabling a more granular approach to block construction.
+- Offers validators more control over block contents and structure, potentially optimizing for various factors like gas usage, transaction priority, and MEV extraction.
 
 **Slot vs. Block Auctions**
 
-- **Description:** Validators commit in advance to using blocks or block parts from specific builders, differentiating between commitments to "slots" (who will build) versus "blocks" (what will be built).
-- **Benefits:** Enhances predictability and planning for both validators and builders, potentially leading to more strategic block construction and MEV extraction opportunities.
+- Validators commit in advance to using blocks or block parts from specific builders, differentiating between commitments to "slots" (who will build) versus "blocks" (what will be built).
+- Enhances predictability and planning for both validators and builders, potentially leading to more strategic block construction and MEV extraction opportunities.
 
 **Future Slot Auctions**
 
-- **Description:** Validators auction the rights to construct blocks for future slots, essentially creating futures contracts for block space.
-- **Benefits:** Provides market participants with more tools for speculation and hedging, potentially stabilizing income for validators and offering builders advanced planning capabilities.
+- Validators auction the rights to construct blocks for future slots, essentially creating futures contracts for block space.
+- Provides market participants with more tools for speculation and hedging, potentially stabilizing income for validators and offering builders advanced planning capabilities.
 
 **Inclusion Lists**
 
-- **Description:** Validators commit to including specific transactions in their blocks, either through direct listing or by adhering to lists provided by third parties.
-- **Benefits:** Increases transparency and predictability for transaction inclusion, potentially reducing gas price volatility and improving user experience.
+- Validators commit to including specific transactions in their blocks, either through direct listing or by adhering to lists provided by third parties.
+- Increases transparency and predictability for transaction inclusion, potentially reducing gas price volatility and improving user experience.
 
 **Dynamic Block Configuration**
 
-- **Description:** Validators use PEPC to adjust block configurations dynamically, responding to real-time network conditions and demands.
-- **Benefits:** Enhances network responsiveness and efficiency, potentially improving throughput and reducing congestion during peak periods.
+- Validators use PEPC to adjust block configurations dynamically, responding to real-time network conditions and demands.
+- Enhances network responsiveness and efficiency, potentially improving throughput and reducing congestion during peak periods.
 
 **Censorship Resistance**
 
-- **Description:** By making commitments to include certain transactions or follow specific inclusion patterns, validators can provide guarantees against censorship.
-- **Benefits:** Strengthens Ethereum's censorship-resistant properties, ensuring that the network remains open and accessible to all users.
+- By making commitments to include certain transactions or follow specific inclusion patterns, validators can provide guarantees against censorship.
+- Strengthens Ethereum's censorship-resistant properties, ensuring that the network remains open and accessible to all users.
 
 **Protocol Upgrades and Feature Testing**
 
-- **Description:** PEPC can be used to test new protocol features or upgrades in a live environment without risking network stability, by making commitments to include transactions that utilize these features.
-- **Benefits:** Offers a safer pathway for innovation and evolution within the Ethereum protocol, allowing for more experimental approaches to development.
+- PEPC can be used to test new protocol features or upgrades in a live environment without risking network stability, by making commitments to include transactions that utilize these features.
+- Offers a safer pathway for innovation and evolution within the Ethereum protocol, allowing for more experimental approaches to development.
 
 
 #### Relationship and Differences to EigenLayer
@@ -613,7 +613,7 @@ PEPC and Eigenlayer have a complementary relationship, each addressing different
 
 **Economic Bound to Security in Eigenlayer**
 
- In principle, if the value at stake in activities or assets secured by Eigenlayer exceeds the value of staked ETH, the economic incentives could potentially misalign, leading to concerns about the sufficiency of security provided [^11].
+ In principle, if the value at stake in activities or assets secured by Eigenlayer exceeds the value of staked ETH in Ethereum, the economic incentives could potentially misalign, leading to concerns about the sufficiency of security provided [^11].
 
 
 In a broader Ethereum ecosystem context, PEPC and Eigenlayer could be seen as complementary, with Eigenlayer expanding Ethereum's security and utility beyond its core protocol and PEPC enhancing the efficiency and flexibility within the core protocol itself. Implementing both could lead to a scenario where Ethereum not only becomes more efficient and adaptable in handling transactions and block construction but also extends its security guarantees to a broader range of decentralized applications and services.
