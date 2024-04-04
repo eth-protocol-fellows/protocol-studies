@@ -920,7 +920,7 @@ The Program Execution function is defined formally by the function X, the only d
 
 #### Recursive Execution Function X
 
-X takes care of executing the whole code , This is usally implementated by clients as a main loop iterating over the code. Whereas the definition is recursive :
+X orchestrates the execution of the entire code. This is typically implemented by clients as a main loop iterating over the code. However, its definition is recursive:
 
 $$
 X((\sigma,\mu,AccruedSubState,Environment_I)) \equiv  \nonumber \\
@@ -928,17 +928,32 @@ X((\sigma,\mu,AccruedSubState,Environment_I)) \equiv  \nonumber \\
 &\\
 (\empty, \mu, AccruedSubState, Environment_I) \\ \qquad \text{if } Z_{exceptionalHalting}(\sigma, \mu, AccruedSubState, Environment_I) \\
 &\\
-(\empty, \mu', AccruedSubState, Environment_I, \mu_{outputFromNormalHalting} ) \\ \qquad \text{if }  currentOperation_w = REVERT \\
+(\empty, \mu', AccruedSubState, Environment_I, \mu'_{outputFromNormalHalting} ) \\ \qquad \text{if }  currentOperation_w = REVERT \\
 &\\
-O(\sigma, \mu', AccruedSubState, Environment_I) . \mu_{outputFromNormalHalting}  \\ \qquad \text{if }  \mu_{outputFromNormalHalting} \neq \empty \\
+O(\sigma, \mu', AccruedSubState, Environment_I) . \mu'_{outputFromNormalHalting}  \\ \qquad \text{if }  \mu'_{outputFromNormalHalting} \neq \empty \\
 &\\
 X(O(\sigma, \mu', AccruedSubState, Environment_I)) \\ \qquad \text{otherwise}
 &\\
 \end{cases}
 $$
+$$
+\text{Where}, \\
+\mu'_{outputFromNormalHalting} \equiv o \equiv H_{normalHaltingFunction}(\mu,Environment_I) 
+$$
+$$
+O(\sigma,\mu,A,I).o \equiv O(\sigma,\mu,A,I,o)
+$$
+$$
+\mu' \equiv \mu \text{ except:} \\
+\mu'_{gas} \equiv \mu_{gas} - C_{gasCostFunction}(\sigma,\mu,A,I) \\
+\mu'_{outputFromNormalHalting} \equiv o
+$$
+1. If the conditions for Exceptional Halting are met, return a tuple consisting of an empty state, the machine state, accrued sub state, environment, and an empty output.
+2. If the current Operation is $REVERT$, return a tuple consisting of an empty state, the machine state after deducting gas, accrued sub state, environment, and the machine output.
+3. If the machine output is not empty, the execution iterator function $O$ consumes the output.
+  - For instance, if the current operation is a system operation such as CALL, CALLCODE, [DELEGATECALL](https://github.com/ethereum/execution-specs/blob/9c24cd78e49ce6cb9637d1dabb679a5099a58169/src/ethereum/cancun/vm/instructions/system.py#L542), or STATICCALL, these calls invoke the [generic call function](https://github.com/ethereum/execution-specs/blob/9c24cd78e49ce6cb9637d1dabb679a5099a58169/src/ethereum/cancun/vm/instructions/system.py#L267), setting up a new message and a child EVM process. The output of this process is then [written back into the memory](https://github.com/ethereum/execution-specs/blob/9c24cd78e49ce6cb9637d1dabb679a5099a58169/src/ethereum/cancun/vm/instructions/system.py#L325) of the parent EVM process, effectively consuming the output in one iteration of $O$, which may be utilized in the next iteration.
+4. In all other scenarios, we simply continue  recursively calling the iterator function. In simpler terms, this means we proceed with the main interpreter loop
 
-
-WIP
 
 | function | EELS(cancun) | Geth | Reth | Erigon | Nethermind | Besu |
 |----------|--------------|------|--------|------------|------|-----|
