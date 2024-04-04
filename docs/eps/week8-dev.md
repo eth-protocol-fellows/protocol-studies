@@ -1,8 +1,8 @@
 # Study Group Week 8 | Consensus client architecture
 
-Week 7 development track is an insight into Ethereum execution layer client codebase, explaining its architecture and highlighting novel approaches. 
+The Week 8 research track provides an look into Ethereum consensus layer client codebase, explaining its architecture and functions. 
 
-on [Wednesday, April 8, 7PM UTC](https://savvytime.com/converter/utc-to-germany-berlin-united-kingdom-london-china-shanghai-ny-new-york-city-japan-tokyo-australia-sydney-india-delhi-argentina-buenos-aires/apr-1-2024/3pm). (note that this is 3 hours later than the default time)
+Join the presentation by [Paul Harris](https://twitter.com/rolfyone) from Consensys Teku on [Wednesday, April 8, 7PM UTC](https://savvytime.com/converter/utc-to-germany-berlin-united-kingdom-london-china-shanghai-ny-new-york-city-japan-tokyo-australia-sydney-india-delhi-argentina-buenos-aires/apr-1-2024/3pm). (Note that this is 3 hours later than the default time)
 
 The talk will be streamed live on [StreamEth](https://streameth.org/65cf97e702e803dbd57d823f/epf_study_group) and [Youtube](https://www.youtube.com/@ethprotocolfellows/streams), links will be provided before the call in the [Discord server](https://discord.gg/addwpQbhpq). Discord also serves for the discussion and questions during the stream. 
 
@@ -10,7 +10,7 @@ The talk will be streamed live on [StreamEth](https://streameth.org/65cf97e702e8
 
 Before starting with the week 8 development content, make yourself familiar with resources in previous weeks, especially week 3 resources on consensus layer. 
 
-Paul will dive into Teku, consensus client implementation in Java. You should have at least basic knowledge of Java syntax. 
+Paul will dive into Teku, consensus client implementation in Java. You should have at least basic knowledge of the language syntax. 
 
 Additionally, you can read and get ready by studying the following resources:
 
