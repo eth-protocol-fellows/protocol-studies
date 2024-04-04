@@ -690,16 +690,16 @@ The initialization of the substate sets the groundwork for transaction execution
 
 Depending on the transaction type, accessed addresses are initialized differently:
 
-- For $T_{type} = 1$, only the `coinbase` address is marked as accessed.
-- For $T_{type} = 2, 3, or 4$, the `coinbase` address and those in the access list are considered accessed from the start.
+- For $T_{type} = 0$, only the `coinbase` address is marked as accessed.
+- For $T_{type} = 1, 2, or 3$, the `coinbase` address and those in the access list are considered accessed from the start.
 
 $$ A^0  \equiv (A^{0}_{selfDestructSet} = \empty, $$ 
 $$ A^{0}_{logSeries} = (), $$
 $$ A^{0}_{touchedAcounts} = \empty, $$ 
 $$ A^{0}_{refundBalance} = 0 , $$
-if $T_{type} = 1$:
+if $T_{type} = 0$:
 $$ A^{0}_{accesedAccountAddresses} =  \{ H_{coinBase}\}$$ 
-if $T_{type} = 2 \lor 3 \lor 4$:
+if $T_{type} = 1 \lor 2 \lor 3$:
 $$ A^{0}_{accesedAccountAddresses} =  \{ H_{coinBase},$$ 
 $$ { \bigcup_{Entry \in T_{accessList}} \{ Entry_{address}  \}}$$ 
 $$ A^{0}_{accesedStorageKeys}= $$
