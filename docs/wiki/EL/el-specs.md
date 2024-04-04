@@ -928,9 +928,9 @@ X((\sigma,\mu,AccruedSubState,Environment_I)) \equiv  \nonumber \\
 &\\
 (\empty, \mu, AccruedSubState, Environment_I) \\ \qquad \text{if } Z_{exceptionalHalting}(\sigma, \mu, AccruedSubState, Environment_I) \\
 &\\
-(\empty, \mu', AccruedSubState, Environment_I, \mu'_{outputFromNormalHalting} ) \\ \qquad \text{if }  currentOperation_w = REVERT \\
+(\empty, \mu', AccruedSubState, Environment_I, \mu_{outputFromNormalHalting} ) \\ \qquad \text{if }  currentOperation_w = REVERT \\
 &\\
-O(\sigma, \mu', AccruedSubState, Environment_I) . \mu'_{outputFromNormalHalting}  \\ \qquad \text{if }  \mu'_{outputFromNormalHalting} \neq \empty \\
+O(\sigma, \mu', AccruedSubState, Environment_I) . \mu_{outputFromNormalHalting}  \\ \qquad \text{if }  \mu_{outputFromNormalHalting} \neq \empty \\
 &\\
 X(O(\sigma, \mu', AccruedSubState, Environment_I)) \\ \qquad \text{otherwise}
 &\\
@@ -938,15 +938,14 @@ X(O(\sigma, \mu', AccruedSubState, Environment_I)) \\ \qquad \text{otherwise}
 $$
 $$
 \text{Where}, \\
-\mu'_{outputFromNormalHalting} \equiv o \equiv H_{normalHaltingFunction}(\mu,Environment_I) 
+\mu_{outputFromNormalHalting} \equiv o \equiv H_{normalHaltingFunction}(\mu,Environment_I) 
 $$
 $$
 O(\sigma,\mu,A,I).o \equiv O(\sigma,\mu,A,I,o)
 $$
 $$
 \mu' \equiv \mu \text{ except:} \\
-\mu'_{gas} \equiv \mu_{gas} - C_{gasCostFunction}(\sigma,\mu,A,I) \\
-\mu'_{outputFromNormalHalting} \equiv o
+\mu'_{gas} \equiv \mu_{gas} - C_{gasCostFunction}(\sigma,\mu,A,I) 
 $$
 1. If the conditions for Exceptional Halting are met, return a tuple consisting of an empty state, the machine state, accrued sub state, environment, and an empty output.
 2. If the current Operation is $REVERT$, return a tuple consisting of an empty state, the machine state after deducting gas, accrued sub state, environment, and the machine output.
