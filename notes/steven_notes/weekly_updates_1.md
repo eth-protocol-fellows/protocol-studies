@@ -26,23 +26,23 @@ The primary resource I utilized this week was the [Eth2 Book on Consensus Prelim
 
 A particularly helpful resource was the blog [Engine API: A Visual Guide](https://hackmd.io/@danielrachi/engine_api#Block-Building). I explore the Prysm codebase with this blog and below are some annotated insights into the source code:
 
-- **prycm client initialization flow:  prysm/cmd/beacon-chain/main.go**
+- **prysm client initialization flow:  prysm/cmd/beacon-chain/main.go**
     1. app.New()  // cli application/instance
     2. parseFlags
-    3. app.before(ctx)
-    4. app.Action(ctx)
+    3. `app.before(ctx)`
+    4. `app.Action(ctx)`
         - node.New() // register every required services
-        - startNode(ctx, cancel)
+        - `startNode(ctx, cancel)`
             - beacon, err := node.New(...) // beacon node handles the lifecycle of entire system
             - beacon.Start()
                 - beacon.services.StartAll() // initialized each service in order of registration
                     - p2p
-                    - initialsync
+                    - initialSync
                     - backfill
                     - attestations
                     - blockchain
                     - ...
-    5. app.After(ctx)
+    5. `app.After(ctx)`
 
 - **engine api interface: /prysm/beacon-chain/execution/engine_client.go**
 ```
@@ -58,8 +58,8 @@ type EngineCaller interface {
 ```
 
 - **validator lifetime**
-    1. receive block from other validators: **/prysm/beacon-chain/blockcain/receive_block.go**
-        1. extract excution payload
+    1. receive block from other validators: **/prysm/beacon-chain/blockchain/receive_block.go**
+        1. extract execution payload
         2. **s.validateExecutionOnBlock**: call engine_newPayload
         3. **s.postBlockProcess**: call engine_engine_forkchoiceUpdated
     2. propose block: **/prysm/beacon-chain/rpc/prysm/v1alpha1/validator/proposer.go**
@@ -71,21 +71,21 @@ type EngineCaller interface {
 **RoadMap**
 For reference: [Ethereum Roadmap](https://ethereum.org/en/roadmap/)
 
-The roadmap aims at bringing four benifits for users:
+The roadmap aims at bringing four benefits for users:
 - Cheaper transactions(Done partially)
     - Proto-Danksharding (Done recently in EIP-4844)
     - Danksharding
-    - Dencentralizing rollups
+    - Decentralizing rollups
 - Extra security (need to finalize a specification and start building prototypes)
     - Single slot finality 
     - DVT 
-    - Proposer-builder sepration 
+    - Proposer-builder separation 
     - Secret leader election
 - Better user experience
     - Account abstraction(EIP-4337)
     - Nodes for everyone
         - Verkle tree
-        - Statelessness(weak statelessness preferred but rely on Verkle tree and Proposer-builder sepration)
+        - Statelessness(weak statelessness preferred but rely on Verkle tree and Proposer-builder separation)
         - Data expiry(portal network is an option)
 - Future proofing (still in the research phase)
     - Quantum resistance
