@@ -30,8 +30,15 @@ jobs:
         run: |
           echo "Checking for typos..."
           for file in $(find . -name "*.md" ); do
-            output="$(aspell --lang=en_US --mode=markdown --home-dir=. --personal=wordlist.txt --ignore-case=true list <$file | sed 's/^/    1. /')"
+            output="$(aspell --lang=en_US --mode=markdown --home-dir=. --personal=wordlist.txt --ignore-case=true --camel-case list <$file)"
+            echo "$output"
+            # Exit if aspell has errors
+            if [ $? -ne 0 ]; then
+              exit 1
+            fi
             if [[ -n "$output" ]]; then
+              # Format output.
+              output=$(echo "$output" | sed 's/^/    1. /')
               TYPOS+="- 📄 $file:"
               TYPOS+=$'\n'
               TYPOS+="$output"
@@ -62,7 +69,11 @@ jobs:
             ## ℹ️ Here's how to fix them:
             - **Fix typos:** Open the relevant files and fix any identified typos.
             - **Update wordlist:** If a flagged word is actually a project-specific term add it to \`wordlist.txt\` in the project root.
-                Each word should be listed on a separate line and must not have any spaces or special characters before or after it. [Learn more.](http://aspell.net/man-html/Format-of-the-Personal-and-Replacement-Dictionaries.html)
+                Each word should be listed on a separate line. [Learn more.](http://aspell.net/man-html/Format-of-the-Personal-and-Replacement-Dictionaries.html)
+            - **🚧 Remember:**
+              - When adding new words it MUST NOT have any spaces or special characters within or around it.
+              - \`wordlist\` is NOT case sensitive.
+              - Use backticks to quote code variables so as to not bloat the \`wordlist\`.
             `;
 
             github.issues.createComment({

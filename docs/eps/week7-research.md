@@ -20,7 +20,7 @@ Additionally, you can read and get ready by studying the following resources:
 - MPT and the Verge
 - Design and cryptography
 - Transitioning the state tree to verkle 
-- Current state and challanges 
+- Current state and challenges 
 
 ## Additional reading and exercises 
 
