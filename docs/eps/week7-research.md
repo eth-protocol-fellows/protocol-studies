@@ -22,7 +22,7 @@ Additionally, you can read and get ready by studying the following resources:
 - Data structures
 - Gas pricing 
 - Transitioning the state tree to verkle 
-- Current state and challanges
+- Current state and challenges 
 - Questions from audience
 
 ## Additional reading and exercises 
