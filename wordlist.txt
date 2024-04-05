@@ -326,6 +326,7 @@ StreamEth
 systemd
 Takenobu
 Tani
+Teku
 testnet
 Tetris
 textnormal
