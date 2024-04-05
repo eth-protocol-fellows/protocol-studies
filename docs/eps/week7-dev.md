@@ -4,7 +4,6 @@ Week 7 development track is an insight into Ethereum execution layer client code
 
 Watch the presentation recording by [Dragan](https://twitter.com/rakitadragan) on StreamEth or Youtube. Slides are [available here](https://github.com/eth-protocol-fellows/protocol-studies/blob/main/docs/eps/presentations/week7-dev.pdf). 
 
-
 <iframe width="560" height="315" src="https://www.youtube.com/embed/ibcsc5cv-vc?si=mTR7ReFUZo3vFtJD" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ## Pre-reading
