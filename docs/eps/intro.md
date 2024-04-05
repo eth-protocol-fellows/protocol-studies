@@ -50,7 +50,7 @@ The second part of the program offers two distinct tracks focused on development
 
 Talks and calls are announced week in advance based on the schedule above. Recordings of all talks can be found on [Youtube](https://www.youtube.com/@ethprotocolfellows) or [StreamEth](https://streameth.org/archive?organization=ethereum_protocol_fellowship) archive. 
 
-Apart of these, there are less regular, ad-hoc hangout calls for informal chats and getting to know each other. Join the Discord group to get notified about all the events. 
+Apart from weekly lectures, there are less regular, ad-hoc hangout calls for informal chats and calls for wiki contributors working the content. Join the Discord group to get notified about all of these events. 
 
 ## Participate
 
@@ -67,7 +67,7 @@ While this program is designed to act as a precursor to the Ethereum Protocol Fe
 - [Discord server](https://discord.gg/addwpQbhpq)
 - [Weekly talks on StreamEth](https://streameth.org/65cf97e702e803dbd57d823f/epf_study_group)
 - [Youtube](https://www.youtube.com/@ethprotocolfellows)
-- [Sessions calendar](https://calendar.google.com/calendar/u/0?cid=ZXBmc3R1ZHlncm91cEBnbWFpbC5jb20) / [ICS format](https://calendar.google.com/calendar/ical/epfstudygroup%40gmail.com/public/basic.ics)
+- [Sessions calendar](https://calendar.google.com/calendar/u/0?cid=ZXBmc3R1ZHlncm91cEBnbWFpbC5jb20) 
 - [EPF mailing list](https://groups.google.com/a/ethereum.org/g/protocol-fellowship-group)
 
 ## Calls troubleshooting
