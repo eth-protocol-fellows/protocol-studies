@@ -12,9 +12,9 @@ Before starting with the week 8 development content, make yourself familiar with
 
 Paul will dive into Teku, consensus client implementation in Java. You should have at least basic knowledge of the language syntax. 
 
-Consensus-specs is executable, and a passing knowledge of python may be beneficial, but it's a fairly easy language to reason about at the level the specs are written.
+[Consensus-specs](https://github.com/ethereum/consensus-specs/) is executable, and a passing knowledge of python may be beneficial, but it's a fairly easy language to reason about at the level the specs are written.
 
-Additionally, you can read and get ready by studying the following resources:
+Additionally, you can get ready by studying the following resources:
 
 - [Post-Merge Ethereum Client Architecture by Adrian Sutton](https://www.youtube.com/watch?v=6d4pkhL37Ao)
 - [Teku Architecture, 2020](https://www.youtube.com/watch?v=1PHZHpVPLk4)
@@ -23,8 +23,9 @@ Additionally, you can read and get ready by studying the following resources:
 ## Outline
 
 - Teku CL client
-- Brief introduction into our rest api's
-- a look at EIP -> spec -> code
+- Brief introduction into our rest api's, declarative framework
+- A look at development process EIP -> spec -> code
+    - Examples of EIP-7251 (maxEB)
 
 ## Additional reading and exercises 
 
