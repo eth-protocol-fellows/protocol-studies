@@ -29,6 +29,9 @@ jobs:
         id: find_typos
         run: |
           echo "Checking for typos..."
+          # https://unix.stackexchange.com/a/9500
+          IFS=$'\n'
+          set -f
           for file in $(find . -name "*.md" ); do
             output="$(aspell --lang=en_US --mode=markdown --home-dir=. --personal=wordlist.txt --ignore-case=true --camel-case list <$file)"
             echo "$output"
@@ -76,7 +79,7 @@ jobs:
               - Use backticks to quote code variables so as to not bloat the \`wordlist\`.
             `;
 
-            github.issues.createComment({
+            github.rest.issues.createComment({
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
