@@ -958,9 +958,62 @@ $$
 |----------|--------------|------|--------|------------|------|-----|
 | X        |   starts from [try](https://github.com/ethereum/execution-specs/blob/804a529b4b493a61e586329b440abdaaddef9034/src/ethereum/cancun/vm/interpreter.py#L289) in execute_code          | [interpreter main loop]( https://github.com/ethereum/go-ethereum/blob/7bb3fb1481acbffd91afe19f802c29b1ae6ea60c/core/vm/interpreter.go#L215)     |      |        |            |      |
 
-#### Exception Halting Z
 
 #### Normal Halting H
+
+The $H_{normalHaltingFunction}$ defines the halting behavior of the EVM under normal circumstances:
+
+$$
+H_{normalHaltingFunction}(\mu, Environment_I) \equiv 
+$$
+$$
+\begin{cases}
+H_{RETURN}(\mu) & \text{if } \text{currentOperation} \in \{ \text{RETURN}, \text{REVERT} \} \\ 
+() & \text{if } \text{currentOperation} \in \{ \text{STOP}, \text{SELFDESTRUCT} \} \\
+\empty & \text{otherwise}
+\end{cases}
+$$
+
+Where:
+- $H_{RETURN}(\mu) \equiv \mu'$
+
+- $\Delta_{expansion}$ is calculated as:
+  - $\Delta_{expansion} \equiv 32 \times M_{memoryExpansionForRangeFunction}(length(\mu_{memoryContents}), startPos, memorySize)$
+  - $\Delta_{expansion} \in \mathbb{N}$
+
+- $\mu'$ is defined as:
+  - $\mu' \equiv \mu$ except:
+    - $\mu'_{memoryContents} \equiv \mu_{memoryContents} + [0_{\text{word}_{256\text{bit}}} ... 0_{\text{word}_{256\text{bit}}}]_{\text{length}=\Delta_{expansion}}$
+    - $\mu'_{output} \equiv \mu'_{memoryContents}[startPos : startPos + memorySize]$
+    - $\mu'_{gas} \equiv \mu_{gas} - \text{memoryExpansionCost}$
+    - $\mu'_{running} \equiv false$
+
+Where:
+- $startPos \equiv  \mu_{stackContents}[0]$
+- $memorySize \equiv  \mu_{stackContents}[1]$
+
+The function $M_{memoryExpansionForRangeFunction}(s,f,l)$ determines the memory expansion required to accommodate the range specified:
+
+$$
+M_{memoryExpansionForRangeFunction}(s,f,l) \equiv
+$$
+$$
+\begin{cases}
+S & \text{if } l = 0 \\
+\text{max}(s, \lceil (f + l) / 32 \rceil) & \text{otherwise}
+\end{cases}
+$$
+
+In essence, the $H_{normalHaltingFunction}$ first sets the start index and length of the output based on the top two stack items. If memory expansion is needed to accommodate the output, it expands the memory accordingly, incurring memory expansion costs if necessary. Finally, it sets the EVM's output to the specified memory range.
+
+
+| function | EELS(cancun) | Geth | Reth | Erigon | Nethermind | Besu |
+|----------|--------------|------|--------|------------|------|-----|
+|  $H_{normalHaltingFunction}$ | [RETURN](https://github.com/ethereum/execution-specs/blob/9c24cd78e49ce6cb9637d1dabb679a5099a58169/src/ethereum/cancun/vm/instructions/system.py#L235), [REVERT](https://github.com/ethereum/execution-specs/blob/9c24cd78e49ce6cb9637d1dabb679a5099a58169/src/ethereum/cancun/vm/instructions/system.py#L662) | |
+
+#### Exception Halting Z
+
+
 
 ## $T$ Execution stage 4 : Provisional State  $\sigma_p$
 TODO
