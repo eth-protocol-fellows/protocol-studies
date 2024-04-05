@@ -10,7 +10,6 @@ API
 APIs
 ary
 ASE
-assignees
 Assche
 Assertoor
 assignees
@@ -251,6 +250,7 @@ onchain
 Oorschot
 OpenRPC
 OpenZeppelin
+OQS
 OSI
 OSI's
 Parametrizing
@@ -266,6 +266,7 @@ Playdate
 pmod
 POC
 POS
+PQCA
 pre
 precompile
 precompiled
@@ -334,6 +335,7 @@ SSZ
 stakers
 Stallman
 StateDB
+stateful
 stateRoot
 stf
 StreamEth
@@ -378,6 +380,7 @@ WebRTC
 Whitepaper
 WIP
 WSS
+XMSS
 XORed
 xy
 Yellowpaper
