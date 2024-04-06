@@ -406,9 +406,6 @@ PEPC, a conceptual extension and generalization of PBS, introduces a more flexib
 
 The introduction of Protocol-Enforced Proposer Commitments (PEPC) into Ethereum's ecosystem carries both promising benefits and notable disadvantages, reflecting the complex balance between innovation, security, scalability, and usability. Here's a detailed look at these aspects:
 
-
-### Benefits of PEPC
-
 **Enhanced Security and Trustlessness:**
 
 PEPC's primary advantage lies in its ability to enforce agreements between proposers and builders within the Ethereum protocol itself, minimizing trust assumptions. This internalization of commitments enhances security by making it harder for external parties to manipulate transaction inclusion or exploit the proposer-builder relationship.
