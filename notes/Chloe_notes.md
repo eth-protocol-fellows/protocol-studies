@@ -1,4 +1,4 @@
-Guest hangout session and lots of interesting topics were discussion with bunch of links. So I briefly summerized the link mentioned in the chat and shared here.
+Guest hangout session and lots of interesting topics were discussion with bunch of links. So I briefly summarized the link mentioned in the chat and shared here.
 
 
 Great resource on Ethereum ecosystem in general
@@ -8,7 +8,7 @@ Great resource on Ethereum ecosystem in general
 - https://ethresear.ch/
 - https://ethereum-magicians.org/
 
-EthR&D Discord Guidebook
+Eth R&D Discord Guidebook
 
 - https://github.com/tvanepps/EthereumDiscordGuidebook
 
@@ -20,7 +20,7 @@ Blog on how to run an Ethereum node
 
 - https://nownodes.io/blog/how-to-run-an-ethereum-node-a-comprehensive-guide/
 
-Ethereum on ARM recommended HW to run a node
+Ethereum on ARM: Recommended hardware to run a node
 
 - https://ethereum-on-arm-documentation.readthedocs.io/en/latest/quick-guide/recommended-hardware.html
 

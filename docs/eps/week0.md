@@ -26,7 +26,7 @@ Before the program, you should be familiar with some general concepts from Ether
     - From a user perspective
     - As a dapp developer
 
-These are just general suggestions of domain knowledge you will need. More introductory learning resources can be found in [week 1](week1.md).
+These are just general suggestions of domain knowledge you will need. More introductory learning resources can be found in [week 1](/eps/week1.md).
 
 ### Helpful resources to get you started
 

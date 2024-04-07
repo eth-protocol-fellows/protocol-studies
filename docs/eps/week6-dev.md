@@ -27,7 +27,7 @@ Additionally, you can read and get ready by studying the following resources:
 ## Additional reading and exercises 
 
 - Following instructions from Hsiao-Wei's talk, write and run your own pyspec program
-- As an excercise for EL specs, follow Sam's demo on adding an opcode and add your own
+- As an exercise for EL specs, follow Sam's demo on adding an opcode and add your own
 - https://ethereum.org/en/developers/tutorials/yellow-paper-evm/
 - Vitalik Buterin’s Annotated spec: https://github.com/ethereum/annotated-spec
 - Ben Edgington’s Upgrading Ethereum Book: https://eth2book.info
