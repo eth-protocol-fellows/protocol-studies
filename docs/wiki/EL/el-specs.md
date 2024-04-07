@@ -6,18 +6,13 @@
 > - [Python Execution Layer specification](https://ethereum.github.io/execution-specs/)
 > - EIPs [Look at Readme of the repo](https://github.com/ethereum/execution-specs)
 
-
 The core of the Ethereum Execution Layer is tasked with executing three types of transactions: legacy, Type 1, and Type 2. These transactions are processed by the quasi-Turing complete Ethereum Virtual Machine (EVM), which allows for virtually any computation, bounded only by gas constraints. This capability positions the EVM as a decentralized world computer, enabling decentralized applications (DApps) to run and transactions to be securely recorded on an immutable ledger. Beyond transaction processing, the EL is instrumental in storing data structures within the State DB. This not only facilitates the observation of current and historical states but also supports the Consensus Layer in block creation and validation. In this analogy, the Execution Layer acts as the CPU, with the Consensus Layer serving as the hard drive. Additionally, the EL defines the parameters of Ethereum's economic model, laying the foundation for blockchain operations.
-
-
 
 Beyond its fundamental role, the Execution Layer client undertakes several critical responsibilities. These include synchronizing its blockchain copy, facilitating network communication through gossip protocols with other Execution Layer clients, minting a transaction pool, and fulfilling the Consensus Layer's requirements that drive its functionality. This multifaceted operation ensures the robustness and integrity of the Ethereum network.
 
 The client's architecture is grounded in a series of detailed specifications, each playing a unique role in its comprehensive functionality. This document aims to provide a concise overview of the core specification. For a deeper understanding of how all the specifications seamlessly work together within the Execution Layer Client, please consult the [Execution Layer Architecture](/wiki/EL/el-architecture.md).
 
-
 # Ethereum Execution Layer Specification (EELS)
-
 
 The Execution Layer, from the EELS perspective, focuses exclusively on executing the state transition function (STF). This role encompasses addressing two primary questions[¹]:
 
@@ -45,7 +40,6 @@ In the equation, each symbol represents a specific concept related to the blockc
 - $B$ symbolizes the **[current block](https://github.com/ethereum/execution-specs/blob/0f9e4345b60d36c23fffaa69f70cf9cdb975f4ba/src/ethereum/shanghai/fork_types.py#L217)** that is being sent to the execution layer for processing.
 
 Furthermore, it's crucial to understand that $\sigma$ should not be confused with the `State` class defined in the Python specification. Rather than being stored in a specific location, the system's state is dynamically derived through the application of the state collapse function. This highlights the conceptual separation between the mathematical model of blockchain state transitions and the practical implementation details within software specifications.
-
 
 <img src="images/el-architecture/state.png" width="800"/>
 
@@ -75,7 +69,6 @@ The specified procedure for the state transition function in the code documentat
 7. **Pruning Old Blocks**: Remove blocks that are older than the most recent 255 blocks from the blockchain.
 8. **Error Handling**: If any validation checks fail, raise an "Invalid Block" error. Otherwise, return None.
 
-
 Client Code :
 
 | function | EELS(cancun) | Geth | Reth | Erigon | Nethermind | Besu |
@@ -94,7 +87,6 @@ The Ethereum economic model, as outlined in [EIP-1559](https://eips.ethereum.org
 *    **Stabilizing Block Reward Issuance**: The issuance of block rewards contributes to the system's enhanced stability, providing a more predictable economic landscape for participants.
 *    **Predictable Base Fee Adjustments**: EIP-1559 introduces a mechanism for predictable base fee changes, a feature particularly beneficial for wallets. This predictability aids in accurately estimating transaction costs ahead of time, streamlining the transaction creation process.
 *    **Base Fee Burn and Priority Fee**: Under this model, miners are entitled to keep the priority fee as an incentive, while the base fee is burned, effectively removing it from circulation. This approach serves as a countermeasure to Ethereum's inflation, promoting a healthier economic environment by reducing the overall supply over time.
-
 
 The [validity](https://github.com/ethereum/execution-specs/blob/0f9e4345b60d36c23fffaa69f70cf9cdb975f4ba/src/ethereum/shanghai/fork.py#L269) of a block header, as specified in the Yellow Paper, employs a series of criteria to ensure each block adheres to Ethereum's protocol requirements. The parent block, denoted as $P(H)$, plays a crucial role in validating the current block header $H$ . The key conditions for validity include:
 
@@ -149,8 +141,6 @@ P(H)_{blobGasUsed} \equiv  P(H)_{H_{excessBlobGas}} + P(H)_{H_{blobGasUsed}} \\
 TargetBlobGasPerBlock =  393216
 $$
 
-
-
 *    **Gas Usage**: The gas used by a block   $H_{gasUsed}$ must not exceed the gas limit $H_{gasLimit'}$, ensuring transactions fit within the block's capacity (57a).
 *   **Gas Limit Constraints**: The gas limit of a block must remain within specified bounds relative to the parent block's gas limit ${P(H)_{H_{gasLimit'}}}$  , allowing for gradual changes rather than abrupt adjustments (57b, 57c).
 *   **Minimum Gas Limit**: A minimum gas limit of 5000 ensures a basic level of transaction processing capacity (57d).
@@ -187,6 +177,7 @@ $$
 % Equation (47)
 \rho \equiv 2 \tag{47}
 $$
+
 $$
 % Equation (48)
 \nu^* \equiv
@@ -195,6 +186,7 @@ $$
 \frac{P(H)_{H_{baseFeePerGas}} \times (P(H)_{H_{gasUsed}} - \tau)}{\tau} & \text{if } P(H)_{H_{gasUsed}} > \tau
 \end{cases} \tag{48}
 $$
+
 $$
 % Equation (49)
 \nu \equiv
@@ -203,11 +195,11 @@ $$
 \max\left(\left\lfloor \frac{\nu^*}{\xi} \right\rfloor, 1\right) & \text{if } P(H)_{H_{gasUsed}} > \tau
 \end{cases} \tag{49}
 $$
+
 $$
 % Equation (50)
 \xi \equiv 8 \tag{50}
 $$
-
 
 | Symbol    | What it represents      | value                   |   comments                      |
 |-----------|-------------------------|-------------------------|---------------------------------|
@@ -217,14 +209,12 @@ $$
 | $ \rho $  | Elasticity multiplier   |    2                                         | aids in adjusting the gas target to maintain network responsiveness, capacity and price predictability.|
 | $ \xi $   | Base fee max denominator|    8                                         | it controls the maximum rate of change in the base fee, ensuring gradual adjustments.|
 
-
 Furthermore the yellow paper has some crucial definitions on the types of these objects that will be used in reasoning about these equations :
 
 First it provides us with  unbounded block limits, i.e. These limits can be extended infinitely 
 $$
 H_{\text{gasUsed}} , H_{\text{gasLimit}}, H_{\text{baseFeePerGas}} \in \mathbb{N} \tag{41}
 $$
-
 
 Then it provides us with the types for the transaction parameter , These are bounded by a max value of 2^256 or approx 10^77, thats the max these numbers can go to
 
@@ -246,13 +236,9 @@ Consider the simplicity of incrementing: each natural number can be thought of a
 
 In contrast to the infinite divisibility of real numbers, the discrete nature of natural numbers within Ethereum's economic model ensures that operations remain within computable bounds. This distinction is crucial for maintaining network efficiency and security, avoiding the computational complexity and potential vulnerabilities associated with handling real numbers.
 
-
 **Transaction Parameters and Bounded Natural Numbers**
 
 Furthermore, Ethereum specifies transaction parameters, such as the maximum priority fee per gas  and maximum fee per gas , within a bounded subset of natural numbers $\mathbb{N}_{256}$. This bounding, capped at $2^{256}$ or approximately $10^{77}$, strikes a balance between allowing a vast range of values for transaction processing and ensuring that these values remain within secure, manageable limits.
-
-
-
 
 #### Dynamics of Gas Price Block to Block
 Let's delve into the dynamics of the gas price calculation function by exploring its impact across a spectrum of gas usage scenarios, ranging from the minimum possible (5,000 units) to the set gas limit.Our focus is to understand how this function performs within the scope of a single block.
@@ -260,7 +246,6 @@ Let's delve into the dynamics of the gas price calculation function by exploring
 For those interested in a hands-on approach, this analysis can be replicated in R (download R studio and follow along). The procedure outlined below is straightforward and broadly applicable, allowing for adaptation into Python using the actual execution specs.
 
 We aim to analyze the 'calculate base fee per gas' function, which is integral to understanding Ethereum's gas pricing mechanism. The following R code snippet illustrates the implementation of this function:
-
 
 <img src="images/el-architecture/gasused-basefee.png" width="800"/>
 
@@ -270,16 +255,11 @@ Observations from the plot:
 -    The maximum upward change in the base fee is approximately 12.5%, observed at the extreme right of the plot. This represents the maximum possible change when the base fee starts at a hundred.
 -    A precise hit on the gas target results in a 1% increase in the base fee. Exceeding the target slightly (e.g., between 15,000 and 17,000 units of gas used) still results in only a 1% increase, illustrating the function's designed elasticity around the target.
 
-
-
 #### Extended Simulation: Long-term Effects on Gas Limit and Fee
 
 Having visualized the immediate impact of the gas price calculation function over a range of gas usage scenarios, it's intriguing to consider its effect over an extended period. Specifically, how does this dynamic influence the Ethereum network over tens of thousands of blocks, especially under conditions of maximum demand where each block reaches its gas limit?
 
-
 The following R code simulates this scenario over 100,000 blocks, assuming a constant maximum demand, to project the evolution of the gas limit and base fee:
-
-
 
 <img src="images/el-architecture/gas-limit-max.png" width="800"/>
 
@@ -290,16 +270,11 @@ Observations from the simulation reveal several critical insights:
 *    Unbounded Gas Limit Growth: Unlike the base fee, the gas limit itself is not capped, allowing for continuous growth to accommodate increasing network demand.
 *    Market Dynamics and Equilibrium: Real-world demand increases, initially reflected in blocks exceeding their gas targets, lead to rising base fees. However, as the gas limit gradually increases, the gas target (half the gas limit) also rises, eventually stabilizing demand against the higher base fee, reaching a new equilibrium.
 
-
 With a more nuanced understanding of Ethereum's economic model now in hand, we aim to future-proof our analysis by examining the model's underpinnings at a more granular level. Specifically, we focus on the effects of altering the constants central to the model, notably the elasticity multiplier ($\rho$) and the base fee max change denominator ($\xi$). These constants are not expected to change within a fork but can be re-specified in future protocol upgrades:
-
 
 let's start with $\xi$ :
 
-
-
 <img src="images/el-architecture/xi.png" width="800"/>
-
 
 This is a snapshot between blocks, like our first plot, it represents smallest slice of the potential of the  economic model additionally parameterized by $\xi$ across protocol upgrades
 
@@ -310,24 +285,19 @@ Impact of $\xi$ on base fee:
 -    Step Width Variability: Increasing $\xi$ results in broader step widths, indicating more gradual fee adjustments. Conversely, decreasing $\xi$ leads to narrower steps and more volatile fee changes.
 -    Linear Trend within Target Range: The central portion of the curve, particularly highlighted by the light green line for the current $\xi$ value, showcases a mostly linear trend in fee adjustments as transactions approach or slightly exceed the gas target.
 
-
 Next, we turn our attention to the elasticity multiplier ($\rho$), another pivotal constant in Ethereum's economic model that directly influences the flexibility and responsiveness of gas limit adjustments. To comprehensively understand its impact, we explore a range of values for $\rho$ from 1 to 6 in conjunction with variations in the base fee max change denominator ($\xi$).
-
 
 <img src="images/el-architecture/rho-xi.png" width="800"/>
 
 Impact of $\rho$ and $\xi$ on Base Fee :
 
-
 -    Moment-to-Moment Analysis: Similar to our initial observations, this plot offers a granular view into how adjustments in $\rho$ and $\xi$ shape the economic model's behavior on a per-block basis, especially in the context of protocol upgrades.
 -    Distinct Influence of $\rho$: Each subplot represents the nuanced effects of varying $\rho$ values. As the elasticity multiplier, $\rho$ notably shifts the inflection point in the base fee adjustment curve, highlighting its critical role in tuning the network's responsiveness to transaction volume fluctuations.
 -    Interplay Between $\rho$ and $\xi$: The elasticity multiplier ($\rho$) not only moves the inflection point but also modulates the sensitivity of adjustments attributable to changes in the base fee max change denominator ($\xi$). This interaction underscores the delicate balance Ethereum maintains to ensure network efficiency and stability amidst varying demands.
 
-
 <img src="images/el-architecture/gas-header.png" width="800"/>
 
 TODO Blob fee charts
-
 
 Client Code :
 
@@ -351,9 +321,6 @@ Client Code :
 | $$ H_{blobGasUsed} \leq  MaxBlobGasPerBlock_{=786432}  $$  |       | |      |        |            |      |
 | $$ H_{blobGasUsed} \% GasPerBlob_{=2^{17}} = 0 $$  |       | |      |        |            |      |
 | $$ H_{excessBlobGas} = CalcExcessBlobGas(P(H)_H) $$  |  [ensure ](https://github.com/ethereum/execution-specs/blob/9fc7925c80ff2f3949e1cc340a4a0d36fcd4161c/src/ethereum/cancun/fork.py#L187)     | |      |        |            |      |
-
-
-
 
 # Block Execution Process
 
@@ -418,17 +385,11 @@ $$
 | $I_{excessBlobGas}$     | Calculated from the parent block, it represents surplus gas allocated for blob transactions. |
 | $I_{blobVersionedHashes}$ |  |
 
-
-
 | | EELS   | Geth | Reth | Erigon | Nethermind | Besu |
 |----------|------|--|------|--------|------------|------|
 | instantiate Env | [env](https://github.com/ethereum/execution-specs/blob/804a529b4b493a61e586329b440abdaaddef9034/src/ethereum/cancun/fork.py#L578)  | Process ->  [NewEVMBlockContext](https://github.com/ethereum/go-ethereum/blob/a3829178af6cec64d6def9131b9340a3328cc4fc/core/evm.go#L42)  | [execute_inner calls init_env](https://github.com/paradigmxyz/reth/blob/bfadc26b37c24128c14323c7f99078a0c2dd965a/crates/revm/src/processor.rs#L295) -> [BlockEnv](https://github.com/bluealloy/revm/blob/57825ff8c6b3ff82796171c3965c45004c1acb1a/crates/primitives/src/env.rs#L395)   | [BLockContext](https://github.com/ledgerwatch/erigon/blob/1d04dc52b7ad90caa472833b13c77d1c0d447de0/core/state_processor.go#L115)             |           |    |     |
 
-
-
-
 # Gas Accounting
-
 
 ## Intrinsic Gas Calculation
 
@@ -477,7 +438,6 @@ $$+$$
 $$ \sum_{j=0}^{ length(T_{accessList}) - 1} \left( G_{\text{accesslistaddress}} + length(T_{accessList}[j]_s) *  G_{\text{accessliststorage}} \right)
 $$
 
-
 ### Intrinsic Gas Components:
 
 | Component | Description |
@@ -488,7 +448,6 @@ $$
 | $T_{inputData}$ and $T_{initialisationCode}$ | Collectively, $T_{inputData}$ and $T_{initialisationCode}$ represent the CallData parameter of the transaction. If $T_{to} \neq 0_{Bytes}$, CALLDATA is treated as the input to the contract's entry point. The gas cost for processing CALLDATA is defined as 16 gas per non-zero byte and 4 gas per zero byte, impacting block size and potentially network delay due to increased processing. This gas cost model was based on a balance of block creation rate, chain growth rate, and network latency, initially optimized for Proof of Work systems. Adapting this model for Proof of Stake remains a research opportunity and area for future optimization. These parameters are defined as an unlimited size byte array, with the initialization cost set at 16 gas for each non-zero byte and 4 gas for each zero byte. More |
 | $G_{\text{txCreate}}$ | An additional 32000 gas is required for contract creation transactions. |
 | $G_{\text{accesslistaddress}}, G_{\text{accessliststorage}}$ | Additional gas costs for each address and storage key specified in the access list, facilitating optimized state access. |
-
 
 ### Client Code
 
@@ -509,7 +468,6 @@ priorityFee + H_{baseFeePerGas} , & \text{if} \space T_{type} = 2 \lor 3
 \end{aligned} \tag{62}
 $$
 
-
 $$f \equiv priorityFee \equiv 
 \begin{aligned}
 &\begin{cases} 
@@ -523,7 +481,6 @@ $$
 |--|--|
 | effectiveGasPrice | The amount of wei the Transaction signer will pay per unit Gas consumed during the execution of the transaction |
 | priorityFee | The amount of wei the Transaction's beneficiary will recieve per unit Gas consumed during the execution of the tranasaction|
-
 
 ### Client Code 
 
@@ -548,7 +505,6 @@ factor_{minBlobBaseFee = 1} \times e^{numerator_{excessBlobGas} / denominator_{b
 $$
 Where $N$ represents the largest integer for which the term remains positive, indicating the series' summation continues until adding another term would result in zero. This process effectively applies a Taylor series approximation to calculate exponential growth, particularly for modeling the blob gas price's response to excess blob gas.
 
-
 * The formula returns 1 for any input under the current maximum blob gas per block (set at 786432) , if excess gas has not accumulated. 
 * However it starts increasing when the target is breached over blocks , which causes the Excess Blob Gas Parameter to start accumulating , this triggers the Blob Gas Price to  exponentially increase
 * With the target set at approximately half of the maximum blob gas per block (393216), the function starts to show an increase to a value of 2 at ten times the target, after which it rises exponentially.### Blob Gas Price Dynamics
@@ -557,17 +513,12 @@ Where $N$ represents the largest integer for which the term remains positive, in
 
 The dynamics of the Blob Gas Price are modeled in the following scenarios, starting from zero and increasing the gas used per block by a constant factor of 1000 from one block to the next.
 
-
 * Figure E: Illustrates the relationship between blob gas and its price. Code to all the figures is in the appendix
 
 <img src="images/el-architecture/blob-gas-and-price.png" width="800"/>
 
-
-
-
 * Figure F: Normalizes the data to highlight the price dynamics relative to gas usage. 
 <img src="images/el-architecture/blob-gas-and-price-norm.png" width="800"/>
-
 
 * The blob gas price remains at 1 when the parent block's gas usage is below the target (~400K, corresponding to approximately 400KB or 3 blobs per block). A maximum of about 800K maps to roughly 800KB or 6 blobs per block.
 * Surpassing the target does not immediately affect the gas price, but excess gas begins to accumulate.
@@ -578,7 +529,6 @@ The dynamics of the Blob Gas Price are modeled in the following scenarios, start
 
 ## Blob Gas Fee
 $$ blobGasFee \equiv totalBlobGas \times blobGasPrice $$
-
 
 ##  Max  Gas Fee
 $$
@@ -591,11 +541,11 @@ T_{gasLimit} \times  T_{maxFeePerGas}   , & \text{if} \space T_{type} = 2 \\
 \end{cases}\\
 \end{aligned} 
 $$
+
 $$
 maxBlobFee \equiv 
 T_{maxFeePerBlobGas} \times totalBlobGas 
 $$
-
 
 ## Up-Front Cost
 $$
@@ -614,10 +564,8 @@ $$ \Upsilon(\sigma_t, T_{index}) \tag{4}$$
 
 Upon invocation of $\Upsilon$, the system first verifies the intrinsic validity of the transaction. Once validated, the Ethereum Virtual Machine (EVM) initiates state modifications based on the transaction's directives.
 
-
 ## Transaction  Intrinsic Validity
 The intrinsic validity of a transaction is determined through a series of checks:
-
 
 $$
 \begin{align}
@@ -678,7 +626,6 @@ $$ \sigma_0[Sender]_{nonce} \equiv \sigma[Sender]_{nonce} + 1 $$
 
 This checkpoint state represents the modified state after initial validations and deductions, setting the groundwork for subsequent execution steps.
 
-
 ###  Substate initialisation
 
 The initialization of the substate sets the groundwork for transaction execution, defined as follows:
@@ -704,7 +651,6 @@ $$ A^{0}_{accesedAccountAddresses} =  \{ H_{coinBase},$$
 $$ { \bigcup_{Entry \in T_{accessList}} \{ Entry_{address}  \}}$$ 
 $$ A^{0}_{accesedStorageKeys}= $$
 $$ { \bigcup_{Entry \in T_{accessList}} \{ \forall i < length(Entry_{storageKeys}), i \in \mathbb{N} : (Entry_{address}, [i]Entry_{storageKeys})    \}}$$ 
-
 
 `A_{accessedAccountAddresses}` and `A_{accessedStorageKeys}` leverage the mechanism introduced by [Ethereum Access Lists (EIP-2930)](https://eips.ethereum.org/EIPS/eip-2930), detailed further in [this EIP-2930 overview](https://www.rareskills.io/post/eip-2930-optional-access-list-ethereum). This approach creates a distinction in gas costing between addresses and storage keys declared within the transaction's access list (incurring a "warm" cost) and those not included (incurring a "cold" cost). For comprehensive details on the gas costs associated with cold and warm accesses, please refer to [EIP-2929: Gas cost increases for state access opcodes](https://eips.ethereum.org/EIPS/eip-2929), which adjusts the costs to account for state access operations within the EVM.
 
@@ -749,7 +695,6 @@ $$
 \Lambda(state_{\sigma}, AccruedSubState_{A} , sender_s , originalTransactor_o ,\\  availableGas_g , effectiveGasPrice_p , \\ endowment_v, []evmInitCodeByteArray_i , stackDepth_e , \\  saltForNewAccountAddress_{\zeta}, stateModificationPermission_w)
 $$
 
-
 | $\Lambda$ Call Parameter               | Mapping                    | Notes |
 |---------------------------------------|----------------------------|-------|
 | $state_{\sigma}$                      | $I_{state}$                | The current state before contract creation begins. |
@@ -766,12 +711,10 @@ $$
 
 Note: $originalTransactor_o$ can differ from $sender_s$ when the message is not directly triggered by a transaction but rather comes from the execution of EVM code, indicating the versatility of message origination within the EVM execution context.
 
-
 ### Message Type:  Call
 TODO
 
 ## $T$ Execution Stage 3 :  Main Execution ($\Xi)  $
-
 
 ### Machine State $\mu$ 
 
@@ -786,7 +729,6 @@ $$ \mu \equiv (\mu_{gasAvailable}, \mu_{programCounter},\\ \mu_{memoryContents},
 |$$\mu_{activeWordsInMemory}$$ | $$I_{[byteCode]}$$ | Machine code to be executed |
 |$$ \mu_{stackContents}$$ | | Stack item : word(256bit), Max Items = 1024 |
 |$$ \mu_{outputFromNormalHalting}$$ | () |  represents the output defined by the normal Halting function |
-
 
 ### Current Operation
 The `currentOperation` is determined based on the position of the `programCounter` within the bytecode array:
@@ -807,12 +749,14 @@ This representation implies a left-sided addition and removal in the stack, akin
 $$ 
 Add \Rightarrow
 $$
+
 $$
 x =  Pop(\mu_{stackContents}) \\
 y =  Pop(\mu_{stackContents_{itemsRemoved=1}}) \\
 result = x + y  \\
 Push(\mu_{stackContents_{itemsRemoved=2}}, result)
 $$
+
 $$
 \Rightarrow \mu_{stackContents^{itemsAdded_{\alpha}=1}_{itemsRemoved_{\delta}=2}} 
 $$
@@ -839,7 +783,6 @@ O((\sigma, \mu, A, I)) \equiv (\sigma', \mu', A', I) \quad (159)\\
 $$
 
 Where $O$ represents the Execution Cycle, encapsulating the outcome of a single cycle within the state machine. This cycle can modify all components of $\mu$, with explicit specifications for changes to $\mu_{gas}$ and $\mu_{programCounter}$:
-
 
 | function | EELS(cancun) | Geth | Reth | Erigon | Nethermind | Besu |
 |----------|--------------|------|--------|------------|------|-----|
@@ -875,7 +818,6 @@ $$
 
 The NextValidInstruction function determines that if the current operation is within the range of all PUSH operations, we increment the program counter to the byte immediately following the current operation byte, accounting for the data associated with the operation. This data can range from 1 to 32 bytes, depending on the specific PUSH operation. If the operation is not a PUSH operation, we simply increment the program counter by 1, advancing to the next byte of the code. This process highlights that PUSH instructions are responsible for loading data onto the stack from the code.
 
-
 When the program counter executes a jump operation, it must target a valid jump destination. The $ValidJumpDestinations_{D}$ function specifies the set of all valid jump destinations.
 
 $$
@@ -893,14 +835,11 @@ $$
 
 This indicates that we include the index in the set if the bytecode at that index corresponds to a JUMPDEST operation. We continue adding these indices by recursively calling the $ValidValidJumpDestinations_{D_J}(byteCode, index)$ function with the index determined by the $NextValidInstruction$ function.
 
-
 Client Code :
 
 | function | EELS(cancun) | Geth | Reth | Erigon | Nethermind | Besu |
 |----------|------|------|--------|------------|------|-----|
 | $ValidJumpDestinations_{D}(byteCode)$ |  [get_valid_jump_destinations](https://github.com/ethereum/execution-specs/blob/804a529b4b493a61e586329b440abdaaddef9034/src/ethereum/cancun/vm/runtime.py#L21)  | Geth has a [jumpTable](https://github.com/ethereum/go-ethereum/blob/7bb3fb1481acbffd91afe19f802c29b1ae6ea60c/core/vm/interpreter.go#L98) with all fork ops and [validJumpDest](https://github.com/ethereum/go-ethereum/blob/7bb3fb1481acbffd91afe19f802c29b1ae6ea60c/core/vm/contract.go#L84)   |      |        |            |      |
-
-
 
 #### Resultant Gas Consumption in a Single Execution Cycle
 
@@ -911,7 +850,6 @@ $$
 The gas cost function, while not overly complex, encompasses various cases for different operations. It is succinctly defined in Appendix H of the Yellow Paper. In essence, it calculates the total cost of the current cycle by adding the cost of the current operation to the difference between the cost of active words in memory before and after the cycle (memory expansion cost).
 
 Different clients handle gas costs differently. In PySpec, various types of cost processing are integrated into the operations, while in Geth, gas costs are handled before the operation executes. Moreover, Geth distinguishes between [dynamic](https://github.com/ethereum/go-ethereum/blob/7bb3fb1481acbffd91afe19f802c29b1ae6ea60c/core/vm/interpreter.go#L257) costs used for memory expansion  and [constant](https://github.com/ethereum/go-ethereum/blob/7bb3fb1481acbffd91afe19f802c29b1ae6ea60c/core/vm/interpreter.go#L224) gas  associated with the base cost of the operation. Both types of costs are deducted using the  [UseGas](https://github.com/ethereum/go-ethereum/blob/7bb3fb1481acbffd91afe19f802c29b1ae6ea60c/core/vm/contract.go#L161) function
-
 
 ### Program Execution $\Xi$ :
 $$(\sigma^{'}_{resultantState}, gas_{remaining}, A^{resultantAccruedSubState}, \omicron^{Output})$$ $$ \equiv \Xi(\sigma,gas,A^{accruedSubState}, Environment_I)$$
@@ -936,13 +874,16 @@ X(O(\sigma, \mu', AccruedSubState, Environment_I)) \\ \qquad \text{otherwise}
 &\\
 \end{cases}
 $$
+
 $$
 \text{Where}, \\
 \mu_{outputFromNormalHalting} \equiv o \equiv H_{normalHaltingFunction}(\mu,Environment_I) 
 $$
+
 $$
 O(\sigma,\mu,A,I).o \equiv O(\sigma,\mu,A,I,o)
 $$
+
 $$
 \mu' \equiv \mu \text{ except:} \\
 \mu'_{gas} \equiv \mu_{gas} - C_{gasCostFunction}(\sigma,\mu,A,I) 
@@ -953,11 +894,9 @@ $$
   - For instance, if the current operation is a system operation such as CALL, CALLCODE, [DELEGATECALL](https://github.com/ethereum/execution-specs/blob/9c24cd78e49ce6cb9637d1dabb679a5099a58169/src/ethereum/cancun/vm/instructions/system.py#L542), or STATICCALL, these calls invoke the [generic call function](https://github.com/ethereum/execution-specs/blob/9c24cd78e49ce6cb9637d1dabb679a5099a58169/src/ethereum/cancun/vm/instructions/system.py#L267), setting up a new message and a child EVM process. The output of this process is then [written back into the memory](https://github.com/ethereum/execution-specs/blob/9c24cd78e49ce6cb9637d1dabb679a5099a58169/src/ethereum/cancun/vm/instructions/system.py#L325) of the parent EVM process, effectively consuming the output in one iteration of $O$, which may be utilized in the next iteration.
 4. In all other scenarios, we simply continue  recursively calling the iterator function. In simpler terms, this means we proceed with the main interpreter loop
 
-
 | function | EELS(cancun) | Geth | Reth | Erigon | Nethermind | Besu |
 |----------|--------------|------|--------|------------|------|-----|
 | X        |   starts from [try](https://github.com/ethereum/execution-specs/blob/804a529b4b493a61e586329b440abdaaddef9034/src/ethereum/cancun/vm/interpreter.py#L289) in execute_code          | [interpreter main loop]( https://github.com/ethereum/go-ethereum/blob/7bb3fb1481acbffd91afe19f802c29b1ae6ea60c/core/vm/interpreter.go#L215)     |      |        |            |      |
-
 
 #### Normal Halting H
 
@@ -966,6 +905,7 @@ The $H_{normalHaltingFunction}$ defines the halting behavior of the EVM under no
 $$
 H_{normalHaltingFunction}(\mu, Environment_I) \equiv 
 $$
+
 $$
 \begin{cases}
 H_{RETURN}(\mu) & \text{if } \text{currentOperation} \in \{ \text{RETURN}, \text{REVERT} \} \\ 
@@ -997,6 +937,7 @@ The function $M_{memoryExpansionForRangeFunction}(s,f,l)$ determines the memory 
 $$
 M_{memoryExpansionForRangeFunction}(s,f,l) \equiv
 $$
+
 $$
 \begin{cases}
 S & \text{if } l = 0 \\
@@ -1006,14 +947,11 @@ $$
 
 In essence, the $H_{normalHaltingFunction}$ first sets the start index and length of the output based on the top two stack items. If memory expansion is needed to accommodate the output, it expands the memory accordingly, incurring memory expansion costs if necessary. Finally, it sets the EVM's output to the specified memory range.
 
-
 | function | EELS(cancun) | Geth | Reth | Erigon | Nethermind | Besu |
 |----------|--------------|------|--------|------------|------|-----|
 |  $H_{normalHaltingFunction}$ | [RETURN](https://github.com/ethereum/execution-specs/blob/9c24cd78e49ce6cb9637d1dabb679a5099a58169/src/ethereum/cancun/vm/instructions/system.py#L235), [REVERT](https://github.com/ethereum/execution-specs/blob/9c24cd78e49ce6cb9637d1dabb679a5099a58169/src/ethereum/cancun/vm/instructions/system.py#L662) | |
 
 #### Exception Halting Z
-
-
 
 ## $T$ Execution stage 4 : Provisional State  $\sigma_p$
 TODO
@@ -1090,7 +1028,6 @@ data$expected_base_fee <- mapply(calculate_base_fee_per_gas, parent_gas_limit, d
 ```
 
 That's all for  prep , now let's plot and observe  by doing a scatter plot which will reveal any shape this function produces over a range; given the constraints.
-
 
 ```R 
 fig <- plot_ly(data, x = ~parent_gas_used, y = ~expected_base_fee, type = 'scatter', mode = 'markers')  # scatter plot
@@ -1211,7 +1148,6 @@ seq_max_change_denom <- seq(2, 12, by = 2)
 parent_gas_limit <- 3 * 10^6  
 seq_parent_gas_used <- seq(5000, parent_gas_limit, by = 100)
 
-
 parent_base_fee_per_gas <- 100
 
 data <- expand.grid( parent_gas_used = seq_parent_gas_used, base_fee_max_change_denominator = seq_max_change_denom)
@@ -1239,7 +1175,6 @@ seq_max_change_denom <- seq(2, 12, by = 2)
 
 parent_gas_limit <- 3 * 10^6  
 seq_parent_gas_used <- seq(5000, parent_gas_limit, by = 500)
-
 
 parent_base_fee_per_gas <- 100
 
@@ -1275,8 +1210,6 @@ fake_exponential <- function(factor, numerator, denominator) {
     }
     output %/% denominator
 }
-
-
 
 # Blob Gas Target
 target_blob_gas_per_block <- 393216
@@ -1317,10 +1250,6 @@ data_blob_price$excess_blob_gas <- excess_blob_gas
 data_blob_price$blob_gas_price <- mapply(cancun_blob_gas_price,
                                          data_blob_price$excess_blob_gas)
 
-
-
-
-
 # Each row represents a block
 data_blob_price$BlockNumber <- seq_along(data_blob_price$parent_gas_used)
 
@@ -1344,7 +1273,6 @@ ggplot(data_long, aes(x = BlockNumber, y = Value)) +
                             BlockNumber == min(BlockNumber)),
             aes(label = "blobGasPrice = 1", y = 0),
             vjust = -1, hjust = -0.1, size = 3)
-
 
 ```
 ## Code F
