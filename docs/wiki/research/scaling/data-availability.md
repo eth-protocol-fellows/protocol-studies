@@ -2,7 +2,7 @@
 
 A core responsibility of any layer-1 blockchain is to guarantee _data availability_.
 
-Data availability refers to the availability of transactions in a block that is appended to the tip of the chain. During consensus, validators download the block to verify its availability. If the block contains any transactions that are withheld by a validator, the block is unavailable and will be rejected as invalid.
+Data availability refers to the availability of transactions in a block that is appended to the tip of the chain. During consensus, validators download the block to verify its availability. If the block contains any transactions that are withheld by a validator, the block is unavailable and will be rejected as invalid. A node needs to verify transactions and validate blocks to be able to operate trustlessly and build the state which requires historical and latest data.
 
 A “monolithic” blockchain like Ethereum solves the data availability problem by requiring full nodes to download each block (and reject it if part of the data is unavailable).
 
