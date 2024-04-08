@@ -2,11 +2,11 @@
 
 A core responsibility of any layer-1 blockchain is to guarantee _data availability_.
 
-Data availability refers to the availability of transactions in a block that is appended to the tip of the chain. During consensus, validators download the block to verify its availability. If the block contains any transactions that are withheld by a validator, the block is unavailable and will be rejected as invalid. A node needs to verify transactions and validate blocks to be able to operate trustlessly and build the state which requires historical and latest data.
+Data availability refers to the availability of block data, i.e. headers and bodies containing the transaction tree. During synchronization, nodes download each block from its peers to verify it and add to local database. If the recieved block contains any incorrect transactions or any block validity rules, the is rejected as invalid. A block validation during sync is necessary for the node to operate trustlessly and build the current state which requires both historical and latest data. 
 
-A “monolithic” blockchain like Ethereum solves the data availability problem by requiring full nodes to download each block (and reject it if part of the data is unavailable).
+Ethereum solves the data availability problem by requiring full nodes to download each block (and reject it if part of the data is unavailable). Each node can just request a specific block over p2p network from its peers and verify it locally. 
 
-Optimistic fraud-proof-based systems, like Optimism, require data availability for verification, and even validity-proof-based systems, like StarkNet or Aztec, require data availability to ensure liveness (e.g., to prove asset ownership for a rollup’s escape hatch or forced transaction inclusion mechanism). A transaction achieves finality when the L1 block including it has been finalized (it is approved by ⅔ of validators and cannot be reorganized), and the network has proof of the transaction’s validity [(unfinalized - _safe_)](https://info.etherscan.com/epoch-in-ethereum/).
+The data availability becomes a bottleneck for scalable systems like rollups which aim to proces a lot of data. Optimistic rollups require transaction data to be available for their fraud-proof mechanism to identify and prove the incorrect state transition. And even validity-proof-based systems require data availability to ensure liveness (e.g., to prove asset ownership for a rollup’s escape hatch or forced transaction inclusion mechanism).
 
 Thus, the data availability problem for rollups (and other off-chain scaling protocols) is proving to the base layer (L1) that data for recreating the L2 state is available without requiring L1 nodes to download blocks and store copies of the data.
 
@@ -16,7 +16,7 @@ Rollups on Ethereum are operated by a _sequencer_: a full node that accepts tran
 
 To enable Ethereum to monitor and enforce a rollup’s state transitions, a special “consensus” contract stores a state root—a cryptographic commitment to the rollup’s canonical state (similar to a block header on the L1 chain) that is generated after processing all transactions in a new batch.
 
-At intervals, the sequencers arranges transactions in a new batch, and publishes the batch to the L1 by calling the L1 contract that stores rollup batches and passing the compressed data as _calldata_ to the batch submission function.
+At intervals, the sequencers arranges transactions in a new batch, and publishes the batch to the L1 by calling the L1 contract that stores rollup batches and passing the compressed data as _calldata_ to the batch submission function. Effectively storing L2 data on the L1 to ensure the availability.  
 
 This was a significant cost overhead for L2s for which _blobs_ were introduced as an alternative. Compression techniques, such as removing redundancy, using bitmaps, exploiting common function signatures, employing scientific notation for large numbers, and utilizing contract storage for repetitive data, enabled the reduction of calldata size, leading to substantial gas savings.
 
