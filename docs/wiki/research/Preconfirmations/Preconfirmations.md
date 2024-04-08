@@ -8,11 +8,11 @@ Based preconfirmations (preconfs) represent a significant advancement in Ethereu
 
 ## [Construction of Preconf Promises](#construction-of-preconf-promises)
 
-Preconfirmation promises, or "preconfs," reply on two foundational on-chain infrastructure components:
+Preconfirmation promises, or "preconfs," rely on two foundational on-chain infrastructure components:
 
 - **Proposer Slashing:** Proposers can opt into additional slashing conditions to ensure reliability and accountability. This approach draws inspiration from EigenLayer's model, which employs restaking as a means of enforcing these slashing mechanisms.
 
-- **Proposer Forced Inclusions:** To ensure the seamless execution of transactions, proposers have the authority to mandate the inclusion of specific transactions on-chain. This capability is necessary in situations where the separation between proposers and builders (PBS) renders self-building impractical. The implementation of this mechanism typically involves the use of inclusion lists.
+- **Proposer Forced Inclusions:** To ensure the seamless execution of transactions, proposers have the authority to mandate the inclusion of specific transactions on-chain. This power is crucial in situations where the separation between proposers and builders (PBS) renders self-building uneconomical. The implementation of this mechanism typically involves the use of inclusion lists.
 
 
 When a L1 proposer decides to become a "preconfer," they are essentially agreeing to adhere to two distinct slashing conditions related to preconf promises. In return for their service, preconfers issue signed promises to users and are compensated with tips for successfully fulfilling these promises. The hierarchy among preconfers is determined based on their position in the slot order, with precedence given to those with earlier slot assignments.
@@ -121,7 +121,7 @@ The promise acquisition process in the context of Ethereum's sequencing and pre-
 
 - **Promise Generation:** If the preconfer decides to accept the request, they generate a signed preconf promise. This promise includes the preconfer's commitment to ensuring the transaction's inclusion and execution within their upcoming slot, adhering to the agreed conditions.
 
-- **Communication of Promise:** The preconf promise is then communicated back to the user, providing them with a guarantee of transaction execution. The communication method used is similar to that of the initial request, ensuring secure and verifiable delivery.
+- **Communication of Promise:** The preconf promise is then communicated back to the user, providing them with a guarantee of transaction execution. The communication method used is like that of the initial request, ensuring secure and verifiable delivery.
 
 **5. Payment of Preconf Tip**
 
