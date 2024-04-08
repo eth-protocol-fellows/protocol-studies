@@ -64,5 +64,84 @@ Each of these elements plays a crucial role in the functionality and efficiency 
 ## [Preconfs Acquisition Process Flow](#preconfs-acquisition-process-flow)
 
 
+*Figure: Preconfs Acquisition Process Flow*
+
+```mermaid
+sequenceDiagram
+    participant User as User
+    participant Preconfer as Preconfer
+    participant Blockchain as Ethereum
+
+    rect rgb(191, 223, 255)
+    User->>+Preconfer: Identify & send promise request
+    Note over User,Preconfer: User selects the next preconfer based on slot <br>position and sends a transaction promise request.
+    
+    Preconfer->>-User: Evaluate request
+    Note over User,Preconfer: Preconfer assesses the request, considering network <br>conditions, preconf tip, and MEV potential.
+    end
+    rect rgb(177,176,159)
+    Preconfer->>+User: Issue preconf promise
+    Note over User,Preconfer: If accepted, preconfer sends back a <br>signed preconf promise to the user.
+    end
+    rect rgb(191, 223, 255)
+    User->>Preconfer: Transfer preconf tip
+    Note over User,Preconfer: User transfers the agreed preconf tip <br>to the preconfer as compensation.
+    end
+    rect rgb(177,176,159)
+    Preconfer->>+Blockchain: Include & execute transaction
+    Note over Preconfer,Blockchain: In the assigned slot, preconfer includes the <br>transaction in their block proposal for execution.
+    
+    Blockchain->>-User: Verify transaction execution
+    Note over User,Blockchain: Once executed on-chain, both user and preconfer verify the fulfillment of the promise.
+    end
+```
+
+
+The promise acquisition process in the context of Ethereum's sequencing and pre-confirmation mechanism is a critical aspect, ensuring transactions receive a preconfirmation or "promise" from a proposer or sequencer. This process involves several steps, each integral to securing a promise that a transaction will be included and executed on-chain within a specified time frame. The above figure shows the preconf promise acquisition flow through a sequence of interactions. Below is a detailed explanation of the acquisition process flow:
+
+**1. User Identifies Next Preconfer**
+
+- **Starting Point:** A user or a smart contract initiates the process by identifying the next available preconfer (a proposer who has opted in to provide preconfirmation services) within the Ethereum network's proposer lookahead window.
+
+- **Selection Criteria:** The selection is based on the proposer's slot position in the proposer lookahead, where proposers have declared their capability and willingness to issue preconfirmations by posting collateral.
+
+**2. Promise Request Sent to Preconfer**
+
+- **Initiation:** The user sends a promise request to the identified preconfer. This request includes details of the transaction for which the preconfirmation is sought, along with any specific conditions or requirements.
+
+- **Communication Channel:** The request can be sent through various off-chain communication channels established by the preconfer, such as a dedicated API endpoint or a peer-to-peer messaging system.
+
+**3. Preconfer Evaluates the Request**
+
+- **Assessment:** Upon receiving the request, the preconfer evaluates it based on several factors, including the current network conditions, the preconf tip amount proposed by the user, and the overall risk of executing the transaction.
+
+- **Decision Making:** The preconfer decides whether to accept or reject the promise request. This decision may involve calculating the potential MEV and assessing whether the transaction aligns with the preconfer's criteria.
+
+**4. Issuance of Preconf Promise**
+
+- **Promise Generation:** If the preconfer decides to accept the request, they generate a signed preconf promise. This promise includes the preconfer's commitment to ensuring the transaction's inclusion and execution within their upcoming slot, adhering to the agreed conditions.
+
+- **Communication of Promise:** The preconf promise is then communicated back to the user, providing them with a guarantee of transaction execution. The communication method used is similar to that of the initial request, ensuring secure and verifiable delivery.
+
+**5. Payment of Preconf Tip**
+
+- **Tip Transfer:** Upon receipt of the preconf promise, the user transfers the agreed preconf tip to the preconfer. This tip serves as compensation for the service provided and incentivizes the preconfer to honor the commitment.
+
+- **Escrow Mechanisms:** In some implementations, the tip may be held in escrow until the promise is fulfilled, adding an extra layer of security for the user.
+
+**6. Inclusion and Execution of Transaction**
+
+- **On-Chain Fulfillment:** The preconfer includes the preconfirmed transaction in their proposed block during their assigned slot, executing it according to the terms outlined in the preconf promise.
+
+- **Verification of Fulfillment:** Once the transaction is included and executed on-chain, both the preconfer and the user can verify that the promise has been fulfilled, completing the process.
+
+
+**Additional Considerations:**
+
+- **Fallback Mechanisms:** In case of unexpected issues or if the first preconfer fails to include the transaction, users may have fallback options, such as requesting promises from multiple preconfers in parallel.
+
+- **Dispute Resolution:** The system may include mechanisms for resolving disputes in cases where there's disagreement about whether the promise was adequately fulfilled.
+
+
 ## References
 [^1]: https://ethresear.ch/t/based-preconfirmations/17353 
