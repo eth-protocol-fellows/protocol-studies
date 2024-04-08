@@ -2,11 +2,11 @@
 
 A core responsibility of any layer-1 blockchain is to guarantee _data availability_.
 
-Data availability refers to the availability of block data, i.e. headers and bodies containing the transaction tree. During synchronization, nodes download each block from its peers to verify it and add to local database. If the recieved block contains any incorrect transactions or any block validity rules, the is rejected as invalid. A block validation during sync is necessary for the node to operate trustlessly and build the current state which requires both historical and latest data. 
+Data availability refers to the availability of block data, i.e. headers and bodies containing the transaction tree. During synchronization, nodes download each block from its peers to verify it and add to local database. If the received block contains any incorrect transactions or any block validity rules, the is rejected as invalid. A block validation during sync is necessary for the node to operate trustlessly and build the current state which requires both historical and latest data. 
 
 Ethereum solves the data availability problem by requiring full nodes to download each block (and reject it if part of the data is unavailable). Each node can just request a specific block over p2p network from its peers and verify it locally. 
 
-The data availability becomes a bottleneck for scalable systems like rollups which aim to proces a lot of data. Optimistic rollups require transaction data to be available for their fraud-proof mechanism to identify and prove the incorrect state transition. And even validity-proof-based systems require data availability to ensure liveness (e.g., to prove asset ownership for a rollup’s escape hatch or forced transaction inclusion mechanism).
+The data availability becomes a bottleneck for scalable systems like rollups which aim to process a lot of data. Optimistic rollups require transaction data to be available for their fraud-proof mechanism to identify and prove the incorrect state transition. And even validity-proof-based systems require data availability to ensure liveness (e.g., to prove asset ownership for a rollup’s escape hatch or forced transaction inclusion mechanism).
 
 Thus, the data availability problem for rollups (and other off-chain scaling protocols) is proving to the base layer (L1) that data for recreating the L2 state is available without requiring L1 nodes to download blocks and store copies of the data.
 
@@ -24,7 +24,7 @@ This was a significant cost overhead for L2s for which _blobs_ were introduced a
 
 The purpose of sampling is to provide the node a probabilistic guarantee that data is available. Light nodes do require a connection to other (honest) nodes to make samples. This is also true for full nodes in all blockchains – they don’t conduct data availability sampling but they require a connection to at least one other node that will provide them with historical data over the p2p network.
 
-In DAS, each node only ends up downloaing a small portion of the data, but the sampling is done _client-side_, and within each blob rather than between blobs. Each node (including client nodes that are not participating in staking) checks every blob, but instead of downloading the whole blob, they privately select N random indices in the blob (eg. N = 20), and attempt to download the data at just those positions.
+In DAS, each node only ends up downloading a small portion of the data, but the sampling is done _client-side_, and within each blob rather than between blobs. Each node (including client nodes that are not participating in staking) checks every blob, but instead of downloading the whole blob, they privately select N random indices in the blob (eg. N = 20), and attempt to download the data at just those positions.
 
 The goal of this task is to verify that at least half of the data in each blob is _available_.
 
