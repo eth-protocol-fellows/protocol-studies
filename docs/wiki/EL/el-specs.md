@@ -626,37 +626,8 @@ $$ \sigma_0[Sender]_{nonce} \equiv \sigma[Sender]_{nonce} + 1 $$
 
 This checkpoint state represents the modified state after initial validations and deductions, setting the groundwork for subsequent execution steps.
 
-###  Substate initialisation
 
-The initialization of the substate sets the groundwork for transaction execution, defined as follows:
-
-- **Self-Destruct Set**: Initially empty, indicating no contracts are marked for self-destruction.
-- **Log Series**: Starts as an empty tuple, ready to record logs produced during execution.
-- **Touched Accounts**: Also begins empty, listing accounts that become "touched" through the transaction.
-- **Refund Balance**: Set to 0, accounting for gas refunds that may accumulate.
-
-Depending on the transaction type, accessed addresses are initialized differently:
-
-- For $T_{type} = 0$, only the `coinbase` address is marked as accessed.
-- For $T_{type} = 1, 2, or \space 3$, the `coinbase` address and those in the access list are considered accessed from the start.
-
-$$ A^0  \equiv (A^{0}_{selfDestructSet} = \empty, $$ 
-$$ A^{0}_{logSeries} = (), $$
-$$ A^{0}_{touchedAcounts} = \empty, $$ 
-$$ A^{0}_{refundBalance} = 0 , $$
-if $T_{type} = 0$:
-$$ A^{0}_{accesedAccountAddresses} =  \{ H_{coinBase}\}$$ 
-if $T_{type} = 1 \lor 2 \lor 3$:
-$$ A^{0}_{accesedAccountAddresses} =  \{ H_{coinBase},$$ 
-$$ { \bigcup_{Entry \in T_{accessList}} \{ Entry_{address}  \}}$$ 
-$$ A^{0}_{accesedStorageKeys}= $$
-$$ { \bigcup_{Entry \in T_{accessList}} \{ \forall i < length(Entry_{storageKeys}), i \in \mathbb{N} : (Entry_{address}, [i]Entry_{storageKeys})    \}}$$ 
-
-`A_{accessedAccountAddresses}` and `A_{accessedStorageKeys}` leverage the mechanism introduced by [Ethereum Access Lists (EIP-2930)](https://eips.ethereum.org/EIPS/eip-2930), detailed further in [this EIP-2930 overview](https://www.rareskills.io/post/eip-2930-optional-access-list-ethereum). This approach creates a distinction in gas costing between addresses and storage keys declared within the transaction's access list (incurring a "warm" cost) and those not included (incurring a "cold" cost). For comprehensive details on the gas costs associated with cold and warm accesses, please refer to [EIP-2929: Gas cost increases for state access opcodes](https://eips.ethereum.org/EIPS/eip-2929), which adjusts the costs to account for state access operations within the EVM.
-
-$ A_{accesedAccountAddresses}$ and  $A_{accesedStorageKeys}$  belong to [Ethereum Access lists](https://www.rareskills.io/post/eip-2930-optional-access-list-ethereum)  [ EIP ](https://eips.ethereum.org/EIPS/eip-2930) which makes a [cost](https://eips.ethereum.org/EIPS/eip-2929) distinction between the addresses the transaction declares it will call and others. The ones outside the access list have have only a cold cost of account access set at 2600 each time we call the address or 2100 when we access the state. Where as the access list eip specifies that the  subsequent calls to the state and account access ,termed "warm cost", will incur a gas of 100. [EIP 3651](https://eips.ethereum.org/EIPS/eip-3651) added the coinbase to the list of accounts that need to be warm before the start of the execution. 
-
-##  $T$ Execution stage 2 :  Transaction Normalization
+## $T$ Execution stage 2 :  Transaction Normalization and Substate Initialisiation
 
 EVM executions fundamentally require just an environment and a message. Therefore, transactions within a transaction envelope, which categorize transactions by type, are streamlined into four main types. These transactions are then unified into a singular Message Data structure, delineating two main actions: initiating contract creations and executing calls to addresses. Notably, for transactions predating EIP-1559 that lack a base fee, they undergo normalization to integrate the [Gas price](https://github.com/ethereum/go-ethereum/blob/100c0f47debad7924acefd48382bd799b67693cf/core/state_transition.go#L168) during their transformation into the message format. Moreover, the execution path is determined based on the $T_{to}$ parameter:
 
@@ -682,9 +653,44 @@ $$
 | codeAddress  |  $T_{to}$ default except when an alternative accounts code needs execution . e.g. 'CALLCODE' calling a precompile|     | yp: $I_a$ or  $I_{codeOwnerAddress}$| 
 | shouldTransferValue  | default is True, indicates if ETH should be transferred during executing this message |    default is True  |  
 | isStatic  | default is False, indicates is State Modifications are allowed (false means state modifications are allowed) |    default is False  | inveresly related to yp: $I_w$ or $I_{permissionToModifyState}$  | 
-| accesslistAddress  | $ A^{0}_{accesedAccountAddresses} \cup \{currentTarget \} \cup \{ caller \} \cup \{Addresses_{preCompiles}\}  $ | $ A^{0}_{accesedAccountAddresses} \cup \{currentTarget \} \cup \{ caller \} \cup \{Addresses_{preCompiles}\}  $ |  
-| accesslistStorageKeys  |  $ A^{0}_{accesedStorageKeys} $|   $ A^{0}_{accesedStorageKeys} $ |  
+| accesslistAddress  | See below | - |  
+| accesslistStorageKeys  | - | -|  
 | parentEvm  | initially None |  initially None  |  
+
+###  Substate initialisation
+
+The initialization of the substate sets the groundwork for transaction execution, defined as follows:
+
+- **Self-Destruct Set**: Initially empty, indicating no contracts are marked for self-destruction.
+- **Log Series**: Starts as an empty tuple, ready to record logs produced during execution.
+- **Touched Accounts**: Also begins empty, listing accounts that become "touched" through the transaction.
+- **Refund Balance**: Set to 0, accounting for gas refunds that may accumulate.
+
+Depending on the transaction type, accessed addresses are initialized differently:
+
+- For $T_{type} = 0$, the coinbase address, the caller , the current target and all the pre-compile contract addressees are added to the  accessed account  substate
+-  For $T_{type} = 1, 2, or \space 3$, the coinbase address , the caller , the current target, all the pre-compiles and those in the access list are  added
+
+$$ A^*  \equiv (A^{*}_{selfDestructSet} = \empty, $$ 
+$$ A^{*}_{logSeries} = (), $$
+$$ A^{*}_{touchedAcounts} = \empty, $$ 
+$$ A^{*}_{refundBalance} = 0 , $$
+if $T_{type} = 0$:
+$$ A^{*}_{accesedAccountAddresses} =  \{ H_{coinBase},$$ 
+$$ Message_{caller}, Message_{current_target}  $$ 
+$$ allPrecompiledContract_{addresses}\}$$ 
+$$ A^{*}_{accesedStorageKeys} = \empty $$
+if $T_{type} = 1 \lor 2 \lor 3$:
+$$ A^{*}_{accesedAccountAddresses} =  \{ H_{coinBase},$$ 
+$$ { \bigcup_{Entry \in T_{accessList}} \{ Entry_{address}  \}},$$ 
+$$ Message_{caller}, Message_{current_target}  $$ 
+$$ allPrecompiledContract_{addresses}\}$$ 
+$$ A^{*}_{accesedStorageKeys}= $$
+$$ { \bigcup_{Entry \in T_{accessList}} \{ \forall i < length(Entry_{storageKeys}), i \in \mathbb{N} : (Entry_{address_{20byte}}, Entry_{storageKeys}[i]_{32byte}  \}}$$ 
+
+`A_{accessedAccountAddresses}` and `A_{accessedStorageKeys}` leverage the mechanism introduced by [Ethereum Access Lists (EIP-2930)](https://eips.ethereum.org/EIPS/eip-2930), detailed further in [this EIP-2930 overview](https://www.rareskills.io/post/eip-2930-optional-access-list-ethereum). This approach creates a distinction in gas costing between addresses and storage keys declared within the transaction's access list (incurring a "warm" cost) and those not included (incurring a "cold" cost). For comprehensive details on the gas costs associated with cold and warm accesses, please refer to [EIP-2929: Gas cost increases for state access opcodes](https://eips.ethereum.org/EIPS/eip-2929), which adjusts the costs to account for state access operations within the EVM.
+
+$ A_{accesedAccountAddresses}$ and  $A_{accesedStorageKeys}$  belong to [Ethereum Access lists](https://www.rareskills.io/post/eip-2930-optional-access-list-ethereum)  [ EIP ](https://eips.ethereum.org/EIPS/eip-2930) which makes a [cost](https://eips.ethereum.org/EIPS/eip-2929) distinction between the addresses the transaction declares it will call and others. The ones outside the access list have have only a cold cost of account access set at 2600 each time we call the address or 2100 when we access the state. Where as the access list eip specifies that the  subsequent calls to the state and account access ,termed "warm cost", will incur a gas of 100. [EIP 3651](https://eips.ethereum.org/EIPS/eip-3651) added the coinbase to the list of accounts that need to be warm before the start of the execution. 
 
 ### Message Type : Contract Creation
 
