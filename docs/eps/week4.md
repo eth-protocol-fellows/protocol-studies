@@ -15,7 +15,7 @@ For archive of the discussion during the talk, check [this thread](https://disco
 
 Before starting with the week 4 content, make yourself familiar with resources in [week 3](/eps/week3.md). 
 
-Additionally, you can read get ready by reading following resources:
+Additionally, you can read and get ready by studying the following resources:
 
 - https://ethereum-tests.readthedocs.io/en/latest/
 - https://ethereum.github.io/execution-spec-tests

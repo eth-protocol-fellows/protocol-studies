@@ -11,6 +11,10 @@
   - [Week 4](/eps/week4.md)
   - [Week 5](/eps/week5.md)
   - [Node Workshop](/eps/nodes_workshop.md)
+  - [Week 6 | Dev](/eps/week6-dev.md)
+  - [Week 6 | Research](/eps/week6-research.md)
+  - [Week 7 | Dev](/eps/week7-dev.md)
+
 - [Contributing](contributing.md)
 - **Protocol Wiki**
 - The Protocol
@@ -24,6 +28,7 @@
   - [EL Specs](/wiki/EL/el-specs.md)
   - Client architecture
   - [EVM](/wiki/EL/evm.md)
+  - [Precompiled Contracts](/wiki/EL/precompiled-contracts.md)
   - [Transaction](/wiki/EL/transaction.md)
   - [DevP2P]
   - [MPT]
@@ -52,11 +57,9 @@
     - Sharding
     - Statelessness
     - Purge
-  - [PBS](/wiki/research/PBS/pbs.md)
-    - [Current State](/wiki/research/PBS/current-state.md)
-    - [mev-boost](/wiki/research/PBS/mev-boost.md)
-    - [Challenges and Solutions](/wiki/research/PBS/research.md)
-  - Censorship
+  - MEV
+    - [PBS](/wiki/research/PBS/pbs.md)
+    - Censorship
   - Proof of Stake
     - [Upgrades](/docs/wiki/research/Beacon%20Chain%20Upgrades.md)
     - SSF
