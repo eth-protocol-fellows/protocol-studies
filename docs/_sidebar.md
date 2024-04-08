@@ -60,9 +60,7 @@
     - Purge
   - [MEV](/wiki/research/PBS/mev.md)
     - [PBS](/wiki/research/PBS/pbs.md)
-    - [Current State](/wiki/research/PBS/current-state.md)
-    - [mev-boost](/wiki/research/PBS/mev-boost.md)
-    - [Research and Solutions](/wiki/research/PBS/research.md)
+    - [MEV-boost](/wiki/research/PBS/mev-boost.md)
   - Proof of Stake
     - [Upgrades](/docs/wiki/research/Beacon%20Chain%20Upgrades.md)
     - SSF
