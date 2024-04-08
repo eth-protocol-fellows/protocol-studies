@@ -1,3 +1,0 @@
-<!-- @format -->
-
-# Challenges and Solutions

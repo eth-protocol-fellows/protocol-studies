@@ -4,6 +4,7 @@
 - **Study Group**
 - [EPFsg overview](/eps/intro.md)
 - Schedule
+
   - [Week 0](/eps/week0.md)
   - [Week 1](/eps/week1.md)
   - [Week 2](/eps/week2.md)
@@ -57,9 +58,9 @@
     - Sharding
     - Statelessness
     - Purge
-  - MEV
+  - [MEV](/wiki/research/PBS/mev.md)
     - [PBS](/wiki/research/PBS/pbs.md)
-    - Censorship
+    - [MEV-boost](/wiki/research/PBS/mev-boost.md)
   - Proof of Stake
     - [Upgrades](/docs/wiki/research/Beacon%20Chain%20Upgrades.md)
     - SSF

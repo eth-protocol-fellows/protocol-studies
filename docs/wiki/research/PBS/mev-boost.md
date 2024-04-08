@@ -23,6 +23,19 @@ Here's how mev-boost works:
    Validators running mev-boost software act as proposers. They receive blocks from relays and choose the best one based on predefined criteria, typically the block that offers the highest reward.
    The proposer then proposes the selected block to the network for validation and inclusion in the blockchain.
 
+## PBS Block Creation
+
+The process of block creation through PBS works as follows:
+
+### Block Construction
+
+- Builders continuously monitor the transaction pool (mempool) for new transactions. They assess these transactions based on potential MEV opportunities. They select the transactions that best align with their MEV optimization criteria. Also, block builders can take transaction bundles from private orderflows, or from MEV searchers, just as miners did in PoW Ethereum with the original Flashbots auctions. In the latter case, builders accept sealed-price bids from searchers and include their bundles in the block.
+- Once the transactions are selected, builders assemble them into a block ensuring that the block adheres to the Ethereum protocol's rules, e. g., txs are valid, the gas limit is not surpassed.
+
+### Block Auction
+
+Instead of builders directly offering their assembled blocks to validators with a specified price, the standard practice is to use relays. Relays validate the transaction bundles before passing them onto the proposer (validator). Also, implementations can introduce escrows responsible for providing data availability by storing blocks sent by builders and commitments sent by validators. The auction process works as follows:
+
 ### Benefits of mev-boost:
 
 - **Increased validator rewards:** By outsourcing block building to specialized searchers, validators can potentially earn higher rewards through optimized transaction ordering and MEV extraction.
@@ -41,7 +54,3 @@ Ongoing research and development are focused on addressing these challenges and 
 
 It's important to note that mev-boost is just one implementation of PBS. Other implementations with different designs and features are also being developed and explored.
 Overall, mev-boost represents a significant step towards realizing the potential benefits of PBS in Ethereum. However, continuous research and development are crucial to address the challenges and ensure a secure, decentralized, and efficient implementation.
-
-### Challenges and Solutions
-
-PBS presents several challenges, including potential security vulnerabilities and the risk of centralization. Ongoing research focuses on addressing these concerns through innovations such as enhanced PBS (ePBS), inclusion lists, and the Proposal Eligibility Proposals Committee (PEPC).
