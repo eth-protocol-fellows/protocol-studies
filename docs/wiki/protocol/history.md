@@ -2,6 +2,9 @@
 
 This page highlights important technical changes in the history of Ethereum protocol. 
 
+Useful links: [Overview from Ethereum.org](https://ethereum.org/en/history) and [Meta EIPs from Ethereum.org](https://eips.ethereum.org/meta)
+This page highlights important technical changes in the history of Ethereum protocol. 
+
 Usefull links: [Overview from Ethereum.org](https://ethereum.org/en/history) and [Meta EIPs from Ethereum.org](https://eips.ethereum.org/meta)
 
 ## Homestead
