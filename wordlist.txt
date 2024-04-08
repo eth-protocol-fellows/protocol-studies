@@ -211,6 +211,7 @@ mainnet
 Mário
 mathbb
 mem
+MDS
 Mempool
 Menezes
 Merkle
@@ -264,6 +265,7 @@ precompile
 precompiled
 precompiles
 privateKey
+probabilistically
 programmability
 proto
 PRs
@@ -288,6 +290,7 @@ RLP
 roadmap
 rollup
 rollups
+rollup's
 RPC
 RPCs
 runtime
@@ -326,6 +329,7 @@ StreamEth
 systemd
 Takenobu
 Tani
+Teku
 testnet
 Tetris
 textnormal
@@ -337,6 +341,7 @@ trapdoored
 trie
 trilemma
 trustless
+trustlessly
 TrustLook
 TSTORE
 txpool
@@ -366,3 +371,6 @@ XORed
 xy
 Yellowpaper
 zk
+Extractable
+Consensys
+api's

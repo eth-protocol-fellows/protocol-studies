@@ -1,6 +1,6 @@
 # Study Group Week 8 | Consensus client architecture
 
-The Week 8 research track provides an look into Ethereum consensus layer client codebase, explaining its architecture and functions. 
+The Week 8 development track provides a look into Ethereum consensus layer client codebase, explaining its architecture and functions. 
 
 Join the presentation by [Paul Harris](https://twitter.com/rolfyone) from Consensys Teku on [Wednesday, April 8, 7PM UTC](https://savvytime.com/converter/utc-to-germany-berlin-united-kingdom-london-china-shanghai-ny-new-york-city-japan-tokyo-australia-sydney-india-delhi-argentina-buenos-aires/apr-1-2024/3pm). (Note that this is 3 hours later than the default time)
 
