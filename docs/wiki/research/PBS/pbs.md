@@ -26,7 +26,7 @@ As explained in this [article](https://ethos.dev/beacon-chain), slots are the ti
 
 ## Current State
 
-Currently, PBS (Proposer Builder Separation) exists outside of the protocol by builders helping in block building through entities like relays. Please refer [mev-boost](/wiki/research/PBS/mev-boost.md) for more details on one of the widely used Out-of-protocol solution. This design relies on small set of trusted relays and even builders which introduces centralisation risks and makes Ethereum more vulnerable to censorship.
+Currently, PBS (Proposer Builder Separation) exists outside of the protocol by builders helping in block building through entities like relays. Please refer [mev-boost](/wiki/research/PBS/mev-boost.md) for more details on one of the widely used Out-of-protocol solution. This design relies on small set of trusted relays and even builders which introduces centralization risks and makes Ethereum more vulnerable to censorship.
 PBS is not yet implemented in the Ethereum mainnet which means validators act as both proposers and builders. So each validator is responsible for:
 
 1. **Selecting transactions:** Validators choose which transactions to include in a block based on factors like gas fees and transaction priority.
@@ -145,4 +145,4 @@ Below are some further readings regarding PBS and related topics:
 - [Vitalik on pbs censorship](https://notes.ethereum.org/@vbuterin/pbs_censorship_resistance)
 - [Payload timeliness committee(PTC) design for ePBS](https://ethresear.ch/t/payload-timeliness-committee-ptc-an-epbs-design/16054)
 - [2-slot PBS](https://ethresear.ch/t/two-slot-proposer-builder-separation/10980)
-- [Foward Inclusion Lists](https://notes.ethereum.org/@fradamt/forward-inclusion-lists)
+- [Forward Inclusion Lists](https://notes.ethereum.org/@fradamt/forward-inclusion-lists)
