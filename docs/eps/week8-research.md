@@ -13,7 +13,7 @@ Before starting with the week 8 development content, make yourself familiar with
 Additionally, you can get ready by studying the following resources:
 
 - [MEV basics](https://ethereum.org/en/developers/docs/mev/)
-- [RIG projects](https://ethereum.github.io/rig/)
+- [RIG projects](https://rig.ethereum.org/)
 - [Wiki on MEV and PBS](https://github.com/eth-protocol-fellows/protocol-studies/tree/pbs/docs/wiki/research/PBS)
 
 ## Outline
