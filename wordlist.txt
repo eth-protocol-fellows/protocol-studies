@@ -400,6 +400,7 @@ lmd
 ghost
 addons
 Baranabé's
+Barnabé
 Flashbot's
 Flashbots
 orderflows
