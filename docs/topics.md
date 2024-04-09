@@ -61,7 +61,7 @@
 [Roadmap]
 
 ### S
-[Statlessness]
+[Statelessness]
 [SSF]
 [SSZ]
 

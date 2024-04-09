@@ -15,7 +15,8 @@
   - [Week 6 | Dev](/eps/week6-dev.md)
   - [Week 6 | Research](/eps/week6-research.md)
   - [Week 7 | Dev](/eps/week7-dev.md)
-
+  - [Week 7 | Research](/eps/week7-research.md)
+  - [Week 8 | Dev](/eps/week8-dev.md)
 - [Contributing](contributing.md)
 - **Protocol Wiki**
 - The Protocol

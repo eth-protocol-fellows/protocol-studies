@@ -70,7 +70,7 @@ Just a brief list of the methods is provided here, but the full list can be foun
 
 #### Debug
 
-The *debug* namespace provides methods to inspect the Ethereum state. It's direct access to raw data which might be necessary for certain usecases like block explorers or researc purposes. Some of these methods might require a lot of computation to be done on the node and requests for historical states on non-archival node are mostly not feasible. Therefore, providers of public RPCs often restrict this namespace or allow only safe methods. 
+The *debug* namespace provides methods to inspect the Ethereum state. It's direct access to raw data which might be necessary for certain use cases like block explorers or research purposes. Some of these methods might require a lot of computation to be done on the node and requests for historical states on non-archival node are mostly not feasible. Therefore, providers of public RPCs often restrict this namespace or allow only safe methods. 
 Here are basic examples of debug methods: 
 
 | **Method**               |      **Params**       | **Description**                                                 |
