@@ -37,9 +37,9 @@ Simply put, Patricia Tries is a tree data structure where all the data is store 
 
 Patricia tries are designed to be more space-efficient than traditional trie structures by eliminating redundant nodes with single children. They achieve compactness by sharing prefixes among keys. This means that common prefixes are shared among different keys, reducing the overall storage requirements.
 
-##### **TODO: Patricia Tree Diagram**
+### **TODO: Patricia Tree Diagram**
 
-# Ethereum
+## Merkle Patricia Trie in Ethereum
 
 Ethereum's primary data structure for storing the execution layer state is a **Merkle Patricia Trie** (pronounced "try"). It is named so, since it is a Merkle tree that uses features of PATRICIA (Practical Algorithm To Retrieve Information Coded in Alphanumeric), and because it is designed for efficient data retrieval of items that comprise the Ethereum state.
 
@@ -88,13 +88,13 @@ The structure `T` consists of the following:
 - **data**: Input data for a message call together with the message signature.
 - **(v, r, s)**: Values encoding signature of a sender. Serves as identifier of the sender
 
-##### TODO: Explain Receipt Trie
+### TODO: Explain Receipt Trie
 
-##### TODO: Explain World State Trie
+### TODO: Explain World State Trie
 
 ![Merkle Tree](../../images/eth-tries.png)
 
-##### TODO: Explain Storage Trie
+### TODO: Explain Storage Trie
 
 ## Future Implementations
 
@@ -125,6 +125,7 @@ The transition to new verkle tree database poses a major challenge. To securely 
 
 ## Resources
 
-[More on Merkle Patricia Trie](https://ethereum.org/developers/docs/data-structures-and-encoding/patricia-merkle-trie)
-[More on Verkle Tree](https://notes.ethereum.org/@vbuterin/verkle_tree_eip#Simple-Summary)
-[Verge transition](https://notes.ethereum.org/@parithosh/verkle-transition)
+- [More on Merkle Patricia Trie](https://ethereum.org/developers/docs/data-structures-and-encoding/patricia-merkle-trie)
+- [More on Verkle Tree](https://notes.ethereum.org/@vbuterin/verkle_tree_eip#Simple-Summary)
+- [Verge transition](https://notes.ethereum.org/@parithosh/verkle-transition)
+- [Implementing Merkle Tree and Patricia Trie](https://medium.com/coinmonks/implementing-merkle-tree-and-patricia-trie-b8badd6d9591) • [archived](https://web.archive.org/web/20210118071101/https://medium.com/coinmonks/implementing-merkle-tree-and-patricia-trie-b8badd6d9591)
