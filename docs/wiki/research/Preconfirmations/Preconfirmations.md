@@ -64,7 +64,12 @@ Each of these elements plays a crucial role in the functionality and efficiency 
 ## [Preconfs Acquisition Process Flow](#preconfs-acquisition-process-flow)
 
 
-*Figure: Preconfs Acquisition Process Flow*
+![Promise acquisition flow](https://ethresear.ch/uploads/default/original/2X/9/9667dc80c8d911fa3cd86108c3375d0de06e4252.png)
+
+*Figure: Preconf Promise acquisition process flow. Source: Justin Drake*
+
+
+*Here is a sequence diagram explaining the interactions in a typical Preconfs Acquisition Process Flow*
 
 ```mermaid
 sequenceDiagram
