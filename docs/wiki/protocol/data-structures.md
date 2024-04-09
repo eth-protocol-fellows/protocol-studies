@@ -2,7 +2,7 @@
 
 ## Primer on Merkle Tree
 
-Merkle tree is a hash-based data structure which is very effecient at data integrity and verification. It is a tree based structure where the leaf nodes hold the data values and each non-leaf node is a hash of its child nodes.
+Merkle tree is a hash-based data structure which is very efficient at data integrity and verification. It is a tree based structure where the leaf nodes hold the data values and each non-leaf node is a hash of its child nodes.
 
 A Merkle tree stores all the transactions in a block by producing a digital fingerprint of the entire set of transactions. It allows the user to verify whether a transaction is included in a block or not. Merkle trees are created by repeatedly calculating hashing pairs of nodes until there is only one hash left. This hash is called the **Merkle Root**, or the Root Hash. The Merkle Trees are constructed in a bottom-up approach.
 
@@ -37,9 +37,9 @@ Simply put, Patricia Tries is a tree data structure where all the data is store 
 
 Patricia tries are designed to be more space-efficient than traditional trie structures by eliminating redundant nodes with single children. They achieve compactness by sharing prefixes among keys. This means that common prefixes are shared among different keys, reducing the overall storage requirements.
 
-##### **TODO: Patricia Tree Diagram**
+### **TODO: Patricia Tree Diagram**
 
-# Ethereum
+## Merkle Patricia Trie in Ethereum
 
 Ethereum's primary data structure for storing the execution layer state is a **Merkle Patricia Trie** (pronounced "try"). It is named so, since it is a Merkle tree that uses features of PATRICIA (Practical Algorithm To Retrieve Information Coded in Alphanumeric), and because it is designed for efficient data retrieval of items that comprise the Ethereum state.
 
@@ -88,13 +88,13 @@ The structure `T` consists of the following:
 - **data**: Input data for a message call together with the message signature.
 - **(v, r, s)**: Values encoding signature of a sender. Serves as identifier of the sender
 
-##### TODO: Explain Receipt Trie
+### TODO: Explain Receipt Trie
 
-##### TODO: Explain World State Trie
+### TODO: Explain World State Trie
 
 ![Merkle Tree](../../images/eth-tries.png)
 
-##### TODO: Explain Storage Trie
+### TODO: Explain Storage Trie
 
 ## Future Implementations
 
@@ -121,10 +121,11 @@ Using the information inside the block, client should also be able to maintain/g
 
 Verkle trees are designed to be more efficient in terms of storage and communication cost. For a 1000 leaves/data, a binary Merkle Tree takes around 4MB of witness data, Verkle tree reduces it to 150 kB. If we include the witness data in the block then it will not impact the blocksize that much but it would enable the stateless clients to be more efficient and scalable. Using this the stateless client will be able to trust the computation done without having to store the entire state.
 
-The transition to new verkle tree database poses a major challenge. To securily create the new verkle data, clients needs to generate them from the existing MPT which takes a lot of computation and space. Distribution and verification of the verkled database is currently being researched. 
+The transition to new verkle tree database poses a major challenge. To securely create the new verkle data, clients needs to generate them from the existing MPT which takes a lot of computation and space. Distribution and verification of the verkled database is currently being researched. 
 
 ## Resources
 
-[More on Merkle Patricia Trie](https://ethereum.org/developers/docs/data-structures-and-encoding/patricia-merkle-trie)
-[More on Verkle Tree](https://notes.ethereum.org/@vbuterin/verkle_tree_eip#Simple-Summary)
-[Verge transition](https://notes.ethereum.org/@parithosh/verkle-transition)
+- [More on Merkle Patricia Trie](https://ethereum.org/developers/docs/data-structures-and-encoding/patricia-merkle-trie)
+- [More on Verkle Tree](https://notes.ethereum.org/@vbuterin/verkle_tree_eip#Simple-Summary)
+- [Verge transition](https://notes.ethereum.org/@parithosh/verkle-transition)
+- [Implementing Merkle Tree and Patricia Trie](https://medium.com/coinmonks/implementing-merkle-tree-and-patricia-trie-b8badd6d9591) • [archived](https://web.archive.org/web/20210118071101/https://medium.com/coinmonks/implementing-merkle-tree-and-patricia-trie-b8badd6d9591)

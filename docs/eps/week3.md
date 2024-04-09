@@ -6,6 +6,8 @@ Watch the presentation on overview of the CL with Alex Stokes on [StreamEth](htt
 
 [recording](https://streameth.org/embed/?playbackId=66a30awapcuiok0z&vod=true&streamId=&playerName=Consensus+Layer+Overview+%7C+Alex+Stokes+%7C+Week+3 ':include :type=iframe width=100% height=520 frameborder="0" allow="fullscreen" allowfullscreen')
 
+For written summary of week 2 presentation, check the [notes](https://github.com/eth-protocol-fellows/protocol-studies/files/14850973/Week.3.EPFsg.Consensus.Layer.Overview.pdf)
+
 For archive of the discussion during the talk, check [this thread](https://discord.com/channels/1205546645496795137/1214219045205835776/1214219052969492541) in our Discord server.
 
 ## Pre-reading
