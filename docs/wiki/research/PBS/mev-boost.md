@@ -2,18 +2,17 @@
 
 # Mev-boost: A Popular PBS Implementation
 
-[comment]: <> (This is still unrefined)
-
 Mev-boost is a widely recognized open-source implementation of Proposer-Builder Separation (PBS) for Ethereum. It allows validators to outsource block building to specialized builders, potentially leading to increased validator rewards and improved network efficiency.
+
 Here's how mev-boost works:
 
 <figure style="text-align: center;">
-  <img src="images/pbs/block-building.png" alt="PBS">
+  <img src="images/pbs/block-building.png" alt="Block-building">
   <figcaption style="text-align: center;">Current Block building. Source: <a href="https://barnabe.substack.com/p/pbs">Baranabé's article</a></figcaption>
 </figure>
 
 1. **Block Building:**
-   Specialized builders, known as "searchers" in mev-boost, compete to create the most profitable block for the proposer. They do this by optimizing transaction ordering and inclusion, taking into account factors like gas fees, transaction priority, and potential MEV (Maximal Extractable Value).
+   Specialized builders, known as "searchers" in mev-boost, compete to create the most profitable block for the proposer. They do this by optimizing transaction ordering and inclusion, taking into account factors like gas fees, transaction priority, and potential [MEV (Maximal Extractable Value)](/wiki/research/PBS/mev.md).
    Searchers submit their constructed blocks to relays.
 2. **Relay Network:**
    Mev-boost operates a network of relays that act as intermediaries between searchers and proposers.
