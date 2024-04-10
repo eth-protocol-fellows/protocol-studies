@@ -1,10 +1,7 @@
-<!-- @format -->
-
 - [Home](readme.md)
 - **Study Group**
 - [EPFsg overview](/eps/intro.md)
 - Schedule
-
   - [Week 0](/eps/week0.md)
   - [Week 1](/eps/week1.md)
   - [Week 2](/eps/week2.md)
@@ -18,7 +15,6 @@
   - [Week 7 | Research](/eps/week7-research.md)
   - [Week 8 | Dev](/eps/week8-dev.md)
   - [Week 8 | Research](/eps/week8-research.md)
-
 - [Contributing](contributing.md)
 - **Protocol Wiki**
 - The Protocol
@@ -35,7 +31,6 @@
   - [Precompiled Contracts](/wiki/EL/precompiled-contracts.md)
   - [Transaction](/wiki/EL/transaction.md)
   - [DevP2P]
-  - [MPT]
   - [JSON-RPC](/wiki/EL/JSON-RPC.md)
 - [Consensus Layer](/wiki/CL/overview.md)
   - [CL Clients](/wiki/CL/cl-clients.md)

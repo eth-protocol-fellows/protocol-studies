@@ -1,5 +1,3 @@
-<!-- @format -->
-
 # Enshrined Proposer-Builder Separation (ePBS)
 
 ## TLDR;
@@ -8,19 +6,17 @@ Enshrined Proposer-Builder Separation (ePBS) refers to integrating the PBS mecha
 
 ## What is PBS
 
-
 Proposer-Builder Separation (PBS) is a design philosophy[^1] and mechanism in within the context of Ethereum, that aims to decouple the roles of proposing blocks (proposers) and constructing the content of those blocks (builders). This separation addresses various challenges and inefficiencies associated with block production, and in the context of maximizing extractable value (MEV). This entry assumes reader has knowledge of [MEV](/wiki/research/PBS/mev.md), [PBS](/wiki/research/PBS/pbs.md), and [MEV-Boost](/wiki/research/PBS/mev-boost.md)
-
 
 ## Overview of ePBS
 
-ePBS is a protocol-level enhancement for Ethereum that institutionalizes the division of labor between block proposers and block builders. Unlike the existing off-chain solutions like [MEV-Boost](/wiki/research/PBS/mev-boost.md), which operate on a trust-based model with relays, ePBS integrates this separation directly into Ethereum's core protocol, aiming to streamline and secure the process.
+ePBS is a protocol-level enhancement for Ethereum that institutionalizes the division of labor between block proposers and block builders. Unlike the existing out-of-the-protocol solutions implementing [builder API](https://github.com/ethereum/builder-specs) in external software, like [MEV-Boost](/wiki/research/PBS/mev-boost.md), ePBS integrates this features directly into Ethereum clients, aiming to streamline and secure the process.
 
 The key difference between ePBS and current mechanisms like MEV-Boost lies in the protocol's direct support for the separation, eliminating the need for external relays to mediate the transaction. This enshrinement is designed to reduce trust requirements, enhance transparency, and improve overall network efficiency by formally defining the roles and interactions within the protocol itself[^2][^3].
 
 In the ePBS framework:
 
-- **Proposers** are validators responsible for proposing new blocks to the network. Their role is limited to choosing which block to propose, without the need to construct the block themselves.
+- **Proposers** are validators responsible for proposing new blocks to the network. Their role is limited to choosing which block to propose, without the need to construct the block themselves. All the commmunication via builder API is done within the client without an external tool.
 
 - **Builders** are entities or algorithms that assemble blocks, optimizing the transaction order for profitability (e.g., maximizing MEV extraction) and offering these blocks to proposers through a transparent auction mechanism.
 
@@ -28,7 +24,8 @@ In the ePBS framework:
 
 ### Transition from mev-boost to ePBS
 
-The transition from MEV-Boost to ePBS represents a pivotal evolution in Ethereum's approach to handling MEV and improving the network's efficiency and fairness. In the next section, we will cover the details on why ePBS is needed and what will the ecosystem gain from this in-protocol approach to PBS.
+The transition from MEV-Boost to ePBS represents a pivotal evolution in Ethereum's approach to handling MEV and improving the network's efficiency and fairness. Dependency on an external, third party software can be dangerous and lead to network incidents even if clients themselves behave correctly. 
+In the next section, we will cover the details on why ePBS is needed and what will the ecosystem gain from this in-protocol approach to PBS.
 
 ## The Case for ePBS
 
@@ -92,7 +89,7 @@ The transition to ePBS from the current MEV-Boost system is driven by a combinat
 
 ## Counterarguments to ePBS
 
-The discussion around the enshrinement of PBS (ePBS) within Ethereum's protocol has stirred significant debate, with various counterarguments presented by its critics [quote the Mike's talk with uncommon core]. Proponents of ePBS, however, offer robust responses to these concerns, advocating for its necessity and integration into Ethereum's roadmap. Additionally, the discourse explores alternative methods for addressing miner extractable value (MEV), weighing their sufficiency against the proposed ePBS system[^3].
+The discussion around the enshrinement of PBS (ePBS) within Ethereum's protocol has stirred significant debate, with various counterarguments presented by its critics. Proponents of ePBS, however, offer robust responses to these concerns, advocating for its necessity and integration into Ethereum's roadmap. Additionally, the discourse explores alternative methods for addressing miner extractable value (MEV), weighing their sufficiency against the proposed ePBS system[^3].
 
 ### Primary Counterarguments Against ePBS
 
