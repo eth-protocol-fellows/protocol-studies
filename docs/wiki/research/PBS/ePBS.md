@@ -16,7 +16,7 @@ The key difference between ePBS and current mechanisms like MEV-Boost lies in th
 
 In the ePBS framework:
 
-- **Proposers** are validators responsible for proposing new blocks to the network. Their role is limited to choosing which block to propose, without the need to construct the block themselves. All the commmunication via builder API is done within the client without an external tool.
+- **Proposers** are validators responsible for proposing new blocks to the network. Their role is limited to choosing which block to propose, without the need to construct the block themselves. All the communication via builder API is done within the client without an external tool.
 
 - **Builders** are entities or algorithms that assemble blocks, optimizing the transaction order for profitability (e.g., maximizing MEV extraction) and offering these blocks to proposers through a transparent auction mechanism.
 
