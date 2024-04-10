@@ -65,7 +65,7 @@
   - BLS
   - [Commitments]
     - Polynomials
-    - Commitment schemes
+    - [KZG Commitment scheme](/wiki/Cryptography/KZG.md)
   - ZK
 - [Protocol Fellowship](/wiki/epf.md)
 
