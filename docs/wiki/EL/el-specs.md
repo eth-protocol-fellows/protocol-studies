@@ -732,9 +732,9 @@ $$ \mu \equiv (\mu_{gasAvailable}, \mu_{programCounter},\\ \mu_{memoryContents},
 |$$\mu_{gasAvailable}$$ | | total gas available for the transaction |
 |$$\mu_{programCounter}$$ | 0 | Natural number counter to track the code position we are in , max number size is 256 bits |
 |$$\mu_{memoryContents}$$ | $$[0_{256Bit}, ..., 0_{256Bit}]$$ | word(256bit) Addressed byte array |
-|$$\mu_{activeWordsInMemory}$$ | $$I_{[byteCode]}$$ | Machine code to be executed |
+|$$\mu_{activeWordsInMemory}$$ | $$length(I_{[byteCode]})$$ | Length of the active memory , Initially this is the length of bytecode|
 |$$ \mu_{stackContents}$$ | | Stack item : word(256bit), Max Items = 1024 |
-|$$ \mu_{outputFromNormalHalting}$$ | () |  represents the output defined by the normal Halting function |
+|$$ \mu_{outputFromNormalHalting}$$ | () | Represents the output(bytes) from the last function call, determined by the normal halting function. While the EELS pyspec features a dedicated field in the EVM object for the output , Geth doesn't; instead, it utilizes the returnData field, which serves the same purpose.|
 
 ### Current Operation
 The `currentOperation` is determined based on the position of the `programCounter` within the bytecode array:
@@ -872,9 +872,9 @@ X((\sigma,\mu,AccruedSubState,Environment_I)) \equiv  \nonumber \\
 &\\
 (\empty, \mu, AccruedSubState, Environment_I) \\ \qquad \text{if } Z_{exceptionalHalting}(\sigma, \mu, AccruedSubState, Environment_I) \\
 &\\
-(\empty, \mu', AccruedSubState, Environment_I, \mu_{outputFromNormalHalting} ) \\ \qquad \text{if }  currentOperation_w = REVERT \\
+(\empty, \mu', AccruedSubState, Environment_I, output ) \\ \qquad \text{if }  currentOperation_w = REVERT \\
 &\\
-O(\sigma, \mu', AccruedSubState, Environment_I) . \mu_{outputFromNormalHalting}  \\ \qquad \text{if }  \mu_{outputFromNormalHalting} \neq \empty \\
+O(\sigma, \mu', AccruedSubState, Environment_I) . output  \\ \qquad \text{if }  output  \neq \empty \\
 &\\
 X(O(\sigma, \mu', AccruedSubState, Environment_I)) \\ \qquad \text{otherwise}
 &\\
@@ -883,16 +883,17 @@ $$
 
 $$
 \text{Where}, \\
-\mu_{outputFromNormalHalting} \equiv o \equiv H_{normalHaltingFunction}(\mu,Environment_I) 
+\mu'_{returnData} \equiv \mu'_{outputFromNormalHalting} \equiv output \equiv H_{normalHaltingFunction}(\mu,Environment_I) 
 $$
 
 $$
-O(\sigma,\mu,A,I).o \equiv O(\sigma,\mu,A,I,o)
+O(\sigma,\mu,A,I).output \equiv O(\sigma,\mu,A,I,output)
 $$
 
 $$
 \mu' \equiv \mu \text{ except:} \\
-\mu'_{gas} \equiv \mu_{gas} - C_{gasCostFunction}(\sigma,\mu,A,I) 
+\mu'_{gas} \equiv \mu_{gas} - C_{gasCostFunction}(\sigma,\mu,A,I) \\ 
+\mu'_{activeWordsInMemory} \equiv M_{memoryExpansionForRangeFunction}(\mu_{activeWordsInMemory}, \mu_{stackContents}[0], \mu_{stackContents}[1])
 $$
 1. If the conditions for Exceptional Halting are met, return a tuple consisting of an empty state, the machine state, accrued sub state, environment, and an empty output.
 2. If the current Operation is $REVERT$, return a tuple consisting of an empty state, the machine state after deducting gas, accrued sub state, environment, and the machine output.
