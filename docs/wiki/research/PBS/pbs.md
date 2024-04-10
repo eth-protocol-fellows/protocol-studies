@@ -101,7 +101,6 @@ For a detailed discussion on these anti-censorship measures within PBS, see [Vit
 ## Research and Proposed Solutions
 
 PBS is one of the active research areas in the Ethereum ecosystem. It presents several challenges, including potential security vulnerabilities and the risk of centralization. Ongoing research focuses on addressing these concerns through innovations such as enshrined PBS (ePBS), inclusion lists, the Protocol-Enforced Proposer Commitments (PEPC).
-For a more detailed explanation on the research and ePBS check out this [EPF wiki entry](/wiki/research/PBS/ePBS.md) on the topic.
 
 Enshrined Proposer-Builder Separation (ePBS) is supposed to address some of the limitations and centralization concerns associated with MEV-Boost, which currently facilitates PBS for about 90% of Ethereum blocks.
 
@@ -119,6 +118,8 @@ Enshrined PBS involves embedding PBS mechanisms directly into Ethereum's consens
 
 Referring to this [eth research discussion](https://ethresear.ch/t/why-enshrine-proposer-builder-separation-a-viable-path-to-epbs/15710), ePBS, particularly through Two-Block HeadLock (TBHL) and optimistic relaying, presents a pathway towards addressing current challenges and enhancing the efficiency, security, and decentralization of block production and MEV extraction processes.
 
+For more detailed on ePBS check out this [ePBS wiki entry](/wiki/research/PBS/ePBS.md).
+
 ### Protocol-Enforced Proposer Commitments (PEPC)
 
 PEPC is another proposed solution for the shortcomings of PBS and MEV-Boost which advocates for a more open-ended and flexible design than traditional PBS. As explained on this [Mirror post](https://mirror.xyz/ohotties.eth/lBEXiiU7yK91OuSn8QyJPM9Db8GuyDFzCEUAj60BWyI), PEPC aims to provide a generalized infrastructure for proposers to make credible commitments to any outsourced block-building task, which could potentially better accommodate the evolving needs of the Ethereum network, especially with the anticipated expansion of data sharding and rollup adoption.
@@ -128,6 +129,8 @@ The goal is to allow proposers to register arbitrary commitments, expressed via 
 Regarding the need for a flexible approach to proposer duties PEPC aims to provide, it is worth noting that a wide range of outsourcing smart contracts is supported, from full block construction to specific valid transaction inclusions and validity proofs for rollup blocks.
 
 All of this would also be complementary to existing out-of-protocol mechanisms like Eigenlayer, enhancing the credibility of proposer commitments by moving from an optimistic model to a pessimistic enforcement model where violating commitments inherently invalidates blocks.
+
+For more detailed explanation check out [PEPC](/wiki/research/PBS/ePBS?id=protocol-enforced-proposer-commitments-pepc).
 
 ### EIP-7547: Inclusion Lists
 

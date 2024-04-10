@@ -17,6 +17,8 @@
   - [Week 7 | Dev](/eps/week7-dev.md)
   - [Week 7 | Research](/eps/week7-research.md)
   - [Week 8 | Dev](/eps/week8-dev.md)
+  - [Week 8 | Research](/eps/week8-research.md)
+
 - [Contributing](contributing.md)
 - **Protocol Wiki**
 - The Protocol
@@ -55,13 +57,13 @@
   - [Scaling](/wiki/research/scaling/scaling.md)
     - [Core Changes](/wiki/research/scaling/core-changes/core-changes.md)
     - [EIP-4844](/wiki/research/scaling/core-changes/eip-4844.md)
-    - Blobs
     - Sharding
     - Statelessness
     - Purge
   - [MEV](/wiki/research/PBS/mev.md)
     - [PBS](/wiki/research/PBS/pbs.md)
     - [MEV-boost](/wiki/research/PBS/mev-boost.md)
+    - [ePBS](/wiki/research/PBS/ePBS.md)
   - Proof of Stake
     - [Upgrades](/docs/wiki/research/Beacon%20Chain%20Upgrades.md)
     - SSF

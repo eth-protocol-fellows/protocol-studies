@@ -4,7 +4,7 @@
 
 Maximal Extractable Value (MEV) refers to the the maximum value that can be extracted from block production beyond the standard block reward and gas fees by strategically ordering, including, or excluding transactions in a block.
 
-In Ethereum, MEV has gained greater attention as validators extract increasingly more value, especially in DeFi (Decentralized Finance) applications. This can lead to negative consequences, such as front running, increased transaction fees, and unfair advantages for large-scale miners or validators.
+In Ethereum, MEV has gained greater attention as validators extract increasingly more value, especially in DeFi (Decentralized Finance) applications. This can lead to negative consequences, such as front-running, increased transaction fees, and unfair advantages for large-scale miners or validators.
 
 [Proposer-builder separation (PBS)](/wiki/research/PBS/pbs.md) can change the dynamics of MEV extraction in that there could be a redistribution of MEV between the two roles, potentially changing the incentives and rewards associated with each. Since block builders are responsible for transaction ordering and inclusion, they may develop new strategies or promote increased competition that could result in more efficiency and fairer distribution of MEV across the network.
 
