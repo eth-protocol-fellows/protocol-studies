@@ -82,10 +82,16 @@ Do core developers get paid?
 
 # Appendix
 
-https://lkml.iu.edu/hypermail/linux/kernel/2401.3/04208.html
+[Re: PATCH eventfs: Have inodes have unique inode numbers](https://lkml.iu.edu/hypermail/linux/kernel/2401.3/04208.html)
 
-https://www.youtube.com/watch?v=R-Xr1JRF6bY
+[George Hotz | Programming | rewriting linearizer (tinygrad) | Day In The Life Of A Software Engineer](https://www.youtube.com/watch?v=R-Xr1JRF6bY)
 
-https://www.coindesk.com/consensus-magazine/2023/02/22/a-day-in-the-life-of-a-dev-ethereums-justin-florentine/
+[A Day in the Life of a Dev: Ethereum’s Justin Florentine](https://www.coindesk.com/consensus-magazine/2023/02/22/a-day-in-the-life-of-a-dev-ethereums-justin-florentine/)
 
-https://protocol-guild.readthedocs.io/en/latest/
+[Protocol Guild](https://protocol-guild.readthedocs.io/en/latest/)
+
+[Protocol Guild: Funding Core Protocol Stewardship | Cheeky Gorilla - Protocol Guild ETHDenver 2024 Presentation](https://www.youtube.com/watch?v=9Tc2g7pu-gc&ab_channel=ETHDenver)
+
+[Protocol Guild Pledge](https://tim.mirror.xyz/srVdVopOFhD_ZoRDR50x8n5wmW3aRJIrNEAkpyQ4_ng)
+
+[Capital and enclosure in software commons: Linux & Ethereum](https://trent.mirror.xyz/GDDRqetgglGR5IYK1uTXxLalwIH6pBF9nulmY9zarUw)
