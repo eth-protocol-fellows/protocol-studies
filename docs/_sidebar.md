@@ -59,6 +59,7 @@
     - [PBS](/wiki/research/PBS/pbs.md)
     - [MEV-boost](/wiki/research/PBS/mev-boost.md)
     - [ePBS](/wiki/research/PBS/ePBS.md)
+    - [ET](/wiki/research/PBS/ET.md)
   - Proof of Stake
     - [Upgrades](/docs/wiki/research/Beacon%20Chain%20Upgrades.md)
     - SSF
