@@ -223,7 +223,7 @@ Determining the minimum viable ePBS involves a delicate balance of these propert
 
 ### The Two-Block HeadLock (TBHL) proposal
 
-The Two-Block HeadLock (TBHL) design represents an innovative approach to proposer-builder separation (PBS) within the Ethereum protocol, aiming to address both the operational and strategic issues posed by miner extractable value (MEV) [quote here Why enshrine Proposer-Builder Separation? A viable path to ePBS]. This design is a nuanced iteration of previous proposals, integrating elements of Vitalik Buterin's two-slot design and enhancing it with a headlock mechanism to safeguard builders from proposer equivocations. Here, we delve into the key components of TBHL and its operational mechanics, drawing on the detailed explanation provided[^4].
+The Two-Block HeadLock (TBHL) design represents an innovative approach to proposer-builder separation (PBS) within the Ethereum protocol, aiming to address both the operational and strategic issues posed by (MEV)[https://ethresear.ch/t/why-enshrine-proposer-builder-separation-a-viable-path-to-epbs/]. This design is a nuanced iteration of previous proposals, integrating elements of Vitalik Buterin's two-slot design and enhancing it with a headlock mechanism to safeguard builders from proposer equivocations. Here, we delve into the key components of TBHL and its operational mechanics, drawing on the detailed explanation provided[^4].
 
 **TBHL Design Overview**
 
