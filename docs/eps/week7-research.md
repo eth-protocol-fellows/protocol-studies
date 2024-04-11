@@ -27,5 +27,6 @@ Additionally, you can read and get ready by studying the following resources:
 
 ## Additional reading and exercises 
 
+- [Anatomy of a verkle proof](https://ihagopian.com/posts/anatomy-of-a-verkle-proof)
 - Overview of many various resources https://verkle.info
 - Checkout [verkle implementers calls](https://github.com/ethereum/pm/issues/977)

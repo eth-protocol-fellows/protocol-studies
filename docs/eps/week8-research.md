@@ -1,10 +1,10 @@
-# Study Group Week 8 | MEV and censorship resistance
+# Study Group Week 8 | Protocol services
 
 This research talk is dedicated to MEV and censorship resistance, discusses the current state and proposals being worked on. 
 
-Join the presentation by [Barnabé Monnot](https://twitter.com/barnabemonnot) from Robust Incentives Group on [Wednesday, April 10, 3PM UTC](https://savvytime.com/converter/utc-to-germany-berlin-united-kingdom-london-china-shanghai-ny-new-york-city-japan-tokyo-australia-sydney-india-delhi-argentina-buenos-aires/apr-10-2024/3pm).
+Watch the presentation by [Barnabé Monnot](https://twitter.com/barnabemonnot) on StreamETH channel or Youtube. Slides are [available here](https://github.com/eth-protocol-fellows/protocol-studies/blob/main/docs/eps/presentations/week8-research.pdf). 
 
-The talk will be streamed live on [StreamEth](https://streameth.org/65cf97e702e803dbd57d823f/epf_study_group) and [Youtube](https://www.youtube.com/@ethprotocolfellows/streams), links will be provided before the call in the [Discord server](https://discord.gg/addwpQbhpq). Discord also serves for the discussion and questions during the stream. 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/hhYTtQ-GU1s?si=569qf27XN7l4ZL1Q" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ## Pre-reading
 
@@ -18,12 +18,15 @@ Additionally, you can get ready by studying the following resources:
 
 ## Outline
 
-- MEV issues and current state 
-- Staking economics proposals
-    - Censorship resistance
-    - Execution tickets
+- Protocol services and impact of MEV, cryptoeconomics
+- PBS and related proposals 
+- ePBS flavors
+- MEV burn
+- Rainbow staking 
    
 ## Additional reading and exercises 
 
 - [Rig Open Problems](https://efdn.notion.site/RIG-Open-Problems-ROPs-c11382c213f949a4b89927ef4e962adf)
 - [Censorship stats](https://dotpics.info/)
+- [Rainbow staking](https://ethresear.ch/t/unbundling-staking-towards-rainbow-staking/)
+- [Notes on PBS](https://barnabe.substack.com/p/pbs)
