@@ -8,7 +8,7 @@ This document is WIP and may be subjected to future updates, as the design space
 |**Execution Tickets** - aliases: **Validator-Proposer** separation; **Attester-Proposer** separation|the Scourge|MEV track|ePBS, IL, PEPC, SSF|
 
 ## Relevant context
-Recent proposals and development towards enshrining Proposer-Builder Separation (PBS) seek to diminish execution block construction reliance on a few centralized, off-chain entities (relayers), that in the context of current MEV, act as intermediaries between Validators as payload proposers and specialised, more sophisticated block builders. Today, with MEV-boost, validators-as-proposers forfeit their rights to build execution payloads, in an open-bids permissionless auction.
+Recent proposals and development towards enshrining Proposer-Builder Separation (PBS) seek to diminish execution block construction reliance on a few centralized, off-chain entities (relays), that in the context of current MEV, act as intermediaries between Validators as payload proposers and specialized, more sophisticated block builders. Today, with MEV-boost, validators-as-proposers forfeit their rights to build execution payloads, in an open-bids permissionless auction.
 
 **PBS structure**
 
@@ -64,7 +64,7 @@ Execution tickets flow for one slot is [[4]](#resources):
 
 ![](/docs/wiki/research/img/ETflow.jpeg)
 
-## In depth analisys of ET effects
+## In depth analysis of ET effects
 WIP
 * Validating & staking
 * Roadmap compatibility
@@ -75,9 +75,9 @@ WIP
 
 2. ET would no longer guarantee that Validators get the option to build execution payloads as they seem fair. 
 
-3. Separating Validator and Proposer roles creates a market structure where the ticket holder could become an *active monopolist*, enposing [monopoly pricing](https://arxiv.org/abs/2311.12731) and possibly front-running time sensitive flow. The above is in contrast with the status quo under MEV-Boost featuring the Validator as a *passive monopolist* [[5]](#resources) in the proposer role.
+3. Separating Validator and Proposer roles creates a market structure where the ticket holder could become an *active monopolist*, imposing [monopoly pricing](https://arxiv.org/abs/2311.12731) and possibly front-running time sensitive flow. The above is in contrast with the status quo under MEV-Boost featuring the Validator as a *passive monopolist* [[5]](#resources) in the proposer role.
 
-However, analysing pro ET discourse, we can find pertinent answers to such counterarguments:
+However, analyzing pro ET discourse, we can find pertinent answers to such counterarguments:
 
 1. Validators forego this ability entirely today when they use MEV-Boost, and could very well forego it entirely  when they would use ePBS. Improvement proposals as Inclusion lists  [[6]](#resources) and Multiplicity gadgets [[7]](#resources) could remedy this by imposing on whomever owns the execution ticket with binding but non-efficiency-decreasing constraints on payload construction.
 
@@ -93,7 +93,7 @@ Execution Tickets are in active research, some of the known open issues are:
 * What would be the exact mechanics of the ticket pricing mechanism?*
 
 * What are the fork-choice implications of execution ticketing?
-    * there might be multiple valid entries in forkchoice within the same slot
+    * there might be multiple valid entries in fork-choice within the same slot
     * payload equivocation causes a head split view
 
 * How do execution tickets alter the designs of preconfirmations
