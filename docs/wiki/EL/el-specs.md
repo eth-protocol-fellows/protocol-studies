@@ -712,11 +712,43 @@ $$
 | $endowment_v$                         | $T_{value}$                | The value transferred to the new contract. |
 | $[]evmInitCodeByteArray_i$            | $T_{CALLDATA}$             | The initialization bytecode for the new contract. |
 | $stackDepth_e$                        | 0                          | The depth of the call stack at the point of contract creation; initially 0. |
-| $saltForNewAccountAddress_{\zeta}$    | $\emptyset$                | Salt used for generating the new contract's address, relevant for create2 operations. |
+| $saltForNewAccountAddress_{\zeta}$    | $\emptyset$               | Salt used for generating the new contract's address, non empty for create2 operations. |
 | $stateModificationPermission_w$       | True, inversely referred by the `is_static` parameter in the Message object, which is set to false | Indicates if the contract creation can modify the state. |
 
 Note: $originalTransactor_o$ can differ from $sender_s$ when the message is not directly triggered by a transaction but rather comes from the execution of EVM code, indicating the versatility of message origination within the EVM execution context.
 
+
+The process of creating a contract begins with determining the contract's address. In EELS, this task is part of message preparation. Other clients may handle it at a different stage. The steps are as follows:
+
+1. **Compute the Contract Address:**
+   - The contract address is [computed](https://github.com/ethereum/execution-specs/blob/db87f1b1d21f61275fc34b08de1735889c01f018/src/ethereum/cancun/utils/address.py#L42) by hashing the sender's address and nonce (decremented by one, as the nonce is incremented prior to this operation) using the formula: $KEC(RLP([Sender_{address} , Sender_{nonce} - 1]))$.  This adjustment accounts for the nonce at the transaction's issuance.
+   - Next, extract the last 20 bytes of this hash: $KEC(RLP([Sender_{address} , Sender_{nonce} - 1]))[-20:]$.
+   - If the resulting length is less than 20 bytes, left-pad with zero-byte words to form a 20-byte address.
+
+2. **Initialize the New Account:**
+$$
+\sigma^*[newAccount] \equiv ( Nonce_{=1}, Balance_{=preexistingValue + T_{value} }, Storage_{=TRIE(\empty)}, CodeHash_{=KEC(())})
+$$
+   The state of the new account is established with:
+   - A nonce set to 1.
+   - The balance set to the sum of the transferred value and any pre-existing balance.
+   - An empty storage.
+   - A code hash derived from an empty tuple: KEC(()).
+
+3. **Update the Sender's Balance:**
+   The sender's balance is adjusted by subtracting the transaction value: 
+$$
+\sigma^*[sender]_{balance} \equiv \sigma[sender]_{balance} - T_{value}
+$$
+
+4. **Account Initialization:**
+   Finally, the account is initialized through the execution of the EVM initialization code byte array $[]evmInitCodeByteArray_i$ during the main execution cycle.
+
+Client Code :
+
+| function | EELS(cancun) | Geth | Reth | Erigon | Nethermind | Besu |
+|----------|------|------|--------|------------|------|-----|
+| Contract Creation |  [process_create_message](https://github.com/ethereum/execution-specs/blob/db87f1b1d21f61275fc34b08de1735889c01f018/src/ethereum/cancun/vm/interpreter.py#L147)  |  [Create](https://github.com/ethereum/go-ethereum/blob/b9010f3e872492c1513c853cb5f3f8ce03eff2b5/core/vm/evm.go#L509)    | Execution routing based on $T_{to}$ [here](https://github.com/bluealloy/revm/blob/cfc4511fe148296394c19c9ab3fb46f663218413/crates/revm/src/evm.rs#L366)  | [Create](https://github.com/ledgerwatch/erigon/blob/e7d5a84b5a5436edb7929f03df07648743166fac/core/vm/evm.go#L453)            |            |      |
 ### Message Type:  Call
 TODO
 
