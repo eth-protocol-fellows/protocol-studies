@@ -1,4 +1,4 @@
-# Study Group Week 9 | MEV and censorship resistance
+# Study Group Week 9 | Local testing and prototyping 
 
 This research talk is dedicated to testing and prototyping forks locally, it discusses the current state and ideas being worked on. 
 
