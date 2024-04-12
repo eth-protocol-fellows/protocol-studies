@@ -42,6 +42,22 @@ The delivery of the beacon block, however, would remain the validator's prerogat
 
 ![](/docs/wiki/research/img/ETvsPBS.webp)
 
+One generalization of PBS is proposed by PEPC [[1]](#resources) [[8]](#resources) and has generated versions of ePBS, like slot-auction ePBS, which added a subtle design tweak to the block-auction ePBS (the "vanilla" ePBS version that currently has "the scene" in ethereum R&D[[9]](#resources)): the Beacon proposers can commit to execution proposers only, so there would be no commitments to the contents of the execution payload, which solves the timing games issues that the block-auction ePBS version faces. 
+
+**block-auction ePBS vs slot-auction ePBS**
+
+![](/docs/wiki/research/img/ba-ePBS.webp)
+![](/docs/wiki/research/img/sa-ePBS.webp)
+
+The improvement sa-ePBS brings, comes however with the technical cost of dealing with equivocations and head split views, and that [is not a trivial problem to solve](#open-issues).
+
+
+**How do ET solve Timing games?**
+
+Timing games occur when a proposer delays as much as possible the proposing of their block in order to maximize the value it could get for it. In block-auction ePBS, as the execution payloads are determined at the release of the beacon block, the timing games will be played by validators that could attempt to delay the delivery of the beacon block for as much time as possible, in order to commit to the highest bid possible, so it would have the incentives to act rationally. This is what ET proposes, an even further consensus-execution separation, with no commitments from validator-as-proposer to the execution payload:
+
+![](/docs/wiki/research/img/ET.webp)
+
 ## ET high-level view
 The execution ticket mechanism can be succinctly described as [[4]](#resources) :
 
@@ -79,11 +95,11 @@ WIP
 
 However, analyzing pro ET discourse, we can find pertinent answers to such counterarguments:
 
-1. Validators forego this ability entirely today when they use MEV-Boost, and could very well forego it entirely  when they would use ePBS. Improvement proposals as Inclusion lists  [[6]](#resources) and Multiplicity gadgets [[7]](#resources) could remedy this by imposing on whomever owns the execution ticket with binding but non-efficiency-decreasing constraints on payload construction.
+1. Validators forego this ability entirely today when they use MEV-Boost, and could very well forego it entirely  when they would use ePBS. Improvement proposals as Inclusion lists [[6]](#resources) and Multiplicity gadgets [[7]](#resources) could remedy this by imposing on whomever owns the execution ticket with binding but non-efficiency-decreasing constraints on payload construction.
 
 2. The definition of fairness could be very different between Validators, and the market has revealed in practice the preference of most validators to not exercise this building right themselves, delegating the construction to other parties. 
 
-3. In their work *When to Sell Your Blocks* [[5]](#resources), Quintus and Conor note that if validators tend towards rationality in the long run, the difference between validators-as-proposers and ticket-holders-as-proposers may tend to diminish a lot, meaning that the improvement of Validator-Proposer role separation could come from the benefits the separation itself can bring to ET and subsequently for the protocol, and that such a separation of roles would most likely not create perverse incentives.
+3. In their work *When to Sell Your Blocks* [[5]](#resources), Quintus and Conor note that if validators tend towards rationality in the long run, the difference between validators-as-proposers and ticket-holders-as-proposers may tend to diminish a lot, meaning that the improvement of Validator-Proposer role separation could come from the benefits the separation itself can bring to ET and subsequently for the protocol, and that such a separation of roles would most likely not create a worst situation than the status quo.
 
 ## Open issues
 WIP
@@ -115,3 +131,7 @@ Execution Tickets are in active research, some of the known open issues are:
 [[6] EIP-7547 Inclusion lists](https://eips.ethereum.org/EIPS/eip-7547)
 
 [[7] ROP-9: Multiplicity gadgets](https://efdn.notion.site/ROP-9-Multiplicity-gadgets-for-censorship-resistance-7def9d354f8a4ed5a0722f4eb04ca73b)
+
+[[8] PEPC FAQ](https://efdn.notion.site/PEPC-FAQ-0787ba2f77e14efba771ff2d903d67e4#a2d2d17abe90414e88d667ad10d91afe)
+
+[[9] Potuz's ePBS specification notes](https://hackmd.io/@potuz/rJ9GCnT1C)
