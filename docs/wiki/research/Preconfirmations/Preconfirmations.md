@@ -8,16 +8,16 @@ Based preconfirmations (preconfs) represent a significant advancement in Ethereu
 
 ## [Construction of Preconf Promises](#construction-of-preconf-promises)
 
-Preconfirmation promises, or "preconfs," rely on two foundational on-chain infrastructure components:
+Preconfirmation promises, or "preconfs," rely on two foundational on-chain infrastructure components[^2][^3]:
 
 - **Proposer Slashing:** Proposers can opt into additional slashing conditions to ensure reliability and accountability. This approach draws inspiration from EigenLayer's model, which employs restaking as a means of enforcing these slashing mechanisms.
 
 - **Proposer Forced Inclusions:** To ensure the seamless execution of transactions, proposers have the authority to mandate the inclusion of specific transactions on-chain. This power is crucial in situations where the separation between proposers and builders (PBS) renders self-building uneconomical. The implementation of this mechanism typically involves the use of inclusion lists.
 
 
-When a L1 proposer decides to become a "preconfer," they are essentially agreeing to adhere to two distinct slashing conditions related to preconf promises. In return for their service, preconfers issue signed promises to users and are compensated with tips for successfully fulfilling these promises. The hierarchy among preconfers is determined based on their position in the slot order, with precedence given to those with earlier slot assignments.
+When a Beacon Chain validator decides to become a "preconfer," they are essentially agreeing to adhere to two distinct slashing conditions related to preconf promises. In return for their service, preconfers issue signed promises to users and are compensated with tips for successfully fulfilling these promises. The hierarchy among preconfers is determined based on their position in the slot order within an epoch, with precedence given to those with earlier slot assignments.
 
-A transaction that secures a preconf promise gains the eligibility for immediate inclusion and execution on-chain by any proposer positioned before the issuer of the promise (preconfer). The primary obligation of the preconfer is to honor all such promises during their designated slot, utilizing the inclusion list to facilitate this process.
+A transaction that secures a preconf promise gains the eligibility for immediate inclusion and execution on-chain by any proposer positioned before the issuer of the promise (preconfer). The primary obligation of the preconfer is to honor all such promises during their designated slot, utilizing the inclusion list to facilitate this process[^3].
 
 There are two main types of promise-related faults, each carrying the potential for slashing:
 
@@ -33,7 +33,7 @@ Preconfers are not limited to a single type of preconfirmation promise. They can
 
 ## [Key Elements of Preconfs](#key-elements-of-preconfs)
 
-The process towards securing a preconfirmation promise for transactions within the Ethereum network is initiated by establishing a connection with the next available preconfer. This process entails a series of critical steps and factors, including:
+The process towards securing a preconfirmation promise for transactions within the Ethereum network is initiated by establishing a connection with the next available preconfer. This process entails a series of critical steps and factors, including[^1]:
 
 - **Endpoints:** Preconfers may offer direct API endpoints or utilize decentralized peer-to-peer (p2p) networks for the exchange of promises, striking a balance between quick response times and widespread availability.
 
@@ -64,7 +64,8 @@ Each of these elements plays a crucial role in the functionality and efficiency 
 ## [Preconfs Acquisition Process Flow](#preconfs-acquisition-process-flow)
 
 
-![Promise acquisition flow](https://ethresear.ch/uploads/default/original/2X/9/9667dc80c8d911fa3cd86108c3375d0de06e4252.png)
+![Promise acquisition flow](/docs/wiki/research/img/preconfs/Promise-acquisition-flow-JustinDrake.png)
+
 
 *Figure: Preconf Promise acquisition process flow. Source: Justin Drake*
 
@@ -102,7 +103,7 @@ sequenceDiagram
 ```
 
 
-The promise acquisition process in the context of Ethereum's sequencing and pre-confirmation mechanism is a critical aspect, ensuring transactions receive a preconfirmation or "promise" from a proposer or sequencer. This process involves several steps, each integral to securing a promise that a transaction will be included and executed on-chain within a specified time frame. The above figure shows the preconf promise acquisition flow through a sequence of interactions. Below is a detailed explanation of the acquisition process flow:
+The promise acquisition process in the context of Ethereum's sequencing and pre-confirmation mechanism is a critical aspect, ensuring transactions receive a preconfirmation or "promise" from a proposer or sequencer. This process involves several steps, each integral to securing a promise that a transaction will be included and executed on-chain within a specified time frame. The above figure shows the preconf promise acquisition flow through a sequence of interactions[^2]. Below is a detailed explanation of the acquisition process flow:
 
 **1. User Identifies Next Preconfer**
 
@@ -150,3 +151,5 @@ The promise acquisition process in the context of Ethereum's sequencing and pre-
 
 ## References
 [^1]: https://ethresear.ch/t/based-preconfirmations/17353 
+[^2]: https://www.youtube.com/watch?v=2IK136vz-PM
+[^3]: https://notes.ethereum.org/@JustinDrake/rJ2eXRcKa

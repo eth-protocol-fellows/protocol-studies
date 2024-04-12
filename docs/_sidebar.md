@@ -60,6 +60,7 @@
   - ASE
   - EOF
   - Portal Network
+  - Preconfirmations
 - [Cryptography](/wiki/Cryptography/intro.md)
   - [ECDSA](/wiki/Cryptography/ecdsa.md)
   - BLS
