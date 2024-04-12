@@ -62,6 +62,7 @@
   - Portal Network
   - Preconfirmations
     - [Preconfirmations](/wiki/research/Preconfirmations/Preconfirmations.md)
+    - [Based Sequencing with Preconfs](/wiki/research/Preconfirmations/BasedSequencingPreconfs.md)
 - [Cryptography](/wiki/Cryptography/intro.md)
   - [ECDSA](/wiki/Cryptography/ecdsa.md)
   - BLS
