@@ -60,12 +60,14 @@
   - ASE
   - EOF
   - Portal Network
+  - Preconfirmations
+    - [Preconfirmations](/wiki/research/Preconfirmations/Preconfirmations.md)
 - [Cryptography](/wiki/Cryptography/intro.md)
   - [ECDSA](/wiki/Cryptography/ecdsa.md)
   - BLS
   - [Commitments]
     - Polynomials
-    - Commitment schemes
+    - [KZG Commitment scheme](/wiki/Cryptography/KZG.md)
   - ZK
 - [Protocol Fellowship](/wiki/epf.md)
 
