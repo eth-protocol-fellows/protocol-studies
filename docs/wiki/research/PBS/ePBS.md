@@ -231,7 +231,8 @@ TBHL modifies the conventional slot structure in Ethereum, introducing a dual-bl
 
 **Slot Anatomy and Operational Phases**
 
-![Slot Anatomy of TBHL](https://ethresear.ch/uploads/default/optimized/2X/9/95f9159fbfc5fd513899f8581527a7253a6d1acc_2_914x1000.png)
+![Slot Anatomy of TBHL](/docs/wiki/research/img/scaling/Slot-Anatomy-of-TBHL-Mike.png)
+
 
 _Figure – The slot anatomy of TBHL. Credit by mike neuder and justin drake._
 
@@ -283,44 +284,10 @@ The Payload-Timeliness Committee (PTC) proposal is a design for enshrining Propo
 
 #### High-Level Overview
 
-```mermaid
-sequenceDiagram
-    autonumber
-    rect rgb(240, 237, 225)
-    participant V as Validator (Proposer)
+![Payload-Timeliness Committee Flow](/docs/wiki/research/img/scaling/PTC-Flow-ePBS.png)
 
-    participant C as Attesting Committee
-    participant B as Builder
-    participant PTC as Payload-Timeliness Committee
-    participant N1 as Next Proposer (Slot N+1)
+_Figure – Payload-Timeliness Committee Flow._
 
-    rect rgb(255, 190, 152)
-    Note over V: Slot N begins
-    V->>V: Proposes CL block <br>with builder bid at t=t0
-    Note over V: Block contains no ExecutionPayload
-    end
-    rect rgb(219,188,157)
-    Note over C: Attestation deadline at t=t1
-    C->>C: Use fork-choice to determine chain head
-    C->>V: Attestation
-    end
-    rect rgb(212,202,205)
-    Note over B: At t=t2 Broadcast of <br>Aggregate Attestations
-    C->>C: Begin broadcasting <br>aggregate attestations
-    B-->>V: Publishes execution payload <br>if no equivocation seen
-    end
-    rect rgb(177,176,159)
-    Note over PTC: At t=t3 Cast vote for <br>payload timeliness
-    PTC->>PTC: Votes on payload <br>release timeliness
-    end
-    rect rgb(203, 134, 143)
-    Note over N1: At t=t4 Propagation <br>of next block
-    N1->>N1: Publishes block based on <br>PT votes and attestations
-    end
-    end
-```
-
-_Payload-Timeliness Committee Flow_
 
 The proposal introduces a new slot anatomy with an additional phase for Payload-Timeliness (PT) votes to propagate. It aims to refine the roles of proposers and builders in the block creation process, ensuring that proposers remain lightweight and unsophisticated entities for the goal of decentralization, and specialized builders can create high-value blocks efficiently.
 
@@ -443,34 +410,6 @@ The implementation of PEPC in Ethereum involves several trade-offs, reflecting a
 
 #### How would PEPC work?
 
-```mermaid
-sequenceDiagram
-    participant V as Validator (Proposer)
-    participant B as Builders
-    participant P as Protocol
-    participant N as Network Validators
-
-    V->>V: Define Proposer Commitments (PCs)
-    rect rgb(240, 237, 225)
-
-    V->>P: Generate Commit-Block with PCs & Payload Template
-    loop Builder Submissions
-        B->>V: Submit Blocks/Parts fulfilling PCs
-    end
-    end
-
-    rect rgb(177,176,159)
-    V->>P: Verify Submissions against PCs
-    alt Submission satisfies PCs
-        V->>V: Incorporate Submission into Block
-        V->>N: Publish Finalized Block
-        N->>N: Validate Block (Consensus & PCs)
-        N->>P: Include Block in Blockchain
-    else Submission does not satisfy PCs
-        V->>V: Reject Submission
-    end
-    end
-```
 
 ![PEPC Workflow](/docs/wiki/research/img/scaling/PEPC-workflow.png)
 
@@ -603,8 +542,22 @@ As Ethereum's roadmap evolves, with increasing activity on L2 solutions and the 
 
 Given the complex landscape and the potential for significant shifts in Ethereum's MEV dynamics, the prioritization of ePBS relative to other upgrades (e.g., censorship resistance enhancements, single-slot finality) necessitates a strategic approach. The community might consider focusing on upgrades with clearer immediate benefits and lower implementation risks, while continuing to research and develop ePBS frameworks that could be rapidly deployed if and when the need becomes more pressing.
 
-## [References]
+## Resources
+- [Notes on Proposer-Builder Separation (PBS)](https://barnabe.substack.com/p/pbs)
+- [Mike Neuder - Towards Enshrined Proposer-Builder Separation](https://www.youtube.com/watch?v=Ub8V7lILb_Q)
+- [An Incomplete Guide to PBS - with Mike Neuder and Chris Hager](https://www.youtube.com/watch?v=mEbK9AX7X7o)
+- [Why enshrine Proposer-Builder Separation? A viable path to ePBS](https://ethresear.ch/t/why-enshrine-proposer-builder-separation-a-viable-path-to-epbs/15710/1)
+- [ePBS – the infinite buffet](https://notes.ethereum.org/@mikeneuder/infinite-buffet)
+- [ePBS design constraints](https://hackmd.io/ZNPG7xPFRnmMOf0j95Hl3w)
+- [Payload-timeliness committee (PTC) – an ePBS design ](https://ethresear.ch/t/payload-timeliness-committee-ptc-an-epbs-design/16054)
+- [Consider the ePBS](https://notes.ethereum.org/@mikeneuder/consider-the-epbs)
+- [ePBS Breakout Room](https://www.youtube.com/watch?v=63juNVzd1P4)
+- [Unbundling PBS: Towards protocol-enforced proposer commitments (PEPC)](https://ethresear.ch/t/unbundling-pbs-towards-protocol-enforced-proposer-commitments-pepc/13879/1)
+- [PEPC FAQ](https://efdn.notion.site/PEPC-FAQ-0787ba2f77e14efba771ff2d903d67e4)
 
+
+
+## [References]
 [^1]: https://barnabe.substack.com/p/pbs
 [^2]: https://www.youtube.com/watch?v=Ub8V7lILb_Q
 [^3]: https://www.youtube.com/watch?v=mEbK9AX7X7o
