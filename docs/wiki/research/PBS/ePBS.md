@@ -509,6 +509,93 @@ In principle, if the value at stake in activities or assets secured by Eigenlaye
 
 In a broader Ethereum ecosystem context, PEPC and Eigenlayer could be seen as complementary, with Eigenlayer expanding Ethereum's security and utility beyond its core protocol and PEPC enhancing the efficiency and flexibility within the core protocol itself. Implementing both could lead to a scenario where Ethereum not only becomes more efficient and adaptable in handling transactions and block construction but also extends its security guarantees to a broader range of decentralized applications and services.
 
+## ePBS Specifications
+
+The current ePBS specification[^12][^13] addresses a critical issue in Ethereum's current implementation of PBS. Traditionally, both proposers and builders have had to rely on intermediaries through MEV-Boost, which introduces trust and censorship concerns as outlined above. The ePBS framework modifies this dynamic by changing the necessity of intermediaries ("must") to an option ("may"), allowing for a more trustless interaction within the Ethereum ecosystem. It incorporates EIP 7251 and EIP 7002, which are integral to its implementation. 
+
+EIP-7251 aims to increase the maximum effective balance (Max EB) for Ethereum validators to 2048 ETH while keeping a minimum stake of 32 ETH, reducing the total number of validators without compromising security. EIP-7002 introduces a mechanism allowing validators to trigger exits from the beacon chain using their execution layer (0x01) withdrawal credentials, enhancing flexibility and security for staking operations.
+
+### Specifications Overview
+
+**Main Improvements of the ePBS specification:**
+
+**Trust Minimization**: It minimizes the necessity of trust in intermediaries by allowing proposers and builders to operate more independently, reducing the risk of manipulations and trust dependencies.
+
+**Minimal Changes for Compatibility**: The design implements the least number of changes necessary to maintain compatibility with current consensus and execution client operations. It adheres to the existing 12-second slot time, ensuring continuity and stability in the network's operation.
+
+**Censorship Resistance**: It enhances censorship resistance by incorporating forward forced inclusion lists as per EIP-7547, ensuring that certain transactions must be included, which helps in maintaining network integrity.
+
+**Layer Enhancements**: The changes are primarily in the consensus layer (CL), with minimal adjustments required on the Execution Layer (EL), mainly related to the handling of inclusion lists.
+
+**Safety Guarantees**:
+    - **Proposer Safety**: It ensures that proposers are protected against 1-slot reorganization attacks by colluding proposers and builders, even those controlling network topology with up to 20% of the stake.
+    - **Builder Safety**: Guarantees are in place for builders against collusion and manipulation by consecutive proposers, including measures to ensure the safety of both withheld and revealed payloads.
+    - **Unbundling Guarantees**: Builders are protected under all attack scenarios, ensuring integrity in transaction handling and execution.
+
+**Self-Building for Validators**: Validators retain the capability to self-build their payloads, which is crucial for maintaining independence and flexibility.
+
+**Composability**: The specification is designed to be composable with other mechanisms like slot auctions or execution ticket auctions, enhancing flexibility and potential for future innovations.
+
+
+**Implementation Details:**
+
+The ePBS specification introduces specific roles and responsibilities:
+- **Builders**: Validators that submit bids for payload commitments.
+- **PTC (Payload Timeliness Committee)**: A new committee that verifies the timeliness and validity of payloads.
+
+During each slot, proposers collect bids, and upon selecting a bid, they submit their blocks with a signed commitment from the builder. Validators then adjust financial credits between builders and proposers based on these commitments. Builders later reveal their execution payloads, fulfilling their obligations. The slot outcomes can vary—missed, empty, or full—based on the production and revelation of the blocks, with the PTC playing a critical role in determining the nature of the slot's conclusion.
+
+
+### Detailed Processes and Timelines
+
+
+#### Anatomy of a Slot Timeline
+
+
+#### Inclusion List Timeline
+
+
+#### Execution Payload's Timeline
+
+
+#### Payload Attestation's Timeline
+
+
+#### Beacon Block's Timeline
+
+
+### Validator and Builder Specific Functions
+
+
+#### Honest Validator Behavior
+
+
+#### Honest Builder Behavior
+
+
+### Security and Safety Considerations
+
+
+#### Security analysis of proposer and builder interactions
+
+
+#### Forkchoice Considerations
+
+
+#### Analysis of Potential Reorg and Withholding Attacks
+
+
+### Enhancements and Benefits
+
+
+### System Modifications and Optional Changes
+
+
+### Comparisons and Advantages
+
+
+
+
 ## Open Questions in ePBS
 
 There are some interesting and challenging open questions highlighted by Mike in enshrining PBS (ePBS) in Ethereum Protocol[^5].
