@@ -6,7 +6,7 @@ Enshrined Proposer-Builder Separation (ePBS) refers to integrating the PBS mecha
 
 ## What is PBS
 
-Proposer-Builder Separation (PBS) is a design philosophy[^1] and mechanism in within the context of Ethereum, that aims to decouple the roles of proposing blocks (proposers) and constructing the content of those blocks (builders). This separation addresses various challenges and inefficiencies associated with block production, and in the context of maximizing extractable value (MEV). This entry assumes reader has knowledge of [MEV](/wiki/research/PBS/mev.md), [PBS](/wiki/research/PBS/pbs.md), and [MEV-Boost](/wiki/research/PBS/mev-boost.md)
+Proposer-Builder Separation (PBS) is a design philosophy[^1] and mechanism within the context of Ethereum, that aims to decouple the roles of proposing blocks (proposers) and constructing the content of those blocks (builders). This separation addresses various challenges and inefficiencies associated with block production, and in the context of maximizing extractable value (MEV). This entry assumes reader has some knowledge of [MEV](/wiki/research/PBS/mev.md), [PBS](/wiki/research/PBS/pbs.md), and [MEV-Boost](/wiki/research/PBS/mev-boost.md)
 
 ## Overview of ePBS
 
@@ -24,8 +24,7 @@ In the ePBS framework:
 
 ### Transition from mev-boost to ePBS
 
-The transition from MEV-Boost to ePBS represents a pivotal evolution in Ethereum's approach to handling MEV and improving the network's efficiency and fairness. Dependency on an external, third party software can be dangerous and lead to network incidents even if clients themselves behave correctly. 
-In the next section, we will cover the details on why ePBS is needed and what will the ecosystem gain from this in-protocol approach to PBS.
+The transition from MEV-Boost to ePBS represents a pivotal evolution in Ethereum's approach to handling MEV and improving the network's efficiency and fairness. Dependency on an external, third party software can be dangerous and lead to network incidents even if clients themselves behave correctly. In the next section, we will cover the details on why ePBS is needed and what will the ecosystem gain from this in-protocol approach to PBS.
 
 ## The Case for ePBS
 
@@ -57,7 +56,7 @@ The transition to ePBS from the current MEV-Boost system is motivated by several
 
 - **Financial Model**: The financial sustainability of relays is also a concern. If the costs of running relays exceed the revenue generated from their operation, it could lead to a reduction in the number of relays, increasing centralization risks and affecting the competitive marketplace for block space.
 
-The transition towards ePBS involves critical economic and security considerations, especially in the context of Miner Extractable Value (MEV) and proposals like MEV burn. These considerations shape the debate around ePBS, highlighting its potential impact on the Ethereum ecosystem. Here's an exploration of these aspects:
+The transition towards ePBS involves critical economic and security considerations, especially in the context of MEV and proposals like MEV burn. These considerations shape the debate around ePBS, highlighting its potential impact on the Ethereum ecosystem. Here's an exploration of these aspects:
 
 ### Economic Considerations
 
@@ -89,7 +88,7 @@ The transition to ePBS from the current MEV-Boost system is driven by a combinat
 
 ## Counterarguments to ePBS
 
-The discussion around the enshrinement of PBS (ePBS) within Ethereum's protocol has stirred significant debate, with various counterarguments presented by its critics. Proponents of ePBS, however, offer robust responses to these concerns, advocating for its necessity and integration into Ethereum's roadmap. Additionally, the discourse explores alternative methods for addressing miner extractable value (MEV), weighing their sufficiency against the proposed ePBS system[^3].
+The discussion around the enshrinement of PBS (ePBS) within Ethereum's protocol has stirred significant debate, with various counterarguments presented by its critics. Proponents of ePBS, however, offer robust responses to these concerns, advocating for its necessity and integration into Ethereum's roadmap. Additionally, the discourse explores alternative methods for addressing MEV, weighing their sufficiency against the proposed ePBS system[^3].
 
 ### Primary Counterarguments Against ePBS
 
@@ -223,7 +222,7 @@ Determining the minimum viable ePBS involves a delicate balance of these propert
 
 ### The Two-Block HeadLock (TBHL) proposal
 
-The Two-Block HeadLock (TBHL) design represents an innovative approach to proposer-builder separation (PBS) within the Ethereum protocol, aiming to address both the operational and strategic issues posed by (MEV)[https://ethresear.ch/t/why-enshrine-proposer-builder-separation-a-viable-path-to-epbs/]. This design is a nuanced iteration of previous proposals, integrating elements of Vitalik Buterin's two-slot design and enhancing it with a headlock mechanism to safeguard builders from proposer equivocations. Here, we delve into the key components of TBHL and its operational mechanics, drawing on the detailed explanation provided[^4].
+The Two-Block HeadLock (TBHL) design represents an innovative approach to proposer-builder separation (PBS) within the Ethereum protocol, aiming to address both the operational and [strategic issues posed by MEV](https://ethresear.ch/t/why-enshrine-proposer-builder-separation-a-viable-path-to-epbs/). This design is a nuanced iteration of previous proposals, integrating elements of Vitalik Buterin's two-slot design and enhancing it with a headlock mechanism to safeguard builders from proposer equivocations. Here, we delve into the key components of TBHL and its operational mechanics, drawing on the detailed explanation provided[^4].
 
 **TBHL Design Overview**
 
@@ -280,7 +279,7 @@ The TBHL proposal stands as a testament to the ongoing efforts to refine Ethereu
 
 ### Payload-Timeliness Committee (PTC)
 
-The Payload-Timeliness Committee (PTC) proposal is a design for enshrining Proposer-Builder Separation (ePBS) within the Ethereum protocol. It represents an evolution of the mechanism to determine block validity and includes a subset of validators who vote on the timeliness of a block's payload[^7].
+The Payload-Timeliness Committee (PTC) proposal is a design for enshrining PBS (ePBS) within the Ethereum protocol. It represents an evolution of the mechanism to determine block validity and includes a subset of validators who vote on the timeliness of a block's payload[^7][^12].
 
 #### High-Level Overview
 
@@ -332,15 +331,15 @@ Honest attestors will consider the payload-timeliness when casting their votes. 
 
 - The PT votes influence the fork-choice weight but do not create separate forks.
 - The payload view informs subsequent committee votes, which usually align with the proposer.
-- Builders do not receive a proposer boost or explicit fork-choice weight.
+- In the current ePBS design[^12], builders receive a proposer boost. They don't explicitly create fork choice weight between different forks. Instead, they boost or "deboost" the current block by revealing or withholding it.
 
 ### Protocol-Enforced Proposer Commitments (PEPC)
 
-PEPC, a conceptual extension and generalization of PBS, introduces a more flexible and secure way for proposers (validators) to commit to the construction of blocks. Unlike the existing MEV-Boost mechanism, which relies on out-of-protocol agreements between proposers and builders/relays, PEPC aims to enshrine these commitments within the Ethereum protocol itself, offering a trustless and permissionless infrastructure for these interactions[^10][^11].
+Protocol-Enforced Proposer Commitments (PEPC), a conceptual extension and generalization of PBS, introduces a more flexible and secure way for proposers (validators) to commit to the construction of blocks. Unlike the existing MEV-Boost mechanism, which relies on out-of-protocol agreements between proposers and builders/relays, PEPC aims to enshrine these commitments within the Ethereum protocol itself, offering a trustless and permissionless infrastructure for these interactions[^10][^11].
 
 #### Benefits of PEPC
 
-The introduction of Protocol-Enforced Proposer Commitments (PEPC) into Ethereum's ecosystem carries both promising benefits and notable disadvantages, reflecting the complex balance between innovation, security, scalability, and usability. Here's a detailed look at these aspects:
+The introduction of PEPC into Ethereum's ecosystem carries both promising benefits and notable disadvantages, reflecting the complex balance between innovation, security, scalability, and usability. Here's a detailed look at these aspects:
 
 **Enhanced Security and Trustlessness:**
 
@@ -352,7 +351,7 @@ By allowing for programmable contracts between proposers and builders, PEPC intr
 
 **Decentralization of MEV Opportunities:**
 
-PEPC could potentially lead to a more equitable distribution of Maximal Extractable Value (MEV) opportunities among validators. By embedding diverse commitment mechanisms into the protocol, it reduces the risk of centralizing these opportunities in the hands of a few large operators.
+PEPC could potentially lead to a more equitable distribution of MEV opportunities among validators. By embedding diverse commitment mechanisms into the protocol, it reduces the risk of centralizing these opportunities in the hands of a few large operators.
 
 **Scalability and Efficiency Improvements:**
 
@@ -496,7 +495,7 @@ PEPC offers several compelling use cases[^11]:
 
 #### Relationship and Differences to EigenLayer
 
-PEPC and Eigenlayer have a complementary relationship, each addressing different aspects of Ethereum's scalability, security, and decentralization, while also sharing a common goal of enhancing the network's efficiency and flexibility.
+PEPC and Eigenlayer have a complementary relationship, each addressing different aspects of Ethereum's scalability, security, and decentralization, while also sharing a common goal of enhancing the network's efficiency and flexibility[^14].
 
 - **Security Layering:** Eigenlayer introduces a mechanism to extend Ethereum's security to additional layers and services. In contrast, PEPC focuses on embedding more sophisticated and flexible commitment mechanisms within the Ethereum protocol itself. While Eigenlayer seeks to augment Ethereum's security model externally, PEPC aims to enhance the internal workings of the Ethereum main chain, specifically around block proposal and transaction inclusion processes.
 
@@ -554,6 +553,9 @@ Given the complex landscape and the potential for significant shifts in Ethereum
 - [ePBS Breakout Room](https://www.youtube.com/watch?v=63juNVzd1P4)
 - [Unbundling PBS: Towards protocol-enforced proposer commitments (PEPC)](https://ethresear.ch/t/unbundling-pbs-towards-protocol-enforced-proposer-commitments-pepc/13879/1)
 - [PEPC FAQ](https://efdn.notion.site/PEPC-FAQ-0787ba2f77e14efba771ff2d903d67e4)
+- [ePBS specification notes](https://hackmd.io/@potuz/rJ9GCnT1C)
+- [Minimal ePBS without Max EB and 7002](https://github.com/potuz/consensus-specs/pull/2)
+- [EigenLayer protocol](https://docs.eigenlayer.xyz/eigenlayer/overview/whitepaper)
 
 
 
@@ -569,3 +571,6 @@ Given the complex landscape and the potential for significant shifts in Ethereum
 [^9]: https://www.youtube.com/watch?v=63juNVzd1P4
 [^10]: https://ethresear.ch/t/unbundling-pbs-towards-protocol-enforced-proposer-commitments-pepc/13879/1
 [^11]: https://efdn.notion.site/PEPC-FAQ-0787ba2f77e14efba771ff2d903d67e4
+[^12]: https://hackmd.io/@potuz/rJ9GCnT1C
+[^13]: https://github.com/potuz/consensus-specs/pull/2
+[^14]: https://docs.eigenlayer.xyz/eigenlayer/overview/whitepaper
