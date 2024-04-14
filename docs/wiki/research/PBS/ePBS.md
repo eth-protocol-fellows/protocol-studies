@@ -530,9 +530,7 @@ EIP-7251 aims to increase the maximum effective balance (Max EB) for Ethereum va
 **Safety Guarantees**:
 
 - **Proposer Safety**: It ensures that proposers are protected against 1-slot reorganization attacks by colluding proposers and builders, even those controlling network topology with up to 20% of the stake.
-
 - **Builder Safety**: Guarantees are in place for builders against collusion and manipulation by consecutive proposers, including measures to ensure the safety of both withheld and revealed payloads.
-
 - **Unbundling Guarantees**: Builders are protected under all attack scenarios, ensuring integrity in transaction handling and execution.
 
 **Self-Building for Validators**: Validators retain the capability to self-build their payloads, which is crucial for maintaining independence and flexibility.
@@ -545,7 +543,6 @@ EIP-7251 aims to increase the maximum effective balance (Max EB) for Ethereum va
 The ePBS specification introduces specific roles and responsibilities:
 
 - **Builders**: Validators that submit bids for payload commitments.
-
 - **PTC (Payload Timeliness Committee)**: A new committee that verifies the timeliness and validity of payloads.
 
 During each slot, proposers collect bids, and upon selecting a bid, they submit their blocks with a signed commitment from the builder. Validators then adjust financial credits between builders and proposers based on these commitments. Builders later reveal their execution payloads, fulfilling their obligations. The slot outcomes can vary—missed, empty, or full—based on the production and revelation of the blocks, with the PTC playing a critical role in determining the nature of the slot's conclusion.
