@@ -8,10 +8,6 @@
 
 The core of the Ethereum Execution Layer is tasked with executing three types of transactions: legacy, Type 1, and Type 2. These transactions are processed by the quasi-Turing complete Ethereum Virtual Machine (EVM), which allows for virtually any computation, bounded only by gas constraints. This capability positions the EVM as a decentralized world computer, enabling decentralized applications (DApps) to run and transactions to be securely recorded on an immutable ledger. Beyond transaction processing, the EL is instrumental in storing data structures within the State DB. This not only facilitates the observation of current and historical states but also supports the Consensus Layer in block creation and validation. In this analogy, the Execution Layer acts as the CPU, with the Consensus Layer serving as the hard drive. Additionally, the EL defines the parameters of Ethereum's economic model, laying the foundation for blockchain operations.
 
-Beyond its fundamental role, the Execution Layer client undertakes several critical responsibilities. These include synchronizing its blockchain copy, facilitating network communication through gossip protocols with other Execution Layer clients, minting a transaction pool, and fulfilling the Consensus Layer's requirements that drive its functionality. This multifaceted operation ensures the robustness and integrity of the Ethereum network.
-
-The client's architecture is grounded in a series of detailed specifications, each playing a unique role in its comprehensive functionality. This document aims to provide a concise overview of the core specification. For a deeper understanding of how all the specifications seamlessly work together within the Execution Layer Client, please consult the [Execution Layer Architecture](/wiki/EL/el-architecture.md).
-
 # Ethereum Execution Layer Specification (EELS)
 
 The Execution Layer, from the EELS perspective, focuses exclusively on executing the state transition function (STF). This role encompasses addressing two primary questions[¹]:
