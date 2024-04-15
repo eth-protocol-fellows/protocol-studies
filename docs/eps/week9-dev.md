@@ -2,7 +2,7 @@
 
 This research talk is dedicated to testing and prototyping forks locally, it discusses the current state and ideas being worked on. 
 
-Join the presentation by [Parithosh](https://twitter.com/parithosh_j), the Ethereum testnet guru from EF Devops on [Wednesday, April 15, 4PM UTC](https://savvytime.com/converter/utc-to-germany-berlin-united-kingdom-london-china-shanghai-ny-new-york-city-japan-tokyo-australia-sydney-india-delhi-argentina-buenos-aires/apr-15-2024/4pm).
+Join the presentation by [Parithosh](https://twitter.com/parithosh_j), the Ethereum testnet guru from EF Devops on [Monday, April 15, 4PM UTC](https://savvytime.com/converter/utc-to-germany-berlin-united-kingdom-london-china-shanghai-ny-new-york-city-japan-tokyo-australia-sydney-india-delhi-argentina-buenos-aires/apr-15-2024/4pm).
 
 The talk will be streamed live on [StreamEth](https://streameth.org/65cf97e702e803dbd57d823f/epf_study_group) and [Youtube](https://www.youtube.com/@ethprotocolfellows/streams), links will be provided before the call in the [Discord server](https://discord.gg/addwpQbhpq). Discord also serves for the discussion and questions during the stream. 
 
