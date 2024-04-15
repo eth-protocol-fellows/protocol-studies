@@ -769,7 +769,7 @@ $$ \mu \equiv (\mu_{gasAvailable}, \mu_{programCounter},\\ \mu_{memoryContents},
 |$$ \mu_{outputFromNormalHalting}$$ | () | Represents the output(bytes) from the last function call, determined by the normal halting function. While the EELS pyspec features a dedicated field in the EVM object for the output , Geth doesn't; instead, it utilizes the returnData field, which serves the same purpose.|
 
 ### Current Operation
-The `currentOperation` is determined based on the position of the `programCounter` within the bytecode array:
+The `currentOperation` is determined based on the position of the `programCounter` within the [bytecode](/wiki/EL/evm?id=evm-bytecode) array:
 
 $$ currentOperation \equiv \\ w \equiv 
 \begin{cases}
