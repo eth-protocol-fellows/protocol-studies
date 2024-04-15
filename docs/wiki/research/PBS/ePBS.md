@@ -554,6 +554,117 @@ During each slot, proposers collect bids, and upon selecting a bid, they submit 
 #### Anatomy of a Slot Timeline
 
 
+```mermaid
+sequenceDiagram
+    participant Proposer
+    participant EL as Execution Layer
+    participant Builders
+    participant Validators
+    participant PTC as Payload Timeliness Committee
+    participant Network as P2P Network
+
+    
+    Note over Proposer: Preparation before the slot begins
+    rect rgb(191, 223, 255)
+    Proposer->>EL: Request full IL
+    EL-->>Proposer: Provide transactions and addresses
+    Proposer->>Proposer: Fill and sign the IL summary
+    Proposer->>Network: Broadcast IL
+
+    Note over Builders: Builders prepare bids
+    Builders->>Proposer: Send bids over p2p network or direct
+    Proposer->>Proposer: Select a builder's bid
+    end
+
+    Note over Proposer: Start of the slot at Second 0
+    rect rgb(191, 223, 255)
+    Proposer->>+Validators: Prepare and broadcast SignedBeaconBlock with builder's bid
+
+    Note over Validators: Between second 0 and second 3
+    Validators->>Validators: Independently run state <br>transition function on beacon block
+    Validators->>-EL: Verify proposer's signature and validate IL
+    end
+
+    Note over Validators: Second 3
+    rect rgb(191, 223, 255)
+    Validators->>+Validators: Attest for the presence<br> of beacon block and IL
+    Validators->>-Network: Broadcast attestations    
+    end
+
+    Note over Builders: Second 6
+    rect rgb(191, 223, 255)
+    Builders->>+Builders: Monitor subnet, decide on<br> payload withholding
+    Builders->>-Network: Broadcast execution payload
+    end
+
+    Note over PTC: Second 9
+    rect rgb(191, 223, 255)
+    PTC->>PTC: Assess execution payload timeliness and status
+    alt Payload Status
+        Note over PTC: PAYLOAD_PRESENT ==> If beacon block is seen timely <br>with payload_withheld = False
+        PTC-->>Network: Vote PAYLOAD_PRESENT
+        Note over PTC: PAYLOAD_WITHHELD ==> If beacon block is seen timely <br>with payload_withheld = True
+        PTC-->>Network: Vote PAYLOAD_WITHHELD
+        Note over PTC: PAYLOAD_ABSENT ==> If beacon block is not seen or <br>payload was not seen timely
+        PTC-->>Network: Vote PAYLOAD_ABSENT
+    end
+    end
+
+    Network-->>Validators: Import and validate all the data: IL, beacon block, <br>attestations, payload attestations, full execution payload    
+    rect rgb(191, 223, 255)
+    alt Status Options
+        Note over Validators: Full Block ==> Both the beacon block <br>and execution payload imported
+        Note over Validators: Empty Block ==> Beacon block imported,<br> payload not revealed on time
+    
+        Note over Validators: Skipped Slot ==> No consensus block imported
+    end
+    end
+    rect rgb(191, 223, 255)
+    Validators->>Validators: Evaluate the new head of the blockchain<br> based on the above outcomes    
+    Validators->>Network: Broadcast
+    end
+    Note over Validators: End of the slot
+```
+
+_Figure – New Slot Anatomy Flow based on the ePBS specs._
+
+
+Explanation of the new slot anatomy flow based on the ePBS specs:
+
+**Preparation Before the Slot**:
+- **Proposer** prepares by requesting a full inclusion list from the EL, filling and signing the summary, and then broadcasting it to the p2p network.
+- **Builders** prepare their bids and send them to the proposer via the p2p network or directly.
+
+**Start of the Slot at Second t=0**:
+- The **Proposer** selects a builder's bid, prepares, and broadcasts a **SignedBeaconBlock** containing the builder's bid.
+
+**Between Second t=0 and t=3**:
+- **Validators** independently run the state transition function to validate the beacon block, verify the proposer's signature and validate the inclusion list.
+
+**Around Second t=3**:
+- **Validators** attest to the presence of the beacon block and the inclusion list, ensuring everything is in order up to this point.
+
+**Around Second t=6**:
+- **Builders** broadcast their execution payloads. They monitor network subnets and decide whether to withhold their payloads based on network conditions and voting.
+
+**Around Second t=9 - Payload Timeliness Committee (PTC)**:
+- At second 9 of the slot, the PTC assesses the timeliness of the execution payload. This committee, consisting of 512 validators, votes based on their observation of the execution payload's presence and timing relative to the consensus block.
+- **Voting Mechanisms**:
+  - **PAYLOAD_PRESENT**: The committee votes this way if the execution payload was seen timely, and the `payload_withheld` flag in the `ExecutionPayloadEnvelope` is `False`. This indicates that the payload is both present and was not withheld, suggesting all conditions were met promptly.
+  - **PAYLOAD_WITHHELD**: The vote is cast for this outcome if the execution payload was seen timely, but the `payload_withheld` flag is `True`. This indicates that while the payload was available on time, the builder chose to withhold it due to not being fully confident in the block's acceptance.
+  - **PAYLOAD_ABSENT**: This vote occurs if no consensus block was observed for the current slot or if a consensus block was observed but the corresponding payload was not seen timely. This results in a conclusion that the payload is absent.
+- These different outcomes are then gossiped across the p2p network to inform other validators of the payload status, impacting the final assessment of the slot's outcome at its conclusion.
+
+**End of the Slot**:
+- As the slot concludes, validators complete several crucial tasks:
+  - **Importing and Validating**: Validators ensure they have imported and validated the inclusion list, the consensus block, all single bit and aggregated attestations, the payload attestations, and the full execution payload.
+  - **Evaluating the Blockchain's New Head**: Based on the data validated, validators make a critical decision on the chain's state.They determine whether the slot results in:
+    - **Full Block**: Both the consensus block and the corresponding execution payload have been successfully imported.
+    - **Empty Block**: The consensus block was imported, but the associated execution payload was not revealed on time.
+    - **Skipped Slot**: No consensus block was imported during the slot, leading to a skipped slot scenario.
+
+
+
 #### Inclusion List Timeline
 
 
