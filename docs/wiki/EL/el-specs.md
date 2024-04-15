@@ -765,7 +765,7 @@ $$ \mu \equiv (\mu_{gasAvailable}, \mu_{programCounter},\\ \mu_{memoryContents},
 |$$\mu_{programCounter}$$ | 0 | Natural number counter to track the code position we are in , max number size is 256 bits |
 |$$\mu_{memoryContents}$$ | $$[0_{256Bit}, ..., 0_{256Bit}]$$ | word(256bit) Addressed byte array |
 |$$\mu_{activeWordsInMemory}$$ | 0  | Length of the active words in memory, expanded in chunks of 32bytes |
-|$$ \mu_{stackContents}$$ | | Stack item : word(256bit), Max Items = 1024 |
+|$$ \mu_{stackContents}$$ | | [Stack](/wiki/EL/evm?id=stack) item : word(256bit), Max Items = 1024 |
 |$$ \mu_{outputFromNormalHalting}$$ | () | Represents the output(bytes) from the last function call, determined by the normal halting function. While the EELS pyspec features a dedicated field in the EVM object for the output , Geth doesn't; instead, it utilizes the returnData field, which serves the same purpose.|
 
 ### Current Operation
