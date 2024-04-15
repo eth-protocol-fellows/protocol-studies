@@ -562,7 +562,7 @@ The process of executing a transaction within the Ethereum network is governed b
 
 $$ \Upsilon(\sigma_t, T_{index}) \tag{4}$$
 
-Upon invocation of $\Upsilon$, the system first verifies the intrinsic validity of the transaction. Once validated, the Ethereum Virtual Machine (EVM) initiates state modifications based on the transaction's directives.
+Upon invocation of $\Upsilon$, the system first verifies the intrinsic validity of the transaction. Once validated, the [Ethereum Virtual Machine](/wiki/EL/evm) (EVM) initiates state modifications based on the transaction's directives.
 
 ## Transaction  Intrinsic Validity
 The intrinsic validity of a transaction is determined through a series of checks:
