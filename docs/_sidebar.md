@@ -27,7 +27,7 @@
 - Execution Layer
   - [EL Clients](/wiki/EL/el-clients.md)
   - [EL Specs](/wiki/EL/el-specs.md)
-  - Client architecture
+  - [Client architecture](/wiki/EL/el-architecture.md)
   - [EVM](/wiki/EL/evm.md)
   - [Precompiled Contracts](/wiki/EL/precompiled-contracts.md)
   - [Transaction](/wiki/EL/transaction.md)
