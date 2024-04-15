@@ -336,7 +336,7 @@ After initial header verification, the block advances to the execution phase([ap
 7. **Delete empty accounts** touched in the previous steps to clean up the state.
 8. **Process transactions within the block:**
     - Transactions are decoded and added to the transaction trie for execution.
-    - **Execute the Transaction:** Critical to the block execution process, this involves:
+    - **Execute the [Transaction](/wiki/EL/transaction):** Critical to the block execution process, this involves:
         1. Recovering the transaction sender's address using the signature components $T_v, T_r, T_s$.
         2. Verifying intrinsic transaction validity.
         3. Calculating the effective gas price.
