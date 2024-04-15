@@ -754,7 +754,7 @@ TODO
 
 ## $T$ Execution Stage 3 :  Main Execution ($\Xi)  $
 
-### Machine State $\mu$ 
+### [Machine](/wiki/EL/evm?id=evm) State $\mu$ 
 
 $$ \mu \equiv (\mu_{gasAvailable}, \mu_{programCounter},\\ \mu_{memoryContents}, \mu_{activeWordsInMemory},\\ \mu_{stackContents} ) $$
 | | initial Value | notes |
