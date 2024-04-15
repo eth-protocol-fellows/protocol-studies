@@ -283,7 +283,42 @@ The Payload-Timeliness Committee (PTC) proposal is a design for enshrining PBS (
 
 #### High-Level Overview
 
-![Payload-Timeliness Committee Flow](/docs/wiki/research/img/scaling/PTC-Flow-ePBS.png)
+
+```mermaid
+sequenceDiagram
+    autonumber
+    rect rgb(240, 237, 225)
+    participant V as Validator (Proposer)
+    participant C as Attesting Committee
+    participant B as Builder
+    participant PTC as Payload-Timeliness Committee
+    participant N1 as Next Proposer (Slot N+1)
+
+    rect rgb(255, 190, 152)
+    Note over V: Slot N begins
+    V->>V: Proposes CL block <br>with builder bid at t=t0
+    Note over V: Block contains no ExecutionPayload
+    end
+    rect rgb(219,188,157)
+    Note over C: Attestation deadline at t=t1
+    C->>C: Use fork-choice to determine chain head
+    C->>V: Attestation
+    end
+    rect rgb(212,202,205)
+    Note over B: At t=t2 Broadcast of <br>Aggregate Attestations
+    C->>C: Begin broadcasting <br>aggregate attestations
+    B-->>V: Publishes execution payload <br>if no equivocation seen
+    end
+    rect rgb(177,176,159)
+    Note over PTC: At t=t3 Cast vote for <br>payload timeliness
+    PTC->>PTC: Votes on payload <br>release timeliness
+    end
+    rect rgb(203, 134, 143)
+    Note over N1: At t=t4 Propagation <br>of next block
+    N1->>N1: Publishes block based on <br>PT votes and attestations
+    end
+    end
+```
 
 _Figure – Payload-Timeliness Committee Flow._
 
@@ -410,7 +445,34 @@ The implementation of PEPC in Ethereum involves several trade-offs, reflecting a
 #### How would PEPC work?
 
 
-![PEPC Workflow](/docs/wiki/research/img/scaling/PEPC-workflow.png)
+```mermaid
+sequenceDiagram
+    participant V as Validator (Proposer)
+    participant B as Builders
+    participant P as Protocol
+    participant N as Network Validators
+
+    V->>V: Define Proposer Commitments (PCs)
+    rect rgb(240, 237, 225)
+
+    V->>P: Generate Commit-Block with PCs & Payload Template
+    loop Builder Submissions
+        B->>V: Submit Blocks/Parts fulfilling PCs
+    end
+    end
+
+    rect rgb(177,176,159)
+    V->>P: Verify Submissions against PCs
+    alt Submission satisfies PCs
+        V->>V: Incorporate Submission into Block
+        V->>N: Publish Finalized Block
+        N->>N: Validate Block (Consensus & PCs)
+        N->>P: Include Block in Blockchain
+    else Submission does not satisfy PCs
+        V->>V: Reject Submission
+    end
+    end
+```
 
 _Figure – PEPC flow._
 
