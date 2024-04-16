@@ -3,7 +3,7 @@ This is a brief summary of important information you need to know when starting 
 #### Code directoy explanation
 
 ##### Modules
-+  It is a multi-module [gradle](https://gradle.org/) project. You can take a look to settings.gradle to see all modules :
++  It is a multi-module [gradle](https://gradle.org/) project. You can take a look to settings.gradle to see all modules:
     + Each module has its own build.gradle:
 		+ You can specify it's module name: `archiveBaseName`
 		+ You can specify it's dependencies but without versions.
@@ -81,8 +81,8 @@ This is a brief summary of important information you need to know when starting 
 #####  Development tasks:
 + Some useful commands:
 	+ `git pull --recurse-submodules`.
-	+ `./gradlw spotlessApply`
-	+ `./gradlw check` (it is run by CI every time you make a PR to Besu repository)
+	+ `./gradlew spotlessApply`
+	+ `./gradlew check` (it is run by CI every time you make a PR to Besu repository)
 	+  `./gradlew assemble`
 	+  In case you want to connect your MM to your local Besu node, you should run Besu with these options:
 		+ bin/besu --network=dev --rpc-http-enabled --rpc-http-cors-origins=chrome-extension://nkbihfbeogaeaoehlefnkodbefgpgknn
