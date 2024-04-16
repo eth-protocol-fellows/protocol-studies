@@ -35,6 +35,7 @@ Additionally, you can get ready by studying the following resources:
   - https://eips.ethereum.org/EIPS/eip-7668
   - https://github.com/ethereum/EIPs/pull/8368
 - Address Space Extension
+  - https://github.com/ethereum/EIPs/pull/8385
   - https://ethereum-magicians.org/t/thoughts-on-address-space-extension-ase/6779
   - https://ethereum-magicians.org/t/increasing-address-size-from-20-to-32-bytes/5485
   - https://notes.ethereum.org/@ipsilon/address-space-extension-exploration
