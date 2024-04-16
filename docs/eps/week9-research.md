@@ -30,6 +30,7 @@ Additionally, you can get ready by studying the following resources:
   - https://eips.ethereum.org/EIPS/eip-4760
   - https://eips.ethereum.org/EIPS/eip-6046
   - https://eips.ethereum.org/EIPS/eip-6190
+  - EOF thingS: https://hackmd.io/@shemnon/mega-eof-scoping
 - LOG reform
   - https://eips.ethereum.org/EIPS/eip-7668
   - https://github.com/ethereum/EIPs/pull/8368
