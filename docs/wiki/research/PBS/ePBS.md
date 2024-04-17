@@ -726,10 +726,11 @@ Explanation of the new slot anatomy flow based on the ePBS specs:
 - Builders prepare bid using the `ExecutionPayloadHeader` container which contains essential details like the parent block hash, fee recipient, and proposed transaction fee, etc. 
 - Builders create `SignedExecutionPayloadHeader`, a signed header `ExecutionPayloadHeader` and broadcast it.
 - Bids are sent either directly to the proposer or broadcasted over the p2p network using the `execution_payload_header` topic.
+
 **Proposers: Selecting Bids and Broadcasting the Signed Beacon Block**
-- The proposer evaluates bids based on several criteria, such as the bid amount and the reliability or past performance of the builder. Then selects a bid. 
+- The proposer evaluates bids based on several criteria, such as the bid amount and the reliability or past performance of the builder. to select a bid. 
 - The proposer constructs a `BeaconBlockBody`, which includes the `signed_execution_payload_header` among other standard elements.
-- This function `process_block_header` processes the block header, ensuring all elements conform to the consensus rules and that the block is valid within the current chain context.
+- The function `process_block_header` processes the block header, ensuring all elements conform to the consensus rules and that the block is valid within the current chain context.
 - The block, now containing the selected execution payload header, is signed by the proposer to produce `SignedBeaconBlock`. 
 - The signed block is then broadcast over the p2p network using the `beacon_block` topic, making it available to all network participants.
 - The `ExecutionPayloadHeader` within the `BeaconBlockBody` prepared by the proposer includes `parent_block_hash` linking to the parent block in the execution layer, ensuring continuity of the chain and `block_hash` will eventually link to the hash of the `ExecutionPayload` that the builder will produce and is crucial for validators to verify the integrity and continuity of the chain.
@@ -746,7 +747,7 @@ Explanation of the new slot anatomy flow based on the ePBS specs:
 
 
 **Around Second t=3**:
-- **Validators** attest to the presence of the beacon block and the inclusion list, ensuring everything is in order up to this point.
+- **Validators** attest to the presence of the beacon block and the IL, ensuring everything is in order up to this point.
 
 **Validators: Attesting to Beacon Block**
 - Validators call the function `process_attestation` to verify and process each attestation made against the beacon block. This includes validating the beacon block's slot, the attestation's committee, and ensuring the correctness of the attestation data as per the consensus rules.
@@ -774,17 +775,22 @@ Explanation of the new slot anatomy flow based on the ePBS specs:
 
 **PTC Validators Assess and Vote on Execution Payload Timeliness**
 - Each PTC validator independently checks if they have received a valid `ExecutionPayload` from the builder that was supposed to reveal it according to the signed `ExecutionPayloadHeader` included in the current beacon block. PTC Validators vote on the timeliness of the payload based on its presence and the timing of its reception.
+
 **Broadcast Payload Timeliness Attestation**
 - If the execution payload is confirmed to be present and timely, PTC validators produce and broadcast payload timeliness attestations, confirming these observations. `PayloadAttestation` container captures the validators' attestations regarding the payload's timeliness and presence.
 - `get_payload_attesting_indices` function determines which validators in the PTC are attesting to the payload's presence and timeliness by checking their aggregation bits in the `PayloadAttestation`. 
 - Attestations are broadcast on the p2p network via the `payload_attestation_message` topic.
+
 **Aggregate and Include Payload Attestations in Beacon Blocks**
 - Aggregators collect individual `PayloadAttestation` messages, aggregate them, and ensure their inclusion in upcoming beacon blocks to record and finalize the validators' consensus on payload timeliness. They are aggregated into an `IndexedPayloadAttestation` container, which includes a list of validator indices that attested, the payload attestation data, and a collective signature.
+
 **Update Beacon Chain State Based on Attestations**
 - `process_payload_attestation` function is invoked by the beacon chain to process and validate incoming payload attestations. It ensures that the attestation data is correct and that the signatures are valid, integrating this information into the beacon state. The beacon chain state is updated based on the payload attestations. 
 - These attestations influence the fork choice by affecting the weights of various blocks and potentially leading to different chain reorganizations based on the perceived timeliness and presence of execution payloads.
-- **Reward Calculation and Distribution**: For each validator that correctly attested to the payload status, it sets participation flags and calculates rewards based on predefined weights (`PARTICIPATION_FLAG_WEIGHTS`). The rewards are aggregated, and the proposer of the attestation is rewarded proportionally, with the calculation considering various weights and denominators defined in the protocol specifications (`WEIGHT_DENOMINATOR`, `PROPOSER_WEIGHT`).
-- **Proposer Reward**: The function finally calculates the proposer's reward and updates the proposer's balance by calling `increase_balance` method.
+
+**Reward Calculation and Distribution**: For each validator that correctly attested to the payload status, it sets participation flags and calculates rewards based on predefined weights (`PARTICIPATION_FLAG_WEIGHTS`). The rewards are aggregated, and the proposer of the attestation is rewarded proportionally, with the calculation considering various weights and denominators defined in the protocol specifications (`WEIGHT_DENOMINATOR`, `PROPOSER_WEIGHT`).
+
+**Proposer Reward**: The function finally calculates the proposer's reward and updates the proposer's balance by calling `increase_balance` method.
 
 
 **End of the Slot**:
