@@ -22,6 +22,7 @@ Bertoni
 BFT
 bitrate
 bitwise
+BIP
 BLOBHASH
 blockchain
 blockchain's
@@ -59,6 +60,7 @@ cryptoeconomically
 cryptographic
 cryptographically
 Cryptopedia
+cryptosystem
 cybersecurity
 Cypherpunks
 D'Amato
@@ -82,6 +84,7 @@ Devcon
 Devops
 devp
 Devs
+devnet
 Diffie
 DILITHIUM
 discv
@@ -96,6 +99,7 @@ EB
 ECADD
 ECC
 ECDSA
+ECDSA's
 ECMUL
 ECPAIRING
 ECRECOVER
@@ -111,6 +115,8 @@ Elmore
 ELs
 Encodings
 env
+EOA
+EOAs
 EOF
 EOY
 eP
@@ -141,6 +147,7 @@ Femboy
 finalise
 Forkchoice
 forkchoiceUpdatedV
+Forky
 FOSS
 frameborder
 Francesco
@@ -161,6 +168,7 @@ getPayloadV
 getters
 Gilles
 Goron
+Goomy
 gpg
 Grafana
 Guillaume
@@ -193,6 +201,7 @@ Katex
 keccak
 Keccak's
 keecak
+KEM
 Kleppmann
 Koblitz
 KYBER
@@ -200,6 +209,7 @@ KZG
 KZGCommitment
 KZGProof
 Lamport
+Lamport's
 Lefteris
 libp
 lifecycle
@@ -231,6 +241,7 @@ MMPTs
 MODEXP
 modularity
 Monnot
+mortem
 MPT
 MSIZE
 mstore
@@ -258,7 +269,7 @@ OSI's
 Parametrizing
 params
 Pari
-Paritosh
+Parithosh
 Pectra
 PeerDAS
 Peeters
@@ -269,11 +280,14 @@ pmod
 POC
 POS
 PQCA
+PQ
+PQC
 pre
 precompile
 precompiled
 precompiles
 preconfirmations
+preimage
 Prest
 privateKey
 probabilistically
@@ -285,6 +299,7 @@ PUSHX
 py
 Pyspec
 pytest
+qubits
 radix
 Rareskills
 README
@@ -305,6 +320,7 @@ rollup's
 RPC
 RPCs
 RSA
+RSA's
 runtime
 scalability
 scalable
@@ -317,6 +333,7 @@ SELFDESTRUCT
 sexualized
 SHA
 Shafu
+shadowfork
 sharding
 ShareAlike
 Shead
@@ -352,6 +369,7 @@ Tetris
 textnormal
 TODO
 TPS
+tracoor
 tradeoff
 transactional
 trapdoored
@@ -385,6 +403,7 @@ WebRTC
 Whitepaper
 WIP
 WSS
+Xatu
 XMSS
 XORed
 xy
