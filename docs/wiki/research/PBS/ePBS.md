@@ -869,7 +869,6 @@ The processing of execution payloads in the ePBS system includes several critica
 
 
 #### Beacon Block's Timeline
-Here's a condensed summary of the key points regarding the beacon block's timeline in ePBS:
 
 **Gossip**
 - **Initial Validation**: `SignedBeaconBlock` enters through gossip or RPC, with critical validations focusing on the legitimacy of the parent beacon block.
