@@ -72,7 +72,8 @@
   - EOF
   - Portal Network
 - [Cryptography](/wiki/Cryptography/intro.md)
-  - [ECDSA](/wiki/Cryptography/ecdsa.md)
+  - [ECDSA](/wiki/Cryptography/ecdsa.md) 
+  - [Keccak256](/wiki/Cryptography/keccak256.md)
   - BLS
   - [Commitments]
     - Polynomials
