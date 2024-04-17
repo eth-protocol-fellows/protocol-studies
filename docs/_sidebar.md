@@ -16,6 +16,7 @@
   - [Week 8 | Dev](/eps/week8-dev.md)
   - [Week 8 | Research](/eps/week8-research.md)
   - [Week 9 | Dev](/eps/week9-dev.md)
+  - [Week 9 | Research](/eps/week9-research.md)
 - [Contributing](contributing.md)
 - **Protocol Wiki**
 - The Protocol
@@ -77,6 +78,7 @@
     - Polynomials
     - Commitment schemes
   - ZK
+  - [Post-Quantum Cryptography](/wiki/Cryptography/post-quantum-cryptography.md)
 - [Protocol Fellowship](/wiki/epf.md)
 
 - **Wiki Info**

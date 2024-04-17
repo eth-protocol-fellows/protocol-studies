@@ -1,10 +1,10 @@
 # Study Group Week 9 | Local testing and prototyping 
 
-This research talk is dedicated to testing and prototyping forks locally, it discusses the current state and ideas being worked on. 
+This development talk is dedicated to testing and prototyping forks locally, it discusses the current state and ideas being worked on. 
 
-Join the presentation by [Parithosh](https://twitter.com/parithosh_j), the Ethereum testnet guru from EF Devops on [Monday, April 15, 4PM UTC](https://savvytime.com/converter/utc-to-germany-berlin-united-kingdom-london-china-shanghai-ny-new-york-city-japan-tokyo-australia-sydney-india-delhi-argentina-buenos-aires/apr-15-2024/4pm).
+Watch the presentation by [Parithosh](https://twitter.com/parithosh_j) on StreamETH channel or Youtube. Slides are [available here](https://github.com/eth-protocol-fellows/protocol-studies/blob/main/docs/eps/presentations/week9-dev.pdf). 
 
-The talk will be streamed live on [StreamEth](https://streameth.org/65cf97e702e803dbd57d823f/epf_study_group) and [Youtube](https://www.youtube.com/@ethprotocolfellows/streams), links will be provided before the call in the [Discord server](https://discord.gg/addwpQbhpq). Discord also serves for the discussion and questions during the stream. 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/Enf8006zKLI?si=hJe4xFqiY81C0DwQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ## Pre-reading
 
@@ -39,3 +39,6 @@ Additionally, you can get ready by studying the following resources:
 - [Attacknet: Chaos engineering on Ethereum](https://ethpandaops.io/posts/attacknet-introduction/)
 - [Verkle devnets](https://github.com/ethpandaops/verkle-devnets)
 - [Kurtosis](https://github.com/kurtosis-tech/kurtosis)
+- Follow exercises proposed by Pari in the talk
+   - Modify a client with a custom log message and run it using Kurtosis
+   - Deploy some of the tolling, connect to your own node on any network 
