@@ -39,6 +39,6 @@ Additionally, you can get ready by studying the following resources:
 - [Attacknet: Chaos engineering on Ethereum](https://ethpandaops.io/posts/attacknet-introduction/)
 - [Verkle devnets](https://github.com/ethpandaops/verkle-devnets)
 - [Kurtosis](https://github.com/kurtosis-tech/kurtosis)
-- Follow excercises proposed by Pari in the talk
+- Follow exercises proposed by Pari in the talk
    - Modify a client with a custom log message and run it using Kurtosis
    - Deploy some of the tolling, connect to your own node on any network 

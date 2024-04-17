@@ -39,7 +39,7 @@ The second part of the program offers two distinct tracks focused on development
 | April 3  | Verkle trees                  | [Josh Rudolf](https://github.com/jrudolf)                                              | Research    |
 | April 8  | Consensus client architecture | [Paul Harris](https://github.com/rolfyone)                                             | Development |
 | April 10 | MEV and censorship            | [Barnabe Monnot](https://github.com/barnabemonnot)                                     | Research    |
-| April 15 | Devops and testing            | [Paritosh](https://github.com/parithosh)                                               | Development |
+| April 15 | Devops and testing            | [Parithosh](https://github.com/parithosh)                                               | Development |
 | April 17 | Purge and Portal Network      | [Piper Merriam](https://github.com/pipermerriam)                                       | Research    |
 | April 22 | Cryptographic precompiles     |                                                                                        | Development |
 | April 24 | SSF and PoS Upgrades          | [Francesco D’Amato](https://github.com/fradamt)                                        | Research    |
