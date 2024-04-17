@@ -970,8 +970,27 @@ class SignedBidRequest(container):
 - **Spam Protection**: The global topic can be protected against spam by only allowing the highest value bid received for a given parent block hash to be gossiped, and restricting to one message per builder per slot.
 
 
-
 #### Security analysis of proposer and builder interactions
+
+**Builder Reveal Safety**
+- **Scenario**: Collusion between proposers to reorganize the payload of a builder who has revealed their payload timely.
+- **Outcome**: The security design ensures that the builder's payload cannot be reorganized by subsequent proposers as long as the attackers do not control more than a specific threshold of the stake (up to 40% in this example).
+- **Key Equation**: The revealed payload remains secure if \(RB > PB\), where \(RB\) is the builder's reveal boost and \(PB\) is the proposer boost.
+
+**Builder Withholding Safety**
+- **Scenario**: Builder decides to withhold the payload due to the late arrival of the consensus block, aiming to avoid penalties.
+- **Outcome**: The (block, slot) voting mechanism supports the builder's decision to withhold the payload without penalties if the block is not the head of the chain or arrives late.
+- **Effective Safety**: The builder is safeguarded against attacks where proposers manipulate block timing to force a payload reveal, ensuring the builder is not forced to pay if the conditions for a safe reveal are not met.
+
+**Proposer Safety**
+- **Scenario**: Attempts to reorganize the chain through collaboration between builders and the next proposer.
+- **Outcome**: Analysis shows that as long as the attackers control less than 20% of the stake, proposers who act honestly and reveal their blocks timely are guaranteed inclusion on the chain.
+- **Detailed Analysis**: Demonstrates the resilience of the system against both ex-anti and post-anti reorganization attempts, maintaining the integrity of honest proposers' blocks against collusion and network control.
+
+**General Security Considerations**
+- The proposed design handles different payload statuses effectively by ensuring that votes only support chains consistent with PTC decisions.
+- Inclusion list availability plays a crucial role in determining the canonical head, enhancing ledger integrity by emphasizing validated inclusions.
+- Payload boosts (both for revealing and withholding) play a critical role in adjusting the weight calculations during fork choice, which can influence chain reorganizations and stability based on payload availability and actions.
 
 
 #### Forkchoice Considerations
