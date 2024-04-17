@@ -84,9 +84,9 @@ The [Crypto Forum Research Group](https://datatracker.ietf.org/rg/cfrg/about/) w
 Following pilot projects and research initiatives are exploring PQC usage in production:
 
 - [Anchor Vault](https://chromewebstore.google.com/detail/omifklijimcjhfiojhodcnfihkljeali) is a chrome plugin allows adding a quantum-resistant proof using Lamport's signature for securing ERC tokens.
-- Signal is implemented ["Post-Quantum Extended Diffie-Hellman"](https://signal.org/docs/specifications/pqxdh/#introduction) in production for key agreement protocol.
-- Chromium is using ["Hybrid Kyber KEM"](https://blog.chromium.org/2023/08/protecting-chrome-traffic-with-hybrid.html) to protect data in transit.
-- Apple is using [PQ3](https://security.apple.com/blog/imessage-pq3/) to protect iMessage against key compromise from a quantum attack.
+- Signal has implemented ["Post-Quantum Extended Diffie-Hellman"](https://signal.org/docs/specifications/pqxdh/#introduction) in production for key agreement protocol.
+- Chromium started supporting ["Hybrid Kyber KEM"](https://blog.chromium.org/2023/08/protecting-chrome-traffic-with-hybrid.html) to protect data in transit.
+- Apple has implemented [PQ3](https://security.apple.com/blog/imessage-pq3/) to protect iMessage against key compromise from a quantum attack.
 
 ## Resources
 
