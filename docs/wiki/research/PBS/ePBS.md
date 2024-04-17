@@ -976,7 +976,28 @@ class SignedBidRequest(container):
 
 #### Forkchoice Considerations
 
+The introduction of the ePBS fork brings sophisticated changes to the forkchoice rules, specifically targeting builder and proposer safety. These changes are designed to accommodate network delays and strategic behaviors like payload withholding.
 
+**Key Concepts in ePBS Forkchoice:**
+
+- **(Block, Slot) Voting:**
+  - This mechanism ensures that if a block arrives late, validators will support the last timely block instead of the late one.
+  - Consistently, late blocks accumulate less weight as validators continue to support earlier, timely blocks.
+- **Payload Status Handling:**
+  - The status of payloads (missing, empty, full) influences validators' support for chains.
+  - Votes support chains that are consistent with the PTC decisions on payload status, ensuring that payloads are either included or excluded based on timely availability.
+- **Inclusion List Availability:**
+  - The presence and validation of IL are crucial. Validators may base their head determinations on the latest block with a fully validated IL.
+  - This consideration ensures that blocks built on properly included transactions are favored, enhancing the chain integrity.
+- **Security Analysis of Payload Boosts:**
+  - Builder's reveal boost (RB) and withholding boost (WB) are introduced to reward or protect builders based on their actions in revealing or withholding payloads.
+  - These boosts significantly influence the forkchoice by altering the weight calculations, potentially leading to reorganizations or stabilization of the chain based on payload availability and integrity.
+
+**Practical Examples:**
+- **Happy cases** show normal operation where all blocks and payloads arrive on time and receive full support.
+- **Late blocks and payloads** illustrate scenarios where validators shift their support to earlier blocks, affecting the weight distribution across potential chain forks.
+- **Payload status scenarios** demonstrate how votes can either support or exclude certain blocks based on payload availability, aligning with PTC votes.
+- **Inclusion list considerations** highlight the impact of these lists on determining the canonical head, especially in cases of missing or late inclusion data.
 
 
 
