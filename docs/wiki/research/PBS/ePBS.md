@@ -806,6 +806,29 @@ Explanation of the new slot anatomy flow based on the ePBS specs:
 
 #### Inclusion List Timeline
 
+- **Gossip Layer Checks**:
+  - Inclusion lists are verified for timing, ensuring relevance to the current or next slot.
+  - Each proposer-slot pair is restricted to broadcasting one inclusion list on the network, although proposers may send different lists to different peers.
+  - The number of transactions must match the summary count and not exceed the set maximum in `MAX_TRANSACTIONS_PER_INCLUSION_LIST`.
+  - Inclusion list signatures are validated against the proposer's key, confirming their scheduled slot.
+
+- **Risks and Mitigations**:
+  - Broadcasting an inclusion list for the upcoming slot before a head change may lead to availability issues, although the list is still considered available.
+
+- **on_inclusion_list Handler**:
+  - Serves as a bridge to execution engine API calls, assuming the corresponding beacon block is processed.
+  - If a beacon block's parent was empty, any new inclusion list is automatically ignored to prevent backlog.
+
+- **Beacon State Tracking**:
+  - Tracks proposer and slot for the most recent and previous IL to manage fulfillment and update upon new valid blocks.
+
+- **EL Validation**:
+  - Checks that transactions `inclusion_list.transactions` are valid and includable using the current state.
+  - Ensures summary `inclusion_list.signed_summary.message.summary` accurately lists "from" addresses for the included transactions.
+  - Verifies that the total gas limit of transactions does not exceed the maximum allowed `MAX_GAS_PER_INCLUSION_LIST`.
+  - Ensures accounts listed have sufficient funds to cover the maximum potential gas fees `(base_fee_per_gas + base_fee_per_gas / BASE_FEE_MAX_CHANGE_DENOMINATOR) * gas_limit`.
+
+
 
 #### Execution Payload's Timeline
 
@@ -816,7 +839,7 @@ Explanation of the new slot anatomy flow based on the ePBS specs:
 #### Beacon Block's Timeline
 
 
-### Validator and Builder Specific Functions
+#### Validator and Builder Specific Functions
 
 
 #### Honest Validator Behavior
