@@ -20,6 +20,7 @@ Additionally, you can get ready by studying the following resources:
 - Portal Network
 
 ## Additional reading and exercises
+
 - EIP-4444
   - https://eips.ethereum.org/EIPS/eip-4444
 - SELFDESTRUCT Removal EIPS (many are stale)
