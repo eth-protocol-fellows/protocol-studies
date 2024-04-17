@@ -622,6 +622,7 @@ sequenceDiagram
     participant EL as Execution Layer
     participant Builders
     participant Validators
+        participant Aggregators
     participant PTC as Payload Timeliness Committee
     participant Network as P2P Network
 
@@ -633,41 +634,46 @@ sequenceDiagram
     Proposer->>Proposer: Fill and sign the IL summary
     Proposer->>Network: Broadcast IL
 
+    end
+
+    Note over Proposer: Start of the slot at Second t=0
+    rect rgb(191, 223, 255)
     Note over Builders: Builders prepare bids
     Builders->>Proposer: Send bids over p2p network or direct
     Proposer->>Proposer: Select a builder's bid
-    end
 
-    Note over Proposer: Start of the slot at Second 0
-    rect rgb(191, 223, 255)
     Proposer->>+Validators: Prepare and broadcast SignedBeaconBlock with builder's bid
 
-    Note over Validators: Between second 0 and second 3
+    Note over Validators: Between second t=0 and t=3
     Validators->>Validators: Independently run state <br>transition function on beacon block
     Validators->>-EL: Verify proposer's signature and validate IL
     end
 
-    Note over Validators: Second 3
+    Note over Validators: Second t=3
     rect rgb(191, 223, 255)
     Validators->>+Validators: Attest for the presence<br> of beacon block and IL
     Validators->>-Network: Broadcast attestations    
     end
 
-    Note over Builders: Second 6
+    Note over Builders: Second t=6
     rect rgb(191, 223, 255)
+    Aggregators->>+Aggregators: Aggregate and submit<br> attestation aggregates
+    Aggregators->>-Network: Submit aggregates
+
     Builders->>+Builders: Monitor subnet, decide on<br> payload withholding
     Builders->>-Network: Broadcast execution payload
     end
+    
 
-    Note over PTC: Second 9
+    Note over PTC: Second t=9
     rect rgb(191, 223, 255)
     PTC->>PTC: Assess execution payload timeliness and status
     alt Payload Status
-        Note over PTC: PAYLOAD_PRESENT ==> If beacon block is seen timely <br>with payload_withheld = False
+        Note over PTC: PAYLOAD_PRESENT ==> If payload envelope is seen timely <br>with payload_withheld = False
         PTC-->>Network: Vote PAYLOAD_PRESENT
-        Note over PTC: PAYLOAD_WITHHELD ==> If beacon block is seen timely <br>with payload_withheld = True
+        Note over PTC: PAYLOAD_WITHHELD ==> If payload envelope is seen timely <br>with payload_withheld = True
         PTC-->>Network: Vote PAYLOAD_WITHHELD
-        Note over PTC: PAYLOAD_ABSENT ==> If beacon block is not seen or <br>payload was not seen timely
+        Note over PTC: PAYLOAD_ABSENT ==> If beacon block was not seen or <br>payload was not seen 
         PTC-->>Network: Vote PAYLOAD_ABSENT
     end
     end
@@ -683,7 +689,6 @@ sequenceDiagram
     end
     rect rgb(191, 223, 255)
     Validators->>Validators: Evaluate the new head of the blockchain<br> based on the above outcomes    
-    Validators->>Network: Broadcast
     end
     Note over Validators: End of the slot
 ```
@@ -695,27 +700,92 @@ Explanation of the new slot anatomy flow based on the ePBS specs:
 
 **Preparation Before the Slot**:
 - **Proposer** prepares by requesting a full inclusion list from the EL, filling and signing the summary, and then broadcasting it to the p2p network.
-- **Builders** prepare their bids and send them to the proposer via the p2p network or directly.
+
+**New in ePBS:** The IL is new component in the EL for proposers to guarantee censorship resistance of the network. They operate on a forward inclusion basis, where proposers and validators interact to ensure that transactions are carried forward accurately and efficiently.
+
+**Inclusion List Containers:**
+- **InclusionListSummary:** Contains the proposer's index, the slot, and a list of execution addresses.
+- **SignedInclusionListSummary:** Includes the above summary with a proposer's signature.
+- **InclusionList:** Comprises the signed summary, the parent block hash of the beacon block, and a list of transactions.
+
+**Requesting IL from EL:**
+- Proposer retrieves the transactions to be included in the next block from the execution layer by calling the function `get_execution_inclusion_list`, ensuring they are valid according to the current state. The response is a container `GetInclusionListResponse` that contains `transactions` (list of transaction objects as required by the EL) and `summary` (summary of `transactions`, including essential identifiers like "from" addresses).
+**Building the IL:**
+- Proposer calls the function `build_inclusion_list` to organize received transactions into a structured format, prepares the summary for signing, and ensures compliance with network standards. The response is a container `InclusionList` that contains `SignedInclusionListSummary`, a signed transaction summary, verifying authenticity and integrity and `transactions`, the list of validated transactions ready for inclusion.
+**Broadcasting the IL:**
+- Once the IL is prepared and signed, the proposer broadcasts it to the entire network via the p2p. 
+
 
 **Start of the Slot at Second t=0**:
+- **Builders** prepare their bids and send them to the proposer via the p2p network or directly.
 - The **Proposer** selects a builder's bid, prepares, and broadcasts a **SignedBeaconBlock** containing the builder's bid.
+
+**New in ePBS:** The inclusion of `inclusion_list_summary` attribute in `ExecutionPayload`. This field relates to the inclusion summary of certain transactions within the block, providing control over what is included in the block.
+
+**Builders: Preparing and Sending Bids**
+- Builders prepare bid using the `ExecutionPayloadHeader` container which contains essential details like the parent block hash, fee recipient, and proposed transaction fee, etc. 
+- Builders create `SignedExecutionPayloadHeader`, a signed header `ExecutionPayloadHeader` and broadcast it.
+- Bids are sent either directly to the proposer or broadcasted over the p2p network using the `execution_payload_header` topic.
+**Proposers: Selecting Bids and Broadcasting the Signed Beacon Block**
+- The proposer evaluates bids based on several criteria, such as the bid amount and the reliability or past performance of the builder. Then selects a bid. 
+- The proposer constructs a `BeaconBlockBody`, which includes the `signed_execution_payload_header` among other standard elements.
+- This function `process_block_header` processes the block header, ensuring all elements conform to the consensus rules and that the block is valid within the current chain context.
+- The block, now containing the selected execution payload header, is signed by the proposer to produce `SignedBeaconBlock`. 
+- The signed block is then broadcast over the p2p network using the `beacon_block` topic, making it available to all network participants.
+- The `ExecutionPayloadHeader` within the `BeaconBlockBody` prepared by the proposer includes `parent_block_hash` linking to the parent block in the execution layer, ensuring continuity of the chain and `block_hash` will eventually link to the hash of the `ExecutionPayload` that the builder will produce and is crucial for validators to verify the integrity and continuity of the chain.
+
 
 **Between Second t=0 and t=3**:
 - **Validators** independently run the state transition function to validate the beacon block, verify the proposer's signature and validate the inclusion list.
 
+**Validators: Validating the Beacon Block and Inclusion List**
+- Upon receiving the `SignedBeaconBlock`, validators invoke the `process_block` function, which is a comprehensive function handling different aspects of the block processing including header validation, RANDAO, proposer slashings, attestations, and more. 
+- For ePBS, particular attention is paid to `process_execution_payload_header`, which validates the execution payload header within the block.
+- Validators verify the IL that is referenced within the `ExecutionPayloadHeader`. To do that, they use the `verify_inclusion_list` function to assess the correctness of the IL in terms of transaction validity, signature integrity of the summary, and alignment with the previously agreed state, and the proposer index within the IL corresponds to the expected proposer for the given slot. 
+- If the block and IL are validated successfully, the state transition function `state_transition` updates the beacon state to reflect the new block. This includes updating validator statuses, adjusting balances based on attestations and slashings, and rotating committees.
+
+
 **Around Second t=3**:
 - **Validators** attest to the presence of the beacon block and the inclusion list, ensuring everything is in order up to this point.
 
+**Validators: Attesting to Beacon Block**
+- Validators call the function `process_attestation` to verify and process each attestation made against the beacon block. This includes validating the beacon block's slot, the attestation's committee, and ensuring the correctness of the attestation data as per the consensus rules.
+
+
 **Around Second t=6**:
-- **Builders** broadcast their execution payloads. They monitor network subnets and decide whether to withhold their payloads based on network conditions and voting.
+- **Aggregators** aggregate and submit the attestation aggregates.
+- **Builders** build and broadcast their execution payloads. They monitor network subnets and decide whether to withhold their payloads based on network conditions and voting.
+- Builders package the execution payload, which includes all the necessary information for transaction execution, into the container `ExecutionPayloadEnvelope`. This encapsulation ensures that the payload is ready for integration into the beacon chain. They will set the field `payload_withheld` to be false. 
+- Additionally, an honest builder can withhold the payload if they didn't see a consensus block on timely by setting `payload_withheld` to be true.
+- They run the function `process_execution_payload` to process the execution payload against the current state to ensure its validity. It involves validating transactions, ensuring state transitions are correct, and checking that the payload aligns with the consensus rules.
+- Then, they sign the container `ExecutionPayloadEnvelope` to generate `SignedExecutionPayloadEnvelope` before broadcasting to the topic `execution_payload` via p2p network.
+
 
 **Around Second t=9 - Payload Timeliness Committee (PTC)**:
 - At second 9 of the slot, the PTC assesses the timeliness of the execution payload. This committee, consisting of 512 validators, votes based on their observation of the execution payload's presence and timing relative to the consensus block.
-- **Voting Mechanisms**:
-  - **PAYLOAD_PRESENT**: The committee votes this way if the execution payload was seen timely, and the `payload_withheld` flag in the `ExecutionPayloadEnvelope` is `False`. This indicates that the payload is both present and was not withheld, suggesting all conditions were met promptly.
-  - **PAYLOAD_WITHHELD**: The vote is cast for this outcome if the execution payload was seen timely, but the `payload_withheld` flag is `True`. This indicates that while the payload was available on time, the builder chose to withhold it due to not being fully confident in the block's acceptance.
-  - **PAYLOAD_ABSENT**: This vote occurs if no consensus block was observed for the current slot or if a consensus block was observed but the corresponding payload was not seen timely. This results in a conclusion that the payload is absent.
-- These different outcomes are then gossiped across the p2p network to inform other validators of the payload status, impacting the final assessment of the slot's outcome at its conclusion.
+
+**New in ePBS:** The PTC is a new component introduced in this epbs specs. 
+- **Composition and Function:**
+  - **Committee Formation:** PTC members are selected from the first non-builder members of each beacon slot committee. This ensures that the committee is comprised solely of validators who are not concurrently serving as builders, thereby minimizing conflicts of interest.
+  - **Attestation Rewards and Penalties:** PTC members receive standard attestation rewards for correctly attesting to the presence or absence of payloads. Accurate attestations align with the actual payload status (`full` or `empty`), for which validators receive full attestation credits (target, source, and head timely). Incorrect attestations result in penalties akin to missed attestations.
+  - **Attestation Handling:** Attestations by PTC members to the CL block are disregarded to focus solely on payload verification tasks.
+  - **Inclusion of Attestations in Blocks:** The proposer for slot `N+1` is responsible for including PTC attestations from slot `N` in the block. There are no direct incentives for including incorrect attestations; thus, typically only one PTC attestation per block is necessary.
+- **Aggregation and Broadcast:** Two methods exist for importing PTC attestations. Aggregated attestations (`PayloadAttestation`) are included in blocks for the previous slot, while unaggregated attestations (`PayloadAttestationMessage`) are broadcasted and processed in real-time for the current slot.
+
+**PTC Validators Assess and Vote on Execution Payload Timeliness**
+- Each PTC validator independently checks if they have received a valid `ExecutionPayload` from the builder that was supposed to reveal it according to the signed `ExecutionPayloadHeader` included in the current beacon block. PTC Validators vote on the timeliness of the payload based on its presence and the timing of its reception.
+**Broadcast Payload Timeliness Attestation**
+- If the execution payload is confirmed to be present and timely, PTC validators produce and broadcast payload timeliness attestations, confirming these observations. `PayloadAttestation` container captures the validators' attestations regarding the payload's timeliness and presence.
+- `get_payload_attesting_indices` function determines which validators in the PTC are attesting to the payload's presence and timeliness by checking their aggregation bits in the `PayloadAttestation`. 
+- Attestations are broadcast on the p2p network via the `payload_attestation_message` topic.
+**Aggregate and Include Payload Attestations in Beacon Blocks**
+- Aggregators collect individual `PayloadAttestation` messages, aggregate them, and ensure their inclusion in upcoming beacon blocks to record and finalize the validators' consensus on payload timeliness. They are aggregated into an `IndexedPayloadAttestation` container, which includes a list of validator indices that attested, the payload attestation data, and a collective signature.
+**Update Beacon Chain State Based on Attestations**
+- `process_payload_attestation` function is invoked by the beacon chain to process and validate incoming payload attestations. It ensures that the attestation data is correct and that the signatures are valid, integrating this information into the beacon state. The beacon chain state is updated based on the payload attestations. 
+- These attestations influence the fork choice by affecting the weights of various blocks and potentially leading to different chain reorganizations based on the perceived timeliness and presence of execution payloads.
+- **Reward Calculation and Distribution**: For each validator that correctly attested to the payload status, it sets participation flags and calculates rewards based on predefined weights (`PARTICIPATION_FLAG_WEIGHTS`). The rewards are aggregated, and the proposer of the attestation is rewarded proportionally, with the calculation considering various weights and denominators defined in the protocol specifications (`WEIGHT_DENOMINATOR`, `PROPOSER_WEIGHT`).
+- **Proposer Reward**: The function finally calculates the proposer's reward and updates the proposer's balance by calling `increase_balance` method.
+
 
 **End of the Slot**:
 - As the slot concludes, validators complete several crucial tasks:
@@ -724,7 +794,8 @@ Explanation of the new slot anatomy flow based on the ePBS specs:
     - **Full Block**: Both the consensus block and the corresponding execution payload have been successfully imported.
     - **Empty Block**: The consensus block was imported, but the associated execution payload was not revealed on time.
     - **Skipped Slot**: No consensus block was imported during the slot, leading to a skipped slot scenario.
-
+- The fork choice function `get_head` determines the head of the chain after considering the latest block proposals, payload attestations, and any other pertinent information such as weights from attestations and balances.
+- All nodes synchronize their states based on the fork choice's outcome, ensuring consistency across the network. This synchronization includes applying all the state transitions and updates from attested blocks and execution payloads.
 
 
 #### Inclusion List Timeline
@@ -748,25 +819,11 @@ Explanation of the new slot anatomy flow based on the ePBS specs:
 #### Honest Builder Behavior
 
 
-### Security and Safety Considerations
-
-
 #### Security analysis of proposer and builder interactions
 
 
 #### Forkchoice Considerations
 
-
-#### Analysis of Potential Reorg and Withholding Attacks
-
-
-### Enhancements and Benefits
-
-
-### System Modifications and Optional Changes
-
-
-### Comparisons and Advantages
 
 
 

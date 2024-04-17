@@ -436,3 +436,6 @@ deboost
 Composability
 composable
 subnets
+slashings
+slashing
+unaggregated
