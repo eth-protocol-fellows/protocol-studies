@@ -806,31 +806,49 @@ Explanation of the new slot anatomy flow based on the ePBS specs:
 
 #### Inclusion List Timeline
 
-- **Gossip Layer Checks**:
-  - Inclusion lists are verified for timing, ensuring relevance to the current or next slot.
-  - Each proposer-slot pair is restricted to broadcasting one inclusion list on the network, although proposers may send different lists to different peers.
-  - The number of transactions must match the summary count and not exceed the set maximum in `MAX_TRANSACTIONS_PER_INCLUSION_LIST`.
-  - Inclusion list signatures are validated against the proposer's key, confirming their scheduled slot.
+**Gossip Layer Checks:**
+- Inclusion lists are verified for timing, ensuring relevance to the current or next slot.
+- Each proposer-slot pair is restricted to broadcasting one inclusion list on the network, although proposers may send different lists to different peers.
+- The number of transactions must match the summary count and not exceed the set maximum in `MAX_TRANSACTIONS_PER_INCLUSION_LIST`.
+- Inclusion list signatures are validated against the proposer's key, confirming their scheduled slot.
 
-- **Risks and Mitigations**:
-  - Broadcasting an inclusion list for the upcoming slot before a head change may lead to availability issues, although the list is still considered available.
+**Risks and Mitigations:**
+- Broadcasting an inclusion list for the upcoming slot before a head change may lead to availability issues, although the list is still considered available.
 
-- **on_inclusion_list Handler**:
-  - Serves as a bridge to execution engine API calls, assuming the corresponding beacon block is processed.
-  - If a beacon block's parent was empty, any new inclusion list is automatically ignored to prevent backlog.
+**on_inclusion_list Handler:**
+- Serves as a bridge to execution engine API calls, assuming the corresponding beacon block is processed.
+- If a beacon block's parent was empty, any new inclusion list is automatically ignored to prevent backlog.
 
-- **Beacon State Tracking**:
-  - Tracks proposer and slot for the most recent and previous IL to manage fulfillment and update upon new valid blocks.
+**Beacon State Tracking:**
+- Tracks proposer and slot for the most recent and previous IL to manage fulfillment and update upon new valid blocks.
 
-- **EL Validation**:
-  - Checks that transactions `inclusion_list.transactions` are valid and includable using the current state.
-  - Ensures summary `inclusion_list.signed_summary.message.summary` accurately lists "from" addresses for the included transactions.
-  - Verifies that the total gas limit of transactions does not exceed the maximum allowed `MAX_GAS_PER_INCLUSION_LIST`.
-  - Ensures accounts listed have sufficient funds to cover the maximum potential gas fees `(base_fee_per_gas + base_fee_per_gas / BASE_FEE_MAX_CHANGE_DENOMINATOR) * gas_limit`.
-
+**EL Validation:**
+- Checks that transactions `inclusion_list.transactions` are valid and includable using the current state.
+- Ensures summary `inclusion_list.signed_summary.message.summary` accurately lists "from" addresses for the included transactions.
+- Verifies that the total gas limit of transactions does not exceed the maximum allowed `MAX_GAS_PER_INCLUSION_LIST`.
+- Ensures accounts listed have sufficient funds to cover the maximum potential gas fees `(base_fee_per_gas + base_fee_per_gas / BASE_FEE_MAX_CHANGE_DENOMINATOR) * gas_limit`.
 
 
 #### Execution Payload's Timeline
+
+The processing of execution payloads in the ePBS system includes several critical steps distributed across gossip, consensus, and execution layers:
+
+**Gossip** Execution payloads are shared via the `execution_payload` pubsub topic with key validations:
+- Confirm the beacon block associated with the payload is valid.
+- Verify builder index and payload hash against the beacon block.
+- Validate the builder's signature.
+
+**Consensus State Transition** Post-gossip, payloads undergo consensus validation through `on_execution_payload` fork choice handler:
+- **Signature Verification:** Ensures the integrity of the payload signature.
+- **Withdrawals and Inclusion List Verification:** Confirms correct processing of withdrawals and adherence to the inclusion list specified by the beacon state.
+- **Payload Consistency and EL Validation:** Checks that all payload elements align with the beacon state commitments and sends the payload to the execution layer for further validation.
+- **State Updates and Verification:** Updates beacon state records and verifies the new state root to confirm accurate state transitions, `latest_block_hash` and `latest_full_slot`.
+
+**Execution Layer State Transition** The execution layer expands its role to validate `InclusionListSummary` satisfaction:
+- **Transaction and Balance Verification:** Tracks addresses involved in transactions or balance changes.
+- **Inclusion List Satisfaction:** Ensures each address in the `InclusionListSummary` is active in the payload, considering transactions and balance changes from current and previous payloads.
+- **Special Case Handling:** Manages unique scenarios such as transactions enabled by [EIP-3074](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-3074.md).
+
 
 
 #### Payload Attestation's Timeline
