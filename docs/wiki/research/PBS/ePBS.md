@@ -850,8 +850,23 @@ The processing of execution payloads in the ePBS system includes several critica
 - **Special Case Handling:** Manages unique scenarios such as transactions enabled by [EIP-3074](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-3074.md).
 
 
-
 #### Payload Attestation's Timeline
+
+**Gossip** Payload attestations are broadcasted by PTC members using `PAYLOAD_ATTESTATION_MESSAGE` objects with stringent checks before propagation:
+- **Current Slot Verification:** Only attestations for the current slot are gossiped.
+- **Payload Status Validation:** Attestations must have a valid payload status to be gossiped.
+- **Single Attestation Per Member:** Only one attestation per PTC member is shared.
+- **Beacon Block Root Presence:** Attestations are linked to slots with a known beacon block root.
+- **PTC Membership Check:** Validators must be confirmed members of the PTC.
+- **Signature Verification:** Attestations must have a valid signature.
+
+**Forkchoice Handler** Upon passing gossip validation, payload attestations are processed in the forkchoice through the `on_payload_attestation_message` handler, which includes:
+- **Beacon Block Validation:** Confirms the associated beacon block is in the forkchoice store.
+- **PTC Slot Validation:** Verifies the attester is in the PTC for the specified slot.
+- **Slot Matching:** Checks that the beacon block corresponds to the attestation slot.
+- **Current Slot and Signature Checks (if not from block):** For direct broadcasts, validates the slot is current and verifies the signature.
+- **PTC Vote Update:** Updates the PTC vote tracked in the forkchoice for the given block root.
+
 
 
 #### Beacon Block's Timeline
