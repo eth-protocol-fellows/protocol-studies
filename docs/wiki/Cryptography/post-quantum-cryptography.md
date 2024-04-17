@@ -22,9 +22,9 @@ Currently, the most [advanced quantum computers](https://en.wikipedia.org/wiki/L
 
 Steady progress is being made in quantum research; one survey respondent notes:
 
-> It is not always the case [..] but I find that my predictions are often
-more pessimistic than what actually happens. I take this as a sign
-that the research is accelerating.
+> It is not always the case [..] but I find that my predictions are often more pessimistic than what actually happens. I take this as a sign that the research is accelerating.
+
+Note that these predictions are somewhat subjective and might not reflect real progress which is mostly not open to public. Advanced threat actor might have access to powerful quantum computing sooner than public and use strategies like [retrospective decryption](https://en.wikipedia.org/wiki/Harvest_now%2C_decrypt_later).
 
 ## Post-Quantum risk to Ethereum
 
@@ -34,7 +34,7 @@ The immediate post-quantum threat is the ability to reverse elliptic curve multi
 
 In practice, most users’ private keys are themselves the result of a bunch of hash calculations using [BIP-32](https://github.com/bitcoin/bips/blob/b3701faef2bdb98a0d7ace4eedbeefa2da4c89ed/bip-0032.mediawiki), which generates each address through a series of hashes starting from a master seed phrase. This makes revealing the private key even more computationally expensive.
 
-Eth Research has an [ongoing proposal](https://ethresear.ch/t/how-to-hard-fork-to-save-most-users-funds-in-a-quantum-emergency/18901) for a hard-fork in the event of a post-quantum emergency, the key actions being:
+EthResearch has an [ongoing proposal](https://ethresear.ch/t/how-to-hard-fork-to-save-most-users-funds-in-a-quantum-emergency/18901) for a hard-fork in the event of a post-quantum emergency, the key actions being:
 
 1. Revert all blocks after the first block where it’s clear that large-scale theft is happening
 2. Traditional EOA-based transactions are disabled
@@ -84,7 +84,7 @@ The [Crypto Forum Research Group](https://datatracker.ietf.org/rg/cfrg/about/) w
 Following pilot projects and research initiatives are exploring PQC usage in production:
 
 - [Anchor Vault](https://chromewebstore.google.com/detail/omifklijimcjhfiojhodcnfihkljeali) is a chrome plugin allows adding a quantum-resistant proof using Lamport's signature for securing ERC tokens.
-- Signal is experimenting with ["Post-Quantum Extended Diffie-Hellman"](https://signal.org/docs/specifications/pqxdh/#introduction) for key agreement protocol.
+- Signal is implemented ["Post-Quantum Extended Diffie-Hellman"](https://signal.org/docs/specifications/pqxdh/#introduction) in production for key agreement protocol.
 - Chromium is using ["Hybrid Kyber KEM"](https://blog.chromium.org/2023/08/protecting-chrome-traffic-with-hybrid.html) to protect data in transit.
 - Apple is using [PQ3](https://security.apple.com/blog/imessage-pq3/) to protect iMessage against key compromise from a quantum attack.
 
