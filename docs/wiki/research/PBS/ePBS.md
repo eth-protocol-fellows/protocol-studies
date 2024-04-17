@@ -899,11 +899,43 @@ The processing of execution payloads in the ePBS system includes several critica
   - **Doubling the Proposer Penalty**: The rationale for doubling the penalty for the proposer is to ensure that there is no scenario where both a penalty and a reward would cancel each other out, thus maintaining a deterrent against the inclusion of conflicting attestations.
 
 
-#### Validator and Builder Specific Functions
-
-
 #### Honest Validator Behavior
+The roles and behaviors of validators are refined, especially for proposers and PTC members, due to the introduction of new mechanics such as fork choice considerations, execution payload validation, and timing of IL. 
 
+**Proposer Responsibilities**
+- **Execution Payload and Inclusion List Preparation**:
+  - Prior to their designated slot, proposers need to select a `SignedExecutionPayloadHeader` from builders and request or construct an `InclusionList`.
+  - These activities can be conducted before the slot begins to ensure readiness and efficiency.
+- **Broadcast Timing**:
+  - Proposers are incentivized to broadcast their IL early to increase the likelihood of their blocks being attested to, thus securing their block's position in the chain.
+
+- **Builder Interaction**:
+  - Validators can act as their own builders (self-building) or may engage with external builders. Direct interactions with builders (off-protocol methods) are encouraged as they may yield the most competitive bids in real-time.
+
+- **Strategic Considerations**:
+  - Due to potential MEV opportunities, proposers might strategically delay choosing or requesting a builder’s bid until the last feasible moment for block broadcasting. This tactic is to MEV from the available transaction pool.
+
+**Head Determination for Proposers**
+- **Basic Principle**: At the start of slot `N`, proposers must determine the head of the chain to propose a new block effectively. This involves evaluating various scenarios like skipped slots, missing payloads, and late payloads, and making a decision based on the most recent valid block data.
+
+**PTC Member Duties**
+- **Payload Timeliness Attestations**:
+  - PTC members are tasked to verify the timeliness of the execution payload for the current slot and cast a `payload_attestation` based on their observations:
+    - `PAYLOAD_PRESENT`: If both a valid consensus block for the current slot and the corresponding execution payload are observed.
+    - `PAYLOAD_WITHHELD`: If a valid consensus block for the current slot is seen along with a `payload_withheld = true` message from the builder.
+    - `PAYLOAD_ABSENT`: If a valid consensus block is seen without the corresponding execution payload.
+    - No attestation is made if no consensus block for the current slot is observed.
+
+- **Attestation Conditions**:
+  - PTC members only import the first consensus block they observe and base their actions on it, ensuring a single, coherent response per slot.
+
+**Constructing Payload Attestations**
+- **Operational Window**:
+  - PTC members prepare to attest approximately 9 seconds into the slot, evaluating whether the execution payloads are timely and accurately synced with the consensus blocks.
+  - This includes assessing whether payloads are withheld correctly and ensuring that their attestation reflects the actual status of payload availability or absence.
+
+**Validator Considerations**
+- Validators must adeptly handle their roles, whether as proposers, PTC members, or general attestors, navigating the intricacies of new ePBS mechanics to maintain network integrity and security. This involves strategic decision-making, timely actions, and adherence to protocol to optimize their influence and rewards within the network.
 
 #### Honest Builder Behavior
 
