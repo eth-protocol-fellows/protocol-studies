@@ -1,10 +1,22 @@
 # Overview
 
-Beyond its fundamental role of transaction execution, the execution layer client undertakes several critical responsibilities. These include verification of the blockchain data and storing its local copy, facilitating network communication through gossip protocols with other execution layer clients, maintaining a transaction pool, and fulfilling the consensus layer's requirements that drive its functionality. This multifaceted operation ensures the robustness and integrity of the Ethereum network.
+Beyond execution layer's fundamental role of transaction execution, the execution layer client undertakes several critical responsibilities. These include verification of the blockchain data and storing its local copy, facilitating network communication through gossip protocols with other execution layer clients, maintaining a transaction pool, and fulfilling the consensus layer's requirements that drive its functionality. This multifaceted operation ensures the robustness and integrity of the Ethereum network.
 
-The client's architecture is built around a variety of specific standards, each of which plays a unique role in the overall functionality. The execution engine is located at the top, driving the execution layer, which in turn is driven by the consensus layer. The execution layer runs on top of devp2p, the networking layer, which is initialized by providing legitimate boot nodes that provide an initial access point into the network. When we call one of the engine API methods, such as fork choice updated, we can download blocks from peers by subscribing to subjects like our preferred mode of sync. It is also used to send and receive transactions into the transaction pool, from which validators and block builders virtually mine blocks. Furthermore, the block level state transition function from the specifications, which includes header and state root verification, as well as the transaction level state transition function, is often handled by the following components: The internal consensus engine is often responsible for header verification, while the EVM/state processor is in charge of transaction-level state transitions. In addition to all of this, the execution engine is in charge of preserving state in a key value DB, which is responsible for storing the Merkle-Patricia State Tries and is initialized by passing it a genesis file, which represents the first block of the chain we want to keep in sync with.
+The client's architecture is built around a variety of specific standards, each of which plays a unique role in the overall functionality. The execution engine is located at the top, driving the execution layer, which in turn is driven by the consensus layer. The execution layer runs on top of devp2p, the networking layer, which is initialized by providing legitimate boot nodes that provide an initial access point into the network. When we call one of the engine API methods, such as fork choice updated, we can download blocks from peers by subscribing to topics like our preferred mode of sync.
 
-Different clients process architecture components differently, for example. In geth, the downloader performs the block level state transition function on the blocks it downloads, whereas reth simply performs consensus engine verification whilte running the transaction level state transition function only on the blocks it adds to its blockchain tree. Furthermore, although the geth architecture is deemed monolithic, many of the features included in geth may not be found in other clients, such as geth's light client capabilities. As a result, where possible, the general overview of a topic might begin with geth's perspective on that component, which can then be compared and contrasted in a tabular style with other clients.
+In addition, the networking layer is responsible for transmitting and receiving remote transactions into the transaction pool. These transactions are then ordered inside the pool based on factors such as the priority fee, transaction validity, and whether they are local or remote. Local transactions are given priority over remote ones. Furthermore, the block level state transition function from the specifications, which includes header and state root verification, as well as the transaction level state transition function, is often handled by the following components: The internal consensus engine is often responsible for header verification, while the EVM/state processor is in charge of transaction-level state transitions. In addition to all of this, the execution engine is in charge of preserving state in a key value DB, which is responsible for storing the Merkle-Patricia State Tries and is initialized by passing it a genesis file, which represents the first block of the chain we want to keep in sync with.
+
+Different clients employ diverse approaches to managing the components inside the architecture, as an illustration. During a full sync in Geth, the downloader applies the block-level state transition function to the downloaded blocks. On the other hand, Reth only verifies the consensus engine on the downloaded blocks and only executes the transaction-level state transition function on the blocks it adds to its blockchain tree. Furthermore, although Geth's structure is categorized as monolithic, it is crucial to acknowledge that certain functionalities included in Geth may not be present in alternative clients, such as Geth's lightclient capabilities. Considering this, the suggested document structure should designate all components that have similarities with current major clients as H2 headers. A concise summary of each component's responsibility should be provided below the header, followed by the use of H3 headers to indicate client-specific code links and insights related to the topic.
+
+Proposed page scheme:
+
+## Component Name
+
+Overview
+
+### Client (geth, reth etc)
+
+Client specific code links and write up
 
 TODO: Add architecture visual
 
@@ -12,18 +24,19 @@ TODO: Add architecture visual
 
 The execution layer client acts as an _execution engine_ and exposes the Engine API, an authenticated endpoint, which connects to the consensus layer client. The engine is also referred to as the external consensus engine by the execution layer clients. The execution layer client can be only driven by a single consensus layer, but a consensus layer client implementations can connect to multiple execution layer clients for redundancy. The Engine API uses the JSON-RPC interface over HTTP and requires authentication via a [JWT](https://jwt.io/introduction) token. Additionally the Engine JSON-RPC is not exposed to anyone besides the consensus layer. However, it's important to note that the JWT is primarily used for authenticating the Payload, i.e. Sender is the consensus layer client, it does not encrypt the traffic.
 
-### ForkChoice Updated
+TODO: breif overview on new payload and forchoice
 
-### NewPayload Updated
-
-## Boot nodes Network Bootup
+## Boot Nodes and Network Bootup
 
 ## Execution Layer's BlockChain
 
-### Internal Consensus Engines
+## Internal Consensus Engines
 
 The execution layer has its own consensus engine to work with its own copy of the beacon chain. The execution layer consensus engine is known as ethone and has about half the functionality of the full fledged consensus engine of the consensus layer.
-The algorithm agnostic interface of the consensus engine in execution layer has these functions
+
+### Geth
+
+In Geth, the algorithm agnostic interface of the consensus engine in execution layer has these functions
 
 | Function                                                                                                               | Beacon (Proof-of-stake)                                                                                                                                                                                                                                                                                                                  | Clique (Proof-of-authority)                                                                                                                                                                                                                                                                                                                                                                                                                                                | Ethash (Proof-of-work) |
 | ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------- |
