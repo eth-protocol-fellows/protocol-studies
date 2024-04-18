@@ -1,5 +1,11 @@
 # Enshrined Proposer-Builder Separation (ePBS)
 
+## Roadmap tracker
+
+| Upgrade |    URGE     |   Track   |               Topic               |                                                                                                 Cross-references                                                                                                  |
+| :-----: | :---------: | :-------: | :-------------------------------: | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
+|  ePBS   | the Scourge | MEV track | Endgame block production pipeline | intersection with other upgrades: [ET](https://ethresear.ch/t/execution-tickets/17944), [PEPC](https://efdn.notion.site/PEPC-FAQ-0787ba2f77e14efba771ff2d903d67e4), [IL](https://eips.ethereum.org/EIPS/eip-7547) |
+
 ## TLDR;
 
 Enshrined Proposer-Builder Separation (ePBS) refers to integrating the PBS mechanism directly into the Ethereum blockchain protocol itself, rather than having it operate through external services or addons. This integration aims to formalize and standardize the separation between the roles of block proposers and block builders within the core protocol rules, enhancing the system's efficiency, security, and decentralization.
