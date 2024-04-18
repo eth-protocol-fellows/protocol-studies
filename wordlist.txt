@@ -172,6 +172,8 @@ Goron
 Goomy
 gpg
 Grafana
+gradle
+gradlew
 Guillaume
 hoc
 Holesky
@@ -258,6 +260,7 @@ NFT
 NIST
 NIST's
 NOXX
+NSS
 Occhipinti
 offsites
 onchain
@@ -283,6 +286,7 @@ POS
 PQCA
 PQ
 PQC
+PKCS
 pre
 precompile
 precompiled
@@ -349,6 +353,7 @@ SNARKify
 socio
 solvm
 SPHINCS
+src
 SSF
 SSLE
 SSTORE
@@ -369,6 +374,7 @@ testnet
 Tetris
 textnormal
 TODO
+TLS
 TPS
 tracoor
 tradeoff

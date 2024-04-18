@@ -17,11 +17,11 @@ This is a brief summary of important information you need to know when starting 
 		+ Is where the main method is located.
 + **There are complementary modules**:
 	+ crypto:
-		+ Everything relative to cryptographics keys.
-		datatypes:
-		+ Det of types being used by Besu.
+		+ Everything relative to cryptographic keys.
+	+ datatypes:
+		+ Data types being used by Besu.
 	+ metrics:
-		+ Teemetry/prometheus not tight to internal Besu.
+		+ OpenTelemetry/Prometheus not tight to internal Besu.
 	+ ethereum:
 		+ Is not a module but contains modules :
 			+ api :
@@ -29,7 +29,7 @@ This is a brief summary of important information you need to know when starting 
 			+ core: 
 				+ Storing date, quorum setup.
 	+ evm:
-		+ EVM behaviour
+		+ EVM behavior
 		+ In this module you can find each opcode operation implementation.
 + **There are enterprise modules:** 
 	+ enclave, plugin-api, privacy-contracts
@@ -45,9 +45,9 @@ This is a brief summary of important information you need to know when starting 
 		+ It is where all module's versions are defined. It is used by gradlew.
 + build.gradle (file):
 	+ plugins:
-		+ spotless: Code formatting, check licensing, etc,
+		+ `spotless`: Code formatting, check licensing, etc,
 			+ Command:  `./gradlew spotlessApply`
-		+ errorprone:  Compliance with best practises in Java.
+		+ `errorprone`:  Compliance with best practices in Java.
 			+ Command:  `./gradlew errorProne`
 	+ distribution:
 		+ It defines where the building output is left by taking all projects into an application:
@@ -73,7 +73,7 @@ This is a brief summary of important information you need to know when starting 
 	+ Taken after Ethereum tests, borrowed by the Ethereum foundation.
 	+ Are the same for all clients: https://github.com/ethereum/tests
 	+ Are stored in JSON:
-		+ Location: ethereum/referencetests/
+		+ Location: `ethereum/referencetests/`
 + Other info:
 	+ JUnit 4
 
@@ -100,14 +100,14 @@ This is a brief summary of important information you need to know when starting 
     + Responsible for building and representing the latest fork synchronized.
 	+ We always need to know where we are in terms of our own chain. This check is done constantly.
 	+ It is created on EthProtocolManager which is created on BesuControllerBuilder. 
-+ ProtocolShedule:
++ ProtocolScedule:
 	+ Keeps track of all the configuration items as part of a specific range of block numbers for a chain.
 + ProtocolSpec:
 	+ Let's you configure every aspect of how things work inside the protocol.
 + MainnetProtocolSpec:
 	+ You will find every spec since frontier.
 	+ Each new spec is built on top of the previous one and add or change what is necessary.
-+ MainnetEVms:
++ MainnetEVMs:
 	+ Provides EVms supporting the appropriate operations for mainnet hard forks.
 	+ It is an aggregate state where most of the time you will adding new features to the spec itself.
 	+ New operations will be registered here.
