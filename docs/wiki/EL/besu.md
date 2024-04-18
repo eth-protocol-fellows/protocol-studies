@@ -9,26 +9,26 @@ This is a brief summary of important information you need to know when starting 
 		+ You can specify its dependencies but without versions.
 	+ Each module has its own source code here: /src/main/java
 + **There are top-level modules**:
-	+ Config:
+	+ `config`:
 		+ Where most of the configuration is assembled, validated.
 		+ You can find the genesis information.
-	+ Besu:
+	+ `besu:`
 		+ All the CL arguments are being defined.
 		+ Is where the main method is located.
 + **There are complementary modules**:
-	+ crypto:
+	+ `crypto:
 		+ Everything relative to cryptographic keys.
-	+ datatypes:
+	+ `datatypes`:
 		+ Data types being used by Besu.
-	+ metrics:
+	+ `metrics`:
 		+ OpenTelemetry/Prometheus not tight to internal Besu.
-	+ ethereum:
+	+ `ethereum`:
 		+ Is not a module but contains modules :
 			+ api :
 				+ All interaction you want to have with ethereum, world state.
 			+ core: 
 				+ Storing date, quorum setup.
-	+ evm:
+	+ `evm`:
 		+ EVM behavior
 		+ In this module you can find each opcode operation implementation.
 + **There are enterprise modules:** 
@@ -90,28 +90,28 @@ This is a brief summary of important information you need to know when starting 
 
 
 #####  Important classes:
-+ BesuControllerBuilder:
++ `BesuControllerBuilder`:
 	+ Manages all the components that are going to be used and needed to setup the client.
 	+ On the build method you can see if you are building the correct domain object.
 	+ It returns a BesuController.
-+ BesuCommand:
++ `BesuCommand`:
 	+ Represents the main Besu CLI command.
-+ ForkIdManager:
++ `ForkIdManager`:
     + Responsible for building and representing the latest fork synchronized.
 	+ We always need to know where we are in terms of our own chain. This check is done constantly.
 	+ It is created on EthProtocolManager which is created on BesuControllerBuilder. 
-+ ProtocolScedule:
++ `ProtocolSchedule`:
 	+ Keeps track of all the configuration items as part of a specific range of block numbers for a chain.
-+ ProtocolSpec:
++ `ProtocolSpec`:
 	+ Let's you configure every aspect of how things work inside the protocol.
-+ MainnetProtocolSpec:
++ `MainnetProtocolSpec`:
 	+ You will find every spec since frontier.
 	+ Each new spec is built on top of the previous one and add or change what is necessary.
-+ MainnetEVMs:
-	+ Provides EVms supporting the appropriate operations for mainnet hard forks.
-	+ It is an aggregate state where most of the time you will adding new features to the spec itself.
++ `MainnetEVMs`:
+	+ Provides to the EVM the appropriate operations for mainnet hard forks.
+	+ It is an aggregate state where most of the time you will be adding new features to the spec itself.
 	+ New operations will be registered here.
-+ JsonRpcMethodsFactory:
++ `JsonRpcMethodsFactory`:
 	+ A builder class for RPC methods.
 	+ From here you can understand how to create new RPC methods.
 
