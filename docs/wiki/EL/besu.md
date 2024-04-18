@@ -1,12 +1,12 @@
 ### Besu Execution Client
 This is a brief summary of important information you need to know when starting to contribute to BESU:
-#### Code directoy explanation
+#### Code directory explanation
 
 ##### Modules
 +  It is a multi-module [gradle](https://gradle.org/) project. You can take a look to settings.gradle to see all modules:
     + Each module has its own build.gradle:
-		+ You can specify it's module name: `archiveBaseName`
-		+ You can specify it's dependencies but without versions.
+		+ You can specify its module name: `archiveBaseName`
+		+ You can specify its dependencies but without versions.
 	+ Each module has its own source code here: /src/main/java
 + **There are top-level modules**:
 	+ Config:
@@ -27,7 +27,7 @@ This is a brief summary of important information you need to know when starting 
 			+ api :
 				+ All interaction you want to have with ethereum, world state.
 			+ core: 
-				+ Stroring date, quourm setup.
+				+ Storing date, quorum setup.
 	+ evm:
 		+ EVM behaviour
 		+ In this module you can find each opcode operation implementation.
@@ -68,7 +68,7 @@ This is a brief summary of important information you need to know when starting 
 	+ Are involved in more expensive runs.
 + Acceptance tests:
 	+ Are located under the acceptance-test-module.
-	+ Runs multple Besu's nodes to create consensus algorithm between them and performing task adjusting and propagating blocks.
+	+ Runs multiple Beau's nodes to create consensus algorithms between them and performs task adjusting and propagating blocks.
 + Reference tests:
 	+ Taken after Ethereum tests, borrowed by the Ethereum foundation.
 	+ Are the same for all clients: https://github.com/ethereum/tests
@@ -91,13 +91,13 @@ This is a brief summary of important information you need to know when starting 
 
 #####  Important classes:
 + BesuControllerBuilder:
-	+ Manages all the components tha are going to be used and needed to setup the client.
+	+ Manages all the components that are going to be used and needed to setup the client.
 	+ On the build method you can see if you are building the correct domain object.
 	+ It returns a BesuController.
 + BesuCommand:
 	+ Represents the main Besu CLI command.
 + ForkIdManager:
-	+ Responsable for building and representing the latest fork syncronized.
+    + Responsible for building and representing the latest fork synchronized.
 	+ We always need to know where we are in terms of our own chain. This check is done constantly.
 	+ It is created on EthProtocolManager which is created on BesuControllerBuilder. 
 + ProtocolShedule:
