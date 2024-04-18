@@ -16,9 +16,9 @@ This is a brief summary of important information you need to know when starting 
 		+ All the CL arguments are being defined.
 		+ Is where the main method is located.
 + **There are complementary modules**:
-	+ `crypto:
+	+ `crypto`:
 		+ Everything relative to cryptographic keys.
-	+ `datatypes`:
+	+ `data types`:
 		+ Data types being used by Besu.
 	+ `metrics`:
 		+ OpenTelemetry/Prometheus not tight to internal Besu.
