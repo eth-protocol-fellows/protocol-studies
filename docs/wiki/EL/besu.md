@@ -1,5 +1,5 @@
 ### Besu Execution Client
-This is a brief summary of important information you need to know when starting to contribute to BESU:
+This is a brief summary of important information you need to know when starting to contribute to `Besu`:
 #### Code directory explanation
 
 ##### Modules
@@ -21,7 +21,7 @@ This is a brief summary of important information you need to know when starting 
 		datatypes:
 		+ Det of types being used by Besu.
 	+ metrics:
-		+ Teemetry/prometheus not tight to internal besu.
+		+ Teemetry/prometheus not tight to internal Besu.
 	+ ethereum:
 		+ Is not a module but contains modules :
 			+ api :

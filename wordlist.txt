@@ -19,6 +19,7 @@ Bankless
 Barnabe
 Beiko
 Bertoni
+Besu
 BFT
 bitrate
 bitwise
