@@ -1070,7 +1070,7 @@ Given the complex landscape and the potential for significant shifts in Ethereum
 
 
 
-## [References]
+## References
 [^1]: https://barnabe.substack.com/p/pbs
 [^2]: https://www.youtube.com/watch?v=Ub8V7lILb_Q
 [^3]: https://www.youtube.com/watch?v=mEbK9AX7X7o
