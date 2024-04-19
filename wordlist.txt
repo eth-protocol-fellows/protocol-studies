@@ -33,6 +33,7 @@ BLS
 Boneh
 bool
 borderless
+BPE
 broadcasted
 Buterin
 Buterin's
@@ -135,6 +136,7 @@ Ethereum
 Ethereum's
 ethers
 ethresearch
+ethroadmap
 EVM
 EVM's
 evmlab
@@ -395,6 +397,7 @@ Verkle
 verkled
 Victorio
 Vitalik
+Vitalik's
 VM
 Vyper
 walkthrough
@@ -460,11 +463,3 @@ EF
 Attacknet
 devnets
 Kurtosis
-Aritra
-Gorondan
-Kira
-meldsun
-Nagu
-onboarding
-rahul
-Siddharth
