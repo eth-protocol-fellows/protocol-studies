@@ -97,7 +97,7 @@ In order for eODS to be relevant, it must be considered holistically, together w
     | Heavy OPERATOR            | Heavy DELEGATOR | slashable     |
 
      ### Economics of light services 
-    Light services use stake as *sibyl-control* mechanism and as *weight functions*.[^10]
+    Light services use stake as *sybil-control* mechanism and as *weight functions*.[^10]
 
     The protocol will offer an ecosystem of light services such as censorship resistance gadgets, which are provided using weak hardware and economic requirements. 
     Censorship-resistant, in protocol gadgets reward participants that help the protocol "see" censored inputs via some mechanism like inclusion lists. 
