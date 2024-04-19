@@ -19,7 +19,7 @@ _Figure: United Chains of Ethereum, Credit Justin Drake_
 
 - **Current Services:** Ethereum currently provides two critical services to rollups: settlement and data availability. These services lay the foundation for rollups to operate effectively on Ethereum's decentralized platform.
 
-- **Introduction of Ethereum Sequencing:** Ethereum sequencing, is proposed to complement the existing ones, offering a new resource that rollups can leverage to further optimize their operations. Although sequencing has always been inherent to Ethereum, its potential as a dedicated service for rollups represents an innovative application, akin to the adaptive use of core data for new functionalities.
+- **Introduction of Ethereum Sequencing:** Ethereum sequencing[^2][^3], is proposed to complement the existing ones, offering a new resource that rollups can leverage to further optimize their operations. Although sequencing has always been inherent to Ethereum, its potential as a dedicated service for rollups represents an innovative application, akin to the adaptive use of core data for new functionalities.
 
 ### [Current Sequencing Options](#current-sequencing-options)
 
@@ -77,9 +77,9 @@ _Figure: Different Sequencing Options and their Problem Space, Credit Justin Dra
 
 
 ## References
-[^1]: https://docs.google.com/presentation/d/1v429N4jdikMIWWkcVwfjMlV2LlOXSawFCMKoBnZVDNU/edit#slide=id.g1f1d94ef56e_0_655
-[^2]: https://ethresear.ch/t/based-preconfirmations/17353 
-[^3]: https://thogiti.github.io/2024/04/07/Based-Preconfirmations.html
+[^1]: https://docs.google.com/presentation/d/1v429N4jdikMIWWkcVwfjMlV2LlOXSawFCMKoBnZVDNU/
+[^2]: https://ethresear.ch/t/based-preconfirmations/17353
+[^3]: /docs/wiki/research/Preconfirmations/Preconfirmations.md
 [^4]: https://youtu.be/2IK136vz-PM
 [^5]: https://hackmd.io/@EspressoSystems/SharedSequencing
 [^6]: https://docs.zksync.io/zk-stack/components/shared-bridges.html
