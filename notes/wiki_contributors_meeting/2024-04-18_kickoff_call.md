@@ -55,7 +55,7 @@
 - Mario acknowledged the importance of bridging basic gaps, mentioning a dependency tree. He emphasized covering foundational topics to provide a starting point for users.
 - Originally hoping to have the wiki ready by the end of the study group, Mario acknowledged it might take longer. A target of mid-May was proposed to assess progress and prepare for public promotion.
 
-### Closing thoughts
+### Closing Thoughts
 
 - To maintain the wiki, Mario suggested continuing these calls, proposing bi-weekly meetings. Timezone preferences were discussed, with most favoring bi-weekly meetings.
 - Gorondan raised the challenge of using links in open PRs and suggested faster PR merging. Mario explained the option to fetch updates from upstream but acknowledged considering faster merging. He identified himself as a potential bottleneck and encouraged pinging him to expedite reviews.
