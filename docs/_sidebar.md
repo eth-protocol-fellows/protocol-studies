@@ -1,3 +1,5 @@
+<!-- @format -->
+
 - [Home](readme.md)
 - **Study Group**
 - [EPFsg overview](/eps/intro.md)
@@ -72,9 +74,9 @@
   - EOF
   - Portal Network
 - [Cryptography](/wiki/Cryptography/intro.md)
-  - [ECDSA](/wiki/Cryptography/ecdsa.md) 
+  - [ECDSA](/wiki/Cryptography/ecdsa.md)
+  - [BLS](/wiki/Cryptography/bls.md)
   - [Keccak256](/wiki/Cryptography/keccak256.md)
-  - BLS
   - [Commitments]
     - Polynomials
     - Commitment schemes
