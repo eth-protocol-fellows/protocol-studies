@@ -2,9 +2,9 @@
 
 Week 9 research talk is focused on history expiry and dives into Portal Network, an overlay network for light clients enabling alternative access to current and historical data. 
 
-Join the presentation by [Piper Merriam](https://twitter.com/parithosh_j), on [Wednesday, April 17, 3PM UTC](https://savvytime.com/converter/utc-to-germany-berlin-united-kingdom-london-china-shanghai-ny-new-york-city-japan-tokyo-australia-sydney-india-delhi-argentina-buenos-aires/apr-17-2024/3pm).
+Watch the presentation by [Piper Merriam](https://twitter.com/parithosh_j), on [StreamEth](https://streameth.org/65cf97e702e803dbd57d823f/epf_study_group) and [Youtube](https://www.youtube.com/@ethprotocolfellows/streams).
 
-The talk will be streamed live on [StreamEth](https://streameth.org/65cf97e702e803dbd57d823f/epf_study_group) and [Youtube](https://www.youtube.com/@ethprotocolfellows/streams), links will be provided before the call in the [Discord server](https://discord.gg/addwpQbhpq). Discord also serves for the discussion and questions during the stream. 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/GxNrGyQB-3Q?si=gRPhA35dNYPEGDeZ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ## Pre-reading
 
@@ -13,6 +13,7 @@ Before starting with the week 9 research content, make yourself familiar with re
 Additionally, you can get ready by studying the following resources:
 - [Statelessness and history expiry, Ethereum.org](https://ethereum.org/en/roadmap/statelessness/)
 - [Portal Network web](https://www.ethportal.net/)
+- [EL Data structure](https://epf.wiki/#/wiki/protocol/data-structures)
 
 ## Outline
 
