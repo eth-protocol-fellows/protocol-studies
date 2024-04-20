@@ -96,7 +96,62 @@ _Figure: Look-ahead mechanism for Preconfirmations, Credit Justin Drake_
 - **Sharing of the Preconfirmation:** The promise made by the proposer may need to be communicated to others in the network, especially if there are multiple proposers who might include the transaction before the proposer’s slot arrives. This communication can be facilitated through various means, including MEV boost relays, to ensure that the transaction is settled and included appropriately.
 - **Execution of the Transaction:** Once the proposer’s turn comes, and if they have not been preempted by an earlier proposer, they include the preconfirmed transaction in the block they are proposing. This ensures that the transaction is executed on-chain as was promised to the user.
 
+### [Communication through MEV Boost](#communication-through-mev-boost)
 
+The integration of preconfirmations with MEV Boost represents a critical aspect of the technical construction, facilitating the efficient flow of information between users, proposers, builders, and the Ethereum network. By routing preconfirmation details through MEV Boost, the system ensures that builders are aware of preconfirmed transactions and can construct blocks accordingly. This process not only optimizes the inclusion of transactions but also maintains the integrity and value of the constructed blocks, aligning with the overarching goals of the Ethereum sequencing and pre-confirmation framework.
+
+## [Preconfirmations Flow through MEV Boost](#preconfirmations-flow-through-mev-boost)
+
+
+```mermaid
+sequenceDiagram
+    participant U as User
+    participant P as Proposer
+    participant R as MEV Boost/Relays
+    participant B as Builders
+    participant BC as Beacon Chain
+
+    U->>+P: Request Preconfirmation
+    P-->>-U: Promise Preconfirmation
+    P->>+R: Send Preconfirmation Promise
+    R->>+B: Relay Promise to Builders
+    B-->>-R: Build Block with Preconfirmed Tx
+    R->>+P: Send Block to Proposer
+    P->>+BC: Propose Block on Beacon Chain
+    BC-->>-U: Execute and Finalize Tx
+```
+
+*Figure: Preconfirmations Flow through MEV Boost*
+
+
+The process of how preconfirmations would flow through MEV Boost within the context of Ethereum's base layer sequencing and preconfirmations involves several key steps and entities and it is valuable to discuss in details. This mechanism aims to ensure that transactions preconfirmed by proposers (who have opted into providing sequencing services) are communicated effectively to builders through Relays in MEV Boost and ultimately included in the constructed blocks. Here's a detailed step-by-step explanation of the process:
+
+- **User Requests Preconfirmation:**
+  - A user identifies proposers within the beacon chain's look-ahead period who have opted into providing based sequencing by posting collateral.
+  - The user then sends a preconfirmation request to one of these proposers, seeking assurance that their transaction will be included and executed in a future slot.
+
+- **Proposer Provides Preconfirmation:**
+  - The selected proposer evaluates the request and, if accepted, provides the user with a preconfirmation. This preconfirmation is essentially a promise to include and execute the user's transaction in a specified future slot, subject to certain conditions and penalties for non-fulfillment.
+
+- **Proposer to MEV Boost Communication:**
+  - Once a proposer issues a preconfirmation, they communicate this information to MEV Boost. MEV Boost acts as an intermediary that facilitates the communication between proposers (now acting as sequencers for their respective slots), builders, and ultimately, the Ethereum network.
+
+- **MEV Boost Relays Preconfirmations to Builders:**
+  - MEV Boost relays the preconfirmation details to builders, who are responsible for constructing the blocks. Builders receive information about all preconfirmed transactions, which they must consider while building their blocks.
+
+- **Builders Construct Blocks Considering Preconfirmations:**
+  - With the preconfirmation details at hand, builders construct blocks that honor these preconfirmations. This involves including the preconfirmed transactions in the block for the specified slot and ensuring that the execution conditions promised in the preconfirmations are met.
+
+- **Blocks Are Proposed to the Network:**
+  - Once builders construct a block that respects all preconfirmations and optimizes for other factors (like MEV), the block is proposed to the Ethereum network. The proposer for the relevant slot, who initially issued the preconfirmation, is responsible for ensuring that this block gets submitted.
+
+- **Execution and Settlement:**
+  - If the block is successfully included in the blockchain, the preconfirmed transactions are executed as promised, fulfilling the proposer's commitment to the user. If a proposer fails to fulfill the preconfirmation, penalties (slashing) may be applied depending on the nature of the fault (e.g., liveness fault, safety fault).
+
+**Additional Considerations:**
+
+- **Slashing Mechanism:** The process incorporates a slashing mechanism to penalize proposers if they fail to honor their preconfirmations. This ensures a level of accountability and trust in the system.
+- **Dynamic Communication:** The flow of information through MEV Boost allows for dynamic adjustments based on real-time conditions, such as changes in transaction priority or network congestion.
 
 
 ## Resources
