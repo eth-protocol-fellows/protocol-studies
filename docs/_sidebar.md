@@ -17,6 +17,7 @@
   - [Week 8 | Research](/eps/week8-research.md)
   - [Week 9 | Dev](/eps/week9-dev.md)
   - [Week 9 | Research](/eps/week9-research.md)
+  - [Week 10 | Dev](/eps/week10-dev.md)
 - [Contributing](contributing.md)
 - **Protocol Wiki**
 - The Protocol
