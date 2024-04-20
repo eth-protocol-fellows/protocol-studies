@@ -59,7 +59,7 @@ The "order" of this set is the number of elements it contains, and for a finite 
 
 When we do modular arithmetic operations in the finite field $\mathbb F_p$, we have a nice "wrap around" property i.e. the field behaves as if it "wraps around" after reaching $(p - 1)$. 
 
-In genral, when we define a finite field, we define, the order $p$ of the field and an arithemetic operation like addition or multiplication. If it is addition, we denote the field by $(\mathbb F_p, +)$. If it is multiplication, we denote it by $(\mathbb F^*_p, +)$. The `*` is telling us to exclude the zero element from our field so that we can satisfy all the required properties of the finite field i.e. mainly we can divide the numbers and find inverse of all elements. If we include the zero element, we can't find the inverse of zero element.
+In general, when we define a finite field, we define, the order $p$ of the field and an arithmetic operation like addition or multiplication. If it is addition, we denote the field by $(\mathbb F_p, +)$. If it is multiplication, we denote it by $(\mathbb F^*_p, +)$. The `*` is telling us to exclude the zero element from our field so that we can satisfy all the required properties of the finite field i.e. mainly we can divide the numbers and find inverse of all elements. If we include the zero element, we can't find the inverse of zero element.
 
 In the next section, we will learn how generators of a Group enable the KZG commitment scheme to function as an efficient, secure, and verifiable method of committing to polynomials, making it a powerful tool for cryptographic protocols, particularly in blockchain technologies where these properties are very important.
 
@@ -166,7 +166,7 @@ In simpler terms, the Discrete Logarithm problem tells us that even though it's 
 
 **Strong Diffie-Hellman**
 
-Say we have a generator $g$ in the group $\mathbb G^\*_p$ and $a, b$ are any elements in the finite field $\mathbb F^*_p$ and $g^a$, $g^b$ are some elements in the group $\mathbb G^\*_p$. The Strong Diffie-Hellman assumption says that $g^a$ and $g^b$ are indistinguishable from $g^{ab}$. This means we can't extract any extra information aboout $g^{ab}$ given $g^a$ and $g^b$.
+Say we have a generator $g$ in the group $\mathbb G^\*_p$ and $a, b$ are any elements in the finite field $\mathbb F^*_p$ and $g^a$, $g^b$ are some elements in the group $\mathbb G^\*_p$. The Strong Diffie-Hellman assumption says that $g^a$ and $g^b$ are indistinguishable from $g^{ab}$. This means we can't extract any extra information about $g^{ab}$ given $g^a$ and $g^b$.
 
 
 **Developing an intuition for Strong Diffie-Hellman**
@@ -196,7 +196,7 @@ Bilinear property: $e(g^a, g^b) = e(g, g^{ab}) = e(g^{ab}, g) = e(g,g)^{ab}$
 
 Non-degenerate property: $e(g,g) \neq 1$, means the output is not an identity element.
 
-When $\mathbb G_1$ and $\mathbb G_2$ are the same Group, we call this symmetric pairing function. Otherwise, it is an assymetric pairing function. 
+When $\mathbb G_1$ and $\mathbb G_2$ are the same Group, we call this symmetric pairing function. Otherwise, it is an asymmetric pairing function. 
 
 Here are some great resources to learn more about pairing functions from a practical POV[^3][^8][^9].
 
@@ -207,7 +207,7 @@ Imagine two separate islands, each inhabited by a unique species of magical crea
 Here's how to think about this pairing function without getting bogged down by technicalities:
 
 - **Two Groups:** Think of the Unicorns and Dragons as belonging to two different groups (in mathematical terms, these are usually called groups $\mathbb G_1$ and $\mathbb G_2$).
-- **Pairing Function:** The magical bridge acts as the pairing function. When a Unicorn and a Dragon meet on this bridge, the pairing function combines them into a Dracorn. This Dracorn has a special glow that uniquely corresponds to the combination of that specific Unicorn and Dragon (reversable).
+- **Pairing Function:** The magical bridge acts as the pairing function. When a Unicorn and a Dragon meet on this bridge, the pairing function combines them into a Dracorn. This Dracorn has a special glow that uniquely corresponds to the combination of that specific Unicorn and Dragon (reversible).
 - **Unique Outcome:** Just like every Unicorn and Dragon pair produces a Dracorn with a unique glow, in mathematics, a pairing function takes one element from each group and produces a unique output in a third group (often denoted as $\mathbb G_T$).
 
 **Why is this magical?** Because even though there are countless possible combinations of Unicorns and Dragons, each combination (pairing) produces a unique Dracorn. This is powerful in cryptography because it allows for complex operations that underpin many security protocols, ensuring that each combination is distinct and traceable to its original pair.
@@ -274,7 +274,7 @@ sequenceDiagram
 ```
 
 ### [Trusted Setup](#trusted-setup)
-A trusted third party picks a random element $a \in \mathbb{F}_p$. They compute the public parameter (PP) or common reference string (CRS), as < $g, {a^1}.g, {a^2}.g, \ldots, {a^t}.g$ >. Then, they **delete** $a$. This step of deleteing $a$ is extremely important to secure the system.
+A trusted third party picks a random element $a \in \mathbb{F}_p$. They compute the public parameter (PP) or common reference string (CRS), as < $g, {a^1}.g, {a^2}.g, \ldots, {a^t}.g$ >. Then, they **delete** $a$. This step of deleting $a$ is extremely important to secure the system.
 
 Then, the trusted party sends the CRS to the Prover and the Verifier.
 
@@ -293,7 +293,7 @@ We often denote this as $f(x) \in \mathbb{F}_p[x]$.
 
 $\mathbb{G}_p$ is an Elliptic Curve group of order $p$ with a generator $g$.
 
-Often, the prime order $p$ is choosen such that $p \gt 2^k$, for some security parameter k. The prime number $p$ is very large in practice.
+Often, the prime order $p$ is chosen such that $p \gt 2^k$, for some security parameter k. The prime number $p$ is very large in practice.
 
 Prover also picks a pairing function that satisfies both bilinear and non-degenerate properties. The pairing is denoted as below:
 
@@ -305,7 +305,7 @@ To simplify this step, Prover picks a polynomial $f(x) \in \mathbb{F}_p[x]$, the
 ### [Commitment of the Polynomial](#commitment-of-the-polynomial)
 Say, the commitment of the polynomial $f(x)$ is denoted as $C_f$. The commitment is like hash function. 
 
-So $C_f = {f(a)} \cdot g  = {(f_0 + f_1a + f_2a^2 + \ldots + f_ta^t)} \cdot g$. Here $f(a)$ is the polynomial evaluted at $x=a$.
+So $C_f = {f(a)} \cdot g  = {(f_0 + f_1a + f_2a^2 + \ldots + f_ta^t)} \cdot g$. Here $f(a)$ is the polynomial evaluated at $x=a$.
 
 Though, the Prover doesn't know $a$, he or she can still compute the commitment of the polynomial at $x=a$.
 
@@ -428,7 +428,7 @@ Though the Verifier doesn’t know $a$, he or she knows $a \cdot g$ from the Com
   - This partial revelation is known as the Evaluation Proof.
 
 ## [KZG by Hands](#kzg-by-hands)
-Now, let us practically dervie the steps in KZG protocol using a small finite field. We can compute all finite field operations and pairing operations by hand and get a feel for the KZG protocol flow and verifying polynomial commitments.
+Now, let us practically derive the steps in KZG protocol using a small finite field. We can compute all finite field operations and pairing operations by hand and get a feel for the KZG protocol flow and verifying polynomial commitments.
 
 ### [KZG by Hands - Initial Configuration](#kzg-by-hands---initial-configuration)
 - We will work with the finite field $(\mathbb F_{11}, + )$. So, the prime order $p = 11$. This means all finite field operations are done modulo 11. 
@@ -440,7 +440,7 @@ Now, let us practically dervie the steps in KZG protocol using a small finite fi
 - The pairing function $e(x, y) = xy$ over $(\mathbb G_{11}, +)$.
 
 ### [KZG by Hands - Trusted Setup](#kzg-by-hands---trusted-setup)
-- The Trusted Party choses a secret number randomly. Say, $a = 3$ is the secret number.
+- The Trusted Party chooses a secret number randomly. Say, $a = 3$ is the secret number.
 - They generate the public parameter or the common reference string (CRS) < $g, {a^1}.g, {a^2}.g, \ldots, {a^t}.g$ >.
 - This is equal to < $2, 3 \cdot 2, {3^2} \cdot 2$ > which is equal to < $2, 6, 7$ > after applying modulo 11.
 - The Trusted Party **deletes** the secret number $a$.
@@ -480,11 +480,11 @@ Now, let us practically dervie the steps in KZG protocol using a small finite fi
 - Imagine the Prover somehow finds out the secret number $a$ or the Trusted Party leaks $a$ to a malicious Prover.
 - The Prover computes $f_1(x) = 3x^2 + 5x + 7$ at $x=3$. So we get, $f_1(2) = 3.3^2 + 5.3 + 7 = 49 = 5 mod(11)$
 - The Prover computes $f_2(x) = 2x^2 + 7x + 10$ at $x=3$. So we get, $f_2(2) = 2.3^2 + 7.3 + 10 = 49 = 5 mod(11)$
-- This breaks the binding property of the commitment scheme leading to fradulent proofs by the malicious Prover.
+- This breaks the binding property of the commitment scheme leading to fraudulent proofs by the malicious Prover.
 - Hence, it is extremely important to **delete** the secret number $a$ by the Trusted Party after generating the CRS.
 
-## [Assymetic Pairing Fuctions](#assymetic-pairing-fuctions)
-An assymetric pairing function is denoted as:
+## [Asymmetric Pairing Functions](#asymmetric-pairing-functions)
+An asymmetric pairing function is denoted as:
 
 $e:$  $\mathbb G_1 X \mathbb G_2 \rightarrow \mathbb G_T$.
 
@@ -498,7 +498,7 @@ $(a−b) \cdot Q(a) \cdot g_1 = f(a) \cdot g_1 − d \cdot g_1$
 
 $(a−b) \cdot C_Q = C_f − d \cdot g_1$
 
-Applying the assymetric pairing function on both sides, we get
+Applying the asymmetric pairing function on both sides, we get
 
 $e((a−b) \cdot C_Q, g_2) = e(C_f − d \cdot g_1, g_2)$
 
@@ -516,7 +516,7 @@ The KZG Polynomial Commitment Scheme ensures that both commitments and evaluatio
 One key benefit of the KZG Polynomial Commitment Scheme is its efficient use of space. No matter the length or complexity of the polynomial we're working with, the commitment to that polynomial—essentially its cryptographic "footprint"—is always a single, fixed-size element within a mathematical group, $\mathbb G$. This means that as the polynomial grows in degree, the size of the commitment does not increase. The same principle applies to the evaluation proof, which is the evidence we provide to show that our commitment is accurate. Whether we're verifying just one value or many at once (in batch mode), the proof will always be of a consistent size. This consistency in size translates to predictable and efficient storage requirements, an important feature for practical applications in cryptography.
 
 ## [KZG Batch Mode](#kzg-batch-mode)
-KZG commitments can also be opened and verified at multiple points or using multiple polynmials or any combination of them. This is called batch mode in practice.
+KZG commitments can also be opened and verified at multiple points or using multiple polynomials or any combination of them. This is called batch mode in practice.
 
 ### [Single Polynomial, Multiple Points](#single-polynomial-multiple-points)
 In batch mode, the Verifier requests the Prover to validate a set of points $B =$ { $b_1, b_2, b_3, \ldots, b_n$ } with $n < t$, where $t$ is the degree of the polynomial $f(x)$. For these points, the Prover computes the values $f(b_1) = d_1, f(b_2) = d_2, \ldots, f(b_n) = d_n$ and forms the set $D =$ { $d_1, d_2, d_3, \ldots, d_n$ }.
