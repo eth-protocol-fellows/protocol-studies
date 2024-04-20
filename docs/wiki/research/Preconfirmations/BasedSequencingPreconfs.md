@@ -2,7 +2,7 @@
 
 ## [Overview](#overview)
 
-Ethereum's evolving ecosystem is set to introduce new paradigms for rollups and chain interactions, emphasizing seamless transitions and enhanced user experiences. This wiki article introduces a framework for Ethereum sequencing and pre-onfirmations, originally proposed by Justin Drake[^1][^4], a step toward realizing this vision, offering a unified platform for all Ethereum chains and rollups. 
+Ethereum's evolving ecosystem is set to introduce new paradigms for rollups and chain interactions, emphasizing seamless transitions and enhanced user experiences. This wiki article introduces a framework for Ethereum sequencing and preconfirmations, originally proposed by Justin Drake[^1][^4], a step toward realizing this vision, offering a unified platform for all Ethereum chains and rollups. 
 
 
 ## [Motivation](Motivation)
@@ -65,6 +65,39 @@ _Figure: Different Sequencing Options and their Problem Space, Credit Justin Dra
 - **Consensus Mechanism Dependence:** Based sequencing is inherently tied to the underlying consensus mechanism, which means any issues with the consensus could directly affect transaction sequencing.
 - **Preconfirm Complexity:** Implementing preconfirm mechanisms, where users get assurance of transaction execution from proposers, adds complexity to transaction processing and requires a new level of trust and interaction between users and proposers.
 
+## [Technical Construction](#technical-construction)
+
+### [Based Sequencing](#based-sequencing)
+
+- **Mechanism:** The proposal for based sequencing involves utilizing the beacon chain's look-ahead period to invite proposers to opt into providing sequencing services by posting collateral. This approach leverages Ethereum's existing structure to introduce a new layer of functionality for rollups.
+
+- **Look-Ahead Period:** By capitalizing on the beacon chain's ability to predict the next set of proposers, the system can prepare and designate specific proposers to take on the additional role of sequencers, ensuring that rollups have predictable and reliable sequencing services.
+
+
+### [Preconfirm Mechanism](#preconfirm-mechanism)
+
+In the [Preconfirmations](/docs/wiki/research/Preconfirmations/Preconfirmations.md) article, I explained the details on how Preconfirmations work and the promise acquisition process flow[^2][^3]. 
+
+- **User Interaction with Proposers:** Users can identify which proposers within the look-ahead period have opted for based sequencing and request preconfirmations from them. These preconfirmations are akin to promises that the user's transaction will be included and executed in the future, with penalties applied for non-fulfillment.
+
+- **Slashing for Non-Fulfillment:** The system imposes penalties, or slashing, for proposers who fail to fulfill their preconfirmations. This adds a layer of accountability, ensuring that proposers are incentivized to honor their commitments.
+
+### [Look-Ahead Preconf Construction](#look-ahead-preconf-construction)
+
+![Look-ahead preconf construction](/docs/wiki/research/img/preconfs/lookahead-preconfs.png)
+
+_Figure: Look-ahead mechanism for Preconfirmations, Credit Justin Drake_
+
+
+- **Lookahead Period:** On the Ethereum Beacon chain, there is a lookahead period where upcoming proposers for block slots are known ahead of time. This period can typically include a set number of the next 32 slots.
+- **Preconfirmation Request:** A user who wants to make a transaction sends a preconfirmation request to a proposer who is scheduled to create a block in the near future (within the lookahead period). The request includes the transaction details and possibly a fee offer.
+- **Promise Issuance:** Upon receiving the preconfirmation request, the chosen proposer – referred to as a preconfer – assesses the transaction and decides whether or not to make a promise. If the proposer agrees, they issue a promise to the user, committing to include and execute the transaction in a future block when their turn to propose comes up. This promise is backed by collateral that the proposer has posted, which can be slashed if they fail to honor their promise.
+- **Inclusion of the Preconfirmed Transaction:** When the proposer's slot (n+1 in the above figure) arrives, they must include and execute the preconfirmed transaction as they promised. If the proposer fails to do so without a valid reason, they risk being slashed.
+- **Sharing of the Preconfirmation:** The promise made by the proposer may need to be communicated to others in the network, especially if there are multiple proposers who might include the transaction before the proposer’s slot arrives. This communication can be facilitated through various means, including MEV boost relays, to ensure that the transaction is settled and included appropriately.
+- **Execution of the Transaction:** Once the proposer’s turn comes, and if they have not been preempted by an earlier proposer, they include the preconfirmed transaction in the block they are proposing. This ensures that the transaction is executed on-chain as was promised to the user.
+
+
+
 
 ## Resources
 - [Ethereum Sequencing](https://docs.google.com/presentation/d/1v429N4jdikMIWWkcVwfjMlV2LlOXSawFCMKoBnZVDNU/)
@@ -79,7 +112,7 @@ _Figure: Different Sequencing Options and their Problem Space, Credit Justin Dra
 ## References
 [^1]: https://docs.google.com/presentation/d/1v429N4jdikMIWWkcVwfjMlV2LlOXSawFCMKoBnZVDNU/
 [^2]: https://ethresear.ch/t/based-preconfirmations/17353
-[^3]: /docs/wiki/research/Preconfirmations/Preconfirmations.md
+[^3]: https://epf.wiki/#/wiki/research/Preconfirmations/Preconfirmations
 [^4]: https://youtu.be/2IK136vz-PM
 [^5]: https://hackmd.io/@EspressoSystems/SharedSequencing
 [^6]: https://docs.zksync.io/zk-stack/components/shared-bridges.html
