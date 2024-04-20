@@ -6,7 +6,7 @@ The Protocol Wiki is an open and collaborative project. Whether you are part of 
 
 When creating contributions, consider whether it doesn't exist in another form elsewhere. Use it and reference it in your text but do not copy its content. Focus on adding it into a big picture, connecting it with related topics. 
 
-Write contributions based on what you learned about the protocol along the way, what experience you gathered and missing pieces that slowed you down. Consider it as explaining to your peers, reflect on your own journey as a core developer/reseacher.
+Write contributions based on what you learned about the protocol along the way, what experience you gathered and missing pieces that slowed you down. Consider it as explaining to your peers, reflect on your own journey as a core developer/researcher.
 
 ## Contributing
 

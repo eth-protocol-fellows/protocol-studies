@@ -474,3 +474,5 @@ verifiers
 Preconfirm
 Zksync
 incentivized
+EPSsg
+licence
