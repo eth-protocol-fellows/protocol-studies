@@ -153,6 +153,25 @@ The process of how preconfirmations would flow through MEV Boost within the cont
 - **Slashing Mechanism:** The process incorporates a slashing mechanism to penalize proposers if they fail to honor their preconfirmations. This ensures a level of accountability and trust in the system.
 - **Dynamic Communication:** The flow of information through MEV Boost allows for dynamic adjustments based on real-time conditions, such as changes in transaction priority or network congestion.
 
+## [Future Areas of Research](#future-areas-of-research)
+
+Previous discussions on Ethereum Based Sequencing with Preconfirmations[^4] revealed that the design space of this framework involves many complex topics and left with several open questions and concerns raised by community. Below are the some of the areas of research and complexities involved:
+
+- **Suboptimal Block Value**: Preconfirmations could lead to less valuable blocks for validators, as constraints imposed by preconfirmed transactions could limit MEV opportunities.
+- **Complexity with Multiple Preconfirms**: Managing and coordinating multiple preconfirms can complicate the execution state and challenge the uniformity of transaction sequencing.
+- **Pricing and Economic Incentives**: Determining the right price for preconfirmation tips is complex, as preconfirms could affect the expected MEV and thus the economic incentives for proposers and users.
+- **Execution Guarantees**: Variability in the execution guarantees of preconfirms might require different levels of sophistication from proposers, with more complex preconfirms potentially necessitating higher capabilities.
+- **Centralization Risks**: Some expressed concerns that the preconfirmation system could lead to centralization, with a few entities controlling the sequence of transactions.
+- **Liveness and Safety Faults**: Understanding and implementing the proper response to liveness and safety faults within the system, including the correct attribution of faults and management of associated slashing, is complex.
+- **Infrastructure Requirements**: The need for validators to run full nodes, manage bandwidth, and provide Denial-of-Service protection adds to the operational complexity.
+- **Collateral Posting**: Managing the posting and efficiency of collateral for preconfirms is a significant consideration, particularly concerning the scaling of collateral relative to the value of transactions.
+- **User Experience**: How users experience the process, including the speed and reliability of preconfirmations, and the transparency of the system.
+- **Relay Trust**: Trust in relays and their role in the preconfirmation process, considering that relays must balance the interests of various network participants and manage the associated risks.
+- **Communication Channels**: Establishing secure and efficient channels for communication between users, proposers, relays, and builders.
+- **Lookahead and Selection Mechanisms**: The lookahead mechanism's impact on preconfer selection and whether an alternative selection mechanism would be more advantageous.
+- **Layer 1 and Layer 2 Coordination**: Coordinating between Beacon Chain proposers and Layer 2 sequencers, particularly with rollups designating their own sequencers, can be challenging.
+- **Legal and Regulatory Considerations**: Potential legal and regulatory implications of the preconfirmation process, especially regarding financial transactions.
+- **Technological Adaptability**: The need for the system to adapt to new technologies, like the eventual integration of execution tickets, which could alter the preconfirmation landscape.
 
 ## Resources
 - [Ethereum Sequencing](https://docs.google.com/presentation/d/1v429N4jdikMIWWkcVwfjMlV2LlOXSawFCMKoBnZVDNU/)
