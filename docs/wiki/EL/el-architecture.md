@@ -1,4 +1,6 @@
-# Overview
+# Client Architecture
+
+## Overview
 
 Beyond execution layer's fundamental role of transaction execution, the execution layer client undertakes several critical responsibilities. These include verification of the blockchain data and storing its local copy, facilitating network communication through gossip protocols with other execution layer clients, maintaining a transaction pool, and fulfilling the consensus layer's requirements that drive its functionality. This multifaceted operation ensures the robustness and integrity of the Ethereum network.
 
@@ -7,7 +9,6 @@ The client's architecture is built around a variety of specific standards, each 
 <img src="images/el-architecture/architecture-overview.png" width="1000"/>
 
 The diagram illustrates a simplified representation of the design, excluding several components.
-
 
 **EVM**
 
@@ -35,44 +36,52 @@ When utilizing a wallet or a DApp, our communication with the execution layer is
 
 This is the only link between the consensus and execution layer. The engine exposes two major classes of endpoints to the consensus layer: **fork choice updated** and **new payload** suffixed by the three versions they are exposed as (V1-V3).These methods encapsulate two major pipelines offered by the execution layer :
 
-1.  **New Payload***(V1/V2/V3)*: payload validation & insertion pipeline. 
-2.  **Fork Choice Updated***(V1/V2/V3)*: state synchronization & block building pipeline.
+1.  **New Payload\***(V1/V2/V3)\*: payload validation & insertion pipeline.
+2.  **Fork Choice Updated\***(V1/V2/V3)\*: state synchronization & block building pipeline.
 
 **Sync**
 
-In order to accurately process transactions on Ethereum, it is imperative that we reach a consensus on the global status of the network, rather than solely relying on our local perspective. The global state synchronization of the execution layer client is triggered by the fork choice rule governed by the LMD-GHOST algorithm in the consensus layer. It is then relayed to the execution layer through the _forkchoiceUpdated_ endpoint of the engine API. Syncing entails two possible processes: downloading remote blocks from peers and validating them in the EVM.
+In order to accurately process transactions on Ethereum, it is imperative that we reach a consensus on the global status of the network, rather than solely relying on our local perspective. The global state synchronization of the execution layer client is triggered by the fork choice rule governed by the LMD-GHOST algorithm in the consensus layer. It is then relayed to the execution layer through the fork choice updated endpoint of the engine API. Syncing entails two possible processes: downloading remote blocks from peers and validating them in the EVM.
 
-
-## Client Specific Overview
+Note: client specific overviews will go here
 
 ### Reth
 
 TODO: Add a more comprehensive image from week 7
 
-## Engine
+## Components of the Architecture
+
+### Engine
 
 The execution layer client acts as an _execution engine_ and exposes the Engine API, an authenticated endpoint, which connects to the consensus layer client. The engine is also referred to as the external consensus engine by the execution layer clients. The execution layer client can be only be driven by a single consensus layer, but a consensus layer client implementations can connect to multiple execution layer clients for redundancy. The Engine API uses the JSON-RPC interface over HTTP and requires authentication via a [JWT](https://jwt.io/introduction) token. Additionally the Engine JSON-RPC is not exposed to anyone besides the consensus layer. However, it's important to note that the JWT is primarily used for authenticating the Payload, i.e. sender is the consensus layer client, it does not encrypt the traffic.
 
-
 > Note: Everything is WIP below this, the notes below don't reflect the final version
 
-### Routines
+#### Routines
 
-#### Sync
-
-TODO
-
-#### Payload Validation
+##### Sync
 
 TODO
 
-### Methods
-
-#### New Payload
+##### Payload Validation
 
 TODO
 
-#### Fork Choice Updated
+#### Methods
+
+##### New Payload
+
+TODO
+
+###### Geth
+
+TODO
+
+###### Reth
+
+TODO
+
+##### Fork Choice Updated
 
 This method expects two parameters:
 
@@ -107,21 +116,28 @@ Note: Will only be sent set from the consensus layer for the block building pipe
          1. The client **may** obtain a parent state by executing the ancestors of a payload, i.e. each ancestor must pass the payload validation process
          2.
 
+###### Geth
 
-## Boot Nodes and Network Bootup
+TODO
 
-## Execution Layer's BlockChain
+###### Reth
 
-## Internal Consensus Engines
+TODO
+
+### Boot Nodes and Network Bootup
+
+### Execution Layer's BlockChain
+
+### Internal Consensus Engines
 
 The execution layer has its own consensus engine to work with its own copy of the beacon chain. The execution layer consensus engine is known as ethone and has about half the functionality of the full fledged consensus engine of the consensus layer.
 
-### Geth
+#### Geth
 
 In Geth, the algorithm agnostic interface of the consensus engine in execution layer has these functions
 
 | Function                                                                                                               | Beacon (Proof-of-stake)                                                                                                                                                                                                                                                                                                                  | Clique (Proof-of-authority)                                                                                                                                                                                                                                                                                                                                                                                                                                                | Ethash (Proof-of-work) |
-| ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------- |
+| ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------- | 
 | **Author**: Eth address of the block minter                                                                            | If the header is a PoS header (header difficulty is set to 0) then we return the header's coinbase else we send the header for processing to the beacon's ethone engine (clique or ethash)                                                                                                                                               | Retrieves the account address the minted the block. In Clique , this done by ecrerecover that recovers the public key from the header's extraData                                                                                                                                                                                                                                                                                                                          |                        |
 | **Verify Header(s)**: Takes a batch of headers and verifies them based on the rules of the current consensus engine. : | Split the headers based on [Terminal Total difficulty](https://eips.ethereum.org/EIPS/eip-3675#definitions) into pre and post TTD batches . Verify the pre batches with the ethone engine and the post by beacon's verify header                                                                                                         |                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |                        |
 |                                                                                                                        | Here we perform block header verification similar to the one in the [execution layer-Specs](wiki/EL/el-specs?id=block-header-validation) wiki page                                                                                                                                                                                       | We verify the time of the header is not greater than system time.                                                                                                                                                                                                                                                                                                                                                                                                          |                        |
@@ -143,11 +159,9 @@ In Geth, the algorithm agnostic interface of the consensus engine in execution l
 | **SealHash**: Hash of the block prior to sealing                                                                       |                                                                                                                                                                                                                                                                                                                                          |                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |                        |
 | **CalcDifficulty**: Difficulty adjustment algorithm, returns the difficulty of the new block                           |                                                                                                                                                                                                                                                                                                                                          |                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |                        |
 
-## Sync
+### Downloader
 
-## Downloader
-
-## Transaction Pools
+### Transaction Pools
 
 In Ethereum two primary types of transaction pools are recognized:
 
@@ -155,8 +169,16 @@ In Ethereum two primary types of transaction pools are recognized:
 
 2. **Blob Pools**: Unlike legacy pools, blob pools maintain a priority heap for transaction eviction but incorporate distinct mechanisms for operation. Notably, the implementation of blob pools is well-documented, with an extensive comments section available for review [here](https://github.com/ethereum/go-ethereum/blob/064f37d6f67a012eea0bf8d410346fb1684004b4/core/txpool/blobpool/blobpool.go#L132). A key feature of blob pools is the use of logarithmic functions in their eviction queues.
 
-## EVM
+### EVM
 
-## DevP2P
+### DevP2P
 
-## MPT
+### MPT
+
+### RLP
+
+### StateDB
+
+#### Reth
+
+TODO: Add DB and tables walk-through from week 7
