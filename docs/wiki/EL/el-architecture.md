@@ -4,27 +4,112 @@ Beyond execution layer's fundamental role of transaction execution, the executio
 
 The client's architecture is built around a variety of specific standards, each of which plays a unique role in the overall functionality. The execution engine is located at the top, driving the execution layer, which in turn is driven by the consensus layer. The execution layer runs on top of devp2p, the networking layer, which is initialized by providing legitimate boot nodes that provide an initial access point into the network. When we call one of the engine API methods, such as fork choice updated, we can download blocks from peers by subscribing to topics like our preferred mode of sync.
 
-In addition, the networking layer is responsible for transmitting and receiving remote transactions into the transaction pool. These transactions are then ordered inside the pool based on factors such as the priority fee, transaction validity, and whether they are local or remote. Local transactions are given priority over remote ones. Furthermore, the block level state transition function from the specifications, which includes header and state root verification, as well as the transaction level state transition function, is often handled by the following components: The internal consensus engine is often responsible for header verification, while the EVM/state processor is in charge of transaction-level state transitions. In addition to all of this, the execution engine is in charge of preserving state in a key value DB, which is responsible for storing the Merkle-Patricia State Tries and is initialized by passing it a genesis file, which represents the first block of the chain we want to keep in sync with.
+<img src="images/el-architecture/architecture-overview.png" width="1000"/>
 
-Different clients employ diverse approaches to managing the components inside the architecture, as an illustration. During a full sync in Geth, the downloader applies the block-level state transition function to the downloaded blocks. On the other hand, Reth only verifies the consensus engine on the downloaded blocks and only executes the transaction-level state transition function on the blocks it adds to its blockchain tree. Furthermore, although Geth's structure is categorized as monolithic, it is crucial to acknowledge that certain functionalities included in Geth may not be present in alternative clients, such as Geth's lightclient capabilities. Considering this, the suggested document structure should designate all components that have similarities with current major clients as H2 headers. A concise summary of each component's responsibility should be provided below the header, followed by the use of H3 headers to indicate client-specific code links and insights related to the topic.
+**EVM**
 
-Proposed page scheme:
+Ethereum is centered around a virtualized central processing unit (CPU). Computers have their own central processing units (CPUs) at a hardware level, which can be of many types such as x86, ARM, RISC-V, or others. These varied processor architectures have unique instruction sets that enable them to perform tasks such as arithmetic, logic, and data manipulation, allowing the computer to function as a general-purpose computing machine. Therefore, when executing a program written in the hardware-level instruction set, the outcome may vary depending on the specific hardware on which it is executed. Thus In computer science, we address this problem by virtualizing instruction sets through the creation of virtual machines, such as the JVM (Java Virtual Machine). These virtual machines ensure consistent results regardless of the underlying hardware. The EVM is a virtualized execution engine designed for ethereum programs. It ensures consistent results regardless of the hardware it runs on and facilitates consensus among all ethereum clients regarding computation outcomes.
 
-## Component Name
+In addition, Ethereum incorporates a sandwich complexity model as part of its design philosophy. This implies that the outer layers should be uncomplicated, while all the intricacy should be concentrated in the middle layers. In this context, the EVM's code can be seen as the outermost layer, while a high-level language like Solidity may be considered as the top layer. In between, there is a complicated compiler that translates the Solidity code into the EVM's bytecode.
 
-Overview
+**State**
 
-### Client (geth, reth etc)
+Ethereum is a general purpose computational system that operates as a state machine, meaning it may transition between several states depending on the inputs it receives.In addition, Ethereum differs significantly from other blockchains like Bitcoin in that it maintains a global state, whereas Bitcoin only keeps global unspent transaction outputs (UTXOs). The term "state" refers to the comprehensive collection of data, data structures (such as Merkle-Patricia Tries), and databases that store various information. This includes addresses, balances, code and data for contracts, as well as the current state and network state.
 
-Client specific code links and write up
+**Transactions**
 
-TODO: Add architecture visual
+The EVM produces data and modifies the state of the Ethereum network through a process called state transition. This state transition is triggered by transactions, which are processed within the EVM. If a transaction is deemed legitimate, it results in a state change of the Ethereum network.
+
+**Devp2p**
+
+The interface for communicating with other  the execution layer clients. Transactions initially stored in the mempool, which serves as a repository for all incoming transactions, are disseminated by execution layer clients to other execution layer clients in the network using peer-to-peer communication. Every recipient of the transaction sent over the network confirms its validity before broadcasting it to the network.
+
+**JSON-RPC API**
+
+When utilizing a wallet or a DApp, our communication with the execution layer is conducted over a standardized JSON-RPC API. This enables us to externally query the Ethereum state or dispatch a transaction to it, signed by the wallet, which is subsequently validated by the execution layer client and disseminated around the network.
+
+**Engine API**
+
+This is the only link between the consensus and execution layer.
+
+**Sync**
+
+In order to accurately process transactions on Ethereum, it is imperative that we reach a consensus on the global status of the network, rather than solely relying on our local perspective. The global state synchronization of the execution layer client is triggered by the fork choice rule governed by the LMD-GHOST algorithm in the consensus layer. It is then relayed to the execution layer through the _forkchoiceUpdated_ endpoint of the engine API. Syncing entails two possible processes: downloading remote blocks from peers and validating them in the EVM.
+
+The above image is a simplified overview of the architecture with many components missing. For example, the block level state transition function from the specifications, which includes header and state root verification, as well as the transaction level state transition function, is often handled by the different components: The internal consensus engine is often responsible for header verification, while the EVM/state processor is in charge of transaction-level state transitions. In addition to all of this, the execution engine is responsible for keeping and updating its own copy of the Beacon chain.
+
+The provided graphic presents a simplified depiction of the architecture, with several components omitted. For instance, the block level state transition function, as described in the specifications, encompasses header and state root verification, along with the transaction level state transition function. These tasks are often managed by separate components. The internal consensus engine typically handles header verification, while the EVM/state processor is responsible for state transitions at the transaction level. Furthermore, the execution engine is tasked with the responsibility of maintaining and updating its own version of the Beacon chain.
+
+Moreover, many clients utilize different methods to handle the elements within the structure, for example. During a complete synchronization process in Geth, the downloader applies the block-level state transition function to the blocks that have been downloaded. However, Reth solely validates the consensus engine on the downloaded blocks and alone performs the transaction-level state transition function on the blocks it incorporates into its blockchain tree. Moreover, while Geth is classified as monolithic in its structure, it is important to recognize that certain features found in Geth may not be available in other clients, such as Geth's lightclient capabilities.
+
+## Client Specific Overview
+
+### Reth
+
+TODO: Add a more comprehensive image from week 7
 
 ## Engine
 
-The execution layer client acts as an _execution engine_ and exposes the Engine API, an authenticated endpoint, which connects to the consensus layer client. The engine is also referred to as the external consensus engine by the execution layer clients. The execution layer client can be only driven by a single consensus layer, but a consensus layer client implementations can connect to multiple execution layer clients for redundancy. The Engine API uses the JSON-RPC interface over HTTP and requires authentication via a [JWT](https://jwt.io/introduction) token. Additionally the Engine JSON-RPC is not exposed to anyone besides the consensus layer. However, it's important to note that the JWT is primarily used for authenticating the Payload, i.e. Sender is the consensus layer client, it does not encrypt the traffic.
+The execution layer client acts as an _execution engine_ and exposes the Engine API, an authenticated endpoint, which connects to the consensus layer client. The engine is also referred to as the external consensus engine by the execution layer clients. The execution layer client can be only be driven by a single consensus layer, but a consensus layer client implementations can connect to multiple execution layer clients for redundancy. The Engine API uses the JSON-RPC interface over HTTP and requires authentication via a [JWT](https://jwt.io/introduction) token. Additionally the Engine JSON-RPC is not exposed to anyone besides the consensus layer. However, it's important to note that the JWT is primarily used for authenticating the Payload, i.e. sender is the consensus layer client, it does not encrypt the traffic.
 
-TODO: breif overview on new payload and forchoice
+The engine exposes two major classes of endpoints: **fork choice updated** and **new payload** suffixed by the three versions they are exposed as (V1-V3), encapsulate two major pipelines offered by the execution layer :
+
+1. Payload validation & insertion pipeline: new payload (V1/V2/V3)
+2. State synchronization & block building pipeline: fork choice updated (V1/V2/V3)
+
+> Note: Everything is WIP below this, the notes below don't reflect the final version
+
+### Routines
+
+#### Sync
+
+TODO
+
+#### Payload Validation
+
+TODO
+
+### Methods
+
+#### New Payload
+
+TODO
+
+#### Fork Choice Updated
+
+This method expects two parameters:
+
+- **Fork Choice State** :
+
+This parameter provides the required information for the execution layer to initiate a state sync
+
+|                      |                                                                                                                                                                             |
+| -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Head Block Hash      | Hash of the head block of the cannonical chain, the execution layer starts the block downloading process for state syncronization in reverse order starting from this block |
+| Safe Block Hash      | Represents the justified block hash                                                                                                                                         |
+| Finalized Block Hash | The latest finalised block of the cannonical chain                                                                                                                          |
+
+We can view all the three parameters in [Forky](https://forky.mainnet.ethpandaops.io/), with justified block hash appearing at the boundary of the previous to the current epoch and the finalized block an epoch prior the justified block.
+
+- **Payload Attributes** :
+
+Note: Will only be sent set from the consensus layer for the block building pipeline else this parameter will be set to null , which indicates only state syn needs to be initiated during the method's call
+
+|                          |                                                                                                                                                                                                                       |
+| ------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Timestamp                | Represents the value that will be used by the field of the new payload                                                                                                                                                |
+| Prev Randao              | Value generated by the consensus layer, like above, will be used in the new payload field with the same name                                                                                                          |
+| Suggested Fee Recipient  | The recipient of block rewards maps to the coinbase field in the generated block's header                                                                                                                             |
+| Withdrawls               | Array of withdrawals, each witdrawl represent and object of {index,validatorIndex,address, amount} Note: The amount value is represented asa little-endian value of Gwei that must be converted to a big-endian value |
+| Parent Beacon Block Root | Root of the parent beacon block                                                                                                                                                                                       |
+
+- Procedure:
+  1.  The execution layer client **may** initiate a sync if the **head block hash** refers to a block that the execution layer client has not seen or if the ancestors required for validation of the block are missing. Thus sync is specified as the process of obtaining data required to validate a payload, with these two optional stages :
+      1. Fetching data from remote peers
+      2. Passing ancestors of a payload through the payload validation routine, which consists of validating a payload with respect to the rule sets for block header and execution environment :
+         1. The client **may** obtain a parent state by executing the ancestors of a payload, i.e. each ancestor must pass the payload validation process
+         2.
+
 
 ## Boot Nodes and Network Bootup
 
