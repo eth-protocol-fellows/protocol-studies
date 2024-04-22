@@ -62,8 +62,9 @@ The image represents a rough component flow of reth's architecture:
   7. **StorageHashingStage**: Similar to above but for storage.
   8. **MerkleStage** (execute): generates a state root by using the hashes produced by the two preceding stages and then checks if the resulting state root is accurate for the given block.
   9. **TransactionLookupStage**: Helper stage, allows us to do transaction lookup.
-  10. **IndexAccountHistoryStage**: Similar to above.
-  11. **FinishStage**:We notify that the engine is now capable of receiving new fork choice updates from the consensus layer's.
+  10. **IndexStorageHistoryStage**: Enables us to retrieve past data, the execution phase generates the change set, which then indexes the data that existed prior to the execution of the block. Enables us to retrieve the historical data for any given block number.
+  11. **IndexAccountHistoryStage**: Similar to above.
+  12. **FinishStage**:We notify that the engine is now capable of receiving new fork choice updates from the consensus layer's.
 - **BlockchainTree**: When we are nearing the end of the chain during the syncing process, we transition to the blockchain tree. The synchronization occurs close to the tip, when state root validation and execution take place in memory.
 - **Database**: When a block gets canonicalized, it is moved to the database
 - **Provider**: An abstraction over database that provides utility functions to help us avoid directly accessing the keys and values of the underlying database.
