@@ -50,7 +50,17 @@ Note: client specific overviews will go here
 The image represents a rough component flow of reth's architecture:
 <img src="images/el-architecture/reth-architecture-overview.png" width="1000"/>
 
-TODO: overview
+- **Engine**: Similar to other clients, it is the primary driver of reth.
+- **Sync**: Reth has two modes of sync historical and live
+- **Pipeline**: The pipeline performs historical sync in a sequential manner, enabling us to optimize each stage of the synchronization process.
+- **BlockchainTree**: When we are nearing the end of the chain during the syncing process, we transition to the blockchain tree. The synchronization occurs close to the tip, when state root validation and execution take place in memory.
+- **Database**: When a block gets canonicalized, it is moved to the database
+- **Provider**: An abstraction over database that provides utility functions to help us avoid directly accessing the keys and values of the underlying database.
+- **Downloader**: Retrieves blocks and headers using peer-to-peer (p2p) networks. This tool is utilized by the pipeline during its initial two stages and by the engine in the event that it need to bridge the gap at the tip.
+- **P2P**: When we approach the tip, we transfer the transactions we have read over p2p to the transaction pool.
+- **Transaction Pool**: Includes DDoS mitigation measures. Consists of transactions arranged in ascending order based on the gas price preferred by the users.
+- **Payload Builder**: Extracts the initial n transactions in order to construct a fresh payload.
+- **Pruner**: Allows us to have a full node.Once the block has been canonicalized by the blockchain tree, we must wait for an additional 64 blocks for it to reach finalization. Once the finalization process is complete, we can be certain that the block will not undergo reorganization. Therefore, if we are operating a full node, we have the option to eliminate the old block using the pruner.
 
 ## Components of the Architecture
 
@@ -137,7 +147,7 @@ The execution layer has its own consensus engine to work with its own copy of th
 
 #### Geth
 
-In Geth, the algorithm agnostic interface of the consensus engine in execution layer has these functions
+In geth, the algorithm agnostic interface of the consensus engine in execution layer has these functions
 
 | Function                                                                                                               | Beacon (Proof-of-stake)                                                                                                                                                                                                                                                                                                                  | Clique (Proof-of-authority)                                                                                                                                                                                                                                                                                                                                                                                                                                                | Ethash (Proof-of-work) |
 | ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------- |
@@ -168,7 +178,7 @@ In Geth, the algorithm agnostic interface of the consensus engine in execution l
 
 In Ethereum two primary types of transaction pools are recognized:
 
-1. **Legacy Pools**: Managed by Geth, these pools employ price-sorted heaps or priority queues to organize transactions based on their price. Specifically, transactions are arranged using two heaps: one prioritizes the effective tip for the upcoming block, and the other focuses on the gas fee cap. During periods of saturation, the larger of these two heaps is selected for the eviction of transactions, optimizing the pool's efficiency and responsiveness. [urgent and floating heaps](https://github.com/ethereum/go-ethereum/blob/064f37d6f67a012eea0bf8d410346fb1684004b4/core/txpool/legacypool/list.go#L525)
+1. **Legacy Pools**: Managed by geth, these pools employ price-sorted heaps or priority queues to organize transactions based on their price. Specifically, transactions are arranged using two heaps: one prioritizes the effective tip for the upcoming block, and the other focuses on the gas fee cap. During periods of saturation, the larger of these two heaps is selected for the eviction of transactions, optimizing the pool's efficiency and responsiveness. [urgent and floating heaps](https://github.com/ethereum/go-ethereum/blob/064f37d6f67a012eea0bf8d410346fb1684004b4/core/txpool/legacypool/list.go#L525)
 
 2. **Blob Pools**: Unlike legacy pools, blob pools maintain a priority heap for transaction eviction but incorporate distinct mechanisms for operation. Notably, the implementation of blob pools is well-documented, with an extensive comments section available for review [here](https://github.com/ethereum/go-ethereum/blob/064f37d6f67a012eea0bf8d410346fb1684004b4/core/txpool/blobpool/blobpool.go#L132). A key feature of blob pools is the use of logarithmic functions in their eviction queues.
 
