@@ -30,7 +30,7 @@
   - [EVM](/wiki/EL/evm.md)
   - [Transaction anatomy](/wiki/EL/transaction.md)
   - [JSON-RPC](/wiki/EL/JSON-RPC.md)
-  - [Data Structures](/wiki/el/data-structures.md)
+  - [Data Structures](/wiki/EL/data-structures.md)
   - [DevP2P]
   - [Precompiled Contracts](/wiki/EL/precompiled-contracts.md)
 - [Consensus Layer](/wiki/CL/overview.md)
@@ -54,7 +54,6 @@
   - [Scaling](/wiki/research/scaling/scaling.md)
     - [Core Changes](/wiki/research/scaling/core-changes/core-changes.md)
     - [EIP-4844](/wiki/research/scaling/core-changes/eip-4844.md)
-    - Sharding
     - Statelessness
     - Purge
   - [MEV](/wiki/research/PBS/mev.md)
@@ -71,6 +70,9 @@
   - ASE
   - EOF
   - Portal Network
+  - Preconfirmations
+    - [Preconfirmations](/wiki/research/Preconfirmations/Preconfirmations.md)
+    - [Based Sequencing with Preconfs](/wiki/research/Preconfirmations/BasedSequencingPreconfs.md)
 - [Cryptography](/wiki/Cryptography/intro.md)
   - [ECDSA](/wiki/Cryptography/ecdsa.md) 
   - [Keccak256](/wiki/Cryptography/keccak256.md)
