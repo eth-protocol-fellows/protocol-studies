@@ -53,14 +53,15 @@
   - [Roadmap overview](/wiki/research/roadmap.md)
   - [Scaling](/wiki/research/scaling/scaling.md)
     - [Core Changes](/wiki/research/scaling/core-changes/core-changes.md)
-      - [EIP-4844](/wiki/research/scaling/core-changes/eip-4844.md)
+    - [EIP-4844](/wiki/research/scaling/core-changes/eip-4844.md)
     - Statelessness
     - Purge
-  - MEV
-    - PBS
-    - Censorship
+  - [MEV](/wiki/research/PBS/mev.md)
+    - [PBS](/wiki/research/PBS/pbs.md)
+    - [MEV-boost](/wiki/research/PBS/mev-boost.md)
+    - [ePBS](/wiki/research/PBS/ePBS.md)
   - Proof of Stake
-    - Upgrades
+    - [Upgrades](/docs/wiki/research/cl-upgrades.md)
     - SSF
     - SSLE
   - [Light Clients](/wiki/research/light-clients.md)

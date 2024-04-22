@@ -8,7 +8,7 @@ First, please check out the [announcement blog post](https://blog.ethereum.org/2
 
 The call discussed the program details, schedule and answer your questions. Recording can be found at https://streameth.org/watch?event=epf_study_group&session=65cf9aaa4097e3a08efd1a28. 
 
-[recording](https://streameth.org/embed/?playbackId=2cb7oln7ky57em6a&streamId=&playerName=EPF+Study+Group ':include :type=iframe width=100% height=520 frameborder="0" allow="fullscreen" allowfullscreen')
+[recording](https://streameth.org/embed/?playbackId=2cb7oln7ky57em6a&vod=true&streamId=&playerName=EPF+Study+Group+Town+Hall ':include :type=iframe width=100% height=520 frameborder="0" allow="fullscreen" allowfullscreen')
 
 ## Pre-reading
 
@@ -26,7 +26,7 @@ Before the program, you should be familiar with some general concepts from Ether
     - From a user perspective
     - As a dapp developer
 
-These are just general suggestions of domain knowledge you will need. More introductory learning resources can be found in [week 1](week1.md).
+These are just general suggestions of domain knowledge you will need. More introductory learning resources can be found in [week 1](/eps/week1.md).
 
 ### Helpful resources to get you started
 
