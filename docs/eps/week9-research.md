@@ -13,7 +13,7 @@ Before starting with the week 9 research content, make yourself familiar with re
 Additionally, you can get ready by studying the following resources:
 - [Statelessness and history expiry, Ethereum.org](https://ethereum.org/en/roadmap/statelessness/)
 - [Portal Network web](https://www.ethportal.net/)
-- [EL Data structure](https://epf.wiki/#/wiki/protocol/data-structures)
+- [EL Data structure](https://epf.wiki/#/wiki/EL/data-structures)
 
 ## Outline
 

@@ -1,6 +1,6 @@
 # Study Group Week 10 | Precompiles 
 
-Week 10 dev talk is focused on history expiry and dives into Portal Network, an overlay network for light clients enabling alternative access to current and historical data. 
+Week 10 dev talk is diving into EVM precompiles and their integration in execution clients.
 
 Join the presentation by [Danno Ferrin](https://twitter.com/shemnon), on [Monday, April 22, 4PM UTC](https://savvytime.com/converter/utc-to-germany-berlin-united-kingdom-london-china-shanghai-ny-new-york-city-japan-tokyo-australia-sydney-india-delhi-argentina-buenos-aires/apr-22-2024/4pm).
 
