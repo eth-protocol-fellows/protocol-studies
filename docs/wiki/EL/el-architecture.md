@@ -4,7 +4,7 @@
 
 Beyond execution layer's fundamental role of transaction execution, the execution layer client undertakes several critical responsibilities. These include verification of the blockchain data and storing its local copy, facilitating network communication through gossip protocols with other execution layer clients, maintaining a transaction pool, and fulfilling the consensus layer's requirements that drive its functionality. This multifaceted operation ensures the robustness and integrity of the Ethereum network.
 
-The client's architecture is built around a variety of specific standards, each of which plays a unique role in the overall functionality. The execution engine is located at the top, driving the execution layer, which in turn is driven by the consensus layer. The execution layer runs on top of devp2p, the networking layer, which is initialized by providing legitimate boot nodes that provide an initial access point into the network. When we call one of the engine API methods, such as fork choice updated, we can download blocks from peers by subscribing to topics like our preferred mode of sync.
+The client's architecture is built around a variety of specific standards, each of which plays a unique role in the overall functionality. The execution engine is located at the top, driving the execution layer, which in turn is driven by the consensus layer. The execution layer runs on top of DevP2P, the networking layer, which is initialized by providing legitimate boot nodes that provide an initial access point into the network. When we call one of the engine API methods, such as fork choice updated, we can download blocks from peers by subscribing to topics like our preferred mode of sync.
 
 <img src="images/el-architecture/architecture-overview.png" width="1000"/>
 
@@ -12,19 +12,19 @@ The diagram illustrates a simplified representation of the design, excluding sev
 
 **EVM**
 
-Ethereum is centered around a virtualized central processing unit (CPU). Computers have their own central processing units (CPUs) at a hardware level, which can be of many types such as x86, ARM, RISC-V, or others. These varied processor architectures have unique instruction sets that enable them to perform tasks such as arithmetic, logic, and data manipulation, allowing the computer to function as a general-purpose computing machine. Therefore, when executing a program written in the hardware-level instruction set, the outcome may vary depending on the specific hardware on which it is executed. Thus In computer science, we address this problem by virtualizing instruction sets through the creation of virtual machines, such as the JVM (Java Virtual Machine). These virtual machines ensure consistent results regardless of the underlying hardware. The EVM is a virtualized execution engine designed for ethereum programs. It ensures consistent results regardless of the hardware it runs on and facilitates consensus among all ethereum clients regarding computation outcomes.
+Ethereum is centered around a virtualized central processing unit (CPU). Computers have their own central processing units (CPUs) at a hardware level, which can be of many types such as x86, ARM, RISC-V, or others. These varied processor architectures have unique instruction sets that enable them to perform tasks such as arithmetic, logic, and data manipulation, allowing the computer to function as a general-purpose computing machine. Therefore, when executing a program written in the hardware-level instruction set, the outcome may vary depending on the specific hardware on which it is executed. Thus In computer science, we address this problem by virtualizing instruction sets through the creation of virtual machines, such as the JVM (Java Virtual Machine). These virtual machines ensure consistent results regardless of the underlying hardware. The EVM is a virtualized execution engine designed for ethereum programs. It ensures consistent results regardless of the hardware it runs on and facilitates consensus among all Ethereum clients regarding computation outcomes.
 
-In addition, Ethereum incorporates a sandwich complexity model as part of its design philosophy. This implies that the outer layers should be uncomplicated, while all the intricacy should be concentrated in the middle layers. In this context, the EVM's code can be seen as the outermost layer, while a high-level language like Solidity may be considered as the top layer. In between, there is a complicated compiler that translates the Solidity code into the EVM's bytecode.
+In addition, Ethereum incorporates a sandwich complexity model as part of its design philosophy. This implies that the outer layers should be uncomplicated, while all the intricacy should be concentrated in the middle layers. In this context, the EVM's code can be seen as the outermost layer, while a high-level language like Solidity may be considered as the top layer. In between, there is a complicated compiler that translates the solidity code into the EVM's bytecode.
 
 **State**
 
-Ethereum is a general purpose computational system that operates as a state machine, meaning it may transition between several states depending on the inputs it receives.In addition, Ethereum differs significantly from other blockchains like Bitcoin in that it maintains a global state, whereas Bitcoin only keeps global unspent transaction outputs (UTXOs). The term "state" refers to the comprehensive collection of data, data structures (such as Merkle-Patricia Tries), and databases that store various information. This includes addresses, balances, code and data for contracts, as well as the current state and network state.
+Ethereum is a general purpose computational system that operates as a state machine, meaning it may transition between several states depending on the inputs it receives. In addition, Ethereum differs significantly from other blockchains like Bitcoin in that it maintains a global state, whereas Bitcoin only keeps global unspent transaction outputs (UTXOs). The term "state" refers to the comprehensive collection of data, data structures (such as Merkle-Patricia Tries), and databases that store various information. This includes addresses, balances, code and data for contracts, as well as the current state and network state.
 
 **Transactions**
 
 The EVM produces data and modifies the state of the Ethereum network through a process called state transition. This state transition is triggered by transactions, which are processed within the EVM. If a transaction is deemed legitimate, it results in a state change of the Ethereum network.
 
-**Devp2p**
+**DevP2P**
 
 The interface for communicating with other  the execution layer clients. Transactions initially stored in the mempool, which serves as a repository for all incoming transactions, are disseminated by execution layer clients to other execution layer clients in the network using peer-to-peer communication. Every recipient of the transaction sent over the network confirms its validity before broadcasting it to the network.
 
@@ -34,7 +34,7 @@ When utilizing a wallet or a DApp, our communication with the execution layer is
 
 **Engine API**
 
-This is the only link between the consensus and execution layer. The engine exposes two major classes of endpoints to the consensus layer: **fork choice updated** and **new payload** suffixed by the three versions they are exposed as (V1-V3).These methods encapsulate two major pipelines offered by the execution layer :
+This is the only link between the consensus and execution layer. The engine exposes two major classes of endpoints to the consensus layer: **fork choice updated** and **new payload** suffixed by the three versions they are exposed as (V1-V3).These methods encapsulate two major pipelines offered by the execution layer:
 
 1.  **New Payload\***(V1/V2/V3)\*: payload validation & insertion pipeline.
 2.  **Fork Choice Updated\***(V1/V2/V3)\*: state synchronization & block building pipeline.
@@ -48,15 +48,16 @@ Note: client specific overviews will go here
 ### Reth
 
 The image represents a rough component flow of reth's architecture:
+
 <img src="images/el-architecture/reth-architecture-overview.png" width="1000"/>
 
 - **Engine**: Similar to other clients, it is the primary driver of reth.
 - **Sync**: Reth has two modes of sync historical and live
-- **Pipeline**: The pipeline performs historical sync in a sequential manner, enabling us to optimize each stage of the synchronization process. The pipeline is split into stages , where a [stage](https://paradigmxyz.github.io/reth/docs/reth_stages/trait.Stage.html) is a trait that provides us with a function to execute the stage or unwind (undo) it. Currently the pipeline has 12 stages that can be configured, with the first two running separately, the pipeline proceeds top to bottom excpet when there is a problem encountered then it proceeds to unwind from the issue stage upwards :
+- **Pipeline**: The pipeline performs historical sync in a sequential manner, enabling us to optimize each stage of the synchronization process. The pipeline is split into stages , where a [stage](https://paradigmxyz.github.io/reth/docs/reth_stages/trait.Stage.html) is a trait that provides us with a function to execute the stage or unwind(undo) it. Currently the pipeline has 12 stages that can be configured, with the first two running separately, the pipeline proceeds top to bottom except when there is a problem encountered then it proceeds to unwind from the issue stage upwards :
   1. **HeaderStage**: Header verification stage.
-  2. **BodyStage**: Download blocks over p2p.
+  2. **BodyStage**: Download blocks over P2P.
   3. **SenderRecoveryStage**: The computation is costly as it retrieves the sender's address from the signature for each transaction in the block's body.
-  4. **ExecutionStage**: The most time-consuming & computationally heavy stage involves taking the sender, transaction, and header and executing them within the revm. This process generates receipts and change sets. Change sets are data structures that function as hash maps and depict the modifications that occur between accounts inside a single block. In addition, the execution stage operates on a plain state that contains only the addresses and account information in the form of key-value pairs.
+  4. **ExecutionStage**: The most time-consuming & computationally heavy stage involves taking the sender, transaction, and header and executing them within the REVM. This process generates receipts and change sets. Change sets are data structures that function as hash maps and depict the modifications that occur between accounts inside a single block. In addition, the execution stage operates on a plain state that contains only the addresses and account information in the form of key-value pairs.
   5. **MerkleStage** (unwind): Skipped during the execution flow, used when unwinding.
   6. **AccountHashingStage**: Required by the merkle stage,we take the plain state and apply a hashing function to it. Then, we save the resulting hashed account in a database specifically designed for storing accounts.
   7. **StorageHashingStage**: Similar to above but for storage.
@@ -68,8 +69,8 @@ The image represents a rough component flow of reth's architecture:
 - **BlockchainTree**: When we are nearing the end of the chain during the syncing process, we transition to the blockchain tree. The synchronization occurs close to the tip, when state root validation and execution take place in memory.
 - **Database**: When a block gets canonicalized, it is moved to the database
 - **Provider**: An abstraction over database that provides utility functions to help us avoid directly accessing the keys and values of the underlying database.
-- **Downloader**: Retrieves blocks and headers using peer-to-peer (p2p) networks. This tool is utilized by the pipeline during its initial two stages and by the engine in the event that it need to bridge the gap at the tip.
-- **P2P**: When we approach the tip, we transfer the transactions we have read over p2p to the transaction pool.
+- **Downloader**: Retrieves blocks and headers using peer-to-peer(P2P) networks. This tool is utilized by the pipeline during its initial two stages and by the engine in the event that it need to bridge the gap at the tip.
+- **P2P**: When we approach the tip, we transfer the transactions we have read over P2P to the transaction pool.
 - **Transaction Pool**: Includes DDoS mitigation measures. Consists of transactions arranged in ascending order based on the gas price preferred by the users.
 - **Payload Builder**: Extracts the initial n transactions in order to construct a fresh payload.
 - **Pruner**: Allows us to have a full node.Once the block has been canonicalized by the blockchain tree, we must wait for an additional 64 blocks for it to reach finalization. Once the finalization process is complete, we can be certain that the block will not undergo reorganization. Therefore, if we are operating a full node, we have the option to eliminate the old block using the pruner.
@@ -106,7 +107,7 @@ TODO
 
 TODO
 
-##### Fork Choice Updated
+##### Fork choice updated
 
 This method expects two parameters:
 
@@ -149,11 +150,11 @@ TODO
 
 TODO
 
-### Boot Nodes and Network Bootup
+### Boot nodes and network bootup
 
-### Execution Layer's BlockChain
+### Execution layer's blockChain
 
-### Internal Consensus Engines
+### Internal Consensus engines
 
 The execution layer has its own consensus engine to work with its own copy of the beacon chain. The execution layer consensus engine is known as ethone and has about half the functionality of the full fledged consensus engine of the consensus layer.
 
