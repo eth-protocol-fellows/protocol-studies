@@ -58,10 +58,10 @@ The image represents a rough component flow of reth's architecture:
   2. **BodyStage**: Download blocks over P2P.
   3. **SenderRecoveryStage**: The computation is costly as it retrieves the sender's address from the signature for each transaction in the block's body.
   4. **ExecutionStage**: The most time-consuming & computationally heavy stage involves taking the sender, transaction, and header and executing them within the REVM. This process generates receipts and change sets. Change sets are data structures that function as hash maps and depict the modifications that occur between accounts inside a single block. In addition, the execution stage operates on a plain state that contains only the addresses and account information in the form of key-value pairs.
-  5. **MerkleStage** (unwind): Skipped during the execution flow, used when unwinding.
+  5. **MerkleStage**(unwind): Skipped during the execution flow, used when unwinding.
   6. **AccountHashingStage**: Required by the merkle stage,we take the plain state and apply a hashing function to it. Then, we save the resulting hashed account in a database specifically designed for storing accounts.
   7. **StorageHashingStage**: Similar to above but for storage.
-  8. **MerkleStage** (execute): generates a state root by using the hashes produced by the two preceding stages and then checks if the resulting state root is accurate for the given block.
+  8. **MerkleStage**(execute): generates a state root by using the hashes produced by the two preceding stages and then checks if the resulting state root is accurate for the given block.
   9. **TransactionLookupStage**: Helper stage, allows us to do transaction lookup.
   10. **IndexStorageHistoryStage**: Enables us to retrieve past data, the execution phase generates the change set, which then indexes the data that existed prior to the execution of the block. Enables us to retrieve the historical data for any given block number.
   11. **IndexAccountHistoryStage**: Similar to above.
