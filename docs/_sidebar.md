@@ -6,33 +6,44 @@
   - [Week 1](/eps/week1.md)
   - [Week 2](/eps/week2.md)
   - [Week 3](/eps/week3.md)
+  - [Week 4](/eps/week4.md)
+  - [Week 5](/eps/week5.md)
+  - [Node Workshop](/eps/nodes_workshop.md)
+  - [Week 6 | Dev](/eps/week6-dev.md)
+  - [Week 6 | Research](/eps/week6-research.md)
+  - [Week 7 | Dev](/eps/week7-dev.md)
+  - [Week 7 | Research](/eps/week7-research.md)
+  - [Week 8 | Dev](/eps/week8-dev.md)
+  - [Week 8 | Research](/eps/week8-research.md)
+  - [Week 9 | Dev](/eps/week9-dev.md)
+  - [Week 9 | Research](/eps/week9-research.md)
+  - [Week 10 | Dev](/eps/week10-dev.md)
 - [Contributing](contributing.md)
 - **Protocol Wiki**
 - The Protocol
   - [Overview](/wiki/protocol/overview.md)
   - [History](/wiki/protocol/history.md)
-  - [Coordination](/wiki/protocol/pm.md)
-  - [Data Structures](/wiki/protocol/data-structures.md)
-  - [CS Resources]
 - Execution Layer
   - [EL Clients](/wiki/EL/el-clients.md)
   - [EL Specs](/wiki/EL/el-specs.md)
   - Client architecture
-  - [EVM]
-  - [Transaction]
+  - [EVM](/wiki/EL/evm.md)
+  - [Transaction anatomy](/wiki/EL/transaction.md)
+  - [JSON-RPC](/wiki/EL/JSON-RPC.md)
+  - [Data Structures](/wiki/EL/data-structures.md)
   - [DevP2P]
-  - [MPT]
-  - [JSON-RPC]
-- Consensus Layer
+  - [Precompiled Contracts](/wiki/EL/precompiled-contracts.md)
+- [Consensus Layer](/wiki/CL/overview.md)
   - [CL Clients](/wiki/CL/cl-clients.md)
   - [CL Specs](/wiki/CL/cl-specs.md)
+  - Client architecture
   - [Proof-of-Stake]
   - [Beacon API]
   - [Networking](/wiki/CL/cl-networking.md)
-  - Client architecture
 - Development
   - [Core development](/wiki/dev/core-development.md)
-  - [Network upgrades](/wiki/dev/upgrades.md)
+  - [Coordination](/wiki/protocol/pm.md)
+  - [CS Resources]
 - Testing and security
   - [Testing overview](/wiki/testing/overview.md)
   - [Incidents](/wiki/testing/incidents.md)
@@ -43,8 +54,6 @@
   - [Scaling](/wiki/research/scaling/scaling.md)
     - [Core Changes](/wiki/research/scaling/core-changes/core-changes.md)
       - [EIP-4844](/wiki/research/scaling/core-changes/eip-4844.md)
-    - Blobs
-    - Sharding
     - Statelessness
     - Purge
   - MEV
@@ -64,12 +73,14 @@
     - [Preconfirmations](/wiki/research/Preconfirmations/Preconfirmations.md)
     - [Based Sequencing with Preconfs](/wiki/research/Preconfirmations/BasedSequencingPreconfs.md)
 - [Cryptography](/wiki/Cryptography/intro.md)
-  - [ECDSA](/wiki/Cryptography/ecdsa.md)
+  - [ECDSA](/wiki/Cryptography/ecdsa.md) 
+  - [Keccak256](/wiki/Cryptography/keccak256.md)
   - BLS
   - [Commitments]
     - Polynomials
-    - [KZG Commitment scheme](/wiki/Cryptography/KZG.md)
+    - Commitment schemes
   - ZK
+  - [Post-Quantum Cryptography](/wiki/Cryptography/post-quantum-cryptography.md)
 - [Protocol Fellowship](/wiki/epf.md)
 
 - **Wiki Info**
