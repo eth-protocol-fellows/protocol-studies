@@ -52,7 +52,18 @@ The image represents a rough component flow of reth's architecture:
 
 - **Engine**: Similar to other clients, it is the primary driver of reth.
 - **Sync**: Reth has two modes of sync historical and live
-- **Pipeline**: The pipeline performs historical sync in a sequential manner, enabling us to optimize each stage of the synchronization process.
+- **Pipeline**: The pipeline performs historical sync in a sequential manner, enabling us to optimize each stage of the synchronization process. The pipeline is split into stages , where a [stage](https://paradigmxyz.github.io/reth/docs/reth_stages/trait.Stage.html) is a trait that provides us with a function to execute the stage or unwind (undo) it. Currently the pipeline has 12 stages that can be configured, with the first two running separately, the pipeline proceeds top to bottom excpet when there is a problem encountered then it proceeds to unwind from the issue stage upwards :
+  1. **HeaderStage**: Header verification stage.
+  2. **BodyStage**: Download blocks over p2p.
+  3. **SenderRecoveryStage**: The computation is costly as it retrieves the sender's address from the signature for each transaction in the block's body.
+  4. **ExecutionStage**: The most time-consuming & computationally heavy stage involves taking the sender, transaction, and header and executing them within the revm. This process generates receipts and change sets. Change sets are data structures that function as hash maps and depict the modifications that occur between accounts inside a single block. In addition, the execution stage operates on a plain state that contains only the addresses and account information in the form of key-value pairs.
+  5. **MerkleStage** (unwind): Skipped during the execution flow, used when unwinding.
+  6. **AccountHashingStage**: Required by the merkle stage,we take the plain state and apply a hashing function to it. Then, we save the resulting hashed account in a database specifically designed for storing accounts.
+  7. **StorageHashingStage**: Similar to above but for storage.
+  8. **MerkleStage** (execute): generates a state root by using the hashes produced by the two preceding stages and then checks if the resulting state root is accurate for the given block.
+  9. **TransactionLookupStage**: Helper stage, allows us to do transaction lookup.
+  10. **IndexAccountHistoryStage**: Similar to above.
+  11. **FinishStage**:We notify that the engine is now capable of receiving new fork choice updates from the consensus layer's.
 - **BlockchainTree**: When we are nearing the end of the chain during the syncing process, we transition to the blockchain tree. The synchronization occurs close to the tip, when state root validation and execution take place in memory.
 - **Database**: When a block gets canonicalized, it is moved to the database
 - **Provider**: An abstraction over database that provides utility functions to help us avoid directly accessing the keys and values of the underlying database.
