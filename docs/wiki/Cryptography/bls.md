@@ -47,18 +47,18 @@ The secret key, $sk$, is a 32-byte unsigned integer. The public key, $pk$, is re
 
 <a id="img_bls_setup"></a>
 
-<figure class="diagram" style="width:50%">
+<figure class="diagram" style="margin-left:20%; width:50%">
 
 ![Diagram of the generation of the public key.](../../images/elliptic-curves/bls-setup.svg)
 
 <figcaption>
 
-A validator randomly generates its secret key. Its public key is then derived from that.
+_A validator randomly generates its secret key. Its public key is then derived from that._
 
 </figcaption>
 </figure>
 
-##### Signing
+<!-- ### Signing
 
 In the beacon chain protocol the only messages that get signed are [hash tree roots](/part2/building_blocks/merkleization/) of objects: their so-called signing roots, which are 32 byte strings. The [`compute_signing_root()`](/part3/helper/misc/#compute_signing_root) function always combines the hash tree root of an object with a "domain" as described [below](#domain-separation-and-forks).
 
@@ -146,4 +146,4 @@ The verification will return `True` if and only if the signature corresponds bot
 - Proof of stake protocols use digital signatures to identify their participants and hold them accountable.
 - BLS signatures can be aggregated together, making them efficient to verify at large scale.
 - Signature aggregation allows the beacon chain to scale to hundreds of thousands of validators.
-- Ethereum transaction signatures on the execution (Eth1) layer remain as-is.
+- Ethereum transaction signatures on the execution (Eth1) layer remain as-is. -->
