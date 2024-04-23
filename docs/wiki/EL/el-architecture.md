@@ -75,7 +75,7 @@ The image represents a rough component flow of reth's architecture:
 - **Payload Builder**: Extracts the initial n transactions in order to construct a fresh payload.
 - **Pruner**: Allows us to have a full node.Once the block has been canonicalized by the blockchain tree, we must wait for an additional 64 blocks for it to reach finalization. Once the finalization process is complete, we can be certain that the block will not undergo reorganization. Therefore, if we are operating a full node, we have the option to eliminate the old block using the pruner.
 
-## Components of the Architecture
+## Components of the architecture
 
 ### Engine
 
@@ -89,15 +89,21 @@ The execution layer client acts as an _execution engine_ and exposes the Engine 
 
 TODO
 
-##### Payload Validation
+##### Payload validation
 
 Payload is validated with respect to the block header and execution environment rule sets: 
 
 <img src="images/el-architecture/payload-validation-routine.png" width="1000"/>
 
+##### Payload building
+
+Note: The fee recipient of the built payload may deviate from the  suggested fee recipient of the payload attributes:
+
+<img src="images/el-architecture/payload-building-routine.png" width="1000"/>
+
 #### Methods
 
-##### New Payload
+##### New payload
 
 TODO
 
