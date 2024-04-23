@@ -58,11 +58,11 @@
     - Statelessness
     - Purge
   - [MEV](/wiki/research/PBS/mev.md)
-    - [PBS](/wiki/research/PBS/pbs.md)
     - [MEV-boost](/wiki/research/PBS/mev-boost.md)
+  - [PBS](/wiki/research/PBS/pbs.md)
     - [ePBS](/wiki/research/PBS/ePBS.md)
+      - [ePBS Design Specs](/wiki/research/PBS/PTC-Specs.md)
     - [PTC](/wiki/research/PBS/PTC.md)
-    - [ePBS Design Specs](/wiki/research/PBS/PTC-Specs.md)
     - [PEPC](/wiki/research/PBS/PEPC.md)
     - [TBHL](/wiki/research/PBS/TBHL.md)
   - Proof of Stake
