@@ -4,7 +4,10 @@ Week 10 dev talk is diving into EVM precompiles and their integration in executi
 
 Join the presentation by [Danno Ferrin](https://twitter.com/shemnon), on [Monday, April 22, 4PM UTC](https://savvytime.com/converter/utc-to-germany-berlin-united-kingdom-london-china-shanghai-ny-new-york-city-japan-tokyo-australia-sydney-india-delhi-argentina-buenos-aires/apr-22-2024/4pm).
 
-The talk will be streamed live on [StreamEth](https://streameth.org/65cf97e702e803dbd57d823f/epf_study_group) and [Youtube](https://www.youtube.com/@ethprotocolfellows/streams), links will be provided before the call in the [Discord server](https://discord.gg/addwpQbhpq). Discord also serves for the discussion and questions during the stream. 
+## Links
+- Watch the talk on [StreamEth](https://streameth.org/65cf97e702e803dbd57d823f/epf_study_group) and [Youtube](https://www.youtube.com/watch?v=daiMhkt0XTw)
+- [Presentation from the talk.](https://hackmd.io/@shemnon/precompiles)
+- [Discussion thread on Discord: Week 10D: Precompiles](https://discord.com/channels/1205546645496795137/1231990093506678785).
 
 ## Pre-reading
 
@@ -14,7 +17,7 @@ The talk will use examples from Besu, a Java implementation of execution client.
 
 Additionally, you can get ready by studying the following resources:
 - [Exploring Precompiled Contracts on Ethereum: A Deep Dive](https://lucasmartincalderon.medium.com/exploring-precompiled-contracts-on-ethereum-a-deep-dive-4e9f9682e0aa)
-- https://www.evm.codes/precompiled
+- [Precompiles documentation by evm.codes](https://www.evm.codes/precompiled)
 
 ## Outline
 
