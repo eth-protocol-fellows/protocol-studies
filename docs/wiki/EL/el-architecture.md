@@ -117,6 +117,10 @@ TODO
 
 ##### Fork choice updated
 
+Note: Proof-of-stake LMD-GHOST fork choice rule & payload building
+
+<img src="images/el-architecture/forkchoice-updated.png" width="1000"/>
+
 This method expects two parameters:
 
 - **Fork Choice State** :
