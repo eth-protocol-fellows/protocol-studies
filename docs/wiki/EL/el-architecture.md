@@ -91,7 +91,9 @@ TODO
 
 ##### Payload Validation
 
-TODO
+Payload is validated with respect to the block header and execution environment rule sets: 
+
+<img src="images/el-architecture/payload-validation-routine.png" width="1000"/>
 
 #### Methods
 
