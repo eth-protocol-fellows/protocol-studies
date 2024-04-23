@@ -105,7 +105,9 @@ Note: The fee recipient of the built payload may deviate from the  suggested fee
 
 ##### New payload
 
-TODO
+Validates the payload that was built earlier by the payload building routine.
+
+<img src="images/el-architecture/new-payload.png" width="1000"/>
 
 ###### Geth
 
@@ -117,7 +119,7 @@ TODO
 
 ##### Fork choice updated
 
-Note: Proof-of-stake LMD-GHOST fork choice rule & payload building
+Proof-of-stake LMD-GHOST fork choice rule & payload building
 
 <img src="images/el-architecture/forkchoice-updated.png" width="1000"/>
 
