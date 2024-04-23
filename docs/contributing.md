@@ -14,9 +14,9 @@ Before you start with editing, please read the code of conduct, following guide 
 
 The wiki source is hosted in github repository at [github.com/eth-protocol-fellows/protocol-studies](https://github.com/eth-protocol-fellows/protocol-studies). Mirrored at //TODO
 
-> The wiki is served from `wiki-pages` branch. When contributing, open a PR to `main` branch (repo default branch). After a while, all updates are collectively upstreamed to `wiki-pages` to update the website.
+> The wiki is served from `wiki-pages` branch which is regularly updated from `main`. When contributing, open a PR to a branch related to the change or `main` for smaller quick fixes. PRs from other branches are reviewed before merging to `main` and collected updates are then pushed to update the `wiki-pages`.
 
-You can explore existing issues or open a new one for missing content, suggest improving existing content or wiki frontend features. If you identify missing or unfinished content, feel free to open a PR. 
+Explore existing issues or open a new one for missing content, suggest improving existing content or wiki frontend features. If you identify missing or unfinished content, feel free to open a PR. First, check existing PRs or branches to make sure your work is not redundant. 
 
 We are not aiming to recreate other existing wikis. If the same content is well explained elsewhere, just link it and provide additional context. 
 
@@ -74,6 +74,7 @@ The audience of this wiki is technical and the content should reflect that. Ther
 - Consider creating tutorials and hands-on guides documenting technical steps
 - Add recommended reading at the top, point to topics which are dependencies of yours
 - For mathematical notations, you can use Katex
+- You can use mermaid diagrams for visualizations
 
 Goal is to produce a credible neutral text which is formal, well-structured, and maintains a clear progression of ideas. The content should be purely technical and shouldn't waste space on introducing high level/well known concepts. Introductory topics are necessary and can use comparisons, historical anecdotes, and concrete examples to make complex concepts more accessible.
 
