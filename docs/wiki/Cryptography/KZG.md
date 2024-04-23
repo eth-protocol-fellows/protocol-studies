@@ -23,7 +23,7 @@ Ethereum-based applications utilizing the KZG (Kate, Zaverucha, and Goldberg) sc
 
 - **Data Availability Sampling**: PCS enable a critical feature known as Data Availability Sampling (DAS) in Ethereum roadmap, which allows validators to confirm the correctness and availability of data blobs without downloading the entire data. This capability is facilitated by the unique properties of PCS, enabling efficient verification processes in blockchain applications like Ethereum's Danksharding.
 
-- **PSE's Summa, Proof of Solvenecy Protocol**: Ethereum Foundation's PSE group project, Summa, leverages KZG commitments in its Proof of Solvency protocol. This allows centralized exchanges and custodians to demonstrate that their total assets exceed their liabilities, all while keeping user balance information private.
+- **PSE's Summa, Proof of Solvency Protocol**: Ethereum Foundation's PSE group project, Summa, leverages KZG commitments in its Proof of Solvency protocol. This allows centralized exchanges and custodians to demonstrate that their total assets exceed their liabilities, all while keeping user balance information private.
   
 - **Scroll's zkRollups**: Scroll, a native zkEVM Layer 2 for Ethereum, uses KZG to generate commitments to a collection of polynomials that encapsulate computations. This allows verifiers to request evaluations at random points to validate the accuracy of the computation represented by the polynomials.
 
