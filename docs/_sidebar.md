@@ -60,6 +60,10 @@
     - [PBS](/wiki/research/PBS/pbs.md)
     - [MEV-boost](/wiki/research/PBS/mev-boost.md)
     - [ePBS](/wiki/research/PBS/ePBS.md)
+    - [PTC](/wiki/research/PBS/PTC.md)
+    - [ePBS Design Specs](/wiki/research/PBS/PTC-Specs.md)
+    - [PEPC](/wiki/research/PBS/PEPC.md)
+    - [TBHL](/wiki/research/PBS/TBHL.md)
   - Proof of Stake
     - [Upgrades](/docs/wiki/research/Beacon%20Chain%20Upgrades.md)
     - SSF
