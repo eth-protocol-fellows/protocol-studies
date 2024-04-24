@@ -1,6 +1,6 @@
 # Execution Layer Implementations
 
-Resources covering all current and historical execution clients. Overview of client unique features of each client, architecture, guides and resources. 
+Resources covering all current and historical execution clients. Overview of client unique features of each client, architecture, guides and resources.
 
 ## Clients in production
 
@@ -10,7 +10,7 @@ Developed by Hyperledger Foundation in Java
 
 ### Erigon
 
-Originally fork of geth called turbo-geth 
+Originally fork of geth called turbo-geth
 
 ### Geth
 
@@ -18,7 +18,7 @@ Go-ethereum, developed by a team in EF
 
 ### Nethermind
 
-Developed in C# dotnet
+Developed in .NET
 
 ## Clients in development
 
@@ -26,7 +26,7 @@ Developed in C# dotnet
 
 Developed by Paradigm, recently considered stable
 
-### Silkwarm 
+### Silkworm
 
 Modular C++ implementation by Erigon team
 
@@ -51,4 +51,4 @@ Rust client developed by Parity, later maintained and deprecated as OE
 
 ### Trinity
 
-Experimental, prototyping client in Python developed by EF Snake Charmes
+Experimental, prototyping client in Python developed by EF Snake Charmers
