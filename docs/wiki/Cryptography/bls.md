@@ -2,6 +2,13 @@
 
 # Boneh-Lynn-Shacham (BLS) signature
 
+### TLDR;
+
+- Proof of stake protocols use digital signatures to identify their participants and hold them accountable.
+- BLS signatures can be aggregated together, making them efficient to verify at large scale.
+- Signature aggregation allows the beacon chain to scale to hundreds of thousands of validators.
+- Ethereum transaction signatures on the execution (Eth1) layer remain as-is.
+
 BLS is a digital signature scheme with aggregation properties. Given set of signatures (_signature_1_, ..., _signature_n_) anyone can produce an aggregated signature. Aggregation can also be done on secret keys and public keys. Furthermore, the BLS signature scheme is deterministic, non-malleable, and efficient. Its simplicity and cryptographic properties allows it to be useful in a variety of use-cases, specifically when minimal storage space or bandwidth are required. This page will cover general idea and Math behind BLS signatures, further cover BLS in context of Ethereum.
 
 ## How BLS works?
@@ -210,14 +217,11 @@ _Verification uses the validator's public key and the original message to confir
 
 **Verification Output**: The process returns `True` if the signature aligns with both the public key and the message, confirming its validity. If not, it returns `False`, indicating issues with the signature’s integrity or origin.
 
-- Proof of stake protocols use digital signatures to identify their participants and hold them accountable.
-- BLS signatures can be aggregated together, making them efficient to verify at large scale.
-- Signature aggregation allows the beacon chain to scale to hundreds of thousands of validators.
-- Ethereum transaction signatures on the execution (Eth1) layer remain as-is. -->
-
-Resources and References
+## Resources and References
 
 - [BLS and key-pairing](https://asecuritysite.com/encryption/js_bls)
 - [BLS signatures and key-pairing concepts](https://www.youtube.com/watch?v=cVgJBdM5E2M)
 - [BLS aggregation by Vitalik Buterin and Justin Drake](https://www.youtube.com/watch?v=DpV0Hh9YajU)
-- [formal IETF Draft](https://www.ietf.org/archive/id/draft-irtf-cfrg-bls-signature-05.html)
+- [Building blocks from Eth2 Handbook](https://eth2book.info/capella/part2/building_blocks/signatures/)
+- [formal IETF Draft Standard](https://www.ietf.org/archive/id/draft-irtf-cfrg-bls-signature-05.html)
+- [ERC2333](https://github.com/ethereum/ercs/blob/master/ERCS/erc-2333.md), [ERC2334](https://github.com/ethereum/ercs/blob/master/ERCS/erc-2334.md) and [ERC2335](https://github.com/ethereum/ercs/blob/master/ERCS/erc-2335.md) on BLS signatures implementation
