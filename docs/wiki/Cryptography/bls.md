@@ -222,6 +222,11 @@ _Verification uses the validator's public key and the original message to confir
 - [BLS and key-pairing](https://asecuritysite.com/encryption/js_bls)
 - [BLS signatures and key-pairing concepts](https://www.youtube.com/watch?v=cVgJBdM5E2M)
 - [BLS aggregation by Vitalik Buterin and Justin Drake](https://www.youtube.com/watch?v=DpV0Hh9YajU)
+- [Pragmatic Signature Aggregation By Justin Drake](https://ethresear.ch/t/pragmatic-signature-aggregation-with-bls/2105?u=benjaminion)
 - [Building blocks from Eth2 Handbook](https://eth2book.info/capella/part2/building_blocks/signatures/)
 - [formal IETF Draft Standard](https://www.ietf.org/archive/id/draft-irtf-cfrg-bls-signature-05.html)
-- [ERC2333](https://github.com/ethereum/ercs/blob/master/ERCS/erc-2333.md), [ERC2334](https://github.com/ethereum/ercs/blob/master/ERCS/erc-2334.md) and [ERC2335](https://github.com/ethereum/ercs/blob/master/ERCS/erc-2335.md) on BLS signatures implementation
+- [Pairing Friendly curves](https://datatracker.ietf.org/doc/html/draft-irtf-cfrg-pairing-friendly-curves-10)
+- [Hasing to elliptic curves](https://datatracker.ietf.org/doc/html/draft-irtf-cfrg-hash-to-curve-09)
+- [ERC2333](https://github.com/ethereum/ercs/blob/master/ERCS/erc-2333.md) provides a method for deriving a tree-hierarchy of BLS12-381 keys based on an entropy seed.
+- [ERC2334](https://github.com/ethereum/ercs/blob/master/ERCS/erc-2334.md) defines a deterministic account hierarchy for specifying the purpose of keys.
+- [ERC2335](https://github.com/ethereum/ercs/blob/master/ERCS/erc-2335.md) specifies a standard keystore format for storage and interchange of BLS12-381 keys.
