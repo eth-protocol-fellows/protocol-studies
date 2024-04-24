@@ -89,7 +89,7 @@ Honest attestors will consider the payload-timeliness when casting their votes. 
 - The payload view informs subsequent committee votes, which usually align with the proposer.
 - In the current ePBS design[^2][^3], builders receive a proposer boost. They don't explicitly create fork choice weight between different forks. Instead, they boost or "deboost" the current block by revealing or withholding it.
 
-The [ePBS design specs](/docs/wiki/research/PBS/PTC-Specs.md) has more details about the implementation specifications and flow.
+The [ePBS design specs](/docs/wiki/research/PBS/ePBS-Specs.md) has more details about the implementation specifications and flow.
 
 ## Resources 
 - [Payload-timeliness committee (PTC) – an ePBS design ](https://ethresear.ch/t/payload-timeliness-committee-ptc-an-epbs-design/16054)
@@ -97,7 +97,7 @@ The [ePBS design specs](/docs/wiki/research/PBS/PTC-Specs.md) has more details a
 - [ePBS Breakout Room](https://www.youtube.com/watch?v=63juNVzd1P4)
 - [Notes on Proposer-Builder Separation (PBS)](https://barnabe.substack.com/p/pbs)
 - [Mike Neuder - Towards Enshrined Proposer-Builder Separation](https://www.youtube.com/watch?v=Ub8V7lILb_Q)
-- [ePBS design specs](/docs/wiki/research/PBS/PTC-Specs.md)
+- [ePBS design specs](/docs/wiki/research/PBS/ePBS-Specs.md)
 
 ## References
 [^1]: https://ethresear.ch/t/payload-timeliness-committee-ptc-an-epbs-design/16054

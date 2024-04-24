@@ -2,75 +2,26 @@
 
 Protocol-Enforced Proposer Commitments (PEPC), a conceptual extension and generalization of [PBS](/docs/wiki/research/PBS/pbs.md), introduces a more flexible and secure way for proposers (validators) to commit to the construction of blocks. Unlike the existing [MEV-Boost](/docs/wiki/research/PBS/mev-boost.md) mechanism, which relies on out-of-protocol agreements between proposers and builders/relays, PEPC aims to enshrine these commitments within the Ethereum protocol itself, offering a trustless and permissionless infrastructure for these interactions[^1][^2].
 
-## Benefits of PEPC
+## Benefits and Related Trade-offs of PEPC
+- **Enhanced Security and Trustlessness:**
+  - **Benefit:** Enforces agreements within the protocol, reducing reliance on external parties and minimizing the potential for manipulation.
+  - **Trade-off (Security vs. Overhead):** While security is enhanced, this internalization increases computational demands, potentially impacting network efficiency and scalability.
 
-The introduction of PEPC into Ethereum's ecosystem carries both promising benefits and notable disadvantages, reflecting the complex balance between innovation, security, scalability, and usability. Here's a detailed look at these aspects:
+- **Increased Flexibility in Block Construction:**
+  - **Benefit:** Enables programmable contracts between proposers and builders, supporting diverse block construction scenarios.
+  - **Trade-off (Flexibility vs. Complexity):** This flexibility introduces complexity, which could limit participation to technically advanced users and raise barriers to entry.
 
-**Enhanced Security and Trustlessness:**
+- **Decentralization of MEV Opportunities:**
+  - **Benefit:** Promotes a more equitable distribution of MEV among validators.
+  - **Trade-off (Decentralization of MEV vs. Risk of Centralization):** While aiming to decentralize MEV, the complexity required might still favor larger, more sophisticated operators.
 
-PEPC's primary advantage lies in its ability to enforce agreements between proposers and builders within the Ethereum protocol itself, minimizing trust assumptions. This internalization of commitments enhances security by making it harder for external parties to manipulate transaction inclusion or exploit the proposer-builder relationship.
+- **Scalability and Efficiency Improvements:**
+  - **Benefit:** Streamlines block construction and validation processes, enhancing overall network scalability.
+  - **Trade-off (Long-term Scalability vs. Short-term Performance):** Initial impacts on network performance may occur as validators adjust to new complexities.
 
-**Increased Flexibility in Block Construction:**
-
-By allowing for programmable contracts between proposers and builders, PEPC introduces a high degree of flexibility. This can accommodate a variety of block construction scenarios, from full blocks to partial blocks and future slot auctions, enabling more efficient use of block space.
-
-**Decentralization of MEV Opportunities:**
-
-PEPC could potentially lead to a more equitable distribution of MEV opportunities among validators. By embedding diverse commitment mechanisms into the protocol, it reduces the risk of centralizing these opportunities in the hands of a few large operators.
-
-**Scalability and Efficiency Improvements:**
-
-The system aims to optimize the process of block construction and validation, potentially reducing the overhead associated with these tasks. This could contribute to the overall scalability and efficiency of the Ethereum network, aligning with its long-term goals.
-
-**Economic Innovation:**
-
-PEPC opens up new avenues for economic innovation within Ethereum. By enabling different types of transactions and block construction contracts, it could foster novel economic models and incentives, enhancing the dynamism and diversity of the Ethereum economy.
-
-## Disadvantages of PEPC
-
-**Complexity and Implementation Challenges:**
-The flexible and generalized nature of PEPC introduces significant complexity into the Ethereum protocol. Designing, implementing, and maintaining such a system poses substantial technical challenges, increasing the risk of bugs, vulnerabilities, and unintended consequences.
-
-**Increased Computational Overhead:**
-Enforcing proposer commitments within the protocol could lead to increased computational overhead for validators, impacting the network's performance. This might necessitate more powerful hardware or sophisticated optimization techniques to maintain efficiency.
-
-**Potential for Centralization:**
-While PEPC aims to decentralize MEV opportunities, its complexity could inadvertently favor large, technically sophisticated operators capable of navigating the intricacies of the system. This could counteract efforts to decentralize the network further.
-
-**Economic Uncertainty:**
-The introduction of PEPC could disrupt existing economic models and incentives within Ethereum, leading to uncertainty. Adjusting to new mechanisms for transaction inclusion and block construction may require time, potentially impacting network stability and user experience.
-
-**Difficulty in Balancing Flexibility and Security:**
-Finding the right balance between the flexibility offered by PEPC and the need to maintain a secure, reliable network is challenging. Too much flexibility could make the system unwieldy and difficult to secure, while too little could stifle innovation and efficiency.
-
-## Tradeoffs of Implementation of PEPC
-
-The implementation of PEPC in Ethereum involves several trade-offs, reflecting a balance between advancing the protocol's capabilities and managing new complexities and risks. These trade-offs highlight the nuanced considerations necessary to evolve Ethereum's infrastructure responsibly:
-
-**Trade-off 1: Flexibility vs. Complexity**
-
-- **Flexibility:** PEPC introduces a highly flexible framework for proposers and builders, allowing a variety of customized and programmable commitments. This flexibility can lead to more efficient use of block space and innovative economic arrangements.
-- **Complexity:** With increased flexibility comes heightened complexity in protocol design, implementation, and operation. This complexity can raise the barrier to entry for validators and builders, potentially centralizing participation to those with significant technical resources.
-
-**Trade-off 2: Security vs. Overhead**
-
-- **Security:** By embedding proposer commitments directly into the protocol, PEPC enhances the trustlessness and security of block construction, reducing reliance on external parties and minimizing the potential for manipulation.
-- **Overhead:** Implementing these commitments within the Ethereum protocol increases computational and operational overhead. Validators may face higher demands on processing and storage, impacting the network's efficiency and scalability.
-
-**Trade-off 3: Economic Innovation vs. Stability**
-
-- **Economic Innovation:** PEPC opens the door to new economic models and incentive structures within Ethereum, potentially improving the distribution of MEV and fostering a more dynamic and fair ecosystem.
-- **Stability:** These new economic models introduce uncertainty and may disrupt existing revenue streams and participation incentives. Adjusting to these changes could pose challenges for validators, builders, and users, affecting network stability and predictability.
-
-**Trade-off 4: Decentralization of MEV vs. Risk of Centralization**
-
-- **Decentralization of MEV:** By enabling a broader range of proposer-builder arrangements, PEPC aims to distribute MEV opportunities more widely among participants, aligning with Ethereum's decentralization goals.
-- **Risk of Centralization:** The complexity and technical demands of navigating PEPC could inadvertently favor larger, more sophisticated operators, potentially centralizing control and undermining the objective of broadening participation.
-
-**Trade-off 5: Long-term Scalability vs. Short-term Performance**
-
-- **Long-term Scalability:** PEPC's innovations could contribute to Ethereum's scalability over the long term by optimizing block space usage and enabling more sophisticated transaction inclusion mechanisms.
-- **Short-term Performance:** The introduction of PEPC and the transition to its mechanisms may initially impact the network's performance, as validators and the infrastructure adapt to the increased complexity and computational demands.
+- **Economic Innovation:**
+  - **Benefit:** Fosters novel economic models by allowing new types of transactions and block constructions.
+  - **Trade-off (Economic Innovation vs. Stability):** Introduces economic models that could disrupt established revenue structures and impact stability.
 
 ## How would PEPC work?
 
