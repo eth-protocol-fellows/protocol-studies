@@ -43,7 +43,7 @@ BLS signatures, employing bilinear pairings, offer robust protection against cer
 
 <figcaption>
 
-_Visual Aid to understand how BLS sigatures work_
+_Visual Aid to understand how BLS signatures work_
 
 </figcaption>
 </figure>
@@ -185,7 +185,7 @@ _A validator uses their secret key to sign a message, producing a unique digital
 
 ### Verifying Signatures
 
-To validate a signature, the public key of the corresponding validator is necessary. This key is readily available in the beacon state, accessible by the validator’s index, ensuring that key retrieval is straightforward and reliable.
+To validate a signature, the public key of the corresponding validator is necessary. This key is readily available in the beacon state, accessible by the validator's index, ensuring that key retrieval is straightforward and reliable.
 
 Verification is streamlined: input the message, public key, and signature into the verification process. If the signature is authentic—matching both the public key and the message—it is accepted; otherwise, it’s rejected due to potential corruption, incorrect key usage, or message tampering.
 
@@ -226,7 +226,7 @@ _Verification uses the validator's public key and the original message to confir
 - [Building blocks from Eth2 Handbook](https://eth2book.info/capella/part2/building_blocks/signatures/)
 - [formal IETF Draft Standard](https://www.ietf.org/archive/id/draft-irtf-cfrg-bls-signature-05.html)
 - [Pairing Friendly curves](https://datatracker.ietf.org/doc/html/draft-irtf-cfrg-pairing-friendly-curves-10)
-- [Hasing to elliptic curves](https://datatracker.ietf.org/doc/html/draft-irtf-cfrg-hash-to-curve-09)
+- [Hashing to elliptic curves](https://datatracker.ietf.org/doc/html/draft-irtf-cfrg-hash-to-curve-09)
 - [ERC2333](https://github.com/ethereum/ercs/blob/master/ERCS/erc-2333.md) provides a method for deriving a tree-hierarchy of BLS12-381 keys based on an entropy seed.
 - [ERC2334](https://github.com/ethereum/ercs/blob/master/ERCS/erc-2334.md) defines a deterministic account hierarchy for specifying the purpose of keys.
 - [ERC2335](https://github.com/ethereum/ercs/blob/master/ERCS/erc-2335.md) specifies a standard keystore format for storage and interchange of BLS12-381 keys.
