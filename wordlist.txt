@@ -406,6 +406,7 @@ SNARKify
 socio
 solvm
 SPHINCS
+Sproul
 SSF
 SSLE
 SSTORE
