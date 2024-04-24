@@ -240,14 +240,14 @@ The [PTC proposal](/docs/wiki/research/PBS/PTC.md) has more details about the de
 
 ### ePBS PTC Specifications Overview
 
-The current ePBS specification[^15][^16] is divided into separate components to build on top of the existing specifications of Ethereum components. 
+The [current ePBS specification](https://hackmd.io/@potuz/rJ9GCnT1C) and the [GitHub repo](https://github.com/potuz/consensus-specs/tree/epbs_stripped_out/specs/_features/epbs) are divided into separate components to build on top of the existing specifications of Ethereum components[^15][^16][^23]. 
 - `Beacon-chain.md`: This document specifies the beacon chain specifications of the ePBS fork[^18].
 - `Validator.md`: This document specifies the honest validator behavior specifications of the ePBS fork[^19].
 - `Builder.md`: This document specifies the honest builder specifications of the ePBS fork[^20].
 - `Engine.md`: This document specifies the Engine APi changes due ePBS fork[^21].
 - `fork-choice.md`: This document specifies the changes to the fork-choice due to the ePBS fork[^22].
 
-The [ePBS design specs](/docs/wiki/research/PBS/PTC-Specs.md) has more details about the implementation specifications and flow.
+The [ePBS design specs](/docs/wiki/research/PBS/ePBS-Specs.md) has more details about the implementation specifications and flow.
 
 ### Protocol-Enforced Proposer Commitments (PEPC)
 
@@ -302,7 +302,8 @@ Given the complex landscape and the potential for significant shifts in Ethereum
 - [Minimal ePBS without Max EB and 7002](https://github.com/potuz/consensus-specs/pull/2)
 - [EigenLayer protocol](https://docs.eigenlayer.xyz/eigenlayer/overview/whitepaper)
 - [ePBS specification notes](https://hackmd.io/@potuz/rJ9GCnT1C)
-- [ePBS design specs repo](https://github.com/potuz/consensus-specs/pull/2)
+- [ePBS design specs PR](https://github.com/potuz/consensus-specs/pull/2)
+- [ePBS design specs GitHub repo](https://github.com/potuz/consensus-specs/tree/epbs_stripped_out/specs/_features/epbs)
 - [epbs - beacon-chain specs](https://github.com/potuz/consensus-specs/blob/epbs_stripped_out/specs/_features/epbs/beacon-chain.md)
 - [epbs - honest validator specs](https://github.com/potuz/consensus-specs/blob/epbs_stripped_out/specs/_features/epbs/validator.md)
 - [epbs - honest builder specs](https://github.com/potuz/consensus-specs/blob/epbs_stripped_out/specs/_features/epbs/builder.md)
@@ -333,3 +334,4 @@ Given the complex landscape and the potential for significant shifts in Ethereum
 [^20]: https://github.com/potuz/consensus-specs/blob/epbs_stripped_out/specs/_features/epbs/builder.md
 [^21]: https://github.com/potuz/consensus-specs/blob/epbs_stripped_out/specs/_features/epbs/engine.md
 [^22]: https://github.com/potuz/consensus-specs/blob/epbs_stripped_out/specs/_features/epbs/fork-choice.md 
+[^23]: https://github.com/potuz/consensus-specs/tree/epbs_stripped_out/specs/_features/epbs

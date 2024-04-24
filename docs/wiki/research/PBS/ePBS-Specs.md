@@ -1,10 +1,10 @@
 # ePBS Design Specifications
 
-The current ePBS specification[^1][^2] addresses a critical issue in Ethereum's current implementation of PBS. Traditionally, both proposers and builders have had to rely on intermediaries through [MEV-Boost](/docs/wiki/research/PBS/mev-boost.md), which introduces trust and censorship concerns as outlined in the [ePBS document](/docs/wiki/research/PBS/ePBS.md). The ePBS specifications framework modifies this dynamic by changing the necessity of intermediaries ("must") to an option ("may"), allowing for a more trustless interaction within the Ethereum ecosystem. 
+The [current ePBS specification](https://hackmd.io/@potuz/rJ9GCnT1C) and the [GitHub repo](https://github.com/potuz/consensus-specs/tree/epbs_stripped_out/specs/_features/epbs) address a critical issue in Ethereum's current implementation of PBS[^1][^2][^11]. Traditionally, both proposers and builders have had to rely on intermediaries through [MEV-Boost](/docs/wiki/research/PBS/mev-boost.md), which introduces trust and censorship concerns as outlined in the [ePBS document](/docs/wiki/research/PBS/ePBS.md). The ePBS specifications framework modifies this dynamic by changing the necessity of intermediaries ("must") to an option ("may"), allowing for a more trustless interaction within the Ethereum ecosystem. 
 
 ## Specifications Overview
 
-The ePBS specification is divided into separate components to build on top of the existing specifications of Ethereum components. 
+The [ePBS specification](https://github.com/potuz/consensus-specs/tree/epbs_stripped_out/specs/_features/epbs) is divided into separate components to build on top of the existing specifications of Ethereum components. 
 - `Beacon-chain.md`: This document specifies the beacon chain specifications of the ePBS feature[^6].
 - `Validator.md`: This document specifies the honest validator behavior specifications of the ePBS feature[^7].
 - `Builder.md`: This document specifies the honest builder specifications of the ePBS feature[^8].
@@ -481,4 +481,5 @@ The introduction of the ePBS fork brings sophisticated changes to the forkchoice
 [^7]: https://github.com/potuz/consensus-specs/blob/epbs_stripped_out/specs/_features/epbs/validator.md
 [^8]: https://github.com/potuz/consensus-specs/blob/epbs_stripped_out/specs/_features/epbs/builder.md
 [^9]: https://github.com/potuz/consensus-specs/blob/epbs_stripped_out/specs/_features/epbs/engine.md
-[^10]: https://github.com/potuz/consensus-specs/blob/epbs_stripped_out/specs/_features/epbs/fork-choice.md 
+[^10]: https://github.com/potuz/consensus-specs/blob/epbs_stripped_out/specs/_features/epbs/fork-choice.md
+[^11]: https://github.com/potuz/consensus-specs/tree/epbs_stripped_out/specs/_features/epbs 
