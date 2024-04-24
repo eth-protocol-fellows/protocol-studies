@@ -2,11 +2,7 @@
 
 # Boneh-Lynn-Shacham (BLS) signature
 
-BLS is a digital signature scheme with aggregation properties. Given set of signatures (_signature_1_, ..., _signature_n_) anyone can produce an aggregated signature. Aggregation can also be done on secret keys and public keys. Furthermore, the BLS signature scheme is deterministic, non-malleable, and efficient. Its simplicity and cryptographic properties allows it to be useful in a variety of use-cases, specifically when minimal storage space or bandwidth are required. This page will cover general idea of BLS signatures with Ethereum in mind for essential examples.
-
-With respect to Blockchain, digital signatures typically leverage elliptic curve groups. Ethereum primarily employs [ECDSA](/wiki/Cryptography/ecdsa.md) signatures using the [secp256k1](https://en.bitcoin.it/wiki/Secp256k1) curve, while the beacon chain protocol adopts BLS signatures based on the [BLS12-381](https://hackmd.io/@benjaminion/bls12-381) curve. Unlike ECDSA, BLS signatures utilize a unique feature of certain elliptic curves known as "[pairing](https://medium.com/@VitalikButerin/exploring-elliptic-curve-pairings-c73c1864e627)." This allows for the aggregation of multiple signatures, enhancing the efficiency of the consensus protocol. While ECDSA signatures are [much quicker](https://datatracker.ietf.org/doc/html/draft-irtf-cfrg-bls-signature-04#section-1.1) to process, the aggregative capability of BLS signatures offers significant advantages for blockchain scalability and consensus efficiency.
-
-The process to create and verify a BLS signature is straightforward, involving a series of steps that can be explained through diagrams, descriptions, and mathematical principles, although understanding the mathematical detail is not essential for practical application.
+BLS is a digital signature scheme with aggregation properties. Given set of signatures (_signature_1_, ..., _signature_n_) anyone can produce an aggregated signature. Aggregation can also be done on secret keys and public keys. Furthermore, the BLS signature scheme is deterministic, non-malleable, and efficient. Its simplicity and cryptographic properties allows it to be useful in a variety of use-cases, specifically when minimal storage space or bandwidth are required. This page will cover general idea and Math behind BLS signatures, further cover BLS in context of Ethereum.
 
 ## How BLS works?
 
@@ -96,7 +92,11 @@ $$e(G,S)=e(P_1,H(M_1))⋅e(P_2,H(M_2))⋅…⋅e(P_{100},H(M_{100}))$$
 
 Verification of this aggregated signature would involve a corresponding aggregation of public keys and message hashes, maintaining the integrity and non-repudiation of all individual signatures.
 
-## Ethereum and BLS
+## BLS Signatures in Ethereum
+
+With respect to Blockchain, digital signatures typically leverage elliptic curve groups. Ethereum primarily employs [ECDSA](/wiki/Cryptography/ecdsa.md) signatures using the [secp256k1](https://en.bitcoin.it/wiki/Secp256k1) curve, while the beacon chain protocol adopts BLS signatures based on the [BLS12-381](https://hackmd.io/@benjaminion/bls12-381) curve. Unlike ECDSA, BLS signatures utilize a unique feature of certain elliptic curves known as "[pairing](https://medium.com/@VitalikButerin/exploring-elliptic-curve-pairings-c73c1864e627)." This allows for the aggregation of multiple signatures, enhancing the efficiency of the consensus protocol. While ECDSA signatures are [much quicker](https://datatracker.ietf.org/doc/html/draft-irtf-cfrg-bls-signature-04#section-1.1) to process, the aggregative capability of BLS signatures offers significant advantages for blockchain scalability and consensus efficiency.
+
+The process to create and verify a BLS signature is straightforward, involving a series of steps that can be explained through diagrams, descriptions, and mathematical principles, although understanding the mathematical detail is not essential for practical application.
 
 There are **4** component pieces of data within the BLS digital signature process.
 
@@ -146,92 +146,78 @@ _A validator randomly generates its secret key. Its public key is then derived f
 </figcaption>
 </figure>
 
-<!-- ### Signing
+### Signing in the Beacon Chain
 
-In the beacon chain protocol the only messages that get signed are [hash tree roots](/part2/building_blocks/merkleization/) of objects: their so-called signing roots, which are 32 byte strings. The [`compute_signing_root()`](/part3/helper/misc/#compute_signing_root) function always combines the hash tree root of an object with a "domain" as described [below](#domain-separation-and-forks).
+In Ethereum's beacon chain, the only messages that get signed are the [hash tree roots](https://eth2book.info/capella/part2/building_blocks/merkleization/) of objects. These roots, called "signing roots," are 32-byte strings. The [`compute_signing_root()`](/wiki/CL/functions#compute_signing_root) function integrates the hash tree root with a specific "domain," enhancing the security.
 
-Once we have the signing root it needs to be mapped onto an elliptic curve point in the $G_2$ group. If the message's signing root is $m$, then the point is $H(m)$ where $H()$ is a function that maps bytes to $G_2$. This mapping is hard to do well, and an entire [draft standard](https://datatracker.ietf.org/doc/draft-irtf-cfrg-hash-to-curve/) exists to define the process. Thankfully, we can ignore the details completely and leave them to our cryptographic libraries[^fn-implement-h2g2].
+<!-- define and link context (domain separation and forks) in CL-->
 
-[^fn-implement-h2g2]: Unless you have to implement the thing, as I [ended up doing](https://github.com/ConsenSys/teku/commit/e927d9be89b64fe8297b74405f37aa0e6378024) in Java.
+The signing root is mapped onto an elliptic curve point within the $G_2$ group. This mapping, $H(m)$, where $m$ is the signing root, transforms the hash into a format suitable for cryptographic operations. This complex process is outlined in the [Hash-to-Curve draft standard](https://datatracker.ietf.org/doc/draft-irtf-cfrg-hash-to-curve/), but typically, developers rely on cryptographic libraries to manage this step efficiently.
 
-Now that we have $H(m)$, the signing process itself is simple, being just a scalar multiplication of the $G_2$ point by the secret key:
+#### Signature Creation:
+
+The actual signing involves multiplying the $G_2$ point $H(m)$ by the signer's secret key $sk$:
 
 $$
 \sigma = [sk]H(m)
 $$
 
-Evidently the signature $\sigma$ is also a member of the $G_2$ group, and it serialises to a 96 byte string in compressed form.
+The signature $\sigma$ thus generated is also part of the $G_2$ group and is typically compressed into a 96-byte string for practical use.
 
-<a id="img_bls_signing"></a>
+<figure class="diagram" style="margin-left:10%; width:65%">
 
-<figure class="diagram" style="width:65%">
-
-![Diagram of signing a message.](images/diagrams/bls-signing.svg)
+![Diagram of signing a message.](../../images/elliptic-curves/bls-signing.svg)
 
 <figcaption>
 
-A validator applies its secret key to a message to generate a unique digital signature.
+_A validator uses their secret key to sign a message, producing a unique digital signature_
 
 </figcaption>
+
 </figure>
 
-##### Verifying
+### Verifying Signatures
 
-To verify a signature we need to know the public key of the validator that signed it. Every validator's public key is stored in the beacon state and can be simply looked up via the validator's index which, by design, is always available by some means whenever it's required.
+To validate a signature, the public key of the corresponding validator is necessary. This key is readily available in the beacon state, accessible by the validator’s index, ensuring that key retrieval is straightforward and reliable.
 
-Signature verification can be treated as a black-box: we send the message, the public key, and the signature to the verifier; if after some cryptographic magic the signature matches the public key and the message then we declare it valid. Otherwise, either the signature is corrupt, the incorrect secret key was used, or the message is not what was signed.
+Verification is streamlined: input the message, public key, and signature into the verification process. If the signature is authentic—matching both the public key and the message—it is accepted; otherwise, it’s rejected due to potential corruption, incorrect key usage, or message tampering.
 
-More formally, signatures are verified using elliptic curve pairings.
-
-With respect to the curve BLS12-381, a pairing simply takes a point $P\in G_1$, and a point $Q\in G_2$ and outputs a point from a group $G_T\subset F_{q^{12}}$. That is, for a pairing $e$, $e:G_1\times G_2\rightarrow G_T$.[^fn-pairing-multiplication]
-
-[^fn-pairing-multiplication]: If it helps, you can loosely think of a pairing as being a way to "multiply" a point in $G_1$ by a point in $G_2$. If we were to write all the groups additively then the arithmetic would work out very nicely. However, we conventionally write $G_T$ multiplicatively, so the notation isn't quite right.
-
-Pairings are usually denoted $e(P,Q)$ and have special properties. In particular, with $P$ and $S$ in $G_1$ and $Q$ and $R$ in $G_2$,
-
-- $e(P, Q + R) = e(P, Q) \cdot e(P, R)$, and
-- $e(P + S, R) = e(P, R) \cdot e(S, R)$.
-
-(Conventionally $G_1$ and $G_2$ are written as additive groups, and $G_T$ as multiplicative, so the $\cdot$ operator is point multiplication in $G_T$.)
-
-From this, we can deduce that all the following identities hold:
+Formally, this verification utilizes elliptic curve pairings. For the BLS12-381 curve, the pairing takes a point $P$ from $G_1$ and a point $Q$ from $G_2$, resulting in a point from group $G_T$:
 
 $$
-e([a]P,[b]Q)={e(P,[b]Q)}^a={e(P,Q)}^{ab}={e(P,[a]Q)}^b=e([b]P,[a]Q)
+e: G_1 \times G_2 \rightarrow G_T
 $$
 
-Armed with our pairing, verifying a signature is straightforward. The signature is valid if and only if
+Pairings are expressed as $e(P, Q)$ and are crucial for validating the correspondence between the signature and the public key:
 
 $$
-e(g_1,\sigma)=e(pk,H(m))
+e(g_1, \sigma) = e(pk, H(m))
 $$
 
-That is, given the message $m$, the public key $pk$, the signature $\sigma$, and the fixed public value $g_1$ (the generator of the $G_1$ group), we can verify that the message was signed by the secret key $sk$.
+This checks whether the message signed with the secret key $sk$ matches the observed signature $\sigma$, using the fundamental properties of [pairings](/wiki/Cryptography/bls#how-bls-works).
 
-This identity comes directly from the properties of pairings described above.
+<figure class="diagram" style="margin-left:10%; width:80%">
 
-$$
-e(pk,H(m)) = e([sk]g_1,H(m)) = {e(g_1,H(m))}^{(sk)} = e(g_1,[sk]H(m)) = e(g_1,\sigma)
-$$
-
-Note that elliptic curves supporting such a pairing function are very rare. Such curves can be constructed, as [BLS12-381 was](https://hackmd.io/@benjaminion/bls12-381#History), but general elliptic curves such as the more commonly used secp256k1 curve do not support pairings and cannot be used for BLS signatures.
-
-<a id="img_bls_verifying"></a>
-
-<figure class="diagram" style="width:80%">
-
-![Diagram of verifying a signature.](images/diagrams/bls-verifying.svg)
+![Diagram of verifying a signature.](../../images/elliptic-curves/bls-verifying.svg)
 
 <figcaption>
 
-To verify that a particular validator signed a particular message we use the validator's public key, the original message, and the signature. The verification operation outputs true if the signature is correct and false otherwise.
+_Verification uses the validator's public key and the original message to confirm the authenticity of the signature._
 
 </figcaption>
+
 </figure>
 
-The verification will return `True` if and only if the signature corresponds both to the public key (that is, the signature and the public key were both generated from the same secret key) and to the message (that is, the message is identical to the one that was signed originally). Otherwise, it will return `False`.
+**Verification Output**: The process returns `True` if the signature aligns with both the public key and the message, confirming its validity. If not, it returns `False`, indicating issues with the signature’s integrity or origin.
 
 - Proof of stake protocols use digital signatures to identify their participants and hold them accountable.
 - BLS signatures can be aggregated together, making them efficient to verify at large scale.
 - Signature aggregation allows the beacon chain to scale to hundreds of thousands of validators.
 - Ethereum transaction signatures on the execution (Eth1) layer remain as-is. -->
+
+Resources and References
+
+- [BLS and key-pairing](https://asecuritysite.com/encryption/js_bls)
+- [BLS signatures and key-pairing concepts](https://www.youtube.com/watch?v=cVgJBdM5E2M)
+- [BLS aggregation by Vitalik Buterin and Justin Drake](https://www.youtube.com/watch?v=DpV0Hh9YajU)
+- [formal IETF Draft](https://www.ietf.org/archive/id/draft-irtf-cfrg-bls-signature-05.html)
