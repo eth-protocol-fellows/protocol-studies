@@ -508,6 +508,11 @@ sharding
 smlXL
 socio
 solvm
+SPHINCS
+Sproul
+SSF
+SSLE
+SSTORE
 sstorge
 stakers
 stateRoot
