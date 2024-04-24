@@ -81,13 +81,9 @@ The image represents a rough component flow of reth's architecture:
 
 The execution layer client acts as an _execution engine_ and exposes the Engine API, an authenticated endpoint, which connects to the consensus layer client. The engine is also referred to as the external consensus engine by the execution layer clients. The execution layer client can be only be driven by a single consensus layer, but a consensus layer client implementations can connect to multiple execution layer clients for redundancy. The Engine API uses the JSON-RPC interface over HTTP and requires authentication via a [JWT](https://jwt.io/introduction) token. Additionally the Engine JSON-RPC is not exposed to anyone besides the consensus layer. However, it's important to note that the JWT is primarily used for authenticating the Payload, i.e. sender is the consensus layer client, it does not encrypt the traffic.
 
-> Note: Everything is WIP below this, the notes below don't reflect the final version
 
 #### Routines
 
-##### Sync
-
-TODO
 
 ##### Payload validation
 
@@ -148,6 +144,12 @@ func newPayload(execPayload engine.ExecutionPayload) bool {
 }
 ```
 The beacon chain  invokes the new payload function and transfers the execution payload as an argument. On the execution layer, we invoke the state transition function using the information from the execution payload. If the state transition function does not produce an error, we return true. Otherwise, we return false to indicate that the block is invalid.
+
+> Note: Everything is WIP below this, the notes below don't reflect the final version
+
+##### Sync
+
+TODO
 
 ##### Payload building
 
