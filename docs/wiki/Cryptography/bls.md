@@ -8,6 +8,105 @@ With respect to Blockchain, digital signatures typically leverage elliptic curve
 
 The process to create and verify a BLS signature is straightforward, involving a series of steps that can be explained through diagrams, descriptions, and mathematical principles, although understanding the mathematical detail is not essential for practical application.
 
+## How BLS works?
+
+### Background
+
+At the core of BLS is bilinear mapping. The first main concept that needs to be understood is a pairing, and where we have two values $P$ and $Q$. A pairing (or bilinear map) is then defined as:
+$$e(P,Q)$$
+
+We must then find the method for $e$ that is efficient, and for it to be bilinear it must conform to the following algebra operations:
+
+$$
+a + b = b + a \\
+a \times (b + c) = a \times b + a \times c \\
+(a \times c) + (b \times c) = (a + b) \times c
+$$
+
+The goal is to define a point mapping, that'll allow us to still operate on this basic algebraic methods. $e$ would be the function that will allow us to operate on the values $P$ and $Q$ in same way as we do with the algebraic methods or
+
+$$
+e (P,Q+R) = e(P,Q) \times e(P, R) \\
+e(P + R,Q)= e(P,Q) \times e(P, R)
+$$
+
+We can also swap $\times$ for $+$, and it should still work.
+
+For example let's define a pair with: $e(x,y)=2^{xy}$, and use the values of $x=5$ and $y=6$:
+
+$$
+e(5,6)=2^{5×6} = 2^{30} \\
+e(3+2,6)=e(3,6)\times e(2,6)=2^{3\times6}\times2^{2\times6}=2^{30}
+$$
+
+### Theory
+
+The ECDSA method of signing transactions as a method has been shown to be only as strong as the randomness of the random numbers used. It also requires all the public keys to be checked where there are multiple signers. This can cause blockchains to slow down, so a signature scheme called the Schnorr scheme was proposed. With this the signing process can be merged, and the public keys can be together aggregated into a single signature, but the Boneh–Lynn–Shacham (BLS) signature method is seen to be even strong for signing.
+
+It uses a bi-linear pairing with an elliptic curve group and provides some protection against index calculus attacks. BLS also products short signatures and has been shown to be secure. While Schnorr requires random numbers to generate multiple signers, BLS does not rely on these.
+
+<figure class="diagram" style="width:80%">
+
+![Diagram showing key pair generation and verification for BLS](../../images/elliptic-curves/bls-alice.png)
+
+<figcaption>
+
+_Visual Aid to understand how BLS sigatures work_
+
+</figcaption>
+</figure>
+
+As refered in the diagram, If Alice wants to create a BLS signature, she first generates her private key ($a$) and then takes a point on the elliptic curve $G$ and computes her public key $P$: $$P=aG$$
+
+She takes a hash of the message, and then map the hash value to a point on an elliptic curve. If we use SHA-256 we can convert the message into a 256-bit x-point. If we do not manage to get a point on the curve, add an incremental value to find the first time that we reach the point. The signature of a message $M$ and then computed with:
+$$S=a×H(M)$$
+where $H(M)$ is the 256-bit hash of the message $M$. Her private key is $a$ and her public key $P$ and which is equal to $aG$. The test for the signature is then:
+$$e(G,S)=e(P,H(M))$$
+This can be proven as: $$e(G,S)=e(G,a×H(m))=e(a×G,H(m))=e(P,H(M))$$ where $G$ is the generator point on the elliptic curve.
+
+For the signature, a new point on the elliptic curve can be generated which is 512 bits long, and use the x-point of the result. This gives us a 256-bit value, and thus our signature is 32 bytes long. This is a much smaller signatures than Schnorr and ECDSA. The signature for "Hello World" is::
+
+```
+Message:	Hello
+name=BN254 curve order=16798108731015832284940804142231733909759579603404752749028378864165570215949
+
+-----Signature Test----
+secretKey 26daf744780a51072aa8de191259bf7ff080b8457512cfd0eedfb4f8c71b131d
+publicKey bfdab807246849b76b7bdf5229619b9ccb33713633644a48b7ab3a7e67af7c1ae9d597a1c0fac6f61e63c1278b26c2f527be3d58bce95451b36f0c692ee90e1f
+signature dee15784b458419b4b8bbdbb13838da13c27dccab6ef50f0dcb4ff7352048c0b
+```
+
+When we look at ECDSA we see that we create an $R$ and an $S$ value, and which produces a longer signature:
+
+```
+Message: Hello
+
+Private key:
+Key priv: 2aabe11b7f965e8b16f525127efa01833f12ccd84daf9748373b66838520cdb7 pub:
+EC Points
+x: 39516301f4c81c21fbbc97ada61dee8d764c155449967fa6b02655a4664d1562
+y: d9aa170e4ec9da8239bd0c151bf3e23c285ebe5187cee544a3ab0f9650af1aa6
+
+Public key:
+EC Points
+x: 39516301f4c81c21fbbc97ada61dee8d764c155449967fa6b02655a4664d1562
+y: d9aa170e4ec9da8239bd0c151bf3e23c285ebe5187cee544a3ab0f9650af1aa6
+
+Signature: Signature {
+  r: BN: 905eceb65a8de60f092ffb6002c829454e8e16f3d83fa7dcd52f8eb21e55332b,
+  s: BN: 8f22e3d95beb05517a1590b1c5af4b2eaabf8e231a799300fffa08208d8f4625,
+  recoveryParam: 0
+}
+```
+
+One of the great advantages of BLS is that we can aggregate signatures together. For example there are 100 transactions, where signature for each one is represented by $S_i$ and each are associated with a public key of $P_i$ (and a message $M_i$).
+
+We can then just add a single signature for our 100 transactions, and the result will only have 33 bytes (rather than having to store all the signatures). In Bitcoin we can perform a single transaction with multiple addresses. This involves multiple keys, and, with BLS, we can aggregate the signatures together. With this we merge signatures into a single signature and merge the keys into a single key. The signature is then:
+
+$$S=S_1+S_2…+S_{100}$$
+We can then verify with (and where we use a multiply operation):
+$$e(G,S)=e(P1,H(M1))⋅e(P2,H(M2))⋅…⋅e(P100,H(M100))$$
+
 ## Components
 
 There are **4** component pieces of data within the BLS digital signature process.
