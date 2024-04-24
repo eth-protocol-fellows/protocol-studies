@@ -17,33 +17,34 @@
   - [Week 8 | Research](/eps/week8-research.md)
   - [Week 9 | Dev](/eps/week9-dev.md)
   - [Week 9 | Research](/eps/week9-research.md)
+  - [Week 10 | Dev](/eps/week10-dev.md)
+  - [Week 10 | Research](/eps/week10-research.md)
 - [Contributing](contributing.md)
 - **Protocol Wiki**
 - The Protocol
   - [Overview](/wiki/protocol/overview.md)
   - [History](/wiki/protocol/history.md)
-  - [Coordination](/wiki/protocol/pm.md)
-  - [Data Structures](/wiki/protocol/data-structures.md)
-  - [CS Resources]
 - Execution Layer
   - [EL Clients](/wiki/EL/el-clients.md)
   - [EL Specs](/wiki/EL/el-specs.md)
   - Client architecture
   - [EVM](/wiki/EL/evm.md)
-  - [Precompiled Contracts](/wiki/EL/precompiled-contracts.md)
-  - [Transaction](/wiki/EL/transaction.md)
-  - [DevP2P]
+  - [Transaction anatomy](/wiki/EL/transaction.md)
   - [JSON-RPC](/wiki/EL/JSON-RPC.md)
+  - [Data Structures](/wiki/EL/data-structures.md)
+  - [DevP2P]
+  - [Precompiled Contracts](/wiki/EL/precompiled-contracts.md)
 - [Consensus Layer](/wiki/CL/overview.md)
   - [CL Clients](/wiki/CL/cl-clients.md)
   - [CL Specs](/wiki/CL/cl-specs.md)
+  - Client architecture
   - [Proof-of-Stake]
   - [Beacon API]
   - [Networking](/wiki/CL/cl-networking.md)
-  - Client architecture
 - Development
   - [Core development](/wiki/dev/core-development.md)
-  - [Network upgrades](/wiki/dev/upgrades.md)
+  - [Coordination](/wiki/protocol/pm.md)
+  - [CS Resources]
 - Testing and security
   - [Testing overview](/wiki/testing/overview.md)
   - [Incidents](/wiki/testing/incidents.md)
@@ -54,7 +55,6 @@
   - [Scaling](/wiki/research/scaling/scaling.md)
     - [Core Changes](/wiki/research/scaling/core-changes/core-changes.md)
     - [EIP-4844](/wiki/research/scaling/core-changes/eip-4844.md)
-    - Sharding
     - Statelessness
     - Purge
   - [MEV](/wiki/research/PBS/mev.md)
@@ -62,7 +62,7 @@
     - [MEV-boost](/wiki/research/PBS/mev-boost.md)
     - [ePBS](/wiki/research/PBS/ePBS.md)
   - Proof of Stake
-    - [Upgrades](/docs/wiki/research/Beacon%20Chain%20Upgrades.md)
+    - [Upgrades](/docs/wiki/research/cl-upgrades.md)
     - SSF
     - SSLE
   - [Light Clients](/wiki/research/light-clients.md)
@@ -71,6 +71,9 @@
   - ASE
   - EOF
   - Portal Network
+  - Preconfirmations
+    - [Preconfirmations](/wiki/research/Preconfirmations/Preconfirmations.md)
+    - [Based Sequencing with Preconfs](/wiki/research/Preconfirmations/BasedSequencingPreconfs.md)
 - [Cryptography](/wiki/Cryptography/intro.md)
   - [ECDSA](/wiki/Cryptography/ecdsa.md) 
   - [Keccak256](/wiki/Cryptography/keccak256.md)

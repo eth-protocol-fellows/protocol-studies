@@ -32,18 +32,15 @@ Quoting ["A Prehistory of the Ethereum Protocol"](https://vitalik.eth.limo/gener
 | 0x09    | BLAKE2               | BLAKE2 compression function                | Istanbul ([EIP-152](https://eips.ethereum.org/EIPS/eip-152))  |
 | 0x0a    | KZG POINT EVALUATION | Verifies a KZG proof                       | Cancun ([EIP-4844](https://eips.ethereum.org/EIPS/eip-4844))  |
 
-## Proposed precompiles
+## How it works
 
-[EIPs](https://eips.ethereum.org/) can introduce new precompiles as part of hard forks. Following precompiles are currently proposed:
+The beauty of precompiles lies in design of its interface, which is identical to external smart contract calls, allowing for a familiar interaction - from a developer's perspective, usage of precompile no different than an external call.
 
-- [EIP-2537: Precompile for BLS12-381 curve operations](https://eips.ethereum.org/EIPS/eip-2537)
-- [EIP-7212: Precompile for secp256r1 Curve Support](https://eips.ethereum.org/EIPS/eip-7212)
-- [EIP-7545: Verkle proof verification precompile](https://eips.ethereum.org/EIPS/eip-7545)
-- [EIP-5988: Add Poseidon hash function precompile](https://eips.ethereum.org/EIPS/eip-5988)
+Gas costs for precompiles are directly tied to the input data – fixed inputs translate to fixed costs. To determine these costs, developers rely on a combination of reference implementations and benchmarks. Benchmarks typically measure execution time on specific hardware, while some, like `MODEXP`, [define consumption directly in terms of gas usage per second](https://eips.ethereum.org/EIPS/eip-2565#1-modify-computational-complexity-formula-to-better-reflect-the-computational-complexity). This meticulous approach aims to prevent denial-of-service attacks by ensuring predictable resource allocation.
 
-The introduction of new precompiles requires careful consideration of their network effects. A precompile with miscalculated gas cost could potentially cause denial of service by consuming more resources than anticipated. Additionally, a growing number of precompiles can lead to code bloat within the EVM clients, increasing the burden on validators.
+Under the hood, client implementations leverage optimized libraries to execute precompiles. While this approach enhances efficiency, it introduces a potential security risk. If a bug is found within these libraries, it could disrupt the entire protocol layer. To mitigate this risk, rigorous [testing](/wiki/testing/overview.md) is crucial (e.g. [MODEXP test specs](https://github.com/ethereum/execution-spec-tests/tree/main/tests/byzantium/eip198_modexp_precompile)).
 
-The selection of cryptographic functions and their corresponding parameters for precompiles requires a thorough analysis to balance security and efficiency. Lastly, from a security perspective, rigorous [testing](/wiki/testing/overview.md) is crucial to ensure identical behavior across all precompile implementations (e.g. [MODEXP test specs](https://github.com/ethereum/execution-spec-tests/tree/main/tests/byzantium/eip198_modexp_precompile)). An edge-case bug in execution clients would lead to a network split, ultimately hindering finalization.
+To prevent security vulnerabilities, precompiles are designed to avoid nested calls.
 
 ## Calling precompiles
 
@@ -81,11 +78,45 @@ which yields the hash:
 
 Refer the wiki on [EVM](/wiki/EL/evm.md) to understand how assembly code works.
 
+## Proposed precompiles
+
+[EIPs](https://eips.ethereum.org/) can introduce new precompiles as part of hard forks. There is general resistance in adding new precompiles as the testing surface and maintenance cost is high. To address this, a proposed approach involves prototyping precompiles on Layer 2 solutions first, and then integrating them into the mainnet only after they demonstrate stability and widespread adoption.
+
+ Following precompiles are currently proposed:
+
+- [EIP-2537: Precompile for BLS12-381 curve operations](https://eips.ethereum.org/EIPS/eip-2537)
+- [EIP-7212: Precompile for secp256r1 Curve Support](https://eips.ethereum.org/EIPS/eip-7212)
+- [EIP-7545: Verkle proof verification precompile](https://eips.ethereum.org/EIPS/eip-7545)
+- [EIP-5988: Add Poseidon hash function precompile](https://eips.ethereum.org/EIPS/eip-5988)
+
+The introduction of new precompiles requires careful consideration of their network effects. A precompile with miscalculated gas cost could potentially cause denial of service by consuming more resources than anticipated. Additionally, a growing number of precompiles can lead to code bloat within the EVM clients, increasing the burden on validators.
+
+The selection of cryptographic functions and their corresponding parameters for precompiles requires a thorough analysis to balance security and efficiency. These parameters are generally preset within the precompile logic as parametrizing these from user input could be a security concern. Moreover, optimizing security functions with a wide range of parameters is difficult for fast execution, which is the fundamental requirement of precompiles.
+
+## Removing precompiles
+
+Discussions are ongoing regarding potential removal of precompiles that are outdated, underutilized, or hinder client software efficiency. The identity precompile (replaced by the `MCOPY` opcode), `RIPEMD-160`, and BLAKE functions are prime candidates for retirement.
+
+However, instead of complete removal,these precompiles could be migrated to efficient smart contract implementations. This approach would ensure continued functionality but with a corresponding increase in gas costs.
+
+## Implementations
+
+- [Besu - `org.hyperledger.besu.evm.precompile` package](https://github.com/hyperledger/besu/tree/3d5f45c35ffce4b5173b2ce5972827f9634317d6/evm/src/main/java/org/hyperledger/besu/evm/precompile)
+- [Geth - `core/vm/contracts.go`](https://github.com/ethereum/go-ethereum/blob/b2b0e1da8cac279bf0466885d1abdc5d93402f41/core/vm/contracts.go)
+- [Nethermind - `Nethermind.EVM.Precompiles` namespace](https://github.com/NethermindEth/nethermind/tree/f3edf2503d2637a37f8b509924e10f88491ddd6e/src/Nethermind/Nethermind.Evm/Precompiles)
+- [Reth - REVM Precompiles crates](https://github.com/bluealloy/revm/tree/1ca3d39f6a9e9778f8eb0fcb74fe529345a531b4/crates/precompile/src)
+
+## Research
+
+A proposed approach called ["progressive precompiles"](https://ethereum-magicians.org/t/eip-proposal-create2-contract-factory-precompile-for-deployment-at-consistent-addresses-across-networks/6083/26) aims to improve the deployment process. These precompiles would reside at deterministic CREATE2 addresses, allowing user contracts to interact with the same address regardless of whether the precompile is live on the mainnet or a specific L2. This approach ensures a smoother transition when native client precompiles become available.
+
 ## Resources
 
 - [Appendix E: Ethereum Yellow Paper.](https://ethereum.github.io/yellowpaper/paper.pdf)
+- [Week 10: Precompiles overview by Danno Ferrin](/eps/week10-dev.md)
+- [Catalog of EVM Precompile](https://github.com/shemnon/precompiles/)
 - [Go Ethereum Precompile Implementation.](https://github.com/ethereum/go-ethereum/blob/master/core/vm/contracts.go)
 - [A Prehistory of the Ethereum Protocol](https://vitalik.eth.limo/general/2017/09/14/prehistory.html)
-- ["Stack Exchange: What's a precompiled contract and how are they different from native opcodes?"](https://ethereum.stackexchange.com/questions/440/whats-a-precompiled-contract-and-how-are-they-different-from-native-opcodes)
-- ["Stack Exchange: Why aren't more common algorithms done as precompiles?"](https://ethereum.stackexchange.com/questions/155787/why-arent-more-common-algorithms-done-as-precompiles)
+- [Stack Exchange: What's a precompiled contract and how are they different from native opcodes?](https://ethereum.stackexchange.com/questions/440/whats-a-precompiled-contract-and-how-are-they-different-from-native-opcodes)
+- [Stack Exchange: Why aren't more common algorithms done as precompiles?](https://ethereum.stackexchange.com/questions/155787/why-arent-more-common-algorithms-done-as-precompiles)
 - [A call, a precompile and a compiler walk into a bar](https://blog.theredguild.org/a-call-a-precompile-and-a-compiler-walk-into-a-bar/)
