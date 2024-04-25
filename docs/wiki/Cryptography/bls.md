@@ -5,6 +5,7 @@
 ### TLDR;
 
 - Proof-of-stake protocols use digital signatures to identify their participants and hold them accountable.
+  - Validators in Beacon chain (Ethereum) use BLS signatures to participate in Consensus, sign blocks, post attestations etc.
 - BLS signatures can be aggregated together, making them efficient to verify at large scale.
 - Signature aggregation allows the beacon chain to scale to hundreds of thousands of validators.
 - Ethereum transaction signatures on the execution (Eth1) layer remain as-is.
