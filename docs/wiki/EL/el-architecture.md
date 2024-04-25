@@ -65,7 +65,7 @@ In order to gain a better understanding of the aforementioned concept, it is ben
 
 During _process execution payload_ , we begin by conducting several high-level checks, including verifying the accuracy of the parent hash and validating the timestamp. Additionally, we perform various lightweight verifications. Subsequently, we transmit the payload to the execution layer, where it undergoes block verification. The notify payload function, is the lowest level function that serves as the interface between the consensus layer and the execution engine. It contains only the function's signature, without any implementation details. Its sole purpose is to transmit the execution payload to the execution engine, which acts as the client for the execution layer. The execution engine then carries out the actual state transition function, which involves verifying the accuracy of block headers and ensuring that transactions are correctly applied to the state. The execution engine will ultimately return a boolean value indicating whether the state transition was successful or not. From the standpoint of the consensus layer, this is simply the validation of blocks.
 
-This is a simplified description of the block level state transition function (stf) in go. The stf is a crucial component of the block validation and insertion pipeline. Although the example is specific to geth, it represents the functioning of the stf in other clients as well. It is worth mentioning that the state transition function is rarely referred to by its name in the code of different clients, save for the EELS python spec client. This is because its real operations are divided across many components of the client's architecture.
+This is a simplified description of the block level state transition function (stf) in go. The stf is a crucial component of the block validation and insertion pipeline. Although the example is specific to Geth, it represents the functioning of the stf in other clients as well. It is worth mentioning that the state transition function is rarely referred to by its name in the code of different clients, save for the EELS python spec client. This is because its real operations are divided across many components of the client's architecture.
 
 ```go
 func stf(parent types.Block, block types.Block, state state.StateDB) (state.StateDB, error) { //1
@@ -114,7 +114,7 @@ The beacon chain  invokes the new payload function and transfers the execution 
 
 ##### Geth
 
-TODO: STF code links and walk though in geth
+TODO: STF code links and walk through in Geth
 
 ##### Sync
 
@@ -128,7 +128,7 @@ Note: The fee recipient of the built payload may deviate from the suggested fee 
 
 Nodes are gossiping transactions via a peer-to-peer network. These transactions are deemed valid and not included in the block. Validity here, among other things, refers to the condition where the nonce of the transaction is the next valid nonce for the account and the account holds sufficient value to cover the transaction. Occasionally, the node is assigned the responsibility of generating a block, the consensus layer employs a random selection process to determine which validator will construct the block during each epoch. If your validator is chosen to build the block, your consensus layer client will proceed with constructing it using the execution engine's fork choice updated method, providing the necessary context for block construction.
 
-We can simplify and emulate the process of constructing blocks, albeit this is specific to the go  with types used in geth. However, the approach is general enough to be adaptable to different clients.
+We can simplify and emulate the process of constructing blocks, albeit this is specific to the go  with types used in Geth. However, the approach is general enough to be adaptable to different clients.
 
 ```go
 func build(env environment, pool txpool.Pool, state state.StateDB) (types.Block, state.StateDB, error) { //1
@@ -202,7 +202,7 @@ TODO
 
 ### Internal Consensus engines
 
-The execution layer has its own consensus engine to work with its own copy of the beacon chain. The execution layer consensus engine is known as ethone and has about half the functionality of the full fledged consensus engine of the consensus layer.
+TODO 
 
 #### Geth
 
@@ -218,7 +218,7 @@ In Ethereum two primary types of transaction pools are recognized.
 
 In Ethereum two primary types of transaction pools are recognized:
 
-1. **Legacy Pools**: Managed by geth, these pools employ price-sorted heaps or priority queues to organize transactions based on their price. Specifically, transactions are arranged using two heaps: one prioritizes the effective tip for the upcoming block, and the other focuses on the gas fee cap. During periods of saturation, the larger of these two heaps is selected for the eviction of transactions, optimizing the pool's efficiency and responsiveness. [urgent and floating heaps](https://github.com/ethereum/go-ethereum/blob/064f37d6f67a012eea0bf8d410346fb1684004b4/core/txpool/legacypool/list.go#L525)
+1. **Legacy Pools**: Managed by Geth, these pools employ price-sorted heaps or priority queues to organize transactions based on their price. Specifically, transactions are arranged using two heaps: one prioritizes the effective tip for the upcoming block, and the other focuses on the gas fee cap. During periods of saturation, the larger of these two heaps is selected for the eviction of transactions, optimizing the pool's efficiency and responsiveness. [urgent and floating heaps](https://github.com/ethereum/go-ethereum/blob/064f37d6f67a012eea0bf8d410346fb1684004b4/core/txpool/legacypool/list.go#L525)
 
 2. **Blob Pools**: Unlike legacy pools, blob pools maintain a priority heap for transaction eviction but incorporate distinct mechanisms for operation. Notably, the implementation of blob pools is well-documented, with an extensive comments section available for review [here](https://github.com/ethereum/go-ethereum/blob/064f37d6f67a012eea0bf8d410346fb1684004b4/core/txpool/blobpool/blobpool.go#L132). A key feature of blob pools is the use of logarithmic functions in their eviction queues.
 
