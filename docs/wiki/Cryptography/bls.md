@@ -4,7 +4,7 @@
 
 ### TLDR;
 
-- Proof of stake protocols use digital signatures to identify their participants and hold them accountable.
+- Proof-of-stake protocols use digital signatures to identify their participants and hold them accountable.
 - BLS signatures can be aggregated together, making them efficient to verify at large scale.
 - Signature aggregation allows the beacon chain to scale to hundreds of thousands of validators.
 - Ethereum transaction signatures on the execution (Eth1) layer remain as-is.
