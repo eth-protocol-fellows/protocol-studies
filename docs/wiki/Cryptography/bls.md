@@ -31,7 +31,7 @@ These properties enable the cryptographic mechanisms necessary for functions lik
 
 #### Transition from ECDSA to BLS
 
-Traditional ECDSA signatures, as commonly used in Bitcoin, depend heavily on the randomness of number generation and necessitate verification of all involved public keys, which can be computationally intensive. This prompted a shift towards the Schnorr signature scheme, which allows for some aggregation but still lacks the full efficiencies gained from BLS.
+Traditional ECDSA signatures, as commonly used in Bitcoin or Ethereum transactions, depend heavily on the randomness of nonce generation and necessitate verification of all involved public keys individually, which can be computationally intensive. After its patent expired, Schnorr signatures became an alternative scheme which allows for some aggregation but still lacks the full efficiencies gained from BLS.
 
 BLS signatures, employing bilinear pairings, offer robust protection against certain cryptographic attacks and produce shorter signatures. Unlike Schnorr, BLS does not rely on random number generation for securing signatures, making it inherently more secure against randomness-related vulnerabilities.
 
