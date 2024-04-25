@@ -28,6 +28,7 @@
   - [EL Clients](/wiki/EL/el-clients.md)
   - [EL Specs](/wiki/EL/el-specs.md)
   - [Client architecture](/wiki/EL/el-architecture.md)
+    - [Reth](/wiki/EL/reth.md)
   - [EVM](/wiki/EL/evm.md)
   - [Transaction anatomy](/wiki/EL/transaction.md)
   - [JSON-RPC](/wiki/EL/JSON-RPC.md)
