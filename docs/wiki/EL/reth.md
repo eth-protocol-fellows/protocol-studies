@@ -1,12 +1,12 @@
-# Reth architecture
+# Reth's architecture
 
 ## Overview
 
-The image represents a rough component flow of reth's architecture:
+The image represents a rough component flow of Reth's architecture:
 
 <img src="images/el-architecture/reth-architecture-overview.png" width="1000"/>
 
-- **Engine**: Similar to other clients, it is the primary driver of reth.
+- **Engine**: Similar to other clients, it is the primary driver of Reth.
 - **Sync**: Reth has two modes of sync historical and live
 - **Pipeline**: The pipeline performs historical sync in a sequential manner, enabling us to optimize each stage of the synchronization process. The pipeline is split into stages , where a [stage](https://paradigmxyz.github.io/reth/docs/reth_stages/trait.Stage.html) is a trait that provides us with a function to execute the stage or unwind(undo) it. Currently the pipeline has 12 stages that can be configured, with the first two running separately, the pipeline proceeds top to bottom except when there is a problem encountered then it proceeds to unwind from the issue stage upwards :
   1. **HeaderStage**: Header verification stage.

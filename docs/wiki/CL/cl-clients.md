@@ -30,7 +30,7 @@ Just like Prysm, it also has multiple hardware and OS support to built the clien
 
 #### Pre-built Binaries
 
-Pre-built binaries for many various operating systems and architectures are available. They also provide portable versions which are compromising compiler performence options for a better platform compatibility. Released binaries are signed by gpg key `15E66D941F697E28F49381F426416DC3F30674B0` from security@sigmaprime.io. Read the [documentation](https://lighthouse-book.sigmaprime.io/installation-binaries.html) on the steps to install the client using pre-built binaries.
+Pre-built binaries for many various operating systems and architectures are available. They also provide portable versions which are compromising compiler performance options for a better platform compatibility. Released binaries are signed by gpg key `15E66D941F697E28F49381F426416DC3F30674B0` from security@sigmaprime.io. Read the [documentation](https://lighthouse-book.sigmaprime.io/installation-binaries.html) on the steps to install the client using pre-built binaries.
 
 ### Additional features and security considerations
 
@@ -170,6 +170,6 @@ Originally a proprietary client in Rust, recently became open source
 
 By LC in Elixir
 
-### Aditional reading 
+### Additional reading 
 
-[Analysis of CL clients performace, outdated](https://mirror.xyz/0x934e6B4D7eee305F8C9C42b46D6EEA09CcFd5EDc/b69LBy8p5UhcGJqUAmT22dpvdkU-Pulg2inrhoS9Mbc)
+[Analysis of CL clients performance, outdated](https://mirror.xyz/0x934e6B4D7eee305F8C9C42b46D6EEA09CcFd5EDc/b69LBy8p5UhcGJqUAmT22dpvdkU-Pulg2inrhoS9Mbc)

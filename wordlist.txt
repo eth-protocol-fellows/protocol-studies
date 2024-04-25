@@ -1,4 +1,3 @@
-personal_ws-1.1 en 10000 utf-8
 aantop
 ABI
 accelerometer
@@ -53,6 +52,7 @@ bloXroute's
 BLS
 Boneh
 bool
+bootup
 borderless
 BPE
 broadcasted
@@ -61,6 +61,7 @@ Buterin's
 bypassability
 bytecode
 calldata
+canonicalized
 Carb
 cartelization
 Casper
@@ -72,11 +73,13 @@ chainId
 Challanges
 Charmes
 cli
+CLRS
 cmd
 CoC
 codebase
 codebases
 CODECOPY
+coinbase
 Composability
 composable
 config
@@ -97,8 +100,8 @@ Cryptopedia
 cryptosystem
 cybersecurity
 Cypherpunks
-D'Amato
 Daemen
+D'Amato
 Dankrad
 danksharding
 Danno
@@ -131,6 +134,7 @@ distro
 docsify
 Domothy
 dotnet
+Downloader
 Dracorn
 Dragan
 Driscoll
@@ -159,6 +163,7 @@ EL
 Elmore
 ELs
 Encodings
+Endian
 env
 EOA
 EOAs
@@ -183,9 +188,9 @@ ethresear
 ethresearch
 ethroadmap
 EVM
-EVM's
 evmlab
 EVMONE
+EVM's
 excalidraw
 exchangeTransitionConfigurationV
 Explainer
@@ -194,6 +199,7 @@ Feist
 Femboy
 Ferrin
 finalise
+financials
 Flashbot's
 Flashbots
 Flashboys
@@ -223,6 +229,7 @@ getPayloadV
 getters
 ghost
 Gilles
+Goerli
 Golang
 Goldwasser
 Goomy
@@ -266,6 +273,7 @@ js
 JSON
 JUMPDEST
 JVM
+JWT
 Karapetsas
 Katex
 keccak
@@ -309,6 +317,7 @@ meldsun
 mem
 Mempool
 Menezes
+merkelizing
 Merkle
 Merkleization
 Merkleize
@@ -331,7 +340,6 @@ MUL
 Murr
 MVE
 mvepbs
-n't
 Nagu
 namespace
 namespaces
@@ -345,7 +353,9 @@ NFT
 Nim
 NIST
 NIST's
+Noam
 NOXX
+n't
 Occhipinti
 OFAC
 Offchain
@@ -372,6 +382,7 @@ pepc
 pepc's
 permissionless
 permissionlessness
+personal_ws-1.1 en 10000 utf-8
 PGA
 Pilipovic
 Playdate
@@ -417,6 +428,7 @@ ptc
 pubsub
 PUSHX
 py
+Pyrmont
 Pyspec
 pytest
 qubits
@@ -500,6 +512,7 @@ Tani
 tbhl
 Teku
 testnet
+testnets
 Tetris
 textnormal
 timeframe
@@ -529,6 +542,7 @@ Unformatted
 unguessable
 upstreamed
 utils
+UTXOs
 UX
 Vadim
 validator
@@ -536,11 +550,14 @@ validators
 Vanstone
 VB's
 VDFs
+verifications
 verifier
 verifiers
 Verkle
 verkled
 Victorio
+virtualized
+virtualizing
 Vitalik
 Vitalik's
 VM
@@ -563,6 +580,3 @@ zkEVMs
 ZKSNARK
 ZKSNARKs
 Zksync
-CLRS
-Endian
-Noam
