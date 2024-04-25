@@ -1,3 +1,4 @@
+personal_ws-1.1 en 10000 utf-8
 aantop
 ABI
 accelerometer
@@ -382,7 +383,6 @@ pepc
 pepc's
 permissionless
 permissionlessness
-personal_ws-1.1 en 10000 utf-8
 PGA
 Pilipovic
 Playdate
