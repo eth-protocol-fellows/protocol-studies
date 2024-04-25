@@ -42,6 +42,8 @@ The invention of [asymmetric cryptography](https://www-ee.stanford.edu/~hellman/
 
 ## Ethereum Protocol Design 
 
+The actual prehistory of the protocol, early ideas and inspiration for technical decisions in Ethereum are well documented in [V's blog](https://vitalik.eth.limo/general/2017/09/14/prehistory.html). 
+
 Originally outlined in its [Whitepaper](https://ethereum.org/whitepaper#ethereum-whitepaper), Ethereum draws inspiration from Bitcoin and its background (explained above) to create a general blockchain based computation platform. The design was technically specified in [Yellowpaper](https://ethereum.github.io/yellowpaper/paper.pdf) and evolved over time. Changes are tracked in the community process of [EIPs](https://eips.ethereum.org) and current specification is implemented in Python as: 
 
 - [Execution specs](https://github.com/ethereum/execution-specs)

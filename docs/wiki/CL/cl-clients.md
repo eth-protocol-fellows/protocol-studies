@@ -6,6 +6,8 @@ This page covers resources on all consensus client implementations, whether in p
 
 There are multiple Consensus Layer clients developed to participate in the Ethereum Proof-of-Stake (PoS) mechanism. The most popular, FOSS and production ready are [Lighthouse](https://lighthouse-book.sigmaprime.io/),  [Lodestar](https://lodestar.chainsafe.io/), [Nimbus](https://nimbus.team/index.html), [Prysm](https://prysmaticlabs.com/) and [Teku](https://consensys.io/teku). These clients are developed in different programming languages, provide have unique features and offer different performance profiles. All clients support Ethereum mainnet out of the bo as well as currently active testnets. Variety of implementations allows the network to benefit from client diversity. If you are choosing a client to use, current client diversity should be one of the main factors. 
 
+## Clients in production 
+
 ## LightHouse
 
 [Lighthouse](https://lighthouse-book.sigmaprime.io/) is a client developed in the Rust programming language. It is a full-featured Ethereum consensus client that can be used as a beacon node or a validator client. It is developed by [Sigma Prime](https://sigmaprime.io/). 
@@ -42,6 +44,15 @@ Lighthouse client is quite advanced that it proves the following additional feat
 ### Most Frequently Asked Questions
 
 For more frequently asked question about the client, refer to the [FAQ](https://lighthouse-book.sigmaprime.io/faq.html).
+
+## Lodestar
+
+By ChainSafe in TypeScript
+
+
+## Nimbus
+
+By Status in Nim
 
 ## Prysm
 
@@ -149,6 +160,16 @@ Running a Teku client from a recent state is quite easy and has faster syncing t
 
 Teku also provides a slashing protection mechanism, especially in the case where one is migrating from another client to Teku. The [documentation](https://docs.teku.consensys.io/reference/cli/subcommands/slashing-protection#import) provides the steps to migrate from other clients to Teku.
 
+## Clients in development
+
+### Grandine 
+
+Originally a proprietary client in Rust, recently became open source
+
+### LambdaClass Client
+
+By LC in Elixir
+
 ### Aditional reading 
 
-https://mirror.xyz/0x934e6B4D7eee305F8C9C42b46D6EEA09CcFd5EDc/b69LBy8p5UhcGJqUAmT22dpvdkU-Pulg2inrhoS9Mbc
+[Analysis of CL clients performace, outdated](https://mirror.xyz/0x934e6B4D7eee305F8C9C42b46D6EEA09CcFd5EDc/b69LBy8p5UhcGJqUAmT22dpvdkU-Pulg2inrhoS9Mbc)

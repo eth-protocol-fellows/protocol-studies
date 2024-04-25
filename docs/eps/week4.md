@@ -9,13 +9,15 @@ Watch the presentation on Ethereum core testing infrastracture on [Youtube](http
 
 [recording](https://www.youtube.com/embed/PQVW5dJ8J0c?si=fv5ww4_6zInGXpjO ':include :type=iframe width=100% height=560 frameborder="0" allow="fullscreen" allowfullscreen encrypted-media gyroscope picture-in-picture web-share')
 
+For written summary of week 4 presentation, check the [notes](https://github.com/eth-protocol-fellows/protocol-studies/files/14850974/Week.4.EPFsg.Test.Security.Overview.pdf)
+
 For archive of the discussion during the talk, check [this thread](https://discord.com/channels/1205546645496795137/1216771776810455160/1216771782040621118) in our Discord server.
 
 ## Pre-reading
 
 Before starting with the week 4 content, make yourself familiar with resources in [week 3](/eps/week3.md). 
 
-Additionally, you can read get ready by reading following resources:
+Additionally, you can read and get ready by studying the following resources:
 
 - https://ethereum-tests.readthedocs.io/en/latest/
 - https://ethereum.github.io/execution-spec-tests
