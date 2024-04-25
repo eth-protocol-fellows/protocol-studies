@@ -30,7 +30,7 @@ This function is efficiently computable and must satisfy bilinear properties:
 
 These properties enable the cryptographic mechanisms necessary for functions like signature aggregation, which is a pivotal feature in blockchain applications and cryptographic consensus.
 
-#### Transition from ECDSA to BLS
+#### Why BLS Over Schnorr and ECDSA for Digital Signatures?
 
 Traditional ECDSA signatures, as commonly used in Bitcoin or Ethereum transactions, depend heavily on the randomness of nonce generation and necessitate verification of all involved public keys individually, which can be computationally intensive. After its patent expired, Schnorr signatures became an alternative scheme which allows for some aggregation but still lacks the full efficiencies gained from BLS.
 
