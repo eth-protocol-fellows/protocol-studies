@@ -116,18 +116,18 @@ func stf(parent types.Block, block types.Block, state state.StateDB) (state.Stat
 ```
 
 1. State transition function's parameters and return values
-    - In this context, we examine both the parent block and the current block in order to validate certain transition logic from the parent block to the current block.
-    - We take the state DB in as an argument, which contains all the state data related to the parent block. This represents the most recent valid state.
-    - We return the state DB representing the updated state after the state transition
-    - if the state transition fails we don't update the state DB and return the error
+   - In this context, we examine both the parent block and the current block in order to validate certain transition logic from the parent block to the current block.
+   - We take the state DB in as an argument, which contains all the state data related to the parent block. This represents the most recent valid state.
+   - We return the state DB representing the updated state after the state transition
+   - if the state transition fails we don't update the state DB and return the error
 2. In the state transition functions procedure we first verify the headers
-    - As an illustration of the failure of header verification, let us consider the gas limit field, which is also of historical significance. Currently, the gas limit stands at around 30 million. It's important to note that the gas limit is not fixed within the execution layer. Block producers have the capacity to modify the gas limit using a technique that allows them to increase or decrease it by 1/1024th of the gas limit of the preceding block. Therefore, if you raise the gas limit from 30 million to 40 million within a single block, the header verification will fail because it exceeds the threshold of 30 million plus one-thousandth of 30 million.
-    - Additional instances of header verification failure can arise when the block numbers are not in sequential order. Typically, the beacon chain is responsible for detecting such discrepancies, although there are instances where it is detected at this stage as well. Failures may also arise when the 1559 base fee is not accurately updated according to the comparison between the last gas used and the gas limit.
+   - As an illustration of the failure of header verification, let us consider the gas limit field, which is also of historical significance. Currently, the gas limit stands at around 30 million. It's important to note that the gas limit is not fixed within the execution layer. Block producers have the capacity to modify the gas limit using a technique that allows them to increase or decrease it by 1/1024th of the gas limit of the preceding block. Therefore, if you raise the gas limit from 30 million to 40 million within a single block, the header verification will fail because it exceeds the threshold of 30 million plus one-thousandth of 30 million.
+   - Additional instances of header verification failure can arise when the block numbers are not in sequential order. Typically, the beacon chain is responsible for detecting such discrepancies, although there are instances where it is detected at this stage as well. Failures may also arise when the 1559 base fee is not accurately updated according to the comparison between the last gas used and the gas limit.
 3. Once the header verification is completed, we consider the environment in the header as the environment in which the transactions should be executed and we apply the transactions. We iterate over the transactions in the block and execute each transaction in the evm.
-    - The block headers are passed to the EVM in order to provide the necessary context for processing the transaction. This context includes instructions such as coinbase, gas limit, and timestamp, which are required for proper execution.
-    - Additionally we pass in the transaction and the state
-    - In the event of a failed execution, we simply return the error, indicating an invalid transaction within the block and thereby rendering the block invalid. Within the execution layer, the presence of anything erroneous in a block renders the entire block invalid, as it contaminates the block as a whole.
-    - Once we confirm the validity of the transactions, we proceed to update our state with the result . The state now represent the accumulated state that has all the transaction in the new block applied to it.
+   - The block headers are passed to the EVM in order to provide the necessary context for processing the transaction. This context includes instructions such as coinbase, gas limit, and timestamp, which are required for proper execution.
+   - Additionally we pass in the transaction and the state
+   - In the event of a failed execution, we simply return the error, indicating an invalid transaction within the block and thereby rendering the block invalid. Within the execution layer, the presence of anything erroneous in a block renders the entire block invalid, as it contaminates the block as a whole.
+   - Once we confirm the validity of the transactions, we proceed to update our state with the result . The state now represent the accumulated state that has all the transaction in the new block applied to it.
 
 From the standpoint of beacon chains, the state transition function mentioned above is encompassed by the invocation of the "new payload" function.
 
@@ -156,13 +156,14 @@ Note: The fee recipient of the built payload may deviate from the suggested fee 
 
 <img src="images/el-architecture/payload-building-routine.png" width="1000"/>
 
-Nodes are gossiping transactions via a peer-to-peer network. These transactions are deemed valid and not included in the block. Validity here, among other things, refers to the condition where the nonce of the transaction is the next valid nonce for the account and the account holds sufficient value to cover the transaction. Occasionally, the node is assigned the responsibility of generating a block, the consensus layer employs a random selection process to determine which validator will construct the block during each epoch. If your validator is chosen to build the block, your consensus layer client will proceed with constructing it using the execution engine's fork choice updated method, providing the necessary context for block construction.    
- 
+Nodes are gossiping transactions via a peer-to-peer network. These transactions are deemed valid and not included in the block. Validity here, among other things, refers to the condition where the nonce of the transaction is the next valid nonce for the account and the account holds sufficient value to cover the transaction. Occasionally, the node is assigned the responsibility of generating a block, the consensus layer employs a random selection process to determine which validator will construct the block during each epoch. If your validator is chosen to build the block, your consensus layer client will proceed with constructing it using the execution engine's fork choice updated method, providing the necessary context for block construction.
+
 We can simplify and emulate the process of constructing blocks, albeit this is specific to the Go  with types used in geth. However, the approach is general enough to be adaptable to different clients.
-```go 
+
+```go
 func build(env environment, pool txpool.Pool, state state.StateDB) (types.Block, state.StateDB, error) { //1
     var (
-        gasUsed = 0 
+        gasUsed = 0
         txs []types.Transactions
     ) //2
 
@@ -170,26 +171,26 @@ func build(env environment, pool txpool.Pool, state state.StateDB) (types.Block,
       transaction := pool.Pop() //4
       res, gas, err := vm.Run(env, transaction, state) //5
       if err != nil { // 6
-          // transaction invalid 
+          // transaction invalid
           continue
       }
-      gasUsed += gas // 7 
-      transactions = append(transactions, transaction) 
+      gasUsed += gas // 7
+      transactions = append(transactions, transaction)
   }
   return core.Finalize(env, transactions, state) //8
 }
 ```
 
-1. We take in the environment, which contains all the necessary information (similar to the header previously), including the time stamp, block number, preceding block, base fee, and all the withdrawals that need to occur in the block. Essentially, the information originating from the consensus layer, which acts as the central decision-making entity, determines the context in which the block should be constructed. Next, we take in the transaction pool, which is a collection of transactions. For simplicity, we assume that these transactions are arranged in ascending order based on their value. This arrangement helps us construct the most profitable block for the execution client, considering the transactions observed in the network. Additionally, we also consider a state DB, representing the state over which all these transactions are executed.   
-    - We return a block, a state DB that has accumulated all the transactions in the block and possibly an error 
-2. Inside build we track the gas used because there is only a finite amount of gas we can use. And, also store all the transactions that are going to go in the block 
-3. We continue adding the transactions until the pool is empty or the amount of gas consumed is greater than the gas limit, which is fixed at 30 million (about the current gas limit on the mainnet) in this example for the sake of simplicity. 
-4. In order to obtain a transaction, we must query the transaction pool, which is presumed to maintain an ordered list of transactions, ensuring that we always receive the next most valuable transaction. 
-5. The transaction is executed in the EVM, assuming that run requires an interface that is satisfied by both the block and the environment. We provide the environment, transaction, and state as input. This  will execute the transaction within the context defined by the environment and provide us with an updated state that will include the accumulated transaction. 
+1. We take in the environment, which contains all the necessary information (similar to the header previously), including the time stamp, block number, preceding block, base fee, and all the withdrawals that need to occur in the block. Essentially, the information originating from the consensus layer, which acts as the central decision-making entity, determines the context in which the block should be constructed. Next, we take in the transaction pool, which is a collection of transactions. For simplicity, we assume that these transactions are arranged in ascending order based on their value. This arrangement helps us construct the most profitable block for the execution client, considering the transactions observed in the network. Additionally, we also consider a state DB, representing the state over which all these transactions are executed.
+   - We return a block, a state DB that has accumulated all the transactions in the block and possibly an error
+2. Inside build we track the gas used because there is only a finite amount of gas we can use. And, also store all the transactions that are going to go in the block
+3. We continue adding the transactions until the pool is empty or the amount of gas consumed is greater than the gas limit, which is fixed at 30 million (about the current gas limit on the mainnet) in this example for the sake of simplicity.
+4. In order to obtain a transaction, we must query the transaction pool, which is presumed to maintain an ordered list of transactions, ensuring that we always receive the next most valuable transaction.
+5. The transaction is executed in the EVM, assuming that run requires an interface that is satisfied by both the block and the environment. We provide the environment, transaction, and state as input. This  will execute the transaction within the context defined by the environment and provide us with an updated state that will include the accumulated transaction.
 6. If the transaction execution is unsuccessful, indicated by the occurrence of an error during the run, we simply proceed without interruption. This indicates that the transaction is invalid and since there is still unused gas leftt in the block, we do not want to generate an error immediately. This is because no error has occurred within the block yet. However, it is highly likely that the transaction is invalid because it did something bad during execution or because the transaction pool is slightly outdated. In which case we allow ourselves to continue and try to get the next transaction from the pool into this block.
-7. Once we verify there is no error with running the transaction we add the transaction to the transactions list and we add the gas that was returned by run to the gas used. For example if the first transaction was a simple transfer, which costs 21,000 gas  our gas used would go from 0 to 21,000 nd we would keep doing this process steps 3-7 until the conditions of step 3 are met.
-8. We finalize our transition by taking set of transactions and relevant block information to generate a fully assembled block. The purpose of doing this is to perform certain calculations at the end. Since the header contains the transactions root, receipts root, and withdrawals root, these values must be computed by merkelizing a list and added to the block's header. 
-   - We return our block, state DB and our error   
+7. Once we verify there is no error with running the transaction we add the transaction to the transactions list and we add the gas that was returned by run to the gas used. For example if the first transaction was a simple transfer, which costs 21,000 gas our gas used would go from 0 to 21,000 nd we would keep doing this process steps 3-7 until the conditions of step 3 are met.
+8. We finalize our transition by taking set of transactions and relevant block information to generate a fully assembled block. The purpose of doing this is to perform certain calculations at the end. Since the header contains the transactions root, receipts root, and withdrawals root, these values must be computed by merkelizing a list and added to the block's header.
+   - We return our block, state DB and our error
 
 ###### Geth
 
