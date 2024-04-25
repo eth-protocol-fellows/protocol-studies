@@ -158,7 +158,7 @@ Note: The fee recipient of the built payload may deviate from the suggested fee 
 
 Nodes are gossiping transactions via a peer-to-peer network. These transactions are deemed valid and not included in the block. Validity here, among other things, refers to the condition where the nonce of the transaction is the next valid nonce for the account and the account holds sufficient value to cover the transaction. Occasionally, the node is assigned the responsibility of generating a block, the consensus layer employs a random selection process to determine which validator will construct the block during each epoch. If your validator is chosen to build the block, your consensus layer client will proceed with constructing it using the execution engine's fork choice updated method, providing the necessary context for block construction.
 
-We can simplify and emulate the process of constructing blocks, albeit this is specific to the Go  with types used in geth. However, the approach is general enough to be adaptable to different clients.
+We can simplify and emulate the process of constructing blocks, albeit this is specific to the go  with types used in geth. However, the approach is general enough to be adaptable to different clients.
 
 ```go
 func build(env environment, pool txpool.Pool, state state.StateDB) (types.Block, state.StateDB, error) { //1
