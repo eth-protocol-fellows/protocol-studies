@@ -1,5 +1,3 @@
-<!-- @format -->
-
 - [Home](readme.md)
 - **Study Group**
 - [EPFsg overview](/eps/intro.md)
