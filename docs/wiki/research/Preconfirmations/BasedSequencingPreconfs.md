@@ -11,7 +11,7 @@ Ethereum's evolving ecosystem is set to introduce new paradigms for rollups and 
 
 The vision for Ethereum is not just a network of isolated chains but a cohesive ecosystem where all rollups and chains coexist without friction, termed the "United Chains of Ethereum." This concept envisions a scenario where users can move between different states (rollups) with ease, akin to crossing state lines without the need for passports or the imposition of tariffs. Such an environment would not only enhance user experience but also foster a more integrated and efficient blockchain ecosystem.
 
-![United Chains of Ethereum](/docs/wiki/research/img/preconfs/united-chains-of-ethereum.jpg)
+![United Chains of Ethereum](../img/preconfs/united-chains-of-ethereum.jpg)
 
 _Figure: United Chains of Ethereum, Credit Justin Drake_
 
@@ -23,7 +23,7 @@ _Figure: United Chains of Ethereum, Credit Justin Drake_
 
 ### [Current Sequencing Options](#current-sequencing-options)
 
-![Sequencing Types](/docs/wiki/research/img/preconfs/based-sequencing-problems-space.png)
+![Sequencing Types](../img/preconfs/based-sequencing-problems-space.png)
 
 _Figure: Different Sequencing Options and their Problem Space, Credit Justin Drake_
 
@@ -76,7 +76,7 @@ _Figure: Different Sequencing Options and their Problem Space, Credit Justin Dra
 
 ### [Preconfirm Mechanism](#preconfirm-mechanism)
 
-In the [Preconfirmations](/docs/wiki/research/Preconfirmations/Preconfirmations.md) article, I explained the details on how Preconfirmations work and the promise acquisition process flow[^2][^3]. 
+In the [Preconfirmations](/wiki/research/Preconfirmations/Preconfirmations.md) article, I explained the details on how Preconfirmations work and the promise acquisition process flow[^2][^3]. 
 
 - **User Interaction with Proposers:** Users can identify which proposers within the look-ahead period have opted for based sequencing and request preconfirmations from them. These preconfirmations are akin to promises that the user's transaction will be included and executed in the future, with penalties applied for non-fulfillment.
 
@@ -84,7 +84,7 @@ In the [Preconfirmations](/docs/wiki/research/Preconfirmations/Preconfirmations.
 
 ### [Look-Ahead Preconf Construction](#look-ahead-preconf-construction)
 
-![Look-ahead preconf construction](/docs/wiki/research/img/preconfs/lookahead-preconfs.png)
+![Look-ahead preconf construction](../img/preconfs/lookahead-preconfs.png)
 
 _Figure: Look-ahead mechanism for Preconfirmations, Credit Justin Drake_
 

@@ -44,7 +44,7 @@
 - Development
   - [Core development](/wiki/dev/core-development.md)
   - [Coordination](/wiki/protocol/pm.md)
-  - [CS Resources]
+  - [CS Resources](/wiki/dev/cs-resources.md)
 - Testing and security
   - [Testing overview](/wiki/testing/overview.md)
   - [Incidents](/wiki/testing/incidents.md)

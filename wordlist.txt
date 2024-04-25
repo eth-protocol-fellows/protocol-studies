@@ -12,6 +12,7 @@ Antonopoulos
 API
 api's
 APIs
+Arbitrum
 Aritra
 ary
 ASE
@@ -53,6 +54,7 @@ BLS
 Boneh
 bool
 borderless
+BPE
 broadcasted
 Buterin
 Buterin's
@@ -129,7 +131,6 @@ distro
 docsify
 Domothy
 dotnet
-dotnet
 Dracorn
 Dragan
 Driscoll
@@ -180,6 +181,7 @@ Ethereum's
 ethers
 ethresear
 ethresearch
+ethroadmap
 EVM
 EVM's
 evmlab
@@ -221,7 +223,6 @@ getPayloadV
 getters
 ghost
 Gilles
-Golang
 Golang
 Goldwasser
 Goomy
@@ -356,6 +357,7 @@ OpenRPC
 OpenZeppelin
 OQS
 orderflows
+orgs
 OSI
 OSI's
 Parallelization
@@ -409,7 +411,6 @@ Provers
 PRs
 Prysm
 Prysmatic
-Prysmatic
 PSE
 PSE's
 ptc
@@ -454,6 +455,7 @@ Schwabe
 SECG
 secp
 SELFDESTRUCT
+Sepolia
 sexualized
 SHA
 shadowfork
@@ -476,6 +478,7 @@ SNARKify
 socio
 solvm
 SPHINCS
+Sproul
 SSF
 SSLE
 SSTORE
@@ -526,10 +529,12 @@ Unformatted
 unguessable
 upstreamed
 utils
+UX
 Vadim
 validator
 validators
 Vanstone
+VB's
 VDFs
 verifier
 verifiers
@@ -537,6 +542,7 @@ Verkle
 verkled
 Victorio
 Vitalik
+Vitalik's
 VM
 Vyper
 walkthrough
@@ -553,6 +559,10 @@ xy
 Yellowpaper
 Zaverucha
 zk
+zkEVMs
 ZKSNARK
 ZKSNARKs
 Zksync
+CLRS
+Endian
+Noam
