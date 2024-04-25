@@ -64,7 +64,7 @@ Each of these elements plays a crucial role in the functionality and efficiency 
 ## [Preconfs Acquisition Process Flow](#preconfs-acquisition-process-flow)
 
 
-![Promise acquisition flow](/docs/wiki/research/img/preconfs/Promise-acquisition-flow-JustinDrake.png)
+![Promise acquisition flow](../img/preconfs/Promise-acquisition-flow-JustinDrake.png)
 
 
 *Figure: Preconf Promise acquisition process flow. Source: Justin Drake*
