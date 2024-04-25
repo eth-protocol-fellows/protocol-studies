@@ -7,7 +7,7 @@
 - Proof-of-stake protocols use digital signatures to identify their participants and hold them accountable.
 - BLS signatures can be aggregated together, making them efficient to verify at large scale.
 - Signature aggregation allows the beacon chain to scale to hundreds of thousands of validators.
-- Ethereum transaction signatures on the execution (Eth1) layer remain as-is.
+- Normal Ethereum transaction signatures on the execution layer remain using ECDSA. However, account abstracted wallets can also utilize BLS.
 
 BLS is a digital signature scheme with aggregation properties. Given set of signatures (_signature_1_, ..., _signature_n_) anyone can produce an aggregated signature. Aggregation can also be done on secret keys and public keys. Furthermore, the BLS signature scheme is deterministic, non-malleable, and efficient. Its simplicity and cryptographic properties allows it to be useful in a variety of use-cases, specifically when minimal storage space or bandwidth are required. This page will cover general idea and Math behind BLS signatures, further cover BLS in context of Ethereum.
 
