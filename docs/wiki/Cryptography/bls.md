@@ -8,7 +8,7 @@
   - Validators in Beacon chain (Ethereum) use BLS signatures to participate in Consensus, sign blocks, post attestations etc.
 - BLS signatures can be aggregated together, making them efficient to verify at large scale.
 - Signature aggregation allows the beacon chain to scale to hundreds of thousands of validators.
-- Ethereum transaction signatures on the execution (Eth1) layer remain as-is.
+- Normal Ethereum transaction signatures on the execution layer remain using ECDSA. However, account abstracted wallets can also utilize BLS.
 
 BLS is a digital signature scheme with aggregation properties. Given set of signatures (_signature_1_, ..., _signature_n_) anyone can produce an aggregated signature. Aggregation can also be done on secret keys and public keys. Furthermore, the BLS signature scheme is deterministic, non-malleable, and efficient. Its simplicity and cryptographic properties allows it to be useful in a variety of use-cases, specifically when minimal storage space or bandwidth are required. This page will cover general idea and Math behind BLS signatures, further cover BLS in context of Ethereum.
 
@@ -32,7 +32,7 @@ These properties enable the cryptographic mechanisms necessary for functions lik
 
 #### Transition from ECDSA to BLS
 
-Traditional ECDSA signatures, as commonly used in Bitcoin, depend heavily on the randomness of number generation and necessitate verification of all involved public keys, which can be computationally intensive. This prompted a shift towards the Schnorr signature scheme, which allows for some aggregation but still lacks the full efficiencies gained from BLS.
+Traditional ECDSA signatures, as commonly used in Bitcoin or Ethereum transactions, depend heavily on the randomness of nonce generation and necessitate verification of all involved public keys individually, which can be computationally intensive. After its patent expired, Schnorr signatures became an alternative scheme which allows for some aggregation but still lacks the full efficiencies gained from BLS.
 
 BLS signatures, employing bilinear pairings, offer robust protection against certain cryptographic attacks and produce shorter signatures. Unlike Schnorr, BLS does not rely on random number generation for securing signatures, making it inherently more secure against randomness-related vulnerabilities.
 
