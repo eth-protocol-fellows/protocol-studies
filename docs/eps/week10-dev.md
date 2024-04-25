@@ -2,12 +2,12 @@
 
 Week 10 dev talk is diving into EVM precompiles and their integration in execution clients.
 
-Join the presentation by [Danno Ferrin](https://twitter.com/shemnon), on [Monday, April 22, 4PM UTC](https://savvytime.com/converter/utc-to-germany-berlin-united-kingdom-london-china-shanghai-ny-new-york-city-japan-tokyo-australia-sydney-india-delhi-argentina-buenos-aires/apr-22-2024/4pm).
+Watch the presentation by [Danno Ferrin](https://twitter.com/shemnon), on [StreamEth](https://streameth.org/65cf97e702e803dbd57d823f/epf_study_group) and [Youtube](https://www.youtube.com/watch?v=daiMhkt0XTw)
 
-## Links
-- Watch the talk on [StreamEth](https://streameth.org/65cf97e702e803dbd57d823f/epf_study_group) and [Youtube](https://www.youtube.com/watch?v=daiMhkt0XTw)
 - [Presentation from the talk.](https://hackmd.io/@shemnon/precompiles)
 - [Discussion thread on Discord: Week 10D: Precompiles](https://discord.com/channels/1205546645496795137/1231990093506678785).
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/daiMhkt0XTw?si=6c4EJRi-g1G5udJH" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ## Pre-reading
 
