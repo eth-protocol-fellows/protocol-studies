@@ -4,6 +4,7 @@ ABI
 accelerometer
 ACD
 addons
+Aleth
 allowfullscreen
 amidst
 Andreas
@@ -67,6 +68,7 @@ centralisation
 centric
 chainId
 Challanges
+Charmes
 cli
 cmd
 CoC
@@ -93,8 +95,8 @@ Cryptopedia
 cryptosystem
 cybersecurity
 Cypherpunks
-Daemen
 D'Amato
+Daemen
 Dankrad
 danksharding
 Danno
@@ -126,6 +128,8 @@ discv
 distro
 docsify
 Domothy
+dotnet
+dotnet
 Dracorn
 Dragan
 Driscoll
@@ -177,9 +181,9 @@ ethers
 ethresear
 ethresearch
 EVM
+EVM's
 evmlab
 EVMONE
-EVM's
 excalidraw
 exchangeTransitionConfigurationV
 Explainer
@@ -217,13 +221,17 @@ getPayloadV
 getters
 ghost
 Gilles
+Golang
+Golang
 Goldwasser
 Goomy
 Goron
 Gorondan
 gpg
 Grafana
+Grandine
 Guillaume
+hackmd
 Hager
 hoc
 Holesky
@@ -292,6 +300,7 @@ Lua
 LuaVM
 Lyubashevsky
 mainnet
+Mana
 Mário
 mathbb
 MDS
@@ -321,6 +330,7 @@ MUL
 Murr
 MVE
 mvepbs
+n't
 Nagu
 namespace
 namespaces
@@ -331,12 +341,13 @@ Nethermind
 neuder
 newPayloadV
 NFT
+Nim
 NIST
 NIST's
 NOXX
-n't
 Occhipinti
 OFAC
+Offchain
 offsites
 onboarding
 onchain
@@ -397,6 +408,8 @@ Prover's
 Provers
 PRs
 Prysm
+Prysmatic
+Prysmatic
 PSE
 PSE's
 ptc
@@ -452,6 +465,7 @@ Shimon
 Shor
 Shor's
 Siddharth
+Silkwarm
 Silverman
 Sipser
 slashing
@@ -542,13 +556,3 @@ zk
 ZKSNARK
 ZKSNARKs
 Zksync
-Golang
-Grandine
-Nim
-Offchain
-Prysmatic
-Aleth
-Charmes
-Mana
-Silkwarm
-dotnet

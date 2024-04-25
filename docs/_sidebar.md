@@ -85,6 +85,7 @@
   - [Commitments]
     - Polynomials
     - Commitment schemes
+    - [KZG](/docs/wiki/Cryptography/KZG.md)
   - ZK
   - [Post-Quantum Cryptography](/wiki/Cryptography/post-quantum-cryptography.md)
 - [Protocol Fellowship](/wiki/epf.md)
