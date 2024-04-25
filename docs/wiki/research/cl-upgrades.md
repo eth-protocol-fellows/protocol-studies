@@ -1,4 +1,4 @@
-## BEACON CHAIN UPGRADES
+# Beacon Chain upgrades
 
 ### Inclusion Lists
 ### Preconfirmations
