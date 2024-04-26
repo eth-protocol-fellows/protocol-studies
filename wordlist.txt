@@ -21,6 +21,7 @@ Assertoor
 assignees
 atomicity
 Attacknet
+attester
 attesters
 attestors
 autoplay
@@ -76,6 +77,8 @@ CoC
 codebase
 codebases
 CODECOPY
+Composability
+composable
 config
 congestions
 Consensys
@@ -94,8 +97,8 @@ Cryptopedia
 cryptosystem
 cybersecurity
 Cypherpunks
-Daemen
 D'Amato
+Daemen
 Dankrad
 danksharding
 Danno
@@ -104,6 +107,7 @@ dapp
 dapps
 DAS
 dataset
+deboost
 DeFi
 Degatchi
 delegator
@@ -179,10 +183,9 @@ ethresear
 ethresearch
 ethroadmap
 EVM
+EVM's
 evmlab
 EVMONE
-EVM's
-EVMs
 excalidraw
 exchangeTransitionConfigurationV
 Explainer
@@ -203,6 +206,7 @@ frac
 frameborder
 Francesco
 frontend
+fulfillments
 fullscreen
 Fullstack
 func
@@ -229,6 +233,7 @@ Grafana
 Grandine
 Guillaume
 hackmd
+Hager
 hoc
 Holesky
 homomorphic
@@ -245,6 +250,7 @@ implementers
 incentivize
 incentivized
 incentivizes
+includable
 inevitableeth
 infrastracture
 Infura
@@ -309,6 +315,7 @@ Merkleize
 MEV
 mevboost
 Michaël
+Mitigations
 mload
 MMPTs
 MODEXP
@@ -324,6 +331,7 @@ MUL
 Murr
 MVE
 mvepbs
+n't
 Nagu
 namespace
 namespaces
@@ -338,7 +346,6 @@ Nim
 NIST
 NIST's
 NOXX
-n't
 Occhipinti
 OFAC
 Offchain
@@ -407,6 +414,7 @@ Prysmatic
 PSE
 PSE's
 ptc
+pubsub
 PUSHX
 py
 Pyspec
@@ -416,6 +424,7 @@ radix
 rahul
 RANDAO
 Rareskills
+RB
 README
 referrerpolicy
 repo
@@ -461,6 +470,8 @@ Siddharth
 Silkwarm
 Silverman
 Sipser
+slashing
+slashings
 SLOAD
 smlXL
 SNARKify
@@ -480,6 +491,7 @@ stateful
 stateRoot
 stf
 StreamEth
+subnets
 suboptimal
 Summa
 systemd
@@ -495,11 +507,13 @@ tldr
 TODO
 TPS
 tracoor
+Tracoor
 tradeoff
 tradeoffs
 transactional
 trapdoored
 trie
+triggerable
 trilemma
 trustless
 trustlessly
@@ -508,6 +522,7 @@ TrustLook
 TSTORE
 txpool
 txs
+unaggregated
 Unbundling
 underbrace
 Unformatted
@@ -531,6 +546,7 @@ Vitalik's
 VM
 Vyper
 walkthrough
+WB
 webkit
 WebRTC
 Whitepaper
@@ -557,3 +573,6 @@ computable
 keystore
 validator's
 verifications
+CLRS
+Endian
+Noam

@@ -44,7 +44,7 @@
 - Development
   - [Core development](/wiki/dev/core-development.md)
   - [Coordination](/wiki/protocol/pm.md)
-  - [CS Resources]
+  - [CS Resources](/wiki/dev/cs-resources.md)
 - Testing and security
   - [Testing overview](/wiki/testing/overview.md)
   - [Incidents](/wiki/testing/incidents.md)
@@ -58,9 +58,13 @@
     - Statelessness
     - Purge
   - [MEV](/wiki/research/PBS/mev.md)
-    - [PBS](/wiki/research/PBS/pbs.md)
     - [MEV-boost](/wiki/research/PBS/mev-boost.md)
+  - [PBS](/wiki/research/PBS/pbs.md)
     - [ePBS](/wiki/research/PBS/ePBS.md)
+      - [ePBS Design Specs](/wiki/research/PBS/ePBS-Specs.md)
+    - [PTC](/wiki/research/PBS/PTC.md)
+    - [PEPC](/wiki/research/PBS/PEPC.md)
+    - [TBHL](/wiki/research/PBS/TBHL.md)
   - Proof of Stake
     - [Upgrades](/docs/wiki/research/cl-upgrades.md)
     - SSF
@@ -81,6 +85,7 @@
   - [Commitments]
     - Polynomials
     - Commitment schemes
+    - [KZG](/docs/wiki/Cryptography/KZG.md)
   - ZK
   - [Post-Quantum Cryptography](/wiki/Cryptography/post-quantum-cryptography.md)
 - [Protocol Fellowship](/wiki/epf.md)
