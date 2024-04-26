@@ -34,7 +34,7 @@ Ethereum is a programmable blockchain with a built-in [Turing complete](https://
 
 - **Natively multi-user:** Ethereum is fundamentally multi-user with $2^{256}$ accounts. For some perspective, [that's more accounts than there are grains of sands on earth](https://www.talkcrypto.org/blog/2019/04/08/all-you-need-to-know-about-2256/). Each account has its own balance, code, and storage. These accounts are isolated from each other, meaning they cannot access each other's data. Accounts are also natively authenticated by Ethereum.
 
-- **Inherently auditable:** Since each transaction that changes the state of Ethereum is publicly accessible, it is inherently auditable. Any change can be traced back to the transaction that caused it.
+- **Inherently verifiable:** Since each transaction that changes the state of Ethereum is publicly accessible, it is inherently verifiable. Any change can be traced back to the transaction that caused it.
 
 - **Determinism:** The Ethereum world computer guarantees certain properties when running code:
   1. **Atomicity** - The entire operation runs or nothing does.
@@ -46,6 +46,18 @@ Ethereum is a programmable blockchain with a built-in [Turing complete](https://
 > The Ethereum world computer
 
 These unique features empower Ethereum to create a new paradigm for decentralized computing.
+
+## Applications
+
+Ethereum establishes a foundation for secure and verifiable interaction over a public network. Several innovative applications take  advantage of this capability:
+
+- **Decentralized Finance (DeFi):** Borrow, lend, trade, and manage your assets without relying on traditional banks. DeFi empowers individuals to take control of their financial lives.
+- **Non-Fungible Tokens (NFTs):** Own and trade unique digital assets like artwork, collectibles, and virtual experiences. NFTs unlock new possibilities for digital ownership and creative expression.
+- **Decentralized Autonomous Organizations (DAOs):** Collaborate and make decisions democratically within organizations. DAOs empower communities to self-govern and manage resources transparently.
+- **Gaming:** Play-to-earn games where you can own in-game assets and be rewarded for your participation. Ethereum brings a new dimension of value and ownership to the gaming world.
+- **Prediction Markets:** Speculate on real-world events in a decentralized and transparent marketplace. Ethereum facilitates open and honest predictions.
+
+As the platform continues to evolve, the landscape of decentralized applications built on Ethereum will only grow richer and more diverse.
 
 ## Resources
 
