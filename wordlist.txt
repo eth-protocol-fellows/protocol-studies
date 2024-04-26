@@ -25,6 +25,7 @@ attester
 attesters
 attestors
 autoplay
+backend
 backfill
 Bankless
 Baranabé's
@@ -293,6 +294,7 @@ Lamport
 Lamport's
 ldots
 Lefteris
+leveldb
 libp
 lifecycle
 Lightclient
@@ -314,6 +316,8 @@ Mana
 Mário
 mathbb
 MDS
+mdbx
+MDBX
 meldsun
 mem
 Mempool
