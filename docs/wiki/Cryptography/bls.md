@@ -61,7 +61,9 @@ The signature is verified using the pairing function:
 
 $$e(G, S) = e(P, H(M))$$
 
-This can be proven as: $$e(G,S)=e(G,a×H(m))=e(a×G,H(m))=e(P,H(M))$$ where $G$ is the generator point on the elliptic curve.
+This can be proven as:
+$$e(G,S)=e(G,a×H(m))=e(a×G,H(m))=e(P,H(M))$$
+where $G$ is the generator point on the elliptic curve.
 
 This equation proves that the signature was indeed created by the holder of the private key corresponding to $P$.
 
