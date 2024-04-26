@@ -2,16 +2,15 @@
 
 Week 10 research talk will cover a variety of topics related to the fork-choice of Ethereum, its evolution and its role in future upgrades.
 
-Join the presentation by [Francesco](https://twitter.com/fradamt), on [Wednesday, April 24, 4PM UTC](https://savvytime.com/converter/utc-to-germany-berlin-united-kingdom-london-china-shanghai-ny-new-york-city-japan-tokyo-australia-sydney-india-delhi-argentina-buenos-aires/apr-24-2024/4pm).
+Watch the presentation by [Francesco](https://twitter.com/fradamt) on [StreamEth](https://streameth.org/65cf97e702e803dbd57d823f/epf_study_group) or [Youtube](https://www.youtube.com/watch?v=x-_2gAVFlw8). Presentation is [available here](https://github.com/eth-protocol-fellows/protocol-studies/blob/main/docs/eps/presentations/week10-research.pdf).
 
-The talk will be streamed live on [StreamEth](https://streameth.org/65cf97e702e803dbd57d823f/epf_study_group) and [Youtube](https://www.youtube.com/@ethprotocolfellows/streams), links will be provided before the call in the [Discord server](https://discord.gg/addwpQbhpq). Discord also serves for the discussion and questions during the stream. 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/x-_2gAVFlw8?si=xqMDpqrBabgiDYPb" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ## Pre-reading
 
 Before starting with the week 10 development content, make yourself familiar with resources in previous weeks, especially week 3 and week 5. You should have understanding of Beacon Chain and current consensus research topics.
 
 Additionally, you can get ready by studying the following resources.
-
 
 - All in one resource: [PoS evolution](https://github.com/ethereum/pos-evolution/blob/master/pos-evolution.md)
 - Gasper: [Combining GHOST and Casper (Gasper paper)](https://arxiv.org/abs/2003.03052)
@@ -21,8 +20,6 @@ Additionally, you can get ready by studying the following resources.
 - Improving Gasper with Single Slot Finality:
   - [Path towards Single Slot Finality](https://notes.ethereum.org/@vbuterin/single_slot_finality)
   - [A simple single slot finality](https://ethresear.ch/t/a-simple-single-slot-finality-protocol/14920)
-
-
 
 ## Outline
 

@@ -25,9 +25,11 @@
   - [Overview](/wiki/protocol/overview.md)
   - [History](/wiki/protocol/history.md)
 - Execution Layer
-  - [EL Clients](/wiki/EL/el-clients.md)
   - [EL Specs](/wiki/EL/el-specs.md)
-  - Client architecture
+  - [Client architecture](/wiki/EL/el-architecture.md)
+  - [EL Clients](/wiki/EL/el-clients.md)
+    - [Besu](/wiki/EL/clients/besu.md)
+    - [Reth](/wiki/EL/clients/reth.md)
   - [EVM](/wiki/EL/evm.md)
   - [Transaction anatomy](/wiki/EL/transaction.md)
   - [JSON-RPC](/wiki/EL/JSON-RPC.md)
@@ -35,16 +37,16 @@
   - [DevP2P]
   - [Precompiled Contracts](/wiki/EL/precompiled-contracts.md)
 - [Consensus Layer](/wiki/CL/overview.md)
-  - [CL Clients](/wiki/CL/cl-clients.md)
   - [CL Specs](/wiki/CL/cl-specs.md)
   - Client architecture
+  - [CL Clients](/wiki/CL/cl-clients.md)
   - [Proof-of-Stake]
   - [Beacon API]
   - [Networking](/wiki/CL/cl-networking.md)
 - Development
   - [Core development](/wiki/dev/core-development.md)
   - [Coordination](/wiki/protocol/pm.md)
-  - [CS Resources]
+  - [CS Resources](/wiki/dev/cs-resources.md)
 - Testing and security
   - [Testing overview](/wiki/testing/overview.md)
   - [Incidents](/wiki/testing/incidents.md)
@@ -58,9 +60,13 @@
     - Statelessness
     - Purge
   - [MEV](/wiki/research/PBS/mev.md)
-    - [PBS](/wiki/research/PBS/pbs.md)
     - [MEV-boost](/wiki/research/PBS/mev-boost.md)
+  - [PBS](/wiki/research/PBS/pbs.md)
     - [ePBS](/wiki/research/PBS/ePBS.md)
+      - [ePBS Design Specs](/wiki/research/PBS/ePBS-Specs.md)
+    - [PTC](/wiki/research/PBS/PTC.md)
+    - [PEPC](/wiki/research/PBS/PEPC.md)
+    - [TBHL](/wiki/research/PBS/TBHL.md)
   - Proof of Stake
     - [Upgrades](/docs/wiki/research/cl-upgrades.md)
     - SSF
@@ -81,6 +87,7 @@
   - [Commitments]
     - Polynomials
     - Commitment schemes
+    - [KZG](/docs/wiki/Cryptography/KZG.md)
   - ZK
   - [Post-Quantum Cryptography](/wiki/Cryptography/post-quantum-cryptography.md)
 - [Protocol Fellowship](/wiki/epf.md)
