@@ -14,17 +14,18 @@ api's
 APIs
 Arbitrum
 Aritra
+ARPANET
 ary
 ASE
 Assche
 Assertoor
+Assia
 assignees
 atomicity
 Attacknet
 attester
 attesters
 attestors
-ARPANET
 autoplay
 backfill
 Bankless
@@ -73,6 +74,7 @@ chainId
 Challanges
 Charmes
 cli
+CLRS
 cmd
 CoC
 codebase
@@ -129,6 +131,7 @@ Diffie
 DILITHIUM
 discv
 distro
+DNS
 docsify
 Domothy
 dotnet
@@ -160,6 +163,7 @@ EL
 Elmore
 ELs
 Encodings
+Endian
 env
 EOA
 EOAs
@@ -334,6 +338,8 @@ MVE
 mvepbs
 n't
 Nagu
+Nakamoto
+Namecoin
 namespace
 namespaces
 Nand
@@ -346,6 +352,7 @@ NFT
 Nim
 NIST
 NIST's
+Noam
 NOXX
 Occhipinti
 OFAC
@@ -448,6 +455,7 @@ RPCs
 RSA
 RSA's
 runtime
+Satoshi
 scalability
 scalable
 schemas
@@ -558,12 +566,10 @@ XMSS
 XORed
 xy
 Yellowpaper
+Yoni
 Zaverucha
 zk
 zkEVMs
 ZKSNARK
 ZKSNARKs
 Zksync
-CLRS
-Endian
-Noam
