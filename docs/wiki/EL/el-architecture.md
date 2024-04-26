@@ -43,7 +43,6 @@ This is the only link between the consensus and execution layer. The engine expo
 
 In order to accurately process transactions on Ethereum, it is imperative that we reach a consensus on the global status of the network, rather than solely relying on our local perspective. The global state synchronization of the execution layer client is triggered by the fork choice rule governed by the LMD-GHOST algorithm in the consensus layer. It is then relayed to the execution layer through the fork choice updated endpoint of the engine API. Syncing entails two possible processes: downloading remote blocks from peers and validating them in the EVM.
 
-Note: client specific overviews will go here
 
 ## Components of the architecture
 
