@@ -15,7 +15,7 @@ Thus, staking has split naturally in two classes of participants, outside protoc
 |    Tier    |                                                      Current natural separation                                                      | Slashing risk |
 | :--------: | :----------------------------------------------------------------------------------------------------------------------------------: | :-----------: |
 | Delegators | ETH stakers, with no minimum commitment and no strict requirement to participate in any other way beyond bringing in their principal |   Slashable   |
-| Operators  |      Node operators providing node running services, with their reputation or some fixed amount of capital of their own at risk      |   Slashable   |
+| Operators  |      Node operators providing node running services, with their reputation or some fixed amount of capital of their own at risk.      |   Slashable   |
 
 The two tiers are closely interlinked, as liquid staking protocols are not credible if LST holders do not believe that the operators holding their principal are *good agents*. 
 
