@@ -1,5 +1,3 @@
-<!-- @format -->
-
 # Boneh-Lynn-Shacham (BLS) signature
 
 ### TLDR;

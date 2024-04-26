@@ -1,5 +1,3 @@
-<!-- @format -->
-
 # Consensus Layer Implementations
 
 This page covers resources on all consensus client implementations, whether in production or development. It provides an overview of unique features of each client, architecture, basic guides and resources.
