@@ -21,12 +21,12 @@ $$e: G_1 \times G_2 \rightarrow G_T$$
 This function is efficiently computable and must satisfy bilinear properties:
 
 - For all $P,Q$ in $G_1$ and $a$ in integers, bilinearity is defined as:
-  $$ e(aP, Q) = e(P, Q)^a $$
-  $$ e(P, aQ) = e(P, Q)^a $$
+  $$e(aP, Q) = e(P, Q)^a$$
+  $$e(P, aQ) = e(P, Q)^a$$
 
 - Additionally, it must distribute over addition:
-  $$ e(P + Q, R) = e(P, R) \times e(Q, R) $$
-  $$ e(P, Q + R) = e(P, Q) \times e(P, R) $$
+  $$e(P + Q, R) = e(P, R) \times e(Q, R)$$
+  $$e(P, Q + R) = e(P, Q) \times e(P, R)$$
 
 These properties enable the cryptographic mechanisms necessary for functions like signature aggregation, which is a pivotal feature in blockchain applications and cryptographic consensus.
 
@@ -51,17 +51,17 @@ _Visual Aid to understand how BLS signatures work_
 
 Consider Alice creating a BLS signature. She starts with her private key $a$, and computes her public key $P$ using a generator point $G$ on the elliptic curve:
 
-$$ P = aG $$
+$$P = aG$$
 
 She hashes her message and maps this hash to a point on the curve, $H(M)$. Her signature $S$ is then:
 
-$$ S = a \times H(M) $$
+$$S = a \times H(M)$$
 
 The signature is verified using the pairing function:
 
-$$ e(G, S) = e(P, H(M)) $$
+$$e(G, S) = e(P, H(M))$$
 
-This can be proven as: $$e(G,S)=e(G,a×H(m))=e(a×G,H(m))=e(P,H(M))$$ where $G$ is the generator point on the elliptic curve.
+This can be proven as: $$e(G,S)=e(G,a×H(m))=e(a×G,H(m))=e(P,H(M))$$where $G$ is the generator point on the elliptic curve.
 
 This equation proves that the signature was indeed created by the holder of the private key corresponding to $P$.
 
@@ -93,7 +93,7 @@ Signature:
 
 A major advantage of BLS is the ability to aggregate multiple signatures into a single compact signature. This is particularly useful in scenarios involving multiple transactions or signers, greatly reducing the blockchain space and computational power needed for verifications. For example if there are 100 transactions, where signature for each one is represented by $S_i$ and each are associated with a public key of $P_i$ (and a message $M_i$), rather than storing 100 separate signatures, BLS allows combining them into one:
 
-$$ S = S*1 + S_2 + \ldots + S*{100} $$
+$$S = S*1 + S_2 + \ldots + S*{100}$$
 
 which can then verified with (using a multiply operation):
 $$e(G,S)=e(P_1,H(M_1))⋅e(P_2,H(M_2))⋅…⋅e(P_{100},H(M_{100}))$$
