@@ -61,7 +61,7 @@ The signature is verified using the pairing function:
 
 $$e(G, S) = e(P, H(M))$$
 
-This can be proven as: $$e(G,S)=e(G,a×H(m))=e(a×G,H(m))=e(P,H(M))$$where $G$ is the generator point on the elliptic curve.
+This can be proven as: $$e(G,S)=e(G,a×H(m))=e(a×G,H(m))=e(P,H(M))$$ where $G$ is the generator point on the elliptic curve.
 
 This equation proves that the signature was indeed created by the holder of the private key corresponding to $P$.
 
@@ -93,7 +93,7 @@ Signature:
 
 A major advantage of BLS is the ability to aggregate multiple signatures into a single compact signature. This is particularly useful in scenarios involving multiple transactions or signers, greatly reducing the blockchain space and computational power needed for verifications. For example if there are 100 transactions, where signature for each one is represented by $S_i$ and each are associated with a public key of $P_i$ (and a message $M_i$), rather than storing 100 separate signatures, BLS allows combining them into one:
 
-$$S = S*1 + S_2 + \ldots + S*{100}$$
+$$S = S_1 + S_2 + \ldots + S_{100}$$
 
 which can then verified with (using a multiply operation):
 $$e(G,S)=e(P_1,H(M_1))⋅e(P_2,H(M_2))⋅…⋅e(P_{100},H(M_{100}))$$
@@ -126,7 +126,7 @@ In Mathematical terms, We use 2 subgroups of BLS12-381 elliptic curve: $G_1$ def
 
 <figcaption>
 
-_The key to the keys. This is how we will depict the various components in the diagrams below. Variants of the same object are hatched differently. The secret key is mathematically a scalar; public keys are $G_1$ group members; message roots are mapped to $G_2$ group members; and signatures are $G_2$ group members._
+_The key to the keys. This is how we will depict the various components in the diagrams below. Variants of the same object are hatched differently. The secret key is mathematically a scalar; public keys are_ $G_1$ _group members; message roots are mapped to_ $G_2$ _group members; and signatures are $G_2$ group members._
 
 </figcaption>
 </figure>
