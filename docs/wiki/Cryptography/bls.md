@@ -36,6 +36,8 @@ Traditional ECDSA signatures, as commonly used in Bitcoin or Ethereum transactio
 
 BLS signatures, employing bilinear pairings, offer robust protection against certain cryptographic attacks and produce shorter signatures. Unlike Schnorr, BLS does not rely on random number generation for securing signatures, making it inherently more secure against randomness-related vulnerabilities.
 
+_Please note: While BLS signatures themselves do not require a random nonce for each signing operation (making them deterministic), the initial step of generating private keys in BLS is still dependent on secure random number generation. Unlike ECDSA, where a nonce is crucial in each signature to maintain security (and the randomness of this nonce is essential to prevent vulnerabilities), BLS avoids the need for this kind of nonce during the signing process. However, the randomness in generating the private key remains critical. This initial randomness ensures that the private key is secure and unpredictable, which is fundamental for the overall security of the cryptographic system._
+
 #### Example of BLS Signature Generation and Verification:
 
 <figure class="diagram" style="width:80%">
