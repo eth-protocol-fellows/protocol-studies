@@ -24,6 +24,7 @@ Attacknet
 attester
 attesters
 attestors
+ARPANET
 autoplay
 backfill
 Bankless
