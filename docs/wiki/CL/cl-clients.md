@@ -30,7 +30,7 @@ Just like Prysm, it also has multiple hardware and OS support to built the clien
 
 #### Pre-built Binaries
 
-Pre-built binaries for many various operating systems and architectures are available. They also provide portable versions which are compromising compiler performence options for a better platform compatibility. Released binaries are signed by gpg key `15E66D941F697E28F49381F426416DC3F30674B0` from security@sigmaprime.io. Read the [documentation](https://lighthouse-book.sigmaprime.io/installation-binaries.html) on the steps to install the client using pre-built binaries.
+Pre-built binaries for many various operating systems and architectures are available. They also provide portable versions which are compromising compiler performance options for a better platform compatibility. Released binaries are signed by gpg key `15E66D941F697E28F49381F426416DC3F30674B0` from security@sigmaprime.io. Read the [documentation](https://lighthouse-book.sigmaprime.io/installation-binaries.html) on the steps to install the client using pre-built binaries.
 
 ### Additional features and security considerations
 
@@ -136,7 +136,7 @@ For more frequently asked question about the client, refer to the [FAQ](https://
 
 ## Teku
 
-[Teku](https://consensys.io/teku) is a client developed in the Java programming language. It is developed by [ConsenSys](https://consensys.net/). It is a full-featured Ethereum 2.0 client that can be used as a beacon node or a validator client. It can work with execution client such as Besu. It can work on Ethereum mainnet and testnets such as Goeril, Sepolia, and Holesky. It has a web interface to monitor the beacon chain and validator performance. Teku provides both beacon client and validator client to also run as docker containers.
+[Teku](https://consensys.io/teku) is a client developed in the Java programming language. It is developed by [ConsenSys](https://consensys.net/). It is a full-featured Ethereum 2.0 client that can be used as a beacon node or a validator client. It can work with execution client such as Besu. It can work on Ethereum mainnet and testnets such as Goerli, Sepolia, and Holesky. It has a web interface to monitor the beacon chain and validator performance. Teku provides both beacon client and validator client to also run as docker containers.
 
 ### Installing the client
 
@@ -170,6 +170,6 @@ Originally a proprietary client in Rust, recently became open source
 
 By LC in Elixir
 
-### Aditional reading 
+### Additional reading 
 
-[Analysis of CL clients performace, outdated](https://mirror.xyz/0x934e6B4D7eee305F8C9C42b46D6EEA09CcFd5EDc/b69LBy8p5UhcGJqUAmT22dpvdkU-Pulg2inrhoS9Mbc)
+[Analysis of CL clients performance, outdated](https://mirror.xyz/0x934e6B4D7eee305F8C9C42b46D6EEA09CcFd5EDc/b69LBy8p5UhcGJqUAmT22dpvdkU-Pulg2inrhoS9Mbc)
