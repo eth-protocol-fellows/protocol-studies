@@ -15,12 +15,12 @@ Introduced in a 2008 paper by Satoshi Nakamoto titled ["Bitcoin: A Peer-to-Peer 
 
 Bitcoin's focus on secure digital payments, while revolutionary, limited its ability to run more complex applications. Similar to how modern applications rely on HTTP for communication, early projects attempted to expand Bitcoin's functionality by leveraging its secure cryptographic and peer-to-peer foundation.
 
-In 2011, Namecoin, launched in 2011, aimed to create a decentralized, censorship-resistant domain name system, but its reliance on Bitcoin's infrastructure limited its scalability and functionality compared to traditional DNS systems.
+In 2011, Namecoin aimed to create a decentralized, censorship-resistant domain name system, but its reliance on Bitcoin's infrastructure limited its scalability and functionality compared to traditional DNS systems.
 
 ![Namecoin](img/overview/namecoin.png)
 > [Namecoin Announcement](https://bitcointalk.org/?topic=6017.0): The first "application" based on Bitcoin network.
 
-Similarly, Colored Coins (2012) emerged, aiming to represent real-world assets like gold or loyalty points on the Bitcoin blockchain. This was achieved by attaching additional data to Bitcoin transactions, essentially "coloring" them to signify ownership. Bitcoin's network only records binary state - a coin is either spent or not; hence it was impossible to store the semantics of information indicating what a token represents. These applications lacked storage of arbitrary number of states and were built using complex and not very scalable workarounds.
+Similarly, Colored Coins (2012) was designed to represent real-world assets like gold or loyalty points on the Bitcoin blockchain. This was achieved by attaching additional data to Bitcoin transactions, essentially "coloring" them to signify ownership. However, Bitcoin's network only records binary state - a coin is either spent or not; hence it was impossible to store the semantics of information indicating what a token represents. These applications lacked storage of arbitrary number of states and were built using complex and not very scalable workarounds.
 
 In 2014, Ethereum emerged as a solution address these challenges.
 
@@ -49,7 +49,7 @@ These unique features empower Ethereum to create a new paradigm for decentralize
 
 ## Applications
 
-Ethereum establishes a foundation for secure and verifiable interaction over a public network. Several innovative applications take  advantage of this capability:
+Ethereum establishes a foundation for secure and verifiable interaction over a public network. Several innovative applications take advantage of this capability:
 
 - **Decentralized Finance (DeFi):** Borrow, lend, trade, and manage your assets without relying on traditional banks. DeFi empowers individuals to take control of their financial lives.
 - **Non-Fungible Tokens (NFTs):** Own and trade unique digital assets like artwork, collectibles, and virtual experiences. NFTs unlock new possibilities for digital ownership and creative expression.
