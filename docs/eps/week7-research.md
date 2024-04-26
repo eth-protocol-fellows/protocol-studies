@@ -12,7 +12,7 @@ Before starting with the week 7 development content, make yourself familiar with
 
 Additionally, you can read and get ready by studying the following resources:
 
-- [Data structures in Ethereum](/wiki/protocol/data-structures.md)
+- [Data structures in Ethereum](/wiki/EL/data-structures.md)
 - [Guillaume Ballet - The Verge](https://www.youtube.com/watch?v=F1Ne19Vew6w)
 
 ## Outline

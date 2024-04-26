@@ -1,6 +1,6 @@
 # Contribute to the Protocol Wiki
 
-The Protocol Wiki is an open and collaborative project. Whether you are part of the [Study Group](study-group.md) or not, we welcome your contributions! Help us to build the documentation and improve availability of learning resources on Ethereum core R&D.
+The Protocol Wiki is an open and collaborative project. Whether you are part of the [Study Group](/eps/intro.md) or not, we welcome your contributions! Help us to build the documentation and improve availability of learning resources on Ethereum core R&D.
 
 *We are not aiming to rewrite other existing Ethereum documentation* but rather create a cohesive collection of technical resources for aspiring core developers and researchers.
 
@@ -14,9 +14,9 @@ Before you start with editing, please read the code of conduct, following guide 
 
 The wiki source is hosted in github repository at [github.com/eth-protocol-fellows/protocol-studies](https://github.com/eth-protocol-fellows/protocol-studies). Mirrored at //TODO
 
-> The wiki is served from `wiki-pages` branch. When contributing, open a PR to `main` branch (repo default branch). After a while, all updates are collectively upstreamed to `wiki-pages` to update the website.
+> The wiki is served from `wiki-pages` branch which is regularly updated from `main`. When contributing, open a PR to a branch related to the change or `main` for smaller quick fixes. PRs from other branches are reviewed before merging to `main` and collected updates are then pushed to update the `wiki-pages`.
 
-You can explore existing issues or open a new one for missing content, suggest improving existing content or wiki frontend features. If you identify missing or unfinished content, feel free to open a PR. 
+Explore existing issues or open a new one for missing content, suggest improving existing content or wiki frontend features. If you identify missing or unfinished content, feel free to open a PR. First, check existing PRs or branches to make sure your work is not redundant. 
 
 We are not aiming to recreate other existing wikis. If the same content is well explained elsewhere, just link it and provide additional context. 
 
@@ -28,7 +28,7 @@ It **does not** cover onchain protocols/dapps, layer 2s/rollups or any other too
 
 ### Structure and collaboration
 
-The wiki is supposed to cover all important parts of Ethereum core protocol and its development. The protocol architecture and related topics is reflected in the wiki format. The whole wiki lives under `/docs/wiki` and the [sidebar](_sidebar.md) defines the main documentation structure. 
+The wiki is supposed to cover all important parts of Ethereum core protocol and its development. The protocol architecture and related topics is reflected in the wiki format. The whole wiki lives under `/docs/wiki` and the `/docs/_sidebar.md` defines the main documentation structure. 
 High level areas are abstracted to directories which include all subtopics. Focus your contributions to wiki itself. Week pages in `eps` directory are meant for weekly presentations information, not main place for resources. 
 
 For contributors, we recommend focusing on specific topics contained in corresponding documents. It's best to own a single topic and work out all the details. Create a new document and add the topic to the sidebar if it's not there yet. Join the [discord server](https://discord.gg/epfsg), let others know what you are working on in the group channel and collaborate with other contributors writing about related topics. If you are working with multiple people on a significant piece of content, you can have a dedicated branch in the repo for easier coordination. 
@@ -74,6 +74,7 @@ The audience of this wiki is technical and the content should reflect that. Ther
 - Consider creating tutorials and hands-on guides documenting technical steps
 - Add recommended reading at the top, point to topics which are dependencies of yours
 - For mathematical notations, you can use Katex
+- You can use mermaid diagrams for visualizations
 
 Goal is to produce a credible neutral text which is formal, well-structured, and maintains a clear progression of ideas. The content should be purely technical and shouldn't waste space on introducing high level/well known concepts. Introductory topics are necessary and can use comparisons, historical anecdotes, and concrete examples to make complex concepts more accessible.
 
