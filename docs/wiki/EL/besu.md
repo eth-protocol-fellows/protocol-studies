@@ -1,6 +1,6 @@
 # Besu Execution Client
 
-This is a brief summary of important information you need to know when starting to contribute to Besu, a Java implemenation of the execution client. 
+This is a brief summary of important information you need to know when starting to contribute to Besu, a Java implementation of the execution client. 
 
 Codebase repository: https://github.com/hyperledger/besu/
 Docs: https://besu.hyperledger.org
