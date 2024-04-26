@@ -184,10 +184,6 @@ TODO Link to wiki page
 
 TODO Link to wiki page
 
-#### Boot nodes and network bootup
-
-TODO
-
 ### Data structures 
 
 Blockchain and state data processed by execution client need to be stored in the disk. These are necessary to validate new blocks, verify history and to serve peers in the network. Client stores historical data, also called the ancient database, which include previous blocks. Another database of trie structure contains the current state and small number of recent states. In practice, clients keep various databases for different data categories. Each client can implement a different backend to handle this data, e.g. leveldb, pebble, mdbx. 
