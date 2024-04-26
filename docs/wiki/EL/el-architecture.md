@@ -157,10 +157,6 @@ TODO
 
 TODO
 
-### Execution layer's blockChain
-
-TODO
-
 ### Internal Consensus engines
 
 TODO 
