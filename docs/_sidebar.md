@@ -25,9 +25,11 @@
   - [Overview](/wiki/protocol/overview.md)
   - [History](/wiki/protocol/history.md)
 - Execution Layer
-  - [EL Clients](/wiki/EL/el-clients.md)
   - [EL Specs](/wiki/EL/el-specs.md)
-  - Client architecture
+  - [Client architecture](/wiki/EL/el-architecture.md)
+  - [EL Clients](/wiki/EL/el-clients.md)
+    - [Besu](/wiki/EL/clients/besu.md)
+    - [Reth](/wiki/EL/clients/reth.md)
   - [EVM](/wiki/EL/evm.md)
   - [Transaction anatomy](/wiki/EL/transaction.md)
   - [JSON-RPC](/wiki/EL/JSON-RPC.md)
@@ -35,9 +37,9 @@
   - [DevP2P]
   - [Precompiled Contracts](/wiki/EL/precompiled-contracts.md)
 - [Consensus Layer](/wiki/CL/overview.md)
-  - [CL Clients](/wiki/CL/cl-clients.md)
   - [CL Specs](/wiki/CL/cl-specs.md)
   - Client architecture
+  - [CL Clients](/wiki/CL/cl-clients.md)
   - [Proof-of-Stake]
   - [Beacon API]
   - [Networking](/wiki/CL/cl-networking.md)

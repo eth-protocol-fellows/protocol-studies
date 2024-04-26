@@ -25,6 +25,7 @@ attester
 attesters
 attestors
 autoplay
+backend
 backfill
 Bankless
 Baranabé's
@@ -53,6 +54,7 @@ bloXroute's
 BLS
 Boneh
 bool
+bootup
 borderless
 BPE
 broadcasted
@@ -61,6 +63,7 @@ Buterin's
 bypassability
 bytecode
 calldata
+canonicalized
 Carb
 cartelization
 Casper
@@ -72,11 +75,13 @@ chainId
 Challanges
 Charmes
 cli
+CLRS
 cmd
 CoC
 codebase
 codebases
 CODECOPY
+coinbase
 Composability
 composable
 config
@@ -97,8 +102,8 @@ Cryptopedia
 cryptosystem
 cybersecurity
 Cypherpunks
-D'Amato
 Daemen
+D'Amato
 Dankrad
 danksharding
 Danno
@@ -131,6 +136,7 @@ distro
 docsify
 Domothy
 dotnet
+Downloader
 Dracorn
 Dragan
 Driscoll
@@ -159,6 +165,7 @@ EL
 Elmore
 ELs
 Encodings
+Endian
 env
 EOA
 EOAs
@@ -183,9 +190,9 @@ ethresear
 ethresearch
 ethroadmap
 EVM
-EVM's
 evmlab
 EVMONE
+EVM's
 excalidraw
 exchangeTransitionConfigurationV
 Explainer
@@ -194,6 +201,7 @@ Feist
 Femboy
 Ferrin
 finalise
+financials
 Flashbot's
 Flashbots
 Flashboys
@@ -223,6 +231,7 @@ getPayloadV
 getters
 ghost
 Gilles
+Goerli
 Golang
 Goldwasser
 Goomy
@@ -230,6 +239,8 @@ Goron
 Gorondan
 gpg
 Grafana
+gradle
+gradlew
 Grandine
 Guillaume
 hackmd
@@ -266,6 +277,7 @@ js
 JSON
 JUMPDEST
 JVM
+JWT
 Karapetsas
 Katex
 keccak
@@ -284,6 +296,7 @@ Lamport
 Lamport's
 ldots
 Lefteris
+leveldb
 libp
 lifecycle
 Lightclient
@@ -305,10 +318,13 @@ Mana
 Mário
 mathbb
 MDS
+mdbx
+MDBX
 meldsun
 mem
 Mempool
 Menezes
+merkelizing
 Merkle
 Merkleization
 Merkleize
@@ -331,7 +347,6 @@ MUL
 Murr
 MVE
 mvepbs
-n't
 Nagu
 namespace
 namespaces
@@ -345,7 +360,10 @@ NFT
 Nim
 NIST
 NIST's
+Noam
 NOXX
+NSS
+n't
 Occhipinti
 OFAC
 Offchain
@@ -382,6 +400,7 @@ Potuz's
 POV
 PQ
 PQC
+PKCS
 PQCA
 pre
 precompile
@@ -417,6 +436,7 @@ ptc
 pubsub
 PUSHX
 py
+Pyrmont
 Pyspec
 pytest
 qubits
@@ -432,6 +452,7 @@ responder
 restaking
 retesteth
 Reth
+Reth's
 revm
 rightarrow
 RIPEMD
@@ -478,6 +499,7 @@ SNARKify
 socio
 solvm
 SPHINCS
+src
 Sproul
 SSF
 SSLE
@@ -500,11 +522,13 @@ Tani
 tbhl
 Teku
 testnet
+testnets
 Tetris
 textnormal
 timeframe
 tldr
 TODO
+TLS
 TPS
 tracoor
 Tracoor
@@ -529,6 +553,7 @@ Unformatted
 unguessable
 upstreamed
 utils
+UTXOs
 UX
 Vadim
 validator
@@ -536,11 +561,14 @@ validators
 Vanstone
 VB's
 VDFs
+verifications
 verifier
 verifiers
 Verkle
 verkled
 Victorio
+virtualized
+virtualizing
 Vitalik
 Vitalik's
 VM
