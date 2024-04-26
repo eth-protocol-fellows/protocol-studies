@@ -153,9 +153,6 @@ TODO
 
 TODO
 
-### Boot nodes and network bootup
-
-TODO
 
 ### Internal Consensus engines
 
@@ -186,6 +183,10 @@ TODO Link to wiki page
 ### DevP2P
 
 TODO Link to wiki page
+
+#### Boot nodes and network bootup
+
+TODO
 
 ### Data structures 
 
