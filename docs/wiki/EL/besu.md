@@ -1,8 +1,13 @@
-### Besu Execution Client
-This is a brief summary of important information you need to know when starting to contribute to `Besu`:
-#### Code directory explanation
+# Besu Execution Client
 
-##### Modules
+This is a brief summary of important information you need to know when starting to contribute to Besu, a Java implemenation of the execution client. 
+
+Codebase repository: https://github.com/hyperledger/besu/
+Docs: https://besu.hyperledger.org
+
+## Code directory explanation
+
+### Modules
 +  It is a multi-module [gradle](https://gradle.org/) project. You can take a look to settings.gradle to see all modules:
     + Each module has its own build.gradle:
 		+ You can specify its module name: `archiveBaseName`
@@ -34,7 +39,7 @@ This is a brief summary of important information you need to know when starting 
 + **There are enterprise modules:** 
 	+ enclave, plugin-api, privacy-contracts
 
-##### Gradle
+### Gradle
 + gradlew (file) :
 	+ It is a bash script that will check if gradle is installed or not ( will install the wrapper for you and download the whole distribution)
 	+ Gradle itself is managed as part of a wrapper that is used by calling this script.
@@ -58,7 +63,7 @@ This is a brief summary of important information you need to know when starting 
 		+ Location of the Besu distribution.
 		+ If you go deeper to build/distribution/besu-{version}-SNAPSHOT/lib you can see each version of each component and libraries.
 
-##### Testing
+### Testing
 + Unit tests:
 	+ Each module has its unit testing under src/test/java
 + Integration tests:
@@ -77,8 +82,7 @@ This is a brief summary of important information you need to know when starting 
 + Other info:
 	+ JUnit 4
 
-
-#####  Development tasks:
+###  Development tasks:
 + Some useful commands:
 	+ `git pull --recurse-submodules`.
 	+ `./gradlew spotlessApply`
@@ -88,8 +92,7 @@ This is a brief summary of important information you need to know when starting 
 		+ bin/besu --network=dev --rpc-http-enabled --rpc-http-cors-origins=chrome-extension://nkbihfbeogaeaoehlefnkodbefgpgknn
 		+ RPC URL: http://localhost:8545
 
-
-#####  Important classes:
+###  Important classes:
 + `BesuControllerBuilder`:
 	+ Manages all the components that are going to be used and needed to setup the client.
 	+ On the build method you can see if you are building the correct domain object.
@@ -116,13 +119,14 @@ This is a brief summary of important information you need to know when starting 
 	+ From here you can understand how to create new RPC methods.
 
 
-##### Important libraries:
+### Important libraries:
 + https://doc.libsodium.org/:
 	+ Sodium is a modern, easy-to-use software library for encryption, decryption, signatures, password hashing, and more.
 + https://github.com/nss-dev/nss:
 	+ Network Security Services (NSS) is a set of libraries designed to support cross-platform development of security-enabled client and server applications. NSS supports TLS 1.2, TLS 1.3, PKCS #5, PKCS#7, PKCS #11, PKCS #12, S/MIME, X.509 v3 certificates, and other security standards.
 
-####### References:
+## References
+
 + https://www.youtube.com/watch?v=4pCxwuNRaKg
 + https://github.com/hyperledger/besu
 + https://wiki.hyperledger.org/display/besu
