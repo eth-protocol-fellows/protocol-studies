@@ -239,6 +239,8 @@ Goron
 Gorondan
 gpg
 Grafana
+gradle
+gradlew
 Grandine
 Guillaume
 hackmd
@@ -360,7 +362,7 @@ NIST
 NIST's
 Noam
 NOXX
-n't
+NSS
 Occhipinti
 OFAC
 Offchain
@@ -397,6 +399,7 @@ Potuz's
 POV
 PQ
 PQC
+PKCS
 PQCA
 pre
 precompile
@@ -495,6 +498,7 @@ SNARKify
 socio
 solvm
 SPHINCS
+src
 Sproul
 SSF
 SSLE
@@ -523,6 +527,7 @@ textnormal
 timeframe
 tldr
 TODO
+TLS
 TPS
 tracoor
 Tracoor
