@@ -2,7 +2,7 @@
 
 ## Network coming online and peer-to-peer computing
 
-The concept of peer-to-peer (P2P) networks, where computers communicate and share resources directly without a central authority, has a rich history dating back to the 1960s. Pioneering projects like the ARPANET project, switched on in late October 1969 became the first wide-area packet-switched network, laid the groundwork for this decentralized approach. ARPANET demonstrated the model of distributed communication, where "every participating node could request and serve content".
+The concept of peer-to-peer (P2P) networks, where computers communicate and share resources directly without a central authority, has a rich history dating back to the 1960s. Pioneering projects like the ARPANET, switched on in late October 1969 became the first wide-area packet-switched network, laid the groundwork for this decentralized approach. ARPANET demonstrated the model of distributed communication, where "every participating node could request and serve content".
 
 ![ARPANET-map](img/overview/ARPANET-map.jpg)
 > The map of ARPANET in the 1960s
