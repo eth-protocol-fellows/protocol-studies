@@ -47,6 +47,8 @@
 - 📄 [Awesome rust](https://github.com/rust-unofficial/awesome-rust)
 - 📄 [Awesome javascript](https://github.com/sorrycc/awesome-javascript)
 - 📄 [Awesome python](https://github.com/vinta/awesome-python)
+- 🎥 [George Hotz | Programming | rewriting linearizer (tinygrad) | Day In The Life Of A Software Engineer](https://www.youtube.com/watch?v=R-Xr1JRF6bY)
+
 
 ## Networking
 
