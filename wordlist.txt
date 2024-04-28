@@ -52,6 +52,7 @@ blocksize
 bloXroute
 bloXroute's
 BLS
+Bogotá
 Boneh
 bool
 bootup
@@ -238,9 +239,9 @@ Goomy
 Goron
 Gorondan
 gpg
-Grafana
 gradle
 gradlew
+Grafana
 Grandine
 Guillaume
 hackmd
@@ -317,9 +318,9 @@ mainnet
 Mana
 Mário
 mathbb
-MDS
 mdbx
 MDBX
+MDS
 meldsun
 mem
 Mempool
@@ -392,6 +393,7 @@ permissionless
 permissionlessness
 PGA
 Pilipovic
+PKCS
 Playdate
 pmod
 POC
@@ -400,7 +402,6 @@ Potuz's
 POV
 PQ
 PQC
-PKCS
 PQCA
 pre
 precompile
@@ -499,8 +500,8 @@ SNARKify
 socio
 solvm
 SPHINCS
-src
 Sproul
+src
 SSF
 SSLE
 SSTORE
@@ -515,6 +516,7 @@ stf
 StreamEth
 subnets
 suboptimal
+subprotocols
 Summa
 systemd
 Takenobu
@@ -527,8 +529,8 @@ Tetris
 textnormal
 timeframe
 tldr
-TODO
 TLS
+TODO
 TPS
 tracoor
 Tracoor

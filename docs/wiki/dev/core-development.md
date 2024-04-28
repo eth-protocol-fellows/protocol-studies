@@ -1,5 +1,8 @@
 # Core development 
-The core Ethereum protocol (Layer 1) is continuously developed by the community through EIPs, which open up the possibility of introducing changes to the base protocol.
+
+> :warning: This article is a [stub](https://en.wikipedia.org/wiki/Wikipedia:Stub), help the wiki by [contributing](/contributing.md) and expanding it.
+
+The core Ethereum protocol is continuously developed by the community through EIPs, which open up the possibility of introducing changes to the base protocol.
 
 Resources for aspiring core developers. 
 What is it like to work on the core protocol? 

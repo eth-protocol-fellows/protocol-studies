@@ -41,6 +41,7 @@
 - 🎥 [Berkeley CS 61A: Structure and Interpretation of Computer Programs](https://cs61a.org/)
 - 🎥 [Parallel Programming](https://www.coursera.org/learn/scala-parallel-programming)
 - 🎥 [Compilers](https://www.edx.org/course/compilers)
+- [Mastering programming](https://tidyfirst.substack.com/p/mastering-programming)
 - 📄 [Awesome c++ (or C)](https://github.com/fffaraz/awesome-cpp)
 - 📄 [Awesome go](https://github.com/avelino/awesome-go)
 - 📄 [Awesome rust](https://github.com/rust-unofficial/awesome-rust)
@@ -76,7 +77,8 @@
 
 - 🎥 [The Missing Semester of Your CS Education | MIT](https://missing.csail.mit.edu/)
 - 🎥 [The Unix Workbench | Johns Hopkins](https://www.coursera.org/learn/unix)
-
+- 📄 [Git tips and tricks](https://blog.gitbutler.com/git-tips-and-tricks/)
+- 📄 [Popular Git config options](https://jvns.ca/blog/2024/02/16/popular-git-config-options/)
 ## Misc
 
 - 📄 [Things Every Programmer Should Know](https://github.com/mtdvio/every-programmer-should-know)
