@@ -36,6 +36,7 @@
   - [Data Structures](/wiki/EL/data-structures.md)
   - [DevP2P]
   - [Precompiled Contracts](/wiki/EL/precompiled-contracts.md)
+  - [RLP Serialization](/docs/wiki/EL/RLP.md)
 - [Consensus Layer](/wiki/CL/overview.md)
   - [CL Specs](/wiki/CL/cl-specs.md)
   - Client architecture
