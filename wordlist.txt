@@ -610,3 +610,6 @@ Pyrmont
 Goerli
 financials
 testnets
+Hotz
+linearizer
+tinygrad
