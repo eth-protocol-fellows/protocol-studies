@@ -3,6 +3,7 @@ aantop
 ABI
 accelerometer
 ACD
+ACL
 addons
 Aleth
 allowfullscreen
@@ -55,10 +56,12 @@ BLS
 Bogotá
 Boneh
 bool
+booleans
 bootup
 borderless
 BPE
 broadcasted
+BSON
 Buterin
 Buterin's
 bypassability
@@ -103,8 +106,8 @@ Cryptopedia
 cryptosystem
 cybersecurity
 Cypherpunks
-Daemen
 D'Amato
+Daemen
 Dankrad
 danksharding
 Danno
@@ -191,9 +194,9 @@ ethresear
 ethresearch
 ethroadmap
 EVM
+EVM's
 evmlab
 EVMONE
-EVM's
 excalidraw
 exchangeTransitionConfigurationV
 Explainer
@@ -332,6 +335,7 @@ Merkleize
 MEV
 mevboost
 Michaël
+minimalistic
 Mitigations
 mload
 MMPTs
@@ -348,6 +352,7 @@ MUL
 Murr
 MVE
 mvepbs
+n't
 Nagu
 namespace
 namespaces
@@ -364,8 +369,8 @@ NIST's
 Noam
 NOXX
 NSS
-n't
 Occhipinti
+Odayan
 OFAC
 Offchain
 offsites
@@ -425,6 +430,7 @@ privateKey
 probabilistically
 programmability
 proto
+protobuf
 prover
 Prover's
 Provers
@@ -593,3 +599,6 @@ zkEVMs
 ZKSNARK
 ZKSNARKs
 Zksync
+Hotz
+linearizer
+tinygrad

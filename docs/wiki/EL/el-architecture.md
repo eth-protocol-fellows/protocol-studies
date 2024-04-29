@@ -178,23 +178,21 @@ In Ethereum two primary types of transaction pools are recognized:
 
 ### EVM
 
-TODO Link to wiki page
+[Wiki - EVM](/wiki/EL/evm.md)
 
 ### DevP2P
 
-TODO Link to wiki page
+[Wiki - DevP2P](/wiki/EL/devp2p.md)
 
 ### Data structures 
 
 Blockchain and state data processed by execution client need to be stored in the disk. These are necessary to validate new blocks, verify history and to serve peers in the network. Client stores historical data, also called the ancient database, which include previous blocks. Another database of trie structure contains the current state and small number of recent states. In practice, clients keep various databases for different data categories. Each client can implement a different backend to handle this data, e.g. leveldb, pebble, mdbx. 
 
-More details in the page on [EL data structures](./data-structures.md).
+More details in the page on [EL data structures](/wiki/EL/data-structures.md).
 
-TODO Link to wiki page
+#### RLP
 
-### RLP
-
-TODO Link to wiki page
+[Wiki - RLP](/wiki/EL/RLP.md)
 
 ### StateDB
 
