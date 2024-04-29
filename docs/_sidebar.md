@@ -31,11 +31,11 @@
     - [Besu](/wiki/EL/clients/besu.md)
     - [Reth](/wiki/EL/clients/reth.md)
   - [EVM](/wiki/EL/evm.md)
+    - [Precompiled Contracts](/wiki/EL/precompiled-contracts.md)
+  - [Data Structures](/wiki/EL/data-structures.md)
   - [Transaction anatomy](/wiki/EL/transaction.md)
   - [JSON-RPC](/wiki/EL/JSON-RPC.md)
   - [DevP2P](/wiki/EL/devp2p.md)
-  - [Data Structures](/wiki/EL/data-structures.md)
-  - [Precompiled Contracts](/wiki/EL/precompiled-contracts.md)
   - [RLP Serialization](/docs/wiki/EL/RLP.md)
 - Consensus Layer
   - [Overview](/wiki/CL/overview.md)
