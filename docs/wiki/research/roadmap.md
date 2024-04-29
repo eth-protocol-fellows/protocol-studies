@@ -57,12 +57,26 @@ Upgrades related to scalability by Roll-ups and Data Sharding.
 | Removing Rollup Training Wheels                 |                        (i) Optimistic Rollup Fault Provers </br> (ii) ZK-EVMs  </br> (iii) Rollup interoperability                         | (i) Optimistic rollups having live proof systems will address the L2's censorship risk </br>(ii)  Massive improvements to Ethereum's scalability and privacy without sacrificing the security and decentralization aspects of the chain via zkEVMs (EVM-compatible virtual machines that supports zero-knowledge proof computation) </br > (iii) L1 Sequencers, or Ethereum L1 proposers with given rollup sequencing rights will bring better credible-neutrality and security, and offer roll-ups L1 compatibility | in research </br> (i)Arbitrum BoLD[^14] </br> Optimism Cannon[^15] </br> (ii) ZK-EVMs [^16] [^17] [^18] </br> (iii) Based preconfs[^19] </br> ET[^20] |
 | Quantum-safe and Trusted-Setup-Free Commitments |                      replace KZG commitments with commitments that don't require a trusted setup and are quantum safe                      |                                                                                                                                                                                                                                               Quantum-safe Commitments                                                                                                                                                                                                                                               | in research </br>                                                                                                                                     |
 
-
 ### the Scourge
-Upgrades related to censorship resistance, decentralization and mitigating protocol risks from MEV. 
+Upgrades related to censorship resistance, decentralization and mitigating protocol risks from MEV  and liquid staking/pooling. 
+
+**IMPLEMENTED**
+| Upgrade   |   Track   |               Topic               |        Description         |                                                                 Effect                                                                  | State of the art                                 |
+| :-------- | :-------: | :-------------------------------: | :------------------------: | :-------------------------------------------------------------------------------------------------------------------------------------: | :----------------------------------------------- |
+| MEV-Boost | MEV-Track | Endgame Block Production Pipeline | Extra-protocol MEV markets | Ethereum community successfully commoditized MEV (partially), via an extra-protocol market. The majority of MEV goes now to Validators. | [shipped](/wiki/research/PBS/mev-boost.md) </br> |
+
+**TODO** 
+
+| Upgrade |   Track   |               Topic               |                                                                Description                                                                |                                                                                                                                                       Expected effect                                                                                                                                                       | State of the art                                     |
+| :------ | :-------: | :-------------------------------: | :---------------------------------------------------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :--------------------------------------------------- |
+| ePBS    | MEV-Track | Endgame Block Production Pipeline | Enshrinement of block Proposer and block Builder separation at protocol level, because of anti-censorship and MEV risk mitigation reasons | (i) creates opportunities to prevent transaction censorship at the protocol level </br> (ii) prevents hobbyist validators from being out-competed by institutional players that can better optimize the profitability of their block building </br> (iii) helps with scaling Ethereum by enabling the Danksharding upgrades | [in research](/wiki/research/PBS/ePBS.md)[^21] </br> |
 
 ### the Verge
 Upgrades related to verifying blocks more easily
+
+| Upgrade | Track | Topic | Description | Expected effect | State of the art |
+| :------ | :---: | :---: | :---------: | :-------------: | :--------------- |
+|         |       |       |             |                 |                  |
 
 ### the Purge
 Upgrades related to reducing the computational costs of running nodes and simplifying the protocol
@@ -111,10 +125,14 @@ Other upgrades that don't fit well into the previous categories.
 
 [^20]: Execution Tickets research page https://ethresear.ch/t/execution-tickets/17944, [[archived]](https://web.archive.org/web/20240401205945/https://ethresear.ch/t/execution-tickets/17944)
 
-[^21]: Inclusion lists https://eips.ethereum.org/EIPS/eip-7547, [[archived]](https://web.archive.org/web/20240309191147/https://eips.ethereum.org/EIPS/eip-7547)
+[^21]: Barnabe - More pictures about proposers and builders https://mirror.xyz/barnabe.eth/QJ6W0mmyOwjec-2zuH6lZb0iEI2aYFB9gE-LHWIMzjQ, [[archived]](https://web.archive.org/web/20240424010902/https://mirror.xyz/barnabe.eth/QJ6W0mmyOwjec-2zuH6lZb0iEI2aYFB9gE-LHWIMzjQ)
+
+[^200]: Inclusion lists https://eips.ethereum.org/EIPS/eip-7547, [[archived]](https://web.archive.org/web/20240309191147/https://eips.ethereum.org/EIPS/eip-7547)
 
 [ethereum/EIPs github repository](https://github.com/ethereum/EIPs/tree/master#ethereum-improvement-proposals-eips)
 
 [Roadmap on Ethereum.org](https://ethereum.org/en/roadmap/)
 
 [ethroadmap.com](https://ethroadmap.com/)
+
+[Herc’s substack article on Ethereum roadmap](https://herccc.substack.com/p/the-ethereum-roadmap#%C2%A7relevant-researchproposals)
