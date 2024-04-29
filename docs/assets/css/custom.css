@@ -214,7 +214,6 @@ li.file.open {
 li.folder strong,
 li.file strong {
   padding: 10px 0;
-  border-top: 1px dashed #a278ff;
   display: block;
   border-bottom: 1px dashed #a278ff;
 }
