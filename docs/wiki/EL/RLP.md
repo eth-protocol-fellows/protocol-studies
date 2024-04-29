@@ -2,7 +2,7 @@
 
 ## Overview
 
-Recursive Length Prefix (RLP) is a core serialization protocol used within the Ethereum network to encode data. It is designed to serialize structured data, encompassing everything from transaction data to the entire state of the blockchain. This wiki page explores the internals of RLP, its encoding/decoding rules, tools available and its role in Ethereum's functionality.
+Recursive Length Prefix (RLP) is a core serialization protocol used within the execution layer to encode data. It is designed to serialize data to produce a structure readable by all client software. It is used for everything from transaction data to the entire state of the blockchain. This wiki page explores the internals of RLP, its encoding/decoding rules, tools available and its role in Ethereum's functionality.
 
 ## Understanding Data Serialization in Ethereum
 
