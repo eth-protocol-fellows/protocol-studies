@@ -22,7 +22,6 @@ The first part of the program consists of 6 sessions with introductions to high 
 
 > Because some speakers did more technical talks than others, the recommended order for newcomers to start is Week 1, Week 3, Week 2, Week 5 Node workshop and then Week 4 and 5. 
 
-
 | Week #                          | Topic                              | Speaker                                                                                          |
 | ------------------------------- | ---------------------------------- | ------------------------------------------------------------------------------------------------ |
 | [Week 1](/eps/week1.md)         | Intro to EPS and Ethereum protocol | [Josh Davis](https://github.com/JoshDavisLight), [Mario Havel](https://github.com/taxmeifyoucan) |
@@ -34,12 +33,11 @@ The first part of the program consists of 6 sessions with introductions to high 
 
 The second part of the program offers two distinct tracks focused on development and research with deeper dive into each domain. 
 
-
 | Week #, track                               | Topic                         | Speaker                                                                                |
 | ------------------------------------------- | ----------------------------- | -------------------------------------------------------------------------------------- |
 | [Week 6 Development](/epf/week6-dev.md)     | Consensus and Execution specs | [Hsiao-Wei Wang](https://github.com/hwwhww), [Sam Wilson](https://github.com/SamWilsn) |
 | [Week 6 Research](/epf/week6-research.md)   | Sharding and DAS              | [Dankrad Feist](https://github.com/dankrad)                                            |
-| [Week 7 Development](/epf/week7-dev.md)     | Execution client architecture | [Dragan Pilipovic](https://github.com/dragan2234)                                      |
+| [Week 7 Developsment](/epf/week7-dev.md)     | Execution client architecture | [Dragan Pilipovic](https://github.com/dragan2234)                                      |
 | [Week 7 Research](/epf/week7-research.md)   | Verkle trees                  | [Josh Rudolf](https://github.com/jrudolf)                                              |
 | [Week 8 Development](/epf/week8-dev.md)     | Consensus client architecture | [Paul Harris](https://github.com/rolfyone)                                             |
 | [Week 8 Research](/epf/week8-research.md)   | MEV and censorship            | [Barnabe Monnot](https://github.com/barnabemonnot)                                     |

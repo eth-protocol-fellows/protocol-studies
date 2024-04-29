@@ -87,6 +87,7 @@ codebase
 codebases
 CODECOPY
 coinbase
+commoditized
 Composability
 composable
 config
@@ -199,6 +200,7 @@ EVM
 evmlab
 EVMONE
 EVM's
+EVMs
 excalidraw
 exchangeTransitionConfigurationV
 Explainer
@@ -251,6 +253,7 @@ Grandine
 Guillaume
 hackmd
 Hager
+Herc’s
 hoc
 Holesky
 homomorphic
@@ -527,6 +530,7 @@ StreamEth
 subnets
 suboptimal
 subprotocols
+substack
 Summa
 systemd
 Takenobu
