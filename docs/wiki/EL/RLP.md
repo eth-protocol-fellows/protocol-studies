@@ -90,32 +90,27 @@ The RLP decoding process is based on the structure and specifics of the encoded 
 
 **Examples of RLP Decoding of `[0xc8, 0x83, 0x63, 0x61, 0x74, 0x83, 0x64, 0x6f, 0x67]`**
 
-**Identify the Prefix**
-- The sequence starts with the byte `0xc8`. In RLP, a list's length prefix starts at `0xc0`. The difference between `0xc8` and `0xc0` gives us the length of the list content.
-  - `0xc8 - 0xc0 = 8`
-- This tells us that the next 8 bytes are part of the list.
-
-**Decode the List Content**
-- The list content in this example is `[0x83, 0x63, 0x61, 0x74, 0x83, 0x64, 0x6f, 0x67]`.
-- We will decode this content byte by byte to extract the individual items.
-
-**Decode the First Item**
-- The first byte of the list content is `0x83`. In RLP, for strings where the length is between 1 and 55 bytes, the length prefix starts at `0x80`. Thus:
-  - `0x83 - 0x80 = 3`
-- This tells us that the first string has a length of `3` bytes.
-- The next three bytes are `0x63, 0x61, 0x74`, which correspond to the ASCII values for "cat".
-- We have now decoded the first item: "cat".
-
-**Decode the Second Item**
-- After decoding the first item, the next byte in the sequence is another `0x83`.
-- Following the same rule as before:
-  - `0x83 - 0x80 = 3`
-- This indicates the next string also has a length of 3 bytes.
-- The following three bytes are `0x64, 0x6f, 0x67`, corresponding to "dog".
-- We have now decoded the second item: "dog".
-
-The decoded output is `["cat", "dog"]`.
-
+- **Identify the Prefix**
+  - The sequence starts with the byte `0xc8`. In RLP, a list's length prefix starts at `0xc0`. The difference between `0xc8` and `0xc0` gives us the length of the list content.
+    - `0xc8 - 0xc0 = 8`
+  - This tells us that the next 8 bytes are part of the list.
+- **Decode the List Content**
+  - The list content in this example is `[0x83, 0x63, 0x61, 0x74, 0x83, 0x64, 0x6f, 0x67]`.
+  - We will decode this content byte by byte to extract the individual items.
+- **Decode the First Item**
+  - The first byte of the list content is `0x83`. In RLP, for strings where the length is between 1 and 55 bytes, the length prefix starts at `0x80`. Thus:
+    - `0x83 - 0x80 = 3`
+  - This tells us that the first string has a length of `3` bytes.
+  - The next three bytes are `0x63, 0x61, 0x74`, which correspond to the ASCII values for "cat".
+  - We have now decoded the first item: "cat".
+- **Decode the Second Item**
+  - After decoding the first item, the next byte in the sequence is another `0x83`.
+  - Following the same rule as before:
+    - `0x83 - 0x80 = 3`
+  - This indicates the next string also has a length of 3 bytes.
+  - The following three bytes are `0x64, 0x6f, 0x67`, corresponding to "dog".
+  - We have now decoded the second item: "dog".
+- The decoded output is `["cat", "dog"]`.
 
 ## How RLP Algorithm works
 
@@ -182,17 +177,22 @@ flowchart TD
 _Figure: RLP Decoding Flow_
 
 
-## RLP Tools and Implementations
+## RLP Tools
 
-### RLP Tools
-
-### RLP Implementation
-
-## A Practical Application of RLP in Ethereum
+There are many libraries available for RLP implementations in Ethereum. Here are few tools:
+- [Geth RLP](https://github.com/ethereum/go-ethereum/tree/master/rlp)
+- [RLP for Node.js and the browser.](https://github.com/ethereumjs/ethereumjs-monorepo/tree/master/packages/rlp)
+- [Python RLP serialization library.](https://github.com/ethereum/pyrlp)
+- [RLP for Rust](https://docs.rs/ethereum-rlp/latest/rlp/)
+- [Nethermind RLP Serialization](https://github.com/NethermindEth/nethermind/tree/master/src/Nethermind/Nethermind.Serialization.Rlp)
 
 ## Resources
-
-## References
+- [Ethereum Yellow Paper](https://ethereum.github.io/yellowpaper/paper.pdf)
+- [Ethereum RLP documentation](https://ethereum.org/vi/developers/docs/data-structures-and-encoding/rlp/)
+- [A Comprehensive Guide to RLP Encoding in Ethereum by Mark Odayan](https://medium.com/@markodayansa/a-comprehensive-guide-to-rlp-encoding-in-ethereum-6bd75c126de0)
+- [Ethereum's RLP serialization in Elixir](https://www.badykov.com/elixir/rlp/)
+- [Ethereum Under The Hood Part 3 (RLP Decoding)](https://medium.com/coinmonks/ethereum-under-the-hood-part-3-rlp-decoding-df236dc13e58)
+- [Ethereum's Recursive Length Prefix in ACL2](https://arxiv.org/abs/2009.13769)
 
 
 
