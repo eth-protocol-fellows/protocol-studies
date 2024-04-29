@@ -70,7 +70,7 @@ Ethereum has two kinds of accounts:
 - **External account:** An account [controlled by an associated private key](/wiki/Cryptography/ecdsa.md) and empty EVM code.
 - **Contract account:** An account controlled by an associated non-empty EVM code. The EVM code as part of such an account is colloquially known as a _smart contract._
 
-Refer [Ethereum data structures](wiki/protocol/data-structures.md) for details on how the world state is implemented.
+Refer [Ethereum data structures](wiki/EL/data-structures.md) for details on how the world state is implemented.
 
 ## Virtual machine paradigm
 

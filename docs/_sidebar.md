@@ -9,67 +9,73 @@
   - [Week 4](/eps/week4.md)
   - [Week 5](/eps/week5.md)
   - [Node Workshop](/eps/nodes_workshop.md)
+  - [Week 6 | Dev](/eps/week6-dev.md)
+  - [Week 6 | Research](/eps/week6-research.md)
+  - [Week 7 | Dev](/eps/week7-dev.md)
+  - [Week 7 | Research](/eps/week7-research.md)
+  - [Week 8 | Dev](/eps/week8-dev.md)
+  - [Week 8 | Research](/eps/week8-research.md)
+  - [Week 9 | Dev](/eps/week9-dev.md)
+  - [Week 9 | Research](/eps/week9-research.md)
+  - [Week 10 | Dev](/eps/week10-dev.md)
+  - [Week 10 | Research](/eps/week10-research.md)
 - [Contributing](contributing.md)
 - **Protocol Wiki**
 - The Protocol
-  - [Overview](/wiki/protocol/overview.md)
-  - [History](/wiki/protocol/history.md)
-  - [Coordination](/wiki/protocol/pm.md)
-  - [Data Structures](/wiki/protocol/data-structures.md)
-  - [CS Resources]
+  - [Architecture](/wiki/protocol/architecture.md)
+  - [Design rationale](/wiki/protocol/design-rationale.md)
+  - [Evolution](/wiki/protocol/history.md)
 - Execution Layer
-  - [EL Clients](/wiki/EL/el-clients.md)
   - [EL Specs](/wiki/EL/el-specs.md)
-  - Client architecture
+  - [Client architecture](/wiki/EL/el-architecture.md)
+  - [EL Clients](/wiki/EL/el-clients.md)
+    - [Besu](/wiki/EL/clients/besu.md)
+    - [Reth](/wiki/EL/clients/reth.md)
   - [EVM](/wiki/EL/evm.md)
-  - [Transaction](/wiki/EL/transaction.md)
-  - [DevP2P]
-  - [MPT]
+    - [Precompiled Contracts](/wiki/EL/precompiled-contracts.md)
+  - [Data Structures](/wiki/EL/data-structures.md)
+  - [Transaction anatomy](/wiki/EL/transaction.md)
   - [JSON-RPC](/wiki/EL/JSON-RPC.md)
-- [Consensus Layer](/wiki/CL/overview.md)
-  - [CL Clients](/wiki/CL/cl-clients.md)
+  - [DevP2P](/wiki/EL/devp2p.md)
+  - [RLP Serialization](/docs/wiki/EL/RLP.md)
+- Consensus Layer
+  - [Overview](/wiki/CL/overview.md)
   - [CL Specs](/wiki/CL/cl-specs.md)
-  - [Proof-of-Stake]
-  - [Beacon API]
-  - [Networking](/wiki/CL/cl-networking.md)
-  - Client architecture
+  - [Client architecture](/wiki/CL/client-architecture.md)
+  - [CL Clients](/wiki/CL/cl-clients.md)
+  - [Beacon API](/wiki/CL/beacon-api.md)
+  - [CL Networking](/wiki/CL/cl-networking.md)
 - Development
   - [Core development](/wiki/dev/core-development.md)
-  - [Network upgrades](/wiki/dev/upgrades.md)
+  - [Coordination](/wiki/dev/pm.md)
+  - [Dev Resources](/wiki/dev/cs-resources.md)
 - Testing and security
   - [Testing overview](/wiki/testing/overview.md)
   - [Incidents](/wiki/testing/incidents.md)
   - [hive](/wiki/testing/hive.md)
-  - Formal Verification
 - Research
   - [Roadmap overview](/wiki/research/roadmap.md)
   - [Scaling](/wiki/research/scaling/scaling.md)
     - [Core Changes](/wiki/research/scaling/core-changes/core-changes.md)
     - [EIP-4844](/wiki/research/scaling/core-changes/eip-4844.md)
-    - Blobs
-    - Sharding
-    - Statelessness
-    - Purge
-  - MEV
-    - PBS
-    - Censorship
-  - Proof of Stake
-    - [Upgrades](/docs/wiki/research/Beacon%20Chain%20Upgrades.md)
-    - SSF
-    - SSLE
-  - [Light Clients](/wiki/research/light-clients.md)
-  - Privacy
-  - AA
-  - ASE
-  - EOF
-  - Portal Network
+  - [MEV](/wiki/research/PBS/mev.md)
+    - [MEV-boost](/wiki/research/PBS/mev-boost.md)
+  - [PBS](/wiki/research/PBS/pbs.md)
+    - [ePBS](/wiki/research/PBS/ePBS.md)
+      - [ePBS Design Specs](/wiki/research/PBS/ePBS-Specs.md)
+    - [PTC](/wiki/research/PBS/PTC.md)
+    - [PEPC](/wiki/research/PBS/PEPC.md)
+    - [TBHL](/wiki/research/PBS/TBHL.md)
+  - Preconfirmations
+    - [Preconfirmations](/wiki/research/Preconfirmations/Preconfirmations.md)
+    - [Based Sequencing with Preconfs](/wiki/research/Preconfirmations/BasedSequencingPreconfs.md)
 - [Cryptography](/wiki/Cryptography/intro.md)
-  - [ECDSA](/wiki/Cryptography/ecdsa.md)
+  - [ECDSA](/wiki/Cryptography/ecdsa.md) 
+  - [Keccak256](/wiki/Cryptography/keccak256.md)
   - BLS
   - [Commitments]
-    - Polynomials
-    - Commitment schemes
-  - ZK
+    - [KZG](/docs/wiki/Cryptography/KZG.md)
+  - [Post-Quantum Cryptography](/wiki/Cryptography/post-quantum-cryptography.md)
 - [Protocol Fellowship](/wiki/epf.md)
 
 - **Wiki Info**

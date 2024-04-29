@@ -20,42 +20,37 @@ Weekly topics, their presentations and materials can be all found in this folder
 
 The first part of the program consists of 5 weeks with introductions to high level domains of the protocol. 
 
-| Date        | Topic                              | Speaker                 |
-|-------------|------------------------------------|-------------------------|
-| February 19 | Intro to EPS and Ethereum protocol | Josh Davis, Mario Havel |
-| February 26 | Execution Layer                    | Lightclient             |
-| March 4     | Consensus layer                    | Alex Stokes             |
-| March 11    | Testing and security               | Mario Vega              |
-| March 18    | Roadmap and research               | Domothy                 |
+| Date        | Topic                              | Speaker                                                                                          |
+| ----------- | ---------------------------------- | ------------------------------------------------------------------------------------------------ |
+| February 19 | Intro to EPS and Ethereum protocol | [Josh Davis](https://github.com/JoshDavisLight), [Mario Havel](https://github.com/taxmeifyoucan) |
+| February 26 | Execution Layer                    | [Lightclient](https://github.com/lightclient)                                                    |
+| March 4     | Consensus layer                    | [Alex Stokes](https://github.com/ralexstokes)                                                    |
+| March 11    | Testing and security               | [Mario Vega](https://github.com/marioevz)                                                        |
+| March 18    | Roadmap and research               | [Domothy](https://github.com/domothyb)                                                           |
 
 The second part of the program offers two distinct tracks focused on development and research with deeper dive into each domain. 
 
-| Date     | Topic                         | Speaker                    | Track       |
-| -------- | ----------------------------- | -------------------------- | ----------- |
-| March 25 | Consensus and Execution specs | Hsiao-Wei Wang, Sam Wilson | Development |
-| March 27 | Sharding and DAS              | Dankrad Feist              | Research    |
-| April 1  | Execution client architecture | Dragan Pilipovic           | Development |
-| April 3  | Verkle trees                  | Josh Rudolf                | Research    |
-| April 8  | Consensus client architecture | Paul Harris                | Development |
-| April 10 | MEV and censorship            | Barnabe Monnot             | Research    |
-| April 15 | Devops and testing            | Paritosh                   | Development |
-| April 17 | Purge and Portal Network      | Piper Merriam              | Research    |
-| April 22 | Cryptographic precompiles     |                            | Development |
-| April 24 | SSF and PoS Upgrades          | Francesco D’Amato          | Research    |
-| April 29 | Wrap up                       |                            |             |
+
+| Date     | Topic                         | Speaker                                                                                | Track       |
+| -------- | ----------------------------- | -------------------------------------------------------------------------------------- | ----------- |
+| March 25 | Consensus and Execution specs | [Hsiao-Wei Wang](https://github.com/hwwhww), [Sam Wilson](https://github.com/SamWilsn) | Development |
+| March 27 | Sharding and DAS              | [Dankrad Feist](https://github.com/dankrad)                                            | Research    |
+| April 1  | Execution client architecture | [Dragan Pilipovic](https://github.com/dragan2234)                                      | Development |
+| April 3  | Verkle trees                  | [Josh Rudolf](https://github.com/jrudolf)                                              | Research    |
+| April 8  | Consensus client architecture | [Paul Harris](https://github.com/rolfyone)                                             | Development |
+| April 10 | MEV and censorship            | [Barnabe Monnot](https://github.com/barnabemonnot)                                     | Research    |
+| April 15 | Devops and testing            | [Parithosh](https://github.com/parithosh)                                               | Development |
+| April 17 | Purge and Portal Network      | [Piper Merriam](https://github.com/pipermerriam)                                       | Research    |
+| April 22 | EL precompiles                |  Danno Ferrin                                                                          | Development |
+| April 24 | SSF and PoS Upgrades          | [Francesco D’Amato](https://github.com/fradamt)                                        | Research    |
+| April 29 | Wrap up                       |                                                                                        |             |
 
 
 ### Streams and recordings
 
 Talks and calls are announced week in advance based on the schedule above. Recordings of all talks can be found on [Youtube](https://www.youtube.com/@ethprotocolfellows) or [StreamEth](https://streameth.org/archive?organization=ethereum_protocol_fellowship) archive. 
 
-Apart of these, there are less regular, ad-hoc hangout calls for informal chats and getting to know each other. Join the Discord group to get notified about all the events. 
-
-### Streams and recordings
-
-Talks and calls are announced week in advance based on the schedule above. Recordings of all talks can be found on [Youtube](https://www.youtube.com/@ethprotocolfellows) or [StreamEth](https://streameth.org/archive?organization=ethereum_protocol_fellowship) archive. 
-
-Apart of these, there are less regular, ad-hoc hangout calls for informal chats and getting to know each other. Join the Discord group to get notified about all the events. 
+Apart from weekly lectures, there are less regular, ad-hoc hangout calls for informal chats and calls for wiki contributors working the content. Join the Discord group to get notified about all of these events. 
 
 ## Participate
 
@@ -69,11 +64,11 @@ While this program is designed to act as a precursor to the Ethereum Protocol Fe
 
 ## Important links
 
-- Discord server: https://discord.gg/addwpQbhpq
-- Weekly talks stream: https://streameth.org/65cf97e702e803dbd57d823f/epf_study_group, 
-- Sessions calendar: https://calendar.google.com/calendar/u/0?cid=ZXBmc3R1ZHlncm91cEBnbWFpbC5jb20 ([ics format](https://calendar.google.com/calendar/ical/epfstudygroup%40gmail.com/public/basic.ics))
-
-- EPF mailing list: https://groups.google.com/a/ethereum.org/g/protocol-fellowship-group
+- [Discord server](https://discord.gg/addwpQbhpq)
+- [Weekly talks on StreamEth](https://streameth.org/65cf97e702e803dbd57d823f/epf_study_group)
+- [Youtube](https://www.youtube.com/@ethprotocolfellows)
+- [Sessions calendar](https://calendar.google.com/calendar/u/0?cid=ZXBmc3R1ZHlncm91cEBnbWFpbC5jb20) 
+- [EPF mailing list](https://groups.google.com/a/ethereum.org/g/protocol-fellowship-group)
 
 ## Calls troubleshooting
 
