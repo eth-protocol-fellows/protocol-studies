@@ -53,6 +53,7 @@ blocksize
 bloXroute
 bloXroute's
 BLS
+Bogotá
 Boneh
 bool
 booleans
@@ -521,6 +522,7 @@ stf
 StreamEth
 subnets
 suboptimal
+subprotocols
 Summa
 systemd
 Takenobu
