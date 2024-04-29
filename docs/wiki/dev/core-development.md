@@ -1,5 +1,7 @@
 # Core development 
 
+> :warning: This article is a [stub](https://en.wikipedia.org/wiki/Wikipedia:Stub), help the wiki by [contributing](/contributing.md) and expanding it.
+
 The work on core protocol specification, implmenetation and testing is commonly refered to as core development. Core devs are contributors the client software, its validation and related tooling for building the protocol, all domains covered in this wiki.
 
 There are many implementation of both [consensus](/wiki/CL/cl-clients.md) and [execution](/wiki/EL/el-clients.md) layer developed by various independent teams. Together with teams working on research, testing and other infrastracture, core developers are maintaining the base technology used by everyone building on Ethereum.

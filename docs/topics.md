@@ -39,7 +39,7 @@
 [History expiry]()  
 
 ### J
-[JSON-RPC]
+[JSON-RPC](/wiki/EL/JSON-RPC.md)
 
 ### K
 
@@ -61,7 +61,7 @@
 [Roadmap]
 
 ### S
-[Statlessness]
+[Statelessness]
 [SSF]
 [SSZ]
 
