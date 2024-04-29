@@ -1,7 +1,7 @@
 - [Home](readme.md)
 - **Study Group**
 - [EPFsg overview](/eps/intro.md)
-- Schedule
+- Presentations
   - [Week 0](/eps/week0.md)
   - [Week 1](/eps/week1.md)
   - [Week 2](/eps/week2.md)

@@ -71,6 +71,7 @@ canonicalized
 Carb
 cartelization
 Casper
+CDAP
 cdot
 cdots
 centralisation
@@ -106,8 +107,8 @@ Cryptopedia
 cryptosystem
 cybersecurity
 Cypherpunks
-D'Amato
 Daemen
+D'Amato
 Dankrad
 danksharding
 Danno
@@ -135,6 +136,7 @@ Devs
 DEX
 Diffie
 DILITHIUM
+Discordo
 discv
 distro
 docsify
@@ -194,9 +196,9 @@ ethresear
 ethresearch
 ethroadmap
 EVM
-EVM's
 evmlab
 EVMONE
+EVM's
 excalidraw
 exchangeTransitionConfigurationV
 Explainer
@@ -252,6 +254,7 @@ Hager
 hoc
 Holesky
 homomorphic
+Hotz
 Hsiao
 HSP
 Hulsing
@@ -305,6 +308,7 @@ libp
 lifecycle
 Lightclient
 Lightclient's
+linearizer
 liveness
 LLM
 LLMs
@@ -352,7 +356,6 @@ MUL
 Murr
 MVE
 mvepbs
-n't
 Nagu
 namespace
 namespaces
@@ -369,6 +372,7 @@ NIST's
 Noam
 NOXX
 NSS
+n't
 Occhipinti
 Odayan
 OFAC
@@ -534,6 +538,7 @@ testnets
 Tetris
 textnormal
 timeframe
+tinygrad
 tldr
 TLS
 TODO
@@ -599,6 +604,3 @@ zkEVMs
 ZKSNARK
 ZKSNARKs
 Zksync
-Hotz
-linearizer
-tinygrad

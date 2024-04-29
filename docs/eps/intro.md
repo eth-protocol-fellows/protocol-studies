@@ -1,64 +1,66 @@
 # EPF Protocol Studies
 
-Ethereum Protocol Fellowship Study Group (EPFsg) is a learning community formed to gather knowledge and educate itself about the Ethereum protocol. 
+Ethereum Protocol Fellowship Study Group (EPFsg) is a community formed gathering knowledge, learning and educating about the Ethereum protocol. 
 
-The protocol evolves and grows quickly, it's an always-changing infinite garden. To sustain its credible neutrality, this pace should be reflected in the community as well. Various communities using, building or living on Ethereum need to be able to learn and become involved in the core protocol. The complexity of the architecture, codebases and dynamic development with scattered resources can discourage many talented people from participating on the core level. The protocol study group aims to bridge the gap by introducing a curriculum focused on all parts of the Ethereum stack & roadmap and gathering people interested in diving into it. 
+The protocol evolves and grows quickly, it's an always-changing infinite garden. To sustain its credible neutrality, this pace should be reflected in the community as well. Various communities using, building or living on Ethereum need to be able to learn and become involved in the core protocol. The complexity of the architecture, codebases and dynamic development with scattered resources can discourage many talented people from participating on the core level. The protocol study group aims to bridge the gap by introducing a curriculum focused on all parts of the Ethereum stack, building a wiki and gathering people interested in diving into it. 
 
-> Check also the announcement blog post https://blog.ethereum.org/2024/02/07/epf-study-group
+> The study group was originally running from February to April 2024 as an open open, 10-week study program. Although these regular presentations are over, all of the content produced is available here and the community is still active. 
 
 ## Program Structure
 
-The program is an open, 10-week study program divided into 2 phases. 
+The study group content is structured in 2 stages of weekly presentations. To follow the study group, you can watch presentations and read related resources week by week. 
 
 The first half is dedicated to general understanding of the internal mechanisms of the protocol, its architecture and basic concepts. The second half offers 2 different tracks - development and research. Presentations in each track offer a deeper dive into specific topics within the R&D domains.  
 
-Each online session will be led by core developers and researchers, come with pre-meeting reading material to get you familiar with the topic and terminology as well as a post-meeting activity to strengthen and solidify your understanding.
+Each session is led by core developer or researcher, comes wit reading materials to get you familiar with the topic context and some also include exercises to strengthen  and practice your understanding.
 
-Weekly topics, their presentations and materials can be all found in this folder. Checkout the study group content in this folder, start with [Week 0](eps/week0.md).
+Weekly sessions, their presentations and materials can be all found in this section under Presentations. 
 
-### Schedule
+### Presentations 
 
-The first part of the program consists of 5 weeks with introductions to high level domains of the protocol. 
+The first part of the program consists of 6 sessions with introductions to high level domains of the protocol. 
 
-| Date        | Topic                              | Speaker                                                                                          |
-| ----------- | ---------------------------------- | ------------------------------------------------------------------------------------------------ |
-| February 19 | Intro to EPS and Ethereum protocol | [Josh Davis](https://github.com/JoshDavisLight), [Mario Havel](https://github.com/taxmeifyoucan) |
-| February 26 | Execution Layer                    | [Lightclient](https://github.com/lightclient)                                                    |
-| March 4     | Consensus layer                    | [Alex Stokes](https://github.com/ralexstokes)                                                    |
-| March 11    | Testing and security               | [Mario Vega](https://github.com/marioevz)                                                        |
-| March 18    | Roadmap and research               | [Domothy](https://github.com/domothyb)                                                           |
+> Because some speakers did more technical talks than others, the recommended order for newcomers to start is Week 1, Week 3, Week 2, Week 5 Node workshop and then Week 4 and 5. 
+
+
+| Week #                          | Topic                              | Speaker                                                                                          |
+| ------------------------------- | ---------------------------------- | ------------------------------------------------------------------------------------------------ |
+| [Week 1](/eps/week1.md)         | Intro to EPS and Ethereum protocol | [Josh Davis](https://github.com/JoshDavisLight), [Mario Havel](https://github.com/taxmeifyoucan) |
+| [Week 2](/epf/week2.md)         | Execution Layer                    | [Lightclient](https://github.com/lightclient)                                                    |
+| [Week 3](/epf/week3.md)         | Consensus layer                    | [Alex Stokes](https://github.com/ralexstokes)                                                    |
+| [Week 4](/epf/week4.md)         | Testing and security               | [Mario Vega](https://github.com/marioevz)                                                        |
+| [Week 5](/epf/week5.md)         | Roadmap and research               | [Domothy](https://github.com/domothyb)                                                           |
+| [Week 5](/epf/node_workshop.md) | Node workshop                      | [Mario](https://github.com/taxmeifyoucan)                                                        |
 
 The second part of the program offers two distinct tracks focused on development and research with deeper dive into each domain. 
 
 
-| Date     | Topic                         | Speaker                                                                                | Track       |
-| -------- | ----------------------------- | -------------------------------------------------------------------------------------- | ----------- |
-| March 25 | Consensus and Execution specs | [Hsiao-Wei Wang](https://github.com/hwwhww), [Sam Wilson](https://github.com/SamWilsn) | Development |
-| March 27 | Sharding and DAS              | [Dankrad Feist](https://github.com/dankrad)                                            | Research    |
-| April 1  | Execution client architecture | [Dragan Pilipovic](https://github.com/dragan2234)                                      | Development |
-| April 3  | Verkle trees                  | [Josh Rudolf](https://github.com/jrudolf)                                              | Research    |
-| April 8  | Consensus client architecture | [Paul Harris](https://github.com/rolfyone)                                             | Development |
-| April 10 | MEV and censorship            | [Barnabe Monnot](https://github.com/barnabemonnot)                                     | Research    |
-| April 15 | Devops and testing            | [Parithosh](https://github.com/parithosh)                                               | Development |
-| April 17 | Purge and Portal Network      | [Piper Merriam](https://github.com/pipermerriam)                                       | Research    |
-| April 22 | EL precompiles                |  Danno Ferrin                                                                          | Development |
-| April 24 | SSF and PoS Upgrades          | [Francesco D’Amato](https://github.com/fradamt)                                        | Research    |
-| April 29 | Wrap up                       |                                                                                        |             |
-
+| Week #, track                               | Topic                         | Speaker                                                                                |
+| ------------------------------------------- | ----------------------------- | -------------------------------------------------------------------------------------- |
+| [Week 6 Development](/epf/week6-dev.md)     | Consensus and Execution specs | [Hsiao-Wei Wang](https://github.com/hwwhww), [Sam Wilson](https://github.com/SamWilsn) |
+| [Week 6 Research](/epf/week6-research.md)   | Sharding and DAS              | [Dankrad Feist](https://github.com/dankrad)                                            |
+| [Week 7 Development](/epf/week7-dev.md)     | Execution client architecture | [Dragan Pilipovic](https://github.com/dragan2234)                                      |
+| [Week 7 Research](/epf/week7-research.md)   | Verkle trees                  | [Josh Rudolf](https://github.com/jrudolf)                                              |
+| [Week 8 Development](/epf/week8-dev.md)     | Consensus client architecture | [Paul Harris](https://github.com/rolfyone)                                             |
+| [Week 8 Research](/epf/week8-research.md)   | MEV and censorship            | [Barnabe Monnot](https://github.com/barnabemonnot)                                     |
+| [Week 9 Development](/epf/week9-dev.md)     | Devops and testing            | [Parithosh](https://github.com/parithosh)                                              |
+| [Week 9 Research](/epf/week9-research.md)   | Purge and Portal Network      | [Piper Merriam](https://github.com/pipermerriam)                                       |
+| [Week 10 Development](/epf/week10-dev.md)   | EL precompiles                | [Danno Ferrin](https://github.com/shemnon)                                             |
+| [Week 10 Research](/epf/week10-research.md) | SSF and PoS Upgrades          | [Francesco D’Amato](https://github.com/fradamt)                                        |
 
 ### Streams and recordings
 
 Talks and calls are announced week in advance based on the schedule above. Recordings of all talks can be found on [Youtube](https://www.youtube.com/@ethprotocolfellows) or [StreamEth](https://streameth.org/archive?organization=ethereum_protocol_fellowship) archive. 
 
-Apart from weekly lectures, there are less regular, ad-hoc hangout calls for informal chats and calls for wiki contributors working the content. Join the Discord group to get notified about all of these events. 
+Apart from weekly lectures, there are less regular, ad-hoc hangout calls for informal chats and calls for wiki contributors working the content. Join the Discord group to get notified about all of these events.
 
 ## Participate
 
-The first instance of EPF study group is starting in February 2024. It's completely open and permissionless, and it is up to each participant as to how they want to approach it. Whether you want to learn as much as possible, focus only on certain topics or share your knowledge with others, you are welcomed. Although it's opened, [you can register](https://forms.gle/7TqmryC217EPwgqr9) to help us tailor the experience better.
+The study group is an open and permissionless, and it is up to each participant as to how they want to approach it. Whether you want to learn as much as possible, focus only on certain topics or share your knowledge with others, you are welcomed. 
 
-> Join our community [Discord server](https://discord.gg/addwpQbhpq)
+> Join our community in [Discord server](https://discord.gg/addwpQbhpq). We use it for the easiest community engagement but we are aware that Discord is proprietary and doesn't respect user privacy. Consider using alternative FOSS clients like [Dissent](https://github.com/diamondburned/dissent) or [Discordo](https://github.com/ayn2op/discordo).
 
-Study group participants will collaboratively develop a comprehensive wiki, serving as an evolving knowledge base for current and future core developers. This will provide students with practical experience in contributing to open source resources, while gaining invaluable experience in documentation and community-driven development.
+Study group participants collaboratively develop the [Protocol wiki](/wiki/wiki-intro.md), serving as an evolving knowledge base for current and future core developers. This can provide students with practical experience in contributing to open source resources, while gaining invaluable experience in documentation and community-driven development.
 
 While this program is designed to act as a precursor to the Ethereum Protocol Fellowship, the study group is for anyone that is interested in learning more about the inner workings of the Ethereum Protocol. Those that have some general knowledge or use of Ethereum and/or blockchains as well as those that have some computer science, technical, or developer experience will get the most from this program.
 
@@ -69,6 +71,7 @@ While this program is designed to act as a precursor to the Ethereum Protocol Fe
 - [Youtube](https://www.youtube.com/@ethprotocolfellows)
 - [Sessions calendar](https://calendar.google.com/calendar/u/0?cid=ZXBmc3R1ZHlncm91cEBnbWFpbC5jb20) 
 - [EPF mailing list](https://groups.google.com/a/ethereum.org/g/protocol-fellowship-group)
+- [EF Blog](https://blog.ethereum.org)
 
 ## Calls troubleshooting
 
