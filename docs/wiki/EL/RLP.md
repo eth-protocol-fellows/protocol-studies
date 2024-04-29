@@ -1,12 +1,12 @@
 # Recursive-Length Prefix (RLP) Serialization
 
-## Overview
+Recursive Length Prefix (RLP) is a core serialization protocol used within the execution layer for encoding and parsing data. It is designed to serialize data and produce a structure readable by all client software. It is used for everything from transaction data to the entire state of the blockchain. This wiki page explores the internals of RLP, its encoding/decoding rules, tools available and its role in Ethereum's functionality.
 
-Recursive Length Prefix (RLP) is a core serialization protocol used within the execution layer to encode data. It is designed to serialize data to produce a structure readable by all client software. It is used for everything from transaction data to the entire state of the blockchain. This wiki page explores the internals of RLP, its encoding/decoding rules, tools available and its role in Ethereum's functionality.
+## Data Serialization in Ethereum
 
-## Understanding Data Serialization in Ethereum
+Data serialization is the process of converting data structures or objects into a byte stream for storage, transmission, or later reconstruction. In distributed systems like Ethereum, serialization is crucial for transmitting data across network nodes reliably and efficiently. Clients written in different languages need to be able to process data the same way. Data communicated to other nodes or exported by the client need to have a standard format. While there are common serialization formats like JSON, XML or Protobuf, Ethereum uses its own protocols for its simplicity and effectiveness in encoding nested arrays of bytes.
 
-Data serialization is the process of converting data structures or objects into a byte stream for storage, transmission, or later reconstruction. In distributed systems like Ethereum, serialization is crucial for transmitting data across network nodes reliably and efficiently. While common serialization formats include JSON and XML, Ethereum uses RLP due to its simplicity and effectiveness in encoding nested arrays of bytes.
+> Ethereum actually utilizes 2 formats: RLP and Simple Serialize (SSZ) which is more modern standard used by consensus layer.
 
 ## How RLP Algorithm works
 
@@ -171,7 +171,6 @@ The RLP decoding process is based on the structure and specifics of the encoded 
 RLP was created with Ethereum and is tailored to meet its specific needs:
 - Minimalistic Design: It focuses purely on storing structure without imposing data type definitions.
 - Consistency: It guarantees byte-perfect consistency across different implementations, crucial for the deterministic nature required in blockchain operations.
-
 
 ## RLP Tools
 
