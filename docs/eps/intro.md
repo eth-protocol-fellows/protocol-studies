@@ -37,7 +37,7 @@ The second part of the program offers two distinct tracks focused on development
 | ------------------------------------------- | ----------------------------- | -------------------------------------------------------------------------------------- |
 | [Week 6 Development](/eps/week6-dev.md)     | Consensus and Execution specs | [Hsiao-Wei Wang](https://github.com/hwwhww), [Sam Wilson](https://github.com/SamWilsn) |
 | [Week 6 Research](/eps/week6-research.md)   | Sharding and DAS              | [Dankrad Feist](https://github.com/dankrad)                                            |
-| [Week 7 Developsment](/eps/week7-dev.md)     | Execution client architecture | [Dragan Pilipovic](https://github.com/dragan2234)                                      |
+| [Week 7 Development](/eps/week7-dev.md)     | Execution client architecture | [Dragan Pilipovic](https://github.com/dragan2234)                                      |
 | [Week 7 Research](/eps/week7-research.md)   | Verkle trees                  | [Josh Rudolf](https://github.com/jrudolf)                                              |
 | [Week 8 Development](/eps/week8-dev.md)     | Consensus client architecture | [Paul Harris](https://github.com/rolfyone)                                             |
 | [Week 8 Research](/eps/week8-research.md)   | MEV and censorship            | [Barnabe Monnot](https://github.com/barnabemonnot)                                     |
@@ -86,7 +86,7 @@ For our weekly meetings, we are using a self-hosted FOSS platform Jitsi. Even th
 - **Will I learn to develop applications on the Ethereum blockchain?**
     - No. This program is not focused on Solidity or development of decentralized applications. 
 - **When does it start and is the duration?**
-    - Program will start in February 2024 and continue for 10 weeks, finishing by end of April. 
+    - The program ran from February 2024 and continued for 10 weeks, concluding by the end of April.
 - **Am I automatically accepted to EPF after attending EPFsg**
     - No. The study group is a great way to prepare for EPF, but it doesn't guarantee anything. However, EPF is a permissionless program, so you can always participate. 
 - **Where is the study group located?**
