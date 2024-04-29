@@ -194,7 +194,7 @@ TODO Link to wiki page
 
 ### RLP
 
-TODO Link to wiki page
+[Wiki - RLP](/wiki/EL/RLP.md)
 
 ### StateDB
 
