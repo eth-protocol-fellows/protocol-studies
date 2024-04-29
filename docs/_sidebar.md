@@ -1,7 +1,7 @@
 - [Home](readme.md)
 - **Study Group**
 - [EPFsg overview](/eps/intro.md)
-- Schedule
+- Presentations
   - [Week 0](/eps/week0.md)
   - [Week 1](/eps/week1.md)
   - [Week 2](/eps/week2.md)
@@ -37,6 +37,7 @@
   - [Transaction anatomy](/wiki/EL/transaction.md)
   - [JSON-RPC](/wiki/EL/JSON-RPC.md)
   - [DevP2P](/wiki/EL/devp2p.md)
+  - [RLP Serialization](/docs/wiki/EL/RLP.md)
 - Consensus Layer
   - [Overview](/wiki/CL/overview.md)
   - [CL Specs](/wiki/CL/cl-specs.md)

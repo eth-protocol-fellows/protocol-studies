@@ -3,6 +3,7 @@ aantop
 ABI
 accelerometer
 ACD
+ACL
 addons
 Aleth
 allowfullscreen
@@ -55,10 +56,12 @@ BLS
 Bogotá
 Boneh
 bool
+booleans
 bootup
 borderless
 BPE
 broadcasted
+BSON
 Buterin
 Buterin's
 bypassability
@@ -68,6 +71,7 @@ canonicalized
 Carb
 cartelization
 Casper
+CDAP
 cdot
 cdots
 centralisation
@@ -83,6 +87,7 @@ codebase
 codebases
 CODECOPY
 coinbase
+commoditized
 Composability
 composable
 config
@@ -132,6 +137,7 @@ Devs
 DEX
 Diffie
 DILITHIUM
+Discordo
 discv
 distro
 docsify
@@ -194,6 +200,7 @@ EVM
 evmlab
 EVMONE
 EVM's
+EVMs
 excalidraw
 exchangeTransitionConfigurationV
 Explainer
@@ -246,9 +253,11 @@ Grandine
 Guillaume
 hackmd
 Hager
+Herc’s
 hoc
 Holesky
 homomorphic
+Hotz
 Hsiao
 HSP
 Hulsing
@@ -302,6 +311,7 @@ libp
 lifecycle
 Lightclient
 Lightclient's
+linearizer
 liveness
 LLM
 LLMs
@@ -332,6 +342,7 @@ Merkleize
 MEV
 mevboost
 Michaël
+minimalistic
 Mitigations
 mload
 MMPTs
@@ -366,6 +377,7 @@ NOXX
 NSS
 n't
 Occhipinti
+Odayan
 OFAC
 Offchain
 offsites
@@ -425,6 +437,7 @@ privateKey
 probabilistically
 programmability
 proto
+protobuf
 prover
 Prover's
 Provers
@@ -517,6 +530,7 @@ StreamEth
 subnets
 suboptimal
 subprotocols
+substack
 Summa
 systemd
 Takenobu
@@ -528,6 +542,7 @@ testnets
 Tetris
 textnormal
 timeframe
+tinygrad
 tldr
 TLS
 TODO
@@ -592,7 +607,6 @@ zk
 zkEVMs
 ZKSNARK
 ZKSNARKs
-Zksync
 Schnorr
 IETF
 IRTF
@@ -613,3 +627,4 @@ testnets
 Hotz
 linearizer
 tinygrad
+Zksync
