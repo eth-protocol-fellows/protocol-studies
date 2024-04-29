@@ -566,3 +566,11 @@ Zksync
 CLRS
 Endian
 Noam
+Aditional
+Goeril
+Goerli
+Pyrmont
+financials
+performace
+performence
+testnets
