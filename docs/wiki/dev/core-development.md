@@ -1,90 +1,18 @@
-# Life of a Core Developer
+# Core development 
+
+The work on core protocol specification, implmenetation and testing is commonly refered to as core development. Core devs are contributors the client software, its validation and related tooling for building the protocol, all domains covered in this wiki.
+
+There are many implementation of both [consensus](/wiki/CL/cl-clients.md) and [execution](/wiki/EL/el-clients.md) layer developed by various independent teams. Together with teams working on research, testing and other infrastracture, core developers are maintaining the base technology used by everyone building on Ethereum.
 
 ![Space Core Devs](../../images/space-core-devs.png)
 
-[Hsiao-Wei Wang](https://github.com/hwwhww) shared the graphic above in a [presentation](https://www.youtube.com/watch?v=0lBrd2_fPPU) she gave at ETHGlobal Tokyo in April 2023. The presentation is titled “A Journey of an Ethereum Core Dev/Researcher” If you have seen this graphic in other presentations, please share!
+[Hsiao-Wei Wang](https://github.com/hwwhww) shared the graphic above in her presentation _[A Journey of an Ethereum Core Dev/Researcher”](https://www.youtube.com/watch?v=0lBrd2_fPPU)_ she gave at ETHGlobal Tokyo in April 2023. The graphic symbolizes the connection between a space station and the efforts involved from various teams to bring it to life.
 
-The graphic symbolizes the connection between a space station and the efforts involved from various teams to bring it to life. You may have also heard Ethereum called the Infinite Garden. With respect to the graphic above, the Infinite Garden could be referred to as space.  
+Teams working on separate clients are distributed across diffent organizations, companies or non-profits. They implement the same specification in different languages with various features and performance profiles. The [client diversity](https://ethereum.org/developers/docs/nodes-and-clients/client-diversity) is a fundamental principle embraced by Ethereum. The range of different clients can ensure stability and security of the network while keeping the core development decentralized and open to everyone. 
 
-This page will provide an overview of each of the teams/contributors that make the Ethereum Protocol run and what is involved to keep the space station humming. 
-
-One of the most important themes to understand about the different teams working together is that they are all working amongst themselves and amongst eachother in a very decentralized manner. Progress is achieved through discussions carried out in weekly meetings (Exeuction and Consensus Layer calls, EIPIP calls and various "Breakout Room" calls. Outside of calls, discussions are held in the Ethereum R&D Discord channel. Core Devs are writing EIPs, reviewing comments, debating issues/roadmap/frameworks/etc, testing BAU and getting ready for next big releases.  
-
-This page will be split up into several categories: Ethereum Foundation (EF) teams, Execution Layer (EL) client teams, Consensus Layer (CL) client teams and other independent teams/contributors. 
-
-**Ethereum Foundation (EF) teams:**
-
-EF Testing:
-
-EF DevOps:
-
-EF Ipsilon:
-
-EF Portal:
-
-EF Protocol Support:
-
-EF Cryptography:
-
-EF Research:
-
-EF Robust Incentives Group (RIG):
-
-EF Security:
-
-EF Stateless Consensus:
-
-**Exeuction Layer (EL) client teams:**
-
-Hyperledger Besu:
-
-Geth:
-
-Nethermind:
-
-Erigon:
-
-Reth:
-
-EF Javascript:
-
-**Consensus Layer (CL) client teams:**
-
-Lighthouse:
-
-Lodestar:
-
-Prysm:
-
-Status Nimbus:
-
-Teku:
-
-**Independent teams/contributors:**
-
-TXRX:
-
-Ethereum Cat Herders:
-
-Independent Devs:
-
-ConsenSys DDS:
-
-Others:
-
-**Questions to keep in mind:**
-
-What is it like to work on the core protocol? 
-
-What is it like to work in FOSS?
-
-Do core developers get paid?
+Altough different teams come from different organization, they all work together and collaborate on improving the whole network. Progress is achieved through discussions in public channels, mainly carried out in weekly meetings. These calls are public and tracked in [project management repo](https://github.com/ethereum/pm), including ACD - Execution and Consensus Layer calls, various "Breakout Room" and working group calls. Outside of calls, discussions are held in the Ethereum R&D Discord channel, Eth Magicians forum and EthResearch forum. 
 
 # Appendix
-
-[Re: PATCH eventfs: Have inodes have unique inode numbers](https://lkml.iu.edu/hypermail/linux/kernel/2401.3/04208.html)
-
-[George Hotz | Programming | rewriting linearizer (tinygrad) | Day In The Life Of A Software Engineer](https://www.youtube.com/watch?v=R-Xr1JRF6bY)
 
 [A Day in the Life of a Dev: Ethereum’s Justin Florentine](https://www.coindesk.com/consensus-magazine/2023/02/22/a-day-in-the-life-of-a-dev-ethereums-justin-florentine/)
 
