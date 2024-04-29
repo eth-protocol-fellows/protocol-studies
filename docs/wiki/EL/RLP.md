@@ -6,21 +6,72 @@ Recursive Length Prefix (RLP) is a core serialization protocol used within the e
 
 ## Understanding Data Serialization in Ethereum
 
-![Data Serialization](/docs/images/el-architecture/data-serialization.png)
-
-_Figure: Data Serialization Flow_
-
-
 Data serialization is the process of converting data structures or objects into a byte stream for storage, transmission, or later reconstruction. In distributed systems like Ethereum, serialization is crucial for transmitting data across network nodes reliably and efficiently. While common serialization formats include JSON and XML, Ethereum uses RLP due to its simplicity and effectiveness in encoding nested arrays of bytes.
 
-## The Need for RLP in Ethereum
+## How RLP Algorithm works
 
-> RLP is intended to be a highly minimalistic serialization format; its sole purpose is to store nested arrays of bytes. Unlike protobuf, BSON and other existing solutions, RLP does not attempt to define any specific data types such as booleans, floats, doubles or even integers; instead, it simply exists to store structure, in the form of nested arrays, and leaves it up to the protocol to determine the meaning of the arrays.
-> -- Ethereum's design rationale
+**RLP encoding algorithm**
 
-RLP was created with Ethereum and is tailored to meet its specific needs:
-- Minimalistic Design: It focuses purely on storing structure without imposing data type definitions.
-- Consistency: It guarantees byte-perfect consistency across different implementations, crucial for the deterministic nature required in blockchain operations.
+Here is a flow chart describing how RLP encoding algorithm works.
+
+_Note that in some RLP tools, some clients may add additional conditional cases to the flow. These additional cases are not part of the standard specification but they are useful for the clients for the correct data serialization, e.g. geth client node communicating with a Nethermind client node._
+
+```mermaid
+flowchart TD
+    A[Start: Input] --> B{Is Input null, empty string, or false?}
+    B -->|Yes| C[Encode as Single Byte 0x80]
+    B -->|No| D{Is it a Single Byte and < 0x80?}
+    D -->|Yes| E[Directly Encode the Byte]
+    D -->|No| F{Is it a String or List?}
+    F -->|String| G{String Length <= 55}
+    G -->|Yes| H[Encode with Length + 0x80]
+    G -->|No| I[Encode Length with 0xB7 + Length Bytes]
+    F -->|List| J{Total Encoded Items Length <= 55}
+    J -->|Yes| K[Encode with Total Length + 0xC0]
+    J -->|No| L[Encode Total Length with 0xF7 + Length Bytes]
+    H --> M[Output Encoded Data]
+    I --> M
+    K --> M
+    L --> M
+    E --> M
+    C --> M
+```
+
+_Figure: RLP Encoding Flow_
+
+**RLP decoding algorithm**
+
+Here is a flow chart describing how RLP decoding algorithm works.
+
+```mermaid
+flowchart TD
+    A[Start: Encoded Input] --> B{Check First Byte}
+    B -->|0x00 to 0x7F| C[Direct Byte Output]
+    B -->|0x80| D[Decode as Empty String/Null/False]
+    B -->|0x81 to 0xB7| E[Short String]
+    E --> F[Subtract 0x80 from First Byte to get Length]
+    F --> G[Output Next 'Length' Bytes as String]
+    B -->|0xB8 to 0xBF| H[Long String]
+    H --> I[Subtract 0xB7 from First Byte to get Length Bytes Count]
+    I --> J[Read Next 'Length Bytes Count' to Determine String Length]
+    J --> K[Output Next 'String Length' Bytes as String]
+    B -->|0xC0 to 0xF7| L[Short List]
+    L --> M[Subtract 0xC0 from First Byte to get Total Encoded Length]
+    M --> N[Decode Each Element in the Next 'Total Encoded Length' Bytes Recursively]
+    B -->|0xF8 to 0xFF| O[Long List]
+    O --> P[Subtract 0xF7 from First Byte to get Length Bytes Count]
+    P --> Q[Read Next 'Length Bytes Count' to Determine List Total Length]
+    Q --> R[Decode Each Element in the Next 'List Total Length' Bytes Recursively]
+    C --> S[Output Decoded Data]
+    D --> S
+    G --> S
+    K --> S
+    N --> S
+    R --> S
+```
+
+_Figure: RLP Decoding Flow_
+
 
 ## RLP Encoding Rules
 
@@ -112,75 +163,21 @@ The RLP decoding process is based on the structure and specifics of the encoded 
   - We have now decoded the second item: "dog".
 - The decoded output is `["cat", "dog"]`.
 
-## How RLP Algorithm works
+## The Need for RLP in Ethereum
 
-**RLP encoding algorithm**
+> RLP is intended to be a highly minimalistic serialization format; its sole purpose is to store nested arrays of bytes. Unlike protobuf, BSON and other existing solutions, RLP does not attempt to define any specific data types such as booleans, floats, doubles or even integers; instead, it simply exists to store structure, in the form of nested arrays, and leaves it up to the protocol to determine the meaning of the arrays.
+> -- Ethereum's design rationale
 
-Here is a flow chart describing how RLP encoding algorithm works.
-
-_Note that in some RLP tools, some clients may add additional conditional cases to the flow. These additional cases are not part of the standard specification but they are useful for the clients for the correct data serialization, e.g. geth client node communicating with a Nethermind client node._
-
-```mermaid
-flowchart TD
-    A[Start: Input] --> B{Is Input null, empty string, or false?}
-    B -->|Yes| C[Encode as Single Byte 0x80]
-    B -->|No| D{Is it a Single Byte and < 0x80?}
-    D -->|Yes| E[Directly Encode the Byte]
-    D -->|No| F{Is it a String or List?}
-    F -->|String| G{String Length <= 55}
-    G -->|Yes| H[Encode with Length + 0x80]
-    G -->|No| I[Encode Length with 0xB7 + Length Bytes]
-    F -->|List| J{Total Encoded Items Length <= 55}
-    J -->|Yes| K[Encode with Total Length + 0xC0]
-    J -->|No| L[Encode Total Length with 0xF7 + Length Bytes]
-    H --> M[Output Encoded Data]
-    I --> M
-    K --> M
-    L --> M
-    E --> M
-    C --> M
-```
-
-_Figure: RLP Encoding Flow_
-
-**RLP decoding algorithm**
-
-Here is a flow chart describing how RLP decoding algorithm works.
-
-```mermaid
-flowchart TD
-    A[Start: Encoded Input] --> B{Check First Byte}
-    B -->|0x00 to 0x7F| C[Direct Byte Output]
-    B -->|0x80| D[Decode as Empty String/Null/False]
-    B -->|0x81 to 0xB7| E[Short String]
-    E --> F[Subtract 0x80 from First Byte to get Length]
-    F --> G[Output Next 'Length' Bytes as String]
-    B -->|0xB8 to 0xBF| H[Long String]
-    H --> I[Subtract 0xB7 from First Byte to get Length Bytes Count]
-    I --> J[Read Next 'Length Bytes Count' to Determine String Length]
-    J --> K[Output Next 'String Length' Bytes as String]
-    B -->|0xC0 to 0xF7| L[Short List]
-    L --> M[Subtract 0xC0 from First Byte to get Total Encoded Length]
-    M --> N[Decode Each Element in the Next 'Total Encoded Length' Bytes Recursively]
-    B -->|0xF8 to 0xFF| O[Long List]
-    O --> P[Subtract 0xF7 from First Byte to get Length Bytes Count]
-    P --> Q[Read Next 'Length Bytes Count' to Determine List Total Length]
-    Q --> R[Decode Each Element in the Next 'List Total Length' Bytes Recursively]
-    C --> S[Output Decoded Data]
-    D --> S
-    G --> S
-    K --> S
-    N --> S
-    R --> S
-```
-
-_Figure: RLP Decoding Flow_
+RLP was created with Ethereum and is tailored to meet its specific needs:
+- Minimalistic Design: It focuses purely on storing structure without imposing data type definitions.
+- Consistency: It guarantees byte-perfect consistency across different implementations, crucial for the deterministic nature required in blockchain operations.
 
 
 ## RLP Tools
 
 There are many libraries available for RLP implementations in Ethereum. Here are few tools:
 - [Geth RLP](https://github.com/ethereum/go-ethereum/tree/master/rlp)
+- [RLP Dump](https://github.com/ethereum/go-ethereum/tree/master/cmd/rlpdump)
 - [RLP for Node.js and the browser.](https://github.com/ethereumjs/ethereumjs-monorepo/tree/master/packages/rlp)
 - [Python RLP serialization library.](https://github.com/ethereum/pyrlp)
 - [RLP for Rust](https://docs.rs/ethereum-rlp/latest/rlp/)
