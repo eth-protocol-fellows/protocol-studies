@@ -1,4 +1,6 @@
-# Data Structures in Ethereum
+# Data Structures in Execution Layer
+
+The execution client stores the current state and historical blockchain data. In practice, the Ethereum data are stored in trie like structures, mainly Merkle Patricia Tree. 
 
 ## Primer on Merkle Tree
 
