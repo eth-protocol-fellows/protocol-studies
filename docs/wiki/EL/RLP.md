@@ -18,7 +18,7 @@ Data serialization is the process of converting data structures or objects into 
 > RLP is intended to be a highly minimalistic serialization format; its sole purpose is to store nested arrays of bytes. Unlike protobuf, BSON and other existing solutions, RLP does not attempt to define any specific data types such as booleans, floats, doubles or even integers; instead, it simply exists to store structure, in the form of nested arrays, and leaves it up to the protocol to determine the meaning of the arrays.
 > -- Ethereum's design rationale
 
-RLP is tailored for Ethereum to meet specific needs:
+RLP was created with Ethereum and is tailored to meet its specific needs:
 - Minimalistic Design: It focuses purely on storing structure without imposing data type definitions.
 - Consistency: It guarantees byte-perfect consistency across different implementations, crucial for the deterministic nature required in blockchain operations.
 
