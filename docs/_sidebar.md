@@ -33,10 +33,10 @@
   - [EVM](/wiki/EL/evm.md)
   - [Transaction anatomy](/wiki/EL/transaction.md)
   - [JSON-RPC](/wiki/EL/JSON-RPC.md)
+  - [DevP2P](/wiki/EL/devp2p.md)
   - [Data Structures](/wiki/EL/data-structures.md)
   - [Precompiled Contracts](/wiki/EL/precompiled-contracts.md)
   - [RLP Serialization](/docs/wiki/EL/RLP.md)
-  - [DevP2P](/wiki/EL/devp2p.md)
 - Consensus Layer
   - [Overview](/wiki/CL/overview.md)
   - [CL Specs](/wiki/CL/cl-specs.md)
