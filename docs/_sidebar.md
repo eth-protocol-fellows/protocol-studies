@@ -37,6 +37,7 @@
   - [Transaction anatomy](/wiki/EL/transaction.md)
   - [JSON-RPC](/wiki/EL/JSON-RPC.md)
   - [DevP2P](/wiki/EL/devp2p.md)
+  - [RLP Serialization](/docs/wiki/EL/RLP.md)
 - Consensus Layer
   - [Overview](/wiki/CL/overview.md)
   - [CL Specs](/wiki/CL/cl-specs.md)
