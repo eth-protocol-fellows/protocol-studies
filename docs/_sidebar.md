@@ -70,9 +70,9 @@
     - [Preconfirmations](/wiki/research/Preconfirmations/Preconfirmations.md)
     - [Based Sequencing with Preconfs](/wiki/research/Preconfirmations/BasedSequencingPreconfs.md)
 - [Cryptography](/wiki/Cryptography/intro.md)
-  - [ECDSA](/wiki/Cryptography/ecdsa.md) 
+  - [ECDSA](/wiki/Cryptography/ecdsa.md)
+  - [BLS](/wiki/Cryptography/bls.md)
   - [Keccak256](/wiki/Cryptography/keccak256.md)
-  - BLS
   - [Commitments]
     - [KZG](/docs/wiki/Cryptography/KZG.md)
   - [Post-Quantum Cryptography](/wiki/Cryptography/post-quantum-cryptography.md)
