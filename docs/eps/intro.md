@@ -86,7 +86,7 @@ For our weekly meetings, we are using a self-hosted FOSS platform Jitsi. Even th
 - **Will I learn to develop applications on the Ethereum blockchain?**
     - No. This program is not focused on Solidity or development of decentralized applications. 
 - **When does it start and is the duration?**
-    - Program will start in February 2024 and continue for 10 weeks, finishing by end of April. 
+    - The program ran from February 2024 and continued for 10 weeks, concluding by the end of April.
 - **Am I automatically accepted to EPF after attending EPFsg**
     - No. The study group is a great way to prepare for EPF, but it doesn't guarantee anything. However, EPF is a permissionless program, so you can always participate. 
 - **Where is the study group located?**
