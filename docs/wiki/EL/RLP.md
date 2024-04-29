@@ -88,11 +88,6 @@ Recursive Length Prefix (RLP) is a fundamental data serialization technique used
   - **Encoding**: The byte is encoded directly, unchanged.
   - **Example**: Encoding the byte `0x2a` directly yields `0x2a`.
 
-**Single Byte String Encoding**
-  - **Condition**: If the input is a single byte string.
-  - **Encoding**: The byte is encoded directly, unchanged.
-  - **Example**: Encoding the byte `0x74` directly yields `0x74`.
-  - 
 **Short String Encoding (1-55 bytes)**
   - **Condition**: If the string (or byte array) length is between 1 and 55 bytes.
   - **Encoding**: The output is the length of the string plus `0x80`, followed by the string itself.
