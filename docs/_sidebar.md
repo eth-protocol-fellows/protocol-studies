@@ -1,7 +1,7 @@
 - [Home](readme.md)
 - **Study Group**
 - [EPFsg overview](/eps/intro.md)
-- Schedule
+- Presentations
   - [Week 0](/eps/week0.md)
   - [Week 1](/eps/week1.md)
   - [Week 2](/eps/week2.md)
@@ -22,8 +22,9 @@
 - [Contributing](contributing.md)
 - **Protocol Wiki**
 - The Protocol
-  - [Overview](/wiki/protocol/overview.md)
-  - [History](/wiki/protocol/history.md)
+  - [Architecture](/wiki/protocol/architecture.md)
+  - [Design rationale](/wiki/protocol/design-rationale.md)
+  - [Evolution](/wiki/protocol/history.md)
 - Execution Layer
   - [EL Specs](/wiki/EL/el-specs.md)
   - [Client architecture](/wiki/EL/el-architecture.md)
@@ -31,34 +32,32 @@
     - [Besu](/wiki/EL/clients/besu.md)
     - [Reth](/wiki/EL/clients/reth.md)
   - [EVM](/wiki/EL/evm.md)
+    - [Precompiled Contracts](/wiki/EL/precompiled-contracts.md)
+  - [Data Structures](/wiki/EL/data-structures.md)
   - [Transaction anatomy](/wiki/EL/transaction.md)
   - [JSON-RPC](/wiki/EL/JSON-RPC.md)
-  - [Data Structures](/wiki/EL/data-structures.md)
-  - [DevP2P]
-  - [Precompiled Contracts](/wiki/EL/precompiled-contracts.md)
-- [Consensus Layer](/wiki/CL/overview.md)
+  - [DevP2P](/wiki/EL/devp2p.md)
+  - [RLP Serialization](/docs/wiki/EL/RLP.md)
+- Consensus Layer
+  - [Overview](/wiki/CL/overview.md)
   - [CL Specs](/wiki/CL/cl-specs.md)
-  - Client architecture
+  - [Client architecture](/wiki/CL/client-architecture.md)
   - [CL Clients](/wiki/CL/cl-clients.md)
-  - [Proof-of-Stake]
-  - [Beacon API]
-  - [Networking](/wiki/CL/cl-networking.md)
+  - [Beacon API](/wiki/CL/beacon-api.md)
+  - [CL Networking](/wiki/CL/cl-networking.md)
 - Development
   - [Core development](/wiki/dev/core-development.md)
-  - [Coordination](/wiki/protocol/pm.md)
-  - [CS Resources](/wiki/dev/cs-resources.md)
+  - [Coordination](/wiki/dev/pm.md)
+  - [Dev Resources](/wiki/dev/cs-resources.md)
 - Testing and security
   - [Testing overview](/wiki/testing/overview.md)
   - [Incidents](/wiki/testing/incidents.md)
   - [hive](/wiki/testing/hive.md)
-  - Formal Verification
 - Research
   - [Roadmap overview](/wiki/research/roadmap.md)
   - [Scaling](/wiki/research/scaling/scaling.md)
     - [Core Changes](/wiki/research/scaling/core-changes/core-changes.md)
     - [EIP-4844](/wiki/research/scaling/core-changes/eip-4844.md)
-    - Statelessness
-    - Purge
   - [MEV](/wiki/research/PBS/mev.md)
     - [MEV-boost](/wiki/research/PBS/mev-boost.md)
   - [PBS](/wiki/research/PBS/pbs.md)
@@ -67,28 +66,15 @@
     - [PTC](/wiki/research/PBS/PTC.md)
     - [PEPC](/wiki/research/PBS/PEPC.md)
     - [TBHL](/wiki/research/PBS/TBHL.md)
-  - Proof of Stake
-    - [Upgrades](/docs/wiki/research/cl-upgrades.md)
-    - SSF
-    - SSLE
-  - [Light Clients](/wiki/research/light-clients.md)
-  - Privacy
-  - AA
-  - ASE
-  - EOF
-  - Portal Network
   - Preconfirmations
     - [Preconfirmations](/wiki/research/Preconfirmations/Preconfirmations.md)
     - [Based Sequencing with Preconfs](/wiki/research/Preconfirmations/BasedSequencingPreconfs.md)
 - [Cryptography](/wiki/Cryptography/intro.md)
-  - [ECDSA](/wiki/Cryptography/ecdsa.md) 
+  - [ECDSA](/wiki/Cryptography/ecdsa.md)
+  - [BLS](/wiki/Cryptography/bls.md)
   - [Keccak256](/wiki/Cryptography/keccak256.md)
-  - BLS
   - [Commitments]
-    - Polynomials
-    - Commitment schemes
     - [KZG](/docs/wiki/Cryptography/KZG.md)
-  - ZK
   - [Post-Quantum Cryptography](/wiki/Cryptography/post-quantum-cryptography.md)
 - [Protocol Fellowship](/wiki/epf.md)
 
