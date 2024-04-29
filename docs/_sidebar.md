@@ -33,7 +33,6 @@
   - [EVM](/wiki/EL/evm.md)
     - [Precompiled Contracts](/wiki/EL/precompiled-contracts.md)
   - [Data Structures](/wiki/EL/data-structures.md)
-    - [RLP Serialization](/docs/wiki/EL/RLP.md)
   - [Transaction anatomy](/wiki/EL/transaction.md)
   - [JSON-RPC](/wiki/EL/JSON-RPC.md)
   - [DevP2P](/wiki/EL/devp2p.md)
