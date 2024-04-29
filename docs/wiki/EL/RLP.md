@@ -72,7 +72,6 @@ flowchart TD
 
 _Figure: RLP Decoding Flow_
 
-
 ## RLP Encoding Rules
 
 Understanding how RLP encoding is derived requires a grasp of the specific rules applied based on the type and size of the data. Let's explore these rules using an example to demonstrate how different types of data are encoded.
