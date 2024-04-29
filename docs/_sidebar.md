@@ -34,10 +34,11 @@
   - [Transaction anatomy](/wiki/EL/transaction.md)
   - [JSON-RPC](/wiki/EL/JSON-RPC.md)
   - [Data Structures](/wiki/EL/data-structures.md)
-  - [DevP2P]
+  - [DevP2P](/wiki/EL/devp2p.md)
   - [Precompiled Contracts](/wiki/EL/precompiled-contracts.md)
   - [RLP Serialization](/docs/wiki/EL/RLP.md)
-- [Consensus Layer](/wiki/CL/overview.md)
+- Consensus Layer
+  - [Overview](/wiki/CL/overview.md)
   - [CL Specs](/wiki/CL/cl-specs.md)
   - Client architecture
   - [CL Clients](/wiki/CL/cl-clients.md)
