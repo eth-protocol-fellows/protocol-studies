@@ -54,10 +54,12 @@ bloXroute's
 BLS
 Boneh
 bool
+booleans
 bootup
 borderless
 BPE
 broadcasted
+BSON
 Buterin
 Buterin's
 bypassability
@@ -102,8 +104,8 @@ Cryptopedia
 cryptosystem
 cybersecurity
 Cypherpunks
-Daemen
 D'Amato
+Daemen
 Dankrad
 danksharding
 Danno
@@ -190,9 +192,9 @@ ethresear
 ethresearch
 ethroadmap
 EVM
+EVM's
 evmlab
 EVMONE
-EVM's
 excalidraw
 exchangeTransitionConfigurationV
 Explainer
@@ -238,9 +240,9 @@ Goomy
 Goron
 Gorondan
 gpg
-Grafana
 gradle
 gradlew
+Grafana
 Grandine
 Guillaume
 hackmd
@@ -317,9 +319,9 @@ mainnet
 Mana
 Mário
 mathbb
-MDS
 mdbx
 MDBX
+MDS
 meldsun
 mem
 Mempool
@@ -331,6 +333,7 @@ Merkleize
 MEV
 mevboost
 Michaël
+minimalistic
 Mitigations
 mload
 MMPTs
@@ -347,6 +350,7 @@ MUL
 Murr
 MVE
 mvepbs
+n't
 Nagu
 namespace
 namespaces
@@ -363,7 +367,6 @@ NIST's
 Noam
 NOXX
 NSS
-n't
 Occhipinti
 OFAC
 Offchain
@@ -392,6 +395,7 @@ permissionless
 permissionlessness
 PGA
 Pilipovic
+PKCS
 Playdate
 pmod
 POC
@@ -400,7 +404,6 @@ Potuz's
 POV
 PQ
 PQC
-PKCS
 PQCA
 pre
 precompile
@@ -424,6 +427,7 @@ privateKey
 probabilistically
 programmability
 proto
+protobuf
 prover
 Prover's
 Provers
@@ -499,8 +503,8 @@ SNARKify
 socio
 solvm
 SPHINCS
-src
 Sproul
+src
 SSF
 SSLE
 SSTORE
@@ -527,8 +531,8 @@ Tetris
 textnormal
 timeframe
 tldr
-TODO
 TLS
+TODO
 TPS
 tracoor
 Tracoor
