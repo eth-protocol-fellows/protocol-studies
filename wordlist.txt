@@ -1,4 +1,3 @@
-personal_ws-1.1 en 10000 utf-8
 aantop
 ABI
 accelerometer
@@ -252,6 +251,7 @@ Hager
 hoc
 Holesky
 homomorphic
+Hotz
 Hsiao
 HSP
 Hulsing
@@ -305,6 +305,7 @@ libp
 lifecycle
 Lightclient
 Lightclient's
+linearizer
 liveness
 LLM
 LLMs
@@ -396,6 +397,7 @@ pepc
 pepc's
 permissionless
 permissionlessness
+personal_ws-1.1 en 10000 utf-8
 PGA
 Pilipovic
 PKCS
@@ -534,6 +536,7 @@ testnets
 Tetris
 textnormal
 timeframe
+tinygrad
 tldr
 TLS
 TODO
