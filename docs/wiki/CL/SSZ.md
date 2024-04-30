@@ -442,6 +442,96 @@ Note that, functionally we could use either `Vector[boolean, N]` or `Bitvector[N
 '0100010001'
 ```
 
+### Bitlists
+
+Bitlists in SSZ are similar to bitvectors but are designed to handle variable-length sequences of boolean values with a specified maximum length (`N`). 
+
+**SSZ Serialization for Bitlists**
+
+```mermaid
+flowchart TD
+    A[Start Serialization] --> B[Define Bitlist of Size N]
+    B --> C[Pack Bits into Bytes]
+    C --> D[Add Sentinel Bit]
+    D --> E[Pad Final Byte if Necessary]
+    E --> F[Output Serialized Byte Array]
+    
+    classDef startEnd fill:#f9f,stroke:#333,stroke-width:4px;
+    class A startEnd;
+    classDef process fill:#ccf,stroke:#f66,stroke-width:2px;
+    class B,C,D,E process;
+    classDef output fill:#cfc,stroke:#393,stroke-width:2px;
+    class F output;
+```
+
+_Figure: SSZ Serialization for Bitlists._
+
+
+1. **Define the Bitlist**: A bitlist is defined by its maximum length `N`, which determines the upper bound of bits that can be included. The actual number of bits, however, can be less than `N`.
+
+2. **Pack Bits into Bytes**:
+   - Each bit in the bitlist represents a boolean value, where `0` corresponds to `False` and `1` to `True`.
+   - These bits are serialized into a byte array, packed from the LSB to the MSB within each byte, similar to bitvectors.
+
+3. **Add Sentinel Bit**:
+   - To mark the end of the bitlist and distinguish its actual length from its maximum capacity, a sentinel bit (`1`) is added to the end of the bit sequence. This is crucial to ensure that the deserialization process accurately identifies the length of the bitlist.
+
+4. **Byte Array Formation and Padding**:
+   - After including the sentinel bit, the bits are packed into bytes, with any necessary padding applied to the last byte to complete it if the total number of bits (including the sentinel) does not divide evenly by 8.
+
+
+**SSZ Deserialization for Bitlists**
+
+```mermaid
+flowchart TD
+    A[Start Deserialization] --> B[Receive Serialized Byte Array]
+    B --> C[Convert Bytes to Bits]
+    C --> D[Identify and Remove Sentinel Bit]
+    D --> E[Remove Padding Bits]
+    E --> F[Reconstruct Original Bitlist]
+    F --> G[Output Deserialized Bitlist]
+    
+    classDef startEnd fill:#f9f,stroke:#333,stroke-width:4px;
+    class A startEnd;
+    classDef process fill:#ccf,stroke:#f66,stroke-width:2px;
+    class B,C,D,E,F process;
+    classDef output fill:#cfc,stroke:#393,stroke-width:2px;
+    class G output;
+```
+
+_Figure: SSZ Deserialization for Bitlists._
+
+1. **Receive Serialized Byte Array**: Start with the byte array that encodes the bitlist, including the sentinel bit.
+
+2. **Extract Bits from Bytes**:
+   - Convert each byte back into bits, respecting the order (LSB to MSB).
+   - Continue this process for each byte in the serialized data.
+
+3. **Identify and Remove the Sentinel Bit**:
+   - As bits are extracted, locate the first `1` (sentinel bit) from the end of the bit sequence to determine the actual end of the bitlist data.
+   - All bits following the sentinel bit are disregarded as padding.
+
+4. **Reconstruct the Bitlist**:
+   - Reassemble the extracted bits (excluding the sentinel bit and any padding) into the original bitlist format.
+
+You can run the encoding of Bitlist like below:
+
+```python
+>>> from eth2spec.utils.ssz.ssz_typing import Bitlist
+>>> Bitlist[100](0,0,0).encode_bytes().hex()
+'08'
+```
+
+As a consequence of the sentinel, we require an extra byte to serialize a bitlist if its actual length is a multiple of eight (irrespective of the maximum length `N`). This is not the case for a bitvector.
+
+```python
+>>> Bitlist[8](0,0,0,0,0,0,0,0).encode_bytes().hex()
+'0001'
+>>> Bitvector[8](0,0,0,0,0,0,0,0).encode_bytes().hex()
+'00'
+```
+
+
 ## Fixed VS Variable Length Types
 
 
