@@ -106,9 +106,17 @@ Booleans in SSZ are quite straightforward, with each boolean represented as a si
 - Byte `01` is deserialized to `True`.
 - Byte `00` is deserialized to `False`.
 
+We can run SSZ serialization and deserialization commands using the python Eth2 spec as per the [instructions](https://eth2book.info/capella/appendices/running/) and verify the above byte arrays.
+
+![SSZ Serialization using Eth2 Spec](/docs/images/ssz-basic-types-python.png)
+
+
 ## How SSZ Works - Composite Types
 
+
+
 ## Fixed VS Variable Length Types
+
 
 ## SSZ Tools
 
