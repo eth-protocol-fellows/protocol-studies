@@ -286,7 +286,6 @@ For a `List[uint64, 5]` containing the elements `[1024, 2048, 3072]`, the serial
 
 ```mermaid
 flowchart TD
-flowchart TD
     A[Start Deserialization] --> B[Receive Serialized Byte Stream]
     B --> C["Identify and Split Byte Stream Based \n on Element Size (8 bytes for uint64)"]
     C --> D[Deserialize Each Byte Segment to uint64]
