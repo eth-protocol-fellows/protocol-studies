@@ -1,4 +1,4 @@
-# Ethereum Overview
+# The Road to Ethereum
 
 ## Network coming online and peer-to-peer computing
 
@@ -9,11 +9,25 @@ The concept of peer-to-peer (P2P) networks, where computers communicate and shar
 
 This decentralized philosophy gained significant traction in the late 1990s with the rise of file-sharing platforms like [Napster](https://en.wikipedia.org/wiki/Napster) (1999). These platforms challenged the traditional client-server model, where users relied on a central server to access data. Napster, and subsequent platforms like [BitTorrent](https://en.wikipedia.org/wiki/BitTorrent) (2001), sparked new conversations and philosophies highlighting the potential for a more democratic and distributed online interaction.
 
+As internet became more widespread, the increased demand for bandwidth and storage gave rise to the "client-server" architecture. In this model, dedicated servers acts as central hubs, storing data and applications. Clients, like personal computers, connects to these servers to access resources. Client-server networks also paved the way for more complex applications and the internet as we know it.
+
+Peer-to-peer networks 
+P2P's inherent scalability and lack of a central point of failure make it ideal for distributing large workloads across vast networks - 
+
 ## Introduction of Bitcoin
 
 Introduced in a 2008 paper by Satoshi Nakamoto titled ["Bitcoin: A Peer-to-Peer Electronic Cash System"](https://bitcoin.org/bitcoin.pdf), blockchain established a distributed ledger system where data is cryptographically linked in chronological blocks. This innovation empowered the creation of Bitcoin, the first decentralized digital currency, eliminating the need for trusted third-party intermediaries like banks.
 
-Bitcoin's focus on secure digital payments, while revolutionary, limited its ability to run more complex applications. Similar to how modern applications rely on HTTP for communication, early projects attempted to expand Bitcoin's functionality by leveraging its secure cryptographic and peer-to-peer foundation.
+Bitcoin was one of the most monumental experiments from the past decade. Vitalik says:
+
+> When Satoshi Nakamoto first set the Bitcoin blockchain into motion in January 2009, he was
+> simultaneously introducing two radical and untested concepts. The first is the "bitcoin", a decentralized
+> peer-to-peer online currency that maintains a value without any backing, intrinsic value or central issuer. So
+> far, the "bitcoin" as a currency unit has taken up the bulk of the public attention.
+> However, there is also another, equally important, part to Satoshi's grand experiment: the concept of a proof of
+> work-based blockchain to allow for public agreement on the order of transactions.
+
+Few projects explored the possibility of building applications of Bitcoin's network by leveraging its secure cryptographic and peer-to-peer foundation. However, Bitcoin's scripting language proved too limited for these purposes.
 
 In 2011, Namecoin aimed to create a decentralized, censorship-resistant domain name system, but its reliance on Bitcoin's infrastructure limited its scalability and functionality compared to traditional DNS systems.
 
