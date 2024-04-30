@@ -165,7 +165,7 @@ body .markdown-section {
 */
 
 :root {
-  --base-background-color: #190c39;
+  --base-background-color: #1c153b;
   --sidebar-name-color: #ba9afd;
   --sidebar-background: #190c39;
   --sidebar-toggle-background: #190c39;
@@ -268,7 +268,6 @@ li.folder > ul > li.file {
 .markdown-section h4 a::before,
 .markdown-section h5 a::before,
 .markdown-section h6 a::before {
-  content: "#";
   color: #ba9afd;
   margin-right: 5px;
 }
