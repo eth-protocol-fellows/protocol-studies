@@ -41,6 +41,7 @@
   - [Proof-of-Stake]
   - [Beacon API]
   - [Networking](/wiki/CL/cl-networking.md)
+  - [SSZ Serialization](/docs/wiki/CL/SSZ.md)
 - Development
   - [Core development](/wiki/dev/core-development.md)
   - [Coordination](/wiki/protocol/pm.md)
