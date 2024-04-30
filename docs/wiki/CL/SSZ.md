@@ -110,12 +110,21 @@ We can run SSZ serialization and deserialization commands using the python Eth2 
 
 ```python
 >>> from eth2spec.utils.ssz.ssz_typing import uint64, boolean
+# Serializing 
 >>> uint64(1025).encode_bytes().hex()
 '0104000000000000'
 >>> boolean(True).encode_bytes().hex()
 '01'
 >>> boolean(False).encode_bytes().hex()
 '00' 
+
+# Deserializing 
+>>> print(uint64.decode_bytes(bytes.fromhex('0104000000000000')))
+1025
+>>> print(boolean.decode_bytes(bytes.fromhex('01')))
+1
+>>> print(boolean.decode_bytes(bytes.fromhex('00')))
+0
 ```
 
 
@@ -133,3 +142,4 @@ We can run SSZ serialization and deserialization commands using the python Eth2 
 - [SSZ specs](https://github.com/ethereum/consensus-specs/blob/dev/ssz/simple-serialize.md)
 - [eth2book - SSZ](https://eth2book.info/capella/part2/building_blocks/ssz/#ssz-simple-serialize)
 - [Go Lessons from Writing a Serialization Library for Ethereum](https://rauljordan.com/go-lessons-from-writing-a-serialization-library-for-ethereum/)
+- [Interactive SSZ serialiser/deserialiser](https://simpleserialize.com/)
