@@ -345,6 +345,103 @@ Lists are variable sized objects in SSZ they are encoded differently from fixed 
 >>> 
 ```
 
+### Bitvectors
+
+Bitvectors in SSZ are used to manage fixed-length sequences of boolean values, typically represented as bits. This data structure is particularly efficient for compactly storing binary data or flags, which are common in Ethereum applications for indicating state conditions, permissions, or other binary settings.
+
+**SSZ Serialization for Bitvectors**
+
+```mermaid
+flowchart TD
+    A[Start Serialization] --> B[Define Bitvector of Size N]
+    B --> C[Pack Bits into Bytes]
+    C --> D[Bits from LSB to\n MSB within each byte]
+    D --> E[Add Padding if N % 8 != 0]
+    E --> F[Output Serialized Byte Array]
+    
+    classDef startEnd fill:#f9f,stroke:#333,stroke-width:4px;
+    class A startEnd;
+    classDef process fill:#ccf,stroke:#f66,stroke-width:2px;
+    class B,C,D,E process;
+    classDef output fill:#cfc,stroke:#393,stroke-width:2px;
+    class F output;
+```
+
+_Figure: SSZ Serialization for Bitvectors._
+
+1. **Define the Bitvector**: A bitvector in SSZ is defined by its length `N`, which specifies the number of bits. For example, `Bitvector[256]` means a bitvector that contains 256 bits.
+
+2. **Convert Bits to Bytes**:
+   - Each bit in the bitvector represents a boolean value, where `0` corresponds to `False` and `1` to `True`.
+   - These bits are packed into bytes, with the least significant bit (LSB) first within each byte. This means the first bit in the bitvector corresponds to the LSB of the first byte.
+
+3. **Byte Array Formation**:
+   - The bits are serialized into a byte array by packing 8 bits into each byte until all bits are accounted for.
+   - If `N` is not a multiple of 8, the last byte will contain fewer than 8 bits of data, padded with zeros at the most significant bit positions.
+
+**Example**:
+For a `Bitvector[10]` with the pattern `1011010010`:
+- The first 8 bits (`10110100`) form the first byte.
+- The remaining 2 bits (`10`) are padded with six zeros to form the second byte: `10000000`.
+- The serialized output is `B4 80` in hexadecimal.
+
+**SSZ Deserialization for Bitvectors**
+
+```mermaid
+flowchart TD
+    A[Start Deserialization] --> B[Receive Serialized Byte Array]
+    B --> C[Read Each Byte]
+    C --> D[Convert Bytes to Bits]
+    D --> E[Respect LSB to MSB \nOrder in Each Byte]
+    E --> F[Discard Padding if Present]
+    F --> G[Reconstruct Bitvector]
+    G --> H[Output Deserialized Bitvector]
+    
+    classDef startEnd fill:#f9f,stroke:#333,stroke-width:4px;
+    class A startEnd;
+    classDef process fill:#ccf,stroke:#f66,stroke-width:2px;
+    class B,C,D,E,F,G process;
+    classDef output fill:#cfc,stroke:#393,stroke-width:2px;
+    class H output;
+```
+
+_Figure: SSZ Deserialization for Bitvectors._
+
+1. **Read Serialized Byte Array**: Start with a byte array that encodes the bitvector.
+
+2. **Extract Bits from Bytes**:
+   - Convert each byte back into bits. Remember, the bits are stored LSB first within each byte.
+   - If the bitvector's length `N` is not a multiple of 8, discard the extraneous padding bits in the final byte.
+
+3. **Reconstruct the Bitvector**:
+   - Reassemble the extracted bits into the original bitvector format, adhering to the specified length `N`.
+
+**Example**:
+Given the serialized data `B4 80` for a `Bitvector[10]`:
+- Convert `B4` (`10110100` in binary) and `80` (`10000000` in binary) back into bits.
+- Extract the first 10 bits from the binary sequence: `1011010010`.
+- The reconstructed bitvector is `1011010010`.
+
+You can run and verify it in python as below:
+
+```python
+>>> from eth2spec.utils.ssz.ssz_typing import Bitvector
+>>> Bitvector[8](0,0,1,0,1,1,0,1).encode_bytes().hex()
+'b4'
+>>> Bitvector[8](0,0,0,0,0,0,0,1).encode_bytes().hex()
+'80'
+```
+
+Note that, functionally we could use either `Vector[boolean, N]` or `Bitvector[N]` to represent a list of bits. However, the latter will have a serialization up to eight times shorter in practice since the former will use a whole byte per bit.
+
+```python
+>>> from eth2spec.utils.ssz.ssz_typing import Vector, Bitvector, boolean
+>>> Bitvector[5](1,0,1,0,1).encode_bytes().hex()
+'15'
+>>> Vector[boolean,5](1,0,1,0,1).encode_bytes().hex()
+'0100010001'
+```
+
 ## Fixed VS Variable Length Types
 
 

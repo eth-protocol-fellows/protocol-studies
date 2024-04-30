@@ -582,3 +582,6 @@ deserializer
 serializer
 Deserialize
 serialize
+bitvector
+bitvector's
+bitvectors
