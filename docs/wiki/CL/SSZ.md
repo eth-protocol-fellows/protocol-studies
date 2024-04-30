@@ -247,6 +247,25 @@ Lists in SSZ are crucial for managing variable-length collections of homogeneous
 
 **SSZ Serialization for Lists**
 
+```mermaid
+flowchart TD
+    A[Start Serialization] --> B[Define List with Type and Max Length]
+    B --> C[Serialize Each Element]
+    C --> D["Convert Each Element to \nByte Array (Little-Endian)"]
+    D --> E[Concatenate All Byte Arrays]
+    E --> F[Optional: Include Length Metadata]
+    F --> G[Output Serialized List]
+    
+    classDef startEnd fill:#f9f,stroke:#333,stroke-width:4px;
+    class A startEnd;
+    classDef process fill:#ccf,stroke:#f66,stroke-width:2px;
+    class B,C,D,E,F process;
+    classDef output fill:#cfc,stroke:#393,stroke-width:2px;
+    class G output;
+```
+
+_Figure: SSZ Serialization for Lists._
+
 1. **Define the List**: Lists in SSZ are defined with a specific element type and a maximum length, noted as `List[type, N]`. This definition not only constrains the list's maximum capacity but also informs how elements should be serialized.
 
 2. **Element Serialization**:
@@ -264,6 +283,25 @@ For a `List[uint64, 5]` containing the elements `[1024, 2048, 3072]`, the serial
 - Concatenating these arrays results in: `00 04 00 00 00 00 00 00 00 08 00 00 00 00 00 00 00 0C 00 00 00 00 00 00`.
 
 **SSZ Deserialization for Lists**
+
+```mermaid
+flowchart TD
+flowchart TD
+    A[Start Deserialization] --> B[Receive Serialized Byte Stream]
+    B --> C["Identify and Split Byte Stream Based \non Element Size (8 bytes for uint64)"]
+    C --> D[Deserialize Each Byte Segment to uint64]
+    D --> E[Reassemble Elements into List]
+    E --> F[Output Deserialized List]
+    
+    classDef startEnd fill:#f9f,stroke:#333,stroke-width:4px;
+    class A startEnd;
+    classDef process fill:#ccf,stroke:#f66,stroke-width:2px;
+    class B,C,D,E process;
+    classDef output fill:#cfc,stroke:#393,stroke-width:2px;
+    class F output;
+```
+
+_Figure: SSZ Deserialization for Lists._
 
 1. **Receive Serialized Data**: The serialized byte stream for the list is the input, containing sequences of byte arrays for each element.
 
