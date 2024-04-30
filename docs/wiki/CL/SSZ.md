@@ -108,7 +108,15 @@ Booleans in SSZ are quite straightforward, with each boolean represented as a si
 
 We can run SSZ serialization and deserialization commands using the python Eth2 spec as per the [instructions](https://eth2book.info/capella/appendices/running/) and verify the above byte arrays.
 
-![SSZ Serialization using Eth2 Spec](/docs/images/ssz-basic-types-python.png)
+```python
+>>> from eth2spec.utils.ssz.ssz_typing import uint64, boolean
+>>> uint64(1025).encode_bytes().hex()
+'0104000000000000'
+>>> boolean(True).encode_bytes().hex()
+'01'
+>>> boolean(False).encode_bytes().hex()
+'00' 
+```
 
 
 ## How SSZ Works - Composite Types
