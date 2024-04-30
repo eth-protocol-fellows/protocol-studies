@@ -531,11 +531,252 @@ As a consequence of the sentinel, we require an extra byte to serialize a bitlis
 '00'
 ```
 
+### Containers
 
-## Fixed VS Variable Length Types
+Containers in SSZ are fundamental structures used to group multiple fields into a single composite type. Each field within a container can be of any SSZ-supported type, including basic types like `uint64`, more complex types like other containers, vectors, or lists. Containers are analogous to structures or objects in programming languages, making them integral for representing complex and nested data structures in Ethereum.
+
+**SSZ Serialization for Containers**
+
+```mermaid
+flowchart TD
+    A[Start Serialization] --> B[Define Container Schema]
+    B --> C[Serialize Each Field According to Type]
+    C --> D["Serialize Basic Types\n (uint64, boolean, etc.)"]
+    C --> E["Serialize Composite Types\n (Other containers, lists, vectors)"]
+    D --> F[Concatenate Serialized Outputs of Fields]
+    E --> F
+    F --> G[Output Serialized Container]
+    
+    classDef startEnd fill:#f9f,stroke:#333,stroke-width:4px;
+    class A startEnd;
+    classDef process fill:#ccf,stroke:#f66,stroke-width:2px;
+    class B,C,D,E,F process;
+    classDef output fill:#cfc,stroke:#393,stroke-width:2px;
+    class G output;
+```
+
+_Figure: SSZ Serialization for Containers._
+
+1. **Define the Container**: A container in SSZ is defined by its schema, which specifies the types and order of its fields. This schema is crucial because it dictates how data should be serialized and deserialized.
+
+2. **Serialize Each Field**:
+   - Each field in the container is serialized in the order defined by the schema.
+   - The serialization method for each field depends on its type:
+     - **Basic types** are converted directly to their byte representations.
+     - **Composite types** (other containers, lists, vectors) are serialized recursively according to their own rules.
+
+3. **Concatenate Serialized Fields**:
+   - The serialized outputs of all fields are concatenated to form the complete serialized data of the container.
+   - If a field is of a variable size (like a list or a vector with variable length), its serialized data includes a length prefix or it may use offsets to indicate the start of the data, depending on the specifics of the implementation and type.
+
+**SSZ Deserialization for Containers**
+
+```mermaid
+flowchart TD
+    A[Start Deserialization] --> B[Receive Serialized Container Data]
+    B --> C[Parse Data According to \nContainer Schema]
+    C --> D[Deserialize Fields Based on Type]
+    D --> E[Deserialize Basic Types]
+    D --> F[Deserialize Composite Types]
+    E --> G[Reconstruct Container with Deserialized Fields]
+    F --> G
+    G --> H[Output Deserialized Container]
+    
+    classDef startEnd fill:#f9f,stroke:#333,stroke-width:4px;
+    class A startEnd;
+    classDef process fill:#ccf,stroke:#f66,stroke-width:2px;
+    class B,C,D,E,F,G process;
+    classDef output fill:#cfc,stroke:#393,stroke-width:2px;
+    class H output;
+```
+
+_Figure: SSZ Deserialization for Containers._
+
+1. **Read Serialized Data**: Begin with the serialized byte stream that represents the container.
+
+2. **Parse Serialized Data According to Schema**:
+   - Based on the container's schema, parse the serialized data into its constituent fields.
+   - This requires knowing the type and size of each field to correctly extract and deserialize each one.
+
+3. **Deserialize Each Field**:
+   - Each field's data is deserialized according to its type.
+   - Deserialization might involve converting byte arrays back into integers, decoding nested containers, or reconstructing lists and vectors from their serialized forms.
+
+4. **Reconstruct the Container**:
+   - As each field is deserialized, reconstruct the container by placing each field back into its defined position.
+
+**Example**:
+
+Let's delve into the SSZ serialization and deserialization process using the specific example of the `IndexedAttestation` container from the Beacon Chain. This example will outline how complex, nested containers are handled and processed in SSZ, particularly those involving both fixed-size and variable-size data types.
+
+The `IndexedAttestation` container looks like this.
+
+```python
+class IndexedAttestation(Container):
+    attesting_indices: List[ValidatorIndex, MAX_VALIDATORS_PER_COMMITTEE]
+    data: AttestationData
+    signature: BLSSignature
+```
+
+It contains an `AttestationData` container,
+
+```python
+class AttestationData(Container):
+    slot: Slot
+    index: CommitteeIndex
+    beacon_block_root: Root
+    source: Checkpoint
+    target: Checkpoint
+```
+
+which in turn contains two `Checkpoint` containers,
+
+```python
+class Checkpoint(Container):
+    epoch: Epoch
+    root: Root
+```    
+
+**IndexedAttestation Container Structure**
+
+The `IndexedAttestation` container includes several fields, some of which are fixed-size basic types and others are composite types including another container (`AttestationData`) and lists (like `attesting_indices`).
+
+Here's the structure:
+
+- **attesting_indices**: `List[ValidatorIndex, MAX_VALIDATORS_PER_COMMITTEE]` (variable size)
+- **data**: `AttestationData` (composite container)
+- **signature**: `BLSSignature` (fixed size)
+
+**AttestationData Container Structure**
+
+- **slot**: `Slot` (fixed size)
+- **index**: `CommitteeIndex` (fixed size)
+- **beacon_block_root**: `Root` (fixed size)
+- **source**: `Checkpoint` (composite container)
+- **target**: `Checkpoint` (composite container)
+
+**Checkpoint Container Structure**
+- **epoch**: `Epoch` (fixed size)
+- **root**: `Root` (fixed size)
+
+**Serialization Process**
+
+- **Serialize Fixed and Variable Components**
+The serialization of an `IndexedAttestation` involves serializing each component based on its type:
+
+1. **Serialize Fixed-Size Elements**
+   - Each fixed-size element (`Slot`, `CommitteeIndex`, `Epoch`, `Root`, `BLSSignature`) is serialized to its corresponding byte format, typically little-endian for numeric types.
+
+2. **Serialize Variable-Size Elements**
+   - The `List[ValidatorIndex, MAX_VALIDATORS_PER_COMMITTEE]` is serialized by first recording the length of the list followed by the serialized form of each index.
+   - If a list or another variable-size element is empty or not at maximum capacity, it only consumes the space necessary for the actual data present, plus possibly some length or offset metadata.
+
+- **Concatenate Serialized Data**
+1. All serialized bytes are concatenated in the order specified by the container's structure. Fixed-size fields are directly placed in order, while variable-size fields might include offsets or lengths as part of the serialization.
+
+**Example Serialization Output**
+
+```python
+from eth2spec.utils.ssz.ssz_typing import *
+from eth2spec.capella import mainnet
+from eth2spec.capella.mainnet import *
+
+attestation = IndexedAttestation(
+    attesting_indices = [33652, 59750, 92360],
+    data = AttestationData(
+        slot = 3080829,
+        index = 9,
+        beacon_block_root = '0x4f4250c05956f5c2b87129cf7372f14dd576fc152543bf7042e963196b843fe6',
+        source = Checkpoint (
+            epoch = 96274,
+            root = '0xd24639f2e661bc1adcbe7157280776cf76670fff0fee0691f146ab827f4f1ade'
+        ),
+        target = Checkpoint(
+            epoch = 96275,
+            root = '0x9bcd31881817ddeab686f878c8619d664e8bfa4f8948707cba5bc25c8d74915d'
+        )
+    ),
+    signature = '0xaaf504503ff15ae86723c906b4b6bac91ad728e4431aea3be2e8e3acc888d8af'
+                + '5dffbbcf53b234ea8e3fde67fbb09120027335ec63cf23f0213cc439e8d1b856'
+                + 'c2ddfc1a78ed3326fb9b4fe333af4ad3702159dbf9caeb1a4633b752991ac437'
+)
+
+print(attestation.encode_bytes().hex())
+```
+
+The resulting serialized blob of data that represents this `IndexedAttestation` object is (in hexadecimal):
+
+```code
+e40000007d022f000000000009000000000000004f4250c05956f5c2b87129cf7372f14dd576fc15
+2543bf7042e963196b843fe61278010000000000d24639f2e661bc1adcbe7157280776cf76670fff
+0fee0691f146ab827f4f1ade13780100000000009bcd31881817ddeab686f878c8619d664e8bfa4f
+8948707cba5bc25c8d74915daaf504503ff15ae86723c906b4b6bac91ad728e4431aea3be2e8e3ac
+c888d8af5dffbbcf53b234ea8e3fde67fbb09120027335ec63cf23f0213cc439e8d1b856c2ddfc1a
+78ed3326fb9b4fe333af4ad3702159dbf9caeb1a4633b752991ac437748300000000000066e90000
+00000000c868010000000000
+```
+
+**Breakdown of the Serialization Output**
+
+To clearly explain the serialization process and the structure of the serialized data for the `IndexedAttestation` container in the example, let's break down the serialization into its individual components and understand how each part is represented in the byte stream. This unpacking helps illustrate how the SSZ format manages complex data structures.
+
+**Part 1: Fixed Size Elements**
+1. **4-byte Offset for Variable Size List (`attesting_indices`)**:
+   - **Byte Offset**: `00`
+   - **Value**: `e4000000`
+   - **Explanation**: This indicates the start of the `attesting_indices` list in the serialized byte stream. The hexadecimal value `e4` converted to decimal is `228`, meaning the list starts at byte `228` from the beginning of the byte stream.
+
+2. **Slot (uint64)**:
+   - **Byte Offset**: `04`
+   - **Value**: `7d022f0000000000`
+   - **Explanation**: Represents the `slot` field serialized as a 64-bit unsigned integer. The hexadecimal `7d022f00` in little-endian format translates to `3080829` in decimal, which is the slot number.
+
+3. **Committee Index (uint64)**:
+   - **Byte Offset**: `0c`
+   - **Value**: `0900000000000000`
+   - **Explanation**: This is the `index` field, representing a committee index as a 64-bit unsigned integer. The value `09` indicates committee index `9`.
+
+4. **Beacon Block Root (Bytes32)**:
+   - **Byte Offset**: `14`
+   - **Value**: `4f4250c05956f5c2b87129cf7372f14dd576fc152543bf7042e963196b843fe6`
+   - **Explanation**: This is a 256-bit hash stored as `Bytes32`, representing the root hash of the beacon block.
+
+5. **Source Checkpoint Epoch (uint64) and Root (Bytes32)**:
+   - **Epoch Byte Offset**: `34`
+   - **Epoch Value**: `1278010000000000`
+   - **Root Byte Offset**: `3c`
+   - **Root Value**: `d24639f2e661bc1adcbe7157280776cf76670fff0fee0691f146ab827f4f1ade`
+   - **Explanation**: The source checkpoint contains an `epoch` (96274) and a `root`. The root is another 256-bit hash.
+
+6. **Target Checkpoint Epoch (uint64) and Root (Bytes32)**:
+   - **Epoch Byte Offset**: `5c`
+   - **Epoch Value**: `1378010000000000`
+   - **Root Byte Offset**: `64`
+   - **Root Value**: `9bcd31881817ddeab686f878c8619d664e8bfa4f8948707cba5bc25c8d74915d`
+   - **Explanation**: Similar to the source, the target checkpoint includes an `epoch` (96275) and a `root`, detailing the intended target of the attestation.
+
+7. **Signature (BLSSignature/Bytes96)**:
+   - **Byte Offset**: `84`
+   - **Value**: Concatenated over several lines due to its length (96 bytes total).
+   - **Explanation**: This is the cryptographic signature of the attestation, verifying its authenticity.
+
+**Part 2: Variable Size Elements**
+1. **Attesting Indices (List[uint64, MAX_VALIDATORS_PER_COMMITTEE])**:
+   - **Byte Offset**: `e4`
+   - **Value**: `748300000000000066e9000000000000c868010000000000`
+   - **Explanation**: This represents the list of validator indices who are attesting to the block. It starts from the offset `228` and contains indices such as `33652`, `59750`, and `92360`.
 
 
 ## SSZ Tools
+
+There are many tools available for SSZ. Here is a [full list](https://github.com/ethereum/consensus-specs/issues/2138) of SSZ tools. Below are some of the popular ones:
+
+- [py-ssz](https://github.com/ethereum/py-ssz)
+- [dafny](https://github.com/ConsenSys/eth2.0-dafny)
+- [Eth2.py](https://github.com/protolambda/remerkleable)
+- [fastssz](https://github.com/ferranbt/fastssz/)
+- [rust-ssz](https://github.com/ralexstokes/ssz-rs)
+
 
 ## Resources
 - [Simple serialize](https://ethereum.org/en/developers/docs/data-structures-and-encoding/ssz/)
@@ -543,3 +784,6 @@ As a consequence of the sentinel, we require an extra byte to serialize a bitlis
 - [eth2book - SSZ](https://eth2book.info/capella/part2/building_blocks/ssz/#ssz-simple-serialize)
 - [Go Lessons from Writing a Serialization Library for Ethereum](https://rauljordan.com/go-lessons-from-writing-a-serialization-library-for-ethereum/)
 - [Interactive SSZ serializer/deserializer](https://www.ssz.dev/)
+- [SSZ encoding diagrams by Protolambda](https://github.com/protolambda/eth2-docs#ssz-encoding)
+- [SSZ explainer by Raul Jordan](https://rauljordan.com/go-lessons-from-writing-a-serialization-library-for-ethereum/)
+- [SSZ Specifications](https://github.com/ethereum/consensus-specs/blob/v1.3.0/ssz/simple-serialize.md)
