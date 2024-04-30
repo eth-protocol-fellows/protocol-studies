@@ -127,9 +127,119 @@ We can run SSZ serialization and deserialization commands using the python Eth2 
 0
 ```
 
-
 ## How SSZ Works - Composite Types
 
+### Vectors
+
+Vectors in SSZ are used to handle fixed-length collections of homogeneous elements. Here’s a detailed breakdown of how SSZ handles the serialization and deserialization of vectors.
+
+**SSZ Serialization for Vectors**
+
+```mermaid
+flowchart TD
+    A[Start Serialization] --> B[Define Vector with Type and Length]
+    B --> C[Serialize Each Element]
+    C --> D["Convert Each Element to \nByte Array (Little-Endian)"]
+    D --> E[Concatenate All Byte Arrays]
+    E --> F[Output Serialized Vector]
+    
+    classDef startEnd fill:#f9f,stroke:#333,stroke-width:4px;
+    class A startEnd;
+    classDef process fill:#ccf,stroke:#f66,stroke-width:2px;
+    class B,C,D,E process;
+    classDef output fill:#cfc,stroke:#393,stroke-width:2px;
+    class F output;
+```
+
+_Figure: SSZ Serialization for Vectors._
+
+
+1. **Fixed-Length Definition**: Vectors are defined with a specific length and type of elements they can hold, such as `Vector[uint64, 4]` for a vector containing four 64-bit unsigned integers.
+
+2. **Element Serialization**:
+   - Each element in the vector is serialized independently according to its type. 
+   - For basic types like integers or booleans, this means converting each element to its byte representation. 
+   - If the elements are composite types, each element is serialized according to its specific serialization rules.
+
+3. **Concatenation**:
+   - The serialized outputs of each element are concatenated in the order they appear in the vector. 
+   - Since the length of the vector and the size of each element are known and fixed, no additional metadata (like length prefixes) is needed in the serialized output.
+
+**Example:**
+For a `Vector[uint64, 3]` with the elements `[256, 512, 768]`, each element is 64 bits or 8 bytes long. The serialization would proceed as follows:
+
+1. **Convert Each Integer to Little-Endian Byte Array**:
+   - `256` as `uint64` becomes `00 01 00 00 00 00 00 00`.
+   - `512` as `uint64` becomes `00 02 00 00 00 00 00 00`.
+   - `768` as `uint64` becomes `00 03 00 00 00 00 00 00`.
+
+2. **Concatenate These Byte Arrays**:
+   - The resulting concatenated byte array will be `00 01 00 00 00 00 00 00 00 02 00 00 00 00 00 00 00 03 00 00 00 00 00 00`.
+
+**Serialized Output**:
+   - `00 01 00 00 00 00 00 00 00 02 00 00 00 00 00 00 00 03 00 00 00 00 00 00`.
+
+
+**SSZ Deserialization for Vectors**
+
+```mermaid
+flowchart TD
+    A[Start Deserialization] --> B[Receive Serialized Byte Stream]
+    B --> C[Identify and Split Byte Stream \nBased on Element Size]
+    C --> D[Deserialize Each Byte Segment\n to Its Original Type]
+    D --> E[Reassemble Elements into Vector]
+    E --> F[Output Deserialized Vector]
+    
+    classDef startEnd fill:#f9f,stroke:#333,stroke-width:4px;
+    class A startEnd;
+    classDef process fill:#ccf,stroke:#f66,stroke-width:2px;
+    class B,C,D,E process;
+    classDef output fill:#cfc,stroke:#393,stroke-width:2px;
+    class F output;
+```
+
+_Figure: SSZ Deserialization for Vectors._
+
+
+1. **Fixed-Length Utilization**:
+   - The deserializer uses the predefined length and type of the vector to parse the serialized data.
+   - It knows exactly how many bytes each element takes and how many elements are in the vector.
+
+2. **Element Deserialization**:
+   - The byte stream is split into segments corresponding to the size of each element.
+   - Each segment is deserialized independently according to the type of elements in the vector.
+
+3. **Reconstruction**:
+   - The elements are reconstructed into their original form (e.g., converting byte arrays back into integers or other specified types).
+   - These elements are then aggregated to reform the original vector.
+
+**Example:**
+Given the serialized data for a `Vector[uint64, 3]`:
+- Serialized Byte Array: `00 01 00 00 00 00 00 00 00 02 00 00 00 00 00 00 00 03 00 00 00 00 00 00`.
+
+1. **Parse the Data into Segments**:
+   - Each segment consists of 8 bytes.
+   - First segment: `00 01 00 00 00 00 00 00` → Represents the integer 256.
+   - Second segment: `00 02 00 00 00 00 00 00` → Represents the integer 512.
+   - Third segment: `00 03 00 00 00 00 00 00` → Represents the integer 768.
+
+2. **Convert Each Segment from a Little-Endian Byte Array Back to an Integer**:
+   - Using little-endian format, each byte array is read and converted back into the respective `uint64` integer.
+
+3. **Reconstruction**:
+   - The reconstructed vector is `[256, 512, 768]`.
+
+We can run and verify it in python like below:
+
+```python
+>>> from eth2spec.utils.ssz.ssz_typing import uint8, uint16, Vector
+>>> Vector[uint16, 3](256, 512, 768).encode_bytes().hex()
+'000100000000000000020000000000000003000000000000'
+>>> print(Vector[uint64, 3].decode_bytes(bytes.fromhex('000100000000000000020000000000000003000000000000')))
+Vector[uint64, 3]<<len=3>>(256, 512, 768)
+>>> 
+
+```
 
 
 ## Fixed VS Variable Length Types
@@ -142,4 +252,4 @@ We can run SSZ serialization and deserialization commands using the python Eth2 
 - [SSZ specs](https://github.com/ethereum/consensus-specs/blob/dev/ssz/simple-serialize.md)
 - [eth2book - SSZ](https://eth2book.info/capella/part2/building_blocks/ssz/#ssz-simple-serialize)
 - [Go Lessons from Writing a Serialization Library for Ethereum](https://rauljordan.com/go-lessons-from-writing-a-serialization-library-for-ethereum/)
-- [Interactive SSZ serialiser/deserialiser](https://simpleserialize.com/)
+- [Interactive SSZ serializer/deserializer](https://www.ssz.dev/)

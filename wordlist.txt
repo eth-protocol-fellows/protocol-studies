@@ -578,3 +578,5 @@ Booleans
 deserialization
 deserialized
 LSB
+deserializer
+serializer
