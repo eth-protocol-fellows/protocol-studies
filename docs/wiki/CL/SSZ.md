@@ -241,6 +241,72 @@ Vector[uint64, 3]<<len=3>>(256, 512, 768)
 
 ```
 
+### Lists
+
+Lists in SSZ are crucial for managing variable-length collections of homogeneous elements within a specified maximum length (`N`). This flexibility allows for dynamic management of the data structures such as transaction sets or variable state components, adapting to the changing needs of the network.
+
+**SSZ Serialization for Lists**
+
+1. **Define the List**: Lists in SSZ are defined with a specific element type and a maximum length, noted as `List[type, N]`. This definition not only constrains the list's maximum capacity but also informs how elements should be serialized.
+
+2. **Element Serialization**:
+   - Each element in the list is serialized based on its type. For `uint64` elements, the serialization process involves converting each integer into a byte array.
+
+3. **Concatenate Serialized Elements**:
+   - The outputs of the serialized elements are concatenated sequentially. The total length of the serialized data varies depending on the number of elements present at the time of serialization.
+
+4. **Include Length Metadata (Optional)**:
+   - Depending on the implementation requirements, the length of the list might be explicitly included at the start of the serialized data to aid in parsing and validation during deserialization.
+
+**Example**:
+For a `List[uint64, 5]` containing the elements `[1024, 2048, 3072]`, the serialization process would involve:
+- Converting each integer to a byte array in little-endian format: `00 04 00 00 00 00 00 00`, `00 08 00 00 00 00 00 00`, `00 0C 00 00 00 00 00 00`.
+- Concatenating these arrays results in: `00 04 00 00 00 00 00 00 00 08 00 00 00 00 00 00 00 0C 00 00 00 00 00 00`.
+
+**SSZ Deserialization for Lists**
+
+1. **Receive Serialized Data**: The serialized byte stream for the list is the input, containing sequences of byte arrays for each element.
+
+2. **Parse and Deserialize Each Element**:
+   - Based on the element type, say `uint64`, parse the serialized stream into 8-byte segments.
+   - Convert each byte array from little-endian format back into a `uint64`.
+
+3. **Reassemble the List**:
+   - The deserialized elements are reassembled to recreate the original list.
+
+**Example**:
+Given the serialized data `00 04 00 00 00 00 00 00 00 08 00 00 00 00 00 00 00 0C 00 00 00 00 00 00` for a `List[uint64, 5]`:
+- Split the data into segments of 8 bytes: `00 04 00 00 00 00 00 00`, `00 08 00 00 00 00 00 00`, `00 0C 00 00 00 00 00 00`.
+- Convert each segment from little-endian to integers: `1024`, `2048`, `3072`.
+- The reconstructed list is `[1024, 2048, 3072]`.
+
+We can run and verify the SSZ for the above example as below:
+
+```python
+>>> from eth2spec.utils.ssz.ssz_typing import uint8, List, Vector
+>>> List[uint64, 5](1024, 2048, 3072).encode_bytes().hex()
+'00040000000000000008000000000000000c000000000000'
+>>> Vector[uint64, 3](1024, 2048, 3072).encode_bytes().hex()
+'00040000000000000008000000000000000c000000000000'
+>>> print(List[uint64, 5].decode_bytes(bytes.fromhex('00040000000000000008000000000000000c000000000000')))
+List[uint64, 5]<<len=3>>(1024, 2048, 3072)
+>>> 
+```
+
+Lists are variable sized objects in SSZ they are encoded differently from fixed sized vectors when contained within another object, so there is a small overhead. For example, below `Alice` and `Bob` objects have different encoding.
+
+```python
+>>> from eth2spec.utils.ssz.ssz_typing import uint8, Vector, List, Container
+>>> class Alice(Container):
+...     x: List[uint8, 3] # Variable sized
+>>> class Bob(Container):
+...     x: Vector[uint8, 3] # Fixed sized
+>>> Alice(x = [1, 2, 3]).encode_bytes().hex()
+'04000000010203'
+>>> Bob(x = [1, 2, 3]).encode_bytes().hex()
+'010203'
+>>> 
+```
 
 ## Fixed VS Variable Length Types
 
