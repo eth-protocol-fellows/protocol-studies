@@ -67,7 +67,7 @@ Unsigned integers (`uintN`) in SSZ are denoted where `N` can be any of 8, 16, 32
 4. **Output**: The resulting byte array is the serialized form of the integer.
 
 **Example:**
-- Integer `1025` as `uint16` would be serialized to `01 04` in hexadecimal.
+- Integer `1025` as `uint16` would be serialized to `01 04` in hexadecimal. First, convert `1025` to hex which gives `0x0401`. In little-endian format, the least significant byte (LSB) comes first. So, `0x0401` in little-endian is `01 04`. The byte array `[01, 04]` is the serialized output.
 
 **Deserialization Process for Unsigned Integers:**
 
