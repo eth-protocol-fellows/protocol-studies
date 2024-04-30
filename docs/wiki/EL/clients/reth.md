@@ -29,3 +29,21 @@ The image represents a rough component flow of Reth's architecture:
 - **Transaction Pool**: Includes DDoS mitigation measures. Consists of transactions arranged in ascending order based on the gas price preferred by the users.
 - **Payload Builder**: Extracts the initial n transactions in order to construct a fresh payload.
 - **Pruner**: Allows us to have a full node.Once the block has been canonicalized by the blockchain tree, we must wait for an additional 64 blocks for it to reach finalization. Once the finalization process is complete, we can be certain that the block will not undergo reorganization. Therefore, if we are operating a full node, we have the option to eliminate the old block using the pruner.
+
+## Storage
+
+Reth primarily utilizes the mdbx database. In addition, it offers several valuable abstractions that enhance its underlying database by enabling data transformation, compression, iteration, writing, and querying functionalities. These abstractions are designed to allow reth the option to change its underlying DB, mdbx, with minimal modifications to the existing storage abstractions.
+
+**Codecs**
+
+This [crate](https://github.com/paradigmxyz/reth/tree/main/crates/storage/codecs) enables the creation of diverse codecs for various purposes. The primary codec utilized in this context is the [Compact trait](https://github.com/paradigmxyz/reth/blob/6d7cd53ad25f0b79c89fd60a4db2a0f2fe097efe/crates/storage/codecs/src/lib.rs#L43), which enables the compression of data, such as unsigned integers by compressing their leading zeros, as well as data structures like access-lists.
+
+**Abstractions**
+
+The database trait is a fundamental abstraction that provides either read or read/write access to transactions for low-level database access. You can find more information about it [here](https://github.com/paradigmxyz/reth/blob/e158542d31bf576e8a6b6e61337b62f9839734cf/crates/storage/db/src/abstraction/database.rs#L12).
+
+The [cursor](https://github.com/paradigmxyz/reth/blob/e158542d31bf576e8a6b6e61337b62f9839734cf/crates/storage/db/src/abstraction/cursor.rs#L13) enables iteration over the values in the database and offers a swift method for retrieving transactions or blocks. It is particularly useful when calculating merkle roots, as sequential value access is significantly faster than random seeking. In addition, if we have a large amount of data to write, sorting and writing it is much faster. The cursor allows us to optimize our approach by providing convenient functions for writing either sorted or unsorted data. This gives us access to transactions.
+
+**Tables**
+
+TODO
