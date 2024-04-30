@@ -127,7 +127,7 @@ We can run SSZ serialization and deserialization commands using the python Eth2 
 0
 ```
 
-## How SSZ Works - Composite Types
+## How SSZ Works on Composite Types
 
 ### Vectors
 
@@ -777,6 +777,40 @@ There are many tools available for SSZ. Here is a [full list](https://github.com
 - [fastssz](https://github.com/ferranbt/fastssz/)
 - [rust-ssz](https://github.com/ralexstokes/ssz-rs)
 
+## SSZ VS RLP Serialization
+
+| CRITERIA   | COMPACT | EXPRESSIVENESS | HASHING  | INDEXING |
+|------------|---------|----------------|----------|----------|
+| RLP        | Yes     | Flexible       | Possible | No       |
+| SSZ        | No      | Yes            | Yes      | Poor     |
+
+_Table: SSZ VS RLP Comparison by [Piper Merriam](https://twitter.com/pipermerriam)._
+
+1. **Expressiveness**:
+   - **SSZ**: Supports all necessary data types directly without the need for additional abstraction layers. This makes SSZ inherently more straightforward and robust for handling complex data structures used in Ethereum PoS.
+   - **RLP**: Limited to dynamic length byte strings and lists. Additional data types are only supported through abstraction layers, which can introduce complexity and potential inefficiencies.
+
+2. **Hashing**:
+   - **SSZ**: Facilitates efficient hashing and re-hashing of objects, particularly beneficial for operations that require frequent updates to data states, such as those in sharding and stateless clients. This efficiency is crucial for maintaining blockchain integrity and performance.
+   - **RLP**: While hashing is possible, it does not offer the same performance optimizations, especially when data structures undergo minor modifications.
+
+3. **Indexing**:
+   - **SSZ**: Although indexing is described as 'poor', SSZ supports some level of direct access to serialized data without full deserialization, which is beneficial for certain operations within the blockchain.
+   - **RLP**: Does not support efficient indexing, potentially leading to `O(N)` complexity when accessing internal data, which can be a significant drawback for performance on large-scale networks.
+
+4. **Data Type Compatibility**:
+   - **SSZ**: Designed to be fully compatible with the data types and structures used within the Ethereum protocol, enhancing its utility for consensus mechanisms and network operations.
+   - **RLP**: While flexible, the need for additional layers to support various data types can lead to inefficiencies and increased complexity in implementation.
+
+5. **Designed for Ethereum 2.0 Requirements**:
+   - **SSZ**: Specifically created to meet the needs of Ethereum PoS, including sharding and proof-of-stake mechanisms, making it better suited for future developments and updates to the protocol.
+
+6. **Deterministic Serialization**:
+   - **SSZ**: Provides deterministic serialization results, ensuring that the same data structure serializes to the exact same byte sequence every time, which is crucial for consensus reliability.
+
+For these reasons, there is a strong effort in Ethereum to completely migrate to SSZ serialization for everything and stop the usage of RLP serialization.
+
+## SSZ Merkleization
 
 ## Resources
 - [Simple serialize](https://ethereum.org/en/developers/docs/data-structures-and-encoding/ssz/)
