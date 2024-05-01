@@ -128,3 +128,13 @@ Leo from Solidity team explains how to use this feature:
 ### Verifying optimizations
 
 Equivalence checking is extensively used for software optimization. For example, an optimized smart contract can be tested for correctness against its previous version to confirm that optimization hasn't introduced any unintended behavior.
+
+## Closing thoughts
+
+Formal verification is hard. The process itself can be [complex and time-consuming](https://www.hillelwayne.com/post/why-dont-people-use-formal-methods), requiring specialized skills and tools. Additionally, formal verification can only guarantee the correctness of the model, not necessarily the underlying implementation itself. Errors in the translation process between code and model can still introduce vulnerabilities.
+
+Formal verification relies on efficient abstraction of a system. And abstraction is hard. If you leave an important detail out of the abstraction it can introduce safety issues. For this reason, often times [engineers use a complementary simulation method like fuzzing](https://blog.trailofbits.com/2024/03/22/why-fuzzing-over-formal-verification/) to test a system using random input.
+
+Despite these challenges, formal verification is a powerful technique that can help define safe and efficient systems. We'll close on this insightful quote from Dijkstra:
+
+> “Program testing can be used to show the presence of bugs, but never to show their absence!”
