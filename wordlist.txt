@@ -595,3 +595,4 @@ fastssz
 uint
 Merkleization
 subtrees
+multiproofs
