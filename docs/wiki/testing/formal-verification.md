@@ -51,4 +51,53 @@ Popular tools verification systems are:
 - The  [Alloy language](http://alloytools.org/) from Daniel Jackson at MIT
 - The  [Event-B language](http://www.event-b.org/), [Z-notation](https://en.wikipedia.org/wiki/Z_notation), and proof tools from Jean-Raymond.
 
-## History and landscape
+## Example
+
+The first step of formal verification is abstracting the system. Any system can be selectively abstracted for the purpose of testing its correctness.
+
+E.W Dijkstra elegantly describes:
+
+> I have grown to regard a program as an ordered set of pearls, a “necklace”. The top pearl describes the program in its
+> most abstract form, in all lower pearls one or more concepts used above are explained (refined) in terms of concepts
+> to be explained (refined) in pearls below it, while the bottom pearl eventually explains what still has to be explained
+> in terms of a standard interface (=machine). The family becomes a given collection of pearls that can be strung
+> into a fitting necklace.
+
+Let's write a quick TLA+ spec to model that abstracts a traffic controller.
+
+```bash
+-------------- MODULE TrafficController --------------
+
+CONSTANTS MaxCars
+VARIABLES carsWaiting, greenSignal
+
+Init == /\ carsWaiting = 0
+        /\ greenSignal = FALSE
+
+Arrive(car) == IF carsWaiting < MaxCars THEN carsWaiting' = carsWaiting + 1 ELSE UNCHANGED carsWaiting
+
+Depart == IF carsWaiting > 0 THEN carsWaiting' = carsWaiting - 1 ELSE UNCHANGED carsWaiting
+
+ChangeSignal == /\ carsWaiting > 0
+                /\ greenSignal' = TRUE
+
+Next == \/
+         \E car \in {0, 1}: Arrive(car)
+         \/ Depart
+         \/ ChangeSignal
+
+Invariant == carsWaiting <= MaxCars
+
+Spec == Init /\ [][Next]_<<carsWaiting, greenSignal>> /\ []Invariant
+
+=======================================================
+
+```
+
+Note how this abstraction conveniently ignores all the irrelevant interactions at a traffic signal (honking, anyone?). Efficient abstraction is an art.
+
+Understanding the TLA+ semantics are not important for this discussion. Here is a brief of what it does:
+
+`Init` initializes the system with no cars waiting. The `Arrive` models the arrival of cars, increasing the count of waiting cars if the maximum capacity has not been reached. Conversely, the `Depart` simulates cars departing from the controller, decrementing the count of waiting cars if there are any. Lastly ,`ChangeSignal` dictates that if cars are waiting, the traffic signal switches to green.
+
+The invariant `Invariant == carsWaiting <= MaxCars` ensures the number of cars waiting never exceeds `MaxCars`, a defined constant.
