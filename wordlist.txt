@@ -5,6 +5,7 @@ accelerometer
 ACD
 ACL
 addons
+aggregative
 Aleth
 allowfullscreen
 amidst
@@ -20,6 +21,7 @@ ASE
 Assche
 Assertoor
 assignees
+atleast
 atomicity
 Attacknet
 attester
@@ -66,6 +68,7 @@ Buterin
 Buterin's
 bypassability
 bytecode
+bytecodes
 calldata
 canonicalized
 Caplin
@@ -79,6 +82,8 @@ centralisation
 centric
 chainId
 Challanges
+changeset
+changesets
 Charmes
 cli
 CLRS
@@ -86,11 +91,14 @@ cmd
 CoC
 codebase
 codebases
+codec
 CODECOPY
+codecs
 coinbase
 commoditized
 Composability
 composable
+computable
 config
 congestions
 Consensys
@@ -149,6 +157,7 @@ Dracorn
 Dragan
 Driscoll
 DSA
+dup
 DVT
 dx
 EB
@@ -254,6 +263,7 @@ Grandine
 Guillaume
 hackmd
 Hager
+HashedStorages
 Herc’s
 hoc
 Holesky
@@ -265,6 +275,7 @@ Hulsing
 Hyperledger
 Hyperplonk
 ics
+IETF
 iframe
 ify
 impera
@@ -282,6 +293,7 @@ intermediation
 interop
 IOP
 IPC
+IRTF
 ISA
 Jitsi
 js
@@ -295,6 +307,7 @@ keccak
 Keccak's
 keecak
 KEM
+keystore
 Kira
 Kleppmann
 Koblitz
@@ -337,6 +350,7 @@ mem
 Mempool
 Menezes
 merkelizing
+merkle
 Merkle
 Merkleization
 Merkleize
@@ -383,6 +397,8 @@ Odayan
 OFAC
 Offchain
 offsites
+ommer
+ommers
 onboarding
 onchain
 Oorschot
@@ -487,6 +503,7 @@ runtime
 scalability
 scalable
 schemas
+Schnorr
 Schocken
 Schwabe
 SECG
@@ -495,8 +512,10 @@ SELFDESTRUCT
 Sepolia
 sexualized
 SHA
+Shacham
 shadowfork
 Shafu
+ShardedKey
 sharding
 ShareAlike
 Shead
@@ -528,6 +547,9 @@ StateDB
 stateful
 stateRoot
 stf
+StorageShardedKey
+StoragesHistory
+StoragesTrie
 StreamEth
 subnets
 suboptimal
@@ -563,6 +585,7 @@ trustlessly
 trustlessness
 TrustLook
 TSTORE
+Tx
 txpool
 txs
 unaggregated
@@ -570,16 +593,19 @@ Unbundling
 underbrace
 Unformatted
 unguessable
+unix
 upstreamed
 utils
 UTXOs
 UX
 Vadim
 validator
+validator's
 validators
 Vanstone
 VB's
 VDFs
+Vec
 verifications
 verifier
 verifiers
@@ -609,24 +635,4 @@ zk
 zkEVMs
 ZKSNARK
 ZKSNARKs
-Schnorr
-IETF
-IRTF
-Shacham
-aggregative
-atleast
-computable
-keystore
-validator's
-verifications
-CLRS
-Endian
-Noam
-Pyrmont
-Goerli
-financials
-testnets
-Hotz
-linearizer
-tinygrad
 Zksync
