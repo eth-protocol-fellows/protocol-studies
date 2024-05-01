@@ -2,47 +2,49 @@
 
 ## Mathematics and the art of abstraction
 
-Imagine that you are in charge of organizing this year's office party. It has been decided that a group of 5 people will share a crate of beer. It is a generous party. There are 83 people at the office. How many crates should you order?
+Imagine that you are in charge of organizing this year's office party. It has been decided that a team of 5 people will share a crate of beer. It's a generous party! There are 83 people at the office. How many crates should you order?
 
-Scribbling some quick arithmetic: $\frac{83}/{5} = 16.6$ Rounding up we get 17 crates of beer.
+Scribbling some quick arithmetic: $\frac{83}{5} = 16.6$ Rounding up we get 17 crates of beer.
 
 Let's step back and absorb how got the answer.
 
-We started with a question. "How many crates of beer should be ordered between a certain number of people given certain condition?"
+We started with a question: "How many crates of beer should be ordered for a certain number of people given a specific condition?"
 
-The number `83` is an "abstraction" for the number of total people number at the office.
+The number `83` is an "abstraction" for the total number of people at the office.
 
-"Abstraction" is an interesting concept. It originates from the latin word `abstrahō`, meaning "[to] draw away" or "separate". Abstraction is the _art_ of selectively separating relevant pieces of information for a given purpose. We abstracted all the people to a simple number: 83. We ignored everything else about them, their designation, education, favorite sports team because it _just wasn't relevant_ in this case.
+"Abstraction" is an interesting concept. It originates from the Latin word `abstrahō`, meaning "[to] draw away" or "separate." Abstraction is the _art_ of selectively separating essential features of information for a given purpose. We abstracted all the people to a simple number: `83`. We ignored everything else about them, their designation, education, favorite sports team because it was simply _not relevant_ in this case.
 
-Similarly, the number `5` is an abstraction for a group; and the answer `16.6` abstractly represents the total crates of beer required, which we rounded up to `17` because we wanted to order whole crates. That we quickly do these abstractions and interpret the result effortlessly in our minds doesn't take away from the fact that abstraction is a powerful tool.
+Similarly, the number `5` is an abstraction for a team; and the answer `16.6` abstractly represents the total crates of beer required, which we rounded up to `17` because we wanted to order whole crates. That we quickly perform these abstractions and interpret the result effortlessly in our minds doesn't take away from the fact that abstraction is a powerful tool.
 
 Our algorithm can be outlined as:
 
-1. For a given problem, abstract away the input.
-2. Use a mathematical model to find solution.
-3. Interpret the solution back.
+1. For a given problem, abstract away the irrelevant details from the input.
+2. Use a mathematical model to find a solution.
+3. Map the solution back to the original context.
 
-This is a fundamental theme in problem solving. Computers do this too. The words on your screen is abstractly [represented in binary on a computer](https://en.wikipedia.org/wiki/ASCII) for transmission and storage.
+This is a fundamental theme in problem solving. Computers do this too. The words on your screen are abstractly [represented in binary on a computer](https://en.wikipedia.org/wiki/ASCII) for transmission and storage.
 
-> Mathematics is the language of precision. Abstraction allows us to precisely define the input focused only on relevant information, for a given problem. The result of which can be mathematically solved and interpreted as required.
+> Mathematics is the language of precision. Abstraction allows us to precisely define the input focused only on relevant features for a given problem. The result of which can be mathematically solved and interpreted as required.
 
 ## Formal verification
 
 Formal verification, like the previous example, helps find the answer to a simple question: "Does a system correctly meet its required specifications?"
 
-> Formal verification is a verification technique that abstracts a system as a mathematical model and proves or disproves its correctness.
+> Specifically, formal verification is a verification technique that abstracts a system as a mathematical model and proves or disproves its correctness.
 
-A "system" is defined as a mechanism that is able to execute all of the functions given by its external interface. "Invariants" are properties that remains unchanged for a system, regardless of its current state. For example, an invariant of a vending machine is: Nobody should be able to dispense a product for free.
+A "system" is defined as a mechanism that is able to execute all of the functions given by its external interface. 
+
+"Invariants" are properties that remains unchanged for a system, regardless of its current state. For example, an invariant of a vending machine is: Nobody should be able to dispense a product for free.
 
 Formal verification tests the correctness of a system by checking if all its invariants holds true.
 
-The philosophical roots of formal methods reach back to ancient Greece with Plato's exploration of theory of forms in his book "Sophist", while mathematicians in the 17th century further developed the concept through abstract algebra. German polymath, Gottfried Leibniz's vision laid the groundwork for what we now call formal reasoning. In 19th century, pioneering work by George Boole on analysis and Friedrich Frege on propositional logic provided the foundation for formal semantics.
+The philosophical roots of formal methods reach back to ancient Greece with Plato's exploration of theory of forms in his book "Sophist", while mathematicians in the 17th century further developed the concept through abstract algebra. German polymath, Gottfried Leibniz's vision laid the groundwork for what we now call formal reasoning. In the 19th century, pioneering work by George Boole on analysis and Friedrich Frege on propositional logic provided the foundation for formal semantics.
 
 There are several types of formal methods used to verify a system design:
 
-- **Model checking / assertion-based checking**: Models a system as finite state machine and verifies its correctness and liveness of using propositional logic.
+- **Model checking / assertion-based checking**: Models a system as a finite state machine and verifies its correctness and liveness using propositional logic.
 - **Temporal logic**: Models a system whose propositions varies with time.
-- **Equivalence checking**: Verifies if two models of the same specification but varying implementation produce the same result.
+- **Equivalence checking**: Verifies if two models of the same specification but varying implementations produce the same result.
 
 Popular tools verification systems are:
 
@@ -94,7 +96,9 @@ Spec == Init /\ [][Next]_<<carsWaiting, greenSignal>> /\ []Invariant
 
 ```
 
-Note how this abstraction conveniently ignores all the irrelevant interactions at a traffic signal (honking, anyone?). Efficient abstraction is an art.
+Note how this abstraction conveniently ignores all the irrelevant interactions at a traffic signal (honking, anyone?).
+
+**Efficient abstraction is an art.**
 
 Understanding the TLA+ semantics are not important for this discussion. Here is a brief of what it does:
 
@@ -127,7 +131,7 @@ Leo from Solidity team explains how to use this feature:
 
 ### Verifying optimizations
 
-Equivalence checking is extensively used for software optimization. For example, an optimized smart contract can be tested for correctness against its previous version to confirm that optimization hasn't introduced any unintended behavior.
+Equivalence checking is extensively used for software optimization. For example, an optimized smart contract can be tested for correctness against its previous version to confirm that the optimization hasn't introduced any unintended behavior.
 
 ## Closing thoughts
 
