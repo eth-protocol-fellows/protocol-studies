@@ -207,9 +207,51 @@ In Ethereum PoS, the concepts of summaries and expansions are integral to managi
   - **BeaconBlock and BeaconBlockHeader**: The `BeaconBlockHeader` acts as a summary, allowing nodes to quickly verify the integrity of a block without needing the complete block data. `BeaconBlock` is th expansion.
   - **Proposer Slashing**: Validators use block summaries to efficiently identify and process conflicting block proposals, facilitating swift and accurate slashing decisions.
 
-
 ## Merkleization for Basic Types
 
+Let's understand the Merkleization of basic types using an example. Below is a simple Merkle tree and we will follow the process of merkleization to get the merkle root hash.
+
+```mermaid
+graph TD;
+    A["A"] --> HAB["H(A + B)"]
+    B["B"] --> HAB
+    C["C"] -->  HCD["H(C + D)"]
+    D["D"] --> HCD
+    HAB --> HROOT["Root: H(H(A+B) + H(C+D))"]
+    HCD --> HROOT
+```
+
+_Figure: Sample Merkle Tree._
+
+In the above Merkle tree, the leaves are our four blobs of data, A, B, C, and D.
+
+- **Define the Data:**
+  - In this example, we're dealing with four basic data items: A, B, C, and D. These are conceptualized as numbers (`10`, `20`, `30`, and `40` respectively) and will be represented in the Merkle tree as 32-byte chunks.
+- **Convert Data to 32-byte Chunks:**
+  - Each data item is serialized into a 32-byte format using the `uint256` type from the SSZ typing system. Serialization involves converting the data into a format that is consistent and padded to ensure that each item is 32 bytes long.
+- **Pair and Hash the Leaves:**
+  - Next, pairs of these serialized data chunks are concatenated and hashed.
+- **Hash the Results to Form the Root:**
+  - Finally, the hashes from the previous step (`ab` and `cd`) are concatenated and hashed to form the Merkle root.
+- **Output the Merkle Root:**
+  - The Merkle root is then converted to a hexadecimal string to make it readable.
+
+This final Merkle root is a unique representation of the data `A`, `B`, `C`, and `D`. Any change in the input data would result in a different Merkle root, illustrating the sensitivity of the hash function to the input data. This characteristic is essential for ensuring data integrity in Ethereum.
+
+
+```python
+>>> from eth2spec.utils.ssz.ssz_typing import uint256
+>>> from eth2spec.utils.hash_function import hash
+>>> a = uint256(10).to_bytes(length = 32, byteorder='little')
+>>> b = uint256(20).to_bytes(length = 32, byteorder='little')
+>>> c = uint256(30).to_bytes(length = 32, byteorder='little')
+>>> d = uint256(40).to_bytes(length = 32, byteorder='little')
+>>> ab = hash(a + b)
+>>> cd = hash(c + d)
+>>> abcd = hash(ab + cd)
+>>> abcd.hex()
+'1e3bd033dcaa8b7e8fa116cdd0469615b29b09642ed1cb5b4a8ea949fc7eee03'
+```
 
 ## Merkleization for Composite Types
 
