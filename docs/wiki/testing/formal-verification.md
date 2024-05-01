@@ -101,3 +101,30 @@ Understanding the TLA+ semantics are not important for this discussion. Here is 
 `Init` initializes the system with no cars waiting. The `Arrive` models the arrival of cars, increasing the count of waiting cars if the maximum capacity has not been reached. Conversely, the `Depart` simulates cars departing from the controller, decrementing the count of waiting cars if there are any. Lastly ,`ChangeSignal` dictates that if cars are waiting, the traffic signal switches to green.
 
 The invariant `Invariant == carsWaiting <= MaxCars` ensures the number of cars waiting never exceeds `MaxCars`, a defined constant.
+
+## Ethereum and formal verification
+
+Formal verification plays a critical role in verifying safety and liveliness of Ethereum's decentralized infrastructure and its applications. This rigorous method achieves the highest ranking on the [EAL scale](https://en.wikipedia.org/wiki/Evaluation_Assurance_Level#EAL7:_Formally_Verified_Design_and_Tested), signifying its profound impact on security.
+
+### Protocol verification
+
+[KEVM](https://github.com/runtimeverification/evm-semantics) builds upon [K framework](https://kframework.org/) for crafting formal semantics and conducting verification of the [Ethereum Virtual Machine (EVM)](/wiki/EL/evm.md) specification for correctness.
+
+Formal verification is an essential tool in the test suite and was used to discover a subtle [array-out-of-bound runtime error](https://consensys.io/blog/formal-verification-of-ethereum-2-0-part-1-fixing-the-array-out-of-bound-runtime-error) within the state transition component.
+
+![Formal verification as part of testing suite](./img/fv-and-testing.jpg)
+> Formal verification a slice of a Swiss cheese model in a test suite – [Source: Codasip](https://codasip.com/2023/09/19/formal-verification-best-practices-to-reach-your-targets/).
+
+### Smart contract verification
+
+Bugs or vulnerabilities in smart contracts can have devastating consequences, leading to financial losses and undermining user trust. Formal verification tools like tools [Certora Prover](https://docs.certora.com/en/latest/docs/prover/index.html) and [halmos](https://github.com/a16z/halmos) helps identify these issues.
+
+Solidity compiler implements a [formal verification approach based on SMT (Satisfiability Modulo Theories) and Horn solving](https://docs.soliditylang.org/en/latest/smtchecker.html).
+
+Leo from Solidity team explains how to use this feature:
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/QQbWpN76HEg?si=CI0cPCVgAkfAM_V2" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+### Verifying optimizations
+
+Equivalence checking is extensively used for software optimization. For example, an optimized smart contract can be tested for correctness against its previous version to confirm that optimization hasn't introduced any unintended behavior.
