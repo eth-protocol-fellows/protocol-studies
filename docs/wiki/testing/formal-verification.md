@@ -35,3 +35,20 @@ Formal verification, like the previous example, helps find the answer to a simpl
 A "system" is defined as a mechanism that is able to execute all of the functions given by its external interface. "Invariants" are properties that remains unchanged for a system, regardless of its current state. For example, an invariant of a vending machine is: Nobody should be able to dispense a product for free.
 
 Formal verification tests the correctness of a system by checking if all its invariants holds true.
+
+The philosophical roots of formal methods reach back to ancient Greece with Plato's exploration of theory of forms in his book "Sophist", while mathematicians in the 17th century further developed the concept through abstract algebra. German polymath, Gottfried Leibniz's vision laid the groundwork for what we now call formal reasoning. In 19th century, pioneering work by George Boole on analysis and Friedrich Frege on propositional logic provided the foundation for formal semantics.
+
+There are several types of formal methods used to verify a system design:
+
+- **Model checking / assertion-based checking**: Models a system as finite state machine and verifies its correctness and liveness of using propositional logic.
+- **Temporal logic**: Models a system whose propositions varies with time.
+- **Equivalence checking**: Verifies if two models of the same specification but varying implementation produce the same result.
+
+Popular tools verification systems are:
+
+- The  [TLA+-based model checker](https://www.microsoft.com/en-us/research/wp-content/uploads/2016/12/Specifying-Concurrent-Systems-with-TLA.pdf)  by Leslie Lamport
+- The  [CSP-based verification](http://dl.acm.org/citation.cfm?doid=359576.359585) by Tony Hoare
+- The  [Alloy language](http://alloytools.org/) from Daniel Jackson at MIT
+- The  [Event-B language](http://www.event-b.org/), [Z-notation](https://en.wikipedia.org/wiki/Z_notation), and proof tools from Jean-Raymond.
+
+## History and landscape
