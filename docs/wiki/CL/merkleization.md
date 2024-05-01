@@ -19,9 +19,10 @@ Merkleization involves breaking down the serialized data into 32-byte chunks, wh
 - **Tree Construction:** Pair up the chunks and hash each pair to form the next level of the tree. Repeat this step until only one hash remains: the Merkle root.
 - **Padding:** If the number of chunks isn't a power of two, additional zero-value chunks are added to round out the tree, ensuring that the tree is balanced.
 
-
 ## Benefits of Merkleization
 
+- **Performance Efficiency:** While the tree requires hashing approximately twice the original data amount, caching mechanisms can store the roots of subtrees that don't change often. This significantly reduces the computational overhead as only altered parts of the data need re-hashing.
+- **Light Client Support:** The Merkle tree structure supports the creation of Merkle proofs—small pieces of data that prove the inclusion and integrity of specific parts of the state without needing the entire dataset. This feature is crucial for light clients, which operate with limited resources and rely on these proofs to interact with  Ethereum securely.
 
 ## Calculating Hash Tree Roots
 
