@@ -75,7 +75,7 @@ graph TD;
 _Figure: Merkle Tree Generalized Indices and Depth Levels._
 
 - **Root Index:** 1 (depth = 0)
-- **Subsequent Levels:** $2^depth + index$ where index is the node's zero-indexed position at that depth.
+- **Subsequent Levels:** $2^{depth} + index$ where index is the node's zero-indexed position at that depth.
 
 ## Multiproofs Using Generalized Indices
 
@@ -83,7 +83,7 @@ Multiproofs using generalized indices provide an efficient way to verify specifi
 
 **Understanding the Structure**
 - A Merkle tree is structured in layers, where each node is either a leaf node (containing actual data) or an internal node (containing hashes of its child nodes).
-- Generalized indices numerically represent the position of each node in the tree, calculated as $2^depth + index$, starting from the root (index 1).
+- Generalized indices numerically represent the position of each node in the tree, calculated as $2^{depth} + index$, starting from the root (index 1).
 
 **Tree Layout for the Example**
 - The tree is structured as follows, with `*` indicating the nodes required to generate the proof for the element at index 9:
