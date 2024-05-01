@@ -164,7 +164,7 @@ Despite these challenges, formal verification is a powerful technique that can h
 - Siemens, [How Can You Say That Formal Verification Is Exhaustive?](https://blogs.sw.siemens.com/verificationhorizons/2021/09/16/how-can-you-say-that-formal-verification-is-exhaustive/)
 - Siemens, [3 Notable Formal Verification Conference Papers of 2020](https://blogs.sw.siemens.com/verificationhorizons/2021/02/09/3-notable-formal-verification-conference-papers-of-2020/)
 - Siemens, [Formal Verification Methods](https://verificationacademy.com/topics/formal-verification/)
-- Standford, [Introduction to First Order Logic](https://plato.stanford.edu/entries/logic-classical/)
+- Stanford, [Introduction to First Order Logic](https://plato.stanford.edu/entries/logic-classical/)
 - NYU, [Introduction to Satisfiability Modulo Theories](https://cs.nyu.edu/~barrett/pubs/BT14.pdf)
 - Sebastian U, [A Formal Verification of Rust's Binary Search Implementation](https://kha.github.io/2016/07/22/formally-verifying-rusts-binary-search.html)
 - Jack V., [Primer on TLA+](https://jack-vanlightly.com/blog/2023/10/10/a-primer-on-formal-verification-and-tla)
