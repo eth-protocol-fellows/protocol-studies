@@ -2,15 +2,15 @@
 
 This page covers resources on all consensus client implementations, whether in production or development. It provides an overview of unique features of each client, architecture, basic guides and resources.
 
-> Consensus clients originally used to be called _eth2.0 clients_ which is now a deprecated nomenclature but you can still find this reference in their repositories. 
+> Consensus clients originally used to be called _eth2.0 clients_ which is now a deprecated nomenclature but you can still find this reference in their repositories.
 
-There are multiple Consensus Layer clients developed to participate in the Ethereum Proof-of-Stake (PoS) mechanism. The most popular, FOSS and production ready are [Lighthouse](https://lighthouse-book.sigmaprime.io/),  [Lodestar](https://lodestar.chainsafe.io/), [Nimbus](https://nimbus.team/index.html), [Prysm](https://prysmaticlabs.com/) and [Teku](https://consensys.io/teku). These clients are developed in different programming languages, provide have unique features and offer different performance profiles. All clients support Ethereum mainnet out of the bo as well as currently active testnets. Variety of implementations allows the network to benefit from client diversity. If you are choosing a client to use, current client diversity should be one of the main factors. 
+There are multiple Consensus Layer clients developed to participate in the Ethereum Proof-of-Stake (PoS) mechanism. The most popular, FOSS and production ready are [Lighthouse](https://lighthouse-book.sigmaprime.io/), [Lodestar](https://lodestar.chainsafe.io/), [Nimbus](https://nimbus.team/index.html), [Prysm](https://prysmaticlabs.com/) and [Teku](https://consensys.io/teku). These clients are developed in different programming languages, provide have unique features and offer different performance profiles. All clients support Ethereum mainnet out of the box along with active testnets. Variety of implementations allows the network to benefit from client diversity. If you are choosing a client to use, current client diversity should be one of the main factors.
 
-## Clients in production 
+## Clients in production
 
 ## LightHouse
 
-[Lighthouse](https://lighthouse-book.sigmaprime.io/) is a client developed in the Rust programming language. It is a full-featured Ethereum consensus client that can be used as a beacon node or a validator client. It is developed by [Sigma Prime](https://sigmaprime.io/). 
+[Lighthouse](https://lighthouse-book.sigmaprime.io/) is a client developed in the Rust programming language. It is a full-featured Ethereum consensus client that can be used as a beacon node or a validator client. It is developed by [Sigma Prime](https://sigmaprime.io/).
 
 ### Features
 
@@ -49,7 +49,6 @@ For more frequently asked question about the client, refer to the [FAQ](https://
 
 By ChainSafe in TypeScript
 
-
 ## Nimbus
 
 By Status in Nim
@@ -58,7 +57,7 @@ By Status in Nim
 
 [Prysm](https://docs.prylabs.network/docs/getting-started) is a client developed in the Go programming language. It is one of the most popular clients and has a large community. Using this client, validators can participate in the Ethereum PoS mechanism. Prysm can be used as a beacon node or a validator client. It can assist execution layer clients in processing transactions and blocks. When an execution client is integrated with Prysm, it first syncs the block headers with it since, as a beacon node, it has a full view of the chain. It gossips the latest block headers to the EL client. Then, the EL client can request the block bodies from its p2p network. This is mostly common in the case of all Consensus Layer clients.
 
-Apart from Ethereum mainnet, Prysm can also be run on testnets such as Goerli, Holesky, and Pyrmont. Prysm can be integrated with different EL clients such as [Geth](https://geth.ethereum.org/), [Nethermind](https://www.nethermind.io/nethermind-client), and [Besu](https://besu.hyperledger.org/), etc. It has a web interface to monitor the beacon chain and validator performance. It also has a RESTful API to interact with the beacon chain and validator client.
+Apart from Ethereum mainnet, Prysm can also be run on testnets such as Goerli, Holesky, Pyrmont. Prysm can be integrated with different EL clients such as [Geth](https://geth.ethereum.org/), [Nethermind](https://www.nethermind.io/nethermind-client), and [Besu](https://besu.hyperledger.org/), etc. It has a web interface to monitor the beacon chain and validator performance. It also has a RESTful API to interact with the beacon chain and validator client.
 
 ### Installing the client
 
@@ -162,7 +161,11 @@ Teku also provides a slashing protection mechanism, especially in the case where
 
 ## Clients in development
 
-### Grandine 
+### Caplin
+
+A consensus client embedded in Erigon. 
+
+### Grandine
 
 Originally a proprietary client in Rust, recently became open source
 
@@ -170,6 +173,6 @@ Originally a proprietary client in Rust, recently became open source
 
 By LC in Elixir
 
-### Additional reading 
+### Additional reading
 
 [Analysis of CL clients performance, outdated](https://mirror.xyz/0x934e6B4D7eee305F8C9C42b46D6EEA09CcFd5EDc/b69LBy8p5UhcGJqUAmT22dpvdkU-Pulg2inrhoS9Mbc)
