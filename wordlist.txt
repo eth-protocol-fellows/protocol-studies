@@ -263,6 +263,7 @@ Grandine
 Guillaume
 hackmd
 Hager
+HashedStorages
 Herc’s
 hoc
 Holesky
@@ -513,6 +514,7 @@ SHA
 Shacham
 shadowfork
 Shafu
+ShardedKey
 sharding
 ShareAlike
 Shead
@@ -544,6 +546,9 @@ StateDB
 stateful
 stateRoot
 stf
+StorageShardedKey
+StoragesHistory
+StoragesTrie
 StreamEth
 subnets
 suboptimal
