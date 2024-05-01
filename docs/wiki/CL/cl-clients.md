@@ -161,6 +161,10 @@ Teku also provides a slashing protection mechanism, especially in the case where
 
 ## Clients in development
 
+### Caplin
+
+A consensus client embedded in Erigon. 
+
 ### Grandine
 
 Originally a proprietary client in Rust, recently became open source

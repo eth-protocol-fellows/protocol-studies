@@ -68,6 +68,7 @@ bypassability
 bytecode
 calldata
 canonicalized
+Caplin
 Carb
 cartelization
 Casper
