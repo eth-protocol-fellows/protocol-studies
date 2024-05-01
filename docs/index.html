@@ -33,7 +33,6 @@
     href="https://cdn.jsdelivr.net/npm/docsify-themeable@0/dist/css/theme-simple-dark.css">
 
   <link rel="stylesheet" href="assets/css/theme.css">
-  <link rel="stylesheet" href="assets/css/custom.css">
 
   <!-- Font Awesome Stylesheets -->
   <link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free/css/fontawesome.css" />
@@ -111,7 +110,7 @@
     }
 
   </style>
-
+  <link rel="stylesheet" href="assets/css/custom.css">
 </head>
 
 <body>
@@ -177,7 +176,7 @@
     window.$docsify = {
       // GENERAL SETTINGS
       // -----------------------------------------------------------------
-      name: 'Protocol Wiki',
+      name: '<img class="logo" src="/assets/favicon/favicon.ico"/> Protocol Wiki',
       homepage: 'readme.md',
       loadSidebar: !(getURLParameterByName(['standalone', 'embedded']) || standalone || false),
       loadNavbar: !(getURLParameterByName(['standalone', 'embedded']) && !(getURLParameterByName('navbar')) || standalone && !navbar ||false),
@@ -333,7 +332,7 @@
             } else {
               url = gitLinkRepoURL + '/blob/main/docs/' + vm.route.file
             }
-            var editHtml = '[:memo:' + editThisPageLinkText + '](' + url + ')\n'
+            var editHtml = `<a href="${url}" class="btn-primary"/> :memo:  ${editThisPageLinkText}</a>`
 
             if ((!(getURLParameterByName('hidegitlink'))) && (!!gitLinkRepoURL)) {
               return html + '<br />' + '\n\n' + editHtml

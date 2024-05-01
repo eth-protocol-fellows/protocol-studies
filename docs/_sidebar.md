@@ -69,11 +69,12 @@
   - Preconfirmations
     - [Preconfirmations](/wiki/research/Preconfirmations/Preconfirmations.md)
     - [Based Sequencing with Preconfs](/wiki/research/Preconfirmations/BasedSequencingPreconfs.md)
+  - [Light clients](/wiki/research/light-clients.md)
 - [Cryptography](/wiki/Cryptography/intro.md)
   - [ECDSA](/wiki/Cryptography/ecdsa.md)
   - [BLS](/wiki/Cryptography/bls.md)
   - [Keccak256](/wiki/Cryptography/keccak256.md)
-  - [Commitments]
+  - Commitments
     - [KZG](/docs/wiki/Cryptography/KZG.md)
   - [Post-Quantum Cryptography](/wiki/Cryptography/post-quantum-cryptography.md)
 - [Protocol Fellowship](/wiki/epf.md)
@@ -82,5 +83,5 @@
   - [GitHub Repository](https://github.com/eth-protocol-fellows/protocol-studies)
 
 <form action="https://epf.wiki/#/eps/intro" target="_blank">
-  <input type="submit" value="Join the protocol" style="cursor: pointer;margin-top:12px;padding:8px;background-color:#FFFFFF;border:1px solid #0374B5;border-radius:.25rem;color:#0374B5;display:inline-block;text-align:center;text-decoration:none;width:250px;-webkit-text-size-adjust:none;mso-hide:all;" />
+  <input type="submit" value="Join the protocol" class="btn-primary" />
 </form>

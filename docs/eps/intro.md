@@ -25,26 +25,26 @@ The first part of the program consists of 6 sessions with introductions to high 
 | Week #                          | Topic                              | Speaker                                                                                          |
 | ------------------------------- | ---------------------------------- | ------------------------------------------------------------------------------------------------ |
 | [Week 1](/eps/week1.md)         | Intro to EPS and Ethereum protocol | [Josh Davis](https://github.com/JoshDavisLight), [Mario Havel](https://github.com/taxmeifyoucan) |
-| [Week 2](/epf/week2.md)         | Execution Layer                    | [Lightclient](https://github.com/lightclient)                                                    |
-| [Week 3](/epf/week3.md)         | Consensus layer                    | [Alex Stokes](https://github.com/ralexstokes)                                                    |
-| [Week 4](/epf/week4.md)         | Testing and security               | [Mario Vega](https://github.com/marioevz)                                                        |
-| [Week 5](/epf/week5.md)         | Roadmap and research               | [Domothy](https://github.com/domothyb)                                                           |
-| [Week 5](/epf/node_workshop.md) | Node workshop                      | [Mario](https://github.com/taxmeifyoucan)                                                        |
+| [Week 2](/eps/week2.md)         | Execution Layer                    | [Lightclient](https://github.com/lightclient)                                                    |
+| [Week 3](/eps/week3.md)         | Consensus layer                    | [Alex Stokes](https://github.com/ralexstokes)                                                    |
+| [Week 4](/eps/week4.md)         | Testing and security               | [Mario Vega](https://github.com/marioevz)                                                        |
+| [Week 5](/eps/week5.md)         | Roadmap and research               | [Domothy](https://github.com/domothyb)                                                           |
+| [Week 5](/eps/node_workshop.md) | Node workshop                      | [Mario](https://github.com/taxmeifyoucan)                                                        |
 
 The second part of the program offers two distinct tracks focused on development and research with deeper dive into each domain. 
 
 | Week #, track                               | Topic                         | Speaker                                                                                |
 | ------------------------------------------- | ----------------------------- | -------------------------------------------------------------------------------------- |
-| [Week 6 Development](/epf/week6-dev.md)     | Consensus and Execution specs | [Hsiao-Wei Wang](https://github.com/hwwhww), [Sam Wilson](https://github.com/SamWilsn) |
-| [Week 6 Research](/epf/week6-research.md)   | Sharding and DAS              | [Dankrad Feist](https://github.com/dankrad)                                            |
-| [Week 7 Developsment](/epf/week7-dev.md)     | Execution client architecture | [Dragan Pilipovic](https://github.com/dragan2234)                                      |
-| [Week 7 Research](/epf/week7-research.md)   | Verkle trees                  | [Josh Rudolf](https://github.com/jrudolf)                                              |
-| [Week 8 Development](/epf/week8-dev.md)     | Consensus client architecture | [Paul Harris](https://github.com/rolfyone)                                             |
-| [Week 8 Research](/epf/week8-research.md)   | MEV and censorship            | [Barnabe Monnot](https://github.com/barnabemonnot)                                     |
-| [Week 9 Development](/epf/week9-dev.md)     | Devops and testing            | [Parithosh](https://github.com/parithosh)                                              |
-| [Week 9 Research](/epf/week9-research.md)   | Purge and Portal Network      | [Piper Merriam](https://github.com/pipermerriam)                                       |
-| [Week 10 Development](/epf/week10-dev.md)   | EL precompiles                | [Danno Ferrin](https://github.com/shemnon)                                             |
-| [Week 10 Research](/epf/week10-research.md) | SSF and PoS Upgrades          | [Francesco D’Amato](https://github.com/fradamt)                                        |
+| [Week 6 Development](/eps/week6-dev.md)     | Consensus and Execution specs | [Hsiao-Wei Wang](https://github.com/hwwhww), [Sam Wilson](https://github.com/SamWilsn) |
+| [Week 6 Research](/eps/week6-research.md)   | Sharding and DAS              | [Dankrad Feist](https://github.com/dankrad)                                            |
+| [Week 7 Development](/eps/week7-dev.md)     | Execution client architecture | [Dragan Pilipovic](https://github.com/dragan2234)                                      |
+| [Week 7 Research](/eps/week7-research.md)   | Verkle trees                  | [Josh Rudolf](https://github.com/jrudolf)                                              |
+| [Week 8 Development](/eps/week8-dev.md)     | Consensus client architecture | [Paul Harris](https://github.com/rolfyone)                                             |
+| [Week 8 Research](/eps/week8-research.md)   | MEV and censorship            | [Barnabe Monnot](https://github.com/barnabemonnot)                                     |
+| [Week 9 Development](/eps/week9-dev.md)     | Devops and testing            | [Parithosh](https://github.com/parithosh)                                              |
+| [Week 9 Research](/eps/week9-research.md)   | Purge and Portal Network      | [Piper Merriam](https://github.com/pipermerriam)                                       |
+| [Week 10 Development](/eps/week10-dev.md)   | EL precompiles                | [Danno Ferrin](https://github.com/shemnon)                                             |
+| [Week 10 Research](/eps/week10-research.md) | SSF and PoS Upgrades          | [Francesco D’Amato](https://github.com/fradamt)                                        |
 
 ### Streams and recordings
 
@@ -86,7 +86,7 @@ For our weekly meetings, we are using a self-hosted FOSS platform Jitsi. Even th
 - **Will I learn to develop applications on the Ethereum blockchain?**
     - No. This program is not focused on Solidity or development of decentralized applications. 
 - **When does it start and is the duration?**
-    - Program will start in February 2024 and continue for 10 weeks, finishing by end of April. 
+    - The program ran from February 2024 and continued for 10 weeks, concluding by the end of April.
 - **Am I automatically accepted to EPF after attending EPFsg**
     - No. The study group is a great way to prepare for EPF, but it doesn't guarantee anything. However, EPF is a permissionless program, so you can always participate. 
 - **Where is the study group located?**
