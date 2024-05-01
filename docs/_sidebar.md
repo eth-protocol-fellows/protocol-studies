@@ -42,6 +42,7 @@
   - [Beacon API]
   - [Networking](/wiki/CL/cl-networking.md)
   - [SSZ Serialization](/docs/wiki/CL/SSZ.md)
+  - [Merkleization](/docs/wiki/CL/merkleization.md)
 - Development
   - [Core development](/wiki/dev/core-development.md)
   - [Coordination](/wiki/protocol/pm.md)

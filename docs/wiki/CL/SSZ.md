@@ -2,7 +2,9 @@
 
 ## Overview
 
-Simple Serialize (SSZ) is a serialization and Merkleization scheme designed specifically for Ethereum's Beacon Chain. SSZ replaces the [RLP serialization](/docs/wiki/EL/RLP.md) used on the execution layer (EL) everywhere across the consensus layer (CL) except the [peer discovery protocol](https://github.com/ethereum/devp2p). Its development and adoption are aimed at enhancing the efficiency, security, and scalability of Ethereum's CL.
+Simple Serialize (SSZ) is a serialization and [Merkleization](/docs/wiki/CL/merkleization.md) scheme designed specifically for Ethereum's Beacon Chain. SSZ replaces the [RLP serialization](/docs/wiki/EL/RLP.md) used on the execution layer (EL) everywhere across the consensus layer (CL) except the [peer discovery protocol](https://github.com/ethereum/devp2p). Its development and adoption are aimed at enhancing the efficiency, security, and scalability of Ethereum's CL.
+
+This document is about SSZ Serialization. You can learn more about SSZ merkleization at the [merkleization wiki page](/docs/wiki/CL/merkleization.md).
 
 ## How SSZ Works - Basic Types
 
@@ -810,7 +812,6 @@ _Table: SSZ VS RLP Comparison by [Piper Merriam](https://twitter.com/pipermerria
 
 For these reasons, there is a strong effort in Ethereum to completely migrate to SSZ serialization for everything and stop the usage of RLP serialization.
 
-## SSZ Merkleization
 
 ## Resources
 - [Simple serialize](https://ethereum.org/en/developers/docs/data-structures-and-encoding/ssz/)
@@ -821,3 +822,4 @@ For these reasons, there is a strong effort in Ethereum to completely migrate to
 - [SSZ encoding diagrams by Protolambda](https://github.com/protolambda/eth2-docs#ssz-encoding)
 - [SSZ explainer by Raul Jordan](https://rauljordan.com/go-lessons-from-writing-a-serialization-library-for-ethereum/)
 - [SSZ Specifications](https://github.com/ethereum/consensus-specs/blob/v1.3.0/ssz/simple-serialize.md)
+- [Why Ethereum Clients prefer SSZ over RLP?](https://etherworld.co/2023/01/25/why-ethereum-clients-prefer-ssz-over-rlp/)
