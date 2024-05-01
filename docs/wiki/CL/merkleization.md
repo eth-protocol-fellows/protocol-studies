@@ -13,6 +13,12 @@ Cryptographic hash functions provide a solution by generating a compact, unique 
 
 ## Process of Merkleization
 
+Merkleization involves breaking down the serialized data into 32-byte chunks, which serve as the leaves of a Merkle tree. These chunks are then combined pair-wise, hashed together, and the process is repeated up the tree until a single hash—the Merkle root—is derived. This root hash acts as a unique fingerprint for the entire dataset. The key steps are as below:
+
+- **Chunking:** Divide the serialized data into 32-byte chunks.
+- **Tree Construction:** Pair up the chunks and hash each pair to form the next level of the tree. Repeat this step until only one hash remains: the Merkle root.
+- **Padding:** If the number of chunks isn't a power of two, additional zero-value chunks are added to round out the tree, ensuring that the tree is balanced.
+
 
 ## Benefits of Merkleization
 
