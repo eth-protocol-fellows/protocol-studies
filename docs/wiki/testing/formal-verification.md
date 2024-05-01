@@ -119,26 +119,54 @@ Formal verification is an essential tool in the test suite and was used to disco
 ![Formal verification as part of testing suite](./img/fv-and-testing.jpg)
 > Formal verification a slice of a Swiss cheese model in a test suite – [Source: Codasip](https://codasip.com/2023/09/19/formal-verification-best-practices-to-reach-your-targets/).
 
-### Smart contract verification
-
-Bugs or vulnerabilities in smart contracts can have devastating consequences, leading to financial losses and undermining user trust. Formal verification tools like tools [Certora Prover](https://docs.certora.com/en/latest/docs/prover/index.html) and [halmos](https://github.com/a16z/halmos) helps identify these issues.
-
-Solidity compiler implements a [formal verification approach based on SMT (Satisfiability Modulo Theories) and Horn solving](https://docs.soliditylang.org/en/latest/smtchecker.html).
-
-Leo from Solidity team explains how to use this feature:
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/QQbWpN76HEg?si=CI0cPCVgAkfAM_V2" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-
 ### Verifying optimizations
 
 Equivalence checking is extensively used for software optimization. For example, an optimized smart contract can be tested for correctness against its previous version to confirm that the optimization hasn't introduced any unintended behavior.
 
+### Smart contract verification
+
+Bugs or vulnerabilities in smart contracts can have devastating consequences, leading to financial losses and undermining user trust. Formal verification tools like tools [Certora Prover](https://docs.certora.com/en/latest/docs/prover/index.html) and [halmos](https://github.com/a16z/halmos) helps identify these issues.
+
+Formal verification has always been an integral part of the [Solidity](https://soliditylang.org/) language. Here Christian from the solidity team from an early workshop:
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/rx0NPckEWGI?si=GYGPPGGA7aY2k4Ci" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+---
+
+Solidity compiler also implements a [formal verification approach based on SMT (Satisfiability Modulo Theories) and Horn solving](https://docs.soliditylang.org/en/latest/smtchecker.html).
+
+Leo from the team explains how to use this feature:
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/QQbWpN76HEg?si=CI0cPCVgAkfAM_V2" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
 ## Closing thoughts
 
-Formal verification is hard. The process itself can be [complex and time-consuming](https://www.hillelwayne.com/post/why-dont-people-use-formal-methods), requiring specialized skills and tools. Additionally, formal verification can only guarantee the correctness of the model, not necessarily the underlying implementation itself. Errors in the translation process between code and model can still introduce vulnerabilities.
+Formal verification is hard. The process itself can be [complex and time-consuming,](https://www.hillelwayne.com/post/why-dont-people-use-formal-methods) requiring specialized skills and tools. Additionally, formal verification can only guarantee the correctness of the model, not necessarily the underlying implementation itself. Errors in the translation process between code and model can still introduce vulnerabilities.
 
 Formal verification relies on efficient abstraction of a system. And abstraction is hard. If you leave an important detail out of the abstraction it can introduce safety issues. For this reason, often times [engineers use a complementary simulation method like fuzzing](https://blog.trailofbits.com/2024/03/22/why-fuzzing-over-formal-verification/) to test a system using random input.
 
 Despite these challenges, formal verification is a powerful technique that can help define safe and efficient systems. We'll close on this insightful quote from Dijkstra:
 
 > “Program testing can be used to show the presence of bugs, but never to show their absence!”
+
+## Resources
+
+- NASA, [What is formal methods](https://shemesh.larc.nasa.gov/fm/fm-what.html)
+- Aximoise, [Formal verification: A quick primer](https://www.youtube.com/watch?v=J4hwfTbfhVU)
+- Andrew H., [Formal Verification, Casually Explained](https://ahelwer.ca/post/2018-02-12-formal-verification/)
+- Bernie C., [A Brief History of Formal Methods](https://www.researchgate.net/publication/233960390_A_Brief_History_of_Formal_Methods)
+- Martin D., [Martin Davis on Computability, Computational Logic, and Mathematical Foundations](https://link.springer.com/book/10.1007/978-3-319-41842-1)
+- Ashish D., [A Brief History of Formal Verification](http://homepages.cs.ncl.ac.uk/brian.randell/NATO/nato1969.PDF)
+- Serokell, [Formal Verification: History and Methods](https://serokell.io/blog/formal-verification-history)
+- Pawel S., [Formal verification applied (with TLA+)](https://www.youtube.com/watch?v=l9XZYI3jta0)
+- Amazon, [How Amazon Web Services Uses Formal Methods](https://cacm.acm.org/research/how-amazon-web-services-uses-formal-methods/)
+- Codasip, [Formal verification best practices to reach your targets](https://codasip.com/2023/09/19/formal-verification-best-practices-to-reach-your-targets/)
+- Siemens, [How Can You Say That Formal Verification Is Exhaustive?](https://blogs.sw.siemens.com/verificationhorizons/2021/09/16/how-can-you-say-that-formal-verification-is-exhaustive/)
+- Siemens, [3 Notable Formal Verification Conference Papers of 2020](https://blogs.sw.siemens.com/verificationhorizons/2021/02/09/3-notable-formal-verification-conference-papers-of-2020/)
+- Siemens, [Formal Verification Methods](https://verificationacademy.com/topics/formal-verification/)
+- Standford, [Introduction to First Order Logic](https://plato.stanford.edu/entries/logic-classical/)
+- NYU, [Introduction to Satisfiability Modulo Theories](https://cs.nyu.edu/~barrett/pubs/BT14.pdf)
+- Sebastian U, [A Formal Verification of Rust's Binary Search Implementation](https://kha.github.io/2016/07/22/formally-verifying-rusts-binary-search.html)
+- Jack V., [Primer on TLA+](https://jack-vanlightly.com/blog/2023/10/10/a-primer-on-formal-verification-and-tla)
+- Martin L., [Symbolic execution for hevm](https://fv.ethereum.org/2020/07/28/symbolic-hevm-release)
+- The Royal Society, [Formal verification: will the seedling ever flower?](https://royalsocietypublishing.org/doi/10.1098/rsta.2015.0402)
