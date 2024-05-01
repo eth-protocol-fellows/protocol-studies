@@ -596,3 +596,4 @@ uint
 Merkleization
 subtrees
 multiproofs
+Merkleized

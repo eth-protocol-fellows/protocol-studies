@@ -124,11 +124,45 @@ _Figure: Merkle Tree Layout_
 - **Final Verification**: The combined result from the previous step is hashed with the root from the opposite branch (index 3) to produce the ultimate tree root (`hash 1`).
 - **Integrity Check**: If the calculated root matches the known good root (`hash 1`), the data at index 9 is verified as accurate. If the data was incorrect, the resulting root would differ, indicating an error or tampering.
 
+There are helper functions in the consensus specs to calculate the multiproofs and generalized indices. You can find [here.](https://github.com/ethereum/consensus-specs/blob/dev/ssz/merkle-proofs.md#merkle-multiproofs)
+
 ## Calculating Hash Tree Roots
 
+The hash tree root of an SSZ object is computed recursively. For basic types and collections of basic types, the data is packed into chunks and directly Merkleized. For composite types like containers, the process involves hashing the tree roots of each component. In the below sections we will see the working examples to understand the process.
 
 ### Packing and Chunking
 
+Packing and chunking are crucial concepts in the context of Merkleization, especially when dealing with the SSZ used in the Beacon chain. Here's how packing and chunking work:
+
+**Serializing the Data**
+- **Serialization** involves converting a data structure (basic types, lists, vectors, or bitlists/bitvectors) into a linear byte array using SSZ serialization rules.
+- Each element is serialized based on its type. 
+
+**Padding the Serialization**
+- After serialization, the byte array might not perfectly align with the 32-byte chunk size used in Merkle trees.
+- **Padding** is added to the serialized data to extend the last segment to a full 32-byte chunk. This padding consists of zero bytes (0x00).
+
+**Dividing into Chunks**
+- The padded serialized data is then split into multiple 32-byte segments or "chunks."
+- These chunks are the basic units used in the Merkleization process.
+
+**Padding to Full Binary Tree**
+- The number of chunks from the previous step may not be a power of two, which is required to form a balanced binary tree (full binary tree).
+- Additional zero chunks (chunks filled entirely with zero bytes) are added as necessary to bring the total count up to the nearest power of two.
+- This ensures that the resulting Merkle tree is complete and balanced, facilitating efficient cryptographic operations.
+
+**Applying the Merkleization Process**
+- With the chunks prepared, they are arranged as the leaves of a binary Merkle tree.
+- Merkleization proceeds by hashing pairs of chunks together, layer by layer, until a single hash remains. This final hash is known as the Merkle root.
+
+**Practical Example:**
+Suppose we have a list of integers that need to be packed and chunked:
+- **Integers**: [10, 20, 30, 40] (Suppose each integer occupies 8 bytes).
+- **Serialized Data**: A continuous byte array created from these integers.
+- **Padding**: If the total serialized length is not a multiple of 32, padding bytes are added.
+- **Chunks**: The data is divided into 32-byte chunks.
+- **Zero Padding for Tree**: If the number of chunks is not a power of two, additional zero-filled chunks are appended.
+- **Merkleization**: The chunks are then used as leaves in a Merkle tree to compute the root.
 
 ### Mixing in the Length
 
