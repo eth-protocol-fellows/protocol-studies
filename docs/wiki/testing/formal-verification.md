@@ -18,10 +18,20 @@ Similarly, the number `5` is an abstraction for a group; and the answer `16.6` a
 
 Our algorithm can be outlined as:
 
-1. For a given problem, abstract away the input
-2. Use a mathematical model to find solution
-3. Interpret the solution back
+1. For a given problem, abstract away the input.
+2. Use a mathematical model to find solution.
+3. Interpret the solution back.
 
-This is a fundamental theme in problem solving. Computers do this too. The words on this screen is abstractly [represented in binary in a computer](https://en.wikipedia.org/wiki/ASCII) for transmission and storage.
+This is a fundamental theme in problem solving. Computers do this too. The words on your screen is abstractly [represented in binary on a computer](https://en.wikipedia.org/wiki/ASCII) for transmission and storage.
 
 > Mathematics is the language of precision. Abstraction allows us to precisely define the input focused only on relevant information, for a given problem. The result of which can be mathematically solved and interpreted as required.
+
+## Formal verification
+
+Formal verification, like the previous example, helps find the answer to a simple question: "Does a system correctly meet its required specifications?"
+
+> Formal verification is a verification technique that abstracts a system as a mathematical model and proves or disproves its correctness.
+
+A "system" is defined as a mechanism that is able to execute all of the functions given by its external interface. "Invariants" are properties that remains unchanged for a system, regardless of its current state. For example, an invariant of a vending machine is: Nobody should be able to dispense a product for free.
+
+Formal verification tests the correctness of a system by checking if all its invariants holds true.
