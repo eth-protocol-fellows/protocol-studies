@@ -172,6 +172,8 @@ Mixing in the length is a crucial step in the Merkleization process, particularl
 
 Mixing in the length is used to ensure that two different lists or vectors with similar contents but different lengths generate different hash tree roots. This is critical because without incorporating the length into the hash, two lists—one longer than the other but otherwise identical up to the length of the shorter list—would have the same hash tree root if only the content is hashed. This could lead to potential security vulnerabilities and inconsistencies within the data validation process.
 
+**An example of Mixing in the Length**
+
 The example below illustrates that without including the length of the list, the Merkle root hashes for `a_root_hash` and `b_root_hash` remain the same despite representing two lists of different lengths. However, when the length is incorporated, the Merkle root hash `a_mix_len_root_hash` differs from both `a_root_hash` and `b_root_hash`. This distinction is crucial when dealing with lists or vectors of varying lengths in the merkleization.
 
 
@@ -192,10 +194,18 @@ b_root_hash =  0x3effe553b6091b1982a6850fd2a788943363e6f879ff796057503b76802edd9
 >>> print('a_mix_len_root_hash = ', a_mix_len_root_hash)
 a_mix_len_root_hash =  0xeca15347139a6ad6e7eabfbcfd3eb3bf463af2a8194c94aef742eadfcc3f1912
 >>> 
->>> 
 ```
 
-## Summaries and Expansions
+## Summaries and Expansions in SSZ Merkleization
+
+In Ethereum PoS, the concepts of summaries and expansions are integral to managing state data efficiently. Summaries provide a compact representation of data structures, encapsulating essential verification information without the full details. Expansions, on the other hand, deliver the complete data set for thorough processing or when detailed information is required. Here are their benefits:
+
+- **Efficiency and Speed**: By employing summaries, validators can quickly verify state changes or validate transactions without processing entire data sets. This method significantly speeds up validations and reduces computational overhead.  
+- **Reduced Data Load**: Summaries minimize the amount of data stored and transmitted, conserving bandwidth and storage resources. This is particularly beneficial for nodes with limited capacity, such as light clients, which rely on summaries for operational efficiency.
+- **Security Enhancements**: The cryptographic hashes included in summaries ensure the integrity of the data, enabling secure and reliable verification processes without accessing the full dataset.
+- **An Example**:
+  - **BeaconBlock and BeaconBlockHeader**: The `BeaconBlockHeader` acts as a summary, allowing nodes to quickly verify the integrity of a block without needing the complete block data. `BeaconBlock` is th expansion.
+  - **Proposer Slashing**: Validators use block summaries to efficiently identify and process conflicting block proposals, facilitating swift and accurate slashing decisions.
 
 
 ## Merkleization for Basic Types
