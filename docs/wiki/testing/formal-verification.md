@@ -135,7 +135,7 @@ Formal verification has always been an integral part of the [Solidity](https://s
 
 Solidity compiler also implements a [formal verification approach based on SMT (Satisfiability Modulo Theories) and Horn solving](https://docs.soliditylang.org/en/latest/smtchecker.html).
 
-Leo from the team explains how to use this feature:
+Leo from EF Formal Verification team explains how to use this feature:
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/QQbWpN76HEg?si=CI0cPCVgAkfAM_V2" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
