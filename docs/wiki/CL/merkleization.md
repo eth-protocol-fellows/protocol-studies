@@ -1,6 +1,6 @@
 # Merkleization and Hash Tree Roots 
 
-In Ethereum consensus mechanism, it's critical for all participating nodes to agree on the state of the system consistently and efficiently. The [Simple Serialize (SSZ)](/docs/wiki/CL/SSZ.md) framework facilitates this through Merkleization, a process that transforms serialized data into a Merkle tree structure. This wiki page delves into the intricacies of Merkleization and its importance in ensuring a shared state across nodes in a scalable and secure manner.
+In Ethereum consensus mechanism, it's critical for all participating nodes to agree on the state of the system consistently and efficiently. The [Simple Serialize (SSZ)](/docs/wiki/CL/SSZ.md) framework facilitates this through Merkleization, a process that transforms serialized data into a Merkle tree structure. This wiki page discusses the intricacies of Merkleization and its importance in ensuring a shared state across nodes in a scalable and secure manner.
 
 ## Terminology and Methods
 
@@ -33,10 +33,10 @@ graph TD;
     HTR[Hash Tree Root]
     HL12[Hash of Leaves 1 and 2]
     HL34[Hash of Leaves 3 and 4]
-    L1[Leaf1]
-    L2[Leaf2]
-    L3[Leaf3]
-    L4[Leaf4]
+    L1[Leaf 1]
+    L2[Leaf 2]
+    L3[Leaf 3]
+    L4[Leaf 4]
 
     HTR --> HL12
     HTR --> HL34
@@ -255,7 +255,7 @@ This final Merkle root is a unique representation of the data `A`, `B`, `C`, and
 
 ## Merkleization for Composite Types
 
-In this section we learn how the `IndexedAttestation` composite type is Merkleized, using a detailed example to illustrate the process.
+In this section we learn how the `IndexedAttestation` composite type is Merkleized, using a detailed example to illustrate the process. This example provides clear instances of the Merkleization process applied to composite, list, and vector types. It also showcases how summaries and expansions are effectively demonstrated through this process.
 
 **Definition and Structure**
 
@@ -327,7 +327,7 @@ indexed_attestation_root = merkleize_chunks([attesting_indices_root, data_root, 
 - The correct implementation of Merkleization of `IndexedAttestation` ensures that changes in any part of the data structure are reflected in the final root hash, providing a robust mechanism for detecting discrepancies and ensuring data consistency across all nodes in the network.
 
 ```python
-assert a.hash_tree_root() == attestation_root
+assert a.hash_tree_root() == indexed_attestation_root
 ```
 
 Now, you can visualize the full picture of the merkleization of `IndexedAttestation`:
