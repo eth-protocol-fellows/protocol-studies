@@ -155,3 +155,215 @@ body .markdown-section {
     font-size: 14px;
 }
 */
+
+/* 
+    ################################
+    ||                            ||
+    ||     🎨 EPF.WIKI Theme      ||
+    ||                            ||
+    ################################
+*/
+
+:root {
+  --base-background-color: #1c153b;
+  --sidebar-name-color: #ba9afd;
+  --sidebar-background: #190c39;
+  --sidebar-toggle-background: #190c39;
+  --navbar-root-color--active: #ba9afd;
+  --search-input-background-color: #2d1763;
+  --table-row-odd-background: #2d1763;
+
+  /* blockquote*/
+  --blockquote-background: #2d1763;
+  --blockquote-color: #fff;
+  --blockquote-border-color: #ba9afd;
+
+  /* link */
+  --link-color: #ba9afd;
+}
+
+/* sidebar */
+li.file,
+li.folder {
+  transition: all 0.3s ease-in-out;
+  padding: 8px 15px;
+  margin-bottom: 4px;
+}
+li.file p,
+li.folder p {
+  margin: 0;
+}
+
+li.folder.active,
+li.folder:hover,
+li.folder.open,
+li.file.active,
+li.file:hover,
+li.file.open {
+  border-radius: 5px;
+  background: #2d1763;
+}
+
+.app-sub-sidebar li.file,
+.app-sub-sidebar li.folder {
+  padding: 0;
+  margin: 0;
+  animation: tabFade 0.5s;
+}
+
+li.folder strong,
+li.file strong {
+  padding: 10px 0;
+  display: block;
+  border-bottom: 1px dashed #a278ff;
+}
+
+li.folder > ul > li.file {
+  padding: 0;
+}
+.sidebar-nav ul.app-sub-sidebar a {
+  border: none;
+  border-left: 4px solid #fff;
+  padding-left: 8px;
+}
+
+.sidebar-nav ul.app-sub-sidebar li.active > a,
+.sidebar-nav ul.app-sub-sidebar li a:hover {
+  border-color: #ba9afd;
+  text-decoration: none;
+  color: #ba9afd;
+  border-left: 4px solid #ba9afd;
+}
+
+.sidebar .search .input-wrap {
+  padding: 8px 15px;
+  margin: 0;
+  border-radius: 50px;
+  border: 2px solid #6660b9;
+}
+.sidebar .search input[type="search"],
+.sidebar .search input[type="search"]:focus {
+  background-color: #2d1763;
+  outline: none;
+  box-shadow: none;
+}
+.sidebar-nav a:hover {
+  text-decoration: none;
+}
+@keyframes tabFade {
+  0% {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+/* content */
+.markdown-section img {
+  border-radius: 8px;
+}
+.markdown-section h2 a::before,
+.markdown-section h3 a::before,
+.markdown-section h4 a::before,
+.markdown-section h5 a::before,
+.markdown-section h6 a::before {
+  color: #ba9afd;
+  margin-right: 5px;
+}
+
+.app-nav li a {
+  color: #fff;
+  font-weight: bold;
+}
+
+.sidebar-toggle .sidebar-toggle-button {
+  padding: 20px;
+  border-radius: 5px;
+  --sidebar-toggle-icon-height: 8px;
+  --sidebar-toggle-icon-stroke-width: 2px;
+  background: #6e52a9;
+}
+
+@media only screen and (min-width: 768px) {
+  .sidebar-toggle .sidebar-toggle-button {
+    padding: 20px;
+    border-radius: 5px;
+    --sidebar-toggle-icon-height: 8px;
+    --sidebar-toggle-icon-stroke-width: 5px;
+    background: #6e52a9;
+  }
+  .sidebar-toggle span:nth-child(1) {
+    transform: rotate(-45deg);
+  }
+
+  .sidebar-toggle span:nth-child(2) {
+    display: none;
+  }
+
+  .sidebar-toggle span:nth-child(3) {
+    transform: rotate(45deg);
+  }
+
+  .ready-fix.close .sidebar-toggle span:nth-child(1) {
+    transform: rotate(45deg);
+  }
+
+  .ready-fix.close .sidebar-toggle span:nth-child(3) {
+    transform: rotate(135deg);
+  }
+}
+
+.sidebar-toggle span {
+  transition: transform 0.5s ease-in-out;
+}
+
+.btn-primary,
+.markdown-section a.btn-primary {
+  border: none;
+  outline: none;
+  cursor: pointer;
+  text-align: center;
+  border-radius: 3rem;
+  background: #ba9afd;
+  padding: 0.75rem 1.5rem 0.85rem;
+  font-size: 1.13rem;
+  font-weight: 500;
+  line-height: 1;
+  color: #190c39;
+  margin: 10px 0;
+  display: inline-block;
+  text-decoration: none;
+}
+
+.btn-primary::after {
+  display: inline-block;
+  margin-left: 4px;
+  font-size: 22px;
+  content: "➡";
+}
+body .pagination-item-title,
+body .pagination-item-label {
+  font-weight: bold;
+  color: #fff;
+  opacity: 1;
+}
+
+.app-name-link {
+  display: flex;
+  align-items: center; /* Vertical align */
+  justify-content: center;
+  font-weight: bold;
+  font-size: 25px;
+}
+
+.logo {
+  display: inline;
+  width: 40px;
+  margin-right: 5px;
+}
+
+.markdown-section table {
+  display: table;
+  width: 100%;
+}
