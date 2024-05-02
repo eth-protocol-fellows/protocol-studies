@@ -37,10 +37,10 @@
 - [Consensus Layer](/wiki/CL/overview.md)
   - [CL Clients](/wiki/CL/cl-clients.md)
   - [CL Specs](/wiki/CL/cl-specs.md)
-  - Client architecture
-  - [Proof-of-Stake]
-  - [Beacon API]
-  - [Networking](/wiki/CL/cl-networking.md)
+  - [Client architecture](/wiki/CL/client-architecture.md)
+  - [CL Clients](/wiki/CL/cl-clients.md)
+  - [Beacon API](/wiki/CL/beacon-api.md)
+  - [CL Networking](/wiki/CL/cl-networking.md)
   - [SSZ Serialization](/docs/wiki/CL/SSZ.md)
   - [Merkleization](/docs/wiki/CL/merkleization.md)
 - Development
