@@ -46,7 +46,7 @@
 - Mario: It's explained in the page. It's just an RPC verifier using data from an independent beacon node.
 - Rahul: Protocol overview is a priority for me. I got nerd sniped by Mario's lecture on Linux history and cryptopunks.
 - Mario: The biggest missing piece is testing. We should document hive or different testing mechanisms.
-- Kira: I kind of wrote a condensed version of the yellow paper. In case someone would like to review it: [link to the document]
+- Kira: I kind of [wrote a condensed version of the yellow paper](https://hackmd.io/@kira50/H1O4tO6WC). In case someone would like to review it.
 - Mario: Very cool. We should have it in the wiki. Feel free to open an issue and work on it.
 - Hopinheimer: I have an open issue on dev-p2p and am planning to catch up with it this weekend.
 - Mario: I would suggest Angus. He worked on networking and consensus and spent a lot of time on dev-p2p.
