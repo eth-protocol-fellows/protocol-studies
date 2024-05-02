@@ -204,7 +204,7 @@ In Ethereum PoS, the concepts of summaries and expansions are integral to managi
 - **Reduced Data Load**: Summaries minimize the amount of data stored and transmitted, conserving bandwidth and storage resources. This is particularly beneficial for nodes with limited capacity, such as light clients, which rely on summaries for operational efficiency.
 - **Security Enhancements**: The cryptographic hashes included in summaries ensure the integrity of the data, enabling secure and reliable verification processes without accessing the full dataset.
 - **An Example**:
-  - **BeaconBlock and BeaconBlockHeader**: The `BeaconBlockHeader` acts as a summary, allowing nodes to quickly verify the integrity of a block without needing the complete block data. `BeaconBlock` is th expansion.
+  - **BeaconBlock and BeaconBlockHeader**: The `BeaconBlockHeader` container acts as a summary, allowing nodes to quickly verify the integrity of a block without needing the complete block data from `BeaconBlock` container. `BeaconBlock` is the expansion.
   - **Proposer Slashing**: Validators use block summaries to efficiently identify and process conflicting block proposals, facilitating swift and accurate slashing decisions.
 
 ## Merkleization for Basic Types
@@ -223,7 +223,7 @@ graph TD;
 
 _Figure: Sample Merkle Tree._
 
-In the above Merkle tree, the leaves are our four blobs of data, A, B, C, and D.
+In the above Merkle tree, the leaves of the tree are the four blobs of data, A, B, C, and D.
 
 - **Define the Data:**
   - In this example, we're dealing with four basic data items: A, B, C, and D. These are conceptualized as numbers (`10`, `20`, `30`, and `40` respectively) and will be represented in the Merkle tree as 32-byte chunks.
@@ -255,11 +255,186 @@ This final Merkle root is a unique representation of the data `A`, `B`, `C`, and
 
 ## Merkleization for Composite Types
 
+In this section we learn how the `IndexedAttestation` composite type is Merkleized, using a detailed example to illustrate the process.
 
+**Definition and Structure**
 
+The `IndexedAttestation` is a composite type defined as follows:
 
+```python
+class IndexedAttestation(Container):
+    attesting_indices: List[ValidatorIndex, MAX_VALIDATORS_PER_COMMITTEE]
+    data: AttestationData
+    signature: BLSSignature
+```
+
+`IndexedAttestation` is composed of three primary components:
+
+  - **attesting_indices:** A list of `ValidatorIndex`, representing the validators who are attesting.
+  - **data:** An `AttestationData` container, holding various pieces of data pertinent to the attestation.
+  - **signature:** A `BLSSignature`, which is a signature over the attestation.
+
+**Merkleization Process**
+
+The Merkleization of `IndexedAttestation` involves computing the hash tree root of each component and combining these roots to form the overall hash tree root of the container. 
+
+**Merkleizing `attesting_indices`:**
+
+- **Serialization and Padding:** First, the list of indices is serialized. Given the potential length of this list (up to the `MAX_VALIDATORS_PER_COMMITTEE`), it often requires padding to align with the 32-byte chunks required for hashing.
+- **Hashing:** The serialized data is hashed using the `merkleize_chunks` function, which handles the padding and constructs a multi-layer Merkle tree.
+- **Mixing in Length:** Since lists in SSZ can vary in length but have the same type structure, the length of the list is also hashed (mixed in) to ensure unique hash representations for different-sized lists.
+
+```python
+attesting_indices_root = merkleize_chunks(
+           [
+               merkleize_chunks([a.attesting_indices.encode_bytes() + bytearray(8)], 512),
+               a.attesting_indices.length().to_bytes(32, 'little')
+           ])
+```
+
+**Merkleizing data (`AttestationData`):**
+- **Handling Nested Structures:** `AttestationData` itself contains multiple fields (like `slot`, `index`, `beacon_block_root`, `source`, and `target`), each of which is individually serialized and Merkleized.
+- **Combining Hashes:** The hashes of these fields are then combined to produce the root hash of the `AttestationData`.
+
+```python
+data_root = merkleize_chunks(
+    [
+        a.data.slot.to_bytes(32, 'little'),
+        a.data.index.to_bytes(32, 'little'),
+        a.data.beacon_block_root,
+        merkleize_chunks([a.data.source.epoch.to_bytes(32, 'little'), a.data.source.root]),
+        merkleize_chunks([a.data.target.epoch.to_bytes(32, 'little'), a.data.target.root]),
+    ])
+```
+
+**Merkleizing signature:**
+
+- **Simple Hashing:** The `BLSSignature` is a fixed-length field and is directly hashed into three 32-byte chunks, which are then Merkleized to get the signature's root.
+
+```python
+signature_root = merkleize_chunks([a.signature[0:32], a.signature[32:64], a.signature[64:96]])
+```
+
+**Combining Component Roots:**
+
+- The roots calculated from each component are then combined to compute the hash tree root of the entire `IndexedAttestation` container.
+```python
+indexed_attestation_root = merkleize_chunks([attesting_indices_root, data_root, signature_root])
+```
+
+**Verification of Final Root:**
+
+- The correct implementation of Merkleization of `IndexedAttestation` ensures that changes in any part of the data structure are reflected in the final root hash, providing a robust mechanism for detecting discrepancies and ensuring data consistency across all nodes in the network.
+
+```python
+assert a.hash_tree_root() == attestation_root
+```
+
+Now, you can visualize the full picture of the merkleization of `IndexedAttestation`:
+
+![merkleization of IndexedAttestation](/docs/images/merkelization-IndexedAttestation.png)
+
+Here is the full working code:
+
+```python
+from eth2spec.capella import mainnet
+from eth2spec.capella.mainnet import *
+from eth2spec.utils.ssz.ssz_typing import *
+from eth2spec.utils.merkle_minimal import merkleize_chunks
+
+# Initialise an IndexedAttestation type
+a = IndexedAttestation(
+    attesting_indices = [33652, 59750, 92360],
+    data = AttestationData(
+        slot = 3080829,
+        index = 9,
+        beacon_block_root = '0x4f4250c05956f5c2b87129cf7372f14dd576fc152543bf7042e963196b843fe6',
+        source = Checkpoint (
+            epoch = 96274,
+            root = '0xd24639f2e661bc1adcbe7157280776cf76670fff0fee0691f146ab827f4f1ade'
+        ),
+        target = Checkpoint(
+            epoch = 96275,
+            root = '0x9bcd31881817ddeab686f878c8619d664e8bfa4f8948707cba5bc25c8d74915d'
+        )
+    ),
+    signature = '0xaaf504503ff15ae86723c906b4b6bac91ad728e4431aea3be2e8e3acc888d8af'
+                + '5dffbbcf53b234ea8e3fde67fbb09120027335ec63cf23f0213cc439e8d1b856'
+                + 'c2ddfc1a78ed3326fb9b4fe333af4ad3702159dbf9caeb1a4633b752991ac437'
+)
+
+# A container's root is the merkleization of the roots of its fields.
+# This is IndexedAttestation.
+assert(a.hash_tree_root() == merkleize_chunks(
+    [
+        a.attesting_indices.hash_tree_root(),
+        a.data.hash_tree_root(),
+        a.signature.hash_tree_root()
+    ]))
+
+# A list is serialised then (virtually) padded to its full number of chunks before Merkleization.
+# Finally its actual length is mixed in via a further hash/merkleization.
+assert(a.attesting_indices.hash_tree_root() ==
+       merkleize_chunks(
+           [
+               merkleize_chunks([a.attesting_indices.encode_bytes() + bytearray(8)], 512),
+               a.attesting_indices.length().to_bytes(32, 'little')
+           ]))
+
+# A container's root is the merkleization of the roots of its fields.
+# This is AttestationData.
+assert(a.data.hash_tree_root() == merkleize_chunks(
+    [
+        a.data.slot.hash_tree_root(),
+        a.data.index.hash_tree_root(),
+        a.data.beacon_block_root.hash_tree_root(),
+        a.data.source.hash_tree_root(),
+        a.data.target.hash_tree_root()
+    ]))
+
+# Expanding the above AttestationData roots by "manually" calculating the roots of its fields.
+assert(a.data.hash_tree_root() == merkleize_chunks(
+    [
+        a.data.slot.to_bytes(32, 'little'),
+        a.data.index.to_bytes(32, 'little'),
+        a.data.beacon_block_root,
+        merkleize_chunks([a.data.source.epoch.to_bytes(32, 'little'), a.data.source.root]),
+        merkleize_chunks([a.data.target.epoch.to_bytes(32, 'little'), a.data.target.root]),
+    ]))
+
+# The Signature type has a simple Merkleization.
+assert(a.signature.hash_tree_root() ==
+       merkleize_chunks([a.signature[0:32], a.signature[32:64], a.signature[64:96]]))
+
+# Putting everything together, we have a "by-hand" Merkleization of the IndexedAttestation.
+assert(a.hash_tree_root() == merkleize_chunks(
+    [
+        # a.attesting_indices.hash_tree_root()
+        merkleize_chunks(
+            [
+                merkleize_chunks([a.attesting_indices.encode_bytes() + bytearray(8)], 512),
+                a.attesting_indices.length().to_bytes(32, 'little')
+            ]),
+        # a.data.hash_tree_root()
+        merkleize_chunks(
+            [
+                a.data.slot.to_bytes(32, 'little'),
+                a.data.index.to_bytes(32, 'little'),
+                a.data.beacon_block_root,
+                merkleize_chunks([a.data.source.epoch.to_bytes(32, 'little'), a.data.source.root]),
+                merkleize_chunks([a.data.target.epoch.to_bytes(32, 'little'), a.data.target.root]),
+            ]),
+        # a.signature.hash_tree_root()
+        merkleize_chunks([a.signature[0:32], a.signature[32:64], a.signature[64:96]])
+    ]))
+
+print("Success!")
+```
+
+You can follow the instructions at [running the specs](https://eth2book.info/capella/appendices/running/) to execute the above code.
 
 ## Resources
 - [Hash Tree Roots and Merkleization](https://eth2book.info/capella/part2/building_blocks/merkleization/)
 - [SSZ](https://ethereum.org/en/developers/docs/data-structures-and-encoding/ssz/)
 - [Protolambda on Merkleization](https://github.com/protolambda/eth2-docs?tab=readme-ov-file#ssz-hash-tree-root-and-merkleization)
+- [Running the specs](https://eth2book.info/capella/appendices/running/)
