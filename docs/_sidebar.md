@@ -46,7 +46,7 @@
   - [Beacon API](/wiki/CL/beacon-api.md)
   - [CL Networking](/wiki/CL/cl-networking.md)
   - [SSZ Serialization](/docs/wiki/CL/SSZ.md)
-  - [Merkleization](/docs/wiki/CL/merkleization.md)
+    - [Merkleization](/docs/wiki/CL/merkleization.md)
 - Development
   - [Core development](/wiki/dev/core-development.md)
   - [Coordination](/wiki/dev/pm.md)
@@ -77,7 +77,7 @@
   - [BLS](/wiki/Cryptography/bls.md)
   - [Keccak256](/wiki/Cryptography/keccak256.md)
   - Commitments
-    - [KZG](/docs/wiki/Cryptography/KZG.md)
+    - [KZG](/wiki/Cryptography/KZG.md)
   - [Post-Quantum Cryptography](/wiki/Cryptography/post-quantum-cryptography.md)
 - [Protocol Fellowship](/wiki/epf.md)
 
