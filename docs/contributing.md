@@ -87,6 +87,21 @@ Usage of images and visualizations is encouraged. If you are using an image crea
 
 Feel free to use [emojis](https://docsify.js.org/#/emoji?id=emoji) or [icons](https://icongr.am/fontawesome) where it fits, for example in blockquotes. 
 
+### Prerequisites
+Wiki pages that are subject to future updates, i.e. pages covering active research topics require prerequisites to be added on top of the pages:
+
+* Warning message artifact using the following format:
+> [!WARNING]
+> This document covers an active area of research, may be outdated at time of reading and subject to future updates, as the design space around (*active research topic, e.g. Inclusion Lists*) evolves.
+
+* Roadmap tracker artifact using the following format:
+  
+|  Upgrade  |    URGE     |   Track   |               Topic               |                                                                                          Cross-references                                                                                          |
+| :-------: | :---------: | :-------: | :-------------------------------: | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
+| *e.g. ePBS* | the Scourge | MEV track | Endgame block production pipeline | intersection with: [ET](https://ethresear.ch/t/execution-tickets/17944), [PEPC](https://efdn.notion.site/PEPC-FAQ-0787ba2f77e14efba771ff2d903d67e4), [IL](https://eips.ethereum.org/EIPS/eip-7547) |
+
+Ideally, links in artifacts will reference local wiki pages.
+
 ### Linking resources
 
 When adding an external link, you can use it directly in the text or on the bottom of the page in "Resources" section.
