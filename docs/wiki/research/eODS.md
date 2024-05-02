@@ -3,8 +3,8 @@
 > This document covers an active area of research, may be outdated at time of reading and subject to future updates, as the design space around Validator roles unbundling evolves.
 ## Roadmap tracker
 
-| Upgrade |    URGE     |       Track       |                    Item                    |                                                                                          Cross-references                                                                                           |
-| :-----: | :---------: | :---------------: | :----------------------------------------: | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
+| Upgrade |    URGE     |       Track       |                    Item                    |                                                                                         Cross-references                                                                                          |
+| :-----: | :---------: | :---------------: | :----------------------------------------: | :-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
 |  eODS   | the Scourge | Staking economics | Solutions to liquid staking centralization | [SSF](/docs/wiki/research/SSF.md), [IL](/docs/wiki/research/cl-upgrades.md), [ePBS](/wiki/research/PBS/ePBS.md), [ET](/wiki/research/PBS/ET.md), [Light Clients](/wiki/research/light-clients.md) |
 ## Relevant context 
 Principal–Agent problem, in which the interests of the Agent are not aligned with the interests of the Principal, is part of any delegation, and even more so present in today's staking scene[^1].
@@ -12,10 +12,10 @@ Principal–Agent problem, in which the interests of the Agent are not aligned w
 Regarding the staking economy, specific market structures have naturally developed, after the Merge, inherited from the perennial distinction between labor and capital.
 Thus, staking has split naturally in two classes of participants, outside protocol level[^2]:
 
-|    Tier    |                                                      Current natural separation                                                      | Slashing risk |
-| :--------: | :----------------------------------------------------------------------------------------------------------------------------------: | :-----------: |
-| Delegators | ETH stakers, with no minimum commitment and no strict requirement to participate in any other way beyond bringing in their principal |   Slashable   |
-| Operators  |      Node operators providing node running services, with their reputation or some fixed amount of capital of their own at risk.      |   Slashable   |
+|    Tier    |                                                     Current natural separation                                                      | Slashing risk |
+| :--------: | :---------------------------------------------------------------------------------------------------------------------------------: | :-----------: |
+| Delegators | ETH stakers with no minimum commitment and no strict requirement to participate in any other way beyond bringing in their principal |   Slashable   |
+| Operators  |     Node operators providing node running services, with their reputation or some fixed amount of capital of their own at risk.     |   Slashable   |
 
 The two tiers are closely interlinked, as liquid staking protocols are not credible if LST holders do not believe that the operators holding their principal are *good agents*. 
 
@@ -55,7 +55,7 @@ In his October 2023 paper, called "Protocol and staking pool changes that could 
 
 Vitalik takes a thought experiment, hypothesizing a world where bounding the maximum slashing penalty to 2 ETH is a reality.[^7].
 
-Two scenarios are run and compared, under the above premises:
+Two scenarios are run and compared under the above premises:
 1. because the slashing and leaking penalties are capped, Rocket Pool reduces operator bond accordingly, to 2 ETH,  all ETH is staked and Rocket Pool as a LSP (liquid staking protocol) absorbs 100% of the market  share (not just among stakers, but also among ETH holders. As rETH becomes risk-free, almost all ETH holders become rETH holders or node operators).
 2. in the second scenario, Rocket Pool does not exist as an LSP. Minimum deposit amount is reduced to 2 ETH, and total staked ETH is capped at 6.25M. Also, the node operator’s return is decreased to 1%.
 
@@ -252,11 +252,11 @@ Regarding the enshrinement of liquid staking, Vitalik states:
 
 [^2]: https://notes.ethereum.org/@vbuterin/staking_2023_10#Protocol-and-staking-pool-changes-that-could-improve-decentralization-and-reduce-consensus-overhead
 
-[^3]: https://mirror.xyz/Barnabé.eth/v7W2CsSVYW6I_9bbHFDqvqShQ6gTX3weAtwkaVAzAL4
+[^3]: https://mirror.xyz/barnabe.eth/v7W2CsSVYW6I_9bbHFDqvqShQ6gTX3weAtwkaVAzAL4
 
 [^4]: https://ethresear.ch/t/unbundling-staking-towards-rainbow-staking/18683#operatordelegator-separation-2
 
-[^5]: https://Barnabé.substack.com/i/95811604/case-studies-in-upgrading-the-fence
+[^5]: https://barnabe.substack.com/i/95811604/case-studies-in-upgrading-the-fence
 
 [^6]: https://notes.ethereum.org/@vbuterin/staking_2023_10#The-role-of-delegators
 

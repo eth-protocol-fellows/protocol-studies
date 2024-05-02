@@ -21,9 +21,10 @@ Assertoor
 assignees
 atomicity
 Attacknet
+attester
 attesters
-attestors
 autoplay
+AVS
 backfill
 Bankless
 Baranabé's
@@ -80,6 +81,7 @@ config
 congestions
 Consensys
 Corbellini
+collateralised
 CPUs
 CRS
 Crypto
@@ -90,6 +92,7 @@ cryptoeconomically
 cryptoeconomics
 cryptographic
 cryptographically
+curation
 Cryptopedia
 cryptosystem
 cybersecurity
@@ -122,6 +125,7 @@ Devs
 DEX
 Diffie
 DILITHIUM
+disambiguated
 discv
 distro
 docsify
@@ -190,6 +194,7 @@ Extractable
 Feist
 Femboy
 Ferrin
+FFG
 finalise
 Flashbot's
 Flashbots
@@ -244,12 +249,13 @@ impera
 implementers
 incentivize
 incentivized
-incentivizes
+Incentivizing
 inevitableeth
 infrastracture
 Infura
 init
 InsertCoin
+intermediated
 intermediation
 interop
 IOP
@@ -291,6 +297,7 @@ Longrightarrow
 lookahead
 Lookahead
 LST
+LSP
 Lua
 LuaVM
 Lyubashevsky
@@ -324,6 +331,7 @@ MUL
 Murr
 MVE
 mvepbs
+MVI
 Nagu
 namespace
 namespaces
@@ -461,6 +469,7 @@ Siddharth
 Silkwarm
 Silverman
 Sipser
+slashable
 SLOAD
 smlXL
 SNARKify
@@ -473,6 +482,7 @@ SSLE
 SSTORE
 sstorge
 SSZ
+staker
 stakers
 Stallman
 StateDB
@@ -512,6 +522,7 @@ Unbundling
 underbrace
 Unformatted
 unguessable
+unincentivized
 upstreamed
 utils
 UX
