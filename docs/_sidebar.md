@@ -40,11 +40,11 @@
   - [RLP Serialization](/docs/wiki/EL/RLP.md)
 - Consensus Layer
   - [Overview](/wiki/CL/overview.md)
-  - [CL Specs](/wiki/CL/cl-specs.md)
   - [Client architecture](/wiki/CL/client-architecture.md)
-  - [CL Clients](/wiki/CL/cl-clients.md)
-  - [Beacon API](/wiki/CL/beacon-api.md)
   - [CL Networking](/wiki/CL/cl-networking.md)
+  - [CL Specs](/wiki/CL/cl-specs.md)
+  - [Beacon API](/wiki/CL/beacon-api.md)
+  - [CL Clients](/wiki/CL/cl-clients.md)
 - Development
   - [Core development](/wiki/dev/core-development.md)
   - [Coordination](/wiki/dev/pm.md)
