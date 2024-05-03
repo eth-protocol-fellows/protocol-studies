@@ -87,22 +87,6 @@ Usage of images and visualizations is encouraged. If you are using an image crea
 
 Feel free to use [emojis](https://docsify.js.org/#/emoji?id=emoji) or [icons](https://icongr.am/fontawesome) where it fits, for example in blockquotes. 
 
-### Prerequisites
-#### Warning stub for active research topics
-Wiki pages that are subject to future updates, i.e. pages covering active research topics require prerequisites to be added on top of the pages:
-
-* Warning message artifact using the following format:
-> [!WARNING]
-> This document covers an active area of research, may be outdated at time of reading and subject to future updates, as the design space around (*active research topic, e.g. Inclusion Lists*) evolves.
-
-* Roadmap tracker artifact using the following format:
-  
-|  Upgrade  |    URGE     |   Track   |               Topic               |                                                                                          Cross-references                                                                                          |
-| :-------: | :---------: | :-------: | :-------------------------------: | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
-| *e.g. ePBS* | the Scourge | MEV track | Endgame block production pipeline | intersection with: [ET](https://ethresear.ch/t/execution-tickets/17944), [PEPC](https://efdn.notion.site/PEPC-FAQ-0787ba2f77e14efba771ff2d903d67e4), [IL](https://eips.ethereum.org/EIPS/eip-7547) |
-
-Ideally, links in artifacts will reference local wiki pages.
-
 ### Linking resources
 
 When adding an external link, you can use it directly in the text or on the bottom of the page in "Resources" section.
@@ -117,6 +101,37 @@ For other important links, add a section on the bottom of the page with list of 
 
 [JSON-RPC API reference](https://ethereum.org/en/developers/docs/apis/json-rpc), [archived](https://web.archive.org/web/20240117035335/https://ethereum.org/en/developers/docs/apis/json-rpc)
 
+### In-page notices
+
+We use blockquote notices at the top of the page to provide readers with appropriate context regarding the content of the page. 
+
+#### Active research
+
+Wiki pages that are subject to future updates, i.e. pages covering active research topics require a notice to be added on top of the pages:
+
+```
+* Warning message artifact using the following format:
+> [!WARNING]
+> This document covers an active area of research, may be outdated at time of reading and subject to future updates, as the design space around evolves.
+```
+
+#### Roadmap tracker
+
+To help user navigate across research topics, we are using a roadmap tracker with the following format:
+ ``` 
+| Upgrade |    URGE     |   Track   |               Topic               |                                     Cross-references                                      |
+|:-------:|:-----------:|:---------:|:---------------------------------:|:-----------------------------------------------------------------------------------------:|
+|  ePBS   | the Scourge | MEV track | Endgame block production pipeline | intersection with: [ET](/wiki/research/ET.md), [PEPC](), [IL]() |
+```
+Ideally, references point to a local wiki pages.
+
+#### Incomplete pages
+
+Pages with minimal content which need more work to cover the topic need to include a notice: 
+
+```
+> :warning: This article is a [stub](https://en.wikipedia.org/wiki/Wikipedia:Stub), help the wiki by [contributing](/contributing.md) and expanding it.
+```
 
 ## Anything else?
 
