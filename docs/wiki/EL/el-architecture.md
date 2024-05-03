@@ -232,10 +232,6 @@ In Ethereum two primary types of transaction pools are recognized:
 
 More details in the page on [EL data structures](/wiki/EL/data-structures.md).
 
-#### RLP
-
-[Wiki - RLP](/wiki/EL/RLP.md)
-
 ### Storage
 
 Blockchain and state data processed by execution client need to be stored in the disk. These are necessary to validate new blocks, verify history and to serve peers in the network. Client stores historical data, also called the ancient database, which include previous blocks. Another database of trie structure contains the current state and small number of recent states. In practice, clients keep various databases for different data categories. Each client can implement a different backend to handle this data, e.g. leveldb, pebble, mdbx.
