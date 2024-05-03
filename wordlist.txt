@@ -53,6 +53,7 @@ BLOBHASH
 blockchain
 blockchain's
 blockchains
+blockquote
 blockquotes
 blocksize
 bloXroute
@@ -483,6 +484,7 @@ Prysmatic
 PSE
 PSE's
 ptc
+publically
 pubsub
 PUSHX
 py
