@@ -209,14 +209,14 @@ ERCs
 Erigon
 estimateGas
 eth
-eth1
-eth1's
 ethash
 Ethash
 ETHCC
 Ethereum
 Ethereum's
 ethers
+ethone
+ethone's
 ethresear
 ethresearch
 ethroadmap
