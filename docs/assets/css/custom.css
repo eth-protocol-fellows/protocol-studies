@@ -180,6 +180,13 @@ body .markdown-section {
 
   /* link */
   --link-color: #ba9afd;
+
+  /* text */
+  --primary-text-color: #fff;
+}
+
+section.content{
+    color: var(--primary-text-color);
 }
 
 /* sidebar */
