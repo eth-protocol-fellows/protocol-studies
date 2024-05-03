@@ -27,9 +27,11 @@ Attacknet
 attester
 attester
 attesters
+attestors
 autoplay
 AVS
 backfill
+backend
 Bankless
 Baranabé's
 Barnabe
@@ -149,6 +151,7 @@ DEX
 Diffie
 DILITHIUM
 disambiguated
+Discordo
 discv
 distro
 docsify
@@ -285,7 +288,9 @@ impera
 implementers
 incentivize
 incentivized
+incentivizes
 Incentivizing
+includable
 inevitableeth
 infrastracture
 Infura
@@ -339,6 +344,7 @@ lookahead
 Lookahead
 LST
 LSP
+LSM
 Lua
 LuaVM
 Lyubashevsky
@@ -532,6 +538,7 @@ Silkwarm
 Silverman
 Sipser
 slashable
+slashings
 SLOAD
 smlXL
 SNARKify
