@@ -121,7 +121,7 @@ TODO
 
 ##### Payload building
 
-TODO Link to block-production file
+More details in [block production](/wiki/EL/block-production.md)
 
 ###### Geth
 
