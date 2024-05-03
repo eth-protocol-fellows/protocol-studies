@@ -88,6 +88,7 @@ Usage of images and visualizations is encouraged. If you are using an image crea
 Feel free to use [emojis](https://docsify.js.org/#/emoji?id=emoji) or [icons](https://icongr.am/fontawesome) where it fits, for example in blockquotes. 
 
 ### Prerequisites
+#### Warning stub for active research topics
 Wiki pages that are subject to future updates, i.e. pages covering active research topics require prerequisites to be added on top of the pages:
 
 * Warning message artifact using the following format:
