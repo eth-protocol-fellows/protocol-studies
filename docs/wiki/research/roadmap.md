@@ -10,16 +10,16 @@ Even though there is no official roadmap and no authority which could dictate it
 
 ## Core R&D
 
-The discussion, resources and all research and development on the core protocol is fully open, free and public. Anyone can learn about it (as you are probably doing in this wiki) and further more, anyone can participate. There is no set of individuals which could push core protocol changes, the Ethereum community can raise the voice to help steer the discussion. To learn more about the core R&D shaping the protocol, read the [wiki page about it](/wiki/dev/core-development.md).
+The discussion, resources and all research and development on the core protocol is fully open, free and public. Anyone can learn about it (as you are probably doing in this wiki) and further more, anyone can participate. There is no set of individuals which could push core protocol changes, the Ethereum community can raise the voice to help steer the discussion. To learn more about the core R&D shaping the protocol, read the [wiki page about it](../dev/core-development.md).
 
 ## Roadmap overview 
 
 While there is not a single roadmap that Ethereum development follows, we can track the current R&D efforts to map what changes are happening and might happen in the future. 
 A popular overview mapping many domains of the current core research and development is Vitalik's chart (December 2023):
 
-![Ethereum roadmap updated by V.B. Dec2023](/docs/wiki/research/img/full_roadmap2024_1600x1596.webp)
+![Ethereum roadmap updated by V.B. Dec2023](./img/full_roadmap2024_1600x1596.webp)
 
-In this overview, different domains are coupled to related categories forming various 'urges'. Many of these boxes are have their own page on this wiki where you can study more.  
+In this overview, different domains are coupled to related categories forming various 'urges'. Many of these boxes have their own page on this wiki where you can study more.  
 
 ### The Merge
 
