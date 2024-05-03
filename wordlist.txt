@@ -28,6 +28,7 @@ Attacknet
 attester
 attesters
 attestors
+auth
 autoplay
 backend
 backfill
@@ -51,12 +52,14 @@ BLOBHASH
 blockchain
 blockchain's
 blockchains
+blockquote
 blockquotes
 blocksize
 bloXroute
 bloXroute's
 BLS
 Bogotá
+boltdb
 Boneh
 bool
 booleans
@@ -70,6 +73,8 @@ Buterin's
 bypassability
 bytecode
 bytecodes
+CalcDifficulty
+CalcExcessBlobGas
 calldata
 canonicalized
 Caplin
@@ -119,8 +124,8 @@ cryptopunks
 cryptosystem
 cybersecurity
 Cypherpunks
-D'Amato
 Daemen
+D'Amato
 Dankrad
 danksharding
 Danno
@@ -171,6 +176,7 @@ ECDSA's
 ECMUL
 ECPAIRING
 ECRECOVER
+ecrerecover
 Edgington
 Edgington's
 EF
@@ -203,6 +209,10 @@ ERCs
 Erigon
 estimateGas
 eth
+eth1
+eth1's
+ethash
+Ethash
 ETHCC
 Ethereum
 Ethereum's
@@ -211,14 +221,15 @@ ethresear
 ethresearch
 ethroadmap
 EVM
-EVM's
 evmlab
 EVMONE
+EVM's
 EVMs
 excalidraw
 exchangeTransitionConfigurationV
 Explainer
 Extractable
+extraData
 Feist
 Femboy
 Ferrin
@@ -265,6 +276,7 @@ gradlew
 Grafana
 Grandine
 Guillaume
+gwei
 hackathon
 hackmd
 Hager
@@ -295,6 +307,7 @@ infrastracture
 Infura
 init
 InsertCoin
+instantiation
 intermediation
 interop
 IOP
@@ -309,6 +322,7 @@ JVM
 JWT
 Karapetsas
 Katex
+KEC
 keccak
 Keccak's
 keecak
@@ -326,6 +340,7 @@ Lamport
 Lamport's
 ldots
 Lefteris
+leq
 leveldb
 libp
 lifecycle
@@ -356,11 +371,11 @@ meldsun
 mem
 Mempool
 Menezes
-merkelizing
 merkle
 Merkle
 Merkleization
 Merkleize
+merkleizing
 MEV
 mevboost
 Michaël
@@ -382,7 +397,6 @@ MUL
 Murr
 MVE
 mvepbs
-n't
 Nagu
 namespace
 namespaces
@@ -399,6 +413,7 @@ NIST's
 Noam
 NOXX
 NSS
+n't
 Occhipinti
 Odayan
 OFAC
@@ -458,6 +473,8 @@ preconfirms
 preconfs
 preimage
 Prest
+prevRandao
+PREVRANDAO
 privateKey
 probabilistically
 programmability
@@ -594,6 +611,7 @@ trustlessly
 trustlessness
 TrustLook
 TSTORE
+TTD
 Tx
 txpool
 txs
@@ -634,8 +652,10 @@ webkit
 WebRTC
 Whitepaper
 WIP
+withdrawlsHash
 WSS
 Xatu
+xff
 XMSS
 XORed
 xy
