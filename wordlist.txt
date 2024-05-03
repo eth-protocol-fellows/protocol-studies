@@ -18,6 +18,7 @@ Arbitrum
 Aritra
 ary
 ASE
+Asli
 Assche
 Assertoor
 assignees
@@ -116,15 +117,17 @@ cryptographic
 cryptographically
 curation
 Cryptopedia
+cryptopunks
 cryptosystem
 cybersecurity
 Cypherpunks
-Daemen
 D'Amato
+Daemen
 Dankrad
 danksharding
 Danno
 Dany
+DAO
 dapp
 dapps
 DAS
@@ -202,6 +205,7 @@ ERCs
 Erigon
 estimateGas
 eth
+ETHCC
 Ethereum
 Ethereum's
 ethers
@@ -209,9 +213,9 @@ ethresear
 ethresearch
 ethroadmap
 EVM
+EVM's
 evmlab
 EVMONE
-EVM's
 EVMs
 excalidraw
 exchangeTransitionConfigurationV
@@ -264,6 +268,7 @@ gradlew
 Grafana
 Grandine
 Guillaume
+hackathon
 hackmd
 Hager
 HashedStorages
@@ -271,6 +276,7 @@ Herc’s
 hoc
 Holesky
 homomorphic
+Hopinheimer
 Hotz
 Hsiao
 HSP
@@ -344,6 +350,7 @@ LuaVM
 Lyubashevsky
 mainnet
 Mana
+Manas
 Mário
 mathbb
 mdbx
@@ -380,6 +387,7 @@ Murr
 MVE
 mvepbs
 MVI
+n't
 Nagu
 namespace
 namespaces
@@ -396,7 +404,6 @@ NIST's
 Noam
 NOXX
 NSS
-n't
 Occhipinti
 Odayan
 OFAC
@@ -477,6 +484,7 @@ Pyrmont
 Pyspec
 pytest
 qubits
+Raa
 radix
 rahul
 RANDAO
@@ -514,6 +522,7 @@ Schwabe
 SECG
 secp
 SELFDESTRUCT
+semver
 Sepolia
 sexualized
 SHA
@@ -593,6 +602,7 @@ TSTORE
 Tx
 txpool
 txs
+UI
 unaggregated
 Unbundling
 underbrace
