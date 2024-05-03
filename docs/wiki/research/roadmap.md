@@ -1,14 +1,12 @@
-# Ethereum Protocol Roadmap
----
-## The Infinite Garden
+# Ethereum Protocol Roadmap 
 
-*Ethereum is NOT a zero sum game, but rather a game that we want to play continuously. For that to be a reality, the Infinite Garden needs to upgrade regularly, on topics like its security, scalability or sustainability, until it reaches ossification. After that point there will probably be, just some trims - here and there.*
-
-## Ethereum evolution 
-
-The philosophy of Ethereum is open to certain risk aversion and the protocol design keeps evolving. As our knowledge and experience of Ethereum grows, researchers and developers are crafting ideas on how to tackle challenges and limitations of the network. There has been [many changes](/wiki/protocol/history.md) to the core protocol over many years of its existence. Most of these changes are part of some common goals we could call a roadmap. 
+The development philosophy of Ethereum is open to protocol evolution and certain risk aversion for benefits which are worth the change. As our knowledge and experience of Ethereum grows, researchers and developers are crafting ideas on how to tackle challenges and limitations of the network. There has been [many changes](/wiki/protocol/history.md) to the core protocol over many years of its existence. Most of these changes are part of some common goals we could call a roadmap. 
 
 Even though there is no official roadmap and no authority which could dictate it, there are wide community discussions steering the protocol development in certain ways. By agreeing on some goals and reaching consensus about current state of the development, the community, dev and research teams work together to progress in this abstract roadmap. 
+
+## The Infinite Garden
+
+> *Ethereum is NOT a zero sum game with a clear finish line, but rather a game that we want to play continuously. For that to be a reality, the Infinite Garden needs to upgrade regularly, on topics like its security, scalability or sustainability, until it reaches ossification. After that point there will probably be, just some trims - here and there.*
 
 ## Core R&D
 
@@ -17,13 +15,13 @@ The discussion, resources and all research and development on the core protocol 
 ## Roadmap overview 
 
 While there is not a single roadmap that Ethereum development follows, we can track the current R&D efforts to map what changes are happening and might happen in the future. 
-A great overview mapping many domains of the core development is Vitalik's view on how the roadmap looks like at December 2023 level:
+A popular overview mapping many domains of the current core research and development is Vitalik's chart (December 2023):
 
 ![Ethereum roadmap updated by V.B. Dec2023](/docs/wiki/research/img/full_roadmap2024_1600x1596.webp)
 
-In this overview, different domains are coupled to related categories forming various 'urges'. Here is what those mean: 
+In this overview, different domains are coupled to related categories forming various 'urges'. Many of these boxes are have their own page on this wiki where you can study more.  
 
-### the Merge
+### The Merge
 
 Upgrades relating to the switch from proof-of-work to proof-of-stake. The Merge was successfully achieved at Thu Sep 15 06:42:42 2022 UTC, reducing the network's annualized electricity consumption by more than 99.988%. However, this category also tracks subsequent upgrades which can be done to improve the consensus mechanism and smooth issues we encounter after The Merge. 
 
