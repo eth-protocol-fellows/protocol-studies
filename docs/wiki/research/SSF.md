@@ -7,7 +7,7 @@
 |   SSF   | the Merge |   -   | Increase Validator count | intersection with: [MAX_EB](/docs/wiki/research/cl-upgrades.md), [ePBS](/docs/wiki/research/PBS/ePBS.md), ET |
 
 ## What is SSF?
-[Single Slot Finality](/docs/eps/week10-research.md) is a concept within Ethereum, in the context of consensus mechanism, that addresses the inefficiencies associated with the time it takes to finalize blocks, proposing a significant raise in blocks validation efficiency and a drastic reduction of time-to-finality. 
+[Single Slot Finality](/docs/eps/week10-research.md) is a research concept of an improvement of Beacon Chain's consensus mechanism that addresses inefficiencies associated with the time it takes to finalize blocks. It's proposing a significant raise in blocks validation efficiency and a drastic reduction of time-to-finality. 
 Instead of waiting for 2 epochs, blocks could get proposed and finalized in the same slot.
 
 ## Context and Motivation
