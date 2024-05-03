@@ -11,7 +11,8 @@
 Instead of waiting for 2 epochs, blocks could get proposed and finalized in the same slot.
 
 ## Context and Motivation
-Ethereum finalizes every 2 epochs, or every 64 slots. With each slot being 12 seconds long, finalization takes around 12.8 minutes, at the moment of writing.
+Ethereum consensus layer implements Gasper protocol which includes Casper Friendly Finality Gadget. Casper FFG ensures that the network keeps producing blocks and accumulates validator attentions for each epoch. Finality is the ultimate state of PoS economic security and its change would require 2/3 of the validator set to be slashed. 
+Beacon Chain achieves finality every 2 epochs, or every 64 slots. With each slot being 12 seconds long, finalization takes around 12.8 minutes, at the moment of writing.
 This current time to finality has turned out to be too long for most users, and is inconvenient for apps and exchanges that might not want to wait that long to be certain their transactions are permanent. 
 The delay between a block's proposal and finalization also creates an opportunity for short reorgs that an attacker could use to censor certain blocks or extract MEV.
 
