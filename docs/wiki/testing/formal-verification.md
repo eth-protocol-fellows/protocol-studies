@@ -97,7 +97,7 @@ Safety and liveliness assurance is central to Ethereum's decentralized infrastru
 
 ### Protocol verification
 
-Formal verification was used to by the [Runtime Verification team](https://github.com/runtimeverification) to verify [bacon chain specification](https://runtimeverification.com/blog/a-formal-model-in-k-of-the-beacon-chain-ethereum-2-0s-primary-proof-of-stake-blockchain), and the [Gasper finality mechanism](https://runtimeverification.com/blog/formally-verifying-finality-in-gasper-the-core-of-the-beacon-chain).
+Formal verification is used by the [Runtime Verification team](https://github.com/runtimeverification) to verify [bacon chain specification](https://runtimeverification.com/blog/a-formal-model-in-k-of-the-beacon-chain-ethereum-2-0s-primary-proof-of-stake-blockchain), and the [Gasper finality mechanism](https://runtimeverification.com/blog/formally-verifying-finality-in-gasper-the-core-of-the-beacon-chain).
 
 [KEVM](https://github.com/runtimeverification/evm-semantics) builds upon [K framework](https://kframework.org/) for crafting formal semantics and conducting verification of the [Ethereum Virtual Machine (EVM)](/wiki/EL/evm.md) specification for correctness.
 
