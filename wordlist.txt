@@ -14,6 +14,7 @@ Antonopoulos
 API
 api's
 APIs
+APS
 Arbitrum
 Aritra
 ary
@@ -35,6 +36,7 @@ Bankless
 Baranabé's
 Barnabe
 Barnabé
+BDN
 Beiko
 Bertoni
 Besu
@@ -95,6 +97,7 @@ codec
 CODECOPY
 codecs
 coinbase
+COMIS
 commoditized
 Composability
 composable
@@ -408,6 +411,7 @@ RANDAO
 README
 RIPEMD
 RLP
+ROP
 RPC
 RPCs
 RSA
@@ -596,6 +600,7 @@ interop
 js
 keccak
 keecak
+KZG
 ldots
 libp
 lifecycle
@@ -606,6 +611,8 @@ mainnet
 mathbb
 meldsun
 mem
+mev
+MEV
 mevboost
 mload
 modularity
