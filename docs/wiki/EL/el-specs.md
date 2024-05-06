@@ -16,7 +16,7 @@ The Execution Layer, from the EELS perspective, focuses exclusively on executing
 - How does the state change as a result?
 
 Simplified Overview:
-<img src="images/el-architecture/stf_eels.png" width="800"/>
+<img src="images/el-specs/stf_eels.png" width="800"/>
 
 The image above represents the block level state transition function in the yellow-paper.
 
@@ -37,7 +37,7 @@ In the equation, each symbol represents a specific concept related to the blockc
 
 Furthermore, it's crucial to understand that $\sigma$ should not be confused with the `State` class defined in the Python specification. Rather than being stored in a specific location, the system's state is dynamically derived through the application of the state collapse function. This highlights the conceptual separation between the mathematical model of blockchain state transitions and the practical implementation details within software specifications.
 
-<img src="images/el-architecture/state.png" width="800"/>
+<img src="images/el-specs/state.png" width="800"/>
 
 The id's in the above image as represented in the yellow paper(paris version) :
 
@@ -243,7 +243,7 @@ For those interested in a hands-on approach, this analysis can be replicated in 
 
 We aim to analyze the 'calculate base fee per gas' function, which is integral to understanding Ethereum's gas pricing mechanism. The following R code snippet illustrates the implementation of this function:
 
-<img src="images/el-architecture/gasused-basefee.png" width="800"/>
+<img src="images/el-specs/gasused-basefee.png" width="800"/>
 
 Observations from the plot:
 
@@ -257,7 +257,7 @@ Having visualized the immediate impact of the gas price calculation function ove
 
 The following R code simulates this scenario over 100,000 blocks, assuming a constant maximum demand, to project the evolution of the gas limit and base fee:
 
-<img src="images/el-architecture/gas-limit-max.png" width="800"/>
+<img src="images/el-specs/gas-limit-max.png" width="800"/>
 
 Observations from the simulation reveal several critical insights:
 
@@ -270,7 +270,7 @@ With a more nuanced understanding of Ethereum's economic model now in hand, we a
 
 let's start with $\xi$ :
 
-<img src="images/el-architecture/xi.png" width="800"/>
+<img src="images/el-specs/xi.png" width="800"/>
 
 This is a snapshot between blocks, like our first plot, it represents smallest slice of the potential of the  economic model additionally parameterized by $\xi$ across protocol upgrades
 
@@ -283,7 +283,7 @@ Impact of $\xi$ on base fee:
 
 Next, we turn our attention to the elasticity multiplier ($\rho$), another pivotal constant in Ethereum's economic model that directly influences the flexibility and responsiveness of gas limit adjustments. To comprehensively understand its impact, we explore a range of values for $\rho$ from 1 to 6 in conjunction with variations in the base fee max change denominator ($\xi$).
 
-<img src="images/el-architecture/rho-xi.png" width="800"/>
+<img src="images/el-specs/rho-xi.png" width="800"/>
 
 Impact of $\rho$ and $\xi$ on Base Fee :
 
@@ -291,7 +291,7 @@ Impact of $\rho$ and $\xi$ on Base Fee :
 -    Distinct Influence of $\rho$: Each subplot represents the nuanced effects of varying $\rho$ values. As the elasticity multiplier, $\rho$ notably shifts the inflection point in the base fee adjustment curve, highlighting its critical role in tuning the network's responsiveness to transaction volume fluctuations.
 -    Interplay Between $\rho$ and $\xi$: The elasticity multiplier ($\rho$) not only moves the inflection point but also modulates the sensitivity of adjustments attributable to changes in the base fee max change denominator ($\xi$). This interaction underscores the delicate balance Ethereum maintains to ensure network efficiency and stability amidst varying demands.
 
-<img src="images/el-architecture/gas-header.png" width="800"/>
+<img src="images/el-specs/gas-header.png" width="800"/>
 
 TODO Blob fee charts
 
@@ -511,10 +511,10 @@ The dynamics of the Blob Gas Price are modeled in the following scenarios, start
 
 * Figure E: Illustrates the relationship between blob gas and its price. Code to all the figures is in the appendix
 
-<img src="images/el-architecture/blob-gas-and-price.png" width="800"/>
+<img src="images/el-specs/blob-gas-and-price.png" width="800"/>
 
 * Figure F: Normalizes the data to highlight the price dynamics relative to gas usage. 
-<img src="images/el-architecture/blob-gas-and-price-norm.png" width="800"/>
+<img src="images/el-specs/blob-gas-and-price-norm.png" width="800"/>
 
 * The blob gas price remains at 1 when the parent block's gas usage is below the target (~400K, corresponding to approximately 400KB or 3 blobs per block). A maximum of about 800K maps to roughly 800KB or 6 blobs per block.
 * Surpassing the target does not immediately affect the gas price, but excess gas begins to accumulate.
