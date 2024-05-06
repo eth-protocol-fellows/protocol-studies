@@ -26,11 +26,13 @@ atleast
 atomicity
 Attacknet
 attester
+attester
 attesters
 attestors
 autoplay
-backend
+AVS
 backfill
+backend
 Bankless
 Baranabé's
 Barnabe
@@ -51,6 +53,7 @@ BLOBHASH
 blockchain
 blockchain's
 blockchains
+blockquote
 blockquotes
 blocksize
 bloXroute
@@ -104,6 +107,7 @@ config
 congestions
 Consensys
 Corbellini
+collateralised
 CPUs
 CRS
 Crypto
@@ -114,6 +118,7 @@ cryptoeconomically
 cryptoeconomics
 cryptographic
 cryptographically
+curation
 Cryptopedia
 cryptopunks
 cryptosystem
@@ -149,6 +154,7 @@ Devs
 DEX
 Diffie
 DILITHIUM
+disambiguated
 Discordo
 discv
 distro
@@ -222,6 +228,7 @@ Extractable
 Feist
 Femboy
 Ferrin
+FFG
 finalise
 financials
 Flashbot's
@@ -289,12 +296,14 @@ implementers
 incentivize
 incentivized
 incentivizes
+Incentivizing
 includable
 inevitableeth
 infrastracture
 Infura
 init
 InsertCoin
+intermediated
 intermediation
 interop
 IOP
@@ -341,6 +350,8 @@ Longrightarrow
 lookahead
 Lookahead
 LST
+LSP
+LSM
 Lua
 LuaVM
 Lyubashevsky
@@ -382,6 +393,7 @@ MUL
 Murr
 MVE
 mvepbs
+MVI
 n't
 Nagu
 namespace
@@ -472,6 +484,7 @@ Prysmatic
 PSE
 PSE's
 ptc
+publically
 pubsub
 PUSHX
 py
@@ -535,7 +548,7 @@ Siddharth
 Silkwarm
 Silverman
 Sipser
-slashing
+slashable
 slashings
 SLOAD
 smlXL
@@ -550,6 +563,7 @@ SSLE
 SSTORE
 sstorge
 SSZ
+staker
 stakers
 Stallman
 StateDB
@@ -603,7 +617,7 @@ Unbundling
 underbrace
 Unformatted
 unguessable
-unix
+unincentivized
 upstreamed
 utils
 UTXOs
