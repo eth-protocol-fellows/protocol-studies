@@ -1,25 +1,29 @@
-# enshrined OPERATOR-DELEGATOR SEPARATION (eODS)
+# Enshrined Operator-delegator separation (eODS)
+
 > [!WARNING]
 > This document covers an active area of research, may be outdated at time of reading and subject to future updates, as the design space around Validator roles unbundling evolves.
+
 ## Roadmap tracker
 
-| Upgrade |    URGE     |       Track       |                    Item                    |                                                                                         Cross-references                                                                                          |
-| :-----: | :---------: | :---------------: | :----------------------------------------: | :-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
-|  eODS   | the Scourge | Staking economics | Solutions to liquid staking centralization | [SSF](/docs/wiki/research/SSF.md), [IL](/docs/wiki/research/cl-upgrades.md), [ePBS](/wiki/research/PBS/ePBS.md), [ET](/wiki/research/PBS/ET.md), [Light Clients](/wiki/research/light-clients.md) |
-## Relevant context 
-Principal–Agent problem, in which the interests of the Agent are not aligned with the interests of the Principal, is part of any delegation, and even more so present in today's staking scene[^1].
+| Upgrade |    URGE     |       Track       |                          Item                           |                                                                Cross-references                                                                 |
+|:-------:|:-----------:|:-----------------:|:-------------------------------------------------------:|:-----------------------------------------------------------------------------------------------------------------------------------------------:|
+|  eODS   | the Scourge | Staking economics | Censorship resistances, liquid staking decentralization | [SSF](/docs/wiki/research/SSF.md), [IL](/docs/wiki/research/cl-upgrades.md), [ePBS](/wiki/research/PBS/ePBS.md), [ET](/wiki/research/PBS/ET.md) |
 
-Regarding the staking economy, specific market structures have naturally developed, after the Merge, inherited from the perennial distinction between labor and capital.
+## Relevant context 
+
+Principal–Agent problem of liquid staking, in which the interests of the Agent are not aligned with the interests of the Principal, is part of any capital delegation, and even more so present in today's staking ecosystem[^1].
+
+Since the early days of Beacon Chain, market structures enabling to provide liquidty for staking pools without running an actual validator software have emerged in Ethereum.
 Thus, staking has split naturally in two classes of participants, outside protocol level[^2]:
 
-|    Tier    |                                                     Current natural separation                                                      | Slashing risk |
-| :--------: | :---------------------------------------------------------------------------------------------------------------------------------: | :-----------: |
-| Delegators | ETH stakers with no minimum commitment and no strict requirement to participate in any other way beyond bringing in their principal |   Slashable   |
-| Operators  |     Node operators providing node running services, with their reputation or some fixed amount of capital of their own at risk.     |   Slashable   |
+|    Tier    |                                                        Current natural separation                                                        | Slashing risk |
+|:----------:|:----------------------------------------------------------------------------------------------------------------------------------------:|:-------------:|
+| Delegators |   ETH stakers with no minimum commitment and no strict requirement to participate in any other way beyond bringing in their principal    |   Slashable   |
+| Operators  | Node operators, home staking or providing validator services, with their reputation or some fixed amount of capital of their own at risk |   Slashable   |
 
-The two tiers are closely interlinked, as liquid staking protocols are not credible if LST holders do not believe that the operators holding their principal are *good agents*. 
+The two tiers are closely interlinked, as liquid staking protocols are not credible if their liquid staking token (LST) holders do not believe that the operators holding their principal are *good agents*. 
 
-The risk of slashing, coupled with the high amount of revenue paid out in aggregate to Gasper service providers via issuance, results in intermediated chains of **principal-agent relationships**[^3] , with Delegators providing capital (Principal) to operators who participate in Gasper on their behalf, in order to earn staking rewards for the Principal and staking rewards fees for themselves. 
+The risk of slashing, coupled with the high amount of revenue paid out in aggregate to Gasper service providers via issuance, results in intermediate chains of **principal-agent relationships**[^3]. Delegators provide capital (Principal) to operators who participate in Gasper on their behalf, in order to earn staking rewards for the Principal and themselves. 
 However, if the validator misbehaves, the funds of the delegator are also slashed, as the actions of the validator (the Agent) affect the capital of the delegator (the Principal).
 
 In order to be considered good agents, honest operators must commit to the Principal's interests:
@@ -28,7 +32,7 @@ In order to be considered good agents, honest operators must commit to the Princ
 
 ## What is eODS?
 
-eODS is a (relatively new) design philosophy[^4] within Ethereum, proposing an even further separation of the role of **Validator** (unbundling), to be implemented at protocol level, closing the loop in the Staking economics track of the Scourge, between ePBS and Execution tickets.
+eODS is an actively discussed design space[^4] within Ethereum, proposing an even further separation of the role of **Validator** (unbundling), to be implemented at protocol level, closing the loop in the Staking economics track of the Scourge, between ePBS and Execution tickets.
 
 ### Unbundling the Validator role
 
@@ -41,6 +45,7 @@ eODS is a (relatively new) design philosophy[^4] within Ethereum, proposing an e
 This separation addresses various inefficiencies associated with the limits of what the protocol sees[^5], and its capacity to react with automated defense systems, in the context of ETH staking.
 
 ## The two-tier staking approach to SSF
+
 In the [SSF](/docs/wiki/research/SSF.md) research discourse, technical limitations associated with per slot BLS signatures aggregation generates the following paradigm:
 > We need to move away from the concept that every participant signs in every slot - Vitalik Buterin
 
@@ -51,6 +56,7 @@ In the above context, there's value in the proposal to **split staking** in two 
 The providers of heavy node services would be subject to slashing, but also highly rewarded for participating in the protocol's Finality gadget, while the providers of small node services would be entitled to lower rewards, but could be entirely exempt from slashing (do not actively participate in each slot), or could opt in to temporarily (i.e. for a few slots) become subject to slashing.
 
 ## The role of Delegators
+
 In his October 2023 paper, called "Protocol and staking pool changes that could improve decentralization and reduce consensus overhead", Vitalik poses a key question: **from the protocol’s perspective, what is the point of having delegators at all?**[^6]
 
 Vitalik takes a thought experiment, hypothesizing a world where bounding the maximum slashing penalty to 2 ETH is a reality.[^7].
@@ -67,6 +73,7 @@ The scope of the argument above was not to advocate for reducing staking rewards
 >**Delegators should be doing something that actually matters** - *Vitalik Buterin*
 
 ### Delegators role under eODS
+
 If Delegators were to have a **meaningful role**, what would that be, and how can the protocol **incentivize** that role selection?
 
 Two possible solutions[^8] arise, under Operator-Delegator separation:
@@ -156,6 +163,7 @@ In order for eODS to be relevant, it must be considered holistically, together w
     | Solo staker access            | Primarily as part of LSPs (e.g., as DVT nodes)                               | High access for all light services                                         |
 
 ## Unlocking re-staking? 
+
 eODS (the 2D model) can be considered a partial enshrinement of re-staking, thanks to re-stakers being able to commit to this new class of protocol AVS (actively validated service)[^13] for which rewards are issued from the creation of newly-minted ETH(i.e. Gasper is an protocol AVS with a well known issuance schedule)[^14]. 
     
 ETH holders are then allowed to enter into the provision of these AVS, either directly as operators, or indirectly as delegators.
@@ -163,7 +171,7 @@ ETH holders are then allowed to enter into the provision of these AVS, either di
 ## Where do Solo Stakers fit in this new world?
 Gasper (and a variant of it in SSF scenario) is the heaviest AVS of the Ethereum protocol. It receives the highest share of aggregate issuance, so there are many parties interested in providing the required stake, in an delegated staking scheme[^3], with Delegators providing stake to Operators who participate in Gasper on their behalf.
 
-Given the induced intermediation of stake, it is necessary to prevent the emergence of a single dominant liquid staking provider collateralised by the majority of the ETH supply. Minimum Viable Issuance (MVI)[^15] measures are critical in order to target sufficient security for the protocol, by creating sufficient pressure to keep the economic weight of Gasper in the right proportion. 
+Given the induced intermediation of stake, it is necessary to prevent the emergence of a single dominant liquid staking provider collateralized by the majority of the ETH supply. Minimum Viable Issuance (MVI)[^15] measures are critical in order to target sufficient security for the protocol, by creating sufficient pressure to keep the economic weight of Gasper in the right proportion. 
 
 Due to the fact that solo stakers are unable to issue credible liquid staking tokens from their collateral and have thus low capital efficiency, MVI-imposed competitive pressures is not well-suited for them. In the context of eODS, this disadvantage can be greatly improved.
 
@@ -190,7 +198,7 @@ In order to improve delegate selection powers[^17], we can:
 
 * improve voting tools within pools
   
-  Under the current paradigm, voting within staking pools is limited to governance token-holders (not ETH holders). There are attempts of Optimistic governance, where ETH holders can veto LSP governance votes, but (paraphrasing Vitalik) token voting is not strong enough, and ultimately any form of unincentivized delegate selection is just a type of token voting.
+  Under the current paradigm, voting within staking pools is limited to governance token-holders (not ETH holders). There are attempts of Optimistic governance, where ETH holders can veto LSP governance votes, but (paraphrasing Vitalik) token voting is not strong enough, and ultimately any form of unincentivised delegate selection is just a type of token voting.
 
 * improve competition between pools
   
