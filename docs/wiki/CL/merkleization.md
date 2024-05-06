@@ -1,6 +1,6 @@
 # Merkleization and Hash Tree Roots 
 
-In Ethereum consensus mechanism, it's critical for all participating nodes to agree on the state of the system consistently and efficiently. The [Simple Serialize (SSZ)](/docs/wiki/CL/SSZ.md) framework facilitates this through Merkleization, a process that transforms serialized data into a Merkle tree structure. This wiki page discusses the intricacies of Merkleization and its importance in ensuring a shared state across nodes in a scalable and secure manner.
+In Ethereum consensus mechanism, it's critical for all participating nodes to agree on the state of the system consistently and efficiently. The [Simple Serialize (SSZ)](/docs/wiki/CL/SSZ.md) framework facilitates this through Merkleization, a process that transforms serialized data into a Merkle tree structure. The goal of the Merkleization scheme is to ensure that constrained environments (light clients, execution environments, etc.) can have access to light-weight proofs which they can use to make important decisions. This wiki page discusses the intricacies of Merkleization and its importance in ensuring a shared state across nodes in a scalable and secure manner.
 
 ## Terminology and Methods
 
@@ -22,33 +22,9 @@ Merkleization involves breaking down the serialized data into 32-byte chunks, wh
 ## Benefits of Merkleization
 
 - **Performance Efficiency:** While the tree requires hashing approximately twice the original data amount, caching mechanisms can store the roots of subtrees that don't change often. This significantly reduces the computational overhead as only altered parts of the data need re-hashing.
-- **Light Client Support:** The Merkle tree structure supports the creation of Merkle proofs—small pieces of data that prove the inclusion and integrity of specific parts of the state without needing the entire dataset. This feature is crucial for light clients, which operate with limited resources and rely on these proofs to interact with  Ethereum securely.
+- **Light Client Support:** The Merkle tree structure supports the creation of Merkle proofs—small pieces of data that prove the inclusion and integrity of specific parts of the state without needing the entire dataset. This feature is crucial for light clients, which operate with limited resources and rely on these proofs to interact with Ethereum securely.
 
-## Merkle Tree Structure and Hashing
-
-The Merkle tree structure is organized such that every two adjacent leaf nodes are hashed together to produce a parent node, and this pairing and hashing continue upwards until a single hash is obtained at the top:
-
-```mermaid
-graph TD;
-    HTR[Hash Tree Root]
-    HL12[Hash of Leaves 1 and 2]
-    HL34[Hash of Leaves 3 and 4]
-    L1[Leaf 1]
-    L2[Leaf 2]
-    L3[Leaf 3]
-    L4[Leaf 4]
-
-    HTR --> HL12
-    HTR --> HL34
-    HL12 --> L1
-    HL12 --> L2
-    HL34 --> L3
-    HL34 --> L4
-```
-
-_Figure: Merkle Tree Structure._
-
-In some instances, the distribution of the leaves might require a more complex tree with varying depths per branch, especially when certain nodes (like containers with multiple elements) need additional depth.
+If you want to learn more about the Merkle tree structure, you can refer [here](https://eth2book.info/capella/part2/building_blocks/merkleization/) and [here](https://github.com/protolambda/eth2-docs?tab=readme-ov-file#ssz-hash-tree-root-and-merkleization). 
 
 ## Generalized Indices
 
@@ -132,7 +108,7 @@ The hash tree root of an SSZ object is computed recursively. For basic types and
 
 ### Packing and Chunking
 
-Packing and chunking are crucial concepts in the context of Merkleization, especially when dealing with the SSZ used in the Beacon chain. Here's how packing and chunking work:
+Packing and chunking enable the Merkleization with SSZ by formatting the serialized data and dividing them into pieces which are then hashed to a Merkle tree. Here's how the process works:
 
 **Serializing the Data**
 - **Serialization** involves converting a data structure (basic types, lists, vectors, or bitlists/bitvectors) into a linear byte array using SSZ serialization rules.
