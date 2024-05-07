@@ -81,12 +81,6 @@ graph TD;
     7---14(("14"));
     7---15(("15"));
 
-    classDef root fill:#f96;
-    classDef proof fill:#bbf;
-    classDef leaf fill:#faa;
-
-    class 1 root;
-    class 2,5,8,9 proof;
 ```
 
 _Figure: Merkle Tree Layout_
