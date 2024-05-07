@@ -51,7 +51,7 @@
 - Mario: I would suggest checking with Angus. He worked on networking and consensus and spent a lot of time on dev-p2p.
 - Hopinheimer: Sure. I'll ping him.
 - Kira: Prysm has a really cool search bar. Can we have something similar I worked on?
-- Mario: We always had a search bar. With the new UI, it's improved. If there's nothing else, I think we're ready to share it! Feel free to share the wiki publically. With EPF starting soon, I think the wiki should serve as a good learning resource. Also, should we version releases? We want to offer people more stable content and maybe archive it. Thoughts?
+- Mario: We always had a search bar. With the new UI, it's improved. If there's nothing else, I think we're ready to share it! Feel free to share the wiki publicly. With EPF starting soon, I think the wiki should serve as a good learning resource. Also, should we version releases? We want to offer people more stable content and maybe archive it. Thoughts?
 - Rahul: We could semver it.
 - Gorondan: Maybe we should do bi-weekly updates until it's mature, then after 1.0, we could version it.
 - Mario: I think most changes are behind us, so it makes sense to somehow track changes. Two weeks seems like a big window. I think we should do a weekly release.
