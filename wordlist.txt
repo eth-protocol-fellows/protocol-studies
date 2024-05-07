@@ -139,9 +139,9 @@ CSP
 curation
 cybersecurity
 Cypherpunks
-D'Amato
 Daemen
 dafny
+D'Amato
 Dankrad
 danksharding
 Danno
@@ -240,9 +240,9 @@ ethresear
 ethresearch
 ethroadmap
 EVM
-EVM's
 evmlab
 EVMONE
+EVM's
 EVMs
 excalidraw
 exchangeTransitionConfigurationV
@@ -431,7 +431,6 @@ Murr
 MVE
 mvepbs
 MVI
-n't
 Nagu
 namespace
 namespaces
@@ -448,6 +447,7 @@ NIST's
 Noam
 NOXX
 NSS
+n't
 NYU
 Occhipinti
 Odayan
