@@ -1379,6 +1379,20 @@ ggplot(data_blob_price, aes(x = BlockNumber)) +
   labs(title = "Normalized Trends Over Blocks", x = "Block Number", y = "Normalized Value", color = "Parameter")
 ````
 
+## Code for formatting document
+
+Formatters are messing up the latex code in this document the below script formats katex documents correctly. 
+````bash
+#!/bin/bash
+
+sed -i.bck -E ':a;N;$!ba;s/\$\$([^$]+)\$\$/```code2 \1```/g; s/\$([^$]+)\$/```code1 \1```/g' $1
+prettier --write $1
+sed -i -E ':a;N;$!ba;s/```code1([^`]*)```/\$\1\$/g' $1
+sed -i -E ':a;N;$!ba;s/```code2([^`]*)```/\$\$\1\$\$/g' $1
+sed -i -E ':a;N;$!ba;s/`code1([^`]*)`/\$\1\$/g' $1
+sed -i -E ':a;N;$!ba;s/`code2([^`]*)`/\$\$\1\$\$/g' $1
+````
+
 [¹]: https://archive.devcon.org/archive/watch/6/eels-the-future-of-execution-layer-specifications/?tab=YouTube
 
 > [!NOTE]
