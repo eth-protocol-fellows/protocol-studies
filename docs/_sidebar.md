@@ -53,6 +53,7 @@
   - [Testing overview](/wiki/testing/overview.md)
   - [Incidents](/wiki/testing/incidents.md)
   - [hive](/wiki/testing/hive.md)
+  - [Formal verification](/wiki/testing/formal-verification.md)
 - Research
   - [Roadmap overview](/wiki/research/roadmap.md)
   - [Scaling](/wiki/research/scaling/scaling.md)
