@@ -37,7 +37,7 @@
   - [Transaction anatomy](/wiki/EL/transaction.md)
   - [JSON-RPC](/wiki/EL/JSON-RPC.md)
   - [DevP2P](/wiki/EL/devp2p.md)
-  - [RLP Serialization](/docs/wiki/EL/RLP.md)
+  - [RLP Serialization](/wiki/EL/RLP.md)
 - Consensus Layer
   - [Overview](/wiki/CL/overview.md)
   - [CL Specs](/wiki/CL/cl-specs.md)
@@ -45,6 +45,8 @@
   - [CL Clients](/wiki/CL/cl-clients.md)
   - [Beacon API](/wiki/CL/beacon-api.md)
   - [CL Networking](/wiki/CL/cl-networking.md)
+  - [SSZ Serialization](/wiki/CL/SSZ.md)
+    - [Merkleization](/wiki/CL/merkleization.md)
 - Development
   - [Core development](/wiki/dev/core-development.md)
   - [Coordination](/wiki/dev/pm.md)
@@ -76,7 +78,7 @@
   - [BLS](/wiki/Cryptography/bls.md)
   - [Keccak256](/wiki/Cryptography/keccak256.md)
   - Commitments
-    - [KZG](/docs/wiki/Cryptography/KZG.md)
+    - [KZG](/wiki/Cryptography/KZG.md)
   - [Post-Quantum Cryptography](/wiki/Cryptography/post-quantum-cryptography.md)
 - [Protocol Fellowship](/wiki/epf.md)
 
