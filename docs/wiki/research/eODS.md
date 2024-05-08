@@ -13,7 +13,7 @@
 
 Principal–Agent problem of liquid staking, in which the interests of the Agent are not aligned with the interests of the Principal, is part of any capital delegation, and even more so present in today's staking ecosystem[^1].
 
-Since the early days of Beacon Chain, market structures enabling to provide liquidty for staking pools without running an actual validator software have emerged in Ethereum.
+Since the early days of Beacon Chain, market structures enabling to provide liquidity for staking pools without running an actual validator software have emerged in Ethereum.
 Thus, staking has split naturally in two classes of participants, outside protocol level[^2]:
 
 |    Tier    |                                                        Current natural separation                                                        | Slashing risk |
@@ -198,7 +198,7 @@ In order to improve delegate selection powers[^17], we can:
 
 * improve voting tools within pools
   
-  Under the current paradigm, voting within staking pools is limited to governance token-holders (not ETH holders). There are attempts of Optimistic governance, where ETH holders can veto LSP governance votes, but (paraphrasing Vitalik) token voting is not strong enough, and ultimately any form of unincentivised delegate selection is just a type of token voting.
+  Under the current paradigm, voting within staking pools is limited to governance token-holders (not ETH holders). There are attempts of Optimistic governance, where ETH holders can veto LSP governance votes, but (paraphrasing Vitalik) token voting is not strong enough, and ultimately any form of unincentivized delegate selection is just a type of token voting.
 
 * improve competition between pools
   

@@ -111,6 +111,7 @@ CODECOPY
 codecs
 coinbase
 collateralised
+collateralized
 COMIS
 commoditized
 Composability
@@ -139,9 +140,9 @@ CSP
 curation
 cybersecurity
 Cypherpunks
+D'Amato
 Daemen
 dafny
-D'Amato
 Dankrad
 danksharding
 Danno
@@ -240,9 +241,9 @@ ethresear
 ethresearch
 ethroadmap
 EVM
+EVM's
 evmlab
 EVMONE
-EVM's
 EVMs
 excalidraw
 exchangeTransitionConfigurationV
@@ -269,6 +270,7 @@ Francesco
 Frege
 Friedrich
 frontend
+frontrunning
 fulfillments
 fullscreen
 Fullstack
@@ -286,7 +288,6 @@ getPayloadV
 getters
 ghost
 Gilles
-Goeril
 Goerli
 Golang
 Goldwasser
@@ -315,6 +316,7 @@ homomorphic
 Hopinheimer
 Hotz
 Hsiao
+HSP
 Hulsing
 Hyperledger
 Hyperplonk
@@ -361,6 +363,7 @@ Kira
 Kleppmann
 Koblitz
 Kurtosis
+Kyber
 KZG
 Lamport
 Lamport's
@@ -431,6 +434,7 @@ Murr
 MVE
 mvepbs
 MVI
+n't
 Nagu
 namespace
 namespaces
@@ -447,7 +451,6 @@ NIST's
 Noam
 NOXX
 NSS
-n't
 NYU
 Occhipinti
 Odayan
@@ -477,7 +480,6 @@ PeerDAS
 Peeters
 pepc
 pepc's
-performace
 performence
 permissionless
 permissionlessness
@@ -543,6 +545,7 @@ Rareskills
 RB
 README
 referrerpolicy
+remerkleable
 repo
 responder
 restaking
