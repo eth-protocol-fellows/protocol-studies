@@ -50,7 +50,6 @@ bilinear
 bilinearity
 BIP
 bitlist
-Bitlist
 Bitlists
 bitrate
 bitvector
@@ -71,7 +70,6 @@ Bogotá
 Boneh
 bool
 booleans
-Booleans
 bootup
 borderless
 BPE
@@ -140,9 +138,9 @@ CSP
 curation
 cybersecurity
 Cypherpunks
-D'Amato
 Daemen
 dafny
+D'Amato
 Dankrad
 danksharding
 Danno
@@ -241,9 +239,9 @@ ethresear
 ethresearch
 ethroadmap
 EVM
-EVM's
 evmlab
 EVMONE
+EVM's
 EVMs
 excalidraw
 exchangeTransitionConfigurationV
@@ -382,7 +380,6 @@ lmd
 LMD
 Longrightarrow
 lookahead
-Lookahead
 LSB
 LSM
 LSP
@@ -404,12 +401,10 @@ Mempool
 Menezes
 merkelizing
 merkle
-Merkle
 Merkleization
 Merkleize
 Merkleized
 Merkleizing
-mev
 MEV
 mevboost
 Michaël
@@ -434,7 +429,6 @@ Murr
 MVE
 mvepbs
 MVI
-n't
 Nagu
 namespace
 namespaces
@@ -451,6 +445,7 @@ NIST's
 Noam
 NOXX
 NSS
+n't
 NYU
 Occhipinti
 Odayan
@@ -505,7 +500,6 @@ preconfed
 preconfer
 preconfer's
 preconfers
-Preconfers
 preconfirm
 preconfirmation
 preconfirmations
@@ -650,7 +644,6 @@ TLS
 TODO
 TPS
 tracoor
-Tracoor
 tradeoff
 tradeoffs
 transactional

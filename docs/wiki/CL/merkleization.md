@@ -1,6 +1,8 @@
 # Merkleization and Hash Tree Roots 
 
+
 In Ethereum consensus mechanism, it's critical for all participating nodes to agree on the state of the system consistently and efficiently. The [Simple Serialize (SSZ)](/wiki/CL/SSZ.md) framework facilitates this through Merkleization, a process that transforms serialized data into a Merkle tree structure. The goal of the Merkleization scheme is to ensure that constrained environments (light clients, execution environments, etc.) can have access to light-weight proofs which they can use to make important decisions. This wiki page discusses the intricacies of Merkleization and its importance in ensuring a shared state across nodes in a scalable and secure manner.
+
 
 ## Terminology and Methods
 
