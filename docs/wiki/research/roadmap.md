@@ -17,7 +17,7 @@ The discussion, resources and all research and development on the core protocol 
 While there is not a single roadmap that Ethereum development follows, we can track the current R&D efforts to map what changes are happening and might happen in the future. 
 A popular overview mapping many domains of the current core research and development is Vitalik's chart (December 2023):
 
-![Ethereum roadmap updated by V.B. Dec2023](/wiki/research/img/full_roadmap2024_1600x1596.webp)
+![Ethereum roadmap updated by V.B. Dec2023](../research/img/full_roadmap2024_1600x1596.webp)
 
 In this overview, different domains are coupled to related categories forming various 'urges'. Many of these boxes have their own page on this wiki where you can study more.  
 
