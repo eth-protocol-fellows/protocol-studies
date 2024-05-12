@@ -1,4 +1,6 @@
-# Data Structures in Ethereum
+# Data Structures in Execution Layer
+
+The execution client stores the current state and historical blockchain data. In practice, the Ethereum data are stored in trie like structures, mainly Merkle Patricia Tree. 
 
 ## Primer on Merkle Tree
 
@@ -31,13 +33,11 @@ More on [Merkle Trees in Ethereum](https://blog.ethereum.org/2015/11/15/merkling
 
 ## Primer on Patricia Tree
 
-Patricia Tries (also called Radix tree) are n-ary trees which unlike Merkle Trees,is used for storage of data instead of verification.
+Patricia Tries (also called Radix tree) are n-ary trees which unlike Merkle Trees, are used for storage of data instead of verification.
 
 Simply put, Patricia Tries is a tree data structure where all the data is store in the leaf nodes, and each non-leaf nodes is a character of a unique string identifying the data. Using the unique string we navigate through the character nodes and finally reach the data. Hence, it is very efficient at data retrieval.
 
 Patricia tries are designed to be more space-efficient than traditional trie structures by eliminating redundant nodes with single children. They achieve compactness by sharing prefixes among keys. This means that common prefixes are shared among different keys, reducing the overall storage requirements.
-
-### **TODO: Patricia Tree Diagram**
 
 ## Merkle Patricia Trie in Ethereum
 
@@ -51,6 +51,12 @@ There are three types of nodes within the MPT:
 
 Every single node has a hash value. The node's hash is calculated as the SHA-3 hash value of its contents. This hash also acts as a key to refer that specific node.
 Nibbles serve as the distinguishing unit for key values in the MPT. It represents a single hexadecimal digit. Each trie node can branch out to as many as 16 offshoots, ensuring a concise representation and efficient memory usage.
+
+##### **TODO: Patricia Tree Diagram**
+
+# Ethereum
+
+Ethereum's primary data structure for storing the execution layer state is a **Merkle Patricia Trie** (pronounced "try"). It is named so, since it is a Merkle tree that uses features of PATRICIA (Practical Algorithm To Retrieve Information Coded in Alphanumeric), and because it is designed for efficient data retrieval of items that comprise the Ethereum state.
 
 Ethereum state is stored in four different modified merkle patricia tries (MMPTs):
 
@@ -129,3 +135,5 @@ The transition to new verkle tree database poses a major challenge. To securely 
 - [More on Verkle Tree](https://notes.ethereum.org/@vbuterin/verkle_tree_eip#Simple-Summary)
 - [Verge transition](https://notes.ethereum.org/@parithosh/verkle-transition)
 - [Implementing Merkle Tree and Patricia Trie](https://medium.com/coinmonks/implementing-merkle-tree-and-patricia-trie-b8badd6d9591) • [archived](https://web.archive.org/web/20210118071101/https://medium.com/coinmonks/implementing-merkle-tree-and-patricia-trie-b8badd6d9591)
+
+[More on Merkle Patricia Trie](https://ethereum.org/developers/docs/data-structures-and-encoding/patricia-merkle-trie)

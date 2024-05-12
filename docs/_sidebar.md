@@ -1,7 +1,7 @@
 - [Home](readme.md)
 - **Study Group**
 - [EPFsg overview](/eps/intro.md)
-- Schedule
+- Presentations
   - [Week 0](/eps/week0.md)
   - [Week 1](/eps/week1.md)
   - [Week 2](/eps/week2.md)
@@ -17,68 +17,70 @@
   - [Week 8 | Research](/eps/week8-research.md)
   - [Week 9 | Dev](/eps/week9-dev.md)
   - [Week 9 | Research](/eps/week9-research.md)
+  - [Week 10 | Dev](/eps/week10-dev.md)
+  - [Week 10 | Research](/eps/week10-research.md)
 - [Contributing](contributing.md)
 - **Protocol Wiki**
 - The Protocol
-  - [Overview](/wiki/protocol/overview.md)
-  - [History](/wiki/protocol/history.md)
+  - [Architecture](/wiki/protocol/architecture.md)
+  - [Design rationale](/wiki/protocol/design-rationale.md)
+  - [Evolution](/wiki/protocol/history.md)
 - Execution Layer
-  - [EL Clients](/wiki/EL/el-clients.md)
   - [EL Specs](/wiki/EL/el-specs.md)
-  - Client architecture
+  - [Client architecture](/wiki/EL/el-architecture.md)
+  - [EL Clients](/wiki/EL/el-clients.md)
+    - [Besu](/wiki/EL/clients/besu.md)
+    - [Reth](/wiki/EL/clients/reth.md)
   - [EVM](/wiki/EL/evm.md)
+    - [Precompiled Contracts](/wiki/EL/precompiled-contracts.md)
+  - [Data Structures](/wiki/EL/data-structures.md)
   - [Transaction anatomy](/wiki/EL/transaction.md)
   - [JSON-RPC](/wiki/EL/JSON-RPC.md)
-  - [Data Structures](/wiki/el/data-structures.md)
-  - [DevP2P]
-  - [Precompiled Contracts](/wiki/EL/precompiled-contracts.md)
-- [Consensus Layer](/wiki/CL/overview.md)
-  - [CL Clients](/wiki/CL/cl-clients.md)
+  - [DevP2P](/wiki/EL/devp2p.md)
+  - [RLP Serialization](/wiki/EL/RLP.md)
+- Consensus Layer
+  - [Overview](/wiki/CL/overview.md)
   - [CL Specs](/wiki/CL/cl-specs.md)
-  - Client architecture
-  - [Proof-of-Stake]
-  - [Beacon API]
-  - [Networking](/wiki/CL/cl-networking.md)
+  - [Client architecture](/wiki/CL/client-architecture.md)
+  - [CL Clients](/wiki/CL/cl-clients.md)
+  - [Beacon API](/wiki/CL/beacon-api.md)
+  - [CL Networking](/wiki/CL/cl-networking.md)
+  - [SSZ Serialization](/wiki/CL/SSZ.md)
+    - [Merkleization](/wiki/CL/merkleization.md)
 - Development
   - [Core development](/wiki/dev/core-development.md)
-  - [Coordination](/wiki/protocol/pm.md)
-  - [CS Resources]
+  - [Coordination](/wiki/dev/pm.md)
+  - [Dev Resources](/wiki/dev/cs-resources.md)
 - Testing and security
   - [Testing overview](/wiki/testing/overview.md)
   - [Incidents](/wiki/testing/incidents.md)
   - [hive](/wiki/testing/hive.md)
-  - Formal Verification
+  - [Formal verification](/wiki/testing/formal-verification.md)
 - Research
   - [Roadmap overview](/wiki/research/roadmap.md)
   - [Scaling](/wiki/research/scaling/scaling.md)
     - [Core Changes](/wiki/research/scaling/core-changes/core-changes.md)
     - [EIP-4844](/wiki/research/scaling/core-changes/eip-4844.md)
-    - Sharding
-    - Statelessness
-    - Purge
   - [MEV](/wiki/research/PBS/mev.md)
-    - [PBS](/wiki/research/PBS/pbs.md)
     - [MEV-boost](/wiki/research/PBS/mev-boost.md)
+  - [PBS](/wiki/research/PBS/pbs.md)
     - [ePBS](/wiki/research/PBS/ePBS.md)
+      - [ePBS Design Specs](/wiki/research/PBS/ePBS-Specs.md)
+    - [PTC](/wiki/research/PBS/PTC.md)
+    - [PEPC](/wiki/research/PBS/PEPC.md)
+    - [TBHL](/wiki/research/PBS/TBHL.md)
     - [ET](/wiki/research/PBS/ET.md)
-  - Proof of Stake
-    - [Upgrades](/docs/wiki/research/cl-upgrades.md)
-    - SSF
-    - SSLE
-  - [Light Clients](/wiki/research/light-clients.md)
-  - Privacy
-  - AA
-  - ASE
-  - EOF
-  - Portal Network
+  - [eODS](/wiki/research/eODS.md)
+  - Preconfirmations
+    - [Preconfirmations](/wiki/research/Preconfirmations/Preconfirmations.md)
+    - [Based Sequencing with Preconfs](/wiki/research/Preconfirmations/BasedSequencingPreconfs.md)
+  - [Light clients](/wiki/research/light-clients.md)
 - [Cryptography](/wiki/Cryptography/intro.md)
-  - [ECDSA](/wiki/Cryptography/ecdsa.md) 
+  - [ECDSA](/wiki/Cryptography/ecdsa.md)
+  - [BLS](/wiki/Cryptography/bls.md)
   - [Keccak256](/wiki/Cryptography/keccak256.md)
-  - BLS
-  - [Commitments]
-    - Polynomials
-    - Commitment schemes
-  - ZK
+  - Commitments
+    - [KZG](/wiki/Cryptography/KZG.md)
   - [Post-Quantum Cryptography](/wiki/Cryptography/post-quantum-cryptography.md)
 - [Protocol Fellowship](/wiki/epf.md)
 
@@ -86,5 +88,5 @@
   - [GitHub Repository](https://github.com/eth-protocol-fellows/protocol-studies)
 
 <form action="https://epf.wiki/#/eps/intro" target="_blank">
-  <input type="submit" value="Join the protocol" style="cursor: pointer;margin-top:12px;padding:8px;background-color:#FFFFFF;border:1px solid #0374B5;border-radius:.25rem;color:#0374B5;display:inline-block;text-align:center;text-decoration:none;width:250px;-webkit-text-size-adjust:none;mso-hide:all;" />
+  <input type="submit" value="Join the protocol" class="btn-primary" />
 </form>
