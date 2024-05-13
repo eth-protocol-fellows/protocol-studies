@@ -17,7 +17,7 @@ The discussion, resources and all research and development on the core protocol 
 While there is not a single roadmap that Ethereum development follows, we can track the current R&D efforts to map what changes are happening and might happen in the future. 
 A popular overview mapping many domains of the current core research and development is Vitalik's chart (December 2023):
 
-![Ethereum roadmap updated by V.B. Dec2023](/wiki/research/img/full_roadmap2024_1600x1596.webp)
+![Ethereum roadmap updated by V.B. Dec2023](../research/img/full_roadmap2024_1600x1596.webp)
 
 In this overview, different domains are coupled to related categories forming various 'urges'. Many of these boxes have their own page on this wiki where you can study more.  
 
@@ -28,7 +28,7 @@ Upgrades relating to the switch from proof-of-work to proof-of-stake. The Merge 
 **IMPLEMENTED**
 | Upgrade                              |                                             Description                                             |                                                                                                      Effect                                                                                                       | State of the art                                     |
 |:------------------------------------ |:---------------------------------------------------------------------------------------------------:|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|:---------------------------------------------------- |
-| Launch the Beacon Chain              |             A crucial step in Ethereum's shift to a proof-of-stake consensus mechanism              |                                         Beacon Chain was launched as an independent network connected to Ethereum, bootstraping validators in preparation for the Merge.                                          | shipped </br> EIP-2982<span markdown='1'>[^1]</span> |
+| Launch the Beacon Chain              |             A crucial step in Ethereum's shift to a proof-of-stake consensus mechanism              |                                         Beacon Chain was launched as an independent network connected to Ethereum, bootstrapping validators in preparation for the Merge.                                          | shipped </br> EIP-2982<span markdown='1'>[^1]</span> |
 | Merge Execution and Consensus Layers |              Ethereum's execution layer merged with the Beacon chain (consensus layer)              | Proof-of-work activities ceased and the network's consensus mechanism shifted to proof-of-stake. Validators have the role and responsibility for processing the validity of all transactions and proposing blocks | shipped                                              |
 | Enable Withdrawals                   | The last of the three-part process of Ethereum's transition to a proof-of-stake consensus mechanism |                                                             Validators can add their withdrawal credentials and Beacon Chain sweeps all inactive ETH                                                              | shipped </br>EIP-4895[^2]                            |
 

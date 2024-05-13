@@ -2,9 +2,10 @@
 
 ## Overview
 
-Simple Serialize (SSZ) is a serialization and [Merkleization](/docs/wiki/CL/merkleization.md) scheme designed specifically for Ethereum's Beacon Chain. SSZ replaces the [RLP serialization](/docs/wiki/EL/RLP.md) used on the execution layer (EL) everywhere across the consensus layer (CL) except the [peer discovery protocol](https://github.com/ethereum/devp2p). Its development and adoption are aimed at enhancing the efficiency, security, and scalability of Ethereum's CL.
 
-This document is about SSZ Serialization. You can learn more about SSZ merkleization at the [merkleization wiki page](/docs/wiki/CL/merkleization.md).
+Simple Serialize (SSZ) is a serialization and [Merkleization](/wiki/CL/merkleization.md) scheme designed specifically for Ethereum's Beacon Chain. SSZ replaces the [RLP serialization](/wiki/EL/RLP.md) used on the execution layer (EL) everywhere across the consensus layer (CL) except the [peer discovery protocol](https://github.com/ethereum/devp2p). Its development and adoption are aimed at enhancing the efficiency, security, and scalability of Ethereum's CL.
+
+This document is about SSZ Serialization. You can learn more about SSZ merkleization at the [merkleization wiki page](/wiki/CL/merkleization.md).
 
 
 ## SSZ Tools
@@ -13,7 +14,7 @@ There are many tools available for SSZ. Here is a [full list](https://github.com
 
 - [py-ssz](https://github.com/ethereum/py-ssz)
 - [dafny](https://github.com/ConsenSys/eth2.0-dafny)
-- [Eth2.py](https://github.com/protolambda/remerkleable)
+- [remerkleable](https://github.com/protolambda/remerkleable)
 - [fastssz](https://github.com/ferranbt/fastssz/)
 - [rust-ssz](https://github.com/ralexstokes/ssz-rs)
 
@@ -44,6 +45,8 @@ _Table: SSZ VS RLP Comparison by [Piper Merriam](https://twitter.com/pipermerria
 
 **Deterministic Serialization**:
 - **SSZ**: Provides deterministic serialization results, ensuring that the same data structure serializes to the exact same byte sequence every time, which is crucial for consensus reliability.
+- **RLP**: RLP also provides deterministic serialization results.
+
 
 For these reasons, there is a strong effort in Ethereum to completely migrate to SSZ serialization for everything and stop the usage of RLP serialization.
 

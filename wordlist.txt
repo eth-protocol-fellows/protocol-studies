@@ -50,7 +50,6 @@ bilinear
 bilinearity
 BIP
 bitlist
-Bitlist
 Bitlists
 bitrate
 bitvector
@@ -63,7 +62,6 @@ blockchain's
 blockchains
 blockquote
 blockquotes
-blockquote
 blocksize
 bloXroute
 bloXroute's
@@ -72,7 +70,6 @@ Bogotá
 Boneh
 bool
 booleans
-Booleans
 bootup
 borderless
 BPE
@@ -112,6 +109,7 @@ CODECOPY
 codecs
 coinbase
 collateralised
+collateralized
 COMIS
 commoditized
 Composability
@@ -270,6 +268,7 @@ Francesco
 Frege
 Friedrich
 frontend
+frontrunning
 fulfillments
 fullscreen
 Fullstack
@@ -287,7 +286,6 @@ getPayloadV
 getters
 ghost
 Gilles
-Goeril
 Goerli
 Golang
 Goldwasser
@@ -316,6 +314,7 @@ homomorphic
 Hopinheimer
 Hotz
 Hsiao
+HSP
 Hulsing
 Hyperledger
 Hyperplonk
@@ -362,6 +361,7 @@ Kira
 Kleppmann
 Koblitz
 Kurtosis
+Kyber
 KZG
 Lamport
 Lamport's
@@ -380,7 +380,6 @@ lmd
 LMD
 Longrightarrow
 lookahead
-Lookahead
 LSB
 LSM
 LSP
@@ -402,12 +401,10 @@ Mempool
 Menezes
 merkelizing
 merkle
-Merkle
 Merkleization
 Merkleize
 Merkleized
 Merkleizing
-mev
 MEV
 mevboost
 Michaël
@@ -478,7 +475,6 @@ PeerDAS
 Peeters
 pepc
 pepc's
-performace
 performence
 permissionless
 permissionlessness
@@ -504,7 +500,6 @@ preconfed
 preconfer
 preconfer's
 preconfers
-Preconfers
 preconfirm
 preconfirmation
 preconfirmations
@@ -544,6 +539,7 @@ Rareskills
 RB
 README
 referrerpolicy
+remerkleable
 repo
 responder
 restaking
@@ -648,7 +644,6 @@ TLS
 TODO
 TPS
 tracoor
-Tracoor
 tradeoff
 tradeoffs
 transactional
