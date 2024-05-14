@@ -69,6 +69,7 @@
     - [PTC](/wiki/research/PBS/PTC.md)
     - [PEPC](/wiki/research/PBS/PEPC.md)
     - [TBHL](/wiki/research/PBS/TBHL.md)
+    - [ET](/wiki/research/PBS/ET.md)
   - [eODS](/wiki/research/eODS.md)
   - Preconfirmations
     - [Preconfirmations](/wiki/research/Preconfirmations/Preconfirmations.md)
