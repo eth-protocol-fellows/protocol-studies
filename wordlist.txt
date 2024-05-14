@@ -1,6 +1,7 @@
 personal_ws-1.1 en 10000 utf-8
 Attester
 Barnabe's
+Barnabe 's
 unbundle
 validator's
 Quintus
@@ -495,6 +496,7 @@ POS
 POSIX
 Potuz's
 POV
+possibile
 PQ
 PQC
 PQCA
