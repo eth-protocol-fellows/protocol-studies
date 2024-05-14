@@ -25,25 +25,25 @@ $$
 
 In the equation, each symbol represents a specific concept related to the blockchain state transition:
 
-- $ \sigma_{t+1}$ represents the **state of the blockchain** after applying the current block, often referred to as the "new state."
-- $ \Pi$ denotes the [block level state transition function](https://github.com/ethereum/execution-specs/blob/0f9e4345b60d36c23fffaa69f70cf9cdb975f4ba/src/ethereum/shanghai/fork.py#L145), which is responsible for transitioning the blockchain from one state to the next by applying the transactions contained in the current block.
-- $ \sigma_t$ represents the state of the **[blockchain](https://github.com/ethereum/execution-specs/blob/0f9e4345b60d36c23fffaa69f70cf9cdb975f4ba/src/ethereum/shanghai/fork.py#L73)** before adding the current block, also known as the "previous state."
+- $\sigma_{t+1}$ represents the **state of the blockchain** after applying the current block, often referred to as the "new state."
+- $\Pi$ denotes the [block level state transition function](https://github.com/ethereum/execution-specs/blob/0f9e4345b60d36c23fffaa69f70cf9cdb975f4ba/src/ethereum/shanghai/fork.py#L145), which is responsible for transitioning the blockchain from one state to the next by applying the transactions contained in the current block.
+- $\sigma_t$ represents the state of the **[blockchain](https://github.com/ethereum/execution-specs/blob/0f9e4345b60d36c23fffaa69f70cf9cdb975f4ba/src/ethereum/shanghai/fork.py#L73)** before adding the current block, also known as the "previous state."
 
-- $ B$ symbolizes the **[current block](https://github.com/ethereum/execution-specs/blob/0f9e4345b60d36c23fffaa69f70cf9cdb975f4ba/src/ethereum/shanghai/fork_types.py#L217)** that is being sent to the execution layer for processing.
+- $B$ symbolizes the **[current block](https://github.com/ethereum/execution-specs/blob/0f9e4345b60d36c23fffaa69f70cf9cdb975f4ba/src/ethereum/shanghai/fork_types.py#L217)** that is being sent to the execution layer for processing.
 
-Furthermore, it's crucial to understand that $ \sigma$ should not be confused with the `State` class defined in the Python specification. Rather than being stored in a specific location, the system's state is dynamically derived through the application of the state collapse function. This highlights the conceptual separation between the mathematical model of blockchain state transitions and the practical implementation details within software specifications.
+Furthermore, it's crucial to understand that $\sigma$ should not be confused with the `State` class defined in the Python specification. Rather than being stored in a specific location, the system's state is dynamically derived through the application of the state collapse function. This highlights the conceptual separation between the mathematical model of blockchain state transitions and the practical implementation details within software specifications.
 
 <img src="images/el-specs/state.png" width="800"/>
 
 The id's in the above image as represented in the yellow paper(paris version) :
 
-| Id.   | equation no. | yellow paper                                                   | comments                                                                                                                                                                                                                                                                                                                                                                                                                                   |
-| ----- | ------------ | -------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| 1     | 7            | $$ TRIE(L_I^*(\sigma[a]_s)) \equiv \sigma[a]_s $$           | This gives the root of the account storage Trie ,$  \sigma[a]_s $ on the right, after mapping each node with the function $ L_I((k,v)) \equiv (KEC(k), RLP(v))$ . The equation on the left is referring to mapping over underlying key and values of the account storage $  \sigma[a]_s $ these are two different objects the left $  \sigma[a]_s $ and the right $  \sigma[a]_s $ which represents the root hash |
-| 2     |              | page 4 paragraph 2                                             | The account state $  \sigma[a] $ is described in the yellow paper                                                                                                                                                                                                                                                                                                                                                                     |
-| 3     | 10           | $$  L_s(\sigma) \equiv \{p(a) : \sigma[a] \neq \empty \} $$ | This is the world state collapse function , applied to all accounts considered not empty:                                                                                                                                                                                                                                                                                                                                                  |
-| 4 & 5 | 36           | $$  TRIE(L_s(\sigma)) = P(B_H)_{H_{stateRoot}} $$           | The equation defines the Parent block's state root header as the root given by the TRIE function where $ P(B_H)$ is the Parent Block                                                                                                                                                                                                                                                                                                  |
-| 6.    | 33b          | $$  H_{stateRoot} \equiv TRIE(L_s(\Pi(\sigma, B))) $$       | this gives us the state root of the current block                                                                                                                                                                                                                                                                                                                                                                                          |
+| Id.   | equation no. | yellow paper                                                    | comments                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+| ----- | ------------ | --------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1     | 7            | $$TRIE(L_I^*(\sigma[a]_s)) \equiv \sigma[a]_s $$           | This gives the root of the account storage Trie ,$\sigma[a]_s $ on the right, after mapping each node with the function $L_I((k,v)) \equiv (KEC(k), RLP(v))$ . The equation on the left is referring to mapping over underlying key and values of the account storage $\sigma[a]_s $ these are two different objects the left $\sigma[a]_s $ and the right $\sigma[a]_s $ which represents the root hash |
+| 2     |              | page 4 paragraph 2                                              | The account state $\sigma[a] $ is described in the yellow paper                                                                                                                                                                                                                                                                                                                                                                         |
+| 3     | 10           | $$L_s(\sigma) \equiv \{p(a) : \sigma[a] \neq \empty \} $$ | This is the world state collapse function , applied to all accounts considered not empty:                                                                                                                                                                                                                                                                                                                                                       |
+| 4 & 5 | 36           | $$TRIE(L_s(\sigma)) = P(B_H)_{H_{stateRoot}} $$           | The equation defines the Parent block's state root header as the root given by the TRIE function where $P(B_H)$ is the Parent Block                                                                                                                                                                                                                                                                                                      |
+| 6.    | 33b          | $$H_{stateRoot} \equiv TRIE(L_s(\Pi(\sigma, B))) $$       | this gives us the state root of the current block                                                                                                                                                                                                                                                                                                                                                                                               |
 
 The specified procedure for the state transition function in the code documentation includes the following steps:
 
@@ -61,7 +61,6 @@ The specified procedure for the state transition function in the code documentat
 8. **Pruning Old Blocks**: Remove blocks that are older than the most recent 255 blocks from the blockchain.
 9. **Error Handling**: If any validation checks fail, raise an "Invalid Block" error. Otherwise, return None.
 
-
 ## Block Header Validation
 
 The process of block header validation, rigorously defined within the Yellow Paper + Spec, encompasses extensive checks, including gas usage, timestamp accuracy, among others. This meticulous validation process ensures every block strictly complies with Ethereum's stringent standards, thereby upholding the network's security and operational stability. Furthermore, it delineates the boundaries of Ethereum's economic model, integrating essential safeguards against inefficiencies and vulnerabilities. Through this process, the Ethereum network achieves a delicate balance between flexibility, allowing for evolution and upgrades, and rigidity, ensuring adherence to core principles and safety measures.
@@ -74,43 +73,43 @@ The Ethereum economic model, as outlined in [EIP-1559](https://eips.ethereum.org
 - **Predictable Base Fee Adjustments**: EIP-1559 introduces a mechanism for predictable base fee changes, a feature particularly beneficial for wallets. This predictability aids in accurately estimating transaction costs ahead of time, streamlining the transaction creation process.
 - **Base Fee Burn and Priority Fee**: Under this model, miners are entitled to keep the priority fee as an incentive, while the base fee is burned, effectively removing it from circulation. This approach serves as a countermeasure to Ethereum's inflation, promoting a healthier economic environment by reducing the overall supply over time.
 
-The [validity](https://github.com/ethereum/execution-specs/blob/0f9e4345b60d36c23fffaa69f70cf9cdb975f4ba/src/ethereum/shanghai/fork.py#L269) of a block header, as specified in the Yellow Paper, employs a series of criteria to ensure each block adheres to Ethereum's protocol requirements. The parent block, denoted as $ P(H)$, plays a crucial role in validating the current block header $ H$ . The key conditions for validity include:
+The [validity](https://github.com/ethereum/execution-specs/blob/0f9e4345b60d36c23fffaa69f70cf9cdb975f4ba/src/ethereum/shanghai/fork.py#L269) of a block header, as specified in the Yellow Paper, employs a series of criteria to ensure each block adheres to Ethereum's protocol requirements. The parent block, denoted as $P(H)$, plays a crucial role in validating the current block header $H$ . The key conditions for validity include:
 
-$$ V(H) \equiv H_{gasUsed} \leq H_{gasLimit} \tag{57a}$$
-$$ \land$$
-$$  H_{gasLimit} < P(H)_{H_{gasLimit'}} + floor(\frac{P(H)_{H_{gasLimit'}}}{1024} ) \tag{57b}$$
-$$ \land $$
-$$  H_{gasLimit} > P(H)_{H_{gasLimit'}} - floor(\frac{P(H)_{H_{gasLimit'}}}{1024} ) \tag{57c}$$
-$$ \land$$
-$$  H_{gasLimit} > 5000\tag{57d}$$
-$$  \land  $$
-$$ H_{timeStamp} > P(H)_{H_{timeStamp'}} \tag{57e}$$
-$$ \land$$
-$$  H_{numberOfAncestors} = P(H)_{H_{numberOfAncestors'}} + 1 \tag{57f}$$
-$$ \land$$
-$$  length(H_{extraData}) \leq 32_{bytes} \tag{57g}$$
-$$ \land$$
-$$  H_{baseFeePerGas} = F(H) \tag{57h}$$
-$$ \land$$
-$$  H_{parentHash} = KEC(RLP( P(H)_H )) \tag{57i} $$
-$$ \land$$
-$$  H_{ommersHash} = KEC(RLP(())) \tag{57j}$$
-$$ \land$$
-$$  H_{difficulty} = 0\tag{57k}$$
-$$ \land $$
-$$ H_{nonce} = 0x0000000000000000 \tag{57l}$$
-$$ \land$$
-$$   H_{prevRandao} = PREVRANDAO() \text{?? in yellow but not in eels} \tag{57m}$$
-$$ \land$$
-$$  H_{withdrawlsHash} \neq nil \tag{57n}$$
-$$ \land$$
-$$  H_{blobGasUsed} \neq nil \tag{57o}$$
-$$ \land$$
-$$  H_{blobGasUsed} \leq  MaxBlobGasPerBlock_{=786432}  \tag{57p}$$
-$$  \land $$
-$$  H_{blobGasUsed} \% GasPerBlob_{=2^{17}} = 0  \tag{57q}$$
-$$  \land $$
-$$  H_{excessBlobGas} = CalcExcessBlobGas(P(H)_H) \tag{57r}$$
+$$V(H) \equiv H_{gasUsed} \leq H_{gasLimit} \tag{57a}$$
+$$\land$$
+$$H_{gasLimit} < P(H)_{H_{gasLimit'}} + floor(\frac{P(H)_{H_{gasLimit'}}}{1024} ) \tag{57b}$$
+$$\land $$
+$$H_{gasLimit} > P(H)_{H_{gasLimit'}} - floor(\frac{P(H)_{H_{gasLimit'}}}{1024} ) \tag{57c}$$
+$$\land$$
+$$H_{gasLimit} > 5000\tag{57d}$$
+$$\land  $$
+$$H_{timeStamp} > P(H)_{H_{timeStamp'}} \tag{57e}$$
+$$\land$$
+$$H_{numberOfAncestors} = P(H)_{H_{numberOfAncestors'}} + 1 \tag{57f}$$
+$$\land$$
+$$length(H_{extraData}) \leq 32_{bytes} \tag{57g}$$
+$$\land$$
+$$H_{baseFeePerGas} = F(H) \tag{57h}$$
+$$\land$$
+$$H_{parentHash} = KEC(RLP( P(H)_H )) \tag{57i} $$
+$$\land$$
+$$H_{ommersHash} = KEC(RLP(())) \tag{57j}$$
+$$\land$$
+$$H_{difficulty} = 0\tag{57k}$$
+$$\land $$
+$$H_{nonce} = 0x0000000000000000 \tag{57l}$$
+$$\land$$
+$$H_{prevRandao} = PREVRANDAO() \text{?? in yellow but not in eels} \tag{57m}$$
+$$\land$$
+$$H_{withdrawlsHash} \neq nil \tag{57n}$$
+$$\land$$
+$$H_{blobGasUsed} \neq nil \tag{57o}$$
+$$\land$$
+$$H_{blobGasUsed} \leq  MaxBlobGasPerBlock_{=786432}  \tag{57p}$$
+$$\land $$
+$$H_{blobGasUsed} \% GasPerBlob_{=2^{17}} = 0  \tag{57q}$$
+$$\land $$
+$$H_{excessBlobGas} = CalcExcessBlobGas(P(H)_H) \tag{57r}$$
 
 $$
 CalcExcessBlobGas(P(H)_H) \equiv
@@ -127,12 +126,12 @@ P(H)_{blobGasUsed} \equiv  P(H)_{H_{excessBlobGas}} + P(H)_{H_{blobGasUsed}} \\
 TargetBlobGasPerBlock =  393216
 $$
 
-- **Gas Usage**: The gas used by a block $ H_{gasUsed}$ must not exceed the gas limit $ H_{gasLimit'}$, ensuring transactions fit within the block's capacity (57a).
-- **Gas Limit Constraints**: The gas limit of a block must remain within specified bounds relative to the parent block's gas limit $ {P(H)_{H_{gasLimit'}}}$ , allowing for gradual changes rather than abrupt adjustments (57b, 57c).
+- **Gas Usage**: The gas used by a block $H_{gasUsed}$ must not exceed the gas limit $H_{gasLimit'}$, ensuring transactions fit within the block's capacity (57a).
+- **Gas Limit Constraints**: The gas limit of a block must remain within specified bounds relative to the parent block's gas limit ${P(H)_{H_{gasLimit'}}}$ , allowing for gradual changes rather than abrupt adjustments (57b, 57c).
 - **Minimum Gas Limit**: A minimum gas limit of 5000 ensures a basic level of transaction processing capacity (57d).
-- **Timestamp Verification**: Each block's timestamp $ H_{timeStamp}$ must be greater than that of its parent $ P(H)_{H_{timeStamp'}}$, ensuring chronological order (57e).
-- **Ancestry and Extra Data**: The block maintains a lineage through the $ H_{numberOfAncestors'}$ field and limits the $ H_{extraData}$ size to 32 bytes for efficiency and security (57f, 57g).
-- **Economic Model Compliance**: The base fee per gas $ H_{baseFeePerGas}$ is calculated according to the rules established in EIP-1559, reflecting the network's current demand for transaction processing (57h). This along with a,b,c,d & h defines part of the Economic model
+- **Timestamp Verification**: Each block's timestamp $H_{timeStamp}$ must be greater than that of its parent $P(H)_{H_{timeStamp'}}$, ensuring chronological order (57e).
+- **Ancestry and Extra Data**: The block maintains a lineage through the $H_{numberOfAncestors'}$ field and limits the $H_{extraData}$ size to 32 bytes for efficiency and security (57f, 57g).
+- **Economic Model Compliance**: The base fee per gas $H_{baseFeePerGas}$ is calculated according to the rules established in EIP-1559, reflecting the network's current demand for transaction processing (57h). This along with a,b,c,d & h defines part of the Economic model
 
 Additional checks ensure legacy compatibility and security, such as the ommer hash and difficulty fields being set to predefined values, reflecting the transition from Proof of Work to Proof of Stake (57j-57l).
 
@@ -188,13 +187,13 @@ $$
 \xi \equiv 8 \tag{50}
 $$
 
-| Symbol         | What it represents                         | value                                             | comments                                                                                                                   |
-| -------------- | ------------------------------------------ | ------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
-| $  F(H) $ | Base Fee per Gas                           |                                                   | Paid be the sender as part of the Total Fee , The Base Fee is finally burnt by Execution Layer and taken out of the system |
-| $  \nu $  | Magnitude increase or decrease in base fee |                                                   | Proportional to the difference between Parent block's gas consumption and gas target                                       |
-| $  \tau $ | Gas target                                 | $ \frac {P(H)_{H_{gasLimit}}}  {\rho}_{= 2}$ | Aimed at reducing volatility, the gas target is set at half the gas limit to moderate transaction throughput per block.    |
-| $  \rho $ | Elasticity multiplier                      | 2                                                 | aids in adjusting the gas target to maintain network responsiveness, capacity and price predictability.                    |
-| $  \xi $  | Base fee max denominator                   | 8                                                 | it controls the maximum rate of change in the base fee, ensuring gradual adjustments.                                      |
+| Symbol          | What it represents                         | value                                              | comments                                                                                                                   |
+| --------------- | ------------------------------------------ | -------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
+| $F(H) $ | Base Fee per Gas                           |                                                    | Paid be the sender as part of the Total Fee , The Base Fee is finally burnt by Execution Layer and taken out of the system |
+| $\nu $  | Magnitude increase or decrease in base fee |                                                    | Proportional to the difference between Parent block's gas consumption and gas target                                       |
+| $\tau $ | Gas target                                 | $\frac {P(H)_{H_{gasLimit}}}  {\rho}_{= 2}$ | Aimed at reducing volatility, the gas target is set at half the gas limit to moderate transaction throughput per block.    |
+| $\rho $ | Elasticity multiplier                      | 2                                                  | aids in adjusting the gas target to maintain network responsiveness, capacity and price predictability.                    |
+| $\xi $  | Base fee max denominator                   | 8                                                  | it controls the maximum rate of change in the base fee, ensuring gradual adjustments.                                      |
 
 Furthermore the yellow paper has some crucial definitions on the types of these objects that will be used in reasoning about these equations :
 
@@ -206,11 +205,11 @@ $$
 
 Then it provides us with the types for the transaction parameter , These are bounded by a max value of 2^256 or approx 10^77, thats the max these numbers can go to
 
-$$ T_{\text{maxPriorityFeePerGas}} , T_{\text{maxFeePerGas}}, T_{\text{gasLimit}}, T_{\text{gasPrice}} \in\mathbb{N}_{256}$$
+$$T_{\text{maxPriorityFeePerGas}} , T_{\text{maxFeePerGas}}, T_{\text{gasLimit}}, T_{\text{gasPrice}} \in\mathbb{N}_{256}$$
 
 ##### Additional Insights: The Significance of Natural Numbers
 
-The Ethereum protocol designates block-level parameters—such as gas used ($ H_{gasUsed}$), gas limit ($ H_{gasLimit}$), and base fee per gas ($ H_{baseFeePerGas}$)—as natural numbers $ \mathbb{N}$ This decision is far from arbitrary; it embeds a layer of intuitive logic into the blockchain's foundational economics.
+The Ethereum protocol designates block-level parameters—such as gas used ($H_{gasUsed}$), gas limit ($H_{gasLimit}$), and base fee per gas ($H_{baseFeePerGas}$)—as natural numbers $\mathbb{N}$ This decision is far from arbitrary; it embeds a layer of intuitive logic into the blockchain's foundational economics.
 
 - Natural Numbers and Blockchain Logic
 
@@ -226,7 +225,7 @@ In contrast to the infinite divisibility of real numbers, the discrete nature of
 
 **Transaction Parameters and Bounded Natural Numbers**
 
-Furthermore, Ethereum specifies transaction parameters, such as the maximum priority fee per gas and maximum fee per gas , within a bounded subset of natural numbers $ \mathbb{N}_{256}$. This bounding, capped at $ 2^{256}$ or approximately $ 10^{77}$, strikes a balance between allowing a vast range of values for transaction processing and ensuring that these values remain within secure, manageable limits.
+Furthermore, Ethereum specifies transaction parameters, such as the maximum priority fee per gas and maximum fee per gas , within a bounded subset of natural numbers $\mathbb{N}_{256}$. This bounding, capped at $2^{256}$ or approximately $10^{77}$, strikes a balance between allowing a vast range of values for transaction processing and ensuring that these values remain within secure, manageable limits.
 
 ##### Dynamics of Gas Price Block to Block
 
@@ -259,50 +258,49 @@ Observations from the simulation reveal several critical insights:
 - Unbounded Gas Limit Growth: Unlike the base fee, the gas limit itself is not capped, allowing for continuous growth to accommodate increasing network demand.
 - Market Dynamics and Equilibrium: Real-world demand increases, initially reflected in blocks exceeding their gas targets, lead to rising base fees. However, as the gas limit gradually increases, the gas target (half the gas limit) also rises, eventually stabilizing demand against the higher base fee, reaching a new equilibrium.
 
-With a more nuanced understanding of Ethereum's economic model now in hand, we aim to future-proof our analysis by examining the model's underpinnings at a more granular level. Specifically, we focus on the effects of altering the constants central to the model, notably the elasticity multiplier ($ \rho$) and the base fee max change denominator ($ \xi$). These constants are not expected to change within a fork but can be re-specified in future protocol upgrades:
+With a more nuanced understanding of Ethereum's economic model now in hand, we aim to future-proof our analysis by examining the model's underpinnings at a more granular level. Specifically, we focus on the effects of altering the constants central to the model, notably the elasticity multiplier ($\rho$) and the base fee max change denominator ($\xi$). These constants are not expected to change within a fork but can be re-specified in future protocol upgrades:
 
-let's start with $ \xi$ :
+let's start with $\xi$ :
 
 <img src="images/el-specs/xi.png" width="800"/>
 
-This is a snapshot between blocks, like our first plot, it represents smallest slice of the potential of the economic model additionally parameterized by $ \xi$ across protocol upgrades
+This is a snapshot between blocks, like our first plot, it represents smallest slice of the potential of the economic model additionally parameterized by $\xi$ across protocol upgrades
 
-Impact of $ \xi$ on base fee:
+Impact of $\xi$ on base fee:
 
-- Inflection Point Identification: Analogous to the initial broad observation, this detailed examination reveals the nuanced shifts and inflections attributable to variations in $ \xi$. The "kink" or point of inflection in the adjustment trajectory becomes particularly pronounced from this perspective.
-- Adjustment Sensitivity: The slope of the base fee adjustment curve changes significantly beyond the inflection point. As $ \xi$ values decrease, we observe a sharp increase in the rate of fee adjustments, indicating heightened sensitivity.
-- Step Width Variability: Increasing $ \xi$ results in broader step widths, indicating more gradual fee adjustments. Conversely, decreasing $ \xi$ leads to narrower steps and more volatile fee changes.
-- Linear Trend within Target Range: The central portion of the curve, particularly highlighted by the light green line for the current $ \xi$ value, showcases a mostly linear trend in fee adjustments as transactions approach or slightly exceed the gas target.
+- Inflection Point Identification: Analogous to the initial broad observation, this detailed examination reveals the nuanced shifts and inflections attributable to variations in $\xi$. The "kink" or point of inflection in the adjustment trajectory becomes particularly pronounced from this perspective.
+- Adjustment Sensitivity: The slope of the base fee adjustment curve changes significantly beyond the inflection point. As $\xi$ values decrease, we observe a sharp increase in the rate of fee adjustments, indicating heightened sensitivity.
+- Step Width Variability: Increasing $\xi$ results in broader step widths, indicating more gradual fee adjustments. Conversely, decreasing $\xi$ leads to narrower steps and more volatile fee changes.
+- Linear Trend within Target Range: The central portion of the curve, particularly highlighted by the light green line for the current $\xi$ value, showcases a mostly linear trend in fee adjustments as transactions approach or slightly exceed the gas target.
 
-Next, we turn our attention to the elasticity multiplier ($ \rho$), another pivotal constant in Ethereum's economic model that directly influences the flexibility and responsiveness of gas limit adjustments. To comprehensively understand its impact, we explore a range of values for $ \rho$ from 1 to 6 in conjunction with variations in the base fee max change denominator ($ \xi$).
+Next, we turn our attention to the elasticity multiplier ($\rho$), another pivotal constant in Ethereum's economic model that directly influences the flexibility and responsiveness of gas limit adjustments. To comprehensively understand its impact, we explore a range of values for $\rho$ from 1 to 6 in conjunction with variations in the base fee max change denominator ($\xi$).
 
 <img src="images/el-specs/rho-xi.png" width="800"/>
 
-Impact of $ \rho$ and $ \xi$ on Base Fee :
+Impact of $\rho$ and $\xi$ on Base Fee :
 
-- Moment-to-Moment Analysis: Similar to our initial observations, this plot offers a granular view into how adjustments in $ \rho$ and $ \xi$ shape the economic model's behavior on a per-block basis, especially in the context of protocol upgrades.
-- Distinct Influence of $ \rho$: Each subplot represents the nuanced effects of varying $ \rho$ values. As the elasticity multiplier, $ \rho$ notably shifts the inflection point in the base fee adjustment curve, highlighting its critical role in tuning the network's responsiveness to transaction volume fluctuations.
-- Interplay Between $ \rho$ and $ \xi$: The elasticity multiplier ($ \rho$) not only moves the inflection point but also modulates the sensitivity of adjustments attributable to changes in the base fee max change denominator ($ \xi$). This interaction underscores the delicate balance Ethereum maintains to ensure network efficiency and stability amidst varying demands.
+- Moment-to-Moment Analysis: Similar to our initial observations, this plot offers a granular view into how adjustments in $\rho$ and $\xi$ shape the economic model's behavior on a per-block basis, especially in the context of protocol upgrades.
+- Distinct Influence of $\rho$: Each subplot represents the nuanced effects of varying $\rho$ values. As the elasticity multiplier, $\rho$ notably shifts the inflection point in the base fee adjustment curve, highlighting its critical role in tuning the network's responsiveness to transaction volume fluctuations.
+- Interplay Between $\rho$ and $\xi$: The elasticity multiplier ($\rho$) not only moves the inflection point but also modulates the sensitivity of adjustments attributable to changes in the base fee max change denominator ($\xi$). This interaction underscores the delicate balance Ethereum maintains to ensure network efficiency and stability amidst varying demands.
 
 <img src="images/el-specs/gas-header.png" width="800"/>
-
 
 ## Block Execution Process
 
 After initial header verification, the block advances to the execution phase([apply_body](https://github.com/ethereum/execution-specs/blob/804a529b4b493a61e586329b440abdaaddef9034/src/ethereum/cancun/fork.py#L437)). Performing header checks early allows the State Transition Function (STF) to potentially return an "Invalid Payload" message to the Consensus Layer (CL) without proceeding to the computationally intensive stage of block/transaction execution.
 
 1. **Initialize `blobGasUsed` to 0.** This sets the starting point for gas used by transactions in the block to zero.
-2. **Set `gasAvailable` to $ H_{gasLimit}$.** This initializes the gas available for the block's execution to the block's gas limit.
+2. **Set `gasAvailable` to $H_{gasLimit}$.** This initializes the gas available for the block's execution to the block's gas limit.
 3. **Initialize additional execution components:** This includes setting up the receipt's trie, withdrawal's trie, and a block logs tuple (which behaves like an immutable list), ensuring the gas available aligns with the block's gas limit.
 4. **Access Beacon Block Roots Contract Code** via the EL constant that specifies the **BEACON ROOTS ADDRESS**:
    - This feature, introduced in Duncan and detailed in [EIP 4788](https://eips.ethereum.org/EIPS/eip-4788), enables the use of beacon chain block roots as cryptographic accumulators for constructing proofs of the Consensus Layer State. This provides a trust-minimized way for the EVM to access consensus layer data, supporting applications such as staking pools, restaking operations, smart contract bridges, and MEV mitigations. [Learn More](https://www.youtube.com/watch?v=GriLSj37RdI) from the spec's creator.
-5. **Construct a System Transaction Message:** With the **System Address** as the caller and **BEACON ROOTS ADDRESS** as the target, include $ H_{parentBeaconBlockRoot}$ and the retrieved contract code. This introduces a "system contract" in Duncan, a stateful smart contract unlike stateless precompiles, where only the system address can insert data.
-6. **Set up the VM environment and process the message call,** storing $ H_{parentBeaconBlockRoot}$ in the contract's storage for later retrieval by transactions providing the slot's timestamp.
+5. **Construct a System Transaction Message:** With the **System Address** as the caller and **BEACON ROOTS ADDRESS** as the target, include $H_{parentBeaconBlockRoot}$ and the retrieved contract code. This introduces a "system contract" in Duncan, a stateful smart contract unlike stateless precompiles, where only the system address can insert data.
+6. **Set up the VM environment and process the message call,** storing $H_{parentBeaconBlockRoot}$ in the contract's storage for later retrieval by transactions providing the slot's timestamp.
 7. **Delete empty accounts** touched in the previous steps to clean up the state.
 8. **Process transactions within the block:**
    - Transactions are decoded and added to the transaction trie for execution.
    - **Execute the [Transaction](/wiki/EL/transaction):** Critical to the block execution process, this involves:
-     1. Recovering the transaction sender's address using the signature components $ T_v, T_r, T_s$.
+     1. Recovering the transaction sender's address using the signature components $T_v, T_r, T_s$.
      2. Verifying intrinsic transaction validity.
      3. Calculating the effective gas price.
      4. Initializing the execution environment.
@@ -332,32 +330,31 @@ I_{excessBlobGas} = excessBlobGas, \nonumber \\
 I_{blobVersionedHashes} = T_{blobVersionedHashes}, \nonumber \\
 $$
 
-| Variable                        | Description                                                                                                              |
-| ------------------------------- | ------------------------------------------------------------------------------------------------------------------------ |
-| $ I_{caller}$              | The address initiating the code execution; typically the sender of the transaction.                                      |
-| $ I_{origin}$              | The original sender address of the transaction initiating this execution context.                                        |
-| $ I_{blockHashes}$         | A collection of the hashes from the last 255 blocks.                                                                     |
-| $ I_{coinbase}$            | The beneficiary address for block rewards and transaction fees.                                                          |
-| $ I_{number}$              | The sequential number of the current block within the blockchain.                                                        |
-| $ I_{gasLimit}$            | The maximum amount of gas available for executing the transaction, accounting for gas already used in the current block. |
-| $ I_{baseFeePerGas}$       | The base fee per gas unit, a dynamic parameter that adjusts with block space demand.                                     |
-| $ I_{gasPrice}$            | The effective gas price, influenced by current network conditions and transaction urgency.                               |
-| $ I_{time}$                | The timestamp marking when the block was produced, measured in seconds since the Unix epoch.                             |
-| $ I_{prevRandao}$          | The previous RANDAO (randomness) value, contributing to the entropy in block production from the Beacon chain.           |
-| $ I_{state}$               | The current state, encompassing all account balances, storage, and contract code.                                        |
-| $ I_{chainId}$             | Identifier for the blockchain, ensuring transactions are signed for a specific chain.                                    |
-| $ I_{traces}$              | A placeholder for execution traces, intended for future use or debugging purposes.                                       |
-| $ I_{excessBlobGas}$       | Calculated from the parent block, it represents surplus gas allocated for blob transactions.                             |
-| $ I_{blobVersionedHashes}$ |                                                                                                                          |
-
+| Variable                         | Description                                                                                                              |
+| -------------------------------- | ------------------------------------------------------------------------------------------------------------------------ |
+| $I_{caller}$              | The address initiating the code execution; typically the sender of the transaction.                                      |
+| $I_{origin}$              | The original sender address of the transaction initiating this execution context.                                        |
+| $I_{blockHashes}$         | A collection of the hashes from the last 255 blocks.                                                                     |
+| $I_{coinbase}$            | The beneficiary address for block rewards and transaction fees.                                                          |
+| $I_{number}$              | The sequential number of the current block within the blockchain.                                                        |
+| $I_{gasLimit}$            | The maximum amount of gas available for executing the transaction, accounting for gas already used in the current block. |
+| $I_{baseFeePerGas}$       | The base fee per gas unit, a dynamic parameter that adjusts with block space demand.                                     |
+| $I_{gasPrice}$            | The effective gas price, influenced by current network conditions and transaction urgency.                               |
+| $I_{time}$                | The timestamp marking when the block was produced, measured in seconds since the Unix epoch.                             |
+| $I_{prevRandao}$          | The previous RANDAO (randomness) value, contributing to the entropy in block production from the Beacon chain.           |
+| $I_{state}$               | The current state, encompassing all account balances, storage, and contract code.                                        |
+| $I_{chainId}$             | Identifier for the blockchain, ensuring transactions are signed for a specific chain.                                    |
+| $I_{traces}$              | A placeholder for execution traces, intended for future use or debugging purposes.                                       |
+| $I_{excessBlobGas}$       | Calculated from the parent block, it represents surplus gas allocated for blob transactions.                             |
+| $I_{blobVersionedHashes}$ |                                                                                                                          |
 
 ## Gas Accounting
 
 ### Intrinsic Gas Calculation
 
-Intrinsic gas represents the minimum gas required for a transaction to begin execution. This cost encompasses the computational resources needed by the EVM and the costs associated with data transfer. The intrinsic gas is subtracted from the transaction's $ T_{gasLimit}$ to set up the execution context within the EVM.
+Intrinsic gas represents the minimum gas required for a transaction to begin execution. This cost encompasses the computational resources needed by the EVM and the costs associated with data transfer. The intrinsic gas is subtracted from the transaction's $T_{gasLimit}$ to set up the execution context within the EVM.
 
-Updated to align with the Shanghai Specification, the intrinsic gas formula, where $ T$ stands for Transaction and $ G$ for Gas Cost, is as follows:
+Updated to align with the Shanghai Specification, the intrinsic gas formula, where $T$ stands for Transaction and $G$ for Gas Cost, is as follows:
 
 $$
 g_0 \equiv
@@ -374,7 +371,7 @@ G_{\text{initCodeWordCost}} \times
 \end{aligned}
 $$
 
-$$ +$$
+$$+$$
 
 $$
 \begin{aligned}
@@ -389,7 +386,7 @@ G_{\text{txdatanonzero}} & \text{otherwise}
 \end{aligned}
 $$
 
-$$ +$$
+$$+$$
 
 $$
 \{ \begin{array}{ll}
@@ -398,13 +395,13 @@ G_{\text{txcreate}} & \text{if } T_{to} = \emptyset \\
 \end{array}
 $$
 
-$$ +$$
+$$+$$
 
 $$
 G_{\text{transaction}}
 $$
 
-$$ +$$
+$$+$$
 
 $$ \sum_{j=0}^{ length(T_{accessList}) - 1} \left( G_{\text{accesslistaddress}} + length(T_{accessList}[j]_s) *  G_{\text{accessliststorage}} \right)
 
@@ -412,18 +409,18 @@ $$
 
 #### Intrinsic Gas Components:
 
-| Component                                                          | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
-| ------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| $ g_0$                                                        | Represents the total intrinsic gas cost of a transaction, covering initial code execution and data transfer.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
-| $ G_{\text{transaction}}$                                     | The base cost for every transaction, set at 21000 gas.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
-| $ T_{\text{initialisationCode}}$                              | When $ T_{to} = 0_{\text{Bytes}}$, CALLDATA is considered as $ T_{\text{initialisationCode}}$. Costs are normalized to 32-byte intervals.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
-| $ T_{inputData}$ and $ T_{initialisationCode}$           | Collectively, $ T_{inputData}$ and $ T_{initialisationCode}$ represent the CallData parameter of the transaction. If $ T_{to} \neq 0_{Bytes}$, CALLDATA is treated as the input to the contract's entry point. The gas cost for processing CALLDATA is defined as 16 gas per non-zero byte and 4 gas per zero byte, impacting block size and potentially network delay due to increased processing. This gas cost model was based on a balance of block creation rate, chain growth rate, and network latency, initially optimized for Proof of Work systems. Adapting this model for Proof of Stake remains a research opportunity and area for future optimization. These parameters are defined as an unlimited size byte array, with the initialization cost set at 16 gas for each non-zero byte and 4 gas for each zero byte. More |
-| $ G_{\text{txCreate}}$                                        | An additional 32000 gas is required for contract creation transactions.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
-| $ G_{\text{accesslistaddress}}, G_{\text{accessliststorage}}$ | Additional gas costs for each address and storage key specified in the access list, facilitating optimized state access.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| Component                                                           | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| ------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| $g_0$                                                        | Represents the total intrinsic gas cost of a transaction, covering initial code execution and data transfer.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| $G_{\text{transaction}}$                                     | The base cost for every transaction, set at 21000 gas.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| $T_{\text{initialisationCode}}$                              | When $T_{to} = 0_{\text{Bytes}}$, CALLDATA is considered as $T_{\text{initialisationCode}}$. Costs are normalized to 32-byte intervals.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| $T_{inputData}$ and $T_{initialisationCode}$          | Collectively, $T_{inputData}$ and $T_{initialisationCode}$ represent the CallData parameter of the transaction. If $T_{to} \neq 0_{Bytes}$, CALLDATA is treated as the input to the contract's entry point. The gas cost for processing CALLDATA is defined as 16 gas per non-zero byte and 4 gas per zero byte, impacting block size and potentially network delay due to increased processing. This gas cost model was based on a balance of block creation rate, chain growth rate, and network latency, initially optimized for Proof of Work systems. Adapting this model for Proof of Stake remains a research opportunity and area for future optimization. These parameters are defined as an unlimited size byte array, with the initialization cost set at 16 gas for each non-zero byte and 4 gas for each zero byte. More |
+| $G_{\text{txCreate}}$                                        | An additional 32000 gas is required for contract creation transactions.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
+| $G_{\text{accesslistaddress}}, G_{\text{accessliststorage}}$ | Additional gas costs for each address and storage key specified in the access list, facilitating optimized state access.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
 
 ### Effective Gas Price & Priority Fee
 
-The equations below were modified to include blob transactions ( $ T_{type} = 3$ )
+The equations below were modified to include blob transactions ( $T_{type} = 3$ )
 
 $$ p \equiv effectiveGasPrice \equiv
 \begin{aligned}
@@ -448,15 +445,14 @@ $$
 | effectiveGasPrice | The amount of wei the Transaction signer will pay per unit Gas consumed during the execution of the transaction             |
 | priorityFee       | The amount of wei the Transaction's beneficiary will recieve per unit Gas consumed during the execution of the tranasaction |
 
-
 ### Effective Gas Fee
 
-$$  effectiveGasFee \equiv effectiveGasPrice \times T_{gasLimit} $$
+$$effectiveGasFee \equiv effectiveGasPrice \times T_{gasLimit} $$
 Deducted as part of the upfront cost
 
 ### Total Blob Gas
 
-$$  totalBlobGas  \equiv  (G_{gasPerBlob = 2^{17}} \times length(T_{blobVersionedHashes}) ) $$
+$$totalBlobGas  \equiv  (G_{gasPerBlob = 2^{17}} \times length(T_{blobVersionedHashes}) ) $$
 
 ### Blob Gas Price
 
@@ -467,7 +463,7 @@ factor_{minBlobBaseFee = 1} \times e^{numerator_{excessBlobGas} / denominator_{b
 \text{where }N = \max \left\{ i \in \mathbb{N} : \left\lfloor \frac{f \cdot d \cdot n^{i-1}}{d^{i-1} \cdot (i-1)!} \right\rfloor > 0 \right\}
 $$
 
-Where $ N$ represents the largest integer for which the term remains positive, indicating the series' summation continues until adding another term would result in zero. This process effectively applies a Taylor series approximation to calculate exponential growth, particularly for modeling the blob gas price's response to excess blob gas.
+Where $N$ represents the largest integer for which the term remains positive, indicating the series' summation continues until adding another term would result in zero. This process effectively applies a Taylor series approximation to calculate exponential growth, particularly for modeling the blob gas price's response to excess blob gas.
 
 - The formula returns 1 for any input under the current maximum blob gas per block (set at 786432) , if excess gas has not accumulated.
 - However it starts increasing when the target is breached over blocks , which causes the Excess Blob Gas Parameter to start accumulating , this triggers the Blob Gas Price to exponentially increase
@@ -489,10 +485,9 @@ The dynamics of the Blob Gas Price are modeled in the following scenarios, start
 - Persistent demand increases, causing the accumulated excess gas to surpass a threshold, triggering an exponential increase in the gas price as a regulatory measure.
 - Accumulated excess gas can be cleared in one block if the gas usage of the preceding block falls below the target, resetting the adjustment mechanism.
 
-
 ### Blob Gas Fee
 
-$$  blobGasFee \equiv totalBlobGas \times blobGasPrice $$
+$$blobGasFee \equiv totalBlobGas \times blobGasPrice $$
 
 ### Max Gas Fee
 
@@ -518,14 +513,13 @@ $$
 v_0 \equiv upfrontCost \equiv  effectiveGasFee + blobGasFee
 $$
 
-
 ## Transaction Execution
 
 The process of executing a transaction within the Ethereum network is governed by the transaction-level state transition function:
 
-$$  \Upsilon(\sigma_t, T_{index}) \tag{4}$$
+$$\Upsilon(\sigma_t, T_{index}) \tag{4}$$
 
-Upon invocation of $ \Upsilon$, the system first verifies the intrinsic validity of the transaction. Once validated, the [Ethereum Virtual Machine](/wiki/EL/evm) (EVM) initiates state modifications based on the transaction's directives.
+Upon invocation of $\Upsilon$, the system first verifies the intrinsic validity of the transaction. Once validated, the [Ethereum Virtual Machine](/wiki/EL/evm) (EVM) initiates state modifications based on the transaction's directives.
 
 ### Transaction Intrinsic Validity
 
@@ -555,7 +549,7 @@ T_{maxFeePerGas} , & \text{if} \space T_{type} = 2 \lor 3
 \end{aligned}
 $$
 
-And $ EMPTY(\sigma, account)$ is defined as an account with no code, zero nonce, and zero balance:
+And $EMPTY(\sigma, account)$ is defined as an account with no code, zero nonce, and zero balance:
 
 $$
 \begin{align}
@@ -570,7 +564,7 @@ $$
 | --- | ---------------------------------------------------------------------------------------------------------------- |
 | 1   | The transaction sender must exist and cannot be an uninitialized account                                         |
 | 2   | The sender cannot be a contract                                                                                  |
-| 3   | Transactions from an account are capped, ensuring a nonce less than $ 2^{64} - 1$.                          |
+| 3   | Transactions from an account are capped, ensuring a nonce less than $2^{64} - 1$.                         |
 | 4   | The size of input data or CALLDATA must not exceed twice the maximum code size (24576 bytes).                    |
 | 5   | The transaction's nonce must match the current nonce of the sender in the state                                  |
 | 6   | The intrinsic gas calculation must not exceed the transaction's gas limit.                                       |
@@ -579,27 +573,27 @@ $$
 | 9   | For EIP-1559 transactions, the max fee per gas must be at least as high as the max priority fee per gas          |
 | 10  | The transaction's gas limit, plus the gas used by previous transactions in the block, must not exceed the block' |
 
-### $ T$ Execution stage 1 : checkpoint state $ \sigma_0$
+### $T$ Execution stage 1 : checkpoint state $\sigma_0$
 
 The initial stage of transaction execution includes the following steps:
 
 1. **Validate Transaction**: Assess the transaction's validity; if it passes, changes to the state are irrevocably initiated.
-2. **Deduct Intrinsic Gas**: The intrinsic gas amount $ g_0$ is subtracted from the transaction's gas limit to establish the gas parameter for message preparation: $ gas = T_{gasLimit} - g_0$.
+2. **Deduct Intrinsic Gas**: The intrinsic gas amount $g_0$ is subtracted from the transaction's gas limit to establish the gas parameter for message preparation: $gas = T_{gasLimit} - g_0$.
 3. **Increment Sender's Nonce**: Reflect an irrevocable change in the sender's state by incrementing the nonce.
 4. **Deduct Upfront Cost**: The sender's balance is reduced by the upfront cost, another irreversible change to the state.
 
-$$  \sigma_0 \equiv \sigma \space \text{except:} $$
-$$  \sigma_0[Sender]_{balance} \equiv \sigma[Sender]_{balance} - upfrontCost_{\nu_0} $$
-$$  \sigma_0[Sender]_{nonce} \equiv \sigma[Sender]_{nonce} + 1 $$
+$$\sigma_0 \equiv \sigma \space \text{except:} $$
+$$\sigma_0[Sender]_{balance} \equiv \sigma[Sender]_{balance} - upfrontCost_{\nu_0} $$
+$$\sigma_0[Sender]_{nonce} \equiv \sigma[Sender]_{nonce} + 1 $$
 
 This checkpoint state represents the modified state after initial validations and deductions, setting the groundwork for subsequent execution steps.
 
-### $ T$ Execution stage 2 : Transaction Normalization and Substate Initialisiation
+### $T$ Execution stage 2 : Transaction Normalization and Substate Initialisiation
 
-EVM executions fundamentally require just an environment and a message. Therefore, transactions within a transaction envelope, which categorize transactions by type, are streamlined into four main types. These transactions are then unified into a singular Message Data structure, delineating two main actions: initiating contract creations and executing calls to addresses. Notably, for transactions predating EIP-1559 that lack a base fee, they undergo normalization to integrate the [Gas price](https://github.com/ethereum/go-ethereum/blob/100c0f47debad7924acefd48382bd799b67693cf/core/state_transition.go#L168) during their transformation into the message format. Moreover, the execution path is determined based on the $ T_{to}$ parameter:
+EVM executions fundamentally require just an environment and a message. Therefore, transactions within a transaction envelope, which categorize transactions by type, are streamlined into four main types. These transactions are then unified into a singular Message Data structure, delineating two main actions: initiating contract creations and executing calls to addresses. Notably, for transactions predating EIP-1559 that lack a base fee, they undergo normalization to integrate the [Gas price](https://github.com/ethereum/go-ethereum/blob/100c0f47debad7924acefd48382bd799b67693cf/core/state_transition.go#L168) during their transformation into the message format. Moreover, the execution path is determined based on the $T_{to}$ parameter:
 
-- if $ T_{to} = 0Bytes$ : Proceed with execution of contract creation
-- if $ T_{to} = Address$ : Proceed with execution of a call
+- if $T_{to} = 0Bytes$ : Proceed with execution of contract creation
+- if $T_{to} = Address$ : Proceed with execution of a call
 
 This maps to the internal Message type in EELS as :
 
@@ -607,22 +601,22 @@ $$
 message(caller, target, gas, value,\\  data, code, depth, current Target ,\\ codeAddress,  shouldTransferValue, isStatic,\\ preAccessedAddresses, preAccesedStorageKeys,\\ parentEVM)
 $$
 
-| Message Field parameter | Initial Call Value                                                                                                     | Initial Creation Value                                                                                                 | Execution Environment Forward Mapping                                       |
-| ----------------------- | ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
-| caller                  | Recovered Sender Address                                                                                               | Recovered Sender Address                                                                                               | $ I_origin$ or $ I_{sender}$                                      |
-| target                  | $ T_{to}$ is a valid Address                                                                                      | $ T_{to} = 0_{bytes}$                                                                                             |                                                                             |
-| gas                     | $ T_{gasLimit} - intrinsicCost$                                                                                   | $ T_{gasLimit} - intrinsicCost$                                                                                   |
-| value                   | $ T_{value}$                                                                                                      | $ T_{value}$                                                                                                      | yp: $ I_v$ or $ I_{value}$                                        |
-| data                    | $ T_{data}$                                                                                                       | $ 0_{bytes}$                                                                                                      | yp: $ I_d$ or $ I_{data}$                                         |
-| code                    | $ (T_{to})_{code}$                                                                                                | $ T_{data}$                                                                                                       | yp: $ I_b$ or $ I_{[byteCode]}$                                   |
-| depth                   | $ 0$                                                                                                              | $ 0$                                                                                                              | yp: $ I_e$ or $ I_{depth}$                                        |
-| currentTarget           | $ T_{to}$                                                                                                         | We compute the contract address by taking the last 20 bytes of $ KEC(RLP([Sender_{address}, Sender_{nonce} -1]))$ |
-| codeAddress             | $ T_{to}$ default except when an alternative accounts code needs execution . e.g. 'CALLCODE' calling a precompile |                                                                                                                        | yp: $ I_a$ or $ I_{codeOwnerAddress}$                             |
-| shouldTransferValue     | default is True, indicates if ETH should be transferred during executing this message                                  | default is True                                                                                                        |
-| isStatic                | default is False, indicates is State Modifications are allowed (false means state modifications are allowed)           | default is False                                                                                                       | inveresly related to yp: $ I_w$ or $ I_{permissionToModifyState}$ |
-| accesslistAddress       | See below                                                                                                              | -                                                                                                                      |
-| accesslistStorageKeys   | -                                                                                                                      | -                                                                                                                      |
-| parentEvm               | initially None                                                                                                         | initially None                                                                                                         |
+| Message Field parameter | Initial Call Value                                                                                                      | Initial Creation Value                                                                                                  | Execution Environment Forward Mapping                                         |
+| ----------------------- | ----------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
+| caller                  | Recovered Sender Address                                                                                                | Recovered Sender Address                                                                                                | $I_origin$ or $I_{sender}$                                      |
+| target                  | $T_{to}$ is a valid Address                                                                                      | $T_{to} = 0_{bytes}$                                                                                             |                                                                               |
+| gas                     | $T_{gasLimit} - intrinsicCost$                                                                                   | $T_{gasLimit} - intrinsicCost$                                                                                   |
+| value                   | $T_{value}$                                                                                                      | $T_{value}$                                                                                                      | yp: $I_v$ or $I_{value}$                                        |
+| data                    | $T_{data}$                                                                                                       | $0_{bytes}$                                                                                                      | yp: $I_d$ or $I_{data}$                                         |
+| code                    | $(T_{to})_{code}$                                                                                                | $T_{data}$                                                                                                       | yp: $I_b$ or $I_{[byteCode]}$                                   |
+| depth                   | $0$                                                                                                              | $0$                                                                                                              | yp: $I_e$ or $I_{depth}$                                        |
+| currentTarget           | $T_{to}$                                                                                                         | We compute the contract address by taking the last 20 bytes of $KEC(RLP([Sender_{address}, Sender_{nonce} -1]))$ |
+| codeAddress             | $T_{to}$ default except when an alternative accounts code needs execution . e.g. 'CALLCODE' calling a precompile |                                                                                                                         | yp: $I_a$ or $I_{codeOwnerAddress}$                             |
+| shouldTransferValue     | default is True, indicates if ETH should be transferred during executing this message                                   | default is True                                                                                                         |
+| isStatic                | default is False, indicates is State Modifications are allowed (false means state modifications are allowed)            | default is False                                                                                                        | inveresly related to yp: $I_w$ or $I_{permissionToModifyState}$ |
+| accesslistAddress       | See below                                                                                                               | -                                                                                                                       |
+| accesslistStorageKeys   | -                                                                                                                       | -                                                                                                                       |
+| parentEvm               | initially None                                                                                                          | initially None                                                                                                          |
 
 #### Substate initialisation
 
@@ -635,29 +629,29 @@ The initialization of the substate sets the groundwork for transaction execution
 
 Depending on the transaction type, accessed addresses are initialized differently:
 
-- For $ T_{type} = 0$, the coinbase address, the caller , the current target and all the pre-compile contract addressees are added to the accessed account substate
-- For $ T_{type} = 1, 2, or \space 3$, the coinbase address , the caller , the current target, all the pre-compiles and those in the access list are added
+- For $T_{type} = 0$, the coinbase address, the caller , the current target and all the pre-compile contract addressees are added to the accessed account substate
+- For $T_{type} = 1, 2, or \space 3$, the coinbase address , the caller , the current target, all the pre-compiles and those in the access list are added
 
-$$  A^*  \equiv (A^{*}_{selfDestructSet} = \empty, $$
-$$  A^{*}_{logSeries} = (), $$
-$$  A^{*}_{touchedAcounts} = \empty, $$
-$$  A^{*}_{refundBalance} = 0 , $$
-if $ T_{type} = 0$:
-$$  A^{*}_{accesedAccountAddresses} =  \{ H_{coinBase},$$
-$$  Message_{caller}, Message_{current_target}  $$
-$$  allPrecompiledContract_{addresses}\}$$
-$$  A^{*}_{accesedStorageKeys} = \empty $$
-if $ T_{type} = 1 \lor 2 \lor 3$:
-$$  A^{*}_{accesedAccountAddresses} =  \{ H_{coinBase},$$
-$$  { \bigcup_{Entry \in T_{accessList}} \{ Entry_{address}  \}},$$
-$$  Message_{caller}, Message_{current_target}  $$
-$$  allPrecompiledContract_{addresses}\}$$
-$$  A^{*}_{accesedStorageKeys}= $$
-$$  { \bigcup_{Entry \in T_{accessList}} \{ \forall i < length(Entry_{storageKeys}), i \in \mathbb{N} : (Entry_{address_{20byte}}, Entry_{storageKeys}[i]_{32byte}  \}}$$
+$$A^*  \equiv (A^{*}_{selfDestructSet} = \empty, $$
+$$A^{*}_{logSeries} = (), $$
+$$A^{*}_{touchedAcounts} = \empty, $$
+$$A^{*}_{refundBalance} = 0 , $$
+if $T_{type} = 0$:
+$$A^{*}_{accesedAccountAddresses} =  \{ H_{coinBase},$$
+$$Message_{caller}, Message_{current_target}  $$
+$$allPrecompiledContract_{addresses}\}$$
+$$A^{*}_{accesedStorageKeys} = \empty $$
+if $T_{type} = 1 \lor 2 \lor 3$:
+$$A^{*}_{accesedAccountAddresses} =  \{ H_{coinBase},$$
+$${ \bigcup_{Entry \in T_{accessList}} \{ Entry_{address}  \}},$$
+$$Message_{caller}, Message_{current_target}  $$
+$$allPrecompiledContract_{addresses}\}$$
+$$A^{*}_{accesedStorageKeys}= $$
+$${ \bigcup_{Entry \in T_{accessList}} \{ \forall i < length(Entry_{storageKeys}), i \in \mathbb{N} : (Entry_{address_{20byte}}, Entry_{storageKeys}[i]_{32byte}  \}}$$
 
 `A_{accessedAccountAddresses}` and `A_{accessedStorageKeys}` leverage the mechanism introduced by [Ethereum Access Lists (EIP-2930)](https://eips.ethereum.org/EIPS/eip-2930), detailed further in [this EIP-2930 overview](https://www.rareskills.io/post/eip-2930-optional-access-list-ethereum). This approach creates a distinction in gas costing between addresses and storage keys declared within the transaction's access list (incurring a "warm" cost) and those not included (incurring a "cold" cost). For comprehensive details on the gas costs associated with cold and warm accesses, please refer to [EIP-2929: Gas cost increases for state access opcodes](https://eips.ethereum.org/EIPS/eip-2929), which adjusts the costs to account for state access operations within the EVM.
 
-$  A_{accesedAccountAddresses}$ and $ A_{accesedStorageKeys}$ belong to [Ethereum Access lists](https://www.rareskills.io/post/eip-2930-optional-access-list-ethereum) [ EIP ](https://eips.ethereum.org/EIPS/eip-2930) which makes a [cost](https://eips.ethereum.org/EIPS/eip-2929) distinction between the addresses the transaction declares it will call and others. The ones outside the access list have have only a cold cost of account access set at 2600 each time we call the address or 2100 when we access the state. Where as the access list eip specifies that the subsequent calls to the state and account access ,termed "warm cost", will incur a gas of 100. [EIP 3651](https://eips.ethereum.org/EIPS/eip-3651) added the coinbase to the list of accounts that need to be warm before the start of the execution.
+$A_{accesedAccountAddresses}$ and $A_{accesedStorageKeys}$ belong to [Ethereum Access lists](https://www.rareskills.io/post/eip-2930-optional-access-list-ethereum) [ EIP ](https://eips.ethereum.org/EIPS/eip-2930) which makes a [cost](https://eips.ethereum.org/EIPS/eip-2929) distinction between the addresses the transaction declares it will call and others. The ones outside the access list have have only a cold cost of account access set at 2600 each time we call the address or 2100 when we access the state. Where as the access list eip specifies that the subsequent calls to the state and account access ,termed "warm cost", will incur a gas of 100. [EIP 3651](https://eips.ethereum.org/EIPS/eip-3651) added the coinbase to the list of accounts that need to be warm before the start of the execution.
 
 #### Message Type : Contract Creation
 
@@ -668,28 +662,28 @@ $$
 \Lambda(state_{\sigma}, AccruedSubState_{A} , sender_s , originalTransactor_o ,\\  availableGas_g , effectiveGasPrice_p , \\ endowment_v, []evmInitCodeByteArray_i , stackDepth_e , \\  saltForNewAccountAddress_{\zeta}, stateModificationPermission_w)
 $$
 
-| $ \Lambda$ Call Parameter           | Mapping                                                                                            | Notes                                                                                               |
-| ---------------------------------------- | -------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- |
-| $ state_{\sigma}$                   | $ I_{state}$                                                                                  | The current state before contract creation begins.                                                  |
-| $ AccruedSubState_{A}$              | $ A^0$                                                                                        | Represents the initial substate.                                                                    |
-| $ sender_s$                         | $ I_{origin}$                                                                                 | The origin address of the transaction, initiating the contract creation.                            |
-| $ originalTransactor_o$             | $ I_{origin}$                                                                                 | The original transactor, identical to the sender in direct transactions.                            |
-| $ availableGas_g$                   | $ T_{gasLimit} - intrinsicCost$                                                               | The gas available for the contract creation, after deducting the intrinsic cost of the transaction. |
-| $ effectiveGasPrice_p$              | $ I_{gasPrice}$                                                                               | The gas price set for the transaction.                                                              |
-| $ endowment_v$                      | $ T_{value}$                                                                                  | The value transferred to the new contract.                                                          |
-| $ []evmInitCodeByteArray_i$         | $ T_{CALLDATA}$                                                                               | The initialization bytecode for the new contract.                                                   |
-| $ stackDepth_e$                     | 0                                                                                                  | The depth of the call stack at the point of contract creation; initially 0.                         |
-| $ saltForNewAccountAddress_{\zeta}$ | $ \emptyset$                                                                                  | Salt used for generating the new contract's address, non empty for create2 operations.              |
-| $ stateModificationPermission_w$    | True, inversely referred by the `is_static` parameter in the Message object, which is set to false | Indicates if the contract creation can modify the state.                                            |
+| $\Lambda$ Call Parameter           | Mapping                                                                                            | Notes                                                                                               |
+| ----------------------------------------- | -------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- |
+| $state_{\sigma}$                   | $I_{state}$                                                                                 | The current state before contract creation begins.                                                  |
+| $AccruedSubState_{A}$              | $A^0$                                                                                       | Represents the initial substate.                                                                    |
+| $sender_s$                         | $I_{origin}$                                                                                | The origin address of the transaction, initiating the contract creation.                            |
+| $originalTransactor_o$             | $I_{origin}$                                                                                | The original transactor, identical to the sender in direct transactions.                            |
+| $availableGas_g$                   | $T_{gasLimit} - intrinsicCost$                                                              | The gas available for the contract creation, after deducting the intrinsic cost of the transaction. |
+| $effectiveGasPrice_p$              | $I_{gasPrice}$                                                                              | The gas price set for the transaction.                                                              |
+| $endowment_v$                      | $T_{value}$                                                                                 | The value transferred to the new contract.                                                          |
+| $[]evmInitCodeByteArray_i$         | $T_{CALLDATA}$                                                                              | The initialization bytecode for the new contract.                                                   |
+| $stackDepth_e$                     | 0                                                                                                  | The depth of the call stack at the point of contract creation; initially 0.                         |
+| $saltForNewAccountAddress_{\zeta}$ | $\emptyset$                                                                                 | Salt used for generating the new contract's address, non empty for create2 operations.              |
+| $stateModificationPermission_w$    | True, inversely referred by the `is_static` parameter in the Message object, which is set to false | Indicates if the contract creation can modify the state.                                            |
 
-Note: $ originalTransactor_o$ can differ from $ sender_s$ when the message is not directly triggered by a transaction but rather comes from the execution of EVM code, indicating the versatility of message origination within the EVM execution context.
+Note: $originalTransactor_o$ can differ from $sender_s$ when the message is not directly triggered by a transaction but rather comes from the execution of EVM code, indicating the versatility of message origination within the EVM execution context.
 
 The process of creating a contract begins with determining the contract's address. In EELS, this task is part of message preparation. Other clients may handle it at a different stage. The steps are as follows:
 
 1. **Compute the Contract Address:**
 
-   - The contract address is [computed](https://github.com/ethereum/execution-specs/blob/db87f1b1d21f61275fc34b08de1735889c01f018/src/ethereum/cancun/utils/address.py#L42) by hashing the sender's address and nonce (decremented by one, as the nonce is incremented prior to this operation) using the formula: $ KEC(RLP([Sender_{address} , Sender_{nonce} - 1]))$. This adjustment accounts for the nonce at the transaction's issuance.
-   - Next, extract the last 20 bytes of this hash: $ KEC(RLP([Sender_{address} , Sender_{nonce} - 1]))[-20:]$.
+   - The contract address is [computed](https://github.com/ethereum/execution-specs/blob/db87f1b1d21f61275fc34b08de1735889c01f018/src/ethereum/cancun/utils/address.py#L42) by hashing the sender's address and nonce (decremented by one, as the nonce is incremented prior to this operation) using the formula: $KEC(RLP([Sender_{address} , Sender_{nonce} - 1]))$. This adjustment accounts for the nonce at the transaction's issuance.
+   - Next, extract the last 20 bytes of this hash: $KEC(RLP([Sender_{address} , Sender_{nonce} - 1]))[-20:]$.
    - If the resulting length is less than 20 bytes, left-pad with zero-byte words to form a 20-byte address.
 
 2. **Initialize the New Account:**
@@ -713,28 +707,27 @@ $$
 $$
 
 4. **Account Initialization:**
-   Finally, the account is initialized through the execution of the EVM initialization code byte array $ []evmInitCodeByteArray_i$ during the main execution cycle.
-
+   Finally, the account is initialized through the execution of the EVM initialization code byte array $[]evmInitCodeByteArray_i$ during the main execution cycle.
 
 #### Message Type: Call
 
 TODO
 
-### $ T$ Execution Stage 3 : Main Execution ($ \Xi)  $
+### $T$ Execution Stage 3 : Main Execution ($\Xi)  $
 
-#### [Machine](/wiki/EL/evm?id=evm) State $ \mu$
+#### [Machine](/wiki/EL/evm?id=evm) State $\mu$
 
-$$  \mu \equiv (\mu_{gasAvailable}, \mu_{programCounter},\\ \mu_{memoryContents}, \mu_{activeWordsInMemory},\\ \mu_{stackContents} ) $$
+$$\mu \equiv (\mu_{gasAvailable}, \mu_{programCounter},\\ \mu_{memoryContents}, \mu_{activeWordsInMemory},\\ \mu_{stackContents} ) $$
 | | initial Value | notes |
 |-|-|-|
-|$$ \mu$$ | | Initial Machine State |
-|$$ \mu'$$ | | Resultant Machine State after an operation where $  \mu' \equiv \mu \space \text{except :} \\  \mu'_{gas} \equiv \mu_{gas} - C_{generalGasCost}(\sigma, \mu, A, I) $ |
-|$$ \mu_{gasAvailable}$$ | | total [gas available](/wiki/EL/evm?id=gas) for the transaction |
-|$$ \mu_{programCounter}$$ | 0 | [Natural number counter](/wiki/EL/evm?id=program-counter) to track the code position we are in , max number size is 256 bits |
-|$$ \mu_{memoryContents}$$ | $$ [0_{256Bit}, ..., 0_{256Bit}]$$ | [word(256bit) Addressed byte array](/wiki/EL/evm?id=memory) |
-|$$ \mu_{activeWordsInMemory}$$ | 0 | Length of the active words in memory, expanded in chunks of 32bytes |
-|$$  \mu_{stackContents}$$ | | [Stack](/wiki/EL/evm?id=stack) item : word(256bit), Max Items = 1024 |
-|$$  \mu_{outputFromNormalHalting}$$ | () | Represents the output(bytes) from the last function call, determined by the normal halting function. While the EELS pyspec features a dedicated field in the EVM object for the output , Geth doesn't; instead, it utilizes the returnData field, which serves the same purpose.|
+|$$\mu$$ | | Initial Machine State |
+|$$\mu'$$ | | Resultant Machine State after an operation where $\mu' \equiv \mu \space \text{except :} \\  \mu'_{gas} \equiv \mu_{gas} - C_{generalGasCost}(\sigma, \mu, A, I) $ |
+|$$\mu_{gasAvailable}$$ | | total [gas available](/wiki/EL/evm?id=gas) for the transaction |
+|$$\mu_{programCounter}$$ | 0 | [Natural number counter](/wiki/EL/evm?id=program-counter) to track the code position we are in , max number size is 256 bits |
+|$$\mu_{memoryContents}$$ | $$[0_{256Bit}, ..., 0_{256Bit}]$$ | [word(256bit) Addressed byte array](/wiki/EL/evm?id=memory) |
+|$$\mu_{activeWordsInMemory}$$ | 0 | Length of the active words in memory, expanded in chunks of 32bytes |
+|$$\mu_{stackContents}$$ | | [Stack](/wiki/EL/evm?id=stack) item : word(256bit), Max Items = 1024 |
+|$$\mu_{outputFromNormalHalting}$$ | () | Represents the output(bytes) from the last function call, determined by the normal halting function. While the EELS pyspec features a dedicated field in the EVM object for the output , Geth doesn't; instead, it utilizes the returnData field, which serves the same purpose.|
 
 #### Current Operation
 
@@ -750,7 +743,7 @@ $$
 This logic fetches the current operation by accessing the byte at the programCounter's position within the bytecode array. If the programCounter exceeds the length of the bytecode, a STOP operation is issued to halt execution.
 
 Consider the Yellow Paper's definition of the add operator as an illustrative example:
-$$  \mu'_{stackContents}[0] \equiv \mu_{stackContents}[0] + \mu_{stackContents}[1]$$
+$$\mu'_{stackContents}[0] \equiv \mu_{stackContents}[0] + \mu_{stackContents}[1]$$
 
 This representation implies a left-sided addition and removal in the stack, akin to queue operations. However, traditional stack operations add and remove items from the right. Translating this to stack-based operations:
 
@@ -769,7 +762,7 @@ $$
 \Rightarrow \mu_{stackContents^{itemsAdded_{\alpha}=1}_{itemsRemoved_{\delta}=2}}
 $$
 
-When converting to code, the notation $ \mu_{s}[number]$ translates to $ \mu_{stackContents}[stackLength - 1 - number]$, aligning with the conventional understanding of stack operations.
+When converting to code, the notation $\mu_{s}[number]$ translates to $\mu_{stackContents}[stackLength - 1 - number]$, aligning with the conventional understanding of stack operations.
 
 The Yellow Paper elegantly notates stack-based operations and provides a framework for interpreting these operations within the execution cycle. It specifies that stack items are manipulated from the left-most, lower-indexed part of the array, with unaffected items remaining constant:
 
@@ -783,7 +776,7 @@ $$
 \end{align}
 $$
 
-Equation 162 demonstrates that for each x within the specified range, the modified stack mirrors the original stack at position $ x - \Delta$, effectively tracking the original position of stack items post-operation. For example, adding an item [2] to an existing stack [10] results in [2,10], where the original item's new position aligns with $ x=Delta$, maintaining the integrity of stack order post-operation.
+Equation 162 demonstrates that for each x within the specified range, the modified stack mirrors the original stack at position $x - \Delta$, effectively tracking the original position of stack items post-operation. For example, adding an item [2] to an existing stack [10] results in [2,10], where the original item's new position aligns with $x=Delta$, maintaining the integrity of stack order post-operation.
 
 #### Single Execution Cycle
 
@@ -791,8 +784,7 @@ $$
 O((\sigma, \mu, A, I)) \equiv (\sigma', \mu', A', I) \quad (159)\\
 $$
 
-Where $ O$ represents the Execution Cycle, encapsulating the outcome of a single cycle within the state machine. This cycle can modify all components of $ \mu$, with explicit specifications for changes to $ \mu_{gas}$ and $ \mu_{programCounter}$:
-
+Where $O$ represents the Execution Cycle, encapsulating the outcome of a single cycle within the state machine. This cycle can modify all components of $\mu$, with explicit specifications for changes to $\mu_{gas}$ and $\mu_{programCounter}$:
 
 ##### Resultant Program Counter of a Single Execution Cycle
 
@@ -819,12 +811,12 @@ programCounter + 1 \space \text{otherwise}
 \end{cases}
 $$
 
-- Here if the Operation is $ JUMP$, the $ J_{JUMP}$ function will set the program counter to the value at the top of the stack.
-- For $ JUMP1$ operations, the $ J_{JUMP1}$ function sets the program counter to the value at the top of the stack only if the adjacent value in the stack is not 0. Otherwise, it increases the program counter by 1. If the current operation is neither $ JUMP$ nor $ JUMP1$, the program counter will be incremented by the NextValidInstruction function.
+- Here if the Operation is $JUMP$, the $J_{JUMP}$ function will set the program counter to the value at the top of the stack.
+- For $JUMP1$ operations, the $J_{JUMP1}$ function sets the program counter to the value at the top of the stack only if the adjacent value in the stack is not 0. Otherwise, it increases the program counter by 1. If the current operation is neither $JUMP$ nor $JUMP1$, the program counter will be incremented by the NextValidInstruction function.
 
 The NextValidInstruction function determines that if the current operation is within the range of all PUSH operations, we increment the program counter to the byte immediately following the current operation byte, accounting for the data associated with the operation. This data can range from 1 to 32 bytes, depending on the specific PUSH operation. If the operation is not a PUSH operation, we simply increment the program counter by 1, advancing to the next byte of the code. This process highlights that PUSH instructions are responsible for loading data onto the stack from the code.
 
-When the program counter executes a jump operation, it must target a valid jump destination. The $ ValidJumpDestinations_{D}$ function specifies the set of all valid jump destinations.
+When the program counter executes a jump operation, it must target a valid jump destination. The $ValidJumpDestinations_{D}$ function specifies the set of all valid jump destinations.
 
 $$
 ValidJumpDestinations_{D}(byteCode) \equiv \\
@@ -839,7 +831,7 @@ ValidJumpDestinations_{D_J}(byteCode,NextValidInstruction(index, byteCode[index]
 \end{cases}
 $$
 
-This indicates that we include the index in the set if the bytecode at that index corresponds to a JUMPDEST operation. We continue adding these indices by recursively calling the $ ValidValidJumpDestinations_{D_J}(byteCode, index)$ function with the index determined by the $ NextValidInstruction$ function.
+This indicates that we include the index in the set if the bytecode at that index corresponds to a JUMPDEST operation. We continue adding these indices by recursively calling the $ValidValidJumpDestinations_{D_J}(byteCode, index)$ function with the index determined by the $NextValidInstruction$ function.
 
 ##### Resultant Gas Consumption in a Single Execution Cycle
 
@@ -851,11 +843,11 @@ The gas cost function, while not overly complex, encompasses various cases for d
 
 Different clients handle gas costs differently. In PySpec, various types of cost processing are integrated into the operations, while in Geth, gas costs are handled before the operation executes. Moreover, Geth distinguishes between [dynamic](https://github.com/ethereum/go-ethereum/blob/7bb3fb1481acbffd91afe19f802c29b1ae6ea60c/core/vm/interpreter.go#L257) costs used for memory expansion and [constant](https://github.com/ethereum/go-ethereum/blob/7bb3fb1481acbffd91afe19f802c29b1ae6ea60c/core/vm/interpreter.go#L224) gas associated with the base cost of the operation. Both types of costs are deducted using the [UseGas](https://github.com/ethereum/go-ethereum/blob/7bb3fb1481acbffd91afe19f802c29b1ae6ea60c/core/vm/contract.go#L161) function
 
-#### Program Execution $ \Xi$ :
+#### Program Execution $\Xi$ :
 
-$$ (\sigma^{'}_{resultantState}, gas_{remaining}, A^{resultantAccruedSubState}, \omicron^{Output})$$ $$  \equiv \Xi(\sigma,gas,A^{accruedSubState}, Environment_I)$$
+$$(\sigma^{'}_{resultantState}, gas_{remaining}, A^{resultantAccruedSubState}, \omicron^{Output})$$ $$\equiv \Xi(\sigma,gas,A^{accruedSubState}, Environment_I)$$
 
-The Program Execution function is defined formally by the function X, the only difference is $ \Xi$ calls X and returns the output of X removing the $ Environment_I$ from the output tuple.
+The Program Execution function is defined formally by the function X, the only difference is $\Xi$ calls X and returns the output of X removing the $Environment_I$ from the output tuple.
 
 ##### Recursive Execution Function X
 
@@ -892,17 +884,16 @@ $$
 $$
 
 1. If the conditions for Exceptional Halting are met, return a tuple consisting of an empty state, the machine state, accrued sub state, environment, and an empty output.
-2. If the current Operation is $ REVERT$, return a tuple consisting of an empty state, the machine state after deducting gas, accrued sub state, environment, and the machine output.
-3. If the machine output is not empty, the execution iterator function $ O$ consumes the output.
+2. If the current Operation is $REVERT$, return a tuple consisting of an empty state, the machine state after deducting gas, accrued sub state, environment, and the machine output.
+3. If the machine output is not empty, the execution iterator function $O$ consumes the output.
 
-- For instance, if the current operation is a system operation such as CALL, CALLCODE, [DELEGATECALL](https://github.com/ethereum/execution-specs/blob/9c24cd78e49ce6cb9637d1dabb679a5099a58169/src/ethereum/cancun/vm/instructions/system.py#L542), or STATICCALL, these calls invoke the [generic call function](https://github.com/ethereum/execution-specs/blob/9c24cd78e49ce6cb9637d1dabb679a5099a58169/src/ethereum/cancun/vm/instructions/system.py#L267), setting up a new message and a child EVM process. The output of this process is then [written back into the memory](https://github.com/ethereum/execution-specs/blob/9c24cd78e49ce6cb9637d1dabb679a5099a58169/src/ethereum/cancun/vm/instructions/system.py#L325) of the parent EVM process, effectively consuming the output in one iteration of $ O$, which may be utilized in the next iteration.
+- For instance, if the current operation is a system operation such as CALL, CALLCODE, [DELEGATECALL](https://github.com/ethereum/execution-specs/blob/9c24cd78e49ce6cb9637d1dabb679a5099a58169/src/ethereum/cancun/vm/instructions/system.py#L542), or STATICCALL, these calls invoke the [generic call function](https://github.com/ethereum/execution-specs/blob/9c24cd78e49ce6cb9637d1dabb679a5099a58169/src/ethereum/cancun/vm/instructions/system.py#L267), setting up a new message and a child EVM process. The output of this process is then [written back into the memory](https://github.com/ethereum/execution-specs/blob/9c24cd78e49ce6cb9637d1dabb679a5099a58169/src/ethereum/cancun/vm/instructions/system.py#L325) of the parent EVM process, effectively consuming the output in one iteration of $O$, which may be utilized in the next iteration.
 
 4. In all other scenarios, we simply continue recursively calling the iterator function. In simpler terms, this means we proceed with the main interpreter loop
 
-
 ##### Normal Halting H
 
-The $ H_{normalHaltingFunction}$ defines the halting behavior of the EVM under normal circumstances:
+The $H_{normalHaltingFunction}$ defines the halting behavior of the EVM under normal circumstances:
 
 $$
 H_{normalHaltingFunction}(\mu, Environment_I) \equiv
@@ -918,26 +909,26 @@ $$
 
 Where:
 
-- $ H_{RETURN}(\mu) \equiv \mu'$
+- $H_{RETURN}(\mu) \equiv \mu'$
 
-- $ \Delta_{expansion}$ is calculated as:
+- $\Delta_{expansion}$ is calculated as:
 
-  - $ \Delta_{expansion} \equiv 32 \times M_{memoryExpansionForRangeFunction}(length(\mu_{memoryContents}), startPos, memorySize)$
-  - $ \Delta_{expansion} \in \mathbb{N}$
+  - $\Delta_{expansion} \equiv 32 \times M_{memoryExpansionForRangeFunction}(length(\mu_{memoryContents}), startPos, memorySize)$
+  - $\Delta_{expansion} \in \mathbb{N}$
 
-- $ \mu'$ is defined as:
-  - $ \mu' \equiv \mu$ except:
-    - $ \mu'_{memoryContents} \equiv \mu_{memoryContents} + [0_{\text{word}_{256\text{bit}}} ... 0_{\text{word}_{256\text{bit}}}]_{\text{length}=\Delta_{expansion}}$
-    - $ \mu'_{output} \equiv \mu'_{memoryContents}[startPos : startPos + memorySize]$
-    - $ \mu'_{gas} \equiv \mu_{gas} - \text{memoryExpansionCost}$
-    - $ \mu'_{running} \equiv false$
+- $\mu'$ is defined as:
+  - $\mu' \equiv \mu$ except:
+    - $\mu'_{memoryContents} \equiv \mu_{memoryContents} + [0_{\text{word}_{256\text{bit}}} ... 0_{\text{word}_{256\text{bit}}}]_{\text{length}=\Delta_{expansion}}$
+    - $\mu'_{output} \equiv \mu'_{memoryContents}[startPos : startPos + memorySize]$
+    - $\mu'_{gas} \equiv \mu_{gas} - \text{memoryExpansionCost}$
+    - $\mu'_{running} \equiv false$
 
 Where:
 
-- $ startPos \equiv  \mu_{stackContents}[0]$
-- $ memorySize \equiv  \mu_{stackContents}[1]$
+- $startPos \equiv  \mu_{stackContents}[0]$
+- $memorySize \equiv  \mu_{stackContents}[1]$
 
-The function $ M_{memoryExpansionForRangeFunction}(s,f,l)$ determines the memory expansion required to accommodate the range specified:
+The function $M_{memoryExpansionForRangeFunction}(s,f,l)$ determines the memory expansion required to accommodate the range specified:
 
 $$
 M_{memoryExpansionForRangeFunction}(s,f,l) \equiv
@@ -950,20 +941,19 @@ S & \text{if } l = 0 \\
 \end{cases}
 $$
 
-In essence, the $ H_{normalHaltingFunction}$ first sets the start index and length of the output based on the top two stack items. If memory expansion is needed to accommodate the output, it expands the memory accordingly, incurring memory expansion costs if necessary. Finally, it sets the EVM's output to the specified memory range.
-
+In essence, the $H_{normalHaltingFunction}$ first sets the start index and length of the output based on the top two stack items. If memory expansion is needed to accommodate the output, it expands the memory accordingly, incurring memory expansion costs if necessary. Finally, it sets the EVM's output to the specified memory range.
 
 ##### Exception Halting Z
 
-### $ T$ Execution stage 4 : Provisional State $ \sigma_p$
+### $T$ Execution stage 4 : Provisional State $\sigma_p$
 
 TODO
 
-### $ T$ Execution stage 5 : Pre-Final State $ \sigma^*$
+### $T$ Execution stage 5 : Pre-Final State $\sigma^*$
 
 TODO
 
-### $ T$ Execution stage 6 : Final State $ \sigma'$
+### $T$ Execution stage 6 : Final State $\sigma'$
 
 TODO
 
@@ -1032,7 +1022,7 @@ data <- expand.grid(parent_gas_used = seq_parent_gas_used)
 
 ## apply the function we created above and collect it in a new column
 
-data$ expected_base_fee <- mapply(calculate_base_fee_per_gas, parent_gas_limit, data$parent_gas_used, parent_base_fee_per_gas)
+data$expected_base_fee <- mapply(calculate_base_fee_per_gas, parent_gas_limit, data$parent_gas_used, parent_base_fee_per_gas)
 ````
 
 That's all for prep , now let's plot and observe by doing a scatter plot which will reveal any shape this function produces over a range; given the constraints.
@@ -1124,7 +1114,7 @@ data_ranges <- data %>%
   ))
 
 ## Rearrange the bins to control where the plots are displayed
-data_ranges$ Range <- fct_relevel(data_ranges$Range, "1-1000", "1001-10000", "10001-100000")
+data_ranges$Range <- fct_relevel(data_ranges$Range, "1-1000", "1001-10000", "10001-100000")
 
 ## Grammar of graphics we can just + the features we want in the plot
 plot <- ggplot(data_ranges, aes(x = Block, y = GasLimit, color = BaseFee)) +
@@ -1162,7 +1152,7 @@ parent_base_fee_per_gas <- 100
 
 data <- expand.grid( parent_gas_used = seq_parent_gas_used, base_fee_max_change_denominator = seq_max_change_denom)
 
-data$ expected_base_fee <- mapply(calculate_base_fee_per_gas, parent_gas_limit, data$parent_gas_used, parent_base_fee_per_gas, data$ base_fee_max_change_denominator)
+data$expected_base_fee <- mapply(calculate_base_fee_per_gas, parent_gas_limit, data$parent_gas_used, parent_base_fee_per_gas, data$  base_fee_max_change_denominator)
 $`
 
 Thats all for data prep , now lets plot:
@@ -1191,7 +1181,7 @@ parent_base_fee_per_gas <- 100
 
 data <- expand.grid( parent_gas_used = seq_parent_gas_used, base_fee_max_change_denominator = seq_max_change_denom, elasticity_multiplier = seq_elasticity_multiplier)
 
-data```expected_base_fee <- mapply(calculate_base_fee_per_gas, parent_gas_limit, data$ parent_gas_used, parent_base_fee_per_gas, data$base_fee_max_change_denominator, data$ elasticity_multiplier)
+data```expected_base_fee <- mapply(calculate_base_fee_per_gas, parent_gas_limit, data$parent_gas_used, parent_base_fee_per_gas, data$base_fee_max_change_denominator, data$  elasticity_multiplier)
 
 plot <- ggplot(data, aes(x = parent_gas_used, y = expected_base_fee, color = as.factor(base_fee_max_change_denominator))) +
     geom_point() +
@@ -1260,11 +1250,11 @@ data_blob_price <- expand.grid(parent_gas_used = parent_gas_used)
 data_blob_price```excess_blob_gas <- excess_blob_gas
 
 ## Apply the EL gas price function
-data_blob_price$ blob_gas_price <- mapply(cancun_blob_gas_price,
+data_blob_price$  blob_gas_price <- mapply(cancun_blob_gas_price,
                                          data_blob_price$excess_blob_gas)
 
 ## Each row represents a block
-data_blob_price$ BlockNumber <- seq_along(data_blob_price$parent_gas_used)
+data_blob_price$BlockNumber <- seq_along(data_blob_price$parent_gas_used)
 
 ## we collapse the 3 columns into 1 Parameter Column
 data_long <- pivot_longer(data_blob_price,
@@ -1296,9 +1286,9 @@ normalize <- function(x) {
   return((x - min(x)) / (max(x) - min(x)))
 }
 
-data_blob_price$ parent_gas_used_normalized <- normalize(data_blob_price$parent_gas_used)
-data_blob_price$ excess_blob_gas_normalized <- normalize(data_blob_price$excess_blob_gas)
-data_blob_price$ blob_gas_price_normalized <- normalize(data_blob_price$blob_gas_price)
+data_blob_price$parent_gas_used_normalized <- normalize(data_blob_price$parent_gas_used)
+data_blob_price$excess_blob_gas_normalized <- normalize(data_blob_price$excess_blob_gas)
+data_blob_price$blob_gas_price_normalized <- normalize(data_blob_price$blob_gas_price)
 
 ggplot(data_blob_price, aes(x = BlockNumber)) +
   geom_line(aes(y = parent_gas_used_normalized, color = "Parent Gas Used")) +
@@ -1310,7 +1300,8 @@ ggplot(data_blob_price, aes(x = BlockNumber)) +
 
 ### Code for formatting document
 
-Formatters are messing up the latex code in this document the below script formats katex documents correctly. 
+Formatters are messing up the latex code in this document the below script formats katex documents correctly.
+
 ````bash
 #!/bin/bash
 
@@ -1320,6 +1311,7 @@ sed -i -E ':a;N;$!ba;s/```code1([^`]*)```/\$\1\$/g' $1
 sed -i -E ':a;N;$!ba;s/```code2([^`]*)```/\$\$\1\$\$/g' $1
 sed -i -E ':a;N;$!ba;s/`code1([^`]*)`/\$\1\$/g' $1
 sed -i -E ':a;N;$!ba;s/`code2([^`]*)`/\$\$\1\$\$/g' $1
+sed -i -E 's/(\$+)\s*([^$]+?)\s*(\$+)/\1\2\3/g' $1
 ````
 
 [¹]: https://archive.devcon.org/archive/watch/6/eels-the-future-of-execution-layer-specifications/?tab=YouTube
@@ -1328,4 +1320,5 @@ sed -i -E ':a;N;$!ba;s/`code2([^`]*)`/\$\$\1\$\$/g' $1
 > All the topics in this PR are open for collaboration on a separate branch
 
 $$
+
 $$
