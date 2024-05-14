@@ -6,8 +6,6 @@
 > - [Python Execution Layer specification](https://ethereum.github.io/execution-specs/)
 > - EIPs [Look at Readme of the repo](https://github.com/ethereum/execution-specs)
 
-The core of the Ethereum Execution Layer is tasked with executing three types of transactions: legacy, Type 1, and Type 2. These transactions are processed by the quasi-Turing complete Ethereum Virtual Machine (EVM), which allows for virtually any computation, bounded only by gas constraints. This capability positions the EVM as a decentralized world computer, enabling decentralized applications (DApps) to run and transactions to be securely recorded on an immutable ledger. Beyond transaction processing, the EL is instrumental in storing data structures within the State DB. This not only facilitates the observation of current and historical states but also supports the Consensus Layer in block creation and validation. In this analogy, the Execution Layer acts as the CPU, with the Consensus Layer serving as the hard drive. Additionally, the EL defines the parameters of Ethereum's economic model, laying the foundation for blockchain operations.
-
 The Execution Layer, from the EELS perspective, focuses exclusively on executing the state transition function (STF). This role encompasses addressing two primary questions[¹]:
 
 - Is it possible to append the block to the end of the blockchain?
@@ -287,8 +285,6 @@ Impact of $ \rho$ and $ \xi$ on Base Fee :
 - Interplay Between $ \rho$ and $ \xi$: The elasticity multiplier ($ \rho$) not only moves the inflection point but also modulates the sensitivity of adjustments attributable to changes in the base fee max change denominator ($ \xi$). This interaction underscores the delicate balance Ethereum maintains to ensure network efficiency and stability amidst varying demands.
 
 <img src="images/el-specs/gas-header.png" width="800"/>
-
-TODO Blob fee charts
 
 
 ## Block Execution Process
