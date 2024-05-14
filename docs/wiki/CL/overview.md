@@ -6,7 +6,7 @@ In Ethereum, reaching a consensus means that atleast 66% or two-thirds of the ne
 
 The Consensus Layer defines the mechanism for nodes to agree on the network's state. This layer currently employs Proof-of-Stake (PoS), a crypto-economic system. PoS encourages honest behavior by requiring validators to lock ETH. These validators are responsible for proposing new blocks, validating existing ones, and processing transactions. The protocol enforces rewards and penalties to ensure validator integrity and deter malicious activity.
 
-### Forks and ChainId
+#### History (Forks and ChainId)
 
 Since Ethereum is a decentralized platform, any participant can attempt to add a new block to an existing chain of blocks. This creates a branching structure of blocks resembling a tree. To determine the main path from the root (the initial genesis block) to the leaf (the most recent block), a consensus mechanism is needed. If nodes disagree on which path represents the official blockchain, this disagreement results in a fork — a split where different nodes might follow different histories beyond a certain point, each considering their chosen history as the correct one. This divergence can lead to incompatible records of transactions, undermining trust in the system.
 
@@ -14,9 +14,25 @@ Since the Paris hard fork, Ethereum manages consensus through a protocol known a
 
 Occasionally actors do not agree on a protocol change, and a permanent fork occurs. In order to distinguish between diverged blockchains, [EIP-155](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-155.md) by Vitalik introduced the concept of chain ID, which is mathematically denoted by $\beta$. For the Ethereum main network $\beta$ is 1.
 
-## History
+## Transition to Proof-of-stake
 
-The Paris hard fork marked a significant transition for Ethereum, shifting its consensus mechanism from Proof of Work (PoW) to Proof of Stake (PoS). This change represents a fundamental shift in how blocks are validated and new transactions are added to the blockchain.
+<!-- Should I add some more stuff on PoW like limitations etc-->
+
+The Paris hard fork marked a significant transition for Ethereum, shifting its consensus mechanism from Proof of Work (PoW) to Proof of Stake (PoS). This change represents a fundamental shift in how blocks are validated and new transactions are added to the blockchain. The transition to Proof-of-Stake (PoS) in Ethereum aimed to address the limitations of Proof-of-Work (PoW), particularly its high energy consumption and scalability issues. PoS was designed to be more efficient and secure by relying on validators who stake ETH as collateral.
+
+### Key Milestones in the Transition: 
+
+- **Casper Research and Development**: Early research into PoS led to the development of the Casper protocol, a fundamental component of Ethereum’s PoS system.
+- **Beacon Chain Launch**: In December 2020, the Beacon Chain was launched as a separate PoS blockchain running in parallel with the Ethereum mainnet. It's primary goal was to handle PoS consensus and coordinates validators.
+- **The Merge**: A future upgrade that will unify the Beacon Chain with the Ethereum mainnet, completing the transition to PoS.
+
+### Beacon Chain Introduction
+The Beacon Chain plays a crucial role in managing the PoS system. It oversees validators who propose and attest to new blocks, ensuring the network’s integrity and security. Validators are selected based on number of criterias one of them being the amount of ETH they stake, which also acts as collateral against dishonest behavior. Some high level responsibilities of validators are:
+
+- Proposing Blocks: Validators take turns proposing new blocks.
+- Attesting Blocks: Validators attest to the validity of blocks proposed by others.
+- Staking ETH: Validators must stake a minimum of 32 ETH to participate.
+- Rewards and Penalties: Validators earn rewards for honest participation and face slashing penalties for malicious actions or inactivity.
 
 ### Transition Criteria and Terminal Block
 
@@ -36,7 +52,7 @@ Total difficulty ($B_t$) of a block in the PoW system was calculated recursively
 
 This calculation accumulates the difficulty of each block, adding up to a total that reflects the overall computational effort expended to reach the current state of the blockchain.
 
-### Transition to Proof of Stake
+### Actual Transition
 
 Upon reaching the terminal block:
 - **Beacon Chain Takes Over**: The Beacon Chain, already running in parallel to the Ethereum mainnet, assumes responsibility for processing new blocks. Under PoS, blocks are validated by validators who stake their ETH to participate in the consensus mechanism, rather than by miners solving cryptographic puzzles.
@@ -47,3 +63,21 @@ Upon reaching the terminal block:
 
 The Paris hard fork was a pivotal event in Ethereum's history, setting the stage for more scalable, sustainable, and secure operations. It represents Ethereum's commitment to innovation and its responsiveness to the broader societal concerns about the environmental impact of cryptocurrency mining.
 
+## Proof-of-stake
+
+Proof-of-Stake (PoS) is Ethereum's new consensus mechanism designed to improve security, scalability, and energy efficiency. Unlike Proof-of-Work (PoW), PoS relies on validators who stake Ether (ETH) to participate in the network, rather than miners solving cryptographic puzzles. More details on the actual consensus methods is covered in [CL Architecture]().
+
+### Validators
+
+Validators are essentially the participants in the PoS Protocol. They propose and validate new blocks, ensuring the integrity and security of the blockchain. Validators must stake ETH as collateral, aligning their interests with the network’s health. Validators are chosen to propose blocks based on several factors:
+
+- **Staked ETH**: Validators with more ETH staked have a higher likelihood of being selected. This ensures those with significant investment in the network are chosen.
+- **Randomness**: The selection process incorporates cryptographic randomness to prevent predictability and manipulation. This is achieved through the [RANDAO]() and [VDF (Verifiable Delay Function)]() mechanisms.
+- **Committees**: Validators are grouped into committees for block proposal and attestation. Each committee is responsible for validating and attesting to blocks, ensuring a decentralized and secure validation process.
+- **Staking Requirements**: To become a validator, an individual must deposit a minimum of 32 ETH into the official deposit contract. This ETH acts as collateral to incentivize honest behavior. The validator's ETH is at risk if they fail to perform their duties or engage in malicious activities.
+
+##### Validator Responsibilities:
+
+- **Proposing Blocks**: Validators take turns proposing new blocks during their assigned slots. They must construct valid blocks and broadcast them to the network.
+- **Attesting to Blocks**: Validators review and attest to the blocks proposed by others. Attestations are votes on the validity of the blocks, ensuring consensus.
+- **Participating in Consensus**: Validators participate in consensus by voting on the state of the blockchain at regular intervals, helping to finalize the blockchain's state.
