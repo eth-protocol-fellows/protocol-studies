@@ -63,11 +63,6 @@ The specified procedure for the state transition function in the code documentat
 8. **Pruning Old Blocks**: Remove blocks that are older than the most recent 255 blocks from the blockchain.
 9. **Error Handling**: If any validation checks fail, raise an "Invalid Block" error. Otherwise, return None.
 
-Client Code :
-
-| function        | EELS(cancun) | Geth                                                                                                                                                                                                                                                                                                                                    | Reth | Erigon | Nethermind | Besu |
-| --------------- | ------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---- | ------ | ---------- | ---- |
-| Block Level STF |              | Header verification begins here: [insertChain](https://github.com/ethereum/go-ethereum/blob/38eb8b3e20bf237a78fa57e84fa63c2d05a44635/core/blockchain.go#L1628) -> Transaction Iteration : [ Process ](https://github.com/ethereum/go-ethereum/blob/6f1fb0c29ff25318e688c15581d0c28dcefb75ce/core/state_processor.go#L60) -> txLevel STF |      |        |            |      |
 
 ## Block Header Validation
 
@@ -295,28 +290,6 @@ Impact of $ \rho$ and $ \xi$ on Base Fee :
 
 TODO Blob fee charts
 
-Client Code :
-
-|                                                                                                | EELS(cancun)                                                                                                                                                                          | Geth | Reth | Erigon | Nethermind | Besu |
-| ---------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---- | ---- | ------ | ---------- | ---- |
-| $$ V(H) \equiv H_{gasUsed} \leq H_{gasLimit}$$                                              | [validate_header](https://github.com/ethereum/execution-specs/blob/9fc7925c80ff2f3949e1cc340a4a0d36fcd4161c/src/ethereum/cancun/fork.py#L294)                                         |      |      |        |            |      |
-| $$  H_{gasLimit} < P(H)_{H_{gasLimit'}} + floor(\frac{P(H)_{H_{gasLimit'}}}{1024} ) $$      | validate_header -> calculate_base_fee_per_gas -> [ensure](https://github.com/ethereum/execution-specs/blob/9fc7925c80ff2f3949e1cc340a4a0d36fcd4161c/src/ethereum/cancun/fork.py#L256) |      |      |        |            |      |
-| $$  H_{gasLimit} > P(H)_{H_{gasLimit'}} - floor(\frac{P(H)_{H_{gasLimit'}}}{1024} ) $$      | ''                                                                                                                                                                                    |      |      |        |            |      |
-| $$  H_{gasLimit} > 5000$$                                                                   | calculate_base_fee_per_gas -> [check_gas_limit](https://github.com/ethereum/execution-specs/blob/9fc7925c80ff2f3949e1cc340a4a0d36fcd4161c/src/ethereum/cancun/fork.py#L1132)          |      |      |        |            |      |
-| $$ H_{timeStamp} > P(H)_{H_{timeStamp'}} $$                                                 | validate_header-> [ensure](https://github.com/ethereum/execution-specs/blob/9fc7925c80ff2f3949e1cc340a4a0d36fcd4161c/src/ethereum/cancun/fork.py#L323)                                |      |      |        |            |      |
-| $$  H_{numberOfAncestors} = P(H)_{H_{numberOfAncestors'}} + 1 $$                            | validate_header-> [ensure](https://github.com/ethereum/execution-specs/blob/9fc7925c80ff2f3949e1cc340a4a0d36fcd4161c/src/ethereum/cancun/fork.py#L324)                                |      |      |        |            |      |
-| $$  length(H_{extraData}) \leq 32_{bytes} $$                                                | validate_header-> [ensure](https://github.com/ethereum/execution-specs/blob/9fc7925c80ff2f3949e1cc340a4a0d36fcd4161c/src/ethereum/cancun/fork.py#L325)                                |      |      |        |            |      |
-| $$  H_{baseFeePerGas} = F(H) $$                                                             |                                                                                                                                                                                       |      |      |        |            |      |
-| $$  H_{parentHash} = KEC(RLP( P(H)_H ))  $$                                                 | validate_header-> [ensure](https://github.com/ethereum/execution-specs/blob/9fc7925c80ff2f3949e1cc340a4a0d36fcd4161c/src/ethereum/cancun/fork.py#L332)                                |      |      |        |            |      |
-| $$  H_{ommersHash} = KEC(RLP(())) $$                                                        | validate_header-> [ensure](https://github.com/ethereum/execution-specs/blob/9fc7925c80ff2f3949e1cc340a4a0d36fcd4161c/src/ethereum/cancun/fork.py#L329)                                |      |      |        |            |      |
-| $$  H_{difficulty} = 0 $$                                                                   | validate_header-> [ensure](https://github.com/ethereum/execution-specs/blob/9fc7925c80ff2f3949e1cc340a4a0d36fcd4161c/src/ethereum/cancun/fork.py#L327)                                |      |      |        |            |      |
-| $$ H_{nonce} = 0x0000000000000000 \tag{57l}$$                                               | validate_header-> [ensure](https://github.com/ethereum/execution-specs/blob/9fc7925c80ff2f3949e1cc340a4a0d36fcd4161c/src/ethereum/cancun/fork.py#L328)                                |      |      |        |            |      |
-| $$   H_{prevRandao} = PREVRANDAO() \text{this is stale , beacon chain provides this now} $$ |                                                                                                                                                                                       |      |      |        |            |      |
-| $$  H_{withdrawlsHash} \neq nil $$                                                          |                                                                                                                                                                                       |      |      |        |            |      |
-| $$  H_{blobGasUsed} \neq nil $$                                                             |                                                                                                                                                                                       |      |      |        |            |      |
-| $$  H_{blobGasUsed} \leq  MaxBlobGasPerBlock_{=786432}  $$                                  |                                                                                                                                                                                       |      |      |        |            |      |
-| $$  H_{blobGasUsed} \% GasPerBlob_{=2^{17}} = 0 $$                                          |                                                                                                                                                                                       |      |      |        |            |      |
-| $$  H_{excessBlobGas} = CalcExcessBlobGas(P(H)_H) $$                                        | [ensure ](https://github.com/ethereum/execution-specs/blob/9fc7925c80ff2f3949e1cc340a4a0d36fcd4161c/src/ethereum/cancun/fork.py#L187)                                                 |      |      |        |            |      |
 
 ## Block Execution Process
 
@@ -381,9 +354,6 @@ $$
 | $ I_{excessBlobGas}$       | Calculated from the parent block, it represents surplus gas allocated for blob transactions.                             |
 | $ I_{blobVersionedHashes}$ |                                                                                                                          |
 
-|                 | EELS                                                                                                                              | Geth                                                                                                                                   | Reth                                                                                                                                                                                                                                                                                 | Erigon                                                                                                                           | Nethermind | Besu |
-| --------------- | --------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------- | ---------- | ---- |
-| instantiate Env | [env](https://github.com/ethereum/execution-specs/blob/804a529b4b493a61e586329b440abdaaddef9034/src/ethereum/cancun/fork.py#L578) | Process -> [NewEVMBlockContext](https://github.com/ethereum/go-ethereum/blob/a3829178af6cec64d6def9131b9340a3328cc4fc/core/evm.go#L42) | [execute_inner calls init_env](https://github.com/paradigmxyz/reth/blob/bfadc26b37c24128c14323c7f99078a0c2dd965a/crates/revm/src/processor.rs#L295) -> [BlockEnv](https://github.com/bluealloy/revm/blob/57825ff8c6b3ff82796171c3965c45004c1acb1a/crates/primitives/src/env.rs#L395) | [BLockContext](https://github.com/ledgerwatch/erigon/blob/1d04dc52b7ad90caa472833b13c77d1c0d447de0/core/state_processor.go#L115) |            |      |     |
 
 ## Gas Accounting
 
@@ -455,12 +425,6 @@ $$
 | $ G_{\text{txCreate}}$                                        | An additional 32000 gas is required for contract creation transactions.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
 | $ G_{\text{accesslistaddress}}, G_{\text{accessliststorage}}$ | Additional gas costs for each address and storage key specified in the access list, facilitating optimized state access.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
 
-#### Client Code
-
-| function      | Geth                                                                                                                               | Reth                                                                                                                                               | Erigon                                                                                                                                                                                                                                                                                     | Nethermind | Besu |
-| ------------- | ---------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------- | ---- |
-| intrinsic gas | [IntrinsicGas](https://github.com/ethereum/go-ethereum/blob/14cc967d1964d3366252193cadd4bfcb4c927ac1/core/state_transition.go#L71) | [validate_initial_tx_gas](https://github.com/bluealloy/revm/blob/1ce5a52dc0f5701800d496605ad3d20cbd0d967f/crates/interpreter/src/gas/calc.rs#L347) | [IntrinsicGas](https://github.com/ledgerwatch/erigon/blob/b5d1e85492a4e8ef88f4b507c775a9750de68769/core/state_transition.go#L135) -> [CalcIntrinsicGas](https://github.com/ledgerwatch/erigon/blob/b5d1e85492a4e8ef88f4b507c775a9750de68769/erigon-lib/txpool/txpoolcfg/txpoolcfg.go#L183) |            |      |
-
 ### Effective Gas Price & Priority Fee
 
 The equations below were modified to include blob transactions ( $ T_{type} = 3$ )
@@ -488,11 +452,6 @@ $$
 | effectiveGasPrice | The amount of wei the Transaction signer will pay per unit Gas consumed during the execution of the transaction             |
 | priorityFee       | The amount of wei the Transaction's beneficiary will recieve per unit Gas consumed during the execution of the tranasaction |
 
-#### Client Code
-
-| function            | Geth                                                                                                                                  | Reth                                                                                                                                                                        | Erigon | Nethermind | Besu |
-| ------------------- | ------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------ | ---------- | ---- |
-| Effective Gas Price | [effectiveGasPrice](https://github.com/ethereum/go-ethereum/blob/14cc967d1964d3366252193cadd4bfcb4c927ac1/core/types/tx_blob.go#L166) | \*questions here? [effective_gas_price](https://github.com/paradigmxyz/reth/blob/a31202670b3ca2348b6dbca807b6b00a86a1539c/crates/primitives/src/transaction/eip4844.rs#L88) |        |            |      |
 
 ### Effective Gas Fee
 
@@ -534,7 +493,6 @@ The dynamics of the Blob Gas Price are modeled in the following scenarios, start
 - Persistent demand increases, causing the accumulated excess gas to surpass a threshold, triggering an exponential increase in the gas price as a regulatory measure.
 - Accumulated excess gas can be cleared in one block if the gas usage of the preceding block falls below the target, resetting the adjustment mechanism.
 
-##TODO link client code
 
 ### Blob Gas Fee
 
@@ -564,9 +522,6 @@ $$
 v_0 \equiv upfrontCost \equiv  effectiveGasFee + blobGasFee
 $$
 
-| function     | Geth                                                                                                                          | Reth                                                                                                                                                                                                                                                                                                                     | Erigon                                                                                                                      | Nethermind | Besu |
-| ------------ | ----------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------- | ---------- | ---- |
-| upfront cost | [buyGas](https://github.com/ethereum/go-ethereum/blob/14cc967d1964d3366252193cadd4bfcb4c927ac1/core/state_transition.go#L236) | [deduct_caller_inner](https://github.com/bluealloy/revm/blob/e7363d7dc5693550c72cd2773e4278f167b1cac9/crates/revm/src/handler/mainnet/pre_execution.rs#L48) calls [calc_data_fee](https://github.com/bluealloy/revm/blob/e7363d7dc5693550c72cd2773e4278f167b1cac9/crates/primitives/src/env.rs#L55) for blob calculation | [buyGas](https://github.com/ledgerwatch/erigon/blob/8e39498d5d49935dbdc2b071007a74fb85b9e42b/core/state_transition.go#L195) |            |      |
 
 ## Transaction Execution
 
@@ -764,11 +719,6 @@ $$
 4. **Account Initialization:**
    Finally, the account is initialized through the execution of the EVM initialization code byte array $ []evmInitCodeByteArray_i$ during the main execution cycle.
 
-Client Code :
-
-| function          | EELS(cancun)                                                                                                                                                   | Geth                                                                                                                | Reth                                                                                                                                                          | Erigon                                                                                                            | Nethermind | Besu |
-| ----------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- | ---------- | ---- |
-| Contract Creation | [process_create_message](https://github.com/ethereum/execution-specs/blob/db87f1b1d21f61275fc34b08de1735889c01f018/src/ethereum/cancun/vm/interpreter.py#L147) | [Create](https://github.com/ethereum/go-ethereum/blob/b9010f3e872492c1513c853cb5f3f8ce03eff2b5/core/vm/evm.go#L509) | Execution routing based on $ T_{to}$ [here](https://github.com/bluealloy/revm/blob/cfc4511fe148296394c19c9ab3fb46f663218413/crates/revm/src/evm.rs#L366) | [Create](https://github.com/ledgerwatch/erigon/blob/e7d5a84b5a5436edb7929f03df07648743166fac/core/vm/evm.go#L453) |            |      |
 
 #### Message Type: Call
 
@@ -847,9 +797,6 @@ $$
 
 Where $ O$ represents the Execution Cycle, encapsulating the outcome of a single cycle within the state machine. This cycle can modify all components of $ \mu$, with explicit specifications for changes to $ \mu_{gas}$ and $ \mu_{programCounter}$:
 
-| function | EELS(cancun)                                                                                                                                                                                                                     | Geth                                                                                                                                                                                                                                                                                                                                                                                                                                          | Reth | Erigon | Nethermind | Besu |
-| -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---- | ------ | ---------- | ---- |
-| O        | call [op implementation](https://github.com/ethereum/execution-specs/blob/804a529b4b493a61e586329b440abdaaddef9034/src/ethereum/cancun/vm/interpreter.py#L303) which takes care of deducting gas and incrementing programCounter | scope of O: [current op](https://github.com/ethereum/go-ethereum/blob/7bb3fb1481acbffd91afe19f802c29b1ae6ea60c/core/vm/interpreter.go#L222) -> deduct gas -> [execute op](https://github.com/ethereum/go-ethereum/blob/7bb3fb1481acbffd91afe19f802c29b1ae6ea60c/core/vm/interpreter.go#L286) -> [increment programCounter](https://github.com/ethereum/go-ethereum/blob/7bb3fb1481acbffd91afe19f802c29b1ae6ea60c/core/vm/interpreter.go#L290) |      |        |            |      |
 
 ##### Resultant Program Counter of a Single Execution Cycle
 
@@ -897,12 +844,6 @@ ValidJumpDestinations_{D_J}(byteCode,NextValidInstruction(index, byteCode[index]
 $$
 
 This indicates that we include the index in the set if the bytecode at that index corresponds to a JUMPDEST operation. We continue adding these indices by recursively calling the $ ValidValidJumpDestinations_{D_J}(byteCode, index)$ function with the index determined by the $ NextValidInstruction$ function.
-
-Client Code :
-
-| function                                    | EELS(cancun)                                                                                                                                                   | Geth                                                                                                                                                                                                                                                                                          | Reth | Erigon | Nethermind | Besu |
-| ------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---- | ------ | ---------- | ---- |
-| $ ValidJumpDestinations_{D}(byteCode)$ | [get_valid_jump_destinations](https://github.com/ethereum/execution-specs/blob/804a529b4b493a61e586329b440abdaaddef9034/src/ethereum/cancun/vm/runtime.py#L21) | Geth has a [jumpTable](https://github.com/ethereum/go-ethereum/blob/7bb3fb1481acbffd91afe19f802c29b1ae6ea60c/core/vm/interpreter.go#L98) with all fork ops and [validJumpDest](https://github.com/ethereum/go-ethereum/blob/7bb3fb1481acbffd91afe19f802c29b1ae6ea60c/core/vm/contract.go#L84) |      |        |            |      |
 
 ##### Resultant Gas Consumption in a Single Execution Cycle
 
@@ -962,9 +903,6 @@ $$
 
 4. In all other scenarios, we simply continue recursively calling the iterator function. In simpler terms, this means we proceed with the main interpreter loop
 
-| function | EELS(cancun)                                                                                                                                                            | Geth                                                                                                                                       | Reth | Erigon | Nethermind | Besu |
-| -------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------ | ---- | ------ | ---------- | ---- |
-| X        | starts from [try](https://github.com/ethereum/execution-specs/blob/804a529b4b493a61e586329b440abdaaddef9034/src/ethereum/cancun/vm/interpreter.py#L289) in execute_code | [interpreter main loop](https://github.com/ethereum/go-ethereum/blob/7bb3fb1481acbffd91afe19f802c29b1ae6ea60c/core/vm/interpreter.go#L215) |      |        |            |      |
 
 ##### Normal Halting H
 
@@ -1018,9 +956,6 @@ $$
 
 In essence, the $ H_{normalHaltingFunction}$ first sets the start index and length of the output based on the top two stack items. If memory expansion is needed to accommodate the output, it expands the memory accordingly, incurring memory expansion costs if necessary. Finally, it sets the EVM's output to the specified memory range.
 
-| function                          | EELS(cancun)                                                                                                                                                                                                                                                                                                   | Geth | Reth | Erigon | Nethermind | Besu |
-| --------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---- | ---- | ------ | ---------- | ---- |
-| $ H_{normalHaltingFunction}$ | [RETURN](https://github.com/ethereum/execution-specs/blob/9c24cd78e49ce6cb9637d1dabb679a5099a58169/src/ethereum/cancun/vm/instructions/system.py#L235), [REVERT](https://github.com/ethereum/execution-specs/blob/9c24cd78e49ce6cb9637d1dabb679a5099a58169/src/ethereum/cancun/vm/instructions/system.py#L662) |      |
 
 ##### Exception Halting Z
 
