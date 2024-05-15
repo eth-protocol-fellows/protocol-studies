@@ -226,3 +226,67 @@ _Example of one checkpoint getting justified (Slot 64) nd finalizing a prior che
 Consider a block proposed at Slot 64 containing attestations for the Epoch 2 checkpoint. This scenario can finalize the checkpoint at Slot 32. The finality of the Slot 32 checkpoint, once achieved, propagates backward, securing all preceding blocks.
 
 In essence, Committees allow for the technical optimization of combining signatures from each attester into a single aggregate signature.  When validators in the same committee make the same LMD GHOST and FFG votes, their signatures can be aggregated.
+
+## Staking Rewards and Penalties
+
+Ethereum’s PoS system employs a comprehensive set of rewards and penalties to incentivize validator behavior and maintain network security. This section covers six key aspects of these incentives:
+
+**1. Attester Rewards:**
+Validators earn rewards for making attestations (LMD GHOST and FFG votes) that align with the majority of other validators. Attestations included in finalized blocks are more valuable.
+
+**2. Attester Penalties:**
+Validators are penalized for failing to attest or for attesting to blocks that do not get finalized. These penalties ensure validators remain active and aligned with the network’s consensus.
+
+**3. Typical Downside Risk for Stakers:**
+Stakers can estimate their downside risk by comparing potential earnings and penalties. An honest validator earning 10% in a year could lose up to 7.5% for poor performance. Minor penalties apply for short-term inactivity, while prolonged offline periods incur larger penalties.
+
+**4. Slashings and Whistleblower Rewards:**
+Slashing penalizes validators for serious protocol violations. Penalties range from over 0.5 ETH up to the entire stake. For example, a validator committing a slashable offense loses at least 1/32 of their balance and is deactivated. Additional penalties are proportional to the number of validators slashed simultaneously. A whistleblower who reports a slashable offense receives a reward, which currently goes to the block proposer.
+
+**5. Proposer Rewards:**
+Block proposers receive substantial rewards for proposing blocks that get finalized. Consistently performing validators gain approximately a 1/8 boost to their total rewards. Additionally, proposers receive small rewards for including slashing evidence in their blocks.
+
+**6. Inactivity Leak Penalty:**
+The inactivity leak is a severe penalty designed to ensure the network’s finality. If finality is delayed for more than four epochs, validators suffer increasing penalties until a checkpoint is finalized. This mechanism drains the balances of inactive validators, leading to their forced exit, thus allowing active validators to form a ⅔ majority to resume finality. During an inactivity leak, only proposer and whistleblower rewards are earned, while attester rewards are zero.
+
+<!-- Can be expanded more in future-->
+### **Slashable Offenses:**
+There are four conditions under which a validator can be slashed:
+- **Double Proposal:** Proposing more than one block for their assigned slot.
+- **LMD GHOST Double Vote:** Attesting to different Beacon Chain heads for the same slot.
+- **FFG Surround Vote:** Casting an FFG vote that surrounds or is surrounded by a previous FFG vote by the same validator.
+- **FFG Double Vote:** Casting two FFG votes for different targets in the same epoch.
+
+
+## Beacon Chain Validator Activation and Lifecycle:
+
+A validator requires 32 ETH to be activated. Validators are deactivated if their balance falls to 16 ETH, with any remaining balance withdrawable. Validators can also voluntarily exit after serving 2,048 epochs (approximately nine days). 
+
+Upon exit, there is a delay of four epochs before withdrawal, during which validators can still be slashed. 
+
+Honest validators can withdraw their balance in about 27 hours, whereas slashed validators face a delay of approximately 36 days (8,192 epochs).
+
+<a id="img_randao"></a>
+<figure class="diagram" style="text-align:center">
+
+![Diagram for Validator Lifecycle](../../images/cl/validator-lifecycle.png)
+
+</figure>
+
+To prevent rapid changes in the validator set, mechanisms limit how many validators can be activated or exited per epoch. The Beacon Chain also employs effective balances for technical optimization, which change less frequently than actual validator balances.
+
+**Overall Effects:**
+Validators are divided evenly across slots and subdivided into committees. All validators aim to finalize the same checkpoint (FFG vote) and vote on the same Beacon Chain head (LMD GHOST vote). Optimal behavior maximizes validator rewards, aligning individual incentives with network security.
+
+The Beacon Chain's introduction on December 1, 2020, began with 21,063 validators, growing to over 400,000 within two years. Ethereum’s PoS system represents a significant step toward creating a scalable platform for decentralized applications, with a robust incentive structure to ensure network security and performance.
+
+<!-- #### TODO -->
+<!-- Can add a section on Evolution of Ethereum PoS that covers
+Historical context and early proposal
+Research and development phases
+Implementation challenges and solutions -->
+
+### Resources and References used to write this:
+
+- [Beacon Chain Explainer from ethos.dev](https://ethos.dev/beacon-chain)
+- [Evolution of Ethereum Proof-of-Stake](https://github.com/ethereum/pos-evolution/blob/master/pos-evolution.md)
