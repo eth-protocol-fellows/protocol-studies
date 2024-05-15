@@ -519,6 +519,7 @@ privateKey
 probabilistically
 programmability
 proto
+proto's
 protobuf
 Protolambda
 prover
@@ -529,6 +530,8 @@ Prysm
 Prysmatic
 PSE
 PSE's
+pseudorandom
+pseudorandomly
 ptc
 publically
 pubsub
@@ -634,6 +637,7 @@ subprotocols
 substack
 subtrees
 Summa
+Supermajority
 systemd
 Takenobu
 Tani
@@ -663,6 +667,7 @@ trustlessly
 trustlessness
 TrustLook
 TSTORE
+TTD
 Tx
 txpool
 txs
@@ -684,6 +689,7 @@ validator's
 validators
 Vanstone
 VB's
+VDF
 VDFs
 Vec
 verifications
@@ -702,8 +708,10 @@ walkthrough
 WB
 webkit
 WebRTC
+Whistleblower
 Whitepaper
 WIP
+withdrawable
 WSS
 Xatu
 XMSS

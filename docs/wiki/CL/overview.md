@@ -27,7 +27,7 @@ The Paris hard fork marked a significant transition for Ethereum, shifting its c
 - **The Merge**: A future upgrade that will unify the Beacon Chain with the Ethereum mainnet, completing the transition to PoS.
 
 ### Beacon Chain Introduction
-The Beacon Chain plays a crucial role in managing the PoS system. It oversees validators who propose and attest to new blocks, ensuring the network’s integrity and security. Validators are selected based on number of criterias one of them being the amount of ETH they stake, which also acts as collateral against dishonest behavior. Some high level responsibilities of validators are:
+The Beacon Chain plays a crucial role in managing the PoS system. It oversees validators who propose and attest to new blocks, ensuring the network’s integrity and security. Validators are selected based on number of criteria one of them being the amount of ETH they stake, which also acts as collateral against dishonest behavior. Some high level responsibilities of validators are:
 
 - Proposing Blocks: Validators take turns proposing new blocks.
 - Attesting Blocks: Validators attest to the validity of blocks proposed by others.
