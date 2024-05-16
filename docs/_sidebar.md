@@ -45,6 +45,8 @@
   - [CL Clients](/wiki/CL/cl-clients.md)
   - [Beacon API](/wiki/CL/beacon-api.md)
   - [CL Networking](/wiki/CL/cl-networking.md)
+  - [SSZ Serialization](/wiki/CL/SSZ.md)
+    - [Merkleization](/wiki/CL/merkleization.md)
 - Development
   - [Core Development](/wiki/dev/core-development.md)
   - [Coordination](/wiki/dev/pm.md)
@@ -53,6 +55,7 @@
   - [Testing Overview](/wiki/testing/overview.md)
   - [Incidents](/wiki/testing/incidents.md)
   - [hive](/wiki/testing/hive.md)
+  - [Formal verification](/wiki/testing/formal-verification.md)
 - Research
   - [Roadmap Overview](/wiki/research/roadmap.md)
   - [Scaling](/wiki/research/scaling/scaling.md)
@@ -66,6 +69,8 @@
     - [PTC](/wiki/research/PBS/PTC.md)
     - [PEPC](/wiki/research/PBS/PEPC.md)
     - [TBHL](/wiki/research/PBS/TBHL.md)
+    - [ET](/wiki/research/PBS/ET.md)
+  - [eODS](/wiki/research/eODS.md)
   - Preconfirmations
     - [Preconfirmations](/wiki/research/Preconfirmations/Preconfirmations.md)
     - [Based Sequencing with Preconfs](/wiki/research/Preconfirmations/BasedSequencingPreconfs.md)

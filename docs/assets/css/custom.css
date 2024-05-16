@@ -377,6 +377,7 @@ body .pagination-item-label {
 }
 
 .markdown-section table {
-  display: table;
+  overflow-x:scroll;
   width: 100%;
+  display:block;
 }

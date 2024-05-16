@@ -6,7 +6,7 @@ Here's how mev-boost works:
 
 <figure style="text-align: center;">
   <img src="images/pbs/block-building.png" alt="Block-building">
-  <figcaption style="text-align: center;">Current Block building. Source: <a href="https://barnabe.substack.com/p/pbs">Baranabé's article</a></figcaption>
+  <figcaption style="text-align: center;">Current Block building. Source: <a href="https://barnabe.substack.com/p/pbs">Barnabé's article</a></figcaption>
 </figure>
 
 On one side, mev-boost implements the [builder API](https://github.com/ethereum/builder-specs) used by an Ethereum node to outsource it block production. On the other, it connects to a network of relays and handles the communication between builders and proposers.
