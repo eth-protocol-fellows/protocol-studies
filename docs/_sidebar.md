@@ -1,6 +1,6 @@
 - [Home](readme.md)
 - **Study Group**
-- [EPFsg overview](/eps/intro.md)
+- [EPFsg Overview](/eps/intro.md)
 - Presentations
   - [Week 0](/eps/week0.md)
   - [Week 1](/eps/week1.md)
@@ -23,11 +23,11 @@
 - **Protocol Wiki**
 - The Protocol
   - [Architecture](/wiki/protocol/architecture.md)
-  - [Design rationale](/wiki/protocol/design-rationale.md)
+  - [Design Rationale](/wiki/protocol/design-rationale.md)
   - [Evolution](/wiki/protocol/history.md)
 - Execution Layer
   - [EL Specs](/wiki/EL/el-specs.md)
-  - [Client architecture](/wiki/EL/el-architecture.md)
+  - [Client Architecture](/wiki/EL/el-architecture.md)
   - [EL Clients](/wiki/EL/el-clients.md)
     - [Besu](/wiki/EL/clients/besu.md)
     - [Reth](/wiki/EL/clients/reth.md)
@@ -37,7 +37,7 @@
   - [Transaction anatomy](/wiki/EL/transaction.md)
   - [JSON-RPC](/wiki/EL/JSON-RPC.md)
   - [DevP2P](/wiki/EL/devp2p.md)
-  - [RLP Serialization](/docs/wiki/EL/RLP.md)
+  - [RLP Serialization](/wiki/EL/RLP.md)
 - Consensus Layer
   - [Overview](/wiki/CL/overview.md)
   - [CL Specs](/wiki/CL/cl-specs.md)
@@ -46,15 +46,15 @@
   - [Beacon API](/wiki/CL/beacon-api.md)
   - [CL Networking](/wiki/CL/cl-networking.md)
 - Development
-  - [Core development](/wiki/dev/core-development.md)
+  - [Core Development](/wiki/dev/core-development.md)
   - [Coordination](/wiki/dev/pm.md)
   - [Dev Resources](/wiki/dev/cs-resources.md)
 - Testing and security
-  - [Testing overview](/wiki/testing/overview.md)
+  - [Testing Overview](/wiki/testing/overview.md)
   - [Incidents](/wiki/testing/incidents.md)
   - [hive](/wiki/testing/hive.md)
 - Research
-  - [Roadmap overview](/wiki/research/roadmap.md)
+  - [Roadmap Overview](/wiki/research/roadmap.md)
   - [Scaling](/wiki/research/scaling/scaling.md)
     - [Core Changes](/wiki/research/scaling/core-changes/core-changes.md)
     - [EIP-4844](/wiki/research/scaling/core-changes/eip-4844.md)
@@ -74,8 +74,7 @@
   - [ECDSA](/wiki/Cryptography/ecdsa.md)
   - [BLS](/wiki/Cryptography/bls.md)
   - [Keccak256](/wiki/Cryptography/keccak256.md)
-  - Commitments
-    - [KZG](/docs/wiki/Cryptography/KZG.md)
+  - [KZG Commitment Scheme](/wiki/Cryptography/KZG.md)
   - [Post-Quantum Cryptography](/wiki/Cryptography/post-quantum-cryptography.md)
 - [Protocol Fellowship](/wiki/epf.md)
 
