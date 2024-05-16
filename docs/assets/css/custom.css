@@ -172,14 +172,27 @@ body .markdown-section {
   --navbar-root-color--active: #ba9afd;
   --search-input-background-color: #2d1763;
   --table-row-odd-background: #2d1763;
+  --base-color: #fff;
+  --heading-color: #fff;
+  --primary-text-color: #d3d3d3;
 
   /* blockquote*/
   --blockquote-background: #2d1763;
-  --blockquote-color: #fff;
+  --blockquote-color: var(--primary-text-color);
   --blockquote-border-color: #ba9afd;
 
   /* link */
   --link-color: #ba9afd;
+
+  /* text */
+}
+
+body {
+    color: #fff;
+}
+
+section.content , .markdown-section code{
+    color: var(--primary-text-color);
 }
 
 /* sidebar */
@@ -364,6 +377,7 @@ body .pagination-item-label {
 }
 
 .markdown-section table {
-  display: table;
+  overflow-x:scroll;
   width: 100%;
+  display:block;
 }
