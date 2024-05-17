@@ -278,7 +278,7 @@ To prevent rapid changes in the validator set, mechanisms limit how many validat
 **Overall Effects:**
 Validators are divided evenly across slots and subdivided into committees. All validators aim to finalize the same checkpoint (FFG vote) and vote on the same Beacon Chain head (LMD GHOST vote). Optimal behavior maximizes validator rewards, aligning individual incentives with network security.
 
-The Beacon Chain's introduction on December 1, 2020, began with 21,063 validators, growing to over 400,000 within two years. Ethereum’s PoS system represents a significant step toward creating a scalable platform for decentralized applications, with a robust incentive structure to ensure network security and performance.
+The Beacon Chain's introduction on December 1, 2020, began with 21,063 validators, growing to over 1,000,000 as of now (15th May, 2024). Ethereum’s PoS system represents a significant step toward creating a scalable platform for decentralized applications, with a robust incentive structure to ensure network security and performance.
 
 <!-- #### TODO -->
 <!-- Can add a section on Evolution of Ethereum PoS that covers
