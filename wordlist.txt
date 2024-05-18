@@ -28,6 +28,7 @@ assignees
 atleast
 atomicity
 Attacknet
+attester
 Attester
 attesters
 attestors
@@ -142,7 +143,6 @@ Cypherpunks
 Daemen
 dafny
 D'Amato
-Daemen
 Dankrad
 danksharding
 Danno
@@ -241,9 +241,10 @@ ethresear
 ethresearch
 ethroadmap
 EVM
-EVM's
 evmlab
 EVMONE
+EVM's
+EVMs
 excalidraw
 exchangeTransitionConfigurationV
 Explainer
@@ -600,7 +601,6 @@ Siddharth
 Silkwarm
 Silverman
 Sipser
-slashing
 slashable
 slashings
 SLOAD
@@ -651,7 +651,6 @@ TLS
 TODO
 TPS
 tracoor
-Tracoor
 tradeoff
 tradeoffs
 transactional
