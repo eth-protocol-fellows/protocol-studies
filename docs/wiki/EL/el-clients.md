@@ -1,5 +1,7 @@
 # Execution Layer Implementations
 
+> :warning: This article is a [stub](https://en.wikipedia.org/wiki/Wikipedia:Stub), help the wiki by [contributing](/contributing.md) and expanding it.
+
 Resources covering all current and historical execution clients. Overview of client unique features of each client, architecture, guides and resources.
 
 ## Clients in production
@@ -26,9 +28,13 @@ Developed in .NET
 
 Developed by Paradigm, recently considered stable
 
+### Nimbus EL 
+
+Execution client developed by Nimbus team as an addition to their Nim CL work.
+
 ### Silkworm
 
-Modular C++ implementation by Erigon team
+Modular C++ implementation by Erigon team. Also called Erigon++.
 
 ### JS Client
 
