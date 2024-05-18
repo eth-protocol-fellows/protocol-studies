@@ -44,22 +44,54 @@ The preference order for where the complexity goes in: layer 2 > client implemen
 # [Blockchain level protocol](#blockchain-level-protocol)
 
 ### Accounts over UTXOs
+Earliest implementations of blockchain including bitcoin and it's derivatives, store user balance in structure based in unspent transaction outputs (UTXOs). Ethereum on the other hand uses an account based model. The account based model is more flexible and allows for more complex transactions.
 
+> **UTXO**: an unspent transaction output (UTXO) is a distinctive element in a subset of digital currency models. A UTXO represents a certain amount of cryptocurrency that has been authorized by a sender and is available to be spent by a recipient.
 
-### Merkle patricia trie
+A user's "balance" in the system is thus the total value of the set of coins for which the user has a private key capable of producing a valid signature. The account based model is more flexible and allows for more complex transactions.
 
-### Introduction to verkle
+#### Benefits of UTXOs
+- **Higher degree of privacy**:  if a user uses a new address for each transaction that they receive then it will often be difficult to link accounts to each other. This applies greatly to currency, but less to arbitrary dapps, as arbitrary dapps often necessarily involve keeping track of complex bundled state of users and there may not exist such an easy user state partitioning scheme as in currency.
+
+- **Potential scalability paradigm**: UTXOs are more theoretically compatible with certain kinds of scalability paradigms, as we can rely on only the owner of some coins maintaining a Merkle proof of ownership, and even if everyone including the owner decides to forget that data then only the owner is harmed. In an account paradigm, everyone losing the portion of a Merkle tree corresponding to an account would make it impossible to process messages that affect that account at all in any way, including sending to it. However, non-UTXO-dependent scalability paradigms do exist
+
+#### Benefits of Accounts
+- **Space Saving**: for example, if an account has 5 UTXO, then switching from a UTXO model to an account model would reduce the space requirements from (20 + 32 + 8) * 5 = 300 bytes (20 for the address, 32 for the txid and 8 for the value) to 20 + 8 + 2 = 30 bytes (20 for the address, 8 for the value, 2 for a nonce(see below)). In reality savings are not nearly this massive because accounts need to be stored in a Patricia tree (see below) but they are nevertheless large. Additionally, transactions can be smaller (eg. 100 bytes in Ethereum vs. 200-250 bytes in Bitcoin) because every transaction need only make one reference and one signature and produces one output.
+
+- **Great fungibility**: UTXOs are not perfectly fungible, as a UTXO can be tainted by being used in a transaction with a tainted UTXO, and there are some heuristics that can be used to track the history of a coin. Accounts are perfectly fungible, as any coin can be replaced by any other coin.
+
+- **Simiplicity**: Accounts are simpler to implement and reason about than UTXOs. UTXOs require a more complex transaction validation algorithm, and the UTXO model is less flexible and less powerful than the account model. For example, it is impossible to implement a decentralized exchange in the UTXO model, as the UTXO model does not allow for the existence of a "sell" order that is not tied to a specific UTXO.
+
+One weakness of the account paradigm is that in order to prevent replay attacks, every transaction must have a [**nounce**](https://ethereum.stackexchange.com/questions/27432/what-is-nonce-in-ethereum-how-does-it-prevent-double-spending), such that the account keeps track of the nonces used and only accepts a transaction if its nonce is 1 after the last nonce used. This means that even no-longer-used accounts can never be pruned from the account state. A simple solution to this problem is to require transactions to contain a block number, making them un-replayable after some period of time, and reset nonces once every period. Miners or other users will need to "ping" unused accounts in order to delete them from the state, as it would be too expensive to do a full sweep as part of the blockchain protocol itself.
+
+### Merkle Patricia Trie(MPT)
+Ethereum's data structure is a 'modified Merkle-Patricia Trie', named so because it borrows some features of PATRICIA (the Practical Algorithm To Retrieve Information Coded in Alphanumeric), and because it is designed for efficient data retrieval of items that comprise the Ethereum state.
+
+A Merkle-Patricia trie is deterministic and cryptographically verifiable: The only way to generate a state root is by computing it from each individual piece of the state, and two states that are identical can be easily proven so by comparing the root hash and the hashes that led to it (a Merkle proof). Conversely, there is no way to create two different states with the same root hash, and any attempt to modify state with different values will result in a different state root hash. Theoretically, this structure provides the 'holy grail' of O(log(n)) efficiency for inserts, lookups and deletes.
+
+Merkle-Patricia implemented trie are staged for deprecation to be replaced by a more efficient data structure called [**Verkle**](https://vitalik.ca/general/2022/02/28/complexity.html#verkle-trees).
+### Introduction to **Verkle**
+
+> :warning: Verkle trees are currently an active research area and this article may not be up to date with the latest developments. One can participate in the development and dicussions on [Ethereum Research](https://ethresear.ch/t/portal-network-verkle/19339)
+
+MPTs are currently employed in a variety of application in which membership proofs are sent across a network, including protocols, public-key directories, cryptocurrency such as Bitcoin and Secure File Systems. A Merkle Tree with ***n*** leaves has ***O(log(n))***-sized proofs. Althought, O(log(n)) complexity can be quite comforting, however, in large trees, sending proofs can dominate bandwidth comsumption. Verkle tree with branching factor ***k*** achieve ***O(kn)*** construction time and ***O(log`k`(n))*** membership proof-size. This means that the branching factor ***k*** offers a tradeoff between computational power and bandwidth. 
+
+One of the pressing problems of Ethereum is the current state size. Estimate at around 1-2TB(at the time of writing this article). It is impractical for nodes to hold in working memory or even in slower permanent storage per se, thus, the need for statelessness becomes crucial to growth of the network. Verkle trees with it's vector commitments allow for much smaller proofs (**called witnesses**). Instead of needing to provide hashes of all "sibling nodes" at each level, Merkle Trees, the prover needs only to provide all parent nodes(plus an extra proof, called an optional) along the path from each each leaf to the root.
 
 ### Recursive Length Prefix (RLP)
+The rationale begin creating a new serialization scheme, lies in the 
+probablistic nature of other schemes. RLP solves this problem by being highly minimalistic serialization; and guarantees absolute byte-perfect consistency. RLP does not attempt to define any specific data type such as boolean, floats, doubles or even integers -- instead, it simply exists to store structure, in the form of nested arrays. Key/value maps are also not explicitly supported; the semi-official suggestion for supporting key/value maps is to represent such maps as``` [[k1, v1], [k2, v2], ...]``` where ```k1, k2...``` are sorted using the standard ordering for strings.
+
+The notion of complete anonymity of the data structure to the serizalation algorithm over the course of time has turn out to ineffinient in case of fixed length data types like boolean, integers. SimpleSerialize(SSZ) was introduced in Ethereum 2.0 which supported both variable sized and fixed sized data types with additional features like Merkleization.
 
 ### Simple serialize (SSZ)
 
+Serialization is the process of converting data structures into format that can be transmuted, transmitted and reconstructed later. SSZ is a serialization format that is used in Ethereum 2.0 Beacon chain. Designed to be serialization scheme that is not self-describing -- rather it relies on a schema that must be known in advances. SSZ has a bunch of advantages over RLP, like efficient re-hashing of objects and fast indexing which RLP lacks resulting in O(N) complexity.
 
+One of the major problem SSZ tries to solve is RLP doesn't allow Merkelization, and this would mean disqualifying any possibility of succinct light client proofs of anything. Thus, leaving no scope of achieving statelessness. 
+Further implementation and details about Simple Serialize can be found [**here**](#)
 ### Gasper 
 
-### Gas and Fee
-
-### Virtual Machine 
  
 # References
 
