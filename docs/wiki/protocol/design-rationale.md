@@ -43,7 +43,7 @@ The preference order for where the complexity goes in: layer 2 > client implemen
 
 # [Blockchain level protocol](#blockchain-level-protocol)
 
-### Accounts over UTXOs
+### **Accounts over UTXOs**
 Earliest implementations of blockchain including bitcoin and it's derivatives, store user balance in structure based in unspent transaction outputs (UTXOs). Ethereum on the other hand uses an account based model. The account based model is more flexible and allows for more complex transactions.
 
 > **UTXO**: an unspent transaction output (UTXO) is a distinctive element in a subset of digital currency models. A UTXO represents a certain amount of cryptocurrency that has been authorized by a sender and is available to be spent by a recipient.
@@ -64,37 +64,58 @@ A user's "balance" in the system is thus the total value of the set of coins for
 
 One weakness of the account paradigm is that in order to prevent replay attacks, every transaction must have a [**nounce**](https://ethereum.stackexchange.com/questions/27432/what-is-nonce-in-ethereum-how-does-it-prevent-double-spending), such that the account keeps track of the nonces used and only accepts a transaction if its nonce is 1 after the last nonce used. This means that even no-longer-used accounts can never be pruned from the account state. A simple solution to this problem is to require transactions to contain a block number, making them un-replayable after some period of time, and reset nonces once every period. Miners or other users will need to "ping" unused accounts in order to delete them from the state, as it would be too expensive to do a full sweep as part of the blockchain protocol itself.
 
-### Merkle Patricia Trie(MPT)
+### **Merkle Patricia Trie(MPT)**
 Ethereum's data structure is a 'modified Merkle-Patricia Trie', named so because it borrows some features of PATRICIA (the Practical Algorithm To Retrieve Information Coded in Alphanumeric), and because it is designed for efficient data retrieval of items that comprise the Ethereum state.
 
 A Merkle-Patricia trie is deterministic and cryptographically verifiable: The only way to generate a state root is by computing it from each individual piece of the state, and two states that are identical can be easily proven so by comparing the root hash and the hashes that led to it (a Merkle proof). Conversely, there is no way to create two different states with the same root hash, and any attempt to modify state with different values will result in a different state root hash. Theoretically, this structure provides the 'holy grail' of O(log(n)) efficiency for inserts, lookups and deletes.
 
 Merkle-Patricia implemented trie are staged for deprecation to be replaced by a more efficient data structure called [**Verkle**](https://vitalik.ca/general/2022/02/28/complexity.html#verkle-trees).
-### Introduction to **Verkle**
+### **Introduction to Verkle**
 
 > :warning: Verkle trees are currently an active research area and this article may not be up to date with the latest developments. One can participate in the development and dicussions on [Ethereum Research](https://ethresear.ch/t/portal-network-verkle/19339)
 
-MPTs are currently employed in a variety of application in which membership proofs are sent across a network, including protocols, public-key directories, cryptocurrency such as Bitcoin and Secure File Systems. A Merkle Tree with ***n*** leaves has ***O(log(n))***-sized proofs. Althought, O(log(n)) complexity can be quite comforting, however, in large trees, sending proofs can dominate bandwidth comsumption. Verkle tree with branching factor ***k*** achieve ***O(kn)*** construction time and ***O(log`k`(n))*** membership proof-size. This means that the branching factor ***k*** offers a tradeoff between computational power and bandwidth. 
+MPTs are currently employed in a variety of application in which membership proofs are sent across a network, including protocols, public-key directories, cryptocurrency such as Bitcoin and Secure File Systems. A Merkle Tree with $n$ leaves has $O(log{_2}{n})$-sized proofs. Althought, $O(log{n})$ complexity can be quite comforting, however, in large trees, sending proofs can dominate bandwidth comsumption. Verkle tree with branching factor $k$ achieve $O(kn)$ construction time and $O(log{_k}{n})$ membership proof-size. This means that the branching factor $k$ offers a tradeoff between computational power and bandwidth. 
+
 
 One of the pressing problems of Ethereum is the current state size. Estimate at around 1-2TB(at the time of writing this article). It is impractical for nodes to hold in working memory or even in slower permanent storage per se, thus, the need for statelessness becomes crucial to growth of the network. Verkle trees with it's vector commitments allow for much smaller proofs (**called witnesses**). Instead of needing to provide hashes of all "sibling nodes" at each level, Merkle Trees, the prover needs only to provide all parent nodes(plus an extra proof, called an optional) along the path from each each leaf to the root.
 
-### Recursive Length Prefix (RLP)
+### **Recursive Length Prefix (RLP)**
 The rationale begin creating a new serialization scheme, lies in the 
 probablistic nature of other schemes. RLP solves this problem by being highly minimalistic serialization; and guarantees absolute byte-perfect consistency. RLP does not attempt to define any specific data type such as boolean, floats, doubles or even integers -- instead, it simply exists to store structure, in the form of nested arrays. Key/value maps are also not explicitly supported; the semi-official suggestion for supporting key/value maps is to represent such maps as``` [[k1, v1], [k2, v2], ...]``` where ```k1, k2...``` are sorted using the standard ordering for strings.
 
 The notion of complete anonymity of the data structure to the serizalation algorithm over the course of time has turn out to ineffinient in case of fixed length data types like boolean, integers. SimpleSerialize(SSZ) was introduced in Ethereum 2.0 which supported both variable sized and fixed sized data types with additional features like Merkleization.
 
-### Simple serialize (SSZ)
+### **Simple serialize (SSZ)**
 
-Serialization is the process of converting data structures into format that can be transmuted, transmitted and reconstructed later. SSZ is a serialization format that is used in Ethereum 2.0 Beacon chain. Designed to be serialization scheme that is not self-describing -- rather it relies on a schema that must be known in advances. SSZ has a bunch of advantages over RLP, like efficient re-hashing of objects and fast indexing which RLP lacks resulting in O(N) complexity.
+Serialization is the process of converting data structures into format that can be transmuted, transmitted and reconstructed later. SSZ is a serialization format that is used in Ethereum 2.0 Beacon chain. Designed to be serialization scheme that is not self-describing -- rather it relies on a schema that must be known in advances. SSZ has a bunch of advantages over RLP, like efficient re-hashing of objects and fast indexing which RLP lacks resulting in $O(N)$ complexity.
 
-One of the major problem SSZ tries to solve is RLP doesn't allow Merkelization, and this would mean disqualifying any possibility of succinct light client proofs of anything. Thus, leaving no scope of achieving statelessness. 
+Based on [V's comment](https://ethresear.ch/t/replacing-ssz-with-rlp-zip-and-sha256/5706/12), one of the major problem SSZ tries to solve is RLP doesn't allow Merkelization, and this would mean disqualifying any possibility of succinct light client proofs of anything. Thus, leaving no scope of achieving statelessness -- while stateleness remains a crucial objective of current Ethereum's R&D.
+
 Further implementation and details about Simple Serialize can be found [**here**](#)
-### Gasper 
 
- 
+### **Tryst with Finality**
+In Ethereum's proof-of-stake based consensus mechanisms, finality refers to the guarantee that a block cannot be altered or removed from the blockchain without burning at least 33% of the total stacked ETH. The underlying algorithm to achieve this is called **Gasper**
+
+- ***Casper FFG***
+The [Casper FFG](https://arxiv.org/abs/1710.09437v4) is an overlay atop a proposal mechanism -- a mechanism which proposes blocks. Casper is responsible for finalizing these blocks, essentially selecting a unique chain which represents the canonical transaction in the ledger. This is achieved by employing [slashing](https://blog.ethereum.org/2014/01/15/slasher-a-punitive-proof-of-stake-algorithm) which was first proposed in 2014. Casper is follows a BFT tradition with some modifications to achieve PoS. 
+Simply put, each validator will vote on the checkpoint, and after two rounds of voting, the checkpoint will be **finalized**. All the finalized checkpoints become the canonical chain(part of the blockchain history). While Casper is used to guarantee **finality**, brought about by attestations to the latest block addition to the canonical chain -- it requires a fork-choice rule where validators attest to blocks to signal support for those blocks.
+
+- ***LMD GHOST***
+Latest Message Driven Greediest Heaviest Observed Sub-Tree (LMD-GHOST) is a *fork choice rule* where validators attests to blocks to signal support for those blocks. This similar in some ways to the fork choice rule used in Proof-of-Work network -- where the fork with the most work done is selected to be the canonical chain.
+
+![LMD-GHOST-Alogrithm](./img/lmt-ghost.png)
+
+Gapser is full proof-of-stake protocol that is an idealized abstraction of the Ethereum implementation. A combination of Casper FFG and LMDGHOST driving the consensus mechanism for the Eth2.
 # References
 
 - https://web.archive.org/web/20211121044757/https://ethereumbuilders.gitbooks.io/guide/content/en/design_rationale.html
 
 - https://vitalik.eth.limo/general/2022/02/28/complexity.html
+
+- https://dankradfeist.de/ethereum/2021/02/14/why-stateless.html
+
+- https://math.mit.edu/research/highschool/primes/materials/2018/Kuszmaul.pdf
+
+- https://arxiv.org/pdf/2003.03052
+
+- https://blog.ethereum.org/2014/01/15/slasher-a-punitive-proof-of-stake-algorithm
