@@ -1,8 +1,5 @@
 # [Protocol Design Philosophy](#protocol-design-philosophy)
 
-> :warning: This article is a [stub](https://en.wikipedia.org/wiki/Wikipedia:Stub), help the wiki by [contributing](/contributing.md) and expanding it.
-
-
 These are the core tenets that sparked the work on Ethereum's architeture and imlementation.
 
 - **Simplicity**:
