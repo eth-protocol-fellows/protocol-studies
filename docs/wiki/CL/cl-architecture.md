@@ -1,6 +1,10 @@
 # CL Client architecture
 
-> :warning: This article is a [stub](https://en.wikipedia.org/wiki/Wikipedia:Stub), help the wiki by [contributing](/contributing.md) and expanding it.
+A consensus algorithm is a mechanism that enables users or machines to coordinate in a distributed setting, ensuring all agents agree on a single source of truth even if some agents fail. This fault-tolerant (also called [BFT](https://academy.binance.com/en/articles/byzantine-fault-tolerance-explained)) system, essential in decentralized systems, contrasts sharply with centralized setups where a single entity governs decisions.
+
+In a decentralized setup, such as a distributed database, reaching agreement on new entries is complex, especially when participants may not trust each other. Overcoming this challenge was crucial for the development of blockchains. Consensus algorithms are vital for the functioning of cryptocurrencies and distributed ledgers.
+
+
 
 Beacon Chain clients are implementing various fundamental features: 
 
@@ -11,7 +15,6 @@ Beacon Chain clients are implementing various fundamental features:
 
 ## Resources
 
-- Alt Explainer, ["Ethereum's Proof of Stake consensus explained."](https://www.youtube.com/watch?v=5gfNUVmX3Es)
 - Vitalik Buterin, ["Parametrizing Casper: the decentralization/finality time/overhead tradeoff"](https://medium.com/@VitalikButerin/parametrizing-casper-the-decentralization-finality-time-overhead-tradeoff-3f2011672735)
 - Ethereum, ["Eth2: Annotated Spec"](https://github.com/ethereum/annotated-spec)
 - Martin Kleppmann, [Distributed Systems.](https://www.youtube.com/playlist?list=PLeKd45zvjcDFUEv_ohr_HdUFe97RItdiB)

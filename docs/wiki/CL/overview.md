@@ -311,10 +311,12 @@ The Beacon Chain's introduction on December 1, 2020, began with 21,063 validator
 <!-- #### TODO in future-->
 <!-- Can add a section on Evolution of Ethereum PoS that covers
 Historical context and early proposal
-Research and development phases
-Implementation challenges and solutions -->
+Research and developmental phases for future -->
 
 ### Resources and References used to write this:
 
 - [Beacon Chain Explainer from ethos.dev](https://ethos.dev/beacon-chain)
 - [Evolution of Ethereum Proof-of-Stake](https://github.com/ethereum/pos-evolution/blob/master/pos-evolution.md)
+- Alt Explainer, [Ethereum's Proof of Stake consensus explained](https://www.youtube.com/watch?v=5gfNUVmX3Es)
+
+### Further Reading Resources
