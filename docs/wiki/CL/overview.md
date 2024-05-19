@@ -2,29 +2,36 @@
 
 > The engine was changed mid-flight! September 15, 2022 — the day Ethereum switched to Proof-of-Stake. That new engine is the Consensus Layer, formerly known as Ethereum 2.0’s Beacon Chain.
 
-In Ethereum, reaching a consensus means that at least 66% or two-thirds of the network's nodes agree on the global state of the blockchain. This formal agreement is crucial for maintaining the network’s integrity and security.
+In Ethereum, reaching a consensus means that at least 66% or two-thirds of the network's nodes agree on the global state of the blockchain. This agreement is crucial for maintaining the network’s integrity and security.
 
-The Consensus Layer defines the mechanism for nodes to agree on the network's state. This layer currently employs Proof-of-Stake (PoS), a crypto-economic system. PoS encourages honest behavior by requiring validators to lock ETH. These validators are responsible for proposing new blocks, validating existing ones, and processing transactions. The protocol enforces rewards and penalties to ensure validator integrity and deter malicious activity.
+The Consensus Layer defines the mechanism for nodes to agree on the network's state. It currently employs Proof-of-Stake (PoS), a crypto-economic system. PoS encourages honest behavior by requiring validators to lock ETH. These validators are responsible for proposing new blocks, validating existing ones, and processing transactions. The protocol enforces rewards and penalties to ensure validator integrity and deter malicious activity.
 
-#### Some History on Forks and ChainId
+#### Forks and ChainId
 
 Since Ethereum is a decentralized network, any participant can attempt to add a new block to an existing chain of blocks. This creates a branching structure of blocks resembling a tree. To determine the main path from the root (the initial genesis block) to the leaf (the most recent block), a consensus mechanism is needed. If nodes disagree on which path represents the official blockchain, this disagreement results in a fork — a split where different nodes might follow different histories beyond a certain point, each considering their chosen history as the correct one. This divergence can lead to incompatible records of transactions, undermining trust in the system.
 
 Since the Paris hard fork, Ethereum manages consensus through a separate protocol known as the Beacon Chain. This is part of Ethereum's consensus layer, which sets the rules for identifying the valid sequence of blocks.
 
-Occasionally actors do not agree on a protocol change (not everybody believes in "Move fast and break everything" Philosophy), and a permanent fork occurs like Ethereum Classic (ETC). In order to distinguish between diverged blockchains, [EIP-155](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-155.md) by Vitalik introduced the concept of chain ID, which is mathematically denoted by $\beta$. For the Ethereum main network $\beta$ is 1.
+Occasionally actors do not agree on a protocol change (not everybody believes in the 'not entirely serious mantra': ['Move fast and break things'](https://github.com/ethereumbook/ethereumbook/blob/c5ddebd3dbec804463c86d0ae2de9f28fbafb83a/01what-is.asciidoc?plain=1#L240)), leading to a permanent fork, such as Ethereum Classic (ETC). Therefore, In order to distinguish between diverged blockchains, [EIP-155](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-155.md) by Vitalik introduced the concept of chain ID, which is mathematically denoted by $\beta$. For the Ethereum main network $\beta$ is 1, obviously.
 
 ## Transition to Proof-of-stake
 
 <!-- Should I add some more stuff on PoW like limitations etc-->
 
-The Paris hard fork marked a significant transition for Ethereum, shifting its consensus mechanism from Proof of Work (PoW) to Proof of Stake (PoS). This change represents a fundamental shift in how blocks are validated and new transactions are added to the blockchain. The transition to Proof-of-Stake (PoS) in Ethereum aimed to address the limitations of Proof-of-Work (PoW), particularly its high energy consumption and scalability issues. PoS was designed to be more efficient and secure by relying on validators who stake ETH as collateral. As I mentioned earlier that not everyone agrees to protocol changes, so there are still some clients who didn't upgrade and now run a separate chain/fork called Ethereum PoW (ETHW). 
+The Paris hard fork marked a significant transition for Ethereum, shifting its consensus mechanism from Proof-of-Work (PoW) to Proof-of-Stake (PoS). This change represents a fundamental shift in how blocks are validated and new transactions are added to the blockchain. The transition to Proof-of-Stake (PoS) in Ethereum aimed to address the limitations of Proof-of-Work (PoW), particularly its high energy consumption and scalability issues. PoS is designed to be more efficient and secure by relying on validators who stake ETH as collateral. As I mentioned earlier, not everyone agrees to protocol changes, so there are still some clients who didn't upgrade and now run a separate chain/fork called Ethereum PoW (ETHW).
+
+These are the 3 Key and significant milestones in the Transition: 
+
+- **Casper Research and Development**: Early research into PoS led to the development of the Casper protocol, a fundamental component of Ethereum’s PoS system. This will be explained in detail in the CL architecture section.
+- **Beacon Chain Launch**: In December 2020, the Beacon Chain was launched as a separate PoS blockchain running in parallel with the Ethereum mainnet. Its primary goal was to handle PoS consensus and coordinates validators.
+- **The Merge**: A future upgrade (now past) that unifies the Beacon Chain with the Ethereum mainnet, completing the transition to PoS.
 
 ### Transition Criteria and Terminal Block
 
-Unlike previous hard forks in Ethereum, which typically occurred at a predetermined block height, the Paris hard fork was designed to activate based on a specific condition known as the "terminal total difficulty" (TTD). This approach was chosen to mitigate potential risks associated with the transition like avoiding malicious forks.
+Unlike previous hard forks in Ethereum, which typically occurred at a predetermined block height, the Paris hard fork was designed to activate based on a specific condition known as the "terminal total difficulty" (TTD). This approach was chosen to mitigate potential risks associated with the transition, such as avoiding malicious forks.
  
-- **Avoiding Malicious Forks:** By using total difficulty instead of block height, the transition avoids scenarios where a minority of hash power could potentially extend a competing PoW chain to reach a predefined block height first, thus creating a malicious fork (smart but evil). This method ensures that the transition to PoS would occur only when the cumulative difficulty of mined blocks reached a critical, predefined threshold, making it much harder for any minority group to influence or hijack the transition (smarter). So terminal block was defined as followed.
+- **Avoiding Malicious Forks:** By using total difficulty instead of block height, the transition avoids scenarios where a minority of hash power could potentially extend a competing PoW chain to reach a predefined block height first, thus creating a malicious fork (smart but evil). This method ensures that the transition to PoS would occur only when the cumulative difficulty of mined blocks reaches a critical, predefined threshold, making it much harder for any minority group to influence or hijack the transition (smarter). So the terminal block was defined as follows.
+
 
 The **terminal block**, which is the last block mined using PoW, was defined by the following criteria:
    - The total difficulty of the block ($B_t$) must exceed a predefined threshold (`58750000000000000000000` in this case).
@@ -41,21 +48,13 @@ Total difficulty ($B_t$) of a block in the PoW system was calculated recursively
 
 This calculation accumulates the difficulty of each block, adding up to a total that reflects the overall computational effort expended to reach the current state of the blockchain.
 
-The Notation are taken from Ethereum yellowpaper, It might be confusing to understand but allow me explain it clearly. 
+The notations are taken from the Ethereum yellowpaper, It might be confusing to understand but allow me explain it clearly. After knowing the notations properly try to read it again, it would be easier to understand. 
    - $B_H$ represent Block $B$ with the Block Header $H$
    - $B_t$ represents total difficulty of Block $B$, $H_d$ also represent total difficulty but of Block with the Block Header $H$
    - $P(B_H)$ represent parent of $B_H$ and $P(B_H)_t$ means total difficulty of the parent block $P(B_H)$
 
-### Actual Transition
-
-These are the 3 Key and significant milestones in the Transition: 
-
-- **Casper Research and Development**: Early research into PoS led to the development of the Casper protocol, a fundamental component of Ethereum’s PoS system. This will be explained in detail in the CL architecture section.
-- **Beacon Chain Launch**: In December 2020, the Beacon Chain was launched as a separate PoS blockchain running in parallel with the Ethereum mainnet. Its primary goal was to handle PoS consensus and coordinates validators.
-- **The Merge**: A future upgrade (now past) that unifies the Beacon Chain with the Ethereum mainnet, completing the transition to PoS.
-
 Upon reaching the terminal block:
-- **Beacon Chain Takes Over**: The Beacon Chain, already running in parallel to the Ethereum mainnet, assumes responsibility for processing new blocks. Under PoS, blocks are validated by validators who stake their ETH to participate in the consensus mechanism, rather than by miners solving cryptographic puzzles.
+- **Beacon Chain Takes Over**: The Beacon Chain, already running in parallel with the Ethereum mainnet, assumes the responsibility for processing new blocks. Under PoS, blocks are validated by validators who stake their ETH to participate in the consensus mechanism, rather than by miners solving cryptographic puzzles.
 
 - **Security and Efficiency**: This transition not only aims to enhance the security of the Ethereum network by making it more decentralized but also significantly reduces its energy consumption, addressing one of the major criticisms of traditional PoW systems.
 
