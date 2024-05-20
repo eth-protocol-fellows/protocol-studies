@@ -9,4 +9,4 @@
 
 - [Post-Mortem Report: Ethereum Mainnet Finality (05/11/2023)](https://medium.com/offchainlabs/post-mortem-report-ethereum-mainnet-finality-05-11-2023-95e271dfd8b2) The Mainnet had some disruptions, which led to blocks not getting produced leading to a significant delay in transactions reaching finality, this continued for two days and resulted in an inactivity consequence, the network fully recovered without intervention.
 
-- [Post-Mortem Report: Minority Split (2021-08-27)](https://github.com/ethereum/go-ethereum/blob/master/docs/postmortems/2021-08-22-split-postmortem.md) This happened when Geth tried to assign data back into memory after the "datacopy" operation. Instead of saving the data in a new location, it accidentally overwrote the original data, causing it to become corrupted.
+- [Post-Mortem Report: Minority Split (2021-08-27)](https://github.com/ethereum/go-ethereum/blob/master/docs/postmortems/2021-08-22-split-postmortem.md) This happened when Geth tried to assign data back into memory after the `datacopy` operation. Instead of saving the data in a new location, it accidentally overwrote the original data, causing it to become corrupted.
