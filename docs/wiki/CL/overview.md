@@ -34,11 +34,9 @@ In blockchain and distributed ledger systems, the Byzantine Generals' Problem is
 > - Consensus is a way to build reliable distributed systems with unreliable components.
 > - Blockchain-based distributed systems aim to agree on a single history of transactions.
 > - Proof of work and proof of stake are not consensus protocols, but enable consensus protocols.
-> - Many blockchain consensus protocols are "forkful".
-> - Forkful chains use a fork choice rule, and sometimes undergo reorganisations.
-> - In a "safe" protocol, nothing bad ever happens.
-> - In a "live" protocol, something good always happens.
-> - No practical protocol can be always safe and always live.
+> - Nodes and validators are the actors of the consensus system.
+> - Slots and epochs regulate consensus time.
+> - Blocks and attestations are the currency of consensus.
 
 The Consensus Layer (CL) is a fundamental component that ensures the network's security, reliability, and efficiency. Originally, Ethereum utilized Proof-of-Work (PoW) as its consensus mechanism, similar to Bitcoin. PoW, while effective in maintaining decentralization and security, has significant drawbacks, including high energy consumption and limited scalability. To address these issues, Ethereum has transitioned to Proof of Stake (PoS), a more sustainable and scalable consensus mechanism.
 
@@ -80,21 +78,11 @@ _Time moves from left to right and, except for the Genesis block, each block poi
 
 The chain grows as nodes add new blocks to its tip. This is done by temporarily selecting a "leader", the node that extends the chain. In PoW, the leader is the miner who first solves the PoW puzzle for its block. In Ethereum's PoS, the leader is pseudo-randomly selected from active stakers.
 
-The leader (block proposer) adds a block to the chain, choosing and ordering its contents. The block must be valid according to protocol rules, or the network will ignore it.
+The leader (block proposer) adds a block to the chain, choosing and ordering its contents. The block must be valid according to protocol rules, or the network will ignore it. Using blocks is an optimization. Adding individual transactions one by one would create a huge consensus overhead. So blocks are batches of transactions, and sometimes [people argue](https://www.bitrawr.com/bitcoin-block-size-debate-explained) about how big those blocks should be. The size of these blocks can vary:
 
-### Block Size
+In Bitcoin, block size is limited by the number of bytes. In Ethereum's execution chain, block size is limited by the block gas limit (the amount of work needed to process the transactions). [Beacon block](link to beeaconblock class) sizes are limited by hard-coded constants.
 
-Using blocks is an optimization. Adding individual transactions one by one would create a huge consensus overhead. So, blocks batch transactions together. The size of these blocks can vary:
-
-- In Bitcoin, block size is limited by the number of bytes.
-- In Ethereum's execution chain, block size is limited by the block gas limit (the amount of work needed to process the transactions).
-- Beacon block sizes are limited by hard-coded constants.
-
-In summary, PoW and PoS are crucial components that enable consensus protocols, and blocks are the fundamental units that build the blockchain, ensuring all nodes maintain a consistent and agreed-upon history.
-
-> The engine was changed mid-flight! September 15, 2022 — the day Ethereum switched to Proof-of-Stake. That new engine is the Consensus Layer, formerly known as Ethereum 2.0’s Beacon Chain.
-
-#### Forks and ChainId
+### Forks and ChainId
 
 Since Ethereum is a decentralized network, any participant can attempt to add a new block to an existing chain of blocks. This creates a branching structure of blocks resembling a tree. To determine the main path from the root (the initial genesis block) to the leaf (the most recent block), a consensus mechanism is needed. If nodes disagree on which path represents the official blockchain, this disagreement results in a fork — a split where different nodes might follow different histories beyond a certain point, each considering their chosen history as the correct one. This divergence can lead to incompatible records of transactions, undermining trust in the system.
 
@@ -103,6 +91,10 @@ Since the Paris hard fork, Ethereum manages consensus through a separate protoco
 Occasionally actors do not agree on a protocol change (not everybody believes in the 'not entirely serious mantra': ['Move fast and break things'](https://github.com/ethereumbook/ethereumbook/blob/c5ddebd3dbec804463c86d0ae2de9f28fbafb83a/01what-is.asciidoc?plain=1#L240)), leading to a permanent fork, such as Ethereum Classic (ETC). Therefore, In order to distinguish between diverged blockchains, [EIP-155](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-155.md) by Vitalik introduced the concept of chain ID, which is mathematically denoted by $\beta$. For the Ethereum main network $\beta$ is 1, obviously.
 
 The Paris hard fork marked a significant transition for Ethereum, shifting its consensus mechanism from Proof-of-Work (PoW) to Proof-of-Stake (PoS). This change represents a fundamental shift in how blocks are validated and new transactions are added to the blockchain. The transition to Proof-of-Stake (PoS) in Ethereum aimed to address the limitations of Proof-of-Work (PoW), particularly its high energy consumption and scalability issues. PoS is designed to be more efficient and secure by relying on validators who stake ETH as collateral. As I mentioned earlier, not everyone agrees to protocol changes, so there are still some clients who didn't upgrade and now run a separate chain/fork called Ethereum PoW (ETHW).
+
+## Transition to Proof-of-Stake
+
+> The engine was changed mid-flight! September 15, 2022 — the day Ethereum switched to Proof-of-Stake. That new engine is the Consensus Layer, formerly known as Ethereum 2.0’s Beacon Chain.
 
 ### Transition Criteria and Terminal Block
 
@@ -147,12 +139,11 @@ The Beacon Chain plays a crucial role in managing the PoS consensus. It oversees
 - **Rewards and Penalties**: Validators earn rewards for honest participation and face slashing penalties for malicious actions or inactivity.
 - **Participating in Consensus**: Validators participate in consensus by voting on the state of the blockchain at regular intervals, helping to finalize the blockchain's state.
 
-
 The Paris hard fork was a pivotal event in Ethereum's history, setting the stage for more scalable, sustainable, and secure operations. It represents Ethereum's commitment to innovation and its responsiveness to the broader societal concerns about the environmental impact of cryptocurrency mining.
 
-## Proof-of-stake
+## Beacon Chain and its preliminaries
 
-Proof-of-Stake (PoS) is Ethereum's new consensus mechanism designed to improve security, scalability, and energy efficiency. Unlike Proof-of-Work (PoW), PoS relies on validators who stake Ether (ETH) to participate in the network, rather than miners solving cryptographic puzzles. More details on the actual consensus methods is covered in [CL Architecture]().
+The Beacon Chain is the backbone of Ethereum’s consensus. It coordinates validators, manages the PoS protocol, and ensures consensus across the network. This section with cover the anatomy of Beacon chain.
 
 ### Validators
 
@@ -162,10 +153,6 @@ Validators are essentially the participants in the PoS Protocol. They propose an
 - **Randomness**: The selection process incorporates cryptographic randomness to prevent predictability and manipulation. This is achieved through the [RANDAO](https://inevitableeth.com/home/ethereum/network/consensus/randao) and [VDF (Verifiable Delay Function)](https://inevitableeth.com/home/ethereum/upgrades/consensus-updates/vdf) mechanisms.
 - **Committees**: Validators are grouped into committees for block proposal and attestation. Each committee is responsible for validating and attesting to blocks, ensuring a decentralized and secure validation process.
 - **Staking Requirements**: To become a validator, an individual must deposit a minimum of 32 ETH into the official deposit contract. This ETH acts as collateral to incentivize honest behavior. The validator's ETH is at risk if they fail to perform their duties or engage in malicious activities.
-
-## Beacon Chain
-
-The Beacon Chain is the backbone of Ethereum’s consensus. It coordinates validators, manages the PoS protocol, and ensures consensus across the network. This section with cover the anatomy of Beacon chain.
 
 ### Slots and Epochs
 
@@ -328,7 +315,7 @@ Consider a block proposed at Slot 64 containing attestations for the Epoch 2 che
 
 In essence, Committees allow for the technical optimization of combining signatures from each attester into a single aggregate signature.  When validators in the same committee make the same LMD GHOST and FFG votes, their signatures can be aggregated.
 
-## Staking Rewards and Penalties
+### Staking Rewards and Penalties
 
 Ethereum’s PoS system employs a comprehensive set of rewards and penalties to incentivize validator behavior and maintain network security. This section covers six key aspects of these incentives:
 
@@ -357,7 +344,6 @@ There are four conditions under which a validator can be slashed:
 - **LMD GHOST Double Vote:** Attesting to different Beacon Chain heads for the same slot.
 - **FFG Surround Vote:** Casting an FFG vote that surrounds or is surrounded by a previous FFG vote by the same validator.
 - **FFG Double Vote:** Casting two FFG votes for different targets in the same epoch.
-
 
 ## Beacon Chain Validator Activation and Lifecycle:
 
@@ -395,5 +381,6 @@ Research and developmental phases for future -->
 - [Beacon Chain Explainer from ethos.dev](https://ethos.dev/beacon-chain)
 - [Evolution of Ethereum Proof-of-Stake](https://github.com/ethereum/pos-evolution/blob/master/pos-evolution.md)
 - Alt Explainer, [Ethereum's Proof of Stake consensus explained](https://www.youtube.com/watch?v=5gfNUVmX3Es)
+- [Eth2 Handbook by Ben Edington](https://eth2book.info/capella/part2/consensus/)
 
 ### Further Reading Resources
