@@ -1,10 +1,98 @@
-# Consensus layer
+# Consensus Layer Overview
+
+The main challenge a consensus protocol aims to solve is building a reliable distributed system on top of unreliable infrastructure. Research on consensus protocols dates back to the 1970s, but the scale of what Ethereum is trying to achieve far more ambitious.
+
+In Ethereum's consensus layer, the goal is to ensure that tens of thousands of independent nodes around the world stay reasonably synchronized. Each node keeps a ledger with the state of every account, and all these ledgers must match exactly. There can be no differences; the nodes must agree and do so quickly. This is what we mean by "a reliable distributed system."
+
+These nodes often use [consumer grade hardware](https://stakefromhome.com/) and communicate over internet connections that may be slow, lose data, or disconnect unexpectedly. Node operators might misconfigure their software or fail to update it. Additionally, there could be many bad actors running rogue nodes or tampering with communications for personal gain. This is what we mean by "unreliable infrastructure."
+
+## Byzantine Fault Tolerance (BFT) and Byzantine Generals' Problem
+
+Byzantine Fault Tolerance (BFT) is a property of distributed systems that allows them to function correctly even when some components fail or act maliciously. BFT is crucial in decentralized networks, where trust among nodes cannot be assumed. In other words, a system exhibiting BFT can tolerate Byzantine faults, which are arbitrary failures that include malicious behavior. For a system to be Byzantine fault-tolerant, it must reach consensus despite these faults.
+
+#### Practical Byzantine Fault Tolerance (pBFT)
+
+pBFT is an algorithm designed to improve the efficiency of achieving BFT in practical applications. It works by having nodes communicate with each other to agree on the system's state. The algorithm operates in several rounds of voting, where nodes exchange messages to confirm the validity of transactions. pBFT ensures that as long as less than one-third of the nodes are faulty, consensus can be achieved.
+
+#### Byzantine Generals' Problem
+
+The Byzantine Generals’ Problem was [conceived](https://www.microsoft.com/en-us/research/uploads/prod/2016/12/The-Byzantine-Generals-Problem.pdf) in 1982 as a logical dilemma that illustrates how a group of Byzantine generals may have communication problems when trying to agree on their next move. It illustrates the difficulty of achieving consensus in a distributed system with potentially faulty nodes. It is framed as a scenario where several Byzantine generals must agree on a coordinated attack plan, but some of them may be traitors trying to prevent consensus.
+
+The dilemma assumes that each general has its own army and that each group is situated in different locations around the city they intend to attack. The generals can communicate with one another only by messenger. After observing the enemy they must decide on a common plan of action. It does not matter whether they attack or retreat, as long as all generals reach consensus, i.e., agree on a common decision in order to execute it in coordination.
+
+The central challenge of the Byzantine Generals’ Problem is that the messages can get somehow delayed, destroyed or lost. In addition, even if a message is successfully delivered, one or more generals may choose (for whatever reason) to act maliciously and send a fraudulent message to confuse the other generals, leading to a total failure. If we apply the dilemma to the context of blockchains, each general represents a network node, and the nodes need to reach consensus on the current state of the system. Putting in another way, the majority of participants within a distributed network have to agree and execute the same action in order to avoid complete failure. 
+
+Therefore, the only way to achieve consensus in these types of distributed system is by having at least ⅔ or more reliable and honest network nodes. This means that if the majority of the network decides to act maliciously, the system is susceptible to failures and attacks (such as the 51% attack).
+
+In blockchain and distributed ledger systems, the Byzantine Generals' Problem is analogous to nodes (validators or miners) needing to agree on the state of the ledger despite some nodes potentially acting maliciously.
+
+
+## Introduction to Consensus Layer (CL)
+
+**tldr;**
+
+> - Consensus is a way to build reliable distributed systems with unreliable components.
+> - Blockchain-based distributed systems aim to agree on a single history of transactions.
+> - Proof of work and proof of stake are not consensus protocols, but enable consensus protocols.
+> - Many blockchain consensus protocols are "forkful".
+> - Forkful chains use a fork choice rule, and sometimes undergo reorganisations.
+> - In a "safe" protocol, nothing bad ever happens.
+> - In a "live" protocol, something good always happens.
+> - No practical protocol can be always safe and always live.
+
+The Consensus Layer (CL) is a fundamental component that ensures the network's security, reliability, and efficiency. Originally, Ethereum utilized Proof-of-Work (PoW) as its consensus mechanism, similar to Bitcoin. PoW, while effective in maintaining decentralization and security, has significant drawbacks, including high energy consumption and limited scalability. To address these issues, Ethereum has transitioned to Proof of Stake (PoS), a more sustainable and scalable consensus mechanism.
+
+The Ethereum network consists of many individual nodes. Each node operates independently and communicates over the Internet, which is often unreliable and asynchronous. A node might always behave correctly, or it might be faulty in various ways: being offline, using a different protocol version, trying to mislead other nodes, sending contradictory messages, or experiencing other issues.
+
+Users send transactions to this network of nodes, and the consensus protocol ensures that all honest nodes eventually agree on a single, consistent transaction history. This means they agree on the order of transactions and their outcomes. For example, if I have 1 ETH and tell the network to send it to both Alice and Bob at the same time, the network must eventually agree on whether I sent it to Alice or Bob. It would be a failure if both Alice and Bob received the Ether, or if neither did. A consensus protocol is the process that enables this agreement on transaction order.
+
+Ethereum's consensus protocol actually "bolts together" two different consensus protocols. One is called [LMD GHOST](/wiki/CL/cl-architecture), the other [Casper FFG](link to arch casper). The combination has become known as [Gasper](). In subsequent sections we will be looking at these both separately and in combination.
+
+## Proof-of-Work and Proof-of-stake
+
+This is a good point to clarify that neither Proof-of-Work (PoW) nor Proof-of-Stake (PoS) are consensus protocols by themselves. They are often incorrectly referred to as such, but they are actually mechanisms that enable consensus protocols. Both PoW and PoS primarily serve as Sybil resistance mechanisms, placing a cost on participating in the protocol. This prevents attackers from overwhelming the system cheaply.
+
+However, both PoW and PoS are closely linked to the consensus mechanisms they support through [fork choice](/wiki/link-to-fork-choice-cl-arch) rules. They help assign a weight or score to a chain of blocks: in PoW, it's the total computational work done; in PoS, it's the total value staked that supports a particular chain. Beyond these basics, PoW and PoS can support various consensus protocols, each with its own dynamics and trade-offs.
+
+### Block chains
+
+The basic element of a blockchain is the block. A block contains a set of transactions assembled by a leader (block proposer). The contents of a block can vary based on the protocol.
+
+- The payload of a block on Ethereum's execution chain is a list of user transactions.
+- In the pre-Merge PoS Beacon Chain, a block's payload was mostly a set of attestations by validators.
+- Post-Merge Beacon Chain blocks also include the execution payload (user transactions).
+- After [EIP-4844](https://eips.ethereum.org/EIPS/eip-4844)(Deneb upgrade), blocks now also contain commitments to opaque data blobs alongside user transactions.
+
+Except for the Genesis block, each block builds on and points to a parent block, forming a chain of blocks: a blockchain. The goal is for all nodes on the network to agree on the same blockchain history.
+
+<a id="img_blockchain"></a>
+
+<figure class="diagram" style="text-align:center">
+
+![Diagram for Block Chain](../../images/cl/blockchain.svg)
+
+<figcaption>
+
+_Time moves from left to right and, except for the Genesis block, each block points to the parent block it builds on._
+
+</figcaption>
+</figure>
+
+The chain grows as nodes add new blocks to its tip. This is done by temporarily selecting a "leader", the node that extends the chain. In PoW, the leader is the miner who first solves the PoW puzzle for its block. In Ethereum's PoS, the leader is pseudo-randomly selected from active stakers.
+
+The leader (block proposer) adds a block to the chain, choosing and ordering its contents. The block must be valid according to protocol rules, or the network will ignore it.
+
+### Block Size
+
+Using blocks is an optimization. Adding individual transactions one by one would create a huge consensus overhead. So, blocks batch transactions together. The size of these blocks can vary:
+
+- In Bitcoin, block size is limited by the number of bytes.
+- In Ethereum's execution chain, block size is limited by the block gas limit (the amount of work needed to process the transactions).
+- Beacon block sizes are limited by hard-coded constants.
+
+In summary, PoW and PoS are crucial components that enable consensus protocols, and blocks are the fundamental units that build the blockchain, ensuring all nodes maintain a consistent and agreed-upon history.
 
 > The engine was changed mid-flight! September 15, 2022 — the day Ethereum switched to Proof-of-Stake. That new engine is the Consensus Layer, formerly known as Ethereum 2.0’s Beacon Chain.
-
-In Ethereum, reaching a consensus means that at least 66% or two-thirds of the network's nodes agree on the global state of the blockchain. This agreement is crucial for maintaining the network’s integrity and security.
-
-The Consensus Layer defines the mechanism for nodes to agree on the network's state. It currently employs Proof-of-Stake (PoS), a crypto-economic system. PoS encourages honest behavior by requiring validators to lock ETH. These validators are responsible for proposing new blocks, validating existing ones, and processing transactions. The protocol enforces rewards and penalties to ensure validator integrity and deter malicious activity.
 
 #### Forks and ChainId
 
@@ -14,17 +102,7 @@ Since the Paris hard fork, Ethereum manages consensus through a separate protoco
 
 Occasionally actors do not agree on a protocol change (not everybody believes in the 'not entirely serious mantra': ['Move fast and break things'](https://github.com/ethereumbook/ethereumbook/blob/c5ddebd3dbec804463c86d0ae2de9f28fbafb83a/01what-is.asciidoc?plain=1#L240)), leading to a permanent fork, such as Ethereum Classic (ETC). Therefore, In order to distinguish between diverged blockchains, [EIP-155](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-155.md) by Vitalik introduced the concept of chain ID, which is mathematically denoted by $\beta$. For the Ethereum main network $\beta$ is 1, obviously.
 
-## Transition to Proof-of-stake
-
-<!-- Should I add some more stuff on PoW like limitations etc-->
-
 The Paris hard fork marked a significant transition for Ethereum, shifting its consensus mechanism from Proof-of-Work (PoW) to Proof-of-Stake (PoS). This change represents a fundamental shift in how blocks are validated and new transactions are added to the blockchain. The transition to Proof-of-Stake (PoS) in Ethereum aimed to address the limitations of Proof-of-Work (PoW), particularly its high energy consumption and scalability issues. PoS is designed to be more efficient and secure by relying on validators who stake ETH as collateral. As I mentioned earlier, not everyone agrees to protocol changes, so there are still some clients who didn't upgrade and now run a separate chain/fork called Ethereum PoW (ETHW).
-
-These are the 3 Key and significant milestones in the Transition: 
-
-- **Casper Research and Development**: Early research into PoS led to the development of the Casper protocol, a fundamental component of Ethereum’s PoS system. This will be explained in detail in the CL architecture section.
-- **Beacon Chain Launch**: In December 2020, the Beacon Chain was launched as a separate PoS blockchain running in parallel with the Ethereum mainnet. Its primary goal was to handle PoS consensus and coordinates validators.
-- **The Merge**: A future upgrade (now past) that unifies the Beacon Chain with the Ethereum mainnet, completing the transition to PoS.
 
 ### Transition Criteria and Terminal Block
 
