@@ -89,12 +89,26 @@ Later, perhaps, a block $H$ might appear, that's built on $F$, and the fork choi
 
 Short reorgs of one or two blocks are common due to network delays. Longer reorgs should be rare unless the chain is under attack or there is a bug in the fork choice rule or its implementation.
 
+### Safety and Liveness
 
+In consensus mechanisms, two key concepts are safety and liveness.
+
+**Safety** means "nothing bad ever happens," such as preventing double-spending or finalizing conflicting checkpoints. It ensures consistency, meaning all honest nodes should always agree on the state of the blockchain.
+
+**Liveness** means "something good eventually happens," ensuring the blockchain can always add new blocks and never gets stuck in a deadlock.
+
+**CAP Theorem** states that no distributed system can provide consistency, availability, and partition tolerance simultaneously. This means we can't design a system that is both safe and live under all circumstances when communication is unreliable.
+
+#### Ethereum Prioritizes Liveness
+
+Ethereum’s consensus protocol aims to offer both safety and liveness in good network conditions. However, it prioritizes liveness during network issues. In a network partition, nodes on each side will continue to produce blocks but won't achieve finality (a safety property). If the partition persists, each side may finalize different histories, leading to two irreconcilable, independent chains.
+
+Thus, while Ethereum strives for both safety and liveness, it leans towards ensuring the network remains live and continues to process transactions, even at the cost of potential safety issues during severe network disruptions.
 
 - Block Trees (Done)
 - Fork Choice Rule (Done)
 - Reorgs, reversion (Done)
-- Safety liveness CAP
+- Safety liveness CAP (Done)
 - GHOSTs in the machine
 - Casper FFG and LMD Ghost
 - Casper FFG and LMD Ghost together gasper
