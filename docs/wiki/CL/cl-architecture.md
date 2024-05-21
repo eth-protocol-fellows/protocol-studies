@@ -16,6 +16,7 @@
 
 As described in [previous section](/wiki/CL/overview.md), for various reasons - like network delays, outages, out-of-order messages, or malicious behavior — nodes in the network can have different views of the network's state. Eventually, we want every honest node to agree on an identical, linear history and a common view of the system's state. The protocol's fork choice rule is what helps achieve this agreement.
 
+#### Block Tree
 Given a block tree and decision criteria based on a node's local view of the network, the fork choice rule is designed to select the branch that is most likely to become the final, linear, canonical chain. It chooses the branch least likely to be pruned out as nodes converge on a common view.
 
 <a id="img_blocktree"></a>
@@ -31,6 +32,8 @@ _The fork choice rule picks a head block from the candidates. The head block ide
 </figcaption>
 </figure>
 
+#### Fork choice rules
+
 The fork choice rule implicitly selects a branch by choosing a block at the branch's tip, called the head block. For any correct node, the first rule of any fork choice is that the chosen block must be valid according to protocol rules, and all its ancestors must also be valid. Any invalid block is ignored, and blocks built on an invalid block are also invalid.
 
 There are several examples of different fork choice rules:
@@ -42,9 +45,55 @@ There are several examples of different fork choice rules:
 
 Each of these fork choice rules assigns a numeric score to a block. The winning block, or head block, has the highest score. The goal is that all correct nodes, when they see a certain block, will agree that it is the head and follow its branch. This way, all correct nodes will eventually agree on a single canonical chain that goes back to Genesis.
 
+#### Reorgs and Reversion
+
+As a node receives new votes (and new votes for blocks in proof of stake), it re-evaluates the fork choice rule with this new information. Usually, a new block will be a child of the current head block, and it will become the new head block.
+
+Sometimes, however, the new block might be a descendant of a different block in the block tree. If the node doesn't have the parent block of the new block, it will ask its peers for it and any other missing blocks.
+
+Running the fork choice rule on the updated block tree might show that the new head block is on a different branch than the previous head block. When this happens, the node must perform a reorg (reorganisation). This means it will remove (revert) blocks it previously included and adopt the blocks on the new head's branch.
+
+For example, if a node has blocks $A, B, D, E,$ and $F$ in its chain, and it views $F$ as the head block, it knows about block $$ but it does not appear in its view of the chain; it is on a side branch.
+
+<a id="img_reorg0"></a>
+
+<figure class="diagram" style="text-align:center">
+
+![Diagram for Reorg-0](../../images/cl/reorg-0.svg)
+
+<figcaption>
+
+_At this point, the node believes that block $F$ is the best head, therefore its chain is blocks $[A \leftarrow B \leftarrow D \leftarrow E \leftarrow F]$_
+
+</figcaption>
+</figure>
+
+When the node later receives block $G$, which is built on block $C$, not on its current head block $F$, it must decide if $G$ should be the new head. If the fork choice rule says $G$ is the better head block just for example here, the node will revert blocks $D, E,$ and $F$. It will remove them from its chain, as if they were never received, and go back to the state after block $B$.
+
+Then, the node will add blocks $C$ and $G$ to its chain and process them. After this reorg, the node's chain will be $A, B, C,$ and $G$.
+
+<a id="img_reorg1"></a>
+
+<figure class="diagram" style="text-align:center">
+
+![Diagram for Reorg-1](../../images/cl/reorg-1.svg)
+
+<figcaption>
+
+_Now the node believes that block $G$ is the best head, therefore its chain must change to the blocks $[A \leftarrow B \leftarrow C \leftarrow G]$_
+
+</figcaption>
+</figure>
+
+Later, perhaps, a block $H$ might appear, that's built on $F$, and the fork choice rule says $H$ should be the new head, the node will reorg again, reverting to block $B$ and replaying blocks on $H$'s branch.
+
+Short reorgs of one or two blocks are common due to network delays. Longer reorgs should be rare unless the chain is under attack or there is a bug in the fork choice rule or its implementation.
+
+
+
 - Block Trees (Done)
 - Fork Choice Rule (Done)
-- Reorgs, reversion
+- Reorgs, reversion (Done)
 - Safety liveness CAP
 - GHOSTs in the machine
 - Casper FFG and LMD Ghost
