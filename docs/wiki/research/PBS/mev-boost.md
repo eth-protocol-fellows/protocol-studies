@@ -12,14 +12,14 @@ Here's how mev-boost works:
 On one side, mev-boost implements the [builder API](https://github.com/ethereum/builder-specs) used by an Ethereum node to outsource it block production. On the other, it connects to a network of relays and handles the communication between builders and proposers.
 
 1. **Block Building:**
-   Specialized builders, known as "searchers" in mev-boost, compete to create the most profitable block for the proposer. They do this by optimizing transaction ordering and inclusion, taking into account factors like gas fees, transaction priority, and potential [MEV (Maximal Extractable Value)](/wiki/research/PBS/mev.md).
-   Searchers submit their constructed blocks to relays.
+   Specialized builders compete to create the most profitable block for the proposer. They do this by optimizing transaction ordering and inclusion, taking into account factors like gas fees, transaction priority, and potential [MEV (Maximal Extractable Value)](/wiki/research/PBS/mev.md).
+   Builders submit their constructed blocks to relays.
 2. **Relay Network:**
-   Mev-boost operates a network of relays that act as intermediaries between searchers and proposers.
-   Relays receive blocks from searchers and perform various functions like block validation, filtering, and propagation.
+   Mev-boost operates a network of relays that act as intermediaries between builders and proposers.
+   Relays receive blocks from builders and perform various functions like block validation, filtering, and propagation.
    Relays ensure that only valid and high-quality blocks are sent to proposers.
 3. **Proposer Selection:**
-   Validators run mev-boost software connected to their beacon node. When validator is chosen to propose a block, they receive blocks from relays and choose the best one based on predefined criteria, typically the block that offers the highest reward.
+   Validators run mev-boost software connected to their beacon node. When a validator is chosen to propose a block, they receive blocks from relays and choose the best one based on predefined criteria, typically the block that offers the highest reward.
    The validator then proposes the selected block to the network for validation and inclusion in the blockchain.
 
 ## PBS Block Creation
@@ -37,7 +37,7 @@ Instead of builders directly offering their assembled blocks to validators with 
 
 ### Benefits of mev-boost:
 
-- **Increased validator rewards:** By outsourcing block building to specialized searchers, validators can potentially earn higher rewards through optimized transaction ordering and MEV extraction.
+- **Increased validator rewards:** By outsourcing block building to specialized builders, validators can potentially earn higher rewards through optimized transaction ordering and MEV extraction.
 - **Reduced centralization:** Mev-boost enables a more competitive block-building landscape, reducing the economy of scale of large mining pools and enabling home stakers achieve same kind of rewards.
 
 ### Challenges and Considerations:
@@ -45,8 +45,8 @@ Instead of builders directly offering their assembled blocks to validators with 
 While mev-boost offers certain benefits, it also raises some concerns:
 
 - **Security:** Introducing new actors and dependencies can create new attack vectors and vulnerabilities. There have been multiple [incidents](https://collective.flashbots.net/t/post-mortem-april-3rd-2023-mev-boost-relay-incident-and-related-timing-issue/1540) of missed blocks on mainnet due to mev-boost issues. 
-- **Censorship resistance:** If only a few powerful searchers or relays dominate the ecosystem, it could lead to centralization and censorship concerns.
-- **Coordination:** Effective communication and coordination between searchers, relays, and proposers are crucial for the smooth functioning of mev-boost.
+- **Censorship resistance:** If only a few powerful builders or relays dominate the ecosystem, it could lead to centralization and censorship concerns.
+- **Coordination:** Effective communication and coordination between builders, relays, and proposers are crucial for the smooth functioning of mev-boost.
 
 It's important to note that mev-boost is just one implementation of PBS. Other implementations with different designs and features are also being developed and explored, for example [mev-rs](https://github.com/ralexstokes/mev-rs) is under development.
 
