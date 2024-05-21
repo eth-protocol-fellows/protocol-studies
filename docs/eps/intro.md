@@ -12,7 +12,7 @@ The study group content is structured in 2 stages of weekly presentations. To fo
 
 The first half is dedicated to general understanding of the internal mechanisms of the protocol, its architecture and basic concepts. The second half offers 2 different tracks - development and research. Presentations in each track offer a deeper dive into specific topics within the R&D domains.  
 
-Each session is led by core developer or researcher, comes wit reading materials to get you familiar with the topic context and some also include exercises to strengthen  and practice your understanding.
+Each session is led by core developer or researcher, comes with reading materials to get you familiar with the topic context and some also include exercises to strengthen  and practice your understanding.
 
 Weekly sessions, their presentations and materials can be all found in this section under Presentations. 
 
