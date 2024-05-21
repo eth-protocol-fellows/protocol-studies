@@ -80,7 +80,7 @@ The chain grows as nodes add new blocks to its tip. This is done by temporarily 
 
 The leader (block proposer) adds a block to the chain, choosing and ordering its contents. The block must be valid according to protocol rules, or the network will ignore it. Using blocks is an optimization. Adding individual transactions one by one would create a huge consensus overhead. So blocks are batches of transactions, and sometimes [people argue](https://www.bitrawr.com/bitcoin-block-size-debate-explained) about how big those blocks should be. The size of these blocks can vary:
 
-In Bitcoin, block size is limited by the number of bytes. In Ethereum's execution chain, block size is limited by the block gas limit (the amount of work needed to process the transactions). [Beacon block](link to beeaconblock class) sizes are limited by hard-coded constants.
+In Bitcoin, block size is limited by the number of bytes. In Ethereum's execution chain, block size is limited by the block gas limit (the amount of work needed to process the transactions). [Beacon block](link to beaconblock class) sizes are limited by hard-coded constants.
 
 ### Forks and ChainId
 
@@ -369,7 +369,7 @@ At every epoch, validators are evenly divided across slots and then subdivided i
 - All validators assigned to a slot attempt to vote on the same Beacon Chain head: LMD GHOST vote
 Optimal behavior rewards validators the most.
 
-The Beacon Chain's introduction on December 1, 2020, began with 21,063 validators. The number of validators can decrease with slashings or voluntary exits, or more stakers can join and be activated. Fast forward to today(15th May, 2024) there are more than 1,000,000 validators that are active on Etheruem Network. The world has never seen a scalable platform for decentralized systems and applications like Ethereum.
+The Beacon Chain's introduction on December 1, 2020, began with 21,063 validators. The number of validators can decrease with slashings or voluntary exits, or more stakers can join and be activated. Fast forward to today(15th May, 2024) there are more than 1,000,000 validators that are active on Ethereum Network. The world has never seen a scalable platform for decentralized systems and applications like Ethereum.
 
 <!-- #### TODO in future-->
 <!-- Can add a section on Evolution of Ethereum PoS that covers
@@ -381,6 +381,6 @@ Research and developmental phases for future -->
 - [Beacon Chain Explainer from ethos.dev](https://ethos.dev/beacon-chain)
 - [Evolution of Ethereum Proof-of-Stake](https://github.com/ethereum/pos-evolution/blob/master/pos-evolution.md)
 - Alt Explainer, [Ethereum's Proof of Stake consensus explained](https://www.youtube.com/watch?v=5gfNUVmX3Es)
-- [Eth2 Handbook by Ben Edington](https://eth2book.info/capella/part2/consensus/)
+- [Eth2 Handbook by Ben Edgington](https://eth2book.info/capella/part2/consensus/)
 
 ### Further Reading Resources

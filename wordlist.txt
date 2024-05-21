@@ -240,6 +240,7 @@ ethers
 ethresear
 ethresearch
 ethroadmap
+ETHW
 EVM
 evmlab
 EVMONE
@@ -284,6 +285,7 @@ Gasper
 gasPrice
 gasUsed
 Georgios
+geq
 geth
 getPayloadBodiesByHashV
 getPayloadV
@@ -415,6 +417,7 @@ mevboost
 Michaël
 middleware
 minimalistic
+misconfigure
 Mitigations
 mload
 MMPTs
