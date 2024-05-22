@@ -140,6 +140,7 @@ CSP
 curation
 cybersecurity
 Cypherpunks
+Cypherpunk
 Daemen
 dafny
 D'Amato
@@ -182,6 +183,7 @@ Discordo
 discv
 distro
 docsify
+dogecoin
 Domothy
 dotnet
 Downloader
@@ -277,6 +279,8 @@ fulfillments
 fullscreen
 Fullstack
 func
+Fungibility
+fungibility
 fuzzer
 FuzzyVM
 GasLimit
@@ -377,14 +381,17 @@ libp
 lifecycle
 Lightclient
 Lightclient's
+litecoin
 linearizer
 liveness
 LLM
 LLMs
 lmd
 LMD
+locktime
 Longrightarrow
 lookahead
+lookups
 LSB
 LSM
 LSP
@@ -485,6 +492,7 @@ permissionless
 permissionlessness
 PGA
 Pilipovic
+Pigovian
 PKCS
 Playdate
 pmod
@@ -548,6 +556,7 @@ README
 referrerpolicy
 remerkleable
 repo
+replayable
 responder
 restaking
 retesteth
@@ -598,6 +607,7 @@ Shimon
 Shor
 Shor's
 Siddharth
+sidechain
 Silkwarm
 Silverman
 Sipser
@@ -622,12 +632,15 @@ stakers
 Stallman
 StateDB
 stateful
+statelessness
+Statelessness
 stateRoot
 stf
 StorageShardedKey
 StoragesHistory
 StoragesTrie
 StreamEth
+subcurrency
 subnets
 suboptimal
 subprotocols
@@ -654,6 +667,7 @@ tracoor
 tradeoff
 tradeoffs
 transactional
+transactionId
 trapdoored
 trie
 triggerable
@@ -678,6 +692,9 @@ unincentivized
 upstreamed
 utils
 UTXOs
+UTXO
+utxo
+utxos
 UX
 Vadim
 validator
