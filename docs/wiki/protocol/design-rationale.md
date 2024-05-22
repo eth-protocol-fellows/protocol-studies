@@ -86,12 +86,12 @@ The notion of complete anonymity of the data structure to the serizalation algor
 
 Serialization is the process of converting data structures into format that can be transmuted, transmitted and reconstructed later. SSZ is a serialization format that is used in Ethereum 2.0 Beacon chain. Designed to be serialization scheme that is not self-describing -- rather it relies on a schema that must be known in advances. SSZ has a bunch of advantages over RLP, like efficient re-hashing of objects and fast indexing which RLP lacks resulting in $O(N)$ complexity.
 
-Based on [V's comment](https://ethresear.ch/t/replacing-ssz-with-rlp-zip-and-sha256/5706/12), one of the major problem SSZ tries to solve is RLP doesn't allow Merkelization, and this would mean disqualifying any possibility of succinct light client proofs of anything. Thus, leaving no scope of achieving statelessness -- while stateleness remains a crucial objective of current Ethereum's R&D.
+Based on [Vitalik's comment](https://ethresear.ch/t/replacing-ssz-with-rlp-zip-and-sha256/5706/12), one of the major problem SSZ tries to solve is RLP doesn't allow Merkelization, and this would mean disqualifying any possibility of succinct light client proofs of anything. Thus, leaving no scope of achieving statelessness -- while stateleness remains a crucial objective of current Ethereum's R&D.
 
-Further implementation and details about Simple Serialize can be found [**here**](#)
+Further implementation and details about Simple Serialize can be found [**here**](#/wiki/CL/ssz.md)
 
-### **Tryst with Finality**
-In Ethereum's proof-of-stake based consensus mechanisms, finality refers to the guarantee that a block cannot be altered or removed from the blockchain without burning at least 33% of the total stacked ETH. The underlying algorithm to achieve this is called **Gasper**
+### **Hunt for Finality**
+In Ethereum's proof-of-stake based consensus mechanisms, finality refers to the guarantee that a block cannot be altered or removed from the blockchain without burning at least 33% of the total staked ETH. The underlying consensus protocol to achieve this is called **Casper FFG**, more details on this type of attacks can be found [here](https://blog.ethereum.org/2016/05/09/on-settlement-finality)
 
 - ***Casper FFG***
 The [Casper FFG](https://arxiv.org/abs/1710.09437v4) is an overlay atop a proposal mechanism -- a mechanism which proposes blocks. Casper is responsible for finalizing these blocks, essentially selecting a unique chain which represents the canonical transaction in the ledger. This is achieved by employing [slashing](https://blog.ethereum.org/2014/01/15/slasher-a-punitive-proof-of-stake-algorithm) which was first proposed in 2014. Casper is follows a BFT tradition with some modifications to achieve PoS. 
