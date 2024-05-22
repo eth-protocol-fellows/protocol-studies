@@ -46,7 +46,7 @@ Earliest implementations of blockchain including bitcoin and it's derivatives, s
 
 A user's "balance" in the system is thus the total value of the set of coins for which the user has a private key capable of producing a valid signature. The account based model is more flexible and allows for more complex transactions.
 
-Ethereum follows an accounts based model over the UTXOs. While, UTXOs provide a higher degree of privacy, however, this also means more complexity for a system like Ethereum. Accounts also have a great deal of fungibility allowing higher level implementation flexibility such decentralised exchanges which Ethereum was originally intended for.
+Ethereum follows an accounts based model over the UTXOs. While, UTXOs provide a higher degree of privacy, however, this also means more complexity for a system like Ethereum. Accounts also have a great deal of fungibility allowing higher level implementation flexibility such decentralized exchanges which Ethereum was originally intended for.
 
 #### Benefits of Accounts
 - **Space Saving**: for example, if an account has 5 UTXO, then switching from a UTXO model to an account model would reduce the space requirements from (20 + 32 + 8) * 5 = 300 bytes (20 for the address, 32 for the transactionId and 8 for the value) to 20 + 8 + 2 = 30 bytes (20 for the address, 8 for the value, 2 for a nonce(see below)). In reality savings are not nearly this massive because accounts need to be stored in a Patricia tree (see below) but they are nevertheless large. Additionally, transactions can be smaller (eg. 100 bytes in Ethereum vs. 200-250 bytes in Bitcoin) because every transaction need only make one reference and one signature and produces one output.
@@ -100,7 +100,7 @@ Latest Message Driven Greediest Heaviest Observed Sub-Tree (LMD-GHOST) is a *for
 
 ![LMD-GHOST-Algorithm](./img/lmt-ghost.png)
 
-Gapser is full proof-of-stake protocol that is an idealized abstraction of the Ethereum implementation. A combination of Casper FFG and LMD-GHOST driving the consensus mechanism for the Eth2.
+Gasper is full proof-of-stake protocol that is an idealized abstraction of the Ethereum implementation. A combination of Casper FFG and LMD-GHOST driving the consensus mechanism for the Eth2.
 # References
 
 - https://web.archive.org/web/20211121044757/https://ethereumbuilders.gitbooks.io/guide/content/en/design_rationale.html
