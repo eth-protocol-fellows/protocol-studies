@@ -29,6 +29,7 @@ atleast
 atomicity
 Attacknet
 attester
+Attester
 attesters
 attestors
 autoplay
@@ -36,9 +37,9 @@ AVS
 backend
 backfill
 Bankless
-Baranabé's
 Barnabe
 Barnabé
+Barnabé's
 BDN
 Beiko
 Bertoni
@@ -118,6 +119,7 @@ computability
 computable
 config
 congestions
+Conor
 Consensys
 Coq
 Corbellini
@@ -247,7 +249,9 @@ excalidraw
 exchangeTransitionConfigurationV
 Explainer
 Extractable
+farcaster
 fastssz
+faytey
 Feist
 Femboy
 Ferrin
@@ -311,6 +315,7 @@ hevm
 hoc
 Holesky
 homomorphic
+hopinheimer
 Hopinheimer
 Hotz
 Hsiao
@@ -486,6 +491,7 @@ pmod
 POC
 POS
 POSIX
+possibile
 Potuz's
 POV
 PQ
@@ -531,6 +537,7 @@ Pyrmont
 Pyspec
 pytest
 qubits
+Quintus
 Raa
 radix
 rahul
@@ -662,6 +669,7 @@ txs
 UI
 uint
 unaggregated
+unbundle
 Unbundling
 underbrace
 Unformatted
@@ -676,6 +684,7 @@ validator
 validator's
 validators
 Vanstone
+Varun
 VB's
 VDFs
 Vec
