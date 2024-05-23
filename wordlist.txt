@@ -634,7 +634,6 @@ Stallman
 StateDB
 stateful
 statelessness
-Statelessness
 stateRoot
 stf
 StorageShardedKey
