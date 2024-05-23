@@ -105,13 +105,15 @@ Ethereum’s consensus protocol aims to offer both safety and liveness in good n
 
 Thus, while Ethereum strives for both safety and liveness, it leans towards ensuring the network remains live and continues to process transactions, even at the cost of potential safety issues during severe network disruptions.
 
-- Block Trees (Done)
-- Fork Choice Rule (Done)
-- Reorgs, reversion (Done)
-- Safety liveness CAP (Done)
-- GHOSTs in the machine
-- Casper FFG and LMD Ghost
-- Casper FFG and LMD Ghost together gasper
+## The Ghosts in the Machine
+
+Ethereum's proof of stake consensus protocol combines two separate protocols: [LMD GHOST]() and [Casper FFG](). Together, they form the consensus protocol known as "Gasper". Detailed Information about both protocols and how they work in combination are covered in the next section [Gasper].
+
+Gasper aims to combine the strengths of both LMD GHOST and Casper FFG. LMD GHOST provides liveness, ensuring the chain keeps running by producing new blocks regularly. However, it is prone to forks and not formally safe. Casper FFG, on the other hand, provides safety by periodically finalizing the chain, protecting it from long reversions.
+
+In essence, LMD GHOST keeps the chain moving forward, while Casper FFG ensures stability by finalizing blocks. This combination allows Ethereum to prioritize liveness, meaning the chain continues to grow even if Casper FFG can't finalize blocks. Although this combined mechanism isn't always perfect and has some complexities, it is a practical engineering solution that works well in practice for Ethereum.
+
+## Architecture
 
 
 
