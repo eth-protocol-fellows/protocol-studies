@@ -101,16 +101,12 @@ Latest Message Driven Greediest Heaviest Observed Sub-Tree (LMD-GHOST) is a *for
 ![LMD-GHOST-Algorithm](./img/lmt-ghost.png)
 
 Gasper is full proof-of-stake protocol that is an idealized abstraction of the Ethereum implementation. A combination of Casper FFG and LMD-GHOST driving the consensus mechanism for the Eth2.
+
 # References
 
-- https://web.archive.org/web/20211121044757/https://ethereumbuilders.gitbooks.io/guide/content/en/design_rationale.html
-
-- https://vitalik.eth.limo/general/2022/02/28/complexity.html
-
-- https://dankradfeist.de/ethereum/2021/02/14/why-stateless.html
-
-- https://math.mit.edu/research/highschool/primes/materials/2018/Kuszmaul.pdf
-
-- https://arxiv.org/pdf/2003.03052
-
-- https://blog.ethereum.org/2014/01/15/slasher-a-punitive-proof-of-stake-algorithm
+- Ethereum Builders, [Design Rationale](https://web.archive.org/web/20211121044757/https://ethereumbuilders.gitbooks.io/guide/content/en/design_rationale.html)
+- Vitalik B., [Complexity](https://vitalik.eth.limo/general/2022/02/28/complexity.html)
+- Dankrad F., [Why it's so important to go stateless](https://dankradfeist.de/ethereum/2021/02/14/why-stateless.html)
+- John K., [Verkle Trees](https://math.mit.edu/research/highschool/primes/materials/2018/Kuszmaul.pdf)
+- Vitalik B. et al., [Combining GHOST and Casper](https://arxiv.org/pdf/2003.03052)
+- Vitalik B., [Slasher: A Punitive Proof-of-Stake Algorithm](https://blog.ethereum.org/2014/01/15/slasher-a-punitive-proof-of-stake-algorithm)
