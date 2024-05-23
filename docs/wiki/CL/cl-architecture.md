@@ -115,7 +115,7 @@ In essence, LMD GHOST keeps the chain moving forward, while Casper FFG ensures s
 
 ## Architecture
 
-Ethereum is a decentralized network of nodes that communicate via peer-to-peer connections. These connections are formed by computers running Ethereum's specialized client software:
+Ethereum is a decentralized network of nodes that communicate via peer-to-peer connections. These connections are formed by computers running Ethereum's specialized client software.
 
 <a id="img_network"></a>
 
@@ -140,13 +140,13 @@ When users stake 32 ETH to participate in Ethereum's proof-of-stake consensus me
 
 <a id="img_node-architecture"></a>
 
-<figure class="diagram" style="text-align:center">
+<figure class="diagram" style="margin:auto; width:70%; background-color:white">
 
 ![Diagram for Node architecture](../../images/cl/client-architecture.png)
 
 </figure>
 
-#### Components of node
+#### Components of the "Node"
 
 - **Execution Node**: Execution nodes use client software to process transactions and smart contracts in Ethereum's execution layer. Examples include Nethermind, Besu, and Go Ethereum (Geth). Execution nodes communicate with other execution nodes via peer-to-peer networking and connect to a local beacon node.
 
@@ -160,13 +160,72 @@ There are also test networks that mint and manage test Ethereum for developers, 
 
 <a id="img_node-layers"></a>
 
-<figure class="diagram" style="text-align:center">
+<figure class="diagram" style="width: 80%;text-align:center">
 
-![Diagram for Node layers](../../images/cl/network-layers.png)
+![Diagram for CL](../../images/cl/cl.png)
+
+![Diagram for EL](../../images/cl/el.png)
 
 </figure>
 
+As mentioned earlier and shown in the diagram, an Ethereum node has two main layers/clients sitting on the same node, each with its own networking stack and subprotocols.
 
+**Execution Layer** is where the EVM resides. It is responsible for transaction building, execution & state management, and also sends “Gossip” transactions over the p2p network with encrypted communication amongst peers.
+
+**Consensus Layer** is responsible for maintaining consensus chain (beacon chain) and processing the consensus blocks (beacon blocks) and attestations received from other peers. **Consensus clients** participate in a separate [peer-to-peer network](/wiki/cl/cl-networking.md) with a different specification from execution clients. They need to participate in block gossip to receive new blocks from peers and broadcast blocks when it's their turn to propose.
+
+Both clients run in parallel and need to be connected for communication. The consensus client provides instructions to the execution client, and the execution client passes transaction bundles to the consensus client to include in Beacon blocks. Communication is achieved using a local RPC connection via the **Engine-API**. They share an [ENR](/wiki/cl/cl-networking?id=ethereum-enr) with separate keys for each client (eth1 key and eth2 key).
+
+### Control Flow
+
+**When the consensus client is not the block producer:**
+1. Receives a block via the block gossip protocol.
+2. Pre-validates the block.
+3. Sends transactions in the block to the execution layer as an execution payload.
+4. Execution layer executes transactions and validates the block state.
+5. Execution layer sends validation data back to the consensus layer.
+6. Consensus layer adds the block to its blockchain and attests to it, broadcasting the attestation over the network.
+
+**When the consensus client is the block producer:**
+1. Receives notice of being the next block producer.
+2. Calls the create block method in the execution client.
+3. Execution layer accesses the transaction mempool.
+4. Execution client bundles transactions into a block, executes them, and generates a block hash.
+5. Consensus client adds transactions and block hash to the beacon block.
+6. Consensus client broadcasts the block over the block gossip protocol.
+7. Other clients validate the block and attest to it.
+8. Once attested by sufficient validators, the block is added to the head of the chain, justified, and finalized.
+
+
+### State Transitions
+
+The state transition function is essential in blockchains. Each node maintains a state that reflects its view of the world.
+
+Nodes update their state by applying blocks in order using a "state transition function". This function is "pure", meaning its output depends only on the input and has no side effects. Thus, if every node starts with the same state (Genesis state) and applies the same blocks, they all end up with the same state. If they don't, there's a consensus failure.
+
+If $S$ is a beacon state and $B$ a beacon block, the state transition function $f$ is:
+
+$$S' \equiv f(S, B) $$
+
+Here, $S$ is the pre-state and $S'$ is the post-state. The function $f$ is iterated with each new block to update the state.
+
+### Beacon Chain State Transitions
+
+Unlike the block-driven proof of work, the beacon chain is slot-driven. State updates depend on slot progress, regardless of block presence.
+
+The beacon chain's state transition function includes:
+
+1. **Per-slot transition**: $S' \equiv f_s(S)$
+2. **Per-block transition**: $S' \equiv f_b(S, B)$
+3. **Per-epoch transition**: $S' \equiv f_e(S)$
+
+Each function updates the chain at specific times, as defined in the beacon chain specification.
+
+### Validity Conditions
+
+The post-state from a pre-state and a signed block is `state_transition(state, signed_block)`. Transitions causing unhandled exceptions (e.g., failed asserts or out-of-range accesses) or uint64 overflows/underflows are invalid.
+
+<!-- If block processing triggers an exception in the specification's Python code, that block is invalid and must be rejected, requiring state changes to be undone. -->
 
 
 

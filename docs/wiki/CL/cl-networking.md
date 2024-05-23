@@ -67,3 +67,4 @@ while still having a reasonable compression ratio.
 [rlp]: https://ethereum.org/developers/docs/data-structures-and-encoding/rlp
 [snappy]: https://en.wikipedia.org/wiki/Snappy_(compression)
 [ssz]: https://ethereum.org/developers/docs/data-structures-and-encoding/ssz
+[blog]: https://medium.com/coinmonks/dissecting-the-ethereum-networking-stack-node-discovery-4b3f7895f83f
