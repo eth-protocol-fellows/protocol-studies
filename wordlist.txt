@@ -279,7 +279,6 @@ fulfillments
 fullscreen
 Fullstack
 func
-Fungibility
 fungibility
 fuzzer
 FuzzyVM
