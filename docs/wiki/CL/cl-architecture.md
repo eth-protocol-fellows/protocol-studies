@@ -115,6 +115,58 @@ In essence, LMD GHOST keeps the chain moving forward, while Casper FFG ensures s
 
 ## Architecture
 
+Ethereum is a decentralized network of nodes that communicate via peer-to-peer connections. These connections are formed by computers running Ethereum's specialized client software:
+
+<a id="img_network"></a>
+
+<figure class="diagram" style="text-align:center">
+
+![Diagram for Network](../../images/cl/network.png)
+
+<figcaption>
+
+_Nodes aren't required to run a validator client (green ones) to be a part of the network, however to take part in consenus one needs to stake 32 ETH and run a validator client._
+
+</figcaption>
+</figure>
+
+### Nodes
+
+An Ethereum **node** is a running instance of Ethereum's client software responsible for running the blockchain.
+
+There are 2 primary types of nodes in Ethereum: execution nodes and beacon nodes. Typically, a "node" refers to both types working together. These nodes connect with others to form a decentralized peer-to-peer network that processes Ethereum blocks and transactions.
+
+When users stake 32 ETH to participate in Ethereum's proof-of-stake consensus mechanism, they use a validator client that connects to their beacon node. This special software manages validator keys and duties like producing new blocks and voting on others' blocks. Validator clients connect to the Ethereum network through beacon nodes, which rely on execution nodes.
+
+<a id="img_node-architecture"></a>
+
+<figure class="diagram" style="text-align:center">
+
+![Diagram for Node architecture](../../images/cl/client-architecture.png)
+
+</figure>
+
+#### Components of node
+
+- **Execution Node**: Execution nodes use client software to process transactions and smart contracts in Ethereum's execution layer. Examples include Nethermind, Besu, and Go Ethereum (Geth). Execution nodes communicate with other execution nodes via peer-to-peer networking and connect to a local beacon node.
+
+- **Beacon Node**: Beacon nodes use client software to coordinate Ethereum's proof-of-stake consensus. Examples include Prysm, Teku, Lighthouse, and Nimbus. Beacon nodes communicate with other beacon nodes, a local execution node, and optionally, a local validator.
+
+- **Validator**: Validator clients are specialized software allowing people to stake 32 ETH in Ethereum's consensus layer. Validators propose blocks in the Proof-of-Stake system, which replaced Proof-of-Work miners. Validators communicate only with a local beacon node, which instructs them and broadcasts their work to the network.
+
+The main Ethereum network hosting real-world applications is called Ethereum Mainnet. Ethereum Mainnet is the live, production instance of Ethereum that mints and manages real Ethereum (ETH) and holds real monetary value.
+
+There are also test networks that mint and manage test Ethereum for developers, node runners, and validators to test new functionality before using real ETH on Mainnet. Each Ethereum network has two layers: the execution layer (EL) and the consensus layer (CL). Every Ethereum node contains software for both layers: execution-layer client software (like Nethermind, Besu, Geth, and Erigon) and consensus-layer client software (like Prysm, Teku, Lighthouse, Nimbus, and Lodestar).
+
+<a id="img_node-layers"></a>
+
+<figure class="diagram" style="text-align:center">
+
+![Diagram for Node layers](../../images/cl/network-layers.png)
+
+</figure>
+
+
 
 
 

@@ -247,6 +247,35 @@ Attestations help finalize blocks by reaching consensus on the blockchain’s st
 
 > At every epoch, validators are evenly divided across slots and then subdivided into committees of appropriate size. All of the validators from that slot attest to the Beacon Chain head. A shuffling algorithm scales up or down the number of committees per slot to get at least 128 validators per committee. More details on shuffling can be found in [proto's repo.](https://github.com/protolambda/eth2-docs#shuffling)
 
+### Blobs
+
+[EIP-4844](https://eips.ethereum.org/EIPS/eip-4844), also known as proto-danksharding, is part of the Deneb/Cancun hardfork. It introduces a data availability layer to Ethereum, allowing for the temporary storage of arbitrary data on the blockchain. This arbitrary data stored this way are called `blobs`, and each block can have 3 ~ 6 blob sidecars (wrappers for blobs). EIP-4844 marks Ethereum's first step towards sharding and scalability, enabling Layer 2 solutions (L2s) to use this data availability layer to lower gas fees and process more transactions.
+
+### Design and Implementation
+
+A key design decision in EIP-4844 is the use of [KZG commitments](/wiki/Cryptography/kzg.md) to verify blobs and support future proposer-builder separation. To use KZG commitments, a Trusted Setup is needed. For the Deneb hardfork, a [KZG Ceremony](https://github.com/ethereum/kzg-ceremony) was conducted to create this Trusted Setup.
+
+<a id="img_blobs"></a>
+
+<figure class="diagram" style="text-align:center">
+
+![Diagram for Blobs](../../images/cl/blobs.png)
+
+</figure>
+
+### Storage Requirements
+
+The most significant impact on node operators is the increased storage requirement. Node runners will need more storage:
+
+```
+131,928 ssz bytes per blob * 4096 blobs retention period * 
+32 potential blocks per epoch * 3~6 blob sidecars per block
+
+= 52~104GB
+```
+
+By default, these blobs will be retained for 4096 epochs, and clients would prune the oldest blobs once the retention period is reached.
+
 ### Checkpoints and Finality
 
 At the end of each epoch, checkpoints are created. A checkpoint is a block in the first slot of an epoch.  If there is no such block, then the checkpoint is the preceding most recent block.  There is always one checkpoint block per epoch. A block can be the checkpoint for multiple epochs.
