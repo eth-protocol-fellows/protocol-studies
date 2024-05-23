@@ -694,7 +694,6 @@ upstreamed
 utils
 UTXOs
 UTXO
-utxo
 UTXOs
 UX
 Vadim
