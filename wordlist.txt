@@ -696,7 +696,7 @@ utils
 UTXOs
 UTXO
 utxo
-utxos
+UTXOs
 UX
 Vadim
 validator
