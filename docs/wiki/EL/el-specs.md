@@ -403,8 +403,8 @@ $$
 
 $$+$$
 
-$$ \sum_{j=0}^{ length(T_{accessList}) - 1} \left( G_{\text{accesslistaddress}} + length(T_{accessList}[j]_s) *  G_{\text{accessliststorage}} \right)
-
+$$ 
+\sum_{j=0}^{ length(T_{accessList}) - 1} \left( G_{\text{accesslistaddress}} + length(T_{accessList}[j]_s) *  G_{\text{accessliststorage}} \right)
 $$
 
 #### Intrinsic Gas Components:
@@ -459,15 +459,13 @@ $$totalBlobGas  \equiv  (G_{gasPerBlob = 2^{17}} \times length(T_{blobVersionedH
 The Blob Gas Price is determined through a formula that adjusts based on the excess blob gas generated in the network. The formula is as follows:
 
 $$
-factor_{minBlobBaseFee = 1} \times e^{numerator_{excessBlobGas} / denominator_{blobGaspriceUpdateFraction = 3338477}} \approx  \\ blobGasPrice \equiv \\ taylorExponential(factor_{minBlobBaseFee = 1}, numerator_{excessBlobGas}, denominator_{blobGaspriceUpdateFraction = 3338477}) \equiv \\ \left\lfloor \frac{1}{denominator} \left( \sum_{i=1}^{N} \left\lfloor \frac{factor \cdot denominator \cdot numerator^{i-1}}{denominator^{i-1} \cdot (i-1)!} \right\rfloor \right) \right\rfloor \\
-\text{where }N = \max \left\{ i \in \mathbb{N} : \left\lfloor \frac{f \cdot d \cdot n^{i-1}}{d^{i-1} \cdot (i-1)!} \right\rfloor > 0 \right\}
+blobGasPrice  \\  \approx  \\ 
+factor_{minBlobBaseFee = 1} \times e^{numerator_{excessBlobGas} / denominator_{blobGaspriceUpdateFraction = 3338477}}
 $$
-
-Where $N$ represents the largest integer for which the term remains positive, indicating the series' summation continues until adding another term would result in zero. This process effectively applies a Taylor series approximation to calculate exponential growth, particularly for modeling the blob gas price's response to excess blob gas.
 
 - The formula returns 1 for any input under the current maximum blob gas per block (set at 786432) , if excess gas has not accumulated.
 - However it starts increasing when the target is breached over blocks , which causes the Excess Blob Gas Parameter to start accumulating , this triggers the Blob Gas Price to exponentially increase
-- With the target set at approximately half of the maximum blob gas per block (393216), the function starts to show an increase to a value of 2 at ten times the target, after which it rises exponentially.### Blob Gas Price Dynamics
+- With the target set at approximately half of the maximum blob gas per block (393216), the function starts to show an increase to a value of 2 at ten times the target, after which it rises exponentially.
 
 #### Dynamics of Blob Gas Price
 
