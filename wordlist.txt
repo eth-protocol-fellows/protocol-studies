@@ -90,6 +90,8 @@ Boneh
 bool
 booleans
 bootup
+bootnode
+bootnodes
 borderless
 BPE
 broadcasted
@@ -140,6 +142,7 @@ Composability
 composable
 computability
 computable
+connectionless
 config
 congestions
 Conor
@@ -177,6 +180,7 @@ dapp
 Dapplion
 dapps
 DAS
+Datagram
 dataset
 deboost
 decrementation
@@ -253,6 +257,7 @@ Encodings
 Endian
 enr
 env
+ENR
 EOA
 EOAs
 EOF
@@ -300,6 +305,7 @@ fanout
 farcaster
 fastssz
 faytey
+Feamster
 Feist
 Femboy
 Ferrin
@@ -388,6 +394,7 @@ IETF
 iframe
 ify
 Imandra
+img
 impera
 implementers
 incentivize
@@ -435,6 +442,7 @@ Kira
 Kleppmann
 Koblitz
 Kubernetes
+Kurose
 Kurtosis
 Kyber
 KZG
@@ -529,6 +537,7 @@ namespace
 namespaces
 Nand
 natively
+neighbours
 neq
 Nethermind
 neuder
@@ -584,6 +593,7 @@ pipelining
 PKCS
 Playdate
 pmod
+png
 POC
 POS
 POSIX
@@ -756,6 +766,8 @@ subcurrency
 subnet
 subnets
 suboptimal
+Subprotocol
+subprotocol
 subprotocols
 substack
 substate
@@ -766,6 +778,7 @@ Supermajority
 systemd
 Szabo
 Takenobu
+Tanenbaum
 Tani
 TBD
 tbhl
@@ -805,6 +818,7 @@ txdatanonzero
 txdatazero
 txpool
 txs
+UDP
 UI
 uint
 unaggregated
@@ -849,6 +863,7 @@ WB
 webkit
 WebRTC
 Whistleblower
+Wetherall
 Whitepaper
 WIP
 withdrawable
