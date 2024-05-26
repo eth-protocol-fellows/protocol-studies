@@ -33,12 +33,12 @@ In blockchain and distributed ledger systems, the Byzantine Generals' Problem is
 
 > - Consensus is a way to build reliable distributed systems with unreliable components.
 > - Blockchain-based distributed systems aim to agree on a single history of transactions.
-> - Proof of work and proof of stake are not consensus protocols, but enable consensus protocols.
+> - Proof-of-Work and Proof-of-stake are not consensus protocols, but enable consensus protocols.
 > - Nodes and validators are the actors of the consensus system.
 > - Slots and epochs regulate consensus time.
 > - Blocks and attestations are the currency of consensus.
 
-The Consensus Layer (CL) is a fundamental component that ensures the network's security, reliability, and efficiency. Originally, Ethereum utilized Proof-of-Work (PoW) as its consensus mechanism, similar to Bitcoin. PoW, while effective in maintaining decentralization and security, has significant drawbacks, including high energy consumption and limited scalability. To address these issues, Ethereum has transitioned to Proof of Stake (PoS), a more sustainable and scalable consensus mechanism.
+The Consensus Layer (CL) is a fundamental component that ensures the network's security, reliability, and efficiency. Originally, Ethereum utilized Proof-of-Work (PoW) as its consensus mechanism, similar to Bitcoin. PoW, while effective in maintaining decentralization and security, has significant drawbacks, including high energy consumption and limited scalability. To address these issues, Ethereum has transitioned to Proof-of-Stake (PoS), a more sustainable and scalable consensus mechanism.
 
 The Ethereum network consists of many individual nodes. Each node operates independently and communicates over the Internet, which is often unreliable and asynchronous. A node might always behave correctly, or it might be faulty in various ways: being offline, using a different protocol version, trying to mislead other nodes, sending contradictory messages, or experiencing other issues.
 
@@ -409,7 +409,7 @@ Research and developmental phases for future -->
 
 - [Beacon Chain Explainer from ethos.dev](https://ethos.dev/beacon-chain)
 - [Evolution of Ethereum Proof-of-Stake](https://github.com/ethereum/pos-evolution/blob/master/pos-evolution.md)
-- Alt Explainer, [Ethereum's Proof of Stake consensus explained](https://www.youtube.com/watch?v=5gfNUVmX3Es)
+- Alt Explainer, [Ethereum's Proof-of-Stake consensus explained](https://www.youtube.com/watch?v=5gfNUVmX3Es)
 - [Eth2 Handbook by Ben Edgington](https://eth2book.info/capella/part2/consensus/)
 
 ### Further Reading Resources

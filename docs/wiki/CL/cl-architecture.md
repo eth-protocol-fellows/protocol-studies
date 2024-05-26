@@ -38,16 +38,16 @@ The fork choice rule implicitly selects a branch by choosing a block at the bran
 
 There are several examples of different fork choice rules:
 
-- **Proof of Work**: In Ethereum and Bitcoin, the "heaviest chain rule" (sometimes called "longest chain", though not strictly accurate) is used. The head block is the tip of the chain with the most cumulative "work" done.
-> Note that contrary to popular belief, Ethereum's proof of work protocol [did not use](https://ethereum.stackexchange.com/questions/38121/why-did-ethereum-abandon-the-ghost-protocol/50693#50693) any form of GHOST in its fork choice. This misconception is very persistent, probably due to the [Ethereum Whitepaper](https://ethereum.org/en/whitepaper/#modified-ghost-implementation). Eventually when Vitalik was asked about it, he confirmed that although GHOST had been planned under PoW it was never implemented due to concerns about some unspecified attacks. The heaviest chain rule was simpler and well tested. It worked fine.
-- **Casper FFG (Proof of Stake)**: In Ethereum's PoS Casper FFG protocol, the fork-choice rule is to "follow the chain containing the justified checkpoint of the **greatest height**" and never revert a finalized block.
-- **LMD GHOST (Proof of Stake)**: In Ethereum's PoS LMD GHOST protocol, the fork-choice rule is to take the "Greediest Heaviest Observed SubTree". It involves counting accumulated votes from validators for blocks and their descendent blocks. It also applies the same rule as Casper FFG.
+- **Proof-of-Work**: In Ethereum and Bitcoin, the "heaviest chain rule" (sometimes called "longest chain", though not strictly accurate) is used. The head block is the tip of the chain with the most cumulative "work" done.
+> Note that contrary to popular belief, Ethereum's Proof-of-Work protocol [did not use](https://ethereum.stackexchange.com/questions/38121/why-did-ethereum-abandon-the-ghost-protocol/50693#50693) any form of GHOST in its fork choice. This misconception is very persistent, probably due to the [Ethereum Whitepaper](https://ethereum.org/en/whitepaper/#modified-ghost-implementation). Eventually when Vitalik was asked about it, he confirmed that although GHOST had been planned under PoW it was never implemented due to concerns about some unspecified attacks. The heaviest chain rule was simpler and well tested. It worked fine.
+- **Casper FFG (Proof-of-Stake)**: In Ethereum's PoS Casper FFG protocol, the fork-choice rule is to "follow the chain containing the justified checkpoint of the **greatest height**" and never revert a finalized block.
+- **LMD GHOST (Proof-of-Stake)**: In Ethereum's PoS LMD GHOST protocol, the fork-choice rule is to take the "Greediest Heaviest Observed SubTree". It involves counting accumulated votes from validators for blocks and their descendent blocks. It also applies the same rule as Casper FFG.
 
 Each of these fork choice rules assigns a numeric score to a block. The winning block, or head block, has the highest score. The goal is that all correct nodes, when they see a certain block, will agree that it is the head and follow its branch. This way, all correct nodes will eventually agree on a single canonical chain that goes back to Genesis.
 
 #### Reorgs and Reversion
 
-As a node receives new votes (and new votes for blocks in proof of stake), it re-evaluates the fork choice rule with this new information. Usually, a new block will be a child of the current head block, and it will become the new head block.
+As a node receives new votes (and new votes for blocks in Proof-of-stake), it re-evaluates the fork choice rule with this new information. Usually, a new block will be a child of the current head block, and it will become the new head block.
 
 Sometimes, however, the new block might be a descendant of a different block in the block tree. If the node doesn't have the parent block of the new block, it will ask its peers for it and any other missing blocks.
 
@@ -107,7 +107,7 @@ Thus, while Ethereum strives for both safety and liveness, it leans towards ensu
 
 ## The Ghosts in the Machine
 
-Ethereum's proof of stake consensus protocol combines two separate protocols: [LMD GHOST](/wiki/cl/gasper?id=lmd-ghost.md) and [Casper FFG](/wiki/cl/gasper?id=casper-ffg.md). Together, they form the consensus protocol known as "Gasper". Detailed Information about both protocols and how they work in combination are covered in the next section [Gasper].
+Ethereum's Proof-of-Stake consensus protocol combines two separate protocols: [LMD GHOST](/wiki/cl/gasper?id=lmd-ghost.md) and [Casper FFG](/wiki/cl/gasper?id=casper-ffg.md). Together, they form the consensus protocol known as "Gasper". Detailed Information about both protocols and how they work in combination are covered in the next section [Gasper].
 
 Gasper aims to combine the strengths of both LMD GHOST and Casper FFG. LMD GHOST provides liveness, ensuring the chain keeps running by producing new blocks regularly. However, it is prone to forks and not formally safe. Casper FFG, on the other hand, provides safety by periodically finalizing the chain, protecting it from long reversions.
 
@@ -211,7 +211,7 @@ Here, $S$ is the pre-state and $S'$ is the post-state. The function $f$ is itera
 
 ### Beacon Chain State Transitions
 
-Unlike the block-driven proof of work, the beacon chain is slot-driven. State updates depend on slot progress, regardless of block presence.
+Unlike the block-driven Proof-of-Work, the beacon chain is slot-driven. State updates depend on slot progress, regardless of block presence.
 
 The beacon chain's state transition function includes:
 
