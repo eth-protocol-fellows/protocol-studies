@@ -40,7 +40,7 @@ There are several examples of different fork choice rules:
 
 - **Proof of Work**: In Ethereum and Bitcoin, the "heaviest chain rule" (sometimes called "longest chain", though not strictly accurate) is used. The head block is the tip of the chain with the most cumulative "work" done.
 > Note that contrary to popular belief, Ethereum's proof of work protocol [did not use](https://ethereum.stackexchange.com/questions/38121/why-did-ethereum-abandon-the-ghost-protocol/50693#50693) any form of GHOST in its fork choice. This misconception is very persistent, probably due to the [Ethereum Whitepaper](https://ethereum.org/en/whitepaper/#modified-ghost-implementation). Eventually when Vitalik was asked about it, he confirmed that although GHOST had been planned under PoW it was never implemented due to concerns about some unspecified attacks. The heaviest chain rule was simpler and well tested. It worked fine.
-- **Casper FFG (Proof of Stake)**: In Ethereum's PoS Casper FFG protocol, the fork-choice rule is to "follow the chain containing the justified checkpoint of the greatest height" and never revert a finalized block.
+- **Casper FFG (Proof of Stake)**: In Ethereum's PoS Casper FFG protocol, the fork-choice rule is to "follow the chain containing the justified checkpoint of the **greatest height**" and never revert a finalized block.
 - **LMD GHOST (Proof of Stake)**: In Ethereum's PoS LMD GHOST protocol, the fork-choice rule is to take the "Greediest Heaviest Observed SubTree". It involves counting accumulated votes from validators for blocks and their descendent blocks. It also applies the same rule as Casper FFG.
 
 Each of these fork choice rules assigns a numeric score to a block. The winning block, or head block, has the highest score. The goal is that all correct nodes, when they see a certain block, will agree that it is the head and follow its branch. This way, all correct nodes will eventually agree on a single canonical chain that goes back to Genesis.
@@ -68,7 +68,7 @@ _At this point, the node believes that block $F$ is the best head, therefore its
 </figcaption>
 </figure>
 
-When the node later receives block $G$, which is built on block $C$, not on its current head block $F$, it must decide if $G$ should be the new head. If the fork choice rule says $G$ is the better head block just for example here, the node will revert blocks $D, E,$ and $F$. It will remove them from its chain, as if they were never received, and go back to the state after block $B$.
+When the node later receives block $G$, which is built on block $C$, not on its current head block $F$, it must decide if $G$ should be the new head. Just for example, If the fork choice rule says $G$ is the better head block, the node will revert blocks $D, E,$ and $F$. It will remove them from its chain, as if they were never received, and go back to the state after block $B$.
 
 Then, the node will add blocks $C$ and $G$ to its chain and process them. After this reorg, the node's chain will be $A, B, C,$ and $G$.
 
@@ -107,7 +107,7 @@ Thus, while Ethereum strives for both safety and liveness, it leans towards ensu
 
 ## The Ghosts in the Machine
 
-Ethereum's proof of stake consensus protocol combines two separate protocols: [LMD GHOST]() and [Casper FFG](). Together, they form the consensus protocol known as "Gasper". Detailed Information about both protocols and how they work in combination are covered in the next section [Gasper].
+Ethereum's proof of stake consensus protocol combines two separate protocols: [LMD GHOST](/wiki/cl/gasper?id=lmd-ghost.md) and [Casper FFG](/wiki/cl/gasper?id=casper-ffg.md). Together, they form the consensus protocol known as "Gasper". Detailed Information about both protocols and how they work in combination are covered in the next section [Gasper].
 
 Gasper aims to combine the strengths of both LMD GHOST and Casper FFG. LMD GHOST provides liveness, ensuring the chain keeps running by producing new blocks regularly. However, it is prone to forks and not formally safe. Casper FFG, on the other hand, provides safety by periodically finalizing the chain, protecting it from long reversions.
 
