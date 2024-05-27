@@ -58,7 +58,62 @@ so it can repeat the PING-PONG game with them and bond with them as well.
 
 ![img.png](../../images/el-architecture/peer-discovery.png)
 
-## ENR: Ethereum Node Records
+The PING/PONG game is better known as the wire subprotocol, and it includes the next specifications:
+
+**PING packet structure**
+```
+version = 4
+from = [sender-ip, sender-udp-port, sender-tcp-port]
+to = [recipient-ip, recipient-udp-port, 0]
+packet-data = [version, from, to, expiration, enr-seq ...]
+```
+
+**PONG packet structure**
+```
+packet-data = [to, ping-hash, expiration, enr-seq, ...]
+```
+
+The packet-data is wrapped in 1280 bytes UDP datagram alongside with the header:
+```
+packet-header = hash || signature || packet-type
+hash = keccak256(signature || packet-type || packet-data)
+signature = sign(packet-type || packet-data)
+packet = packet-header || packet-data
+```
+
+**FindNode packet structure** (called FIND-NEIGHBOURS above)
+```
+packet-data = [target, expiration, ...]
+```
+Where the target is a 64-byte secp256k1 node's public key.
+
+**Neighbours packet structure**
+```
+packet-data = [expiration, neighbours, ...]
+neighbours = [ip, udp-port, tcp-port, node-id, ...]
+```
+Where the neighbours are the list of 16 nodes that are able to connect with the new node.
+
+**ENRRequest packet structure**
+```
+packet-data = [expiration]
+```
+
+**ENRResponse packet structure**
+```
+packet-data = [request-hash, ENR]
+```
+Where ENR is the Ethereum Node Record, a standard format for connectivity for nodes. Which it is explained below.
+
+---
+Currently, the execution clients are using the [Discv4 protocol](https://github.com/ethereum/devp2p/blob/master/discv4.md) for the discovery process, although it is planned to be migrated to [Discv5](https://github.com/ethereum/devp2p/blob/master/discv5/discv5.md) in the future. 
+This Kademlia-like discovery protocol includes the routing table, which keeps information about other nodes in the neighbourhood consisting of *k-buckets* (where *k* is the number of nodes in the bucket, currently defined as 16).
+Worth mentioning that all the table entries are sorted by *last seen/least-recently seen* at the head, and most-recently seen at the tail.
+If one of the entities has not been responded to in 12 hours, it is removed from the table, and the next encounter node is added to the tail of the list.
+
+
+
+### ENR: Ethereum Node Records
 * Standard format for connectivity for nodes
 * Node's identity
 * Object
