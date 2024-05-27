@@ -37,7 +37,7 @@
   - [Transaction anatomy](/wiki/EL/transaction.md)
   - [JSON-RPC](/wiki/EL/JSON-RPC.md)
   - [DevP2P](/wiki/EL/devp2p.md)
-  - [RLP Serialization](/docs/wiki/EL/RLP.md)
+  - [RLP Serialization](/wiki/EL/RLP.md)
 - Consensus Layer
   - [Overview](/wiki/CL/overview.md)
   - [CL Specs](/wiki/CL/cl-specs.md)
@@ -45,6 +45,8 @@
   - [CL Clients](/wiki/CL/cl-clients.md)
   - [Beacon API](/wiki/CL/beacon-api.md)
   - [CL Networking](/wiki/CL/cl-networking.md)
+  - [SSZ Serialization](/wiki/CL/SSZ.md)
+    - [Merkleization](/wiki/CL/merkleization.md)
 - Development
   - [Core development](/wiki/dev/core-development.md)
   - [Coordination](/wiki/dev/pm.md)
@@ -53,6 +55,7 @@
   - [Testing overview](/wiki/testing/overview.md)
   - [Incidents](/wiki/testing/incidents.md)
   - [hive](/wiki/testing/hive.md)
+  - [Formal verification](/wiki/testing/formal-verification.md)
 - Research
   - [Roadmap overview](/wiki/research/roadmap.md)
   - [Scaling](/wiki/research/scaling/scaling.md)
@@ -66,15 +69,18 @@
     - [PTC](/wiki/research/PBS/PTC.md)
     - [PEPC](/wiki/research/PBS/PEPC.md)
     - [TBHL](/wiki/research/PBS/TBHL.md)
+    - [ET](/wiki/research/PBS/ET.md)
+  - [eODS](/wiki/research/eODS.md)
   - Preconfirmations
     - [Preconfirmations](/wiki/research/Preconfirmations/Preconfirmations.md)
     - [Based Sequencing with Preconfs](/wiki/research/Preconfirmations/BasedSequencingPreconfs.md)
+  - [Light clients](/wiki/research/light-clients.md)
 - [Cryptography](/wiki/Cryptography/intro.md)
   - [ECDSA](/wiki/Cryptography/ecdsa.md)
   - [BLS](/wiki/Cryptography/bls.md)
   - [Keccak256](/wiki/Cryptography/keccak256.md)
   - Commitments
-    - [KZG](/docs/wiki/Cryptography/KZG.md)
+    - [KZG](/wiki/Cryptography/KZG.md)
   - [Post-Quantum Cryptography](/wiki/Cryptography/post-quantum-cryptography.md)
 - [Protocol Fellowship](/wiki/epf.md)
 
@@ -82,5 +88,5 @@
   - [GitHub Repository](https://github.com/eth-protocol-fellows/protocol-studies)
 
 <form action="https://epf.wiki/#/eps/intro" target="_blank">
-  <input type="submit" value="Join the protocol" style="cursor: pointer;margin-top:12px;padding:8px;background-color:#FFFFFF;border:1px solid #0374B5;border-radius:.25rem;color:#0374B5;display:inline-block;text-align:center;text-decoration:none;width:250px;-webkit-text-size-adjust:none;mso-hide:all;" />
+  <input type="submit" value="Join the protocol" class="btn-primary" />
 </form>

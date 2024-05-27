@@ -28,9 +28,13 @@ Developed in .NET
 
 Developed by Paradigm, recently considered stable
 
+### Nimbus EL 
+
+Execution client developed by Nimbus team as an addition to their Nim CL work.
+
 ### Silkworm
 
-Modular C++ implementation by Erigon team
+Modular C++ implementation by Erigon team. Also called Erigon++.
 
 ### JS Client
 
