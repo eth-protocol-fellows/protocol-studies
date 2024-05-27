@@ -9,7 +9,9 @@ This section covers a brief overview of the differences and similarities between
 as well as the protocols involved in the transport layer used in DevP2P: TCP and UDP.
 
 In terms of networking, both models refer to the same process of communication between layers.
-Just as Kurose and Ross explain (2020), the computer networks are divided into different layers, and each one of them has a specific responsibility. The OSI model has seven layers, while the TCP/IP model has four layers. The OSI model is more theoretical and the TCP/IP model is more practical. The OSI model is a reference model created by the International Organization for Standardization (ISO) to provide a framework for understanding networks. The TCP/IP model was created by the Department of Defense (DoD) to ensure that messages could be transmitted between computers regardless of the types of computers involved. The TCP/IP model is a concise version of the OSI model:
+Just as Kurose and Ross explain (2020), the computer networks are divided into different layers, and each one of them has a specific responsibility. The OSI model has seven layers, while the TCP/IP model has four layers. The OSI model is more theoretical and the TCP/IP model is more practical.
+The OSI model is a reference model created by the International Organization for Standardization (ISO) to provide a framework for understanding networks. The TCP/IP model was created by the Department of Defense (DoD) to ensure that messages could be transmitted between computers regardless of the types of computers involved.
+The TCP/IP model is a concise version of the OSI model:
 
 ![alt text](../../images/el-architecture/osi-tcpip-models.png)
 
@@ -26,28 +28,33 @@ Assuming the communication schema proposed by Claude Shannon (1948), every commu
 This is important to mention because regardless of the computer architecture, it could be part of a network if it follows the communication and protocol specifications of the models mentioned above.
 
 Focusing on the transport layer, the two protocols used by DevP2P are TCP (Transmission Control Protocol) and UDP (User Datagram Protocol).
-Both protocols are used to send data over the internet, but they have different characteristics. Just as Tanenbaum points it out (2021),TCP is a connection-oriented protocol, which means that it establishes a connection between the sender and the receiver before sending data. It is reliable because it ensures that the data is delivered in the correct order and without errors. UDP is a connectionless protocol, which means that it does not establish a connection before sending data. It is faster than TCP because it does not have to establish a connection before sending data, but it is less reliable because it does not ensure that the data is delivered in the correct order or without errors.
+Both protocols are used to send data over the internet, but they have different characteristics. Just as Tanenbaum points it out (2021),TCP is a connection-oriented protocol, which means that it establishes a connection between the sender and the receiver before sending data.
+It is reliable because it ensures that the data is delivered in the correct order and without errors. UDP is a connectionless protocol, which means that it does not establish a connection before sending data.
+It is faster than TCP because it does not have to establish a connection before sending data, but it is less reliable because it does not ensure that the data is delivered in the correct order or without errors.
 
 ![img.png](../../images/el-architecture/tcpudp.png)
 
 ## EL's networking specs
-* peer-to-peer networking protocol
-* gossiping data (1:N) and request/response (1:1) communication
-* Client software divided into Execution and Consensus (each one have its own p2p network)
-* Execution network propagates transactions
-* Two network stacks:
-  * UDP-based transport layer (discovery and finding peers)
-  * TCP-based transport layer (devp2p, exchange information) 
-* Discovery protocol
+As a peer-to-peer network Ethereum implies a series of rules to enable communication between its participant nodes. This section cover an explanation of which are those rules and how they are implemented in the EL.
+Considering each Ethereum node is built upon two different components: the execution client and the consensus client, each one of them has its own peer-to-peer network with its own purpose.
+The execution client is responsible for gossiping transactions, while the consensus client is responsible for gossiping the blocks.
 
-How nodes find each other
-  * bootstrap nodes
-  * Kademlia
-  * Hash tables
-  * PING/PONG hashed messages
-  * Find neighbours: list of peers
+Keeping this in mind, the scope of the EL network covers two different stacks working in parallel: the discovery one, and the information transport itself. 
+The discovery stack is responsible for finding the node peers, while the transport stack is responsible for sending and receiving messages between them.
+Taking the computer networks background into account, then we can infer that the discovery stack relies on the UDP protocol, while the information exchange stack relies on the TCP protocol.
+The reason behind this is that the information exchange requires a reliable connection between the nodes,
+so they can be able to both confirm the connection before sending the data and have a way to ensure that the data is delivered in the correct order and without errors (or at least to have a way to detect and correct them),
+while the discovery process does not require the reliable connection, since it is enough to let other knows that the node is available to communicate.
 
-start client --> connect to bootnode --> bond to bootnode --> find neighbours --> bond to neighbours
+### Discovery
+The process of how the nodes find each other in the network starts with [the hardcoded bootnodes listed in the specification](https://github.com/ethereum/go-ethereum/blob/master/params/bootnodes.go).
+The bootnodes are nodes that are known by all the other nodes in the networks (both Mainnet and testnets), and they are used to bootstrap the discovery peers process.
+Using the Kademlia DHT (Distributed Hash Table) algorithm, the nodes are able to find each other in the network by referring to a routing table where the bootnodes are listed.
+The TLDR of the Kademlia is that it is a peer-to-peer protocol that enables nodes to find each other in the network by using a distributed hash table, as Leffew mentioned in his article (2019).
+
+That is to say, the connection process starts with a PING-PONG game where the new node send a PING message to the bootnode, and the bootnode responds with a PONG hashed message.
+If both messages match, then the new node is able to bond with the bootnode. In addition to this, the new node sends a FIND-NEIGHBOURS request to the bootnode, so it can receive a list of neighbours that able to connect with,
+so it can repeat the PING-PONG game with them and bond with them as well.
 
 ## ENR: Ethereum Node Records
 * Standard format for connectivity for nodes
@@ -75,5 +82,6 @@ start client --> connect to bootnode --> bond to bootnode --> find neighbours --
 * [Geth devp2p docs](https://geth.ethereum.org/docs/tools/devp2p)
 * [Ethereum devp2p GitHub](https://github.com/ethereum/devp2p)
 * Andrew S. Tanenbaum, Nick Feamster, David J. Wetherall (2021). *Computer Networks*. 6th edition. Pearson. London.
-* Jim Kurose and Keith Ross (2020). *Computer Networking: A Top-Down Approach*. 8th edition. Pearson.
 * Clause E. Shannon (1948). "A Mathematical Theory of Communication". *Bell System Technical Journal*. Vol. 27.
+* Jim Kurose and Keith Ross (2020). *Computer Networking: A Top-Down Approach*. 8th edition. Pearson.
+* Kevin Leffew (2019). "Kademlia usage in the Ethereum protocol". [*A brief overview of Kademlia, and its use in various decentralized platforms*](https://medium.com/coinmonks/a-brief-overview-of-kademlia-and-its-use-in-various-decentralized-platforms-da08a7f72b8f). Medium.

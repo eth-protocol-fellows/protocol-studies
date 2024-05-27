@@ -208,6 +208,7 @@ Devops
 devp
 Devs
 DEX
+DHT
 Diffie
 DILITHIUM
 Dimitar
@@ -452,6 +453,7 @@ lceil
 ldots
 learnings
 Ledgerwatch
+Leffew
 Lefteris
 leftarrow
 leq
