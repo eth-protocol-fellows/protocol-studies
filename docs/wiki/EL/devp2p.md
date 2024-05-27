@@ -47,7 +47,7 @@ so they can be able to both confirm the connection before sending the data and h
 while the discovery process does not require the reliable connection, since it is enough to let other knows that the node is available to communicate.
 
 ### Discovery
-The process of how the nodes find each other in the network starts with [the hardcoded bootnodes listed in the specification](https://github.com/ethereum/go-ethereum/blob/master/params/bootnodes.go).
+The process of how the nodes find each other in the network starts with [the hard-coded bootnodes listed in the specification](https://github.com/ethereum/go-ethereum/blob/master/params/bootnodes.go).
 The bootnodes are nodes that are known by all the other nodes in the networks (both Mainnet and testnets), and they are used to bootstrap the discovery peers process.
 Using the Kademlia DHT (Distributed Hash Table) algorithm, the nodes are able to find each other in the network by referring to a routing table where the bootnodes are listed.
 The TLDR of the Kademlia is that it is a peer-to-peer protocol that enables nodes to find each other in the network by using a distributed hash table, as Leffew mentioned in his article (2019).
@@ -55,6 +55,8 @@ The TLDR of the Kademlia is that it is a peer-to-peer protocol that enables node
 That is to say, the connection process starts with a PING-PONG game where the new node send a PING message to the bootnode, and the bootnode responds with a PONG hashed message.
 If both messages match, then the new node is able to bond with the bootnode. In addition to this, the new node sends a FIND-NEIGHBOURS request to the bootnode, so it can receive a list of neighbours that able to connect with,
 so it can repeat the PING-PONG game with them and bond with them as well.
+
+![img.png](../../images/el-architecture/peer-discovery.png)
 
 ## ENR: Ethereum Node Records
 * Standard format for connectivity for nodes
