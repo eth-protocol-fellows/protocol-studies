@@ -46,10 +46,10 @@ The reason behind this is that the information exchange requires a reliable conn
 so they can be able to both confirm the connection before sending the data and have a way to ensure that the data is delivered in the correct order and without errors (or at least to have a way to detect and correct them),
 while the discovery process does not require the reliable connection, since it is enough to let other knows that the node is available to communicate.
 
-### Discovery
+### Discv protocol (Discovery)
 The process of how the nodes find each other in the network starts with [the hard-coded bootnodes listed in the specification](https://github.com/ethereum/go-ethereum/blob/master/params/bootnodes.go).
 The bootnodes are nodes that are known by all the other nodes in the networks (both Mainnet and testnets), and they are used to bootstrap the discovery peers process.
-Using the Kademlia DHT (Distributed Hash Table) algorithm, the nodes are able to find each other in the network by referring to a routing table where the bootnodes are listed.
+Using the Kademlia-like DHT (Distributed Hash Table) algorithm, the nodes are able to find each other in the network by referring to a routing table where the bootnodes are listed.
 The TLDR of the Kademlia is that it is a peer-to-peer protocol that enables nodes to find each other in the network by using a distributed hash table, as Leffew mentioned in his article (2019).
 
 That is to say, the connection process starts with a PING-PONG game where the new node send a PING message to the bootnode, and the bootnode responds with a PONG hashed message.
@@ -58,6 +58,7 @@ so it can repeat the PING-PONG game with them and bond with them as well.
 
 ![img.png](../../images/el-architecture/peer-discovery.png)
 
+#### Wire protocol
 The PING/PONG game is better known as the wire subprotocol, and it includes the next specifications:
 
 **PING packet structure**
@@ -107,37 +108,56 @@ Where ENR is the Ethereum Node Record, a standard format for connectivity for no
 
 ---
 Currently, the execution clients are using the [Discv4 protocol](https://github.com/ethereum/devp2p/blob/master/discv4.md) for the discovery process, although it is planned to be migrated to [Discv5](https://github.com/ethereum/devp2p/blob/master/discv5/discv5.md) in the future. 
-This Kademlia-like discovery protocol includes the routing table, which keeps information about other nodes in the neighbourhood consisting of *k-buckets* (where *k* is the number of nodes in the bucket, currently defined as 16).
+This Kademlia-like protocol includes the routing table, which keeps information about other nodes in the neighbourhood consisting of *k-buckets* (where *k* is the number of nodes in the bucket, currently defined as 16).
 Worth mentioning that all the table entries are sorted by *last seen/least-recently seen* at the head, and most-recently seen at the tail.
 If one of the entities has not been responded to in 12 hours, it is removed from the table, and the next encounter node is added to the tail of the list.
 
-
-
 ### ENR: Ethereum Node Records
-* Standard format for connectivity for nodes
-* Node's identity
-* Object
-  * signature (hash)
-  * sequence number
-  * arbitrary key-value pairs
+The ENR os a standard format for p2p connectivity, which was originally proposed in the [EIP-778](https://eips.ethereum.org/EIPS/eip-778).
+A node record contains the node's network endpoints, such as the IP address and port, as well as the node's public key and the sequence number of the record.
 
-## DevP2P specs
-* RLPx: encrypted and authenticated transport protocol (TCP based transport system for nodes communication)
-  * Handshake messaging
-  * Encryption
-  * Authentication
-* RLP: Recursive Length Prefix encoding
-* Multiplexing: multiple subprotocols
-* Subprotocols
-  * LES: Light Ethereum Subprotocol
-  * Witness Subprotocol
-  * Wire Subprotocol
-  * SHH: Whisper Subprotocol
+The record content structure is as follows:
+
+| Key | Value                                     |
+| --- |-------------------------------------------|
+| id | id scheme, e.g "v4"                       |
+| secp256k1 | compressed public key, 33 bytes           |
+| ip | IPv4 address, 4 bytes                     |
+| tcp | TCP port, big endian integer              |
+| udp | UDP port, big endian integer              |
+| ip6 | IPv6 address, 16 bytes                    |
+| tcp6 | IPv6-specific TCP port, big endian integer |
+| udp6 | IPv6-specific UDP port, big endian integer |
+
+All the fields are optional, except for the `id` field, which is required. If no `tcp6`/`udp6` port are provided, the `tcp`/`udp` ports are used for both IPv4 and IPv6.
+
+The node record is composed of a `signature`, which is the cryptographic signature of record contents, and a `seq` field, which is the sequence number of the record (a 64-bit unsigned integer).
+#### Encoding
+
+The record is encoded as an RLP list of `[signature, seq, k, v,...]` with a maximum size of 300 bytes.
+Signed records are encoded as follows:
+```
+content = [seq, k, v, ...]
+signature = sign(content)
+record = [signature, seq, k, v, ...]
+```
+In addition to the RLP encoding, there is a textual representation of the record, which is a base64 encoding of the RLP encoding. It is prefixed with `enr:`.
+i.e. `enr:-IS4QHCYrYZbAKWCBRlAy5zzaDZXJBGkcnh4MHcBFZntXNFrdvJjX04jRzjzCBOonrkTfj499SZuOh8R33Ls8RRcy5wBgmlkgnY0gmlwhH8AAAGJc2VjcDI1NmsxoQPKY0yuDUmstAHYpMa2_oxVtw0RW_QAdpzBQA8yWM0xOIN1ZHCCdl8` which contains the loopback address `127.0.0.1` and the UDP port 30303. The node ID is `a448f24c6d18e575453db13171562b71999873db5b286df957af199ec94617f7`.
+
+Despite of the fact that the ENR is a standard format for p2p connectivity, it is not mandatory to use it in the Ethereum network. The nodes can use any other format to exchange the information about their connectivity.
+There are two additional formats able to be understand by an Ethereum node: multiaddr and enode.
+
+* The multiaddr was the original one. For example, the multiaddr for a node with a loopback IP listening on TCP port 30303 and node ID `a448f24c6d18e575453db13171562b71999873db5b286df957af199ec94617f7`  is `/ip4/127.0.0.1/tcp/30303/a448f24c6d18e575453db13171562b71999873db5b286df957af199ec94617f7`.
+* The enode is a more human-readable format. For example, the enode for the same node is `enode://a448f24c6d18e575453db13171562b71999873db5b286df957af199ec94617f7@127.0.0.1:30303?discport=30301`. It is a URL-like format describing the node ID encoded before de @ sign, the IP address, the TCP port and the UDP port specified as "discport".
+
+### RLPx protocol (Transport)
 
 
 ### Further Reading
 * [Geth devp2p docs](https://geth.ethereum.org/docs/tools/devp2p)
 * [Ethereum devp2p GitHub](https://github.com/ethereum/devp2p)
+* [Ethereum networking layer](https://ethereum.org/en/developers/docs/networking-layer/)
+* [Ethereum Addresses](https://ethereum.org/en/developers/docs/networking-layer/network-addresses/)
 * Andrew S. Tanenbaum, Nick Feamster, David J. Wetherall (2021). *Computer Networks*. 6th edition. Pearson. London.
 * Clause E. Shannon (1948). "A Mathematical Theory of Communication". *Bell System Technical Journal*. Vol. 27.
 * Jim Kurose and Keith Ross (2020). *Computer Networking: A Top-Down Approach*. 8th edition. Pearson.

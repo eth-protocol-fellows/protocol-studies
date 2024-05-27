@@ -215,6 +215,7 @@ Dimitar
 disambiguated
 Discordo
 discv
+discport
 distro
 DNS
 docsify
@@ -255,9 +256,11 @@ ELs
 EL's
 emptyset
 Encodings
+endian
 Endian
 enr
 env
+enode
 ENR
 EOA
 EOAs
@@ -421,6 +424,7 @@ IOP
 IPC
 ipfs
 Ipsilon
+IPv
 IRTF
 ISA
 Jitsi
@@ -477,6 +481,7 @@ Longrightarrow
 lookahead
 lookups
 lor
+loopback
 LSB
 LSM
 LSP
@@ -526,6 +531,7 @@ MSB
 MSIZE
 mstore
 MUL
+multiaddr
 multiproofs
 Murr
 MVE
@@ -540,6 +546,7 @@ namespaces
 Nand
 natively
 neighbours
+neighbourhood
 neq
 Nethermind
 neuder
