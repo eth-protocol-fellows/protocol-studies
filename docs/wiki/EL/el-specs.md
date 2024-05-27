@@ -6,6 +6,12 @@
 > - [Python Execution Layer specification](https://ethereum.github.io/execution-specs/)
 > - EIPs [Look at Readme of the repo](https://github.com/ethereum/execution-specs)
 
+## Important bits from the specs
+
+TODO: integrate content from week 6 presentation
+
+## State transition function 
+
 The Execution Layer, from the EELS perspective, focuses exclusively on executing the state transition function (STF). This role encompasses addressing two primary questions[¹]:
 
 - Is it possible to append the block to the end of the blockchain?
@@ -63,15 +69,7 @@ The specified procedure for the state transition function in the code documentat
 
 ## Block Header Validation
 
-The process of block header validation, rigorously defined within the Yellow Paper + Spec, encompasses extensive checks, including gas usage, timestamp accuracy, among others. This meticulous validation process ensures every block strictly complies with Ethereum's stringent standards, thereby upholding the network's security and operational stability. Furthermore, it delineates the boundaries of Ethereum's economic model, integrating essential safeguards against inefficiencies and vulnerabilities. Through this process, the Ethereum network achieves a delicate balance between flexibility, allowing for evolution and upgrades, and rigidity, ensuring adherence to core principles and safety measures.
-
-The Ethereum economic model, as outlined in [EIP-1559](https://eips.ethereum.org/EIPS/eip-1559), introduces a series of mechanisms aimed at enhancing network efficiency and stability:
-
-- **Targeted Gas Limit for Reduced Volatility**: By setting the gas target at half the maximum gas limit, Ethereum aims to diminish the volatility that full blocks can cause, ensuring a more predictable transaction processing environment.
-- **Prevention of Unnecessary Delays**: This model seeks to eliminate undue delays for users by optimizing transaction processing times, thus improving the overall user experience on the network.
-- **Stabilizing Block Reward Issuance**: The issuance of block rewards contributes to the system's enhanced stability, providing a more predictable economic landscape for participants.
-- **Predictable Base Fee Adjustments**: EIP-1559 introduces a mechanism for predictable base fee changes, a feature particularly beneficial for wallets. This predictability aids in accurately estimating transaction costs ahead of time, streamlining the transaction creation process.
-- **Base Fee Burn and Priority Fee**: Under this model, miners are entitled to keep the priority fee as an incentive, while the base fee is burned, effectively removing it from circulation. This approach serves as a countermeasure to Ethereum's inflation, promoting a healthier economic environment by reducing the overall supply over time.
+The process of block header validation, rigorously defined within the Yellow Paper + Spec, encompasses extensive checks, including gas usage, timestamp accuracy, among others. This validation ensures every block strictly complies with Ethereum's standards, thereby upholding the network's security and operational stability. Furthermore, it delineates the boundaries of Ethereum's economic model, integrating essential safeguards against inefficiencies and vulnerabilities. Through this process, the Ethereum network achieves a balance between flexibility, allowing for evolution and upgrades, and rigidity, ensuring adherence to core principles and safety measures.
 
 The [validity](https://github.com/ethereum/execution-specs/blob/0f9e4345b60d36c23fffaa69f70cf9cdb975f4ba/src/ethereum/shanghai/fork.py#L269) of a block header, as specified in the Yellow Paper, employs a series of criteria to ensure each block adheres to Ethereum's protocol requirements. The parent block, denoted as $P(H)$, plays a crucial role in validating the current block header $H$ . The key conditions for validity include:
 
@@ -110,7 +108,6 @@ $$\land $$
 $$H_{blobGasUsed} \% GasPerBlob_{=2^{17}} = 0  \tag{57q}$$
 $$\land $$
 $$H_{excessBlobGas} = CalcExcessBlobGas(P(H)_H) \tag{57r}$$
-
 $$
 CalcExcessBlobGas(P(H)_H) \equiv
 \begin{aligned}
@@ -120,7 +117,6 @@ P(H)_{blobGasUsed} - TargetBlobGasPerBlock
 \end{cases}
 \end{aligned}
 $$
-
 $$
 P(H)_{blobGasUsed} \equiv  P(H)_{H_{excessBlobGas}} + P(H)_{H_{blobGasUsed}} \\
 TargetBlobGasPerBlock =  393216
@@ -130,8 +126,19 @@ $$
 - **Gas Limit Constraints**: The gas limit of a block must remain within specified bounds relative to the parent block's gas limit ${P(H)_{H_{gasLimit'}}}$ , allowing for gradual changes rather than abrupt adjustments (57b, 57c).
 - **Minimum Gas Limit**: A minimum gas limit of 5000 ensures a basic level of transaction processing capacity (57d).
 - **Timestamp Verification**: Each block's timestamp $H_{timeStamp}$ must be greater than that of its parent $P(H)_{H_{timeStamp'}}$, ensuring chronological order (57e).
-- **Ancestry and Extra Data**: The block maintains a lineage through the $H_{numberOfAncestors'}$ field and limits the $H_{extraData}$ size to 32 bytes for efficiency and security (57f, 57g).
+- **Ancestry and Extra Data**: The block maintains a lineage through the $H_{numberOfAncestors'}$ field and limits the $H_{extraData}$ size to 32 bytes (57f, 57g).
 - **Economic Model Compliance**: The base fee per gas $H_{baseFeePerGas}$ is calculated according to the rules established in EIP-1559, reflecting the network's current demand for transaction processing (57h). This along with a,b,c,d & h defines part of the Economic model
+
+### Header validation and the Ethereum economic model
+
+The Ethereum economic model, as outlined in [EIP-1559](https://eips.ethereum.org/EIPS/eip-1559), introduces a series of mechanisms aimed at enhancing network efficiency and stability:
+
+- **Targeted Gas Limit for Reduced Volatility**: By setting the gas target at half the maximum gas limit, Ethereum aims to diminish the volatility that full blocks can cause, ensuring a more predictable transaction processing environment.
+- **Prevention of Unnecessary Delays**: This model seeks to eliminate undue delays for users by optimizing transaction processing times, thus improving the overall user experience on the network.
+- **Stabilizing Block Reward Issuance**: The issuance of block rewards contributes to the system's enhanced stability, providing a more predictable economic landscape for participants.
+- **Predictable Base Fee Adjustments**: EIP-1559 introduces a mechanism for predictable base fee changes, a feature particularly beneficial for wallets. This predictability aids in accurately estimating transaction costs ahead of time, streamlining the transaction creation process.
+- **Base Fee Burn and Priority Fee**: Under this model, miners are entitled to keep the priority fee as an incentive, while the base fee is burned, effectively removing it from circulation. This approach serves as a countermeasure to Ethereum's inflation, promoting a healthier economic environment by reducing the overall supply over time.
+
 
 Additional checks ensure legacy compatibility and security, such as the ommer hash and difficulty fields being set to predefined values, reflecting the transition from Proof of Work to Proof of Stake (57j-57l).
 
@@ -207,7 +214,7 @@ Then it provides us with the types for the transaction parameter , These are bou
 
 $$T_{\text{maxPriorityFeePerGas}} , T_{\text{maxFeePerGas}}, T_{\text{gasLimit}}, T_{\text{gasPrice}} \in\mathbb{N}_{256}$$
 
-##### Additional Insights: The Significance of Natural Numbers
+#### Additional Insights: The Significance of Natural Numbers
 
 The Ethereum protocol designates block-level parameters—such as gas used ($H_{gasUsed}$), gas limit ($H_{gasLimit}$), and base fee per gas ($H_{baseFeePerGas}$)—as natural numbers $\mathbb{N}$ This decision is far from arbitrary; it embeds a layer of intuitive logic into the blockchain's foundational economics.
 
@@ -227,7 +234,7 @@ In contrast to the infinite divisibility of real numbers, the discrete nature of
 
 Furthermore, Ethereum specifies transaction parameters, such as the maximum priority fee per gas and maximum fee per gas , within a bounded subset of natural numbers $\mathbb{N}_{256}$. This bounding, capped at $2^{256}$ or approximately $10^{77}$, strikes a balance between allowing a vast range of values for transaction processing and ensuring that these values remain within secure, manageable limits.
 
-##### Dynamics of Gas Price Block to Block
+#### Dynamics of Gas Price Block to Block
 
 Let's delve into the dynamics of the gas price calculation function by exploring its impact across a spectrum of gas usage scenarios, ranging from the minimum possible (5,000 units) to the set gas limit.Our focus is to understand how this function performs within the scope of a single block.
 
@@ -243,7 +250,7 @@ Observations from the plot:
 - The maximum upward change in the base fee is approximately 12.5%, observed at the extreme right of the plot. This represents the maximum possible change when the base fee starts at a hundred.
 - A precise hit on the gas target results in a 1% increase in the base fee. Exceeding the target slightly (e.g., between 15,000 and 17,000 units of gas used) still results in only a 1% increase, illustrating the function's designed elasticity around the target.
 
-##### Extended Simulation: Long-term Effects on Gas Limit and Fee
+#### Extended Simulation: Long-term Effects on Gas Limit and Fee
 
 Having visualized the immediate impact of the gas price calculation function over a range of gas usage scenarios, it's intriguing to consider its effect over an extended period. Specifically, how does this dynamic influence the Ethereum network over tens of thousands of blocks, especially under conditions of maximum demand where each block reaches its gas limit?
 
@@ -284,6 +291,22 @@ Impact of $\rho$ and $\xi$ on Base Fee :
 - Interplay Between $\rho$ and $\xi$: The elasticity multiplier ($\rho$) not only moves the inflection point but also modulates the sensitivity of adjustments attributable to changes in the base fee max change denominator ($\xi$). This interaction underscores the delicate balance Ethereum maintains to ensure network efficiency and stability amidst varying demands.
 
 <img src="images/el-specs/gas-header.png" width="800"/>
+
+#### Dynamics of Blob Gas Price
+
+The dynamics of the Blob Gas Price are modeled in the following scenarios, starting from zero and increasing the gas used per block by a constant factor of 1000 from one block to the next.
+
+- Figure E: Illustrates the relationship between blob gas and its price. Code to all the figures is in the appendix
+
+<img src="images/el-specs/blob-gas-and-price.png" width="800"/>
+
+- Figure F: Normalizes the data to highlight the price dynamics relative to gas usage.
+  <img src="images/el-specs/blob-gas-and-price-norm.png" width="800"/>
+
+- The blob gas price remains at 1 when the parent block's gas usage is below the target (~400K, corresponding to approximately 400KB or 3 blobs per block). A maximum of about 800K maps to roughly 800KB or 6 blobs per block.
+- Surpassing the target does not immediately affect the gas price, but excess gas begins to accumulate.
+- Persistent demand increases, causing the accumulated excess gas to surpass a threshold, triggering an exponential increase in the gas price as a regulatory measure.
+- Accumulated excess gas can be cleared in one block if the gas usage of the preceding block falls below the target, resetting the adjustment mechanism.
 
 ## Block Execution Process
 
@@ -467,21 +490,6 @@ $$
 - However it starts increasing when the target is breached over blocks , which causes the Excess Blob Gas Parameter to start accumulating , this triggers the Blob Gas Price to exponentially increase
 - With the target set at approximately half of the maximum blob gas per block (393216), the function starts to show an increase to a value of 2 at ten times the target, after which it rises exponentially.
 
-#### Dynamics of Blob Gas Price
-
-The dynamics of the Blob Gas Price are modeled in the following scenarios, starting from zero and increasing the gas used per block by a constant factor of 1000 from one block to the next.
-
-- Figure E: Illustrates the relationship between blob gas and its price. Code to all the figures is in the appendix
-
-<img src="images/el-specs/blob-gas-and-price.png" width="800"/>
-
-- Figure F: Normalizes the data to highlight the price dynamics relative to gas usage.
-  <img src="images/el-specs/blob-gas-and-price-norm.png" width="800"/>
-
-- The blob gas price remains at 1 when the parent block's gas usage is below the target (~400K, corresponding to approximately 400KB or 3 blobs per block). A maximum of about 800K maps to roughly 800KB or 6 blobs per block.
-- Surpassing the target does not immediately affect the gas price, but excess gas begins to accumulate.
-- Persistent demand increases, causing the accumulated excess gas to surpass a threshold, triggering an exponential increase in the gas price as a regulatory measure.
-- Accumulated excess gas can be cleared in one block if the gas usage of the preceding block falls below the target, resetting the adjustment mechanism.
 
 ### Blob Gas Fee
 
