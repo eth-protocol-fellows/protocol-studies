@@ -25,7 +25,7 @@ The image above represents the block level state transition function in the yell
 $$
 \begin{equation}
 \sigma_{t+1} \equiv \Pi(\sigma_t, B)
-\tag{2}
+\qquad (2)
 \end{equation}
 $$
 
@@ -73,53 +73,57 @@ The process of block header validation, rigorously defined within the Yellow Pap
 
 The [validity](https://github.com/ethereum/execution-specs/blob/0f9e4345b60d36c23fffaa69f70cf9cdb975f4ba/src/ethereum/shanghai/fork.py#L269) of a block header, as specified in the Yellow Paper, employs a series of criteria to ensure each block adheres to Ethereum's protocol requirements. The parent block, denoted as $P(H)$, plays a crucial role in validating the current block header $H$ . The key conditions for validity include:
 
-$$V(H) \equiv H_{gasUsed} \leq H_{gasLimit} \tag{57a}$$
+$$V(H) \equiv H_{gasUsed} \leq H_{gasLimit} \qquad (57a)$$
 $$\land$$
-$$H_{gasLimit} < P(H)_{H_{gasLimit'}} + floor(\frac{P(H)_{H_{gasLimit'}}}{1024} ) \tag{57b}$$
+$$H_{gasLimit} < P(H)_{H_{gasLimit'}} + floor(\frac{P(H)_{H_{gasLimit'}}}{1024} ) \qquad (57b)$$
 $$\land $$
-$$H_{gasLimit} > P(H)_{H_{gasLimit'}} - floor(\frac{P(H)_{H_{gasLimit'}}}{1024} ) \tag{57c}$$
+$$H_{gasLimit} > P(H)_{H_{gasLimit'}} - floor(\frac{P(H)_{H_{gasLimit'}}}{1024} ) \qquad (57c)$$
 $$\land$$
-$$H_{gasLimit} > 5000\tag{57d}$$
+$$H_{gasLimit} > 5000\qquad (57d)$$
 $$\land  $$
-$$H_{timeStamp} > P(H)_{H_{timeStamp'}} \tag{57e}$$
+$$H_{timeStamp} > P(H)_{H_{timeStamp'}} \qquad (57e)$$
 $$\land$$
-$$H_{numberOfAncestors} = P(H)_{H_{numberOfAncestors'}} + 1 \tag{57f}$$
+$$H_{numberOfAncestors} = P(H)_{H_{numberOfAncestors'}} + 1 \qquad (57f)$$
 $$\land$$
-$$length(H_{extraData}) \leq 32_{bytes} \tag{57g}$$
+$$length(H_{extraData}) \leq 32_{bytes} \qquad (57g)$$
 $$\land$$
-$$H_{baseFeePerGas} = F(H) \tag{57h}$$
+$$H_{baseFeePerGas} = F(H) \qquad (57h)$$
 $$\land$$
-$$H_{parentHash} = KEC(RLP( P(H)_H )) \tag{57i} $$
+$$H_{parentHash} = KEC(RLP( P(H)_H )) \qquad (57i) $$
 $$\land$$
-$$H_{ommersHash} = KEC(RLP(())) \tag{57j}$$
+$$H_{ommersHash} = KEC(RLP(())) \qquad (57j)$$
 $$\land$$
-$$H_{difficulty} = 0\tag{57k}$$
+$$H_{difficulty} = 0\qquad (57k)$$
 $$\land $$
-$$H_{nonce} = 0x0000000000000000 \tag{57l}$$
+$$H_{nonce} = 0x0000000000000000 \qquad (57l)$$
 $$\land$$
-$$H_{prevRandao} = PREVRANDAO() \text{?? in yellow but not in eels} \tag{57m}$$
+$$H_{withdrawlsHash} \neq nil \qquad (57n)$$
 $$\land$$
-$$H_{withdrawlsHash} \neq nil \tag{57n}$$
+$$H_{blobGasUsed} \neq nil \qquad (57o)$$
 $$\land$$
-$$H_{blobGasUsed} \neq nil \tag{57o}$$
-$$\land$$
-$$H_{blobGasUsed} \leq  MaxBlobGasPerBlock_{=786432}  \tag{57p}$$
+$$H_{blobGasUsed} \leq  MaxBlobGasPerBlock_{=786432}  \qquad (57p)$$
 $$\land $$
-$$H_{blobGasUsed} \% GasPerBlob_{=2^{17}} = 0  \tag{57q}$$
+$$H_{blobGasUsed} \% GasPerBlob_{=2^{17}} = 0  \qquad (57q)$$
 $$\land $$
-$$H_{excessBlobGas} = CalcExcessBlobGas(P(H)_H) \tag{57r}$$
+$$H_{excessBlobGas} = CalcExcessBlobGas(P(H)_H) \qquad (57r)$$
+$$\land $$
 $$
-CalcExcessBlobGas(P(H)_H) \equiv
+CalcExcessBlobGas(P(H)_H) \equiv \nonumber \\
 \begin{aligned}
 &\begin{cases}
-0, & \text{if} \space P(H)_{blobGasUsed} < TargetBlobGasPerBlock \\
+0,  \qquad \text{if} \space P(H)_{blobGasUsed} < TargetBlobGasPerBlock \\
 P(H)_{blobGasUsed} - TargetBlobGasPerBlock
 \end{cases}
+\quad (57s)
 \end{aligned}
 $$
+$$\land $$
 $$
+\begin{aligned}
 P(H)_{blobGasUsed} \equiv  P(H)_{H_{excessBlobGas}} + P(H)_{H_{blobGasUsed}} \\
 TargetBlobGasPerBlock =  393216
+\end{aligned}
+\quad (57t)
 $$
 
 - **Gas Usage**: The gas used by a block $H_{gasUsed}$ must not exceed the gas limit $H_{gasLimit'}$, ensuring transactions fit within the block's capacity (57a).
@@ -152,23 +156,23 @@ $$
 \begin{equation}
 F(H) \equiv
 \begin{cases}
-10^9 & \text{if } H_{number} = F_{London} \\
-P(H)_{H_{baseFeePerGas}} & \text{if } P(H)_{H_{gasUsed}} = \tau \\
-P(H)_{H_{baseFeePerGas}} - \nu & \text{if } P(H)_{H_{gasUsed}} < \tau \\
+10^9 & \text{if } H_{number} = F_{London} \nonumber \\
+P(H)_{H_{baseFeePerGas}} & \text{if } P(H)_{H_{gasUsed}} = \tau \nonumber \\
+P(H)_{H_{baseFeePerGas}} - \nu & \text{if } P(H)_{H_{gasUsed}} < \tau \nonumber \\
 P(H)_{H_{baseFeePerGas}} + \nu & \text{if } P(H)_{H_{gasUsed}} > \tau
 \end{cases}
-\tag{45}
+\qquad (45)
 \end{equation}
 $$
 
 $$
 % Equation (46)
-\tau \equiv \frac {P(H)_{H_{gasLimit}}}  {\rho} \tag{46}
+\tau \equiv \frac {P(H)_{H_{gasLimit}}}  {\rho} \qquad (46)
 $$
 
 $$
 % Equation (47)
-\rho \equiv 2 \tag{47}
+\rho \equiv 2 \qquad (47)
 $$
 
 $$
@@ -177,7 +181,7 @@ $$
 \begin{cases}
 \frac{P(H)_{H_{baseFeePerGas}} \times (\tau - P(H)_{H_{gasUsed}})}{\tau} & \text{if } P(H)_{H_{gasUsed}} < \tau \\
 \frac{P(H)_{H_{baseFeePerGas}} \times (P(H)_{H_{gasUsed}} - \tau)}{\tau} & \text{if } P(H)_{H_{gasUsed}} > \tau
-\end{cases} \tag{48}
+\end{cases} \qquad (48)
 $$
 
 $$
@@ -186,12 +190,12 @@ $$
 \begin{cases}
 \left\lfloor \frac{\nu^*}{\xi} \right\rfloor & \text{if } P(H)_{H_{gasUsed}} < \tau \\
 \max\left(\left\lfloor \frac{\nu^*}{\xi} \right\rfloor, 1\right) & \text{if } P(H)_{H_{gasUsed}} > \tau
-\end{cases} \tag{49}
+\end{cases} \qquad (49)
 $$
 
 $$
 % Equation (50)
-\xi \equiv 8 \tag{50}
+\xi \equiv 8 \qquad (50)
 $$
 
 | Symbol          | What it represents                         | value                                              | comments                                                                                                                   |
@@ -207,7 +211,7 @@ Furthermore the yellow paper has some crucial definitions on the types of these 
 First it provides us with unbounded block limits, i.e. These limits can be extended infinitely
 
 $$
-H_{\text{gasUsed}} , H_{\text{gasLimit}}, H_{\text{baseFeePerGas}} \in \mathbb{N} \tag{41}
+H_{\text{gasUsed}} , H_{\text{gasLimit}}, H_{\text{baseFeePerGas}} \in \mathbb{N} \qquad (41)
 $$
 
 Then it provides us with the types for the transaction parameter , These are bounded by a max value of 2^256 or approx 10^77, thats the max these numbers can go to
@@ -451,7 +455,7 @@ $$ p \equiv effectiveGasPrice \equiv
 T_{gasPrice}, & \text{if} \space T_{type} = 0 \lor 1\\
 priorityFee + H_{baseFeePerGas} , & \text{if} \space T_{type} = 2 \lor 3
 \end{cases}\\
-\end{aligned} \tag{62}
+\end{aligned} \qquad (62)
 $$
 
 $$ f \equiv priorityFee \equiv
@@ -523,7 +527,7 @@ $$
 
 The process of executing a transaction within the Ethereum network is governed by the transaction-level state transition function:
 
-$$\Upsilon(\sigma_t, T_{index}) \tag{4}$$
+$$\Upsilon(\sigma_t, T_{index}) \qquad (4)$$
 
 Upon invocation of $\Upsilon$, the system first verifies the intrinsic validity of the transaction. Once validated, the [Ethereum Virtual Machine](/wiki/EL/evm) (EVM) initiates state modifications based on the transaction's directives.
 
