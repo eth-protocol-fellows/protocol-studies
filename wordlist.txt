@@ -2,6 +2,12 @@ personal_ws-1.1 en 10000 utf-8
 aantop
 ABI
 accelerometer
+accesedAccountAddresses
+accesedStorageKeys
+accesslistaddress
+accesslistAddress
+accessliststorage
+accesslistStorageKeys
 ACD
 ACL
 addons
@@ -47,6 +53,7 @@ Besu
 Bezout’s
 BFT
 bidpool
+bigcup
 bilinear
 bilinearity
 BIP
@@ -81,6 +88,8 @@ Buterin's
 bypassability
 bytecode
 bytecodes
+CalcExcessBlobGas
+CALLCODE
 calldata
 canonicalized
 Caplin
@@ -139,8 +148,8 @@ cryptosystem
 CSP
 curation
 cybersecurity
-Cypherpunks
 Cypherpunk
+Cypherpunks
 Daemen
 dafny
 D'Amato
@@ -154,9 +163,11 @@ dapps
 DAS
 dataset
 deboost
+decrementation
 decrementing
 DeFi
 Degatchi
+DELEGATECALL
 delegator
 delegators
 deliverables
@@ -216,6 +227,7 @@ eK
 EL
 Elmore
 ELs
+emptyset
 Encodings
 Endian
 env
@@ -264,9 +276,11 @@ Flashbot's
 Flashbots
 Flashboys
 Flashloans
+forall
 Forkchoice
 forkchoiceUpdatedV
 Forky
+Formatting
 FOSS
 frac
 frameborder
@@ -287,6 +301,7 @@ Gasper
 gasPrice
 gasUsed
 Georgios
+geq
 geth
 getPayloadBodiesByHashV
 getPayloadV
@@ -308,6 +323,7 @@ Grafana
 Grandine
 Grigore
 Guillaume
+Gwei
 hackathon
 hackmd
 Hager
@@ -338,10 +354,13 @@ incentivized
 incentivizes
 Incentivizing
 includable
+incrementation
+incrementing
 inevitableeth
 infrastracture
 Infura
 init
+initializationCode
 InsertCoin
 intermediated
 intermediation
@@ -359,6 +378,7 @@ JVM
 JWT
 Karapetsas
 Katex
+KEC
 keccak
 Keccak's
 keecak
@@ -373,15 +393,18 @@ Kyber
 KZG
 Lamport
 Lamport's
+lceil
 ldots
 Lefteris
+leq
 leveldb
+lfloor
 libp
 lifecycle
 Lightclient
 Lightclient's
-litecoin
 linearizer
+litecoin
 liveness
 LLM
 LLMs
@@ -391,6 +414,7 @@ locktime
 Longrightarrow
 lookahead
 lookups
+lor
 LSB
 LSM
 LSP
@@ -456,6 +480,7 @@ NIST's
 Noam
 nonce
 nonces
+nonumber
 NOXX
 NSS
 n't
@@ -492,8 +517,8 @@ performence
 permissionless
 permissionlessness
 PGA
-Pilipovic
 Pigovian
+Pilipovic
 PKCS
 Playdate
 pmod
@@ -507,6 +532,7 @@ PQ
 PQC
 PQCA
 pre
+preAccesedStorageKeys
 precompile
 precompiled
 precompiles
@@ -523,6 +549,7 @@ preconfirms
 preconfs
 preimage
 Prest
+prevRandao
 privateKey
 probabilistically
 programmability
@@ -545,6 +572,7 @@ py
 Pyrmont
 Pyspec
 pytest
+qquad
 qubits
 Quintus
 Raa
@@ -553,17 +581,20 @@ rahul
 RANDAO
 Rareskills
 RB
+rceil
 README
+reciept
 referrerpolicy
 remerkleable
-repo
 replayable
+repo
 responder
 restaking
 retesteth
 Reth
 Reth's
 revm
+rfloor
 rightarrow
 Rikard
 RIPEMD
@@ -635,6 +666,7 @@ StateDB
 stateful
 statelessness
 stateRoot
+STATICCALL
 stf
 StorageShardedKey
 StoragesHistory
@@ -645,6 +677,8 @@ subnets
 suboptimal
 subprotocols
 substack
+substate
+Substate
 subtrees
 Summa
 systemd
@@ -662,6 +696,7 @@ TLA
 tldr
 TLS
 TODO
+touchedAccounts
 TPS
 tracoor
 tradeoff
@@ -678,6 +713,9 @@ trustlessness
 TrustLook
 TSTORE
 Tx
+txcreate
+txdatanonzero
+txdatazero
 txpool
 txs
 UI
@@ -691,7 +729,6 @@ unguessable
 unincentivized
 upstreamed
 utils
-UTXOs
 UTXO
 UTXOs
 UX
@@ -722,6 +759,7 @@ webkit
 WebRTC
 Whitepaper
 WIP
+withdrawlsHash
 WSS
 Xatu
 XMSS

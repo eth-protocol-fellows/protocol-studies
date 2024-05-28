@@ -148,7 +148,7 @@ Additional checks ensure legacy compatibility and security, such as the ommer ha
 
 These criteria form part of the Ethereum economic model, particularly influenced by EIP-1559, which introduces a dynamic base fee mechanism. This mechanism aims to optimize network usage and fee predictability, enhancing user experience and economic stability. By examining these equations more closely, we can appreciate the intricate balance Ethereum maintains between flexibility for users and robust protocol standards.
 
-Lets explore this in more depth and try to gain a better understanding on whats going on with these equations thats not easily visible in either the python spec or the yellow paper .
+Lets explore this in more depth and try to gain a better understanding on whats going on with these equations that's not easily visible in either the python spec or the yellow paper .
 
 Lets start with expanding 57h , this is how it is specified in the yellow paper:
 
@@ -214,7 +214,7 @@ $$
 H_{\text{gasUsed}} , H_{\text{gasLimit}}, H_{\text{baseFeePerGas}} \in \mathbb{N} \qquad (41)
 $$
 
-Then it provides us with the types for the transaction parameter , These are bounded by a max value of 2^256 or approx 10^77, thats the max these numbers can go to
+Then it provides us with the types for the transaction parameter , These are bounded by a max value of 2^256 or approx 10^77, that's the max these numbers can go to
 
 $$T_{\text{maxPriorityFeePerGas}} , T_{\text{maxFeePerGas}}, T_{\text{gasLimit}}, T_{\text{gasPrice}} \in\mathbb{N}_{256}$$
 
@@ -337,7 +337,7 @@ After initial header verification, the block advances to the execution phase([ap
    - Convert withdrawals from Gwei to Wei and credit the specified addresses.
    - Destroy empty withdrawal accounts to maintain a clean state.
 
-### Environment Initialisiation
+### Environment initialization
 
 $$
 I_{caller} = T_{Sender_{address}}, \nonumber \\
@@ -394,7 +394,7 @@ G_{\text{initCodeWordCost}} \times
 \text{length}, & \text{if length} \mod 32 = 0 \\
 \text{length} + 32 - (\text{length} \mod 32), & \text{otherwise}
 \end{cases}\\
-&\qquad\text{if } \text{CALLDATA} = T_{\text{initialisationCode}}
+&\qquad\text{if } \text{CALLDATA} = T_{\text{initializationCode}}
 \end{aligned}
 $$
 
@@ -409,7 +409,7 @@ G_{\text{txdatazero}} & \text{if } i = 0 \\
 G_{\text{txdatanonzero}} & \text{otherwise}
 \end{cases}
 \end{cases}\\
-&\qquad\text{if } \text{CALLDATA} = T_{inputData} \lor T_{initialisationCode}
+&\qquad\text{if } \text{CALLDATA} = T_{inputData} \lor T_{initializationCode}
 \end{aligned}
 $$
 
@@ -440,8 +440,8 @@ $$
 | ------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | $g_0$                                                        | Represents the total intrinsic gas cost of a transaction, covering initial code execution and data transfer.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
 | $G_{\text{transaction}}$                                     | The base cost for every transaction, set at 21000 gas.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
-| $T_{\text{initialisationCode}}$                              | When $T_{to} = 0_{\text{Bytes}}$, CALLDATA is considered as $T_{\text{initialisationCode}}$. Costs are normalized to 32-byte intervals.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
-| $T_{inputData}$ and $T_{initialisationCode}$          | Collectively, $T_{inputData}$ and $T_{initialisationCode}$ represent the CallData parameter of the transaction. If $T_{to} \neq 0_{Bytes}$, CALLDATA is treated as the input to the contract's entry point. The gas cost for processing CALLDATA is defined as 16 gas per non-zero byte and 4 gas per zero byte, impacting block size and potentially network delay due to increased processing. This gas cost model was based on a balance of block creation rate, chain growth rate, and network latency, initially optimized for Proof of Work systems. Adapting this model for Proof of Stake remains a research opportunity and area for future optimization. These parameters are defined as an unlimited size byte array, with the initialization cost set at 16 gas for each non-zero byte and 4 gas for each zero byte. More |
+| $T_{\text{initializationCode}}$                              | When $T_{to} = 0_{\text{Bytes}}$, CALLDATA is considered as $T_{\text{initializationCode}}$. Costs are normalized to 32-byte intervals.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| $T_{inputData}$ and $T_{initializationCode}$          | Collectively, $T_{inputData}$ and $T_{initializationCode}$ represent the CallData parameter of the transaction. If $T_{to} \neq 0_{Bytes}$, CALLDATA is treated as the input to the contract's entry point. The gas cost for processing CALLDATA is defined as 16 gas per non-zero byte and 4 gas per zero byte, impacting block size and potentially network delay due to increased processing. This gas cost model was based on a balance of block creation rate, chain growth rate, and network latency, initially optimized for Proof of Work systems. Adapting this model for Proof of Stake remains a research opportunity and area for future optimization. These parameters are defined as an unlimited size byte array, with the initialization cost set at 16 gas for each non-zero byte and 4 gas for each zero byte. More |
 | $G_{\text{txCreate}}$                                        | An additional 32000 gas is required for contract creation transactions.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
 | $G_{\text{accesslistaddress}}, G_{\text{accessliststorage}}$ | Additional gas costs for each address and storage key specified in the access list, facilitating optimized state access.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
 
@@ -470,7 +470,7 @@ $$
 |                   |                                                                                                                             |
 | ----------------- | --------------------------------------------------------------------------------------------------------------------------- |
 | effectiveGasPrice | The amount of wei the Transaction signer will pay per unit Gas consumed during the execution of the transaction             |
-| priorityFee       | The amount of wei the Transaction's beneficiary will recieve per unit Gas consumed during the execution of the tranasaction |
+| priorityFee       | The amount of wei the Transaction's beneficiary will receive per unit Gas consumed during the execution of the transaction |
 
 ### Effective Gas Fee
 
@@ -598,7 +598,7 @@ $$\sigma_0[Sender]_{nonce} \equiv \sigma[Sender]_{nonce} + 1 $$
 
 This checkpoint state represents the modified state after initial validations and deductions, setting the groundwork for subsequent execution steps.
 
-### $T$ Execution stage 2 : Transaction Normalization and Substate Initialisiation
+### $T$ Execution stage 2 : Transaction Normalization and Substate initialization
 
 EVM executions fundamentally require just an environment and a message. Therefore, transactions within a transaction envelope, which categorize transactions by type, are streamlined into four main types. These transactions are then unified into a singular Message Data structure, delineating two main actions: initiating contract creations and executing calls to addresses. Notably, for transactions predating EIP-1559 that lack a base fee, they undergo normalization to integrate the [Gas price](https://github.com/ethereum/go-ethereum/blob/100c0f47debad7924acefd48382bd799b67693cf/core/state_transition.go#L168) during their transformation into the message format. Moreover, the execution path is determined based on the $T_{to}$ parameter:
 
@@ -616,19 +616,19 @@ $$
 | caller                  | Recovered Sender Address                                                                                                | Recovered Sender Address                                                                                                | $I_origin$ or $I_{sender}$                                      |
 | target                  | $T_{to}$ is a valid Address                                                                                      | $T_{to} = 0_{bytes}$                                                                                             |                                                                               |
 | gas                     | $T_{gasLimit} - intrinsicCost$                                                                                   | $T_{gasLimit} - intrinsicCost$                                                                                   |
-| value                   | $T_{value}$                                                                                                      | $T_{value}$                                                                                                      | yp: $I_v$ or $I_{value}$                                        |
-| data                    | $T_{data}$                                                                                                       | $0_{bytes}$                                                                                                      | yp: $I_d$ or $I_{data}$                                         |
-| code                    | $(T_{to})_{code}$                                                                                                | $T_{data}$                                                                                                       | yp: $I_b$ or $I_{[byteCode]}$                                   |
-| depth                   | $0$                                                                                                              | $0$                                                                                                              | yp: $I_e$ or $I_{depth}$                                        |
+| value                   | $T_{value}$                                                                                                      | $T_{value}$                                                                                                      | yellow paper: $I_v$ or $I_{value}$                                        |
+| data                    | $T_{data}$                                                                                                       | $0_{bytes}$                                                                                                      | yellow paper: $I_d$ or $I_{data}$                                         |
+| code                    | $(T_{to})_{code}$                                                                                                | $T_{data}$                                                                                                       | yellow paper: $I_b$ or $I_{[byteCode]}$                                   |
+| depth                   | $0$                                                                                                              | $0$                                                                                                              | yellow paper: $I_e$ or $I_{depth}$                                        |
 | currentTarget           | $T_{to}$                                                                                                         | We compute the contract address by taking the last 20 bytes of $KEC(RLP([Sender_{address}, Sender_{nonce} -1]))$ |
-| codeAddress             | $T_{to}$ default except when an alternative accounts code needs execution . e.g. 'CALLCODE' calling a precompile |                                                                                                                         | yp: $I_a$ or $I_{codeOwnerAddress}$                             |
+| codeAddress             | $T_{to}$ default except when an alternative accounts code needs execution . e.g. 'CALLCODE' calling a precompile |                                                                                                                         | yellow paper: $I_a$ or $I_{codeOwnerAddress}$                             |
 | shouldTransferValue     | default is True, indicates if ETH should be transferred during executing this message                                   | default is True                                                                                                         |
-| isStatic                | default is False, indicates is State Modifications are allowed (false means state modifications are allowed)            | default is False                                                                                                        | inveresly related to yp: $I_w$ or $I_{permissionToModifyState}$ |
+| isStatic                | default is False, indicates is State Modifications are allowed (false means state modifications are allowed)            | default is False                                                                                                        | inversely related to yellow paper: $I_w$ or $I_{permissionToModifyState}$ |
 | accesslistAddress       | See below                                                                                                               | -                                                                                                                       |
 | accesslistStorageKeys   | -                                                                                                                       | -                                                                                                                       |
 | parentEvm               | initially None                                                                                                          | initially None                                                                                                          |
 
-#### Substate initialisation
+#### Substate initialization
 
 The initialization of the substate sets the groundwork for transaction execution, defined as follows:
 
@@ -644,7 +644,7 @@ Depending on the transaction type, accessed addresses are initialized differentl
 
 $$A^*  \equiv (A^{*}_{selfDestructSet} = \empty, $$
 $$A^{*}_{logSeries} = (), $$
-$$A^{*}_{touchedAcounts} = \empty, $$
+$$A^{*}_{touchedAccounts} = \empty, $$
 $$A^{*}_{refundBalance} = 0 , $$
 if $T_{type} = 0$:
 $$A^{*}_{accesedAccountAddresses} =  \{ H_{coinBase},$$
@@ -1165,7 +1165,7 @@ data <- expand.grid( parent_gas_used = seq_parent_gas_used, base_fee_max_change_
 data$expected_base_fee <- mapply(calculate_base_fee_per_gas, parent_gas_limit, data$parent_gas_used, parent_base_fee_per_gas, data$  base_fee_max_change_denominator)
 $`
 
-Thats all for data prep , now lets plot:
+That's all for data prep , now lets plot:
 
 ```r
 plot <- ggplot(data, aes(x = parent_gas_used, y = expected_base_fee, color = as.factor(base_fee_max_change_denominator))) +
@@ -1310,7 +1310,7 @@ ggplot(data_blob_price, aes(x = BlockNumber)) +
 
 ### Code for formatting document
 
-Formatters are messing up the latex code in this document the below script formats katex documents correctly.
+Formatting are messing up the latex code in this document the below script formats katex documents correctly.
 
 ````bash
 #!/bin/bash
