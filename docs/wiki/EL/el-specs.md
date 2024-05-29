@@ -25,7 +25,7 @@ The image above represents the block level state transition function in the yell
 $$
 \begin{equation}
 \sigma_{t+1} \equiv \Pi(\sigma_t, B)
-\qquad (2)
+\qquad (2)  \nonumber
 \end{equation}
 $$
 
@@ -41,7 +41,7 @@ Furthermore, it's crucial to understand that $\sigma$ should not be confused wit
 
 <img src="images/el-specs/state.png" width="800"/>
 
-The id's in the above image as represented in the yellow paper(paris version) :
+The id's in the above image as represented in the yellow paper (paris version) :
 
 | Id.   | equation no. | yellow paper                                                    | comments                                                                                                                                                                                                                                                                                                                                                                                                                                        |
 | ----- | ------------ | --------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -69,7 +69,7 @@ The specified procedure for the state transition function in the code documentat
 
 ## Block Header Validation
 
-The process of block header validation, rigorously defined within the Yellow Paper + Spec, encompasses extensive checks, including gas usage, timestamp accuracy, among others. This validation ensures every block strictly complies with Ethereum's standards, thereby upholding the network's security and operational stability. Furthermore, it delineates the boundaries of Ethereum's economic model, integrating essential safeguards against inefficiencies and vulnerabilities. Through this process, the Ethereum network achieves a balance between flexibility, allowing for evolution and upgrades, and rigidity, ensuring adherence to core principles and safety measures.
+The process of block header validation, rigorously defined within the yellow paper and the python spec, encompasses extensive checks, including gas usage, timestamp accuracy, among others. This validation ensures every block strictly complies with Ethereum's standards, thereby upholding the network's security and operational stability. Furthermore, it delineates the boundaries of Ethereum's economic model, integrating essential safeguards against inefficiencies and vulnerabilities.
 
 The [validity](https://github.com/ethereum/execution-specs/blob/0f9e4345b60d36c23fffaa69f70cf9cdb975f4ba/src/ethereum/shanghai/fork.py#L269) of a block header, as specified in the Yellow Paper, employs a series of criteria to ensure each block adheres to Ethereum's protocol requirements. The parent block, denoted as $P(H)$, plays a crucial role in validating the current block header $H$ . The key conditions for validity include:
 
@@ -146,7 +146,7 @@ The Ethereum economic model, as outlined in [EIP-1559](https://eips.ethereum.org
 
 Additional checks ensure legacy compatibility and security, such as the ommer hash and difficulty fields being set to predefined values, reflecting the transition from Proof of Work to Proof of Stake (57j-57l).
 
-These criteria form part of the Ethereum economic model, particularly influenced by EIP-1559, which introduces a dynamic base fee mechanism. This mechanism aims to optimize network usage and fee predictability, enhancing user experience and economic stability. By examining these equations more closely, we can appreciate the intricate balance Ethereum maintains between flexibility for users and robust protocol standards.
+These criteria form part of the Ethereum economic model, particularly influenced by EIP-1559, which introduces a dynamic base fee mechanism. This mechanism aims to optimize network usage and fee predictability, enhancing user experience and economic stability. Additionally, [EIP-4844](https://eips.ethereum.org/EIPS/eip-4844) introduced a new type of transaction, blob transactions, that augments the economic model from EIP-1559. 
 
 Lets explore this in more depth and try to gain a better understanding on whats going on with these equations that's not easily visible in either the python spec or the yellow paper .
 
@@ -166,17 +166,14 @@ P(H)_{H_{baseFeePerGas}} + \nu & \text{if } P(H)_{H_{gasUsed}} > \tau
 $$
 
 $$
-% Equation (46)
 \tau \equiv \frac {P(H)_{H_{gasLimit}}}  {\rho} \qquad (46)
 $$
 
 $$
-% Equation (47)
 \rho \equiv 2 \qquad (47)
 $$
 
 $$
-% Equation (48)
 \nu^* \equiv
 \begin{cases}
 \frac{P(H)_{H_{baseFeePerGas}} \times (\tau - P(H)_{H_{gasUsed}})}{\tau} & \text{if } P(H)_{H_{gasUsed}} < \tau \\
@@ -185,7 +182,6 @@ $$
 $$
 
 $$
-% Equation (49)
 \nu \equiv
 \begin{cases}
 \left\lfloor \frac{\nu^*}{\xi} \right\rfloor & \text{if } P(H)_{H_{gasUsed}} < \tau \\
@@ -194,7 +190,6 @@ $$
 $$
 
 $$
-% Equation (50)
 \xi \equiv 8 \qquad (50)
 $$
 
@@ -240,9 +235,7 @@ Furthermore, Ethereum specifies transaction parameters, such as the maximum prio
 
 #### Dynamics of Gas Price Block to Block
 
-Let's delve into the dynamics of the gas price calculation function by exploring its impact across a spectrum of gas usage scenarios, ranging from the minimum possible (5,000 units) to the set gas limit.Our focus is to understand how this function performs within the scope of a single block.
-
-For those interested in a hands-on approach, this analysis can be replicated in R (download R studio and follow along). The procedure outlined below is straightforward and broadly applicable, allowing for adaptation into Python using the actual execution specs.
+Let's delve into the dynamics of the gas price calculation function by exploring its impact across a spectrum of gas usage scenarios, ranging from the minimum possible (5,000 units) to the set gas limit. Our focus is to understand how this function performs within the scope of a single block.
 
 We aim to analyze the 'calculate base fee per gas' function, which is integral to understanding Ethereum's gas pricing mechanism. The following R code snippet illustrates the implementation of this function:
 
@@ -251,14 +244,15 @@ We aim to analyze the 'calculate base fee per gas' function, which is integral t
 Observations from the plot:
 
 - The function exhibits a step-like linear progression, with the widest variance at the midpoint. This reflects the gas target, set at half the gas limit (15,000 units in this case).
-- The maximum upward change in the base fee is approximately 12.5%, observed at the extreme right of the plot. This represents the maximum possible change when the base fee starts at a hundred.
+- The maximum upward change in the base fee is approximately 12.5%, observed at the extreme right of the plot. This represents the maximum possible increase when the base fee starts at a hundred.
+- The maximum downward change in the base fee is approximately 10%, observed at the extreme left of the plot. This represents the maximum possible decrease when the base fee starts at a hundred.
 - A precise hit on the gas target results in a 1% increase in the base fee. Exceeding the target slightly (e.g., between 15,000 and 17,000 units of gas used) still results in only a 1% increase, illustrating the function's designed elasticity around the target.
 
 #### Extended Simulation: Long-term Effects on Gas Limit and Fee
 
-Having visualized the immediate impact of the gas price calculation function over a range of gas usage scenarios, it's intriguing to consider its effect over an extended period. Specifically, how does this dynamic influence the Ethereum network over tens of thousands of blocks, especially under conditions of maximum demand where each block reaches its gas limit?
+Having visualized the immediate impact of the gas price calculation function over a range of gas usage scenarios, let's to consider its effect over an extended period. Specifically, how does this dynamic influence the Ethereum network over tens of thousands of blocks, especially under conditions of maximum demand where each block reaches its gas limit?
 
-The following R code simulates this scenario over 100,000 blocks, assuming a constant maximum demand, to project the evolution of the gas limit and base fee:
+The following plot simulates this scenario over 100,000 blocks, assuming a constant maximum demand, to project the evolution of the gas limit and base fee:
 
 <img src="images/el-specs/gas-limit-max.png" width="800"/>
 
@@ -269,7 +263,7 @@ Observations from the simulation reveal several critical insights:
 - Unbounded Gas Limit Growth: Unlike the base fee, the gas limit itself is not capped, allowing for continuous growth to accommodate increasing network demand.
 - Market Dynamics and Equilibrium: Real-world demand increases, initially reflected in blocks exceeding their gas targets, lead to rising base fees. However, as the gas limit gradually increases, the gas target (half the gas limit) also rises, eventually stabilizing demand against the higher base fee, reaching a new equilibrium.
 
-With a more nuanced understanding of Ethereum's economic model now in hand, we aim to future-proof our analysis by examining the model's underpinnings at a more granular level. Specifically, we focus on the effects of altering the constants central to the model, notably the elasticity multiplier ($\rho$) and the base fee max change denominator ($\xi$). These constants are not expected to change within a fork but can be re-specified in future protocol upgrades:
+To future-proof our analysis by examining the model's underpinnings at a more granular level. Specifically, we focus on the effects of altering the constants central to the model, notably the elasticity multiplier ($\rho$) and the base fee max change denominator ($\xi$). These constants are not expected to change within a fork but can be re-specified in future protocol upgrades:
 
 let's start with $\xi$ :
 
@@ -279,19 +273,18 @@ This is a snapshot between blocks, like our first plot, it represents smallest s
 
 Impact of $\xi$ on base fee:
 
-- Inflection Point Identification: Analogous to the initial broad observation, this detailed examination reveals the nuanced shifts and inflections attributable to variations in $\xi$. The "kink" or point of inflection in the adjustment trajectory becomes particularly pronounced from this perspective.
-- Adjustment Sensitivity: The slope of the base fee adjustment curve changes significantly beyond the inflection point. As $\xi$ values decrease, we observe a sharp increase in the rate of fee adjustments, indicating heightened sensitivity.
-- Step Width Variability: Increasing $\xi$ results in broader step widths, indicating more gradual fee adjustments. Conversely, decreasing $\xi$ leads to narrower steps and more volatile fee changes.
-- Linear Trend within Target Range: The central portion of the curve, particularly highlighted by the light green line for the current $\xi$ value, showcases a mostly linear trend in fee adjustments as transactions approach or slightly exceed the gas target.
+- Inflection point & step width variability: The "kink" or point of inflection becomes particularly pronounced with variations to $\xi$, becoming broader as $\xi$ increases. Thus increasing $\xi$ results in broader step widths, indicating more gradual fee adjustments. Conversely, decreasing $\xi$ leads to narrower steps and more volatile fee changes.
+- Sensitivity: The slope of the base fee adjustment curve changes significantly beyond the inflection point. As $\xi$ values decrease, we observe a sharp increase in the rate of fee adjustments, indicating heightened sensitivity.
+- Linear Trend within Target Range: The central portion of the curve, particularly highlighted by the light green line for the current $\xi$ value of the Ethereum protocol, showcases a mostly linear trend in fee adjustments as transactions approach or exceed the gas target.
 
-Next, we turn our attention to the elasticity multiplier ($\rho$), another pivotal constant in Ethereum's economic model that directly influences the flexibility and responsiveness of gas limit adjustments. To comprehensively understand its impact, we explore a range of values for $\rho$ from 1 to 6 in conjunction with variations in the base fee max change denominator ($\xi$).
+Next, we turn our attention to the elasticity multiplier ($\rho$), another pivotal constant in Ethereum's economic model that directly influences the flexibility and responsiveness of gas limit adjustments. To understand its impact, we explore a range of values for $\rho$ from 1 to 6 in conjunction with variations in the base fee max change denominator ($\xi$).
 
 <img src="images/el-specs/rho-xi.png" width="800"/>
 
 Impact of $\rho$ and $\xi$ on Base Fee :
 
 - Moment-to-Moment Analysis: Similar to our initial observations, this plot offers a granular view into how adjustments in $\rho$ and $\xi$ shape the economic model's behavior on a per-block basis, especially in the context of protocol upgrades.
-- Distinct Influence of $\rho$: Each subplot represents the nuanced effects of varying $\rho$ values. As the elasticity multiplier, $\rho$ notably shifts the inflection point in the base fee adjustment curve, highlighting its critical role in tuning the network's responsiveness to transaction volume fluctuations.
+- Distinct Influence of $\rho$: Each subplot represents effect of varying $\rho$ values. As the elasticity multiplier, $\rho$ notably shifts the inflection point in the base fee adjustment curve, highlighting its role in tuning the network's responsiveness to transaction volume fluctuations.
 - Interplay Between $\rho$ and $\xi$: The elasticity multiplier ($\rho$) not only moves the inflection point but also modulates the sensitivity of adjustments attributable to changes in the base fee max change denominator ($\xi$). This interaction underscores the delicate balance Ethereum maintains to ensure network efficiency and stability amidst varying demands.
 
 <img src="images/el-specs/gas-header.png" width="800"/>
