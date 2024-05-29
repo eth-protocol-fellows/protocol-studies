@@ -14,4 +14,6 @@ Deployment with Kurtosis:
 
 If you would like to learn more, check out [Kurtosis](https://docs.kurtosis.com/quickstart)
 
+Kurtosis is important in Ethereum Development as it is used as a build system for multi-container test environments that allows developers to easily create reproducible Ethereum network instances locally. The [Ethereum Kurtosis package](https://github.com/kurtosis-tech/ethereum-package) enables the rapid setup of a customizable, scalable, and private Ethereum testnet using Docker or Kubernetes. It supports all major Execution Layer (EL) and Consensus Layer (CL) clients, efficiently managing local port mappings and service connections for validation and testing of Ethereum core infrastructure.
+
 For a deeper dive into Kurtosis, check out this [post](https://ethpandaops.io/posts/kurtosis-deep-dive/)
