@@ -138,6 +138,7 @@ cryptopunks
 cryptosystem
 CSP
 curation
+customizable
 cybersecurity
 Cypherpunks
 Cypherpunk
@@ -368,6 +369,7 @@ keystore
 Kira
 Kleppmann
 Koblitz
+Kubernetes
 Kurtosis
 Kyber
 KZG
