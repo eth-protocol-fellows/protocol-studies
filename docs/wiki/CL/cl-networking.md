@@ -5,6 +5,11 @@ The Consensus clients use [libp2p][libp2p] as the peer-to-peer protocol,
 encryption, [SSZ][ssz] for encoding, and, optionally, [Snappy][snappy] for
 compression.
 
+## ENR (Ethereum Node Records)
+
+## discv5
+
+
 ## Specs
 
 The [Phase 0 -- Networking][consensus-networking] page specifies the network

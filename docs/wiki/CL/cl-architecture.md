@@ -7,7 +7,7 @@
 > - Ethereum's consensus protocol combines two separate consensus protocols.
 > - "LMD GHOST" essentially provides liveness.
 > - "Casper FFG" provides finality.
-> - Together they are sometimes known as "Gasper".
+> - Together they are known as "Gasper".
 > - In a "live" protocol, something good always happens.
 > - In a "safe" protocol, nothing bad ever happens.
 > - No practical protocol can be always safe and always live.
@@ -115,7 +115,7 @@ In essence, LMD GHOST keeps the chain moving forward, while Casper FFG ensures s
 
 ## Architecture
 
-Ethereum is a decentralized network of nodes that communicate via peer-to-peer connections. These connections are formed by computers running Ethereum's specialized client software.
+Ethereum is a decentralized network of nodes that communicate via peer-to-peer connections. These connections are formed by computers running Ethereum's client software.
 
 <a id="img_network"></a>
 
@@ -152,7 +152,7 @@ When users stake 32 ETH to participate in Ethereum's proof-of-stake consensus me
 
 - **Beacon Node**: Beacon nodes use client software to coordinate Ethereum's proof-of-stake consensus. Examples include Prysm, Teku, Lighthouse, and Nimbus. Beacon nodes communicate with other beacon nodes, a local execution node, and optionally, a local validator.
 
-- **Validator**: Validator clients are specialized software allowing people to stake 32 ETH in Ethereum's consensus layer. Validators propose blocks in the Proof-of-Stake system, which replaced Proof-of-Work miners. Validators communicate only with a local beacon node, which instructs them and broadcasts their work to the network.
+- **Validator**: Validator client is the software that allows people to stake 32 ETH in Ethereum's consensus layer. Validators propose blocks in the Proof-of-Stake system, which replaced Proof-of-Work miners. Validators communicate only with a local beacon node, which instructs them and broadcasts their work to the network.
 
 The main Ethereum network hosting real-world applications is called Ethereum Mainnet. Ethereum Mainnet is the live, production instance of Ethereum that mints and manages real Ethereum (ETH) and holds real monetary value.
 
@@ -205,7 +205,7 @@ Nodes update their state by applying blocks in order using a "state transition f
 
 If $S$ is a beacon state and $B$ a beacon block, the state transition function $f$ is:
 
-$$S' \equiv f(S, B) $$
+$$S' \equiv f(S, B)$$
 
 Here, $S$ is the pre-state and $S'$ is the post-state. The function $f$ is iterated with each new block to update the state.
 
@@ -225,7 +225,44 @@ Each function updates the chain at specific times, as defined in the beacon chai
 
 The post-state from a pre-state and a signed block is `state_transition(state, signed_block)`. Transitions causing unhandled exceptions (e.g., failed asserts or out-of-range accesses) or uint64 overflows/underflows are invalid.
 
-<!-- If block processing triggers an exception in the specification's Python code, that block is invalid and must be rejected, requiring state changes to be undone. -->
+### Beacon chain state transition function
+
+The post-state corresponding to a pre-state `state` and a signed block `signed_block` is defined as `state_transition(state, signed_block)`. State transitions that trigger an unhandled exception (e.g. a failed `assert` or an out-of-range list access) are considered invalid. State transitions that cause a `uint64` overflow or underflow are also considered invalid.
+
+```python
+def state_transition(state: BeaconState, signed_block: SignedBeaconBlock, validate_result: bool=True) -> None:
+    block = signed_block.message
+    # Process slots (including those with no blocks) since block
+    process_slots(state, block.slot)
+    # Verify signature
+    if validate_result:
+        assert verify_block_signature(state, signed_block)
+    # Process block
+    process_block(state, block)
+    # Verify state root
+    if validate_result:
+        assert block.state_root == hash_tree_root(state)
+```
+
+```python
+def verify_block_signature(state: BeaconState, signed_block: SignedBeaconBlock) -> bool:
+    proposer = state.validators[signed_block.message.proposer_index]
+    signing_root = compute_signing_root(signed_block.message, get_domain(state, DOMAIN_BEACON_PROPOSER))
+    return bls.Verify(proposer.pubkey, signing_root, signed_block.signature)
+```
+
+```python
+def process_slots(state: BeaconState, slot: Slot) -> None:
+    assert state.slot < slot
+    while state.slot < slot:
+        process_slot(state)
+        # Process epoch on the start slot of the next epoch
+        if (state.slot + 1) % SLOTS_PER_EPOCH == 0:
+            process_epoch(state)
+        state.slot = Slot(state.slot + 1)
+```
+
+
 
 
 
