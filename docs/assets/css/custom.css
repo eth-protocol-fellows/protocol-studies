@@ -257,8 +257,13 @@ li.folder > ul > li.file {
 .sidebar .search input[type="search"],
 .sidebar .search input[type="search"]:focus {
   background-color: #2d1763;
+  background-image: url("data:image/svg+xml,%3Csvg height='20px' width='20px' viewBox='0 0 24 24' fill='none' stroke='rgba(255, 255, 255, 0.5)' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' preserveAspectRatio='xMidYMid meet' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='10.5' cy='10.5' r='7.5' vector-effect='non-scaling-stroke'%3E%3C/circle%3E%3Cline x1='21' y1='21' x2='15.8' y2='15.8' vector-effect='non-scaling-stroke'%3E%3C/line%3E%3C/svg%3E");
   outline: none;
   box-shadow: none;
+}
+.sidebar .search input[type="search"]::placeholder {
+  color: white;
+  opacity: 0.5;
 }
 .sidebar-nav a:hover {
   text-decoration: none;
