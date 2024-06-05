@@ -164,11 +164,7 @@ TODO
 
 ### Downloader
 
-### Transaction Pools
-
-In Ethereum two primary types of transaction pools are recognized.
-
-#### Geth
+### Transaction Poolsh
 
 In Ethereum two primary types of transaction pools are recognized:
 
