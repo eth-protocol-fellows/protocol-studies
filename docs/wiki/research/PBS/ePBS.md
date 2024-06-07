@@ -216,6 +216,7 @@ Given the complex landscape and potential shifts in Ethereum's MEV dynamics, the
 - [epbs - Engine API specs](https://github.com/potuz/consensus-specs/blob/epbs_stripped_out/specs/_features/epbs/engine.md)
 - [epbs - fork-choice specs](https://github.com/potuz/consensus-specs/blob/epbs_stripped_out/specs/_features/epbs/fork-choice.md)
 - [EIP-7547 Inclusion Lists](https://eips.ethereum.org/EIPS/eip-7547)
+- [More pictures about proposers and builders (Diagrams)](https://mirror.xyz/barnabe.eth/QJ6W0mmyOwjec-2zuH6lZb0iEI2aYFB9gE-LHWIMzjQ)
 
 ## References
 [^1]: https://barnabe.substack.com/p/pbs
