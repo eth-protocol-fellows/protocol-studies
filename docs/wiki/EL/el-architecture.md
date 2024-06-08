@@ -114,17 +114,17 @@ The beacon chain  invokes the new payload function and transfers the execution 
 
 TODO: STF code links and walk through in Geth
 
+Check week 2 talk by lightclient for an overview.
+
 ##### Sync
 
-TODO
+Execution client synchronizes the chain by downloading block data from its peers and verifying them using the block validation rule. Sync finishes when blockchain data is verified and clients catches up with the tip of the chain which enables building the latest state. 
+
+Because it's inefficient to validate block by block and transaction by transaction since the genesis, EL clients employ other strategies to securely sync the tip of the chain, e.g. snap sync. 
 
 ##### Payload building
 
 More details in [block production](/wiki/EL/block-production.md)
-
-###### Geth
-
-TODO
 
 #### Methods
 
@@ -134,27 +134,11 @@ Validates the payload that was built earlier by the payload building routine.
 
 <img src="images/el-architecture/new-payload.png" width="1000"/>
 
-###### Geth
-
-TODO
-
-###### Reth
-
-TODO
-
 ##### Fork choice updated
 
 Proof-of-stake LMD-GHOST fork choice rule & payload building routine instantiation.
 
 <img src="images/el-architecture/forkchoice-updated.png" width="1000"/>
-
-###### Geth
-
-TODO
-
-###### Reth
-
-TODO
 
 ### Internal Consensus engines
 
