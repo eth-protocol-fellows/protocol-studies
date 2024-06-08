@@ -1,18 +1,16 @@
 # Execution Layer Specification
 
-> **Where is it specified?**
->
-> - [Yellow Paper paris version 705168a – 2024-03-04](https://ethereum.github.io/yellowpaper/paper.pdf) (note: This is outdated does not take into account post merge updates)
+The execution layer was originally specified in the yellow paper as it encompassed the whole Ethereum. The most up to date specification is [EELS python spec](https://ethereum.github.io/execution-specs/). 
+
+> - [Yellow Paper, paris version 705168a – 2024-03-04](https://ethereum.github.io/yellowpaper/paper.pdf) (note: This is outdated does not take into account post merge updates)
 > - [Python Execution Layer specification](https://ethereum.github.io/execution-specs/)
 > - EIPs [Look at Readme of the repo](https://github.com/ethereum/execution-specs)
 
-## Important bits from the specs
-
-TODO: integrate content from week 6 presentation
+This page provides an overview of EL specification, its architecture and context for the pyspec.
 
 ## State transition function 
 
-The Execution Layer, from the EELS perspective, focuses exclusively on executing the state transition function (STF). This role encompasses addressing two primary questions[¹]:
+The Execution Layer, from the EELS perspective, focuses exclusively on executing the state transition function (STF). This role addresses two primary questions[¹]:
 
 - Is it possible to append the block to the end of the blockchain?
 - How does the state change as a result?
@@ -69,9 +67,9 @@ The specified procedure for the state transition function in the code documentat
 
 ## Block Header Validation
 
-The process of block header validation, rigorously defined within the yellow paper and the python spec, encompasses extensive checks, including gas usage, timestamp accuracy, among others. This validation ensures every block strictly complies with Ethereum's standards, thereby upholding the network's security and operational stability. Furthermore, it delineates the boundaries of Ethereum's economic model, integrating essential safeguards against inefficiencies and vulnerabilities.
+The process of block header validation, rigorously defined within the yellow paper and the python spec, verifies the block integrity based on Ethereum protocol rules, e.g. hash verification, gas usage, timestamp accuracy, etc. This validation ensures every block complies with Ethereum protocol defined in the specification and implemented in the client. During sync and appending blocks, validation is an integral function of a blockchain by independently verifying current and historical data.
 
-The [validity](https://github.com/ethereum/execution-specs/blob/0f9e4345b60d36c23fffaa69f70cf9cdb975f4ba/src/ethereum/shanghai/fork.py#L269) of a block header, as specified in the Yellow Paper, employs a series of criteria to ensure each block adheres to Ethereum's protocol requirements. The parent block, denoted as $P(H)$, plays a crucial role in validating the current block header $H$ . The key conditions for validity include:
+The [validity](https://github.com/ethereum/execution-specs/blob/0f9e4345b60d36c23fffaa69f70cf9cdb975f4ba/src/ethereum/shanghai/fork.py#L269) of a block header, as specified in the Yellow Paper, employs a series of criteria to ensure each block adheres to Ethereum's protocol requirements. The parent block, denoted as $P(H)$, is necessary to validate the current block header $H$ . The key conditions for validity include:
 
 $$V(H) \equiv H_{gasUsed} \leq H_{gasLimit} \qquad (57a)$$
 $$\land$$
@@ -143,14 +141,13 @@ The Ethereum economic model, as outlined in [EIP-1559](https://eips.ethereum.org
 - **Predictable Base Fee Adjustments**: EIP-1559 introduces a mechanism for predictable base fee changes, a feature particularly beneficial for wallets. This predictability aids in accurately estimating transaction costs ahead of time, streamlining the transaction creation process.
 - **Base Fee Burn and Priority Fee**: Under this model, miners are entitled to keep the priority fee as an incentive, while the base fee is burned, effectively removing it from circulation. This approach serves as a countermeasure to Ethereum's inflation, promoting a healthier economic environment by reducing the overall supply over time.
 
-
-Additional checks ensure legacy compatibility and security, such as the ommer hash and difficulty fields being set to predefined values, reflecting the transition from Proof of Work to Proof of Stake (57j-57l).
+Additional checks ensure legacy compatibility and security, such as the ommer (uncle block) hash and difficulty fields being set to predefined values, reflecting the transition from Proof of Work to Proof of Stake (57j-57l).
 
 These criteria form part of the Ethereum economic model, particularly influenced by EIP-1559, which introduces a dynamic base fee mechanism. This mechanism aims to optimize network usage and fee predictability, enhancing user experience and economic stability. Additionally, [EIP-4844](https://eips.ethereum.org/EIPS/eip-4844) introduced a new type of transaction, blob transactions, that augments the economic model from EIP-1559. 
 
-Lets explore this in more depth and try to gain a better understanding on whats going on with these equations that's not easily visible in either the python spec or the yellow paper .
+Lets explore this in more depth and try to gain a better understanding on whats going on with these equations that's not easily visible in either the python spec or the yellow paper.
 
-Lets start with expanding 57h , this is how it is specified in the yellow paper:
+Lets start with expanding 57h, specified in the yellow paper as:
 
 $$
 \begin{equation}
@@ -842,7 +839,7 @@ $$
 \mu'_{gas} \equiv \mu_{gas} - C_{gasCost}(\sigma, \mu, AccruedSubState, Environment_I)
 $$
 
-The gas cost function, while not overly complex, encompasses various cases for different operations. It is succinctly defined in Appendix H of the Yellow Paper. In essence, it calculates the total cost of the current cycle by adding the cost of the current operation to the difference between the cost of active words in memory before and after the cycle (memory expansion cost).
+The gas cost function, while not overly complex, includes various cases for different operations. It is succinctly defined in Appendix H of the Yellow Paper. In essence, it calculates the total cost of the current cycle by adding the cost of the current operation to the difference between the cost of active words in memory before and after the cycle (memory expansion cost).
 
 Different clients handle gas costs differently. In PySpec, various types of cost processing are integrated into the operations, while in Geth, gas costs are handled before the operation executes. Moreover, Geth distinguishes between [dynamic](https://github.com/ethereum/go-ethereum/blob/7bb3fb1481acbffd91afe19f802c29b1ae6ea60c/core/vm/interpreter.go#L257) costs used for memory expansion and [constant](https://github.com/ethereum/go-ethereum/blob/7bb3fb1481acbffd91afe19f802c29b1ae6ea60c/core/vm/interpreter.go#L224) gas associated with the base cost of the operation. Both types of costs are deducted using the [UseGas](https://github.com/ethereum/go-ethereum/blob/7bb3fb1481acbffd91afe19f802c29b1ae6ea60c/core/vm/contract.go#L161) function
 
