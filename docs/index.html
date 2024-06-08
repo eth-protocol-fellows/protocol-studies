@@ -445,6 +445,24 @@
     }
   </script>
 
+  <!-- Footnotes -->
+  <!-- Taken from https://github.com/sy-records/docsify-footnotes/blob/main/src/index.js and removed the emoji. -->
+  <script>
+    const footnotes = function(hook) {
+      hook.beforeEach(function(markdown) {
+        if (/\[\^([A-Za-z0-9\-]+)\][^:]/.test(markdown)) {
+          markdown = markdown
+                  .replace(/\[\^([A-Za-z0-9\-]+)\][^:]/gm, '<sup class="footnote-symbol" id="fn-$1">[\[$1]\](#fnref-$1)</sup>')
+                  .replace(/\[\^([A-Za-z0-9\-]+)\]\: /gm, '<strong class="footnote-reference-symbol" id="fnref-$1">[\[$1\]](#fn-$1)</strong> ');
+        }
+        return markdown;
+      });
+    };
+
+    $docsify = $docsify || {};
+    $docsify.plugins = [].concat(footnotes, $docsify.plugins || []);
+  </script>
+
 <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"></script>
 
 <!-- KaTex -->
