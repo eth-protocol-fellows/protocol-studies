@@ -194,10 +194,6 @@ The execution layer has its own consensus engine to work with its own copy of th
 
 ### Transaction Pools
 
-In Ethereum two primary types of transaction pools are recognized.
-
-#### Geth
-
 In Ethereum two primary types of transaction pools are recognized:
 
 1. **Legacy Pools**: Managed by Geth, these pools employ price-sorted heaps or priority queues to organize transactions based on their price. Specifically, transactions are arranged using two heaps: one prioritizes the effective tip for the upcoming block, and the other focuses on the gas fee cap. During periods of saturation, the larger of these two heaps is selected for the eviction of transactions, optimizing the pool's efficiency and responsiveness. [urgent and floating heaps](https://github.com/ethereum/go-ethereum/blob/064f37d6f67a012eea0bf8d410346fb1684004b4/core/txpool/legacypool/list.go#L525)
