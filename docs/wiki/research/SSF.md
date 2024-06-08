@@ -4,11 +4,10 @@
 
 | Upgrade |   URGE    | Track |          Topic           |                                               Cross-references                                               |
 | :-----: | :-------: | :---: | :----------------------: | :----------------------------------------------------------------------------------------------------------: |
-|   SSF   | the Merge |   -   | Increase Validator count | intersection with: [MAX_EB](/docs/wiki/research/cl-upgrades.md), [ePBS](/docs/wiki/research/PBS/ePBS.md), ET |
+|   SSF   | the Merge |   -   | PoS upgrades, finality and security | intersection with: [MAX_EB](/docs/wiki/research/cl-upgrades.md), [ePBS](/docs/wiki/research/PBS/ePBS.md) |
 
-## What is SSF?
-[Single Slot Finality](/docs/eps/week10-research.md) is a research concept of an improvement of Beacon Chain's consensus mechanism that addresses inefficiencies associated with the time it takes to finalize blocks. It's proposing a significant raise in blocks validation efficiency and a drastic reduction of time-to-finality. 
-Instead of waiting for 2 epochs, blocks could get proposed and finalized in the same slot.
+[Single Slot Finality](/docs/eps/week10-research.md) is a research concept of an improvement to Beacon Chain's consensus mechanism that addresses inefficiencies associated with the time it takes to finalize blocks. It's proposing a significant raise in blocks validation efficiency and a drastic reduction of time-to-finality.
+Instead of waiting for 2 epochs, blocks could get proposed and finalized in the same slot. The topic was also covered in (EPS week 10](https://github.com/eth-protocol-fellows/protocol-studies/blob/ssf/docs/eps/week10-research.md).
 
 ## Context and Motivation
 Ethereum consensus layer implements Gasper protocol which includes Casper Friendly Finality Gadget. Casper FFG ensures that the network keeps producing blocks and accumulates validator attentions for each epoch. Finality is the ultimate state of PoS economic security and its change would require 2/3 of the validator set to be slashed. 
@@ -17,9 +16,9 @@ This current time to finality has turned out to be too long for most users, and 
 The delay between a block's proposal and finalization also creates an opportunity for short reorgs that an attacker could use to censor certain blocks or extract MEV.
 
 ## Benefits of SSF
-* more convenient for apps - transactions finalization time improved by an order of magnitude, i.e. 12 seconds instead of 12 minutes means better UX for all Ethereum users
-* much more difficult to attack - multi block MEV re-orgs can be eliminated as it would only take 1 block for the chain to finalize instead of 64 blocks
-* the future consensus mechanism (in SSF scenario) would have a reduced complexity compared to current LMD-GHOST & Casper-FFG combination, which can lead to attacks (balancing attacks, withholding and savings attacks)
+* More convenient for apps - transactions finalization time improved by an order of magnitude, i.e. 12 seconds instead of 12 minutes means better UX for all Ethereum users
+* Much more difficult to attack - multi block MEV re-orgs can be eliminated as it would only take 1 block for the chain to finalize instead of 64 blocks
+* The future consensus mechanism (in SSF scenario) would have a reduced complexity compared to current LMD-GHOST & Casper-FFG combination, which can lead to attacks (balancing attacks, withholding and savings attacks)
 
 ## The fork-choice rule in SSF
 Today's consensus mechanism relies on the coupling[^1] between Casper-FFG (the algorithm that determines whether 2/3 of validators have attested to a certain chain) and the fork choice rule (LMD-GHOST is the algorithm that decides which chain is the correct one when there are multiple options). 
@@ -30,7 +29,7 @@ Some interaction issues between the fork choice and the consensus do remain in a
 Short-term improvements to the existing fork choice (eg. view-merge) may also feed into work on the SSF fork choice.[^2]
 
 ## What are the key questions we need to solve to implement single slot finality?
-Vitalik starts out with three open questions[^4]: 
+Three open questions outlined by Vitalik[^4]: 
 
 * What will be the exact consensus algorithm?
 
