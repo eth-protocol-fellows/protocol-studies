@@ -32,6 +32,7 @@ attester
 Attester
 attesters
 attestors
+auth
 autoplay
 AVS
 backend
@@ -68,6 +69,7 @@ bloXroute
 bloXroute's
 BLS
 Bogotá
+boltdb
 Boneh
 bool
 booleans
@@ -81,6 +83,8 @@ Buterin's
 bypassability
 bytecode
 bytecodes
+CalcDifficulty
+CalcExcessBlobGas
 calldata
 canonicalized
 Caplin
@@ -204,6 +208,7 @@ ECDSA's
 ECMUL
 ECPAIRING
 ECRECOVER
+ecrerecover
 Edgington
 Edgington's
 EF
@@ -236,10 +241,14 @@ ERCs
 Erigon
 estimateGas
 eth
+ethash
+Ethash
 ETHCC
 Ethereum
 Ethereum's
 ethers
+ethone
+ethone's
 ethresear
 ethresearch
 ethroadmap
@@ -252,6 +261,7 @@ excalidraw
 exchangeTransitionConfigurationV
 Explainer
 Extractable
+extraData
 farcaster
 fastssz
 faytey
@@ -309,6 +319,7 @@ Grafana
 Grandine
 Grigore
 Guillaume
+gwei
 hackathon
 hackmd
 Hager
@@ -344,6 +355,7 @@ infrastracture
 Infura
 init
 InsertCoin
+instantiation
 intermediated
 intermediation
 interop
@@ -360,6 +372,7 @@ JVM
 JWT
 Karapetsas
 Katex
+KEC
 keccak
 Keccak's
 keecak
@@ -377,6 +390,7 @@ Lamport
 Lamport's
 ldots
 Lefteris
+leq
 leveldb
 libp
 lifecycle
@@ -412,10 +426,10 @@ meldsun
 mem
 Mempool
 Menezes
-merkelizing
 merkle
 Merkleization
 Merkleize
+merkleizing
 Merkleized
 Merkleizing
 MEV
@@ -525,6 +539,8 @@ preconfirms
 preconfs
 preimage
 Prest
+prevRandao
+PREVRANDAO
 privateKey
 probabilistically
 programmability
@@ -679,6 +695,7 @@ trustlessly
 trustlessness
 TrustLook
 TSTORE
+TTD
 Tx
 txpool
 txs
@@ -724,8 +741,10 @@ webkit
 WebRTC
 Whitepaper
 WIP
+withdrawlsHash
 WSS
 Xatu
+xff
 XMSS
 XORed
 xy
