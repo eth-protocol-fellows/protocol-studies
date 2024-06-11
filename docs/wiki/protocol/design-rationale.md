@@ -40,13 +40,13 @@ The preference order for where the complexity goes in: layer 2 > client implemen
 # [Blockchain level protocol](#blockchain-level-protocol)
 
 ### **Accounts over UTXOs**
-Earliest implementations of blockchain including bitcoin and it's derivatives, store user balance in a structure based on unspent transaction outputs (UTXOs). Ethereum on the other hand uses an account based model. The account based model is more flexible and allows for more complex transactions.
+Earliest implementations of blockchain including bitcoin and it's derivatives, store user balance in a structure based on unspent transaction outputs (UTXOs). Ethereum on the other hand uses an account based model.
 
 > **UTXO**: an unspent transaction output (UTXO) is a distinctive element in a subset of digital currency models. A UTXO represents a certain amount of cryptocurrency that has been authorized by a sender and is available to be spent by a recipient.
 
 A user's "balance" in the system is thus the total value of the set of coins for which the user has a private key capable of producing a valid signature. The account based model is more flexible and allows for more complex transactions.
 
-Ethereum follows an accounts based model over the UTXOs. While, UTXOs provide a higher degree of privacy, however, this also means more complexity for a system like Ethereum. Accounts also have a great deal of fungibility allowing higher level implementation flexibility such decentralized exchanges which Ethereum was originally intended for.
+Ethereum follows an accounts based model over the UTXOs. While UTXOs provide a higher degree of privacy, they also introduce more complexity to a system like Ethereum. Accounts also offer high fungibility, enabling greater flexibility ub implementations such as decentralized exchanges, which aligns with Ethereum's original purpose.
 
 #### Benefits of Accounts
 - **Space Saving**: for example, if an account has 5 UTXO, then switching from a UTXO model to an account model would reduce the space requirements from (20 + 32 + 8) * 5 = 300 bytes (20 for the address, 32 for the transactionId and 8 for the value) to 20 + 8 + 2 = 30 bytes (20 for the address, 8 for the value, 2 for a nonce(see below)). In reality savings are not nearly this massive because accounts need to be stored in a Patricia tree (see below) but they are nevertheless large. Additionally, transactions can be smaller (eg. 100 bytes in Ethereum vs. 200-250 bytes in Bitcoin) because every transaction need only make one reference and one signature and produces one output.
