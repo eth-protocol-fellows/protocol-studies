@@ -100,7 +100,7 @@ Latest Message Driven Greediest Heaviest Observed Sub-Tree (LMD-GHOST) is a *for
 
 ![LMD-GHOST-Algorithm](./img/lmt-ghost.png)
 
-Gasper is full Proof-of-Stake protocol that serves as an idealized abstraction of the Ethereum implementation. It combines Casper FFG and LMD-GHOST to drive the consensus mechanism for the Eth2.
+Gasper is full Proof-of-stake protocol that serves as an idealized abstraction of the Ethereum implementation. It combines Casper FFG and LMD-GHOST to drive the consensus mechanism for the Eth2.
 
 # References
 
