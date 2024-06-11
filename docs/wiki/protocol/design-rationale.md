@@ -76,32 +76,31 @@ One of the pressing problems of Ethereum is the current state size. Estimate at 
 ### **Recursive Length Prefix (RLP)**
 Complete implementation and details can be found on [RLP page](/wiki/EL/RLP.md)
 
-The rationale begin creating a new serialization scheme, lies in the 
-probabilistic nature of other schemes. RLP solves this problem by being simple yet deterministic serialization; and guarantees absolute byte-perfect consistency. RLP does not attempt to define any specific data type such as boolean, floats, doubles or even integers -- instead, it simply exists to store structure, in the form of nested arrays. Key/value maps are also not explicitly supported; the semi-official suggestion for supporting key/value maps is to represent such maps as``` [[k1, v1], [k2, v2], ...]``` where ```k1, k2...``` are sorted using the standard ordering for strings.
+The rationale behind creating a new serialization scheme lies in the probabilistic nature of other schemes. RLP solves this problem by being simple yet deterministic serialization; and guarantees absolute byte-perfect consistency. RLP does not attempt to define any specific data type such as boolean, floats, doubles or even integers -- instead, it simply exists to store structure, in the form of nested arrays. Key/value maps are also not explicitly supported; the semi-official suggestion for supporting key/value maps is to represent such maps as``` [[k1, v1], [k2, v2], ...]``` where ```k1, k2...``` are sorted using the standard ordering for strings.
 
-The notion of complete anonymity of the data structure to the serialization algorithm over the course of time has turn out to inefficient in case of fixed length data types like boolean, integers. SimpleSerialize(SSZ) was introduced in Ethereum 2.0 which supported both variable sized and fixed sized data types with additional features like Merkleization.
+The notion of complete anonymity of the data structure to the serialization algorithm over time has turned out to be inefficient for fixed-length data types like booleans and integers. SimpleSerialize (SSZ) was introduced in Ethereum 2.0, which supported both variable-sized and fixed-sized data types with additional features like Merkleization.
 
 ### **Simple serialize (SSZ)**
 
-Serialization is the process of converting data structures into format that can be transmuted, transmitted and reconstructed later. SSZ is a serialization format that is used in Ethereum 2.0 Beacon chain. Designed to be serialization scheme that is not self-describing -- rather it relies on a schema that must be known in advances. SSZ has a bunch of advantages over RLP, like efficient re-hashing of objects and fast indexing which RLP lacks resulting in $O(N)$ complexity.
+Serialization is the process of converting data structures into a format that can be transmitted and reconstructed later. SSZ is a serialization format used in Ethereum 2.0 Beacon chain. Designed to be serialization scheme that is not self-describing -- rather it relies on a schema that must be known in advance. SSZ has a bunch of advantages over RLP, like efficient re-hashing of objects and fast indexing, which RLP lacks resulting in $O(N)$ complexity.
 
 Based on [Vitalik's comment](https://ethresear.ch/t/replacing-ssz-with-rlp-zip-and-sha256/5706/12), one of the major problem SSZ tries to solve is RLP doesn't allow Merkleization, and this would mean disqualifying any possibility of succinct light client proofs of anything. Thus, leaving no scope of achieving statelessness -- while statelessness remains a crucial objective of current Ethereum's R&D.
 
 Further implementation and details can be found on [Simple Serialize page](/wiki/CL/ssz.md)
 
 ### **Hunt for Finality**
-In Ethereum's proof-of-stake based consensus mechanisms, finality refers to the guarantee that a block cannot be altered or removed from the blockchain without burning at least 33% of the total staked ETH. The underlying consensus protocol to achieve this is called **Casper FFG**, more details on this type of attacks can be found [here](https://blog.ethereum.org/2016/05/09/on-settlement-finality)
+In Ethereum's proof-of-stake based consensus mechanisms, finality refers to the guarantee that a block cannot be altered or removed from the blockchain without burning at least 33% of the total staked ETH. The underlying consensus protocol to achieve this is called **Casper Friendly Finality Gadget (FFG)**. More details on attacks related to finality can be found [here](https://blog.ethereum.org/2016/05/09/on-settlement-finality).
 
 - ***Casper FFG***
-The [Casper FFG](https://arxiv.org/abs/1710.09437v4) is an overlay atop a proposal mechanism -- a mechanism which proposes blocks. Casper is responsible for finalizing these blocks, essentially selecting a unique chain which represents the canonical transaction in the ledger. This is achieved by employing [slashing](https://blog.ethereum.org/2014/01/15/slasher-a-punitive-proof-of-stake-algorithm) which was first proposed in 2014. Casper is follows a BFT tradition with some modifications to achieve PoS. 
-Simply put, each validator will vote on the checkpoint, and after two rounds of voting, the checkpoint will be **finalized**. All the finalized checkpoints become the canonical chain(part of the blockchain history). While Casper is used to guarantee **finality**, brought about by attestations to the latest block addition to the canonical chain -- it requires a fork-choice rule where validators attest to blocks to signal support for those blocks.
+The [Casper FFG](https://arxiv.org/abs/1710.09437v4) is an overlay atop a proposal mechanism, responsible for finalizing blocks by selecting a unique chain representing the canonical transaction ledger. It employs [slashing](https://blog.ethereum.org/2014/01/15/slasher-a-punitive-proof-of-stake-algorithm), first proposed in 2014, to achieve this. Casper follows a  Byzantine Fault Tolerance (BFT) tradition with modifications to achieve PoS.
+Simply put, each validator votes on the checkpoint, and after two rounds of voting, the checkpoint is **finalized**. All finalized checkpoints become part of the canonical chain (part of the blockchain history). While Casper guarantees **finality** through attestations to the latest block addition to the canonical chain, it requires a fork-choice rule where validators attest to blocks to signal support for those blocks.
 
 - ***LMD GHOST***
-Latest Message Driven Greediest Heaviest Observed Sub-Tree (LMD-GHOST) is a *fork choice rule* where validators attests to blocks to signal support for those blocks. This similar in some ways to the fork choice rule used in Proof-of-Work network -- where the fork with the most work done is selected to be the canonical chain.
+Latest Message Driven Greediest Heaviest Observed Sub-Tree (LMD-GHOST) is a *fork choice rule* where validators attests to blocks to signal support for those blocks. This similar in some ways to the fork choice rule used in Proof-of-Work network, where the fork with the most work done is selected as the canonical chain.
 
 ![LMD-GHOST-Algorithm](./img/lmt-ghost.png)
 
-Gasper is full proof-of-stake protocol that is an idealized abstraction of the Ethereum implementation. A combination of Casper FFG and LMD-GHOST driving the consensus mechanism for the Eth2.
+Gasper is full Proof-of-Stake protocol that serves as an idealized abstraction of the Ethereum implementation. It combines Casper FFG and LMD-GHOST to drive the consensus mechanism for the Eth2.
 
 # References
 
