@@ -27,6 +27,13 @@ Here are some of the notable features and changes introduced during the Homestea
   The difficulty adjustment algorithm was modified to address issues observed in the Frontier phase.
   The new formula aimed to maintain the targeted block time and prevent excessive deviation by adjusting the difficulty based on the timestamp difference between blocks.
 
+- [EIP-7](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-7.md): `DELEGATECALL`
+
+  A new opcode, `DELEGATECALL`, was added at `0xf4`.
+  It functions similarly to `CALLCODE`, but propagates the sender and value from the parent scope to the child scope.
+  Propagating the sender and value makes it easier for contracts to store another address as a mutable source of code and "pass through" calls to it.
+  Unlike the `CALL` opcode, there is no additional stipend of gas added, which makes gas management more predictable.
+
 Additional Resources:
 - [Ethereum Homestead Documentation](https://readthedocs.org/projects/ethereum-homestead/downloads/pdf/latest/)
 
