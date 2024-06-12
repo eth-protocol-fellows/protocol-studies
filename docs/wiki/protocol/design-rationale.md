@@ -3,7 +3,7 @@
 These are the core tenets that sparked the work on Ethereum's architecture and implementation:
 
 - **Simplicity**:
-Since its inception, the Ethereum protocol was designed with simplicity in mind and an ambitious roadmap to add features along the way. This stemmed from the idea that any average programmer should ideally be able to understand and implement the entire specification, primarily to minimize the influence on the protocol by an individual or an elite group of developers. While this narrative has largely changed due to major modifications to the protocol. 
+Since its inception, the Ethereum protocol was designed with simplicity in mind and an ambitious roadmap to add features along the way. This stemmed from the idea that any average programmer should ideally be able to understand and implement the entire specification, primarily to minimize the influence on the protocol by an individual or an elite group of developers. While this narrative has slowly changed due to major modifications to the protocol, the simplicity is still upheld thanks to modularity and clear specification.
 
 - **Universality**:
 One of the fundamental doctrines of Ethereum's design philosophy is that Ethereum has no ***features***. Ethereum provides an internal Turing-complete virtual machine, called the [EVM](/wiki/EL/evm.md), which you can use to construct any smart contract or transaction type that can be mathematically defined. Ethereum aims to become a platform where new age developers can build decentralized and truly trustless applications without worrying about the underlying complexity.
