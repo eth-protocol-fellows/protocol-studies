@@ -8,7 +8,28 @@ Useful links: [Overview from Ethereum.org](https://ethereum.org/en/history) and 
 
 ## Homestead
 
-TODO
+The first version of Ethereum, called the Frontier release, was essentially a beta release that allowed developers to learn, experiment, and begin building Ethereum decentralized apps and tools.
+Homestead was the second major version of the Ethereum platform, officially released on March 14, 2016, marking Ethereum’s transition from a beta phase to a more mature and stable platform.
+Here are some of the notable features and changes introduced during the Homestead phase:
+
+- [EIP-2](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-2.md): Homestead Hard-fork Changes
+
+  1. **Increased gas cost for contract creation:**
+  The gas cost for creating contracts via a transaction was increased from 21,000 to 53,000.
+  This change was designed to reduce the excessive incentive to create contracts through transactions rather than through the `CREATE` opcode within contracts, which remained unaffected.
+  2. **Invalidation of high s-value signatures:**
+  Transaction signatures with an s-value greater than `secp256k1n/2` are now considered invalid.
+  This measure addressed a transaction malleability issue, preventing the alteration of transaction hashes by flipping the s-value (`s` -> `secp256k1n - s`).
+  This change improved the reliability and integrity of transaction tracking.
+  3. **Contract creation out-of-gas handling:**
+  If a contract creation did not have enough gas to pay for the final gas fee to add the contract code to the state, the contract creation will fail (i.e., go out-of-gas) rather than leaving an empty contract.
+  4. **Change the difficulty adjustment algorithm:**
+  The difficulty adjustment algorithm was modified to address issues observed in the Frontier phase.
+  The new formula aimed to maintain the targeted block time and prevent excessive deviation by adjusting the difficulty based on the timestamp difference between blocks.
+
+Additional Resources:
+- [Ethereum Homestead Documentation](https://readthedocs.org/projects/ethereum-homestead/downloads/pdf/latest/)
+
 
 ## The Merge
 
