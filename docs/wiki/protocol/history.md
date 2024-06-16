@@ -8,7 +8,7 @@ Useful links: [Overview from Ethereum.org](https://ethereum.org/en/history) and 
 
 ## Frontier
 
-The Frontier release marked the launch of the Ethereum Protocol. It was launched on July 30, 2015, at 3:26:13 AM +UTC, which is the timestamp of the [Ethereum genesis block](https://etherscan.io/block/0). Frontier launched with a gas limit of 5000. This gas limit was hardcoded into the protocol to ensure that miners and users could get up and running by installing clients during the initial launch of the protocol. The gas limit would later be increased to 3 million with the Frontier thawing fork (exactly 3,141,592). The canary contracts were contracts that gave a binary signal of either 0 or 1. These canary contracts were an initial launch mechanism used only during the Frontier release of Ethereum. If clients detected that multiple contracts had switched to a signal of 1, they would stop mining and urge the user to update their client. This prevented prolonged outages by ensuring that miners did not prevent a chain upgrade.
+The Frontier release marked the launch of the Ethereum Protocol. It was launched on July 30, 2015, at 3:26:13 AM +UTC, which is the timestamp of the [Ethereum genesis block](https://etherscan.io/block/0). Frontier launched with a gas limit of 5000. This gas limit was hard coded into the protocol to ensure that miners and users could get up and running by installing clients during the initial launch of the protocol. The gas limit would later be increased to 3 million with the Frontier thawing fork (exactly 3,141,592). The canary contracts were contracts that gave a binary signal of either 0 or 1. These canary contracts were an initial launch mechanism used only during the Frontier release of Ethereum. If clients detected that multiple contracts had switched to a signal of 1, they would stop mining and urge the user to update their client. This prevented prolonged outages by ensuring that miners did not prevent a chain upgrade.
 
 Learn more about Frontier in the following resources.
 
@@ -19,7 +19,7 @@ Learn more about Frontier in the following resources.
 
 ## Homestead
 
-Homestead was the second major release of Ethereum. It introduced [EIP-2](https://eips.ethereum.org/EIPS/eip-2), [EIP-7](https://eips.ethereum.org/EIPS/eip-7), and [EIP-8](https://eips.ethereum.org/EIPS/eip-8). EIP-8 ensures that clients on Ethereum support future network upgrades by introducing devp2p forward compatibility requirements. EIP-7 introduced the DELEGATECALL opcode. EIP-2 contained numerous fixes, such as increasing the gas cost for contract creation via transactions, ensuring that contract creation either succeeded or failed (preventing empty contracts from being created), and modififcations to the difficulty adjustment algorithm.
+Homestead was the second major release of Ethereum. It introduced [EIP-2](https://eips.ethereum.org/EIPS/eip-2), [EIP-7](https://eips.ethereum.org/EIPS/eip-7), and [EIP-8](https://eips.ethereum.org/EIPS/eip-8). EIP-8 ensures that clients on Ethereum support future network upgrades by introducing devp2p forward compatibility requirements. EIP-7 introduced the DELEGATECALL opcode. EIP-2 contained numerous fixes, such as increasing the gas cost for contract creation via transactions, ensuring that contract creation either succeeded or failed (preventing empty contracts from being created), and modifications to the difficulty adjustment algorithm.
 
 Learn more about Homestead in the following resources.
 
