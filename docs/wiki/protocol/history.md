@@ -12,7 +12,7 @@ The Frontier release marked the launch of the Ethereum Protocol. The release was
 
 Learn more about Frontier in the following resources:
 
-- [Frontier is coming, whaat to expect and how to prepare](https://blog.ethereum.org/2015/07/22/frontier-is-coming-what-to-expect-and-how-to-prepare)
+- [Frontier is coming, what to expect and how to prepare](https://blog.ethereum.org/2015/07/22/frontier-is-coming-what-to-expect-and-how-to-prepare)
 - [The thawing frontier](https://blog.ethereum.org/2015/08/04/the-thawing-frontier)
 - [ethereum.org web archive](https://web.archive.org/web/20150802035735/https://www.ethereum.org/)
 - [ethereum-protocol-update-1](https://blog.ethereum.org/2015/08/04/ethereum-protocol-update-1)
@@ -54,7 +54,7 @@ Learn more about Homestead in the following resources:
 - [Ethereum Homestead Documentation](https://readthedocs.org/projects/ethereum-homestead/downloads/pdf/latest/)
 - [The Robustness Principle Reconsidered](https://queue.acm.org/detail.cfm?id=1999945)
 - [Homestead blog release post](https://blog.ethereum.org/2016/02/29/homestead-release)
-- [The Homestead release](https://github.com/ethereum/homestead-guide/blob/master/source/introduction/the-homestead-release.rst)
+- [The Homestead release - github](https://github.com/ethereum/homestead-guide/blob/master/source/introduction/the-homestead-release.rst)
 
 ## The Merge
 
