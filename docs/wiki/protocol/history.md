@@ -21,7 +21,7 @@ Learn more about Frontier in the following resources:
 
 Homestead was the second major release of Ethereum. It introduced [EIP-2](https://eips.ethereum.org/EIPS/eip-2), [EIP-7](https://eips.ethereum.org/EIPS/eip-7), and [EIP-8](https://eips.ethereum.org/EIPS/eip-8). EIP-8 ensures that clients on Ethereum support future network upgrades by introducing devp2p forward compatibility requirements. EIP-7 introduced the DELEGATECALL opcode. EIP-2 contained numerous fixes, such as increasing the gas cost for contract creation via transactions, ensuring that contract creation either succeeded or failed (preventing empty contracts from being created), and modifications to the difficulty adjustment algorithm.
 
-Learn more about Homestead in the following resources.
+Learn more about Homestead in the following resources:
 
 - https://blog.ethereum.org/2016/02/29/homestead-release
 - https://eips.ethereum.org/EIPS/eip-2
