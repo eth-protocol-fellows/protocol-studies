@@ -49,7 +49,7 @@ Here are some of the notable features and changes introduced during the Homestea
   The **devp2p Wire Protocol**, **RLPx Discovery Protocol**, and **RLPx TCP Transport Protocol** specify that implementations should be liberal in accepting packets by ignoring version numbers and additional list elements in hello and ping packets, discarding unknown packet types silently, and accepting new encodings for encrypted key establishment handshake packets.
   This ensures all client software can cope with future protocol upgrades and will accept handshakes, allowing liberal acceptance of data from others (see [Postel's Law](https://en.wikipedia.org/wiki/Robustness_principle)).
 
-- Learn more about Homestead in the following resources:
+Learn more about Homestead in the following resources:
 
 - [Ethereum Homestead Documentation](https://readthedocs.org/projects/ethereum-homestead/downloads/pdf/latest/)
 - [The Robustness Principle Reconsidered](https://queue.acm.org/detail.cfm?id=1999945)
