@@ -263,16 +263,6 @@ def process_slots(state: BeaconState, slot: Slot) -> None:
 ```
 
 
-
-
-
-Beacon Chain clients are implementing various fundamental features: 
-
-- Forkchoice mechanism 
-- Engine API for communication with the execution client
-- Beacon APIs for validators and users
-- libp2p protocol for communication with other CL clients
-
 ## Resources
 
 - Vitalik Buterin, ["Parametrizing Casper: the decentralization/finality time/overhead tradeoff"](https://medium.com/@VitalikButerin/parametrizing-casper-the-decentralization-finality-time-overhead-tradeoff-3f2011672735)
