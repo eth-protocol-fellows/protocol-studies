@@ -33,6 +33,7 @@
     - [Reth](/wiki/EL/clients/reth.md)
   - [EVM](/wiki/EL/evm.md)
     - [Precompiled Contracts](/wiki/EL/precompiled-contracts.md)
+  - [Block Building](/wiki/EL/block-production.md)
   - [Data Structures](/wiki/EL/data-structures.md)
   - [Transaction anatomy](/wiki/EL/transaction.md)
   - [JSON-RPC](/wiki/EL/JSON-RPC.md)

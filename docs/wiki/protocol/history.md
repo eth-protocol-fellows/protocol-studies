@@ -8,7 +8,42 @@ Useful links: [Overview from Ethereum.org](https://ethereum.org/en/history) and 
 
 ## Homestead
 
-TODO
+The first version of Ethereum, called the Frontier release, was essentially a beta release that allowed developers to learn, experiment, and begin building Ethereum decentralized apps and tools.
+Homestead was the second major version of the Ethereum platform, officially released on March 14, 2016, marking Ethereum’s transition from a beta phase to a more mature and stable platform.
+Here are some of the notable features and changes introduced during the Homestead phase:
+
+- [EIP-2](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-2.md): Homestead Hard-fork Changes
+
+  1. **Increased gas cost for contract creation:**
+  The gas cost for creating contracts via a transaction was increased from 21,000 to 53,000.
+  This change was designed to reduce the excessive incentive to create contracts through transactions rather than through the `CREATE` opcode within contracts, which remained unaffected.
+  2. **Invalidation of high s-value signatures:**
+  Transaction signatures with an s-value greater than `secp256k1n/2` are now considered invalid.
+  This measure addressed a transaction malleability issue, preventing the alteration of transaction hashes by flipping the s-value (`s` -> `secp256k1n - s`).
+  This change improved the reliability and integrity of transaction tracking.
+  3. **Contract creation out-of-gas handling:**
+  If a contract creation did not have enough gas to pay for the final gas fee to add the contract code to the state, the contract creation will fail (i.e., go out-of-gas) rather than leaving an empty contract.
+  4. **Change the difficulty adjustment algorithm:**
+  The difficulty adjustment algorithm was modified to address issues observed in the Frontier phase.
+  The new formula aimed to maintain the targeted block time and prevent excessive deviation by adjusting the difficulty based on the timestamp difference between blocks.
+
+- [EIP-7](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-7.md): `DELEGATECALL`
+
+  A new opcode, `DELEGATECALL`, was added at `0xf4`.
+  It functions similarly to `CALLCODE`, but propagates the sender and value from the parent scope to the child scope.
+  Propagating the sender and value makes it easier for contracts to store another address as a mutable source of code and "pass through" calls to it.
+  Unlike the `CALL` opcode, there is no additional stipend of gas added, which makes gas management more predictable.
+
+- [EIP-8](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-8.md): devp2p Forward Compatibility Requirements for Homestead
+
+  The **devp2p Wire Protocol**, **RLPx Discovery Protocol**, and **RLPx TCP Transport Protocol** specify that implementations should be liberal in accepting packets by ignoring version numbers and additional list elements in hello and ping packets, discarding unknown packet types silently, and accepting new encodings for encrypted key establishment handshake packets.
+  This ensures all client software can cope with future protocol upgrades and will accept handshakes, allowing liberal acceptance of data from others (see [Postel's Law](https://en.wikipedia.org/wiki/Robustness_principle)).
+
+
+Additional Resources:
+- [Ethereum Homestead Documentation](https://readthedocs.org/projects/ethereum-homestead/downloads/pdf/latest/)
+- [The Robustness Principle Reconsidered](https://queue.acm.org/detail.cfm?id=1999945)
+
 
 ## The Merge
 

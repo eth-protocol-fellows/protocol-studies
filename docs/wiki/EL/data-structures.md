@@ -2,6 +2,10 @@
 
 The execution client stores the current state and historical blockchain data. In practice, the Ethereum data are stored in trie like structures, mainly Merkle Patricia Tree. 
 
+## RLP
+
+[Wiki - RLP](/wiki/EL/RLP.md)
+
 ## Primer on Merkle Tree
 
 Merkle tree is a hash-based data structure which is very efficient at data integrity and verification. It is a tree based structure where the leaf nodes hold the data values and each non-leaf node is a hash of its child nodes.
