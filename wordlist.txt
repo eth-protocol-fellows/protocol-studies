@@ -16,6 +16,7 @@ aggregative
 Aleth
 allowfullscreen
 amidst
+amongst
 Andreas
 Antonopoulos
 API
@@ -48,6 +49,7 @@ Barnabe
 Barnabé
 Barnabé's
 BDN
+beaconblock
 Beiko
 Bertoni
 Besu
@@ -177,6 +179,7 @@ delegators
 deliverables
 Dencun
 deployer
+descendent
 deserialization
 Deserialize
 deserialized
@@ -235,6 +238,7 @@ ELs
 emptyset
 Encodings
 Endian
+enr
 env
 EOA
 EOAs
@@ -339,6 +343,7 @@ hackathon
 hackmd
 Hager
 halmos
+hardfork
 HashedStorages
 Herc’s
 hevm
@@ -409,6 +414,7 @@ Lamport's
 lceil
 ldots
 Lefteris
+leftarrow
 leq
 leveldb
 lfloor
@@ -539,6 +545,7 @@ pmod
 POC
 POS
 POSIX
+postel's
 possibile
 Potuz's
 POV
@@ -604,6 +611,8 @@ README
 reciept
 referrerpolicy
 remerkleable
+reorganisation
+reorganisations
 replayable
 repo
 responder
@@ -619,6 +628,7 @@ RIPEMD
 Ritchie
 rK
 RLP
+RLPx
 roadmap
 rollup
 rollup's
@@ -704,6 +714,7 @@ systemd
 Takenobu
 Tani
 tbhl
+TCP
 Teku
 testnet
 testnets
@@ -744,8 +755,11 @@ unaggregated
 unbundle
 Unbundling
 underbrace
+underflow
+underflows
 Unformatted
 unguessable
+unhandled
 unincentivized
 upstreamed
 utils
@@ -793,6 +807,7 @@ Yan
 Yellowpaper
 Yoichi
 Zaverucha
+Zipfian
 zk
 zkEVMs
 ZKSNARK

@@ -125,7 +125,7 @@ Ethereum is a decentralized network of nodes that communicate via peer-to-peer c
 
 <figcaption>
 
-_Nodes aren't required to run a validator client (green ones) to be a part of the network, however to take part in consenus one needs to stake 32 ETH and run a validator client._
+_Nodes aren't required to run a validator client (green ones) to be a part of the network, however to take part in consensus one needs to stake 32 ETH and run a validator client._
 
 </figcaption>
 </figure>
