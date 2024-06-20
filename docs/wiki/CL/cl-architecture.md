@@ -236,8 +236,11 @@ def process_slots(state: BeaconState, slot: Slot) -> None:
 ## Resources
 
 - Vitalik Buterin, ["Parametrizing Casper: the decentralization/finality time/overhead tradeoff"](https://medium.com/@VitalikButerin/parametrizing-casper-the-decentralization-finality-time-overhead-tradeoff-3f2011672735)
+- [Enginer API spec](https://hackmd.io/@n0ble/consensus_api_design_space)
+- [Vitalik's Anotated Ethereum 2.0 Spec](https://notes.ethereum.org/@vbuterin/SkeyEI3xv)
 - Ethereum, ["Eth2: Annotated Spec"](https://github.com/ethereum/annotated-spec)
 - Martin Kleppmann, [Distributed Systems.](https://www.youtube.com/playlist?list=PLeKd45zvjcDFUEv_ohr_HdUFe97RItdiB)
 - Leslie Lamport et al., [The Byzantine Generals Problem.](https://lamport.azurewebsites.net/pubs/byz.pdf)
 - Austin Griffith, [Byzantine Generals - ETH.BUILD.](https://www.youtube.com/watch?v=c7yvOlwBPoQ)
 - Michael Sproul, ["Inside Ethereum"](https://www.youtube.com/watch?v=LviEOQD9e8c) 
+- [Eth2 Handbook by Ben Edgington](https://eth2book.info/capella/part2/consensus/)
