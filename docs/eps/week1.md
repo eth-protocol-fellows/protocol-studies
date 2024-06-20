@@ -25,12 +25,12 @@ To understand Ethereum design, we need to learn about predecessors and the cultu
 
 Starting all the way back in the 1960s, UNIX is an operating system and philosophy that redefined the entire paradigm of computation. This is the paradigm we have been using for over 50 years and has never really changed. Its fundamental concept of modularity is important to Ethereum design and open collaborative environment of Bell Labs is similar to Ethereum core development today. 
 
-> Check this documentary with Dennis Ritchie and Ken Thompson, which perfectly captures spirit and ideas behind UNIX: https://yewtu.be/watch?v=tc4ROCJYbm0
+> Check this documentary with Dennis Ritchie and Ken Thompson, which perfectly captures spirit and ideas behind UNIX: https://www.youtube.com/watch?v=tc4ROCJYbm0
 
 The Free Software movement is fundamental to Ethereum and all cryptocurrencies. The open, independent and collaborative development culture of Ethereum is strongly rooted in FOSS (Free and Open Source Software). Ethereum needs to be transparently implemented in software that gives full freedom to its users. Using any FOSS can empower every user and developer, but it's necessary for security, neutrality and trustless nature of Ethereum. 
 
 > To understand its importance, watch this talk by Richard Stallman, the founder of Free Software and GNU project:
-> - https://yewtu.be/watch?v=Ag1AKIl_2GM
+> - https://www.youtube.com/watch?v=Ag1AKIl_2GM
 > - More reading: https://www.gnu.org/philosophy/free-sw.html, *The Cathedral and the Bazaar* book: http://www.catb.org/~esr/writings/cathedral-bazaar/
 
 The invention of [asymmetric cryptography](https://www-ee.stanford.edu/~hellman/publications/24.pdf) marks the birth of a new paradigm for cryptography applications. Later, the rise of cryptography in computation for general public enabled everyone to utilize tools for digital privacy, secure communication and fundamentally transformed cybersecurity. While nation states did not have a framework for these new concepts, [Crypto Wars](https://en.wikipedia.org/wiki/Crypto_Wars) resulted in activist movements advocating and building cryptography tools. Ultimately, these were people inventing tools and ideas which became fundamental building blocks of modern cryptocurrencies. 
