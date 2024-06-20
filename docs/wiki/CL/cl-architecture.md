@@ -124,25 +124,7 @@ _Nodes aren't required to run a validator client (green ones) to be a part of th
 </figcaption>
 </figure>
 
-### Nodes
-
-An Ethereum **node** is a running instance of Ethereum's client software responsible for running the blockchain.
-
-There are 2 primary types of nodes in Ethereum: execution nodes and beacon nodes. Execution Nodes are ran by running Execution client and Beacon Nodes are ran by running the Consensus client. Typically, a "full node" refers to both types working together. These nodes connect with others to form a decentralized peer-to-peer network that processes Ethereum blocks and transactions.
-
-When users stake 32 ETH to participate in Ethereum's proof-of-stake consensus mechanism, they use a validator client that connects to their beacon node. This special software manages validator keys and duties like producing new blocks and voting on others' blocks. Validator clients connect to the Ethereum network through beacon nodes, which rely on execution nodes.
-
-<a id="img_node-architecture"></a>
-
-<figure class="diagram" style="margin:auto; width:70%; background-color:white">
-
-![Diagram for Node architecture](../../images/cl/client-architecture.png)
-
-</figure>
-
-#### Components of the "Node"
-
-- **Execution Node**: Execution nodes use client software to process transactions and smart contracts in Ethereum's execution layer. Examples include Nethermind, Besu, and Go Ethereum (Geth). Execution nodes communicate with other execution nodes via peer-to-peer networking and connect to a local beacon node.
+### Components of the Consensus Layer
 
 - **Beacon Node**: Beacon nodes use client software to coordinate Ethereum's proof-of-stake consensus. Examples include Prysm, Teku, Lighthouse, and Nimbus. Beacon nodes communicate with other beacon nodes, a local execution node, and optionally, a local validator.
 
@@ -158,17 +140,11 @@ There are also test networks that mint and manage test Ethereum for developers, 
 
 ![Diagram for CL](../../images/cl/cl.png)
 
-![Diagram for EL](../../images/cl/el.png)
-
 </figure>
-
-As mentioned earlier and shown in the diagram, an Ethereum node has two main layers/clients sitting on the same node, each with its own networking stack and subprotocols.
-
-**Execution Layer** is where the EVM resides. It is responsible for transaction building, execution & state management, and also sends “Gossip” transactions over the p2p network with encrypted communication amongst peers.
 
 **Consensus Layer** is responsible for maintaining consensus chain (beacon chain) and processing the consensus blocks (beacon blocks) and attestations received from other peers. **Consensus clients** participate in a separate [peer-to-peer network](/wiki/cl/cl-networking.md) with a different specification from execution clients. They need to participate in block gossip to receive new blocks from peers and broadcast blocks when it's their turn to propose.
 
-Both clients run in parallel and need to be connected for communication. The consensus client provides instructions to the execution client, and the execution client passes transaction bundles to the consensus client to include in Beacon blocks. Communication is achieved using a local RPC connection via the **Engine-API**. They share an [ENR](/wiki/cl/cl-networking?id=ethereum-enr) with separate keys for each client (eth1 key and eth2 key).
+Both EL and CL clients run in parallel and need to be connected for communication. The consensus client provides instructions to the execution client, and the execution client passes transaction bundles to the consensus client to include in Beacon blocks. Communication is achieved using a local RPC connection via the **Engine-API**. They share an [ENR](/wiki/cl/cl-networking?id=ethereum-enr) with separate keys for each client (eth1 key and eth2 key).
 
 ### Control Flow
 
