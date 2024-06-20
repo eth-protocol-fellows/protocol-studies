@@ -56,50 +56,15 @@ _Time moves from left to right and, except for the Genesis block, each block poi
 
 The chain grows as nodes add new blocks to its tip. This is done by temporarily selecting a "leader", the node that extends the chain. In PoW, the leader is the miner who first solves the PoW puzzle for its block. In Ethereum's PoS, the leader is pseudo-randomly selected from active stakers.
 
-The leader (block proposer) adds a block to the chain, choosing and ordering its contents. The block must be valid according to protocol rules, or the network will ignore it. Using blocks is an optimization. Adding individual transactions one by one would create a huge consensus overhead. So blocks are batches of transactions, and sometimes [people argue](https://www.bitrawr.com/bitcoin-block-size-debate-explained) about how big those blocks should be. The size of these blocks can vary:
-
-In Bitcoin, block size is limited by the number of bytes. In Ethereum's execution chain, block size is limited by the block gas limit (the amount of work needed to process the transactions). [Beacon block](link to beaconblock class) sizes are limited by hard-coded constants.
-
-### Forks and ChainId
-
-Since Ethereum is a decentralized network, any participant can attempt to add a new block to an existing chain of blocks. This creates a branching structure of blocks resembling a tree. To determine the main path from the root (the initial genesis block) to the leaf (the most recent block), a consensus mechanism is needed. If nodes disagree on which path represents the official blockchain, this disagreement results in a fork — a split where different nodes might follow different histories beyond a certain point, each considering their chosen history as the correct one. This divergence can lead to incompatible records of transactions, undermining trust in the system.
-
-Since the Paris hard fork, Ethereum manages consensus through a separate protocol known as the Beacon Chain. This is part of Ethereum's consensus layer, which sets the rules for identifying the valid sequence of blocks.
-
-Occasionally actors do not agree on a protocol change (not everybody believes in the 'not entirely serious mantra': ['Move fast and break things'](https://github.com/ethereumbook/ethereumbook/blob/c5ddebd3dbec804463c86d0ae2de9f28fbafb83a/01what-is.asciidoc?plain=1#L240)), leading to a permanent fork, such as Ethereum Classic (ETC). Therefore, In order to distinguish between diverged blockchains, [EIP-155](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-155.md) by Vitalik introduced the concept of chain ID, which is mathematically denoted by $\beta$. For the Ethereum main network $\beta$ is 1, obviously.
-
-The Paris hard fork marked a significant transition for Ethereum, shifting its consensus mechanism from Proof-of-Work (PoW) to Proof-of-Stake (PoS). This change represents a fundamental shift in how blocks are validated and new transactions are added to the blockchain. The transition to Proof-of-Stake (PoS) in Ethereum aimed to address the limitations of Proof-of-Work (PoW), particularly its high energy consumption and scalability issues. PoS is designed to be more efficient and secure by relying on validators who stake ETH as collateral. As I mentioned earlier, not everyone agrees to protocol changes, so there are still some clients who didn't upgrade and now run a separate chain/fork called Ethereum PoW (ETHW).
+The leader (block proposer) adds a block to the chain, choosing and ordering its contents. The block must be valid according to protocol rules, or the network will ignore it. Using blocks is an optimization. Adding individual transactions one by one would create a huge consensus overhead. So blocks are batches of transactions, In Ethereum's execution chain, block size is limited by the block gas limit (the amount of work needed to process the transactions). [Beacon block](/wiki/CL/beacon-api.md?id=beaconblockbody) sizes are limited by hard-coded constants.
 
 ## Transition to Proof-of-Stake
 
 > The engine was changed mid-flight! September 15, 2022 — the day Ethereum switched to Proof-of-Stake. That new engine is the Consensus Layer, formerly known as Ethereum 2.0’s Beacon Chain.
 
-### Transition Criteria and Terminal Block
+The Paris hard fork (The merge) in Ethereum was activated based on "terminal total difficulty" (TTD) instead of block height to avoid risks like malicious forks. This ensures the transition to Proof-of-Stake (PoS) occurs only when the cumulative difficulty reaches a critical threshold. The terminal block is the last Proof-of-Work (PoW) block where its total difficulty surpasses a predefined threshold, ensuring security. The total difficulty is calculated recursively, reflecting the computational effort in the blockchain. Please refer this for more details on the [transition criteria](https://hackmd.io/@kira50/rJ2y7jImR) and [Total Terminal Difficulty](https://bordel.wtf).
 
-Unlike previous hard forks in Ethereum, which typically occurred at a predetermined block height, the Paris hard fork was designed to activate based on a specific condition known as the "terminal total difficulty" (TTD). This approach was chosen to mitigate potential risks associated with the transition, such as avoiding malicious forks.
- 
-- **Avoiding Malicious Forks:** By using total difficulty instead of block height, the transition avoids scenarios where a minority of hash power could potentially extend a competing PoW chain to reach a predefined block height first, thus creating a malicious fork (smart but evil). This method ensures that the transition to PoS would occur only when the cumulative difficulty of mined blocks reaches a critical, predefined threshold, making it much harder for any minority group to influence or hijack the transition (smarter). So the terminal block was defined as follows.
-
-
-The **terminal block**, which is the last block mined using PoW, was defined by the following criteria:
-   - The total difficulty of the block ($B_t$) must exceed a predefined threshold (`58750000000000000000000` in this case).
-   - The total difficulty of its parent block $P(B_H)_t$ must be less than this threshold.
-
-or mathematically
- - $B_t        \geq     58750000000000000000000$
- - $P(B_H)_t   <        58750000000000000000000$
-
-##### Formula for Total Difficulty
-
-Total difficulty ($B_t$) of a block in the PoW system was calculated recursively as:
-   - $B_t$ ≡ $P(B_H)_t$ + $H_d$
-
-This calculation accumulates the difficulty of each block, adding up to a total that reflects the overall computational effort expended to reach the current state of the blockchain.
-
-The notations are taken from the Ethereum yellowpaper, It might be confusing to understand but allow me explain it clearly. After knowing the notations properly try to read it again, it would be easier to understand. 
-   - $B_H$ represent Block $B$ with the Block Header $H$
-   - $B_t$ represents total difficulty of Block $B$, $H_d$ also represent total difficulty but of Block with the Block Header $H$
-   - $P(B_H)$ represent parent of $B_H$ and $P(B_H)_t$ means total difficulty of the parent block $P(B_H)$
+This is relevant because testnets, devnets and any Ethereum network running the latest software needs to activate the Merge - not by block height but by Total Terminal Difficulty (TTD).
 
 Upon reaching the terminal block:
 - **Beacon Chain Takes Over**: The Beacon Chain, already running in parallel with the Ethereum mainnet, assumes the responsibility for processing new blocks. Under PoS, blocks are validated by validators who stake their ETH to participate in the consensus mechanism, rather than by miners solving cryptographic puzzles.

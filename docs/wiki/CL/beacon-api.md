@@ -42,7 +42,7 @@ class BeaconState(Container):
     finalized_checkpoint: Checkpoint
 ```
 
-`BeaconBlockBody`
+#### `BeaconBlockBody`
 
 ```python
 class BeaconBlockBody(Container):
