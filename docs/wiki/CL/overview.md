@@ -6,51 +6,29 @@ In Ethereum's consensus layer, the goal is to ensure that tens of thousands of i
 
 These nodes often use [consumer grade hardware](https://stakefromhome.com/) and communicate over internet connections that may be slow, lose data, or disconnect unexpectedly. Node operators might misconfigure their software or fail to update it. Additionally, there could be many bad actors running rogue nodes or tampering with communications for personal gain. This is what we mean by "unreliable infrastructure."
 
-## Byzantine Fault Tolerance (BFT) and Byzantine Generals' Problem
+### Byzantine Fault Tolerance (BFT) and Byzantine Generals' Problem
 
-Byzantine Fault Tolerance (BFT) is a property of distributed systems that allows them to function correctly even when some components fail or act maliciously. BFT is crucial in decentralized networks, where trust among nodes cannot be assumed. In other words, a system exhibiting BFT can tolerate Byzantine faults, which are arbitrary failures that include malicious behavior. For a system to be Byzantine fault-tolerant, it must reach consensus despite these faults.
-
-#### Practical Byzantine Fault Tolerance (pBFT)
-
-pBFT is an algorithm designed to improve the efficiency of achieving BFT in practical applications. It works by having nodes communicate with each other to agree on the system's state. The algorithm operates in several rounds of voting, where nodes exchange messages to confirm the validity of transactions. pBFT ensures that as long as less than one-third of the nodes are faulty, consensus can be achieved.
-
-#### Byzantine Generals' Problem
-
-The Byzantine Generals’ Problem was [conceived](https://www.microsoft.com/en-us/research/uploads/prod/2016/12/The-Byzantine-Generals-Problem.pdf) in 1982 as a logical dilemma that illustrates how a group of Byzantine generals may have communication problems when trying to agree on their next move. It illustrates the difficulty of achieving consensus in a distributed system with potentially faulty nodes. It is framed as a scenario where several Byzantine generals must agree on a coordinated attack plan, but some of them may be traitors trying to prevent consensus.
-
-The dilemma assumes that each general has its own army and that each group is situated in different locations around the city they intend to attack. The generals can communicate with one another only by messenger. After observing the enemy they must decide on a common plan of action. It does not matter whether they attack or retreat, as long as all generals reach consensus, i.e., agree on a common decision in order to execute it in coordination.
-
-The central challenge of the Byzantine Generals’ Problem is that the messages can get somehow delayed, destroyed or lost. In addition, even if a message is successfully delivered, one or more generals may choose (for whatever reason) to act maliciously and send a fraudulent message to confuse the other generals, leading to a total failure. If we apply the dilemma to the context of blockchains, each general represents a network node, and the nodes need to reach consensus on the current state of the system. Putting in another way, the majority of participants within a distributed network have to agree and execute the same action in order to avoid complete failure. 
-
-Therefore, the only way to achieve consensus in these types of distributed system is by having at least ⅔ or more reliable and honest network nodes. This means that if the majority of the network decides to act maliciously, the system is susceptible to failures and attacks (such as the 51% attack).
-
-In blockchain and distributed ledger systems, the Byzantine Generals' Problem is analogous to nodes (validators or miners) needing to agree on the state of the ledger despite some nodes potentially acting maliciously.
-
+Byzantine Fault Tolerance (BFT) is a property of distributed systems that allows them to function correctly even when some components fail or act maliciously. BFT is crucial in decentralized networks, where trust among nodes cannot be assumed. In other words, a system exhibiting BFT can tolerate Byzantine faults, which are arbitrary failures that include malicious behavior. For a system to be Byzantine fault-tolerant, it must reach consensus despite these faults. For more on the problem and practical solutions read [this](https://hackmd.io/@kira50/SknuPZMIC).
 
 ## Introduction to Consensus Layer (CL)
 
-**tldr;**
-
-> - Consensus is a way to build reliable distributed systems with unreliable components.
-> - Blockchain-based distributed systems aim to agree on a single history of transactions.
-> - Proof-of-Work and Proof-of-stake are not consensus protocols, but enable consensus protocols.
-> - Nodes and validators are the actors of the consensus system.
-> - Slots and epochs regulate consensus time.
-> - Blocks and attestations are the currency of consensus.
+> Consensus is a way to build reliable distributed systems with unreliable components. Blockchain-based distributed systems aim to agree on a single history of transactions.
+>
+> Proof-of-Work and Proof-of-stake are not consensus protocols, but enable consensus protocols. In Ethereum, Nodes and validators are the actors of the consensus system. Slots and epochs regulate consensus time. Blocks and attestations are the currency of consensus.
 
 The Consensus Layer (CL) is a fundamental component that ensures the network's security, reliability, and efficiency. Originally, Ethereum utilized Proof-of-Work (PoW) as its consensus mechanism, similar to Bitcoin. PoW, while effective in maintaining decentralization and security, has significant drawbacks, including high energy consumption and limited scalability. To address these issues, Ethereum has transitioned to Proof-of-Stake (PoS), a more sustainable and scalable consensus mechanism.
 
-The Ethereum network consists of many individual nodes. Each node operates independently and communicates over the Internet, which is often unreliable and asynchronous. A node might always behave correctly, or it might be faulty in various ways: being offline, using a different protocol version, trying to mislead other nodes, sending contradictory messages, or experiencing other issues.
+The Ethereum network consists of many individual nodes. Each node operates independently and communicates over the Internet, which is often unreliable and asynchronous.
 
 Users send transactions to this network of nodes, and the consensus protocol ensures that all honest nodes eventually agree on a single, consistent transaction history. This means they agree on the order of transactions and their outcomes. For example, if I have 1 ETH and tell the network to send it to both Alice and Bob at the same time, the network must eventually agree on whether I sent it to Alice or Bob. It would be a failure if both Alice and Bob received the Ether, or if neither did. A consensus protocol is the process that enables this agreement on transaction order.
 
-Ethereum's consensus protocol actually "bolts together" two different consensus protocols. One is called [LMD GHOST](/wiki/CL/cl-architecture), the other [Casper FFG](link to arch casper). The combination has become known as [Gasper](). In subsequent sections we will be looking at these both separately and in combination.
+Ethereum's consensus protocol actually _bolts together_ two different consensus protocols. One is called [LMD GHOST](/wiki/CL/gasper.md?lmd-ghost), the other [Casper FFG](/wiki/CL/gasper.md?casper-ffg). The combination has become known as [Gasper](/wiki/CL/gasper.md). In subsequent sections we will be looking at these both separately and in combination.
 
 ## Proof-of-Work and Proof-of-stake
 
 This is a good point to clarify that neither Proof-of-Work (PoW) nor Proof-of-Stake (PoS) are consensus protocols by themselves. They are often incorrectly referred to as such, but they are actually mechanisms that enable consensus protocols. Both PoW and PoS primarily serve as Sybil resistance mechanisms, placing a cost on participating in the protocol. This prevents attackers from overwhelming the system cheaply.
 
-However, both PoW and PoS are closely linked to the consensus mechanisms they support through [fork choice](/wiki/link-to-fork-choice-cl-arch) rules. They help assign a weight or score to a chain of blocks: in PoW, it's the total computational work done; in PoS, it's the total value staked that supports a particular chain. Beyond these basics, PoW and PoS can support various consensus protocols, each with its own dynamics and trade-offs.
+However, both PoW and PoS are closely linked to the consensus mechanisms they support through [fork choice](/wiki/CL/cl-architecture.md?id=fork-choice-rules) rules. They help assign a weight or score to a chain of blocks: in PoW, it's the total computational work done; in PoS, it's the total value staked that supports a particular chain. Beyond these basics, PoW and PoS can support various consensus protocols, each with its own dynamics and trade-offs.
 
 ### Block chains
 
