@@ -1,20 +1,14 @@
 # Consensus Layer (CL) architecture
 
-**tldr;**
-
-> - Many blockchain consensus protocols are "forkful".
-> - Forkful chains use a fork choice rule, and sometimes undergo reorganisations.
-> - Ethereum's consensus protocol combines two separate consensus protocols.
-> - "LMD GHOST" essentially provides liveness.
-> - "Casper FFG" provides finality.
-> - Together they are known as "Gasper".
-> - In a "live" protocol, something good always happens.
-> - In a "safe" protocol, nothing bad ever happens.
-> - No practical protocol can be always safe and always live.
+> Many blockchain consensus protocols are _forkful_. Forkful chains use a fork choice rule, and sometimes undergo reorganisations.
+>
+> Ethereum's consensus protocol combines two separate consensus protocols. _LMD GHOST_ essentially provides liveness. _Casper FFG_ provides finality. Together they are known as _Gasper_.
+>
+> In a _live"_ protocol, something good always happens. In a _safe_ protocol, nothing bad ever happens. No practical protocol can be always safe and always live.
 
 ## Fork-choice Mechanism
 
-As described in [previous section](/wiki/CL/overview.md), for various reasons - like network delays, outages, out-of-order messages, or malicious behavior — nodes in the network can have different views of the network's state. Eventually, we want every honest node to agree on an identical, linear history and a common view of the system's state. The protocol's fork choice rule is what helps achieve this agreement.
+As described in [BFT](/wiki/CL/overview.md?id=byzantine-fault-tolerance-bft-and-byzantine-generals39-problem), for various reasons - like network delays, outages, out-of-order messages, or malicious behavior — nodes in the network can have different views of the network's state. Eventually, we want every honest node to agree on an identical, linear history and a common view of the system's state. The protocol's fork choice rule is what helps achieve this agreement.
 
 #### Block Tree
 Given a block tree and decision criteria based on a node's local view of the network, the fork choice rule is designed to select the branch that is most likely to become the final, linear, canonical chain. It chooses the branch least likely to be pruned out as nodes converge on a common view.
@@ -134,7 +128,7 @@ _Nodes aren't required to run a validator client (green ones) to be a part of th
 
 An Ethereum **node** is a running instance of Ethereum's client software responsible for running the blockchain.
 
-There are 2 primary types of nodes in Ethereum: execution nodes and beacon nodes. Typically, a "node" refers to both types working together. These nodes connect with others to form a decentralized peer-to-peer network that processes Ethereum blocks and transactions.
+There are 2 primary types of nodes in Ethereum: execution nodes and beacon nodes. Execution Nodes are ran by running Execution client and Beacon Nodes are ran by running the Consensus client. Typically, a "full node" refers to both types working together. These nodes connect with others to form a decentralized peer-to-peer network that processes Ethereum blocks and transactions.
 
 When users stake 32 ETH to participate in Ethereum's proof-of-stake consensus mechanism, they use a validator client that connects to their beacon node. This special software manages validator keys and duties like producing new blocks and voting on others' blocks. Validator clients connect to the Ethereum network through beacon nodes, which rely on execution nodes.
 
