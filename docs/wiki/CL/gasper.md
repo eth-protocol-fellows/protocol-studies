@@ -35,4 +35,4 @@ Solutions:
 - [Goldfish](https://arxiv.org/pdf/2209.03255)
 - [Casper FFG](https://arxiv.org/pdf/1710.09437)
 - [LMD Ghost](https://inevitableeth.com/home/ethereum/network/consensus/lmd-ghost)
-- [Comparison of different LMD Ghost Implmentations by ProtoLambda](https://github.com/protolambda/lmd-ghost)
+- [Comparison of different LMD Ghost Implementations by ProtoLambda](https://github.com/protolambda/lmd-ghost)
