@@ -31,5 +31,6 @@ These are just general suggestions of domain knowledge you will need. More intro
 ### Helpful resources to get you started
 
 - [Intro to Cryptography](https://summerofprotocols.com/wp-content/uploads/2023/12/53-BEIKO-001-2023-12-13.pdf)
+- [Introduction to Modern Cryptography](https://www.cs.umd.edu/~jkatz/imc.html)
 - [Merkle trees](https://youtu.be/V6gLY-1G4Mc?si=W1ncsNYUSHjm5U4y), [in Bitcoin](https://www.youtube.com/watch?v=bBC-nXj3Ng4)
 - [Networking & p2p](https://youtu.be/ie-qRQIQT4I?si=eYKzMbn7PGk-Il9M), [in Bittorrent](https://www.youtube.com/watch?v=xH00ikD1oDo)
