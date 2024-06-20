@@ -54,7 +54,7 @@ _Time moves from left to right and, except for the Genesis block, each block poi
 </figcaption>
 </figure>
 
-The chain grows as nodes add new blocks to its tip. This is done by temporarily selecting a "leader", the node that extends the chain. In PoW, the leader is the miner who first solves the PoW puzzle for its block. In Ethereum's PoS, the leader is pseudo-randomly selected from active stakers.
+The chain grows as nodes add new blocks to its tip. This is done by temporarily selecting a "leader", the node that extends the chain. In PoW, the leader is the miner who first solves the PoW puzzle for its block. In Ethereum's PoS, the proposer is pseudo-randomly selected from active validator set.
 
 The leader (block proposer) adds a block to the chain, choosing and ordering its contents. The block must be valid according to protocol rules, or the network will ignore it. Using blocks is an optimization. Adding individual transactions one by one would create a huge consensus overhead. So blocks are batches of transactions, In Ethereum's execution chain, block size is limited by the block gas limit (the amount of work needed to process the transactions). [Beacon block](/wiki/CL/beacon-api.md?id=beaconblockbody) sizes are limited by hard-coded constants.
 
