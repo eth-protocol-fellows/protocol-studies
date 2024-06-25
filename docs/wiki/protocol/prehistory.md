@@ -2,7 +2,7 @@
 > “Heroes are heroes because they are heroic in behavior, not because they won or lost.”\
 > —  Nicholas Taleb
 
-This article discusses the heroes who influenced Ethereum's lineage.
+This article explores the lineage of Ethereum, celebrating the heroes who influenced it with their courage, creativity, and sheer rebellion.
 
 Ethereum has its roots in the early internet's open spirit, with its design philosophy echoing the Unix ideal of 'doing one thing and doing it well'. The rise of the free and open source movement, embodied by GNU/Linux, reaffirmed open standards in software. Meanwhile, breakthroughs in public key cryptography and its advocacy by the cypherpunks laid the groundwork for secure, transparent, and decentralized systems like Bitcoin which ultimately inspired Ethereum's vision of building a platform for a borderless, self-sovereign digital economy.
 
