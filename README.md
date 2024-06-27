@@ -2,7 +2,7 @@
 
 This repository is dedicated to coordination and developing a knowledge base for the EPFsg. It hosts the Protocol Wiki, a community effort to build a technical knowledge base about the Ethereum core protocol.
 
-Learn more about the EPFsg in the [announcement blog post](https://blog.ethereum.org/2024/02/07/epf-study-group).
+[Learn more about the EPF study group](https://epf.wiki/#/eps/intro) and dive into the [wiki content](https://epf.wiki/#/README?id=protocol-wiki) to study the protocol. 
 
 ## Protocol Studies Wiki
 
