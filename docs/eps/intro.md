@@ -4,7 +4,7 @@ Ethereum Protocol Fellowship Study Group (EPFsg) is a community formed gathering
 
 The protocol evolves and grows quickly, it's an always-changing infinite garden. To sustain its credible neutrality, this pace should be reflected in the community as well. Various communities using, building or living on Ethereum need to be able to learn and become involved in the core protocol. The complexity of the architecture, codebases and dynamic development with scattered resources can discourage many talented people from participating on the core level. The protocol study group aims to bridge the gap by introducing a curriculum focused on all parts of the Ethereum stack, building a wiki and gathering people interested in diving into it. 
 
-> The study group was originally running from February to April 2024 as an open open, 10-week study program. Although these regular presentations are over, all of the content produced is available here and the community is still active. 
+> The study group was originally running from February to April 2024 as an open open, 10-week study program. Although these regular presentations are over, all of the content produced is available here and the community is still active. Learn more context in the [original announcement](https://blog.ethereum.org/2024/02/07/epf-study-group). 
 
 ## Program Structure
 
