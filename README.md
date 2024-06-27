@@ -1,7 +1,6 @@
 # Ethereum Protocol Fellowship Study Group (EPFsg)
 
-This repository is dedicated to fostering coordination and developing a knowledge base for the EPFsg. It hosts the Protocol Wiki, a community effort to build a technical knowledge base about the Ethereum core protocol.
-
+This repository is dedicated to coordination and developing a knowledge base for the EPFsg. It hosts the Protocol Wiki, a community effort to build a technical knowledge base about the Ethereum core protocol.
 
 Learn more about the EPFsg in the [announcement blog post](https://blog.ethereum.org/2024/02/07/epf-study-group).
 
