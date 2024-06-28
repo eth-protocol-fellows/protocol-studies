@@ -22,6 +22,7 @@
 - [Contributing](contributing.md)
 - **Protocol Wiki**
 - The Protocol
+  - [Prehistory](/wiki/protocol/prehistory.md) 
   - [Architecture](/wiki/protocol/architecture.md)
   - [Design rationale](/wiki/protocol/design-rationale.md)
   - [Evolution](/wiki/protocol/history.md)
