@@ -16,6 +16,7 @@ aggregative
 Aleth
 allowfullscreen
 amidst
+amongst
 Andreas
 Antonopoulos
 API
@@ -49,6 +50,7 @@ Barnabe
 Barnabé
 Barnabé's
 BDN
+beaconblock
 Beiko
 Bertoni
 Besu
@@ -178,6 +180,7 @@ delegators
 deliverables
 Dencun
 deployer
+descendent
 deserialization
 Deserialize
 deserialized
@@ -237,6 +240,7 @@ ELs
 emptyset
 Encodings
 Endian
+enr
 env
 EOA
 EOAs
@@ -265,6 +269,7 @@ ethone's
 ethresear
 ethresearch
 ethroadmap
+ETHW
 EVM
 evmlab
 EVMONE
@@ -340,6 +345,7 @@ hackathon
 hackmd
 Hager
 halmos
+hardfork
 HashedStorages
 Herc’s
 hevm
@@ -410,6 +416,7 @@ Lamport's
 lceil
 ldots
 Lefteris
+leftarrow
 leq
 leveldb
 lfloor
@@ -459,6 +466,7 @@ mevboost
 Michaël
 middleware
 minimalistic
+misconfigure
 Mitigations
 mload
 MMPTs
@@ -541,6 +549,7 @@ pmod
 POC
 POS
 POSIX
+postel's
 possibile
 Potuz's
 POV
@@ -571,6 +580,7 @@ privateKey
 probabilistically
 programmability
 proto
+proto's
 protobuf
 Protolambda
 prover
@@ -581,6 +591,8 @@ Prysm
 Prysmatic
 PSE
 PSE's
+pseudorandom
+pseudorandomly
 ptc
 publically
 pubsub
@@ -603,6 +615,8 @@ README
 reciept
 referrerpolicy
 remerkleable
+reorganisation
+reorganisations
 replayable
 repo
 responder
@@ -618,6 +632,7 @@ RIPEMD
 Ritchie
 rK
 RLP
+RLPx
 roadmap
 rollup
 rollup's
@@ -699,11 +714,13 @@ substate
 Substate
 subtrees
 Summa
+Supermajority
 systemd
 Szabo
 Takenobu
 Tani
 tbhl
+TCP
 Teku
 testnet
 testnets
@@ -744,8 +761,11 @@ unaggregated
 unbundle
 Unbundling
 underbrace
+underflow
+underflows
 Unformatted
 unguessable
+unhandled
 unincentivized
 upstreamed
 utils
@@ -759,6 +779,7 @@ validators
 Vanstone
 Varun
 VB's
+VDF
 VDFs
 Vec
 verifications
@@ -777,9 +798,11 @@ walkthrough
 WB
 webkit
 WebRTC
+Whistleblower
 Whitepaper
 WIP
-withdrawlsHash
+withdrawable
+withdrawalHash
 WSS
 Xatu
 xff
@@ -791,6 +814,7 @@ Yellowpaper
 Yoni
 Yoichi
 Zaverucha
+Zipfian
 zk
 zkEVMs
 ZKSNARK

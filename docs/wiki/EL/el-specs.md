@@ -95,7 +95,7 @@ $$H_{difficulty} = 0\qquad (57k)$$
 $$\land $$
 $$H_{nonce} = 0x0000000000000000 \qquad (57l)$$
 $$\land$$
-$$H_{withdrawlsHash} \neq nil \qquad (57n)$$
+$$H_{withdrawalHash} \neq nil \qquad (57n)$$
 $$\land$$
 $$H_{blobGasUsed} \neq nil \qquad (57o)$$
 $$\land$$
