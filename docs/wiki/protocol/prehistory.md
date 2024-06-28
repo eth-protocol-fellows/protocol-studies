@@ -1,6 +1,7 @@
 # Prehistory of Ethereum
+
 > “Heroes are heroes because they are heroic in behavior, not because they won or lost.”\
-> —  Nicholas Taleb
+> — Nicholas Taleb
 
 This article explores the lineage of Ethereum, celebrating the heroes who influenced it with their courage, creativity, and sheer rebellion.
 
@@ -28,22 +29,25 @@ What started as a research tool for a handful of institutions now connects billi
 
 Unix originated from the efforts to simplify the complexities of [MULTICS](https://en.wikipedia.org/wiki/Multics), a large and ambitious operating system project of the 1960s. As MULTICS became unwieldy, a small group including [Ken Thompson](https://en.wikipedia.org/wiki/Ken_Thompson) and [Dennis Ritchie](https://en.wikipedia.org/wiki/Dennis_Ritchie) at AT&T Bell Labs sought to create Unix - a more modular, simpler, and composable alternative:
 
->"At some point I realized that I was three weeks from an operating system. I'll needed an editor, assembler, and kernel overlay — call it an operating system. One week, one week, one week, and we had Unix."\
+> "At some point I realized that I was three weeks from an operating system. I'll needed an editor, assembler, and kernel overlay — call it an operating system. One week, one week, one week, and we had Unix."\
 > — [_Ken Thompson in an interview_](https://www.youtube.com/watch?v=EY6q5dv_B-o)
 
-In 1972, Dennis also wrote the influential [C language](https://en.wikipedia.org/wiki/C_(programming_language)).
+In 1972, Dennis also wrote the influential [C language](<https://en.wikipedia.org/wiki/C_(programming_language)>).
 
 ![Ken Thompson and Dennis Ritchie](img/overview/ken-thompson-dennis-ritchie.jpg)
 **Ken Thompson and Dennis Ritchie.**
 
 Bell Labs was an unparalleled incubator of the century's most defining technological building blocks:
+
 > "You couldn't go to the store and buy a Bell Labs innovation, yet it was deep inside other things; it was platform innovation integral to communications infrastructure."\
 > — Jon G., The Idea Factory
 
 > 🎦 WATCH: [Jon talk about innovations at Bell Labs.](https://www.youtube.com/watch?v=OJsKgiGGzzs)
 
+In many ways, [Ethereum functions](https://ethereum.foundation/infinitegarden) like an open Bell Labs.
+
 Unix introduced concepts like hierarchical file systems, the shell as a command-line interface, single-purpose utilities that could be combined to perform complex tasks.
-These foundational principles laid the groundwork for what became known as the UNIX philosophy — favoring simplicity, flexibility, and reusability in software design. 
+These foundational principles laid the groundwork for what became known as the UNIX philosophy — favoring simplicity, flexibility, and reusability in software design.
 
 Today, UNIX and its derivatives continue to underpin much of modern computing, influencing everything from operating systems like Linux and macOS to the principles of timeless software development.
 
@@ -55,7 +59,7 @@ The Unix legacy demonstrates the profound influence a small group of individuals
 
 Since the dawn of civilization, the need to convey messages in secrecy has been a constant human pursuit. From merchants concealing trade secrets to spies and the military transmitting critical information, cryptography has played a vital role. Early methods often used the same key for both encryption and decryption, making secure key distribution a nightmare:
 
->"The problem of producing, registering, distributing and canceling the keys, may seem slight to an individual who has not had experience with military communications, but in wartime the volumes of traffic stagger even the signal staffs."\
+> "The problem of producing, registering, distributing and canceling the keys, may seem slight to an individual who has not had experience with military communications, but in wartime the volumes of traffic stagger even the signal staffs."\
 > — [David Kahn writes in _the codebreakers_](https://en.wikipedia.org/wiki/The_Codebreakers)
 
 If a key fell into enemy hands, messages were vulnerable. This was evident in World War II with the cracking of the [Enigma machine](https://en.wikipedia.org/wiki/Enigma_machine), a sophisticated German cipher, by mathematician [Alan Turing](https://en.wikipedia.org/wiki/Alan_Turing) and his team. Their success significantly altered the outcome of the war.
@@ -77,7 +81,7 @@ Two years later, in 1976, Merkle’s work inspired [Whitfield Diffie](https://en
 ![Whitfield and Martin published "New directions in cryptography"](img/overview/new-direction-in-cryptography.jpg)
 **Whitfield and Martin published "New directions in cryptography".**
 
-In the following year, 1977, computer scientists [Ronald Rivest](http://amturing.acm.org/award_winners/rivest_1403005.cfm), [Adi Shamir](http://amturing.acm.org/award_winners/shamir_2327856.cfm), and [Leonard Adleman](http://amturing.acm.org/award_winners/adleman_7308544.cfm) developed the [RSA cryptosystem](https://en.wikipedia.org/wiki/RSA_(cryptosystem)) - the first working implementation of public key cryptography in a paper titled ["A Method for Obtaining Digital Signatures and Public-Key Cryptosystems"](https://people.csail.mit.edu/rivest/Rsapaper.pdf). Rivest sent a copy of the paper to mathematician Martin Gardner. Martin was so impressed that he broke his usual rule of planning his column several months in advance, and quickly wrote it up for [publication in the August 1977](https://web.archive.org/web/20230728001717/http://simson.net/ref/1977/Gardner_RSA.pdf) issue of Scientific American:
+In the following year, 1977, computer scientists [Ronald Rivest](http://amturing.acm.org/award_winners/rivest_1403005.cfm), [Adi Shamir](http://amturing.acm.org/award_winners/shamir_2327856.cfm), and [Leonard Adleman](http://amturing.acm.org/award_winners/adleman_7308544.cfm) developed the [RSA cryptosystem](<https://en.wikipedia.org/wiki/RSA_(cryptosystem)>) - the first working implementation of public key cryptography in a paper titled ["A Method for Obtaining Digital Signatures and Public-Key Cryptosystems"](https://people.csail.mit.edu/rivest/Rsapaper.pdf). Rivest sent a copy of the paper to mathematician Martin Gardner. Martin was so impressed that he broke his usual rule of planning his column several months in advance, and quickly wrote it up for [publication in the August 1977](https://web.archive.org/web/20230728001717/http://simson.net/ref/1977/Gardner_RSA.pdf) issue of Scientific American:
 
 ![Len, Adi, Ron at CRYPTO '82, and the now-famous article by Martin Gardner](img/overview/rsa-in-scientific-american.jpg)
 **Len, Adi, Ron at CRYPTO '82, and [the now-famous article](https://web.archive.org/web/20230728001717/http://simson.net/ref/1977/Gardner_RSA.pdf) by Martin Gardner published in Scientific American.**
@@ -125,6 +129,7 @@ In a 1983 [email](https://groups.google.com/g/net.unix-wizards/c/8twfRPM79u0), h
 GNU is an in-your-face take on Unix and [recursively](https://en.wikipedia.org/wiki/Recursion) stands for “GNU's Not Unix". He decided to make the operating system compatible with Unix because the overall design was already proven and portable, and compatibility would make it easy for Unix users to switch from Unix to GNU.
 
 As Richard explains, free software goes beyond just the cost aspect:
+
 > "Free software", I should explain, refers to freedom, not price. It's unfortunate that the word "free", in english, is ambiguous - it has a
 > number of different meanings. One of them means "zero price", but another meaning is "freedom".
 > So think of "free speech", not "free beer".
@@ -151,10 +156,12 @@ The open-source movement diverges from the free software movement, focusing more
 
 The GNU/Linux stands as a testament to the idea that software should empower, not restrict, its users.
 
+> 🎦 WATCH: [Revolution OS: A documentary about GNU/Linux.](https://www.youtube.com/watch?v=k0RYQVkQmWU)
+
 ## Cypherpunks write code
 
 Since the end of World War II, governments a enjoyed stranglehold on advancements in cryptography, and guarded it accordingly. In the US,
-encryption technology was controlled under the [Munitions List](https://en.wikipedia.org/wiki/United_States_Munitions_List). This meant that the [National Security Agency](https://en.wikipedia.org/wiki/National_Security_Agency) had a keen interest in cryptographic advancements. 
+encryption technology was controlled under the [Munitions List](https://en.wikipedia.org/wiki/United_States_Munitions_List). This meant that the [National Security Agency](https://en.wikipedia.org/wiki/National_Security_Agency) had a keen interest in cryptographic advancements.
 
 When the NSA received a copy the RSA paper from MIT, they attempted to classify the research but eventually allowed publication:
 
@@ -188,13 +195,13 @@ In an iconic move, he published the entire source code of PGP in a [hardback boo
 
 The case was dropped in 1996.
 
->"I used to feel like I was a flea on the back of a T-Rex. Now I feel I might be a small yapping poodle on the back of a T-Rex."\
+> "I used to feel like I was a flea on the back of a T-Rex. Now I feel I might be a small yapping poodle on the back of a T-Rex."\
 > — Phil Zimmermann
 
 ![Phil Zimmermann ](img/overview/phil-zimmermann.jpg)
 **Phil Zimmermann, a t-shirt sporting the RSA source code, and a European volunteer scanning the PGP book; more than [70 people from all over Europe worked for over 1000 hours to make the PGP release possible outside US.](https://www.pgpi.didisoft.com/pgpi/project/scanning/)**
 
-In early 1992, the same week was PGP 2.0 released, three Bay Area engineers— [Eric Hughes](https://en.wikipedia.org/wiki/Eric_Hughes_(cypherpunk)), [Timothy C. May](https://en.wikipedia.org/wiki/Timothy_C._May), and [John Gilmore](https://en.wikipedia.org/wiki/John_Gilmore_(activist)) — got together to start a mailing list named [Cypherpunk](https://mailing-list-archive.cryptoanarchy.wiki/) (cipher + [cyberpunk](https://en.wikipedia.org/wiki/Cyberpunk)).
+In early 1992, the same week was PGP 2.0 released, three Bay Area engineers— [Eric Hughes](<https://en.wikipedia.org/wiki/Eric_Hughes_(cypherpunk)>), [Timothy C. May](https://en.wikipedia.org/wiki/Timothy_C._May), and [John Gilmore](<https://en.wikipedia.org/wiki/John_Gilmore_(activist)>) — got together to start a mailing list named [Cypherpunk](https://mailing-list-archive.cryptoanarchy.wiki/) (cipher + [cyberpunk](https://en.wikipedia.org/wiki/Cyberpunk)).
 
 Cypherpunk evolved into a defining movement, with over [700 activists and rebels, including Zimmerman](https://mailing-list-archive.cryptoanarchy.wiki/authors/notable/) ready to fight back with code:
 
@@ -214,12 +221,12 @@ During a 1994 conference, Tim [described](https://web.archive.org/web/2024041513
 > There is nothing official (not much is), but there is an emergent, coherent set of
 > beliefs which most list members seem to hold:
 >
-> * that the government should not be able to snoop into our affairs
-> * that protection of conversations and exchanges is a basic right
-> * that these rights may need to be secured through _technology_ rather than
-> through law
-> * that the power of technology often creates new political realities (hence the list
-mantra: "Cypherpunks write code")
+> - that the government should not be able to snoop into our affairs
+> - that protection of conversations and exchanges is a basic right
+> - that these rights may need to be secured through _technology_ rather than
+>   through law
+> - that the power of technology often creates new political realities (hence the list
+>   mantra: "Cypherpunks write code")
 
 In his 1988 ["Crypto Anarchist Manifesto,"](https://groups.csail.mit.edu/mac/classes/6.805/articles/crypto/cypherpunks/may-crypto-manifesto.html) Tim introduced the political philosophy of "Crypto anarchism," which opposes all forms of authority and recognizes no laws except those described by cryptography and enforced by code.
 
@@ -229,6 +236,8 @@ In his 1988 ["Crypto Anarchist Manifesto,"](https://groups.csail.mit.edu/mac/cla
 The manifesto envisioned anonymous digital transactions as a cornerstone of individual liberty.
 
 The missing piece: **A cryptonative-native [digital currency.](https://en.wikipedia.org/wiki/Digital_currency)**
+
+> 🎦 WATCH: [Tim reflects on 30 years of crypto anarchy.](https://www.youtube.com/watch?v=TdmpAy1hI8g)
 
 ## Search for the missing piece
 
@@ -250,7 +259,7 @@ Later schemes focused on moving away from collateral such as gold instead scarci
 
 The 2008 financial crisis revived interest in digital currency experiments and especially brought BitGold back into the conversation.
 
-A solution to the open problem of how to achieving consensus without a leader was introduced in a 2008 paper titled ["Bitcoin: A Peer-to-Peer Electronic Cash System"](https://bitcoin.org/bitcoin.pdf) by the pseudonymous author [Satoshi Nakamoto](https://en.wikipedia.org/wiki/Satoshi_Nakamoto). Bitcoin established itself as a distributed ledger system where data is cryptographically linked in chronological blocks. It also became the first decentralized digital currency, operating without  underlying collateral, and eliminating the need for trusted third-party intermediaries like banks.
+A solution to the open problem of how to achieving consensus without a leader was introduced in a 2008 paper titled ["Bitcoin: A Peer-to-Peer Electronic Cash System"](https://bitcoin.org/bitcoin.pdf) by the pseudonymous author [Satoshi Nakamoto](https://en.wikipedia.org/wiki/Satoshi_Nakamoto). Bitcoin established itself as a distributed ledger system where data is cryptographically linked in chronological blocks. It also became the first decentralized digital currency, operating without underlying collateral, and eliminating the need for trusted third-party intermediaries like banks.
 
 ![A statue dedicated to Satoshi, and Bitcoin announcement post.](img/overview/satoshi-and-bitcoin.jpg)
 **A statue dedicated to Satoshi, and Bitcoin announcement post.**
@@ -291,20 +300,20 @@ As of the time of writing, Ethereum has a market capitalization of **$400 billio
 
 ## Resources
 
-* 📄 Computer History Museum, ["The history of Computer Networking"](https://www.computerhistory.org/timeline/networking-the-web/)
-* 📄 Wikipedia, ["ARPANET"](https://en.wikipedia.org/wiki/ARPANET)
-* 📘 Brian K., ["Unix: A History and a Memoir"](https://www.amazon.com/dp/1695978552)
-* 📄 CryptoCouple, ["A History of The World’s Most Famous Cryptographic Couple"](https://cryptocouple.com/)
-* 📄 Steven E., ["The Day Cryptography Changed Forever"](https://medium.com/swlh/the-day-cryptography-changed-forever-1b6aefe8bda7)
-* 📄 GNU, ["Overview of the GNU System"](https://www.gnu.org/gnu/gnu-history.en.html)
-* 📄 Steven V., ["A look back at 40 Years of GNU and the Free Software Foundation"](https://www.zdnet.com/article/40-years-of-gnu-and-the-free-software-foundation/)
-* 📄 David C., [“Security without Identification: Transaction Systems to Make Big Brother Obsolete”](https://dl.acm.org/doi/pdf/10.1145/4372.4373)
-* 📄 Steven L., ["Wired: Crypto Rebels"](https://web.archive.org/web/20160310165713/https://archive.wired.com/wired/archive/1.02/crypto.rebels_pr.html)
-* 📄 Arvind N., ["What Happened to the Crypto Dream?"](https://www.cs.princeton.edu/~arvindn/publications/crypto-dream-part1.pdf)
-* 📄 Satoshi N., ["Bitcoin: A Peer-to-Peer Electronic Cash System"](https://bitcoin.org/bitcoin.pdf)
-* 📄 Harry K. et al, ["An empirical study of Namecoin and lessons for decentralized namespace design"](https://www.cs.princeton.edu/~arvindn/publications/namespaces.pdf)
-* 📄 Nick S,, ["Formalizing and Securing Relationships on Public Networks"](https://web.archive.org/web/20040228033758/http://www.firstmonday.dk/ISSUES/issue2_9/szabo/index.html)
-* 📄 Nick S., ["The Idea of Smart Contracts"](https://web.archive.org/web/20040222163648/https://szabo.best.vwh.net/idea.html)
-* 📄 Vitalik B., ["Ethereum Whitepaper"](https://ethereum.org/content/whitepaper/whitepaper-pdf/Ethereum_Whitepaper_-_Buterin_2014.pdf)
-* 📄 Vitalik B., ["Ethereum at Bitcoin Miami 2014"](https://www.youtube.com/watch?v=l9dpjN3Mwps)
-* 🎥 Gavin Wood, ["Ethereum for Dummies"](https://www.youtube.com/watch?v=U_LK0t_qaPo)
+- 📄 Computer History Museum, ["The history of Computer Networking"](https://www.computerhistory.org/timeline/networking-the-web/)
+- 📄 Wikipedia, ["ARPANET"](https://en.wikipedia.org/wiki/ARPANET)
+- 📘 Brian K., ["Unix: A History and a Memoir"](https://www.amazon.com/dp/1695978552)
+- 📄 CryptoCouple, ["A History of The World’s Most Famous Cryptographic Couple"](https://cryptocouple.com/)
+- 📄 Steven E., ["The Day Cryptography Changed Forever"](https://medium.com/swlh/the-day-cryptography-changed-forever-1b6aefe8bda7)
+- 📄 GNU, ["Overview of the GNU System"](https://www.gnu.org/gnu/gnu-history.en.html)
+- 📄 Steven V., ["A look back at 40 Years of GNU and the Free Software Foundation"](https://www.zdnet.com/article/40-years-of-gnu-and-the-free-software-foundation/)
+- 📄 David C., [“Security without Identification: Transaction Systems to Make Big Brother Obsolete”](https://dl.acm.org/doi/pdf/10.1145/4372.4373)
+- 📄 Steven L., ["Wired: Crypto Rebels"](https://web.archive.org/web/20160310165713/https://archive.wired.com/wired/archive/1.02/crypto.rebels_pr.html)
+- 📄 Arvind N., ["What Happened to the Crypto Dream?"](https://www.cs.princeton.edu/~arvindn/publications/crypto-dream-part1.pdf)
+- 📄 Satoshi N., ["Bitcoin: A Peer-to-Peer Electronic Cash System"](https://bitcoin.org/bitcoin.pdf)
+- 📄 Harry K. et al, ["An empirical study of Namecoin and lessons for decentralized namespace design"](https://www.cs.princeton.edu/~arvindn/publications/namespaces.pdf)
+- 📄 Nick S,, ["Formalizing and Securing Relationships on Public Networks"](https://web.archive.org/web/20040228033758/http://www.firstmonday.dk/ISSUES/issue2_9/szabo/index.html)
+- 📄 Nick S., ["The Idea of Smart Contracts"](https://web.archive.org/web/20040222163648/https://szabo.best.vwh.net/idea.html)
+- 📄 Vitalik B., ["Ethereum Whitepaper"](https://ethereum.org/content/whitepaper/whitepaper-pdf/Ethereum_Whitepaper_-_Buterin_2014.pdf)
+- 📄 Vitalik B., ["Ethereum at Bitcoin Miami 2014"](https://www.youtube.com/watch?v=l9dpjN3Mwps)
+- 🎥 Gavin Wood, ["Ethereum for Dummies"](https://www.youtube.com/watch?v=U_LK0t_qaPo)
