@@ -39,7 +39,7 @@ Upgrades relating to the switch from proof-of-work to proof-of-stake. The Merge 
 | Single Secret Leader Election (SSLE) |                        Allow elected block proposers to remain private until block publishing, to prevent DoS attacks                        |                                                                                                                                                                                     Only the selected validator knows it has been selected to propose a block.                                                                                                                                                                                     | in research </br>EIP-7441[^7]                                                                                     |
 | Enable more Validators               | The technical challenge of efficiently coordinating an ever increasing number of validators to achieve SSF with the best trade-offs possible |                                                                                                                                                                   Greater redundancy, a broader range of proposers, a wider array of attesters, and overall increased resilience                                                                                                                                                                   | in research </br> (i) EIP-7514[^8] </br>(ii) EIP-7251[^9] </br> (iii) 8192 signatures[^5]                         |
 | Quantum-safe signatures              |                               Proactive research and integration of quantum-resistant cryptographic algorithms                               |                                                                                                                                                                        Quantum-safe, aggregation-friendly signatures will enhance protocol security against quantum attacks                                                                                                                                                                        | in research </br> (i) lattice-based[^10] </br>(ii) STARK-based [^11] systems                                      |
-### the Surge
+### The Surge
 Upgrades related to scalability by Roll-ups and Data Sharding. 
 
 **IMPLEMENTED**
@@ -55,7 +55,7 @@ Upgrades related to scalability by Roll-ups and Data Sharding.
 | Removing Rollup Training Wheels                 |   -   | Basic & Full rollup scaling |                        (i) Optimistic Rollup Fault Provers </br> (ii) ZK-EVMs  </br> (iii) Rollup interoperability                         | (i) Optimistic rollups having live proof systems will address the L2's censorship risk </br>(ii)  Massive improvements to Ethereum's scalability and privacy without sacrificing the security and decentralization aspects of the chain via zkEVMs (EVM-compatible virtual machines that supports zero-knowledge proof computation) </br > (iii) L1 Sequencers, or Ethereum L1 proposers with given rollup sequencing rights will bring better credible-neutrality and security, and offer roll-ups L1 compatibility | in research </br> (i)Arbitrum BoLD[^14] </br> Optimism Cannon[^15] </br> (ii) ZK-EVMs [^16] [^17] [^18] </br> (iii) [ET](/wiki/research/PBS/ET.md), </br> [Based Sequencing with Preconfirmations](/wiki/research/Preconfirmations/BasedSequencingPreconfs.md) |
 | Quantum-safe and Trusted-Setup-Free Commitments |   -   |              -              |                      replace KZG commitments with commitments that don't require a trusted setup and are quantum safe                      |                                                                                                                                                                                                                                               Quantum-safe Commitments                                                                                                                                                                                                                                               | in research </br>                                                                                                                                                                                                                                              |
 
-### the Scourge
+### The Scourge
 Upgrades related to censorship resistance, decentralization and mitigating protocol risks from MEV  and liquid staking/pooling. 
 
 **IMPLEMENTED**
@@ -74,18 +74,21 @@ Upgrades related to censorship resistance, decentralization and mitigating proto
 | Distributed Block Building         | MEV-Track | Endgame Block Production Pipeline |                                               Decentralize the block building process, by distributing it                                                |                                                                              Decentralize different parts of the Builder: </br> (i) the algorithms for choosing transactions (the block building transaction ordering) </br> (ii) resources for block construction, especially under full Danksharding (split-up big blocks)  </br> (iii) add extra builder services (e.g.Preconfirmations)                                                                              | in research </br> [Preconfirmations](/wiki/research/Preconfirmations/Preconfirmations.md),</br> SUAVE[^25] |
 | Application Layer MEV Minimization | MEV-Track |                 -                 |                                                         App layer effort to minimize harmful MEV                                                         |                                                                                                                                                                                        The minimization techniques target: </br>(i) frontrunning, and </br>(ii) sandwich attacks                                                                                                                                                                                         | Examples[^26]                                                                                              |
 | Preconfirmations                   | MEV-Track |                 -                 |                       Users preconfirmations on transaction execution, for a competitive user experience in Ethereum interactions                        |                                                                                                                                  Block builders could publicly agree to include transactions with a priority fee over a certain amount, and send users a receipt indicating their intent to include the transaction in a specific block                                                                                                                                  | [in research](/wiki/research/Preconfirmations/Preconfirmations.md)[^27]                                    |
+      
 
-### the Verge
+      
+                                              
+### The Verge
 Upgrades related to verifying blocks more easily
 
 | Upgrade | Track | Topic | Description | Expected effect | State of the art |
 | :------ | :---: | :---: | :---------: | :-------------: | :--------------- |
 |         |       |       |             |                 |                  |
 
-### the Purge
+### The Purge
 Upgrades related to reducing the computational costs of running nodes and simplifying the protocol
 
-### the Splurge
+### The Splurge
 Other upgrades that don't fit well into the previous categories.
 
 ## Resources
