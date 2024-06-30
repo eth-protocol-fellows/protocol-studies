@@ -105,7 +105,6 @@ Other upgrades that don't fit well into the previous categories.
 
 [^2]: [EIP-4895: Beacon chain push withdrawals](https://eips.ethereum.org/EIPS/eip-4895), [[archived]](https://web.archive.org/web/20240415201815/https://eips.ethereum.org/EIPS/eip-4895)
 
-
 [^4]: [VB's SSF notes](https://notes.ethereum.org/@vbuterin/single_slot_finality), [[archived]](https://web.archive.org/web/20240330010706/https://notes.ethereum.org/@vbuterin/single_slot_finality)
 
 [^5]: [Sticking to 8192 signatures per slot post-SSF](https://ethresear.ch/t/sticking-to-8192-signatures-per-slot-post-ssf-how-and-why/17989). [[archived]](https://web.archive.org/web/20240105131126/https://ethresear.ch/t/sticking-to-8192-signatures-per-slot-post-ssf-how-and-why/17989)
