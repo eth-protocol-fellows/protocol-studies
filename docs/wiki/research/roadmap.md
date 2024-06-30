@@ -75,8 +75,16 @@ Upgrades related to censorship resistance, decentralization and mitigating proto
 | Application Layer MEV Minimization | MEV-Track |                 -                 |                                                         App layer effort to minimize harmful MEV                                                         |                                                                                                                                                                                        The minimization techniques target: </br>(i) frontrunning, and </br>(ii) sandwich attacks                                                                                                                                                                                         | Examples[^26]                                                                                              |
 | Preconfirmations                   | MEV-Track |                 -                 |                       Users preconfirmations on transaction execution, for a competitive user experience in Ethereum interactions                        |                                                                                                                                  Block builders could publicly agree to include transactions with a priority fee over a certain amount, and send users a receipt indicating their intent to include the transaction in a specific block                                                                                                                                  | [in research](/wiki/research/Preconfirmations/Preconfirmations.md)[^27]                                    |
       
+Here is a summarized table of the provided content for the Staking Economics/Experiences Track:
 
-      
+| Upgrade          | Track       | Topic                      | Description                                  | Expected Effect                                     | State of the Art                                                                 |
+|------------------|-------------|----------------------------|----------------------------------------------|----------------------------------------------------|---------------------------------------------------------------------------------|
+| Increase MAX_EFFECTIVE_BALANCE | Staking Economics | Raising Validator Cap | Increase the max balance for Ethereum validators from 32 ETH to reduce overhead for large stakers | Consolidates validators, reduces network load, simplifies operations for large stakers | [in research](/wiki/research/eODS.md)[^28], confirmed for Pectra upgrade |
+| Improve Node Operator Usability | Staking Economics | Making Nodes Cheaper | Make nodes cheaper and easier to operate using verkle trees and SNARKs | Lower SSD requirements, faster sync times, easier node operation | Research/Proposal: [in eps node workshop](/docs/eps/nodes_workshop.md)[^29] |
+| Explore Total Stake Capping | Staking Economics | Capping Validator Set | Cap the total amount of stake to manage communication overhead between validators | Prevents excessive validator participation, maintains network efficiency | Research/Proposals: [in research](/wiki/research/eODS.md)[^30] |
+| Explore Solutions to Liquid Staking Centralization | Staking Economics | Combat LST Centralization | Solutions to reduce centralization in the Liquid Staking Token (LST) market | Prevents large LST providers from gaining too much control over the network | Research/Proposals: [^31], [^32], [^33], [^34],[^35] |
+
+
                                               
 ### The Verge
 Upgrades related to verifying blocks more easily
@@ -93,58 +101,74 @@ Other upgrades that don't fit well into the previous categories.
 
 ## Resources
 
-[^1]: EIP-2982: Serenity Phase 0 https://eips.ethereum.org/EIPS/eip-2982, [[archived]](https://web.archive.org/web/20230928204358/https://eips.ethereum.org/EIPS/eip-2982)
+[^1]: [EIP-2982: Serenity Phase 0](https://eips.ethereum.org/EIPS/eip-2982), [[archived]](https://web.archive.org/web/20230928204358/https://eips.ethereum.org/EIPS/eip-2982)
 
-[^2]: EIP-4895: Beacon chain push withdrawals https://eips.ethereum.org/EIPS/eip-4895, [[archived]](https://web.archive.org/web/20240415201815/https://eips.ethereum.org/EIPS/eip-4895)
+[^2]: [EIP-4895: Beacon chain push withdrawals](https://eips.ethereum.org/EIPS/eip-4895), [[archived]](https://web.archive.org/web/20240415201815/https://eips.ethereum.org/EIPS/eip-4895)
 
 
-[^4]: VB's SSF notes https://notes.ethereum.org/@vbuterin/single_slot_finality, [[archived]](https://web.archive.org/web/20240330010706/https://notes.ethereum.org/@vbuterin/single_slot_finality)
+[^4]: [VB's SSF notes](https://notes.ethereum.org/@vbuterin/single_slot_finality), [[archived]](https://web.archive.org/web/20240330010706/https://notes.ethereum.org/@vbuterin/single_slot_finality)
 
-[^5]: Sticking to 8192 signatures per slot post-SSF https://ethresear.ch/t/sticking-to-8192-signatures-per-slot-post-ssf-how-and-why/17989. [[archived]](https://web.archive.org/web/20240105131126/https://ethresear.ch/t/sticking-to-8192-signatures-per-slot-post-ssf-how-and-why/17989)
+[^5]: [Sticking to 8192 signatures per slot post-SSF](https://ethresear.ch/t/sticking-to-8192-signatures-per-slot-post-ssf-how-and-why/17989). [[archived]](https://web.archive.org/web/20240105131126/https://ethresear.ch/t/sticking-to-8192-signatures-per-slot-post-ssf-how-and-why/17989)
 
-[^6]: A simple Single Slot Finality protocol https://ethresear.ch/t/a-simple-single-slot-finality-protocol/14920, [[archived]](https://web.archive.org/web/20231214080806/https://ethresear.ch/t/a-simple-single-slot-finality-protocol/14920)
+[^6]: [A simple Single Slot Finality protocol](https://ethresear.ch/t/a-simple-single-slot-finality-protocol/14920), [[archived]](https://web.archive.org/web/20231214080806/https://ethresear.ch/t/a-simple-single-slot-finality-protocol/14920)
 
-[^7]: EIP-7441: Upgrade BPE to Whisk https://eips.ethereum.org/EIPS/eip-7441, [[archived]](https://web.archive.org/web/20231001031437/https://eips.ethereum.org/EIPS/eip-7441)
+[^7]: [EIP-7441: Upgrade BPE to Whisk](https://eips.ethereum.org/EIPS/eip-7441), [[archived]](https://web.archive.org/web/20231001031437/https://eips.ethereum.org/EIPS/eip-7441)
 
-[^8]: EIP-7514: Add Max Epoch Churn Limit https://eips.ethereum.org/EIPS/eip-7514, [[archived]](https://web.archive.org/web/20240309191714/https://eips.ethereum.org/EIPS/eip-7514)
+[^8]: [EIP-7514: Add Max Epoch Churn Limit](https://eips.ethereum.org/EIPS/eip-7514), [[archived]](https://web.archive.org/web/20240309191714/https://eips.ethereum.org/EIPS/eip-7514)
 
-[^9]: EIP-7251:Increase the MAX_EFFECTIVE_BALANCE https://eips.ethereum.org/EIPS/eip-7251, [[archived]](https://web.archive.org/web/20240324072459/https://eips.ethereum.org/EIPS/eip-7251)
+[^9]: [EIP-7251:Increase the MAX_EFFECTIVE_BALANCE](https://eips.ethereum.org/EIPS/eip-7251), [[archived]](https://web.archive.org/web/20240324072459/https://eips.ethereum.org/EIPS/eip-7251)
 
-[^10]: Medium post on lattice encryption https://medium.com/asecuritysite-when-bob-met-alice/so-what-is-lattice-encryption-326ac66e3175, [[archived]](https://web.archive.org/web/20230623222155/https://medium.com/asecuritysite-when-bob-met-alice/so-what-is-lattice-encryption-326ac66e3175)
+[^10]: [Medium post on lattice encryption](https://medium.com/asecuritysite-when-bob-met-alice/so-what-is-lattice-encryption-326ac66e3175), [[archived]](https://web.archive.org/web/20230623222155/https://medium.com/asecuritysite-when-bob-met-alice/so-what-is-lattice-encryption-326ac66e3175)
 
-[^11]: VB's hackmd post on STARK signature aggregation https://hackmd.io/@vbuterin/stark_aggregation, [[archived]](https://web.archive.org/web/20240313124147/https://hackmd.io/@vbuterin/stark_aggregation)
+[^11]: [VB's hackmd post on STARK signature aggregation](https://hackmd.io/@vbuterin/stark_aggregation), [[archived]](https://web.archive.org/web/20240313124147/https://hackmd.io/@vbuterin/stark_aggregation)
 
-[^12]: EIP-4844: Shard Blob Transactions https://eips.ethereum.org/EIPS/eip-4844, [[archived]](https://web.archive.org/web/20240326205709/https://eips.ethereum.org/EIPS/eip-4844)
+[^12]: [EIP-4844: Shard Blob Transactions](https://eips.ethereum.org/EIPS/eip-4844), [[archived]](https://web.archive.org/web/20240326205709/https://eips.ethereum.org/EIPS/eip-4844)
 
-[^13]: EIP-7594: PeerDAS https://github.com/ethereum/EIPs/pull/8105 
+[^13]: [EIP-7594: PeerDAS](https://github.com/ethereum/EIPs/pull/8105) 
 
-[^14]: BoLd: dispute resolution protocol https://github.com/OffchainLabs/bold/blob/e00b1c86124c3ca8c70a2cc50d9296e7a8e818ce/docs/research-specs/BOLDChallengeProtocol.pdf
+[^14]: [BoLd: dispute resolution protocol](https://github.com/OffchainLabs/bold/blob/e00b1c86124c3ca8c70a2cc50d9296e7a8e818ce/docs/research-specs/BOLDChallengeProtocol.pdf)
 
-[^15]: Fault proofs bring permissionless validation to the OP Sepolia testnet https://blog.oplabs.co/open-source-and-feature-complete-fault-proofs-bring-permissionless-validation-to-the-op-sepolia-testnet/
+[^15]: [Fault proofs bring permissionless validation to the OP Sepolia testnet](https://blog.oplabs.co/open-source-and-feature-complete-fault-proofs-bring-permissionless-validation-to-the-op-sepolia-testnet/)
 
-[^16]: Parallel Zero-knowledge Virtual Machine https://eprint.iacr.org/2024/387, [[archived]](https://web.archive.org/web/20240415180222/https://eprint.iacr.org/2024/387)
+[^16]: [Parallel Zero-knowledge Virtual Machine](https://eprint.iacr.org/2024/387), [[archived]](https://web.archive.org/web/20240415180222/https://eprint.iacr.org/2024/387)
 
-[^17]: What is zkEVM https://www.alchemy.com/overviews/zkevm, [[archived]](https://web.archive.org/web/20240129204732/https://www.alchemy.com/overviews/zkevm)
+[^17]: [What is zkEVM](https://www.alchemy.com/overviews/zkevm), [[archived]](https://web.archive.org/web/20240129204732/https://www.alchemy.com/overviews/zkevm)
 
-[^18]: Types of ZK-EVMs https://vitalik.eth.limo/general/2022/08/04/zkevm.html, [[archived]](https://web.archive.org/web/20240329112600/https://vitalik.eth.limo/general/2022/08/04/zkevm.html)
+[^18]: [Types of ZK-EVMs](https://vitalik.eth.limo/general/2022/08/04/zkevm.html), [[archived]](https://web.archive.org/web/20240329112600/https://vitalik.eth.limo/general/2022/08/04/zkevm.html)
 
-[^19]: Barnabe - More pictures about proposers and builders https://mirror.xyz/barnabe.eth/QJ6W0mmyOwjec-2zuH6lZb0iEI2aYFB9gE-LHWIMzjQ, [[archived]](https://web.archive.org/web/20240424010902/https://mirror.xyz/barnabe.eth/QJ6W0mmyOwjec-2zuH6lZb0iEI2aYFB9gE-LHWIMzjQ)
+[^19]: [Barnabe - More pictures about proposers and builders](https://mirror.xyz/barnabe.eth/QJ6W0mmyOwjec-2zuH6lZb0iEI2aYFB9gE-LHWIMzjQ), [[archived]](https://web.archive.org/web/20240424010902/https://mirror.xyz/barnabe.eth/QJ6W0mmyOwjec-2zuH6lZb0iEI2aYFB9gE-LHWIMzjQ)
 
-[^20]: MEV burn—a simple design https://ethresear.ch/t/mev-burn-a-simple-design/15590, [[archived]](https://ethresear.ch/t/mev-burn-a-simple-design/15590)
+[^20]: [MEV burn—a simple design](https://ethresear.ch/t/mev-burn-a-simple-design/15590), [[archived]](https://ethresear.ch/t/mev-burn-a-simple-design/15590)
 
-[^21]: APS-Burn https://mirror.xyz/barnabe.eth/QJ6W0mmyOwjec-2zuH6lZb0iEI2aYFB9gE-LHWIMzjQ#heading-aps-burn
+[^21]: [APS-Burn](https://mirror.xyz/barnabe.eth/QJ6W0mmyOwjec-2zuH6lZb0iEI2aYFB9gE-LHWIMzjQ#heading-aps-burn)
 
-[^22]: Inclusion lists https://eips.ethereum.org/EIPS/eip-7547, [[archived]](https://web.archive.org/web/20240309191147/https://eips.ethereum.org/EIPS/eip-7547)
+[^22]: [Inclusion lists](https://eips.ethereum.org/EIPS/eip-7547), [[archived]](https://web.archive.org/web/20240309191147/https://eips.ethereum.org/EIPS/eip-7547)
 
-[^23]: ROP-9: Multiplicity gadgets https://efdn.notion.site/ROP-9-Multiplicity-gadgets-for-censorship-resistance-7def9d354f8a4ed5a0722f4eb04ca73b
+[^23]: [ROP-9: Multiplicity gadgets](https://efdn.notion.site/ROP-9-Multiplicity-gadgets-for-censorship-resistance-7def9d354f8a4ed5a0722f4eb04ca73b)
 
-[^24]: Committee-enforced inclusion sets (COMIS) https://ethresear.ch/t/the-more-the-less-censored-introducing-committee-enforced-inclusion-sets-comis-on-ethereum/18835, [[archived]](https://web.archive.org/web/20240310000045/https://ethresear.ch/t/the-more-the-less-censored-introducing-committee-enforced-inclusion-sets-comis-on-ethereum/18835)
+[^24]: [Committee-enforced inclusion sets (COMIS)](https://ethresear.ch/t/the-more-the-less-censored-introducing-committee-enforced-inclusion-sets-comis-on-ethereum/18835), [[archived]](https://web.archive.org/web/20240310000045/https://ethresear.ch/t/the-more-the-less-censored-introducing-committee-enforced-inclusion-sets-comis-on-ethereum/18835)
 
-[^25]: SUAVE https://writings.flashbots.net/the-future-of-mev-is-suave, [[archived]](https://writings.flashbots.net/the-future-of-mev-is-suave)
+[^25]: [SUAVE](https://writings.flashbots.net/the-future-of-mev-is-suave), [[archived]](https://writings.flashbots.net/the-future-of-mev-is-suave)
 
-[^26]: Examples of app layer MEV minimization https://herccc.substack.com/i/142947825/examples-of-the-defensive-side-of-mev
+[^26]: [Examples of app layer MEV minimization](https://herccc.substack.com/i/142947825/examples-of-the-defensive-side-of-mev)
 
-[^27]: Based preconfirmations https://ethresear.ch/t/based-preconfirmations/17353, [[archived]](https://ethresear.ch/t/based-preconfirmations/17353)
+[^27]: [Based preconfirmations](https://ethresear.ch/t/based-preconfirmations/17353), [[archived]](https://ethresear.ch/t/based-preconfirmations/17353)
+
+[^28]: [EIP-7251: Increase the MAX_EFFECTIVE_BALANCE](https://eips.ethereum.org/EIPS/eip-7251)
+
+[^29]: [Spin Up Your Own Ethereum Node - Ethereum.org](https://ethereum.org/en/developers/docs/nodes-and-clients/run-a-node/)
+
+[^30]: [Paths to SSF](https://ethresear.ch/t/orbit-ssf-solo-staking-friendly-validator-set-management-for-ssf/19928)
+
+[^31]: [Enshrining Liquid Staking/Decentralized Liquid Staking](https://notes.ethereum.org/@vbuterin/H1_5auGQd)
+
+[^32]: [Enshrined LST from Arixon](https://ethresear.ch/t/enshrined-lst-allocating-stake-to-node-operators/11053)
+
+[^33]: [Unbundling staking: towards rainbow staking](https://ethresear.ch/t/unbundling-staking-towards-rainbow-staking/11054)
+
+[^34]: [Liquid Staking Maximalism design by Dankrad](https://ethresear.ch/t/liquid-staking-maximalism/11050)
+
+[^35]: [Two-tiered staking from Mike Neuder](https://ethresear.ch/t/two-tiered-staking/11049)
 
 [ethereum/EIPs github repository](https://github.com/ethereum/EIPs/tree/master#ethereum-improvement-proposals-eips)
 
