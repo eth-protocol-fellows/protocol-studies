@@ -442,6 +442,7 @@ LSP
 LST
 Lua
 LuaVM
+Luca
 Lyubashevsky
 mainnet
 Mana
@@ -631,6 +632,7 @@ Rikard
 RIPEMD
 Ritchie
 rK
+RLMD
 RLP
 RLPx
 roadmap
@@ -813,7 +815,9 @@ Yan
 Yellowpaper
 Yoni
 Yoichi
+Zanolini
 Zaverucha
+Zhang
 Zipfian
 zk
 zkEVMs
