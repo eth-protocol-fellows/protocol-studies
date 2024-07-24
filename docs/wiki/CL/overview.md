@@ -1,6 +1,6 @@
 # Consensus Layer Overview
 
-The main challenge a consensus protocol aims to solve is building a reliable distributed system on top of unreliable infrastructure. Research on consensus protocols dates back to the 1970s, but the scale of what Ethereum is trying to achieve far more ambitious.
+The main challenge a consensus protocol aims to solve is building a reliable distributed system on top of unreliable infrastructure. Research on consensus protocols dates back to the 1970s, but the scale of what Ethereum is trying to achieve is far more ambitious.
 
 In Ethereum's consensus layer, the goal is to ensure that tens of thousands of independent nodes around the world stay reasonably synchronized. Each node keeps a ledger with the state of every account, and all these ledgers must match exactly. There can be no differences; the nodes must agree and do so quickly. This is what we mean by "a reliable distributed system."
 
@@ -30,7 +30,7 @@ This is a good point to clarify that neither Proof-of-work (PoW) nor Proof-of-St
 
 However, both PoW and PoS are closely linked to the consensus mechanisms they support through [fork choice](/wiki/CL/cl-architecture.md?id=fork-choice-rules) rules. They help assign a weight or score to a chain of blocks: in PoW, it's the total computational work done; in PoS, it's the total value staked that supports a particular chain. Beyond these basics, PoW and PoS can support various consensus protocols, each with its own dynamics and trade-offs.
 
-### Block chains
+### Blockchains
 
 The basic element of a blockchain is the block. A block contains a set of transactions assembled by a leader (block proposer). The contents of a block can vary based on the protocol.
 
@@ -39,7 +39,7 @@ The basic element of a blockchain is the block. A block contains a set of transa
 - Post-Merge Beacon Chain blocks also include the execution payload (user transactions).
 - After [EIP-4844](https://eips.ethereum.org/EIPS/eip-4844)(Deneb upgrade), blocks now also contain commitments to opaque data blobs alongside user transactions.
 
-Except for the Genesis block, each block builds on and points to a parent block, forming a chain of blocks: a blockchain. The goal is for all nodes on the network to agree on the same blockchain history.
+Except for the Genesis block, each block builds on and points to a parent block, forming a chain of blocks: a blockchain. The goal is for all nodes on the network to agree on the same canonical blockchain history.
 
 <a id="img_blockchain"></a>
 
@@ -137,7 +137,7 @@ _A slot can be missed as you can see in this diagram on 28th slot_
 </figcaption>
 </figure>
 
-An **attestation** is a validator’s vote, weighted by the validator’s balance.  Attestations are broadcasted by validators in addition to blocks. Validators also police each other and are rewarded for reporting other validators that make conflicting votes, or propose multiple blocks.
+An **attestation** is a validator’s vote, weighted by the validator’s stake.  Attestations are broadcasted by validators in addition to blocks. Validators also police each other and are rewarded for reporting other validators that make conflicting votes, or propose multiple blocks.
 
 The contents of the Beacon Chain is primarily a registry of validator addresses, the state of each validator, and attestations.  Validators are activated by the Beacon Chain and can transition to states
 
@@ -241,7 +241,7 @@ For example, if Slots 65 to 128 are empty, the Epoch 2 checkpoint defaults to th
 
 Validators cast two types of votes: **LMD GHOST** votes for blocks and **Casper FFG** votes for checkpoints. An **FFG** vote includes a source checkpoint from a previous epoch and a target checkpoint from the current epoch. For example, a validator in Epoch 1 might vote for a source checkpoint at the genesis block and a target checkpoint at Slot 64, repeating the same vote in Epoch 2. Only Validators assigned to a slot cast LMD GHOST votes, while all validators cast FFG votes for epoch checkpoints.
 
-#### Supermajority and Finality:
+#### Supermajority and Finality
 
 A supermajority, defined as ⅔ of the total validator balance, is required for a checkpoint to be justified. For instance, if validators have balances of 8 ETH, 8 ETH, and 32 ETH, a supermajority needs the vote of the 32 ETH validator. Once a checkpoint receives a supermajority, it becomes justified. If the subsequent epoch's checkpoint also achieves justification, the previous checkpoint is finalized, securing all preceding blocks. Typically, this process spans two epochs (12.8 minutes).
 
@@ -254,7 +254,7 @@ When a user transaction is included in a block, On average it would be somewhere
 
 <figcaption>
 
-_Example of one checkpoint getting justified (Slot 64) nd finalizing a prior checkpoint (Slot 32)._
+_Example of one checkpoint getting justified (Slot 64) and finalizing a prior checkpoint (Slot 32)._
 
 </figcaption>
 </figure>
