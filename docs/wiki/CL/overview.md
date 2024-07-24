@@ -30,7 +30,7 @@ This is a good point to clarify that neither Proof-of-Work (PoW) nor Proof-of-St
 
 However, both PoW and PoS are closely linked to the consensus mechanisms they support through [fork choice](/wiki/CL/cl-architecture.md?id=fork-choice-rules) rules. They help assign a weight or score to a chain of blocks: in PoW, it's the total computational work done; in PoS, it's the total value staked that supports a particular chain. Beyond these basics, PoW and PoS can support various consensus protocols, each with its own dynamics and trade-offs.
 
-### Block chains
+### Blockchains
 
 The basic element of a blockchain is the block. A block contains a set of transactions assembled by a leader (block proposer). The contents of a block can vary based on the protocol.
 
