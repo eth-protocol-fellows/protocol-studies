@@ -254,7 +254,7 @@ When a user transaction is included in a block, On average it would be somewhere
 
 <figcaption>
 
-_Example of one checkpoint getting justified (Slot 64) nd finalizing a prior checkpoint (Slot 32)._
+_Example of one checkpoint getting justified (Slot 64) and finalizing a prior checkpoint (Slot 32)._
 
 </figcaption>
 </figure>
