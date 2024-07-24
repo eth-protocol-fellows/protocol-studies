@@ -137,7 +137,7 @@ _A slot can be missed as you can see in this diagram on 28th slot_
 </figcaption>
 </figure>
 
-An **attestation** is a validator’s vote, weighted by the validator’s balance.  Attestations are broadcasted by validators in addition to blocks. Validators also police each other and are rewarded for reporting other validators that make conflicting votes, or propose multiple blocks.
+An **attestation** is a validator’s vote, weighted by the validator’s stake.  Attestations are broadcasted by validators in addition to blocks. Validators also police each other and are rewarded for reporting other validators that make conflicting votes, or propose multiple blocks.
 
 The contents of the Beacon Chain is primarily a registry of validator addresses, the state of each validator, and attestations.  Validators are activated by the Beacon Chain and can transition to states
 
