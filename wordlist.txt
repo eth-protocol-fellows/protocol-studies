@@ -25,6 +25,7 @@ APIs
 APS
 Arbitrum
 Aritra
+Arixon
 ARPANET
 ary
 ASE
@@ -449,6 +450,7 @@ Mana
 Manas
 Mário
 mathbb
+Maximalism
 mdbx
 MDBX
 MDS
