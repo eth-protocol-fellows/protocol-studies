@@ -39,7 +39,7 @@ The basic element of a blockchain is the block. A block contains a set of transa
 - Post-Merge Beacon Chain blocks also include the execution payload (user transactions).
 - After [EIP-4844](https://eips.ethereum.org/EIPS/eip-4844)(Deneb upgrade), blocks now also contain commitments to opaque data blobs alongside user transactions.
 
-Except for the Genesis block, each block builds on and points to a parent block, forming a chain of blocks: a blockchain. The goal is for all nodes on the network to agree on the same blockchain history.
+Except for the Genesis block, each block builds on and points to a parent block, forming a chain of blocks: a blockchain. The goal is for all nodes on the network to agree on the same canonical blockchain history.
 
 <a id="img_blockchain"></a>
 
