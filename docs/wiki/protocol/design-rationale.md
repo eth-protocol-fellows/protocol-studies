@@ -100,7 +100,22 @@ Latest Message Driven Greediest Heaviest Observed Sub-Tree (LMD-GHOST) is a *for
 
 ![LMD-GHOST-Algorithm](./img/lmt-ghost.png)
 
-Gasper is full Proof-of-stake protocol that serves as an idealized abstraction of the Ethereum implementation. It combines Casper FFG and LMD-GHOST to drive the consensus mechanism for the Eth2.
+Gasper is full Proof-of-stake protocol that serves as an idealized abstraction of the Ethereum implementation. It combines Casper FFG and LMD-GHOST to drive the consensus mechanism for the Eth2. 
+
+### Using a DHT
+
+![P2P Networks Comparison](./img/p2p-nets-comp.png)
+
+The main benefit of DHTs is that lookups only generate logarithmic communication overhead in the network. This makes them suitable to find (query) content in a p2p network. But an immediate question arises, why do we need to *find* content in Ethereum if most nodes are interested in the same content, the latest block? The tip of the chain is always the same based on consensus slot which has only one block to be gossiped. A DHT is used in protocols like [bittorrent](https://www.bittorrent.org/beps/bep_0005.html) and IPFS which store a wide range of content and users try to *find* the content they are interested in. DHT is used in Ethereum networking to find to find different peers, not blocks.
+
+The discovery protocol in the networking layer of Ethereum uses, discv5, a [kademlia based DHT](https://github.com/ethereum/devp2p/blob/master/discv5/discv5.md) to store [ENR records](https://github.com/ethereum/devp2p/blob/master/enr.md). ENR records contain routing information (of the internet layer) to establish connections between peer. Peers joining the network use *bootstrap* nodes to relay lookup queries for its own `node_id` in the DHT. In the process they discover ENR records of other peers which help them populate their routing table. Routinely, peers also look up random `node_id`s to enumerate the network i.e. find all peers. 
+
+Blocks in Ethereum network are distributed using gossip protocol of the p2p stack. After discovering peers through an underlying DHT, peers use an overlay network ([gossipsub](https://github.com/libp2p/specs/blob/f25d0c22e5ef045c8c050bc91c297468de35f720/pubsub/gossipsub/gossipsub-v1.0.md)) to disseminate the block throughout the network. The overlay network creates its own routing table with routing information to establish connection AND overlay specific information(topics subscribed, fanout etc.) This overlay network is indeed an unstructured network.
+
+DHT goes the extra step to join an unstructured network over simply connecting to peers ([friends-to-friends model](https://en.wikipedia.org/wiki/Friend-to-friend) or PEX) and directly downloading/gossiping the required content directly. 
+Why go through an extra step of DHT to later join an unstructured network? From the perspective of bootstrapping, kademlia provides a global view whereas f2f networks, inherently, can only provide a local view of the network. Informally, a DHT provides public and non-localized (arguably, slightly more decentralized too) mechanism for nodes to join a network. This hybrid approach of using a structured network(DHT) to bootstrap into an unstructured network, is observed in bittorrent's [Peer Exchange(PEX)](https://www.bittorrent.org/beps/bep_0011.html) protocol as well. [Unstructured networks](https://en.wikipedia.org/wiki/Peer-to-peer#Unstructured_networks) are preferred as overlays because they are robust in high-churn networks.
+
+Over everything else, the biggest benefit of structured networks like kademlia DHT is their [simplicity](https://github.com/ethereum/devp2p/blob/master/discv5/discv5-rationale.md#why-kademlia) in design.
 
 # References
 
