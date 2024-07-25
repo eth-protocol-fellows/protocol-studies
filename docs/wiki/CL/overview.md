@@ -353,5 +353,3 @@ Research and developmental phases for future -->
 - [Evolution of Ethereum Proof-of-Stake](https://github.com/ethereum/pos-evolution/blob/master/pos-evolution.md)
 - Alt Explainer, [Ethereum's Proof-of-Stake consensus explained](https://www.youtube.com/watch?v=5gfNUVmX3Es)
 - [Eth2 Handbook by Ben Edgington](https://eth2book.info/capella/part2/consensus/)
-
-### Further Reading Resources
