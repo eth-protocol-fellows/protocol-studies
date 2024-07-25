@@ -79,7 +79,6 @@ The Beacon Chain plays a crucial role in managing the PoS consensus. It oversees
 - **Staking ETH**: Validators must stake a minimum of 32 ETH to participate.
 - **Proposing Blocks**: A Validator is randomly selected to propose a new block. They must construct valid blocks and broadcast them to the network
 - **Attesting Blocks**: Validators attest to the validity of blocks proposed by others. Attestations are essentially votes on the validity of the blocks, ensuring consensus.
-- **Rewards and Penalties**: Validators earn rewards for honest participation and face slashing penalties for malicious actions or inactivity.
 - **Participating in Consensus**: Validators participate in consensus by voting on the state of the blockchain at regular intervals, helping to finalize the blockchain's state.
 
 The Paris hard fork was a pivotal event in Ethereum's history, setting the stage for more scalable, sustainable, and secure operations. It represents Ethereum's commitment to innovation and its responsiveness to the broader societal concerns about the environmental impact of cryptocurrency mining.
