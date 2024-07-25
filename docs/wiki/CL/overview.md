@@ -347,7 +347,7 @@ The Beacon Chain's introduction on December 1, 2020, began with 21,063 validator
 Historical context and early proposal
 Research and developmental phases for future -->
 
-### Resources and References used to write this:
+### References
 
 - [Beacon Chain Explainer from ethos.dev](https://ethos.dev/beacon-chain)
 - [Evolution of Ethereum Proof-of-Stake](https://github.com/ethereum/pos-evolution/blob/master/pos-evolution.md)
