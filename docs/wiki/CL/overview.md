@@ -45,7 +45,7 @@ Except for the Genesis block, each block builds on and points to a parent block,
 
 <figure class="diagram" style="text-align:center">
 
-![Diagram for Block Chain](../../images/cl/blockchain.svg)
+![Blockchain](../../images/cl/blockchain.svg)
 
 <figcaption>
 
