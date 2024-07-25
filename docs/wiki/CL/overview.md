@@ -83,7 +83,7 @@ The Beacon Chain plays a crucial role in managing the PoS consensus. It oversees
 
 The Paris hard fork was a pivotal event in Ethereum's history, setting the stage for more scalable, sustainable, and secure operations. It represents Ethereum's commitment to innovation and its responsiveness to the broader societal concerns about the environmental impact of cryptocurrency mining.
 
-## Beacon Chain and its preliminaries
+## Beacon Chain and its Preliminaries
 
 The Beacon Chain is the backbone of Ethereum’s consensus. It coordinates validators, manages the PoS protocol, and ensures consensus across the network. This section with cover the anatomy of Beacon chain.
 
