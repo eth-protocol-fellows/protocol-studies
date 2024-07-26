@@ -45,7 +45,7 @@ Except for the Genesis block, each block builds on and points to a parent block,
 
 <figure class="diagram" style="text-align:center">
 
-![Diagram for Block Chain](../../images/cl/blockchain.svg)
+![Blockchain](../../images/cl/blockchain.svg)
 
 <figcaption>
 
@@ -54,7 +54,7 @@ _Time moves from left to right and, except for the Genesis block, each block poi
 </figcaption>
 </figure>
 
-The chain grows as nodes add new blocks to its tip. This is done by temporarily selecting a "leader", the node that extends the chain. In PoW, the leader is the miner who first solves the PoW puzzle for its block. In Ethereum's PoS, the proposer is pseudo-randomly selected from active validator set.
+The chain grows as nodes add new blocks to its tip. This is done by temporarily selecting a "leader", the node that extends the chain. In PoW, the leader is the miner who first solves the PoW puzzle for its block. In Ethereum's PoS, the proposer(leader) is pseudo-randomly selected from active validator set.
 
 The leader (block proposer) adds a block to the chain, choosing and ordering its contents. The block must be valid according to protocol rules, or the network will ignore it. Using blocks is an optimization. Adding individual transactions one by one would create a huge consensus overhead. So blocks are batches of transactions, In Ethereum's execution chain, block size is limited by the block gas limit (the amount of work needed to process the transactions). [Beacon block](/wiki/CL/beacon-api.md?id=beaconblockbody) sizes are limited by hard-coded constants.
 
@@ -80,12 +80,11 @@ The Beacon Chain plays a crucial role in managing the PoS consensus. It oversees
 - **Staking ETH**: Validators must stake a minimum of 32 ETH to participate.
 - **Proposing Blocks**: A Validator is randomly selected to propose a new block. They must construct valid blocks and broadcast them to the network
 - **Attesting Blocks**: Validators attest to the validity of blocks proposed by others. Attestations are essentially votes on the validity of the blocks, ensuring consensus.
-- **Rewards and Penalties**: Validators earn rewards for honest participation and face slashing penalties for malicious actions or inactivity.
 - **Participating in Consensus**: Validators participate in consensus by voting on the state of the blockchain at regular intervals, helping to finalize the blockchain's state.
 
 The Paris hard fork was a pivotal event in Ethereum's history, setting the stage for more scalable, sustainable, and secure operations. It represents Ethereum's commitment to innovation and its responsiveness to the broader societal concerns about the environmental impact of cryptocurrency mining.
 
-## Beacon Chain and its preliminaries
+## Beacon Chain and its Preliminaries
 
 The Beacon Chain is the backbone of Ethereum’s consensus. It coordinates validators, manages the PoS protocol, and ensures consensus across the network. This section with cover the anatomy of Beacon chain.
 
@@ -280,7 +279,7 @@ At Slot 96, a block is proposed that includes attestations (votes) for the Epoch
 The justification of a checkpoint can sometimes finalize blocks from two or more epochs ago, especially during periods of high latency, network partitions, or attacks, You can find more such cases, discussed in the Gasper paper. These scenarios are exceptional and not the norm.
 
 
-#### Closer look on Attestations
+#### Closer Look on Attestations
 
 Validators submit one attestation per epoch, containing both an LMD GHOST and an FFG vote. These attestations have 32 chances per epoch for inclusion on-chain, with earlier inclusions receiving higher rewards. This means a validator may have two attestations included on-chain in a single epoch. Validators are rewarded the most when their attestation is included on-chain at their assigned slot; later inclusion has a decayed reward. To give validators time to prepare, they are assigned to committees one epoch in advance. Proposers are only assigned to slots once the epoch starts. Nonetheless, [secret leader election](https://ethresear.ch/t/low-overhead-secret-single-leader-election/5994) research aims to mitigate attacks or bribing of proposers.
 
@@ -349,11 +348,9 @@ The Beacon Chain's introduction on December 1, 2020, began with 21,063 validator
 Historical context and early proposal
 Research and developmental phases for future -->
 
-### Resources and References used to write this:
+### References
 
 - [Beacon Chain Explainer from ethos.dev](https://ethos.dev/beacon-chain)
 - [Evolution of Ethereum Proof-of-Stake](https://github.com/ethereum/pos-evolution/blob/master/pos-evolution.md)
 - Alt Explainer, [Ethereum's Proof-of-Stake consensus explained](https://www.youtube.com/watch?v=5gfNUVmX3Es)
 - [Eth2 Handbook by Ben Edgington](https://eth2book.info/capella/part2/consensus/)
-
-### Further Reading Resources
