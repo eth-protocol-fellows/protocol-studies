@@ -22,6 +22,7 @@
 - [Contributing](contributing.md)
 - **Protocol Wiki**
 - The Protocol
+  - [Prehistory](/wiki/protocol/prehistory.md) 
   - [Architecture](/wiki/protocol/architecture.md)
   - [Design rationale](/wiki/protocol/design-rationale.md)
   - [Evolution](/wiki/protocol/history.md)
@@ -33,6 +34,7 @@
     - [Reth](/wiki/EL/clients/reth.md)
   - [EVM](/wiki/EL/evm.md)
     - [Precompiled Contracts](/wiki/EL/precompiled-contracts.md)
+  - [Block Building](/wiki/EL/block-production.md)
   - [Data Structures](/wiki/EL/data-structures.md)
   - [Transaction anatomy](/wiki/EL/transaction.md)
   - [JSON-RPC](/wiki/EL/JSON-RPC.md)
