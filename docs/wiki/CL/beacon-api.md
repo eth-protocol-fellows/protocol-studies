@@ -1,9 +1,10 @@
 # Beacon Chain Spec and APIs
 
-At the core of Ethereum Proof-of-Stake is a system chain called the "beacon chain". The beacon chain stores and manages the registry of validators. In the initial deployment phases of Proof-of-Stake, the only mechanism to become a validator is to make a one-way(withdrawable after Capella) ETH transaction to a deposit contract on the Ethereum Proof-of-work chain. Activation as a validator happens when deposit receipts are processed by the beacon chain, the activation balance is reached, and a queuing process is completed. Exit is either voluntary or done forcibly as a penalty for misbehavior. The primary source of load on the beacon chain is "attestations". Attestations are simultaneously availability votes for a shard block (in a later upgrade) and proof-of-stake votes for a beacon block (Phase 0).
+At the core of Ethereum Proof-of-Stake is a system chain called the "Beacon Chain". The beacon chain stores and manages the registry of validators. In the initial deployment phases of Proof-of-Stake, the only mechanism to become a validator is to make a one-way(withdrawable after Capella) ETH transaction to a deposit contract on the Ethereum proof-of-work chain. Activation as a validator happens when deposit receipts are processed by the Beacon Chain, the activation balance is reached, and a queuing process is completed. Exit is either voluntary or done forcibly as a penalty for misbehavior. The primary source of load on the beacon chain is "attestations". Attestations are simultaneously availability votes for a shard block (in a later upgrade) and proof-of-stake votes for a beacon block (Phase 0).
 
-This section will cover some important parts of Beacon Chain Spec and APIs. Also checkout complete [Beacon Chain Spec](https://github.com/ethereum/consensus-specs/blob/dev/specs/phase0/beacon-chain.md) and [Beacon API reference](https://ethereum.github.io/beacon-APIs/#/).
+This section will cover some important parts of Beacon Chain Spec and APIs. Also checkout complete [Beacon Chain Spec](https://github.com/ethereum/consensus-specs/blob/dev/specs/phase0/beacon-chain.md) and [Beacon API reference](https://ethereum.github.io/beacon-APIs/#/). 
 
+Beacon API is the REST endpoint provided by consensus layer clients (beacon nodes). It's the interface to read information about the consensus and used by validator clients. 
 
 ## Containers
 
