@@ -96,7 +96,7 @@ The [Casper FFG](https://arxiv.org/abs/1710.09437v4) is an overlay atop a propos
 Simply put, each validator votes on the checkpoint, and after two rounds of voting, the checkpoint is **finalized**. All finalized checkpoints become part of the canonical chain (part of the blockchain history). While Casper guarantees **finality** through attestations to the latest block addition to the canonical chain, it requires a fork-choice rule where validators attest to blocks to signal support for those blocks.
 
 - ***LMD GHOST***
-Latest Message Driven Greediest Heaviest Observed Sub-Tree (LMD-GHOST) is a *fork choice rule* where validators attests to blocks to signal support for those blocks. This similar in some ways to the fork choice rule used in Proof-of-Work network, where the fork with the most work done is selected as the canonical chain.
+Latest Message Driven Greediest Heaviest Observed Sub-Tree (LMD-GHOST) is a *fork choice rule* where validators attests to blocks to signal support for those blocks. This similar in some ways to the fork choice rule used in Proof-of-work network, where the fork with the most work done is selected as the canonical chain.
 
 ![LMD-GHOST-Algorithm](./img/lmt-ghost.png)
 
