@@ -88,3 +88,11 @@ It integrates the libmdbx database engine and emphasizes scalability and perform
 ### JS Client
 The TypeScript-based JavaScript client by Paradigm, part of the EthereumJS monorepo, offers flexibility and ease of integration for Ethereum's execution layer functionalities.
 It's designed to be JavaScript-centric, suitable for web and Node.js environments.
+
+
+## Additional resources
+
+- [ETH Docker](https://eth-docker.net/)
+- [Ethernodes](https://ethernodes.org/)
+- [Client Diverisity](https://clientdiversity.org/)
+- [Run the majority client at your own peril!](https://dankradfeist.de/ethereum/2022/03/24/
