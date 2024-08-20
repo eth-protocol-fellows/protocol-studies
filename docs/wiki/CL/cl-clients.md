@@ -17,6 +17,13 @@
 | [LambdaClass](https://github.com/lambdaclass/lambda_ethereum_consensus) | Elixir     | LambdaClass         | Development |
 
 
+## Distribution
+
+The overwhelming majority of node operators are currently using either Prysm or Lighthouse as a Consensus Client.
+In the interest of supporting the health of the Beacon Chain (formerly ETH2), it is recommended to use different clients.
+[Why?](https://clientdiversity.org/#why)
+
+
 ### Lighthouse
 Lighthouse, written in Rust by Sigma Prime, emphasizes security and performance. It's widely adopted but caution is advised as a supermajority could potentially lead to chain splits.
 Lighthouse is licensed under Apache 2.0 and known for its robustness in production environments.
