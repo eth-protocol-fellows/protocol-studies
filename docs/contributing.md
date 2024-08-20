@@ -12,7 +12,7 @@ Write contributions based on what you learned about the protocol along the way, 
 
 Before you start with editing, please read the code of conduct, following guide and make yourself familiar with the overall wiki structure. 
 
-The wiki source is hosted in github repository at [github.com/eth-protocol-fellows/protocol-studies](https://github.com/eth-protocol-fellows/protocol-studies). Mirrored at //TODO
+The wiki source is hosted in Github repository at [github.com/eth-protocol-fellows/protocol-studies](https://github.com/eth-protocol-fellows/protocol-studies). Github repo is the main coordination and hosting platform but wiki source is also mirrored on [radicle](https://app.radicle.xyz/nodes/seed.radicle.garden/rad:zkV49UANVb2w2g5eE4Le197Wuasz) and [independent centralized host](https://git.ethquokkaops.io/eth-protocol-fellows/protocol-studies). 
 
 > The wiki is served from `wiki-pages` branch which is regularly updated from `main`. When contributing, open a PR to a branch related to the change or `main` for smaller quick fixes. PRs from other branches are reviewed before merging to `main` and collected updates are then pushed to update the `wiki-pages`.
 
