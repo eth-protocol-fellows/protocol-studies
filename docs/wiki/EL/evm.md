@@ -315,6 +315,7 @@ The resources below has been effectively arranged based on your level of experti
 - 📝 Vasa, [Getting Deep Into EVM: How Ethereum Works Backstage](https://medium.com/swlh/getting-deep-into-evm-how-ethereum-works-backstage-ab6ad9c0d0bf)
 - 📝 Zaryab Afser, [The ABCs of Ethereum Virtual Machine](https://www.decipherclub.com/the-abcs-of-ethereum-virtual-machine/)
 - 📝 Preethi, [EVM Tweet Thread](https://twitter.com/iam_preethi/status/1483459717670309895)
+- 📝 Decipher-Club EVM Learning Guide, [EVM learning resources based on your level of expertise](https://www.decipherclub.com/evm-learning-resources/)
 
 #### Level 1: Understanding EVM Architecture & Components
 - 📝 Gavin Wood, ["Ethereum Yellow Paper."](https://ethereum.github.io/yellowpaper/paper.pdf)
@@ -333,7 +334,6 @@ The resources below has been effectively arranged based on your level of experti
 - 📝 TrustLook, ["Understand EVM bytecode."](https://blog.trustlook.com/understand-evm-bytecode-part-1/) • [archived](https://web.archive.org/web/20230603080857/https://blog.trustlook.com/understand-evm-bytecode-part-1/)
 - 📝 Degatchi, ["A Low-Level Guide To Solidity's Storage Management."](https://degatchi.com/articles/low_level_guide_to_soliditys_storage_management) • [archived](https://web.archive.org/web/20231202105650/https://degatchi.com/articles/low_level_guide_to_soliditys_storage_management/)
 - 📝 Zaryab Afser, ["Journey of Smart Contracts from Solidity code to Bytecode"](https://www.decipherclub.com/ethereum-virtual-machine-article-series/)
-- 📝 Decipher-Club EVM Learning Guide, [EVM learning resources based on your level of expertise](https://www.decipherclub.com/evm-learning-resources/)
 - 🎥 Ethereum Engineering Group, [EVM: From Solidity to byte code, memory and storage](https://www.youtube.com/watch?v=RxL_1AfV7N4&t=2s)
 
 
