@@ -24,6 +24,13 @@ Execution clients can be configured as archive nodes, which retain the entire hi
 | [Trinity](https://github.com/ethereum/trinity)                  | Python     | OpenEthereum        | Deprecated  |
 
 
+## Distribution
+
+The overwhelming majority of node operators are currently using Geth as an Execution Client.
+In the interest of supporting the health of the Execution Layer (formerly ETH1), it is recommended to use different clients.
+[Why?](https://clientdiversity.org/#why)
+
+
 ### Besu
 Developed by the Hyperledger Foundation in Java, Besu (Hyperledger Besu) is distinguished for its enterprise-grade features and compatibility with various Hyperledger projects.
 It supports both public and private networks such as Rinkeby, Ropsten, and Goerli, offering robust command-line tools and a JSON-RPC API.
