@@ -9,23 +9,46 @@ Execution clients can be configured as archive nodes, which retain the entire hi
 Developed by the Hyperledger Foundation in Java, Besu (Hyperledger Besu) is distinguished for its enterprise-grade features and compatibility with various Hyperledger projects.
 It supports both public and private networks such as Rinkeby, Ropsten, and Goerli, offering robust command-line tools and a JSON-RPC API.
 
+Noteworthy Features:
+- [Private Networks](https://besu.hyperledger.org/private-networks/)
+- [Pruning](https://besu.hyperledger.org/public-networks/how-to/bonsai-limit-trie-logs#prune-command-for-mainnet)
+- [Monitoring](https://besu.hyperledger.org/private-networks/how-to/monitor)
+- [Parallel Transaction Execution](https://besu.hyperledger.org/public-networks/concepts/parallel-transaction-execution)
+
 ### Erigon
 Initially a fork of Geth (Go Ethereum), Erigon focuses on optimizing performance, fast synchronization capabilities, and reducing disk space usage.
 Erigon's architecture allows it to complete a full archive node sync in under three days with less than 2 TB of data storage, making it ideal for resource-efficient node deployments.
+
+Noteworthy Features:
+- [Supported Networks](https://erigon.gitbook.io/erigon/basic-usage/supported-networks)
+- [Pruning](https://erigon.gitbook.io/erigon/basic-usage/usage/type-of-node#full-node-or-pruned-node)
 
 ### Geth
 As the official Go implementation of Ethereum, Geth (Go Ethereum) enjoys widespread adoption among developers and users alike.
 It supports various node types (full, light, archive) and is renowned for its extensive toolset and community support.
 Geth's flexibility in deployment—through package managers, Docker containers, or manual setup—ensures its versatility in diverse blockchain environments.
 
+Noteworthy Features:
+- [Pruning](https://geth.ethereum.org/docs/fundamentals/pruning)
+- [Custom EVM Tracer](https://geth.ethereum.org/docs/developers/evm-tracing/custom-tracer)
+- [Monitoring Dashboards](https://geth.ethereum.org/docs/monitoring/dashboards)
+
 ### Nethermind
 Written in C# .NET, Nethermind is designed for stability and integration with existing tech infrastructures.
 It offers optimized virtual machine performance, comprehensive analytics support via Prometheus/Grafana dashboards, and robust security features. 
 Nethermind is suitable for both private Ethereum networks and decentralized application (dApp) development, emphasizing data integrity and scalability.
 
+Noteworthy Features:
+- [Private Networks](https://docs.nethermind.io/fundamentals/private-networks)
+- [Prometheus and Grafana](https://docs.nethermind.io/monitoring/metrics/grafana-and-prometheus)
+
 ### Reth
 Reth (Rust Ethereum) is a modular and efficient Ethereum client designed for user-friendliness and high performance.
 It emphasizes community-driven development and is suitable for robust production environments.
+
+Noteworthy Features:
+- [Revm](https://bluealloy.github.io/revm/)
+- [Prometheus and Grafana](https://reth.rs/run/observability.html)
 
 ### Nimbus
 Nimbus focuses on efficiency and security as an ultra-lightweight Ethereum execution layer client.
