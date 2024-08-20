@@ -5,6 +5,25 @@ They run the computations for each transaction using the [Ethereum Virtual Machi
 Execution clients can be configured as archive nodes, which retain the entire history of the blockchain, or as full (pruned) nodes, which keep only the latest state and discard older data to save storage space.
 
 
+## Overview Table
+
+| Client                                                          | Language   | Developer           | Status      |
+| --------------------------------------------------------------- | ---------- | ------------------- | ----------- |
+| [Besu](https://github.com/hyperledger/besu)                     | Java       | Hyperledger         | Production  |
+| [Erigon](https://github.com/ledgerwatch/erigon)                 | Go         | Ledgerwatch         | Production  |
+| [Geth](https://github.com/ethereum/go-ethereum)                 | Go         | Ethereum Foundation | Production  |
+| [Nethermind](https://github.com/NethermindEth/nethermind)       | C#         | Nethermind          | Production  |
+| [Reth](https://github.com/paradigmxyz/reth)                     | Rust       | Paradigm            | Production  |
+| [Nimbus](https://github.com/status-im/nimbus-eth1)              | Nim        | Nimbus              | Development |
+| [Silkworm](https://github.com/erigontech/silkworm)              | C++        | Erigon              | Development |
+| [JS Client](https://github.com/ethereumjs/ethereumjs-monorepo)  | Typescript | Paradigm            | Development |
+| [Akula](https://github.com/akula-bft/akula)                     | Rust       | Akula Developers    | Deprecated  |
+| [Aleth](https://github.com/ethereum/aleth)                      | C++        | Aleth Developers    | Deprecated  |
+| [Mana](https://github.com/mana-ethereum/mana)                   | Elixir     | Mana Developers     | Deprecated  |
+| [OpenEthereum](https://github.com/openethereum/parity-ethereum) | Rust       | Parity              | Deprecated  |
+| [Trinity](https://github.com/ethereum/trinity)                  | Python     | OpenEthereum        | Deprecated  |
+
+
 ### Besu
 Developed by the Hyperledger Foundation in Java, Besu (Hyperledger Besu) is distinguished for its enterprise-grade features and compatibility with various Hyperledger projects.
 It supports both public and private networks such as Rinkeby, Ropsten, and Goerli, offering robust command-line tools and a JSON-RPC API.
