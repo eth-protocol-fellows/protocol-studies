@@ -93,3 +93,12 @@ Noteworthy Features:
 
 ### Caplin and LambdaClass
 These clients are currently in development, aiming to contribute unique features to the Ethereum consensus landscape. Caplin by Erigon, Grandine, and LambdaClass are respectively focusing on enhancing performance, security, and scalability, though specific details are forthcoming as these projects evolve.
+
+
+## Additional resources
+
+- [ETH Docker](https://eth-docker.net/)
+- [Ethernodes](https://ethernodes.org/)
+- [Client Diverisity](https://clientdiversity.org/)
+- [Run the majority client at your own peril!](https://dankradfeist.de/ethereum/2022/03/24/run-the-majority-client-at-your-own-peril.html)
+- [Ethereum Hardware Resource Analysis](https://www.migalabs.io/blog/post/ethereum-hardware-resource-analysis-update)
