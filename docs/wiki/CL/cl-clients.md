@@ -3,6 +3,20 @@
 > **Consensus clients**, formerly known as *eth2 clients*, run Ethereum's proof-of-stake consensus algorithm allowing the network to reach agreement about the head of the Beacon Chain. Consensus clients do not participate in validating/broadcasting transactions or executing state transitions: that is done by execution clients. Consensus clients do not attest to, or propose new blocks: that is done by the validator client which is an optional add-on to the consensus client.
 
 
+## Overview Table
+
+| Client                                                                  | Language   | Developer           | Status      |
+| ----------------------------------------------------------------------- | ---------- | ------------------- | ----------- |
+| [Lighthouse](https://github.com/sigp/lighthouse)                        | Rust       | Sigma Prime         | Production  |
+| [Lodestar](https://github.com/ChainSafe/lodestar)                       | TypeScript | ChainSafe           | Production  |
+| [Nimbus](https://github.com/status-im/nimbus-eth2)                      | Nim        | Status              | Production  |
+| [Prysm](https://github.com/prysmaticlabs/prysm)                         | Go         | Prysmatic Labs      | Production  |
+| [Teku](https://github.com/ConsenSys/teku)                               | Java       | ConsenSys           | Production  |
+| [Grandine](https://github.com/grandinetech/grandine)                    | Rust       | Grandine Developers | Production  |
+| [Caplin](https://github.com/ledgerwatch/erigon)                         | N/A        | Erigon              | Development |
+| [LambdaClass](https://github.com/lambdaclass/lambda_ethereum_consensus) | Elixir     | LambdaClass         | Development |
+
+
 ### Lighthouse
 Lighthouse, written in Rust by Sigma Prime, emphasizes security and performance. It's widely adopted but caution is advised as a supermajority could potentially lead to chain splits.
 Lighthouse is licensed under Apache 2.0 and known for its robustness in production environments.
