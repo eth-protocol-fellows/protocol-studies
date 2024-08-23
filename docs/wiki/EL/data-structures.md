@@ -24,7 +24,7 @@ The main parent node is called Root, hence the hash inside is Root Hash. There i
 
 The image below depicts a simplified version of the working of a Merkle Tree:
 
-- The lead nodes contain the actual data(for simplicity, we have taken numbers)
+- The leaf nodes contain the actual data(for simplicity, we have taken numbers)
 - Every non-leaf node is a hash of its children.
 - The first level of non-leaf nodes contains the Hash of its child leaf nodes
   `Hash(1,2)`
