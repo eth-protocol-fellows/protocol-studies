@@ -43,3 +43,6 @@ Therefore, in the post-merge world, a node syncs as defined below:
 1. https://docs.prylabs.network/docs/how-prysm-works/optimistic-sync
 2. https://ethereum.org/en/developers/docs/consensus-mechanisms/pos/weak-subjectivity/
 3. https://www.symphonious.net/2019/11/27/exploring-ethereum-2-weak-subjectivity-period/
+4. https://blog.ethereum.org/2014/11/25/proof-stake-learned-love-weak-subjectivity
+5. https://notes.ethereum.org/@adiasg/weak-subjectvity-eth2
+6. https://blog.ethereum.org/2016/05/09/on-settlement-finality
