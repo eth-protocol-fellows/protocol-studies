@@ -886,8 +886,4 @@ Vasa
 Zaryab
 Afser
 Preethi
-Zaryab
-Afser
-Ethervm
-Zaryab
-Afser
+
