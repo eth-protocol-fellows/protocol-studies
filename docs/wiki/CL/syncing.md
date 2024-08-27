@@ -1,5 +1,3 @@
-# Node Syncing and Weak Subjectivity
-
 > [Subjective](https://dictionary.cambridge.org/dictionary/english/subjective): influenced by or based on personal beliefs or feelings, rather than based on facts  
 > [Objective](https://dictionary.cambridge.org/dictionary/english/objective): based on real facts and not influenced by personal beliefs or feelings (scroll down on the link)
 
@@ -34,8 +32,14 @@ Therefore, in the post-merge world, a node syncs as defined below:
 4. *Optimistically follow the head of the chain and continuously update the target header for the execution chain*
 5. *Once the EL is synced, then mark the CL slots as verified post-verification. The node may now be considered fully synced*
 
-## Summary
+### Summary
 
-1. Socially sourcing a piece of information doesn't make the chain subjective. Ironically, since the checkpoints remain subjective they are shared socially. It is the trust put it in the information that makes the chain subjective. 
+1. Socially sourcing a piece of information doesn't make the chain subjective. Ironically, because the checkpoints remain subjective they are shared socially. It is the trust put it in the information that makes the chain subjective. 
 2. Optimistic Sync and Checkpoint Sync cannot be considered different modes of syncing. They solve the same problem but at different stages of the syncing process. Moreover, you need both the modes of syncing to reliably sync the chain. 
 3. The paradigm shift in syncing process eludes most, beacon goes future -> past(backfilling) and execution goes past -> future(genesis syncing). The direction is determined by the direction of verification.
+
+## Useful Links
+
+1. https://docs.prylabs.network/docs/how-prysm-works/optimistic-sync
+2. https://ethereum.org/en/developers/docs/consensus-mechanisms/pos/weak-subjectivity/
+3. https://www.symphonious.net/2019/11/27/exploring-ethereum-2-weak-subjectivity-period/
