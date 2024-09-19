@@ -49,6 +49,7 @@
   - [CL Clients](/wiki/CL/cl-clients.md)
   - [SSZ Serialization](/wiki/CL/SSZ.md)
     - [Merkleization](/wiki/CL/merkleization.md)
+  - [Weak Subjectivity](/wiki/CL/syncing.md)
 - Development
   - [Core development](/wiki/dev/core-development.md)
   - [Coordination](/wiki/dev/pm.md)
