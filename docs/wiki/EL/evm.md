@@ -56,7 +56,7 @@ In the figure above, each transaction is committed to a new state. However, in r
 
 Considering the definition of the state transition function, we draw the following conclusion:
 
-> ℹ️ Note  
+> ℹ️ Note
 > **EVM is the state transition function of the Ethereum state machine. It determines how Ethereum transitions into a new (world) state based on input (transactions) and current state.**
 
 In Ethereum, the world state is essentially a mapping of 20-byte addresses to account states.
@@ -98,6 +98,8 @@ This offers two key benefits: portability (bytecode runs on different platforms 
 
 The virtual machine concept serves as an abstraction. Ethereum Virtual Machine (EVM) is a _specific_ software implementation of this abstraction. The anatomy of the EVM is described below:
 
+In computer architecture, a word refers to a fixed-size unit of data that the CPU can process at once. EVM has a word size of **32 bytes**.
+
 ![EVM anatomy](../../images/evm/evm-anatomy.jpg)
 
 _For clarity, the figure above simplifies the Ethereum state. The actual state includes additional elements like Message Frames and Transient Storage._
@@ -108,7 +110,7 @@ In a real-world scenario, EVM may execute transactions involving multiple accoun
 
 With a better grasp of virtual machines, let's extend our definition:
 
-> ℹ️ Note  
+> ℹ️ Note
 > EVM is the state transition function of the Ethereum state machine. It determines how Ethereum transitions into a new (world) state based on
 > input (transactions) and current state. **It is implemented as a virtual machine so that it can run on any platform, independent of the
 > underlying hardware.**
@@ -152,7 +154,7 @@ Select Opcodes used in this discussion:
 
 Refer [Appendix H of Yellow Paper](https://ethereum.github.io/yellowpaper/paper.pdf) for a comprehensive list.
 
-> ℹ️ Note  
+> ℹ️ Note
 > [EIPs](https://eips.ethereum.org/) can propose EVM modifications. For instance, [EIP-1153](https://eips.ethereum.org/EIPS/eip-1153) introduced `TSTORE`, and `TSTORE` opcodes.
 
 Ethereum clients such as [geth](https://github.com/ethereum/go-ethereum) implement the [EVM specifications](https://github.com/ethereum/execution-specs). This ensures all nodes agree on how transactions alter the system's state, creating a uniform execution environment across the network.
@@ -216,11 +218,11 @@ Refer [Appendix G of Yellow Paper](https://ethereum.github.io/yellowpaper/paper.
 
 ## Memory
 
-EVM memory is designed as a **word-addressed byte array**. In computer architecture, a word refers to a fixed-size unit of data that the CPU can process at once. EVM has a word size of **32 bytes**.
+EVM memory is a byte array of $2^{256}$ (or [practically infinite](https://www.talkcrypto.org/blog/2019/04/08/all-you-need-to-know-about-2256/)) bytes . All locations in memory are well-defined initially as zero.
 
-![EVM Memory](../../images/evm/evm-memory.jpg)
+![EVM Memory](../../images/evm/evm-memory.gif)
 
-Unlike stack, which provides data to individual instructions, memory stores data that is relevant to the entire program.
+Unlike stack, which provides data to individual instructions, memory stores ephemeral data that is relevant to the entire program.
 
 ### Writing to memory
 
@@ -240,7 +242,7 @@ The size of active memory is still 1 word.
 
 ### Memory expansion
 
-In EVM, memory is dynamically allocated in multiples of 1 word “pages”. Gas is charged for the number of pages expanded. All locations in memory are well-defined initially as zero.
+In EVM, memory is dynamically allocated in multiples of 1 word “pages”. Gas is charged for the number of pages expanded.
 
 ![Memory expansion](../../images/evm/memory-expansion.gif)
 
@@ -284,7 +286,7 @@ The example above shows only a small section of the account's storage. Like memo
 
 Notice that the storage value persists between examples, demonstrating its persistence within the world state. Since the world state is replicated across all nodes, storage operations are gas expensive.
 
-> ℹ️ Note  
+> ℹ️ Note
 > Check out the wiki on [transaction](/wiki/EL/transaction.md) to see EVM in action.
 
 ## Wrapping up
@@ -295,7 +297,7 @@ Ethereum is a continuously evolving protocol and while the fundamentals we've di
 
 ## EVM upgrades
 
-While Ethereum protocol undergoes many changes in each upgrade, changes in EVM are rather subtle. Major change in EVM might break contracts and languages, requiring keeping multiple versions of EVM which introduces a lot of complexity overhead. There are still certain upgrades done on EVM itself like new opcodes or changes to existing ones which don't break their logic. Some examples are EIPs like [1153](https://eips.ethereum.org/EIPS/eip-1153), [4788](https://eips.ethereum.org/EIPS/eip-4788), [5000](https://eips.ethereum.org/EIPS/eip-5000), [5656](https://eips.ethereum.org/EIPS/eip-5656) and [6780](https://eips.ethereum.org/EIPS/eip-6780). These are proposing to add new opcodes except the last one which is especially interesting because it's neutralizing `SELFDESTRUCT` opcode without breaking compatibility. Another important upgrade to EVM which would mark rather a major change is [EOF](https://notes.ethereum.org/@ipsilon/mega-eof-specification). It creates a format to bytecode which EVM can understand and process more easily, it encompasses various EIPs and has been discussed and polished for quite some time. 
+While Ethereum protocol undergoes many changes in each upgrade, changes in EVM are rather subtle. Major change in EVM might break contracts and languages, requiring keeping multiple versions of EVM which introduces a lot of complexity overhead. There are still certain upgrades done on EVM itself like new opcodes or changes to existing ones which don't break their logic. Some examples are EIPs like [1153](https://eips.ethereum.org/EIPS/eip-1153), [4788](https://eips.ethereum.org/EIPS/eip-4788), [5000](https://eips.ethereum.org/EIPS/eip-5000), [5656](https://eips.ethereum.org/EIPS/eip-5656) and [6780](https://eips.ethereum.org/EIPS/eip-6780). These are proposing to add new opcodes except the last one which is especially interesting because it's neutralizing `SELFDESTRUCT` opcode without breaking compatibility. Another important upgrade to EVM which would mark rather a major change is [EOF](https://notes.ethereum.org/@ipsilon/mega-eof-specification). It creates a format to bytecode which EVM can understand and process more easily, it encompasses various EIPs and has been discussed and polished for quite some time.
 
 ## Resources
 
@@ -335,14 +337,14 @@ The resources below has been categorized into different sections based on differ
 - 📝 Degatchi, ["A Low-Level Guide To Solidity's Storage Management."](https://degatchi.com/articles/low_level_guide_to_soliditys_storage_management) • [archived](https://web.archive.org/web/20231202105650/https://degatchi.com/articles/low_level_guide_to_soliditys_storage_management/)
 - 📝 Zaryab Afser, ["Journey of smart contracts from Solidity to Bytecode"](https://www.decipherclub.com/ethereum-virtual-machine-article-series/)
 - 🎥 Ethereum Engineering Group, [EVM: From Solidity to byte code, memory and storage](https://www.youtube.com/watch?v=RxL_1AfV7N4&t=2s)
-- 📝 Alain, [7 part series about how Solidity uses EVM under the hood.](https://trustchain.medium.com/reversing-and-debugging-evm-smart-contracts-392fdadef32d)
+- 📝 Trust Chain, [7 part series about how Solidity uses EVM under the hood.](https://trustchain.medium.com/reversing-and-debugging-evm-smart-contracts-392fdadef32d)
 
 
 ### Tools & EVM Puzzles
 
 - 🧮 smlXL, ["evm.codes: Opcode reference and interactive playground."](https://www.evm.codes/)
 - 🧮 smlXL, ["evm.storage: Interactive storage explorer."](https://www.evm.storage/)
-- 🧮 Ethervm, [Low level reference for EVM opcodes](https://ethervm.io/)
+- 🧮 `Ethervm`, [Low level reference for EVM opcodes](https://ethervm.io/)
 - 🎥 Austin Griffith, ["ETH.BUILD."](https://www.youtube.com/watch?v=30pa790tIIA&list=PLJz1HruEnenCXH7KW7wBCEBnBLOVkiqIi)
 - 💻 Franco Victorio, ["EVM puzzles."](https://github.com/fvictorio/evm-puzzles)
 - 💻 Dalton Sweeney, ["More EVM puzzles."](https://github.com/daltyboy11/more-evm-puzzles)
