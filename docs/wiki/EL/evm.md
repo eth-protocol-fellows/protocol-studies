@@ -337,14 +337,14 @@ The resources below has been categorized into different sections based on differ
 - 📝 Degatchi, ["A Low-Level Guide To Solidity's Storage Management."](https://degatchi.com/articles/low_level_guide_to_soliditys_storage_management) • [archived](https://web.archive.org/web/20231202105650/https://degatchi.com/articles/low_level_guide_to_soliditys_storage_management/)
 - 📝 Zaryab Afser, ["Journey of smart contracts from Solidity to Bytecode"](https://www.decipherclub.com/ethereum-virtual-machine-article-series/)
 - 🎥 Ethereum Engineering Group, [EVM: From Solidity to byte code, memory and storage](https://www.youtube.com/watch?v=RxL_1AfV7N4&t=2s)
-- 📝 Alain, [7 part series about how Solidity uses EVM under the hood.](https://trustchain.medium.com/reversing-and-debugging-evm-smart-contracts-392fdadef32d)
+- 📝 Trust Chain, [7 part series about how Solidity uses EVM under the hood.](https://trustchain.medium.com/reversing-and-debugging-evm-smart-contracts-392fdadef32d)
 
 
 ### Tools & EVM Puzzles
 
 - 🧮 smlXL, ["evm.codes: Opcode reference and interactive playground."](https://www.evm.codes/)
 - 🧮 smlXL, ["evm.storage: Interactive storage explorer."](https://www.evm.storage/)
-- 🧮 Ethervm, [Low level reference for EVM opcodes](https://ethervm.io/)
+- 🧮 `Ethervm`, [Low level reference for EVM opcodes](https://ethervm.io/)
 - 🎥 Austin Griffith, ["ETH.BUILD."](https://www.youtube.com/watch?v=30pa790tIIA&list=PLJz1HruEnenCXH7KW7wBCEBnBLOVkiqIi)
 - 💻 Franco Victorio, ["EVM puzzles."](https://github.com/fvictorio/evm-puzzles)
 - 💻 Dalton Sweeney, ["More EVM puzzles."](https://github.com/daltyboy11/more-evm-puzzles)
