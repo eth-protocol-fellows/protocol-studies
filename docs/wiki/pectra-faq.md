@@ -37,6 +37,7 @@ Overall
 #### **Q:** I have a validator with `0x00` credentials, how do i move to `0x02`?
 #### **Q:** I have a validator with `0x01` credentials, how do i move to `0x02`?
 #### **Q:** What is MaxEB?
+MaxEB or the [EIP-7251](https://eips.ethereum.org/EIPS/eip-7251) is aimed to increase the `MAX_EFFECTIVE_BALANCE` to 2048 ETH while keeping the minimum staking balance at 32 ETH. Before MaxEB, any entity who wanted to contribute a large amount of ETH towards validation activities had to spin up multiple validators because each was capped at a maximum of 32 ETH. The upgrade from EIP-7251 would allow these large node operators and entities to consolidate their ETH into fewer validators. This upgrade would also allow solo stakers' ETH to be compounded into their existing validator and contribute to their rewards without first having to accumulate the minimum validator amount(e.g., the ability to stake 40 ETH(or anything between 32 ETH and 64 ETH) instead of needing to accumulate 64 ETH to run two validators today). 
 #### **Q:** How do I consolidate my validator?
 #### **Q:** What happens to my original, individual validators?
 #### **Q:** When does the balance appear on my consolidated validator?
