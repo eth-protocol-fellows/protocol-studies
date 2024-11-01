@@ -50,9 +50,9 @@ Send a transaction to consolidation request address with `source_pubkey != targe
 The source validator after consolidation is processed will have its balance decreased to zero. Afterwards it will be ejected from the network since its balance drops below 16ETH.
 #### **Q:** When does the balance appear on my consolidated validator?
 #### **Q:** When happens if I consolidate one validator with`0x01` and another with `0x00` credentials?
-The consolidation request will deemed invalid and will not be processed. 
+The consolidation request will be deemed invalid and will not be processed. 
 #### **Q:** What happens if I consolidate validators that are exited?
-The consolidation request will deemed invalid and will not be processed. 
+The consolidation request will be deemed invalid and will not be processed. 
 #### **Q:** How can I partially withdraw some ETH from my `0x02` validator?
 Send a transaction to partial withdrawal request address (pending address to be finalized when Electra goes live on mainnet) with `amount` being a positive non-zero Gwei amount.
 #### **Q:** How much ETH can i withdraw from my validator?
