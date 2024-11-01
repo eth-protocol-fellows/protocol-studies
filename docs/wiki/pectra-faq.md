@@ -31,6 +31,8 @@ Overall
 **FAQ**:
 #### **Q:** What changes about deposits?
 #### **Q:** How long do I have to wait for deposits now?
+#### **Q:** What balances between 32ETH and 2048ETH can I earn on?
+Effective balances increase 1ETH at a time. If your balance is 33.74 effective balance will be 33. If you effective balance is 33.75 then your effective balance will be 34. 
 #### **Q:** What are `0x02` withdrawal credentials?
 #### **Q:** How do I switch to `0x02` withdrawal credentials? How does it help me?
 #### **Q:** Can I deposit a validator with `0x02` credentials directly?
