@@ -21,10 +21,10 @@ Overall
 #### **Q:** Where can I find the specification for EIP-7702? How can I use it as a wallet dev?
 #### **Q:** How do I use account abstraction?
 #### **Q:** Do I have to wait for my wallet to support EIP-7702?
-#### **Q:** What do i need to know about EIP-7702 as a smart contract dev?
-#### **Q:** What do i need to know as a security engineer/auditor?
+#### **Q:** What do I need to know about EIP-7702 as a smart contract dev?
+#### **Q:** What do I need to know as a security engineer/auditor?
 #### **Q:** What does the BLS opcodes add in pectra?
-#### **Q:** How can i use the `BLOCKHASH` OPCODE?
+#### **Q:** How can I use the `BLOCKHASH` OPCODE?
 #### **Q:** What are system contracts?
 ## Stakers
 ---
@@ -46,7 +46,7 @@ MaxEB or the [EIP-7251](https://eips.ethereum.org/EIPS/eip-7251) increases the `
 #### **Q:** When happens if I consolidate one validator with`0x01` and another with `0x00` credentials?
 #### **Q:** What happens if I consolidate validators that are exited?
 #### **Q:** How can I partially withdraw some ETH from my `0x02` validator?
-#### **Q:** How much ETH can i withdraw from my validator?
+#### **Q:** How much ETH can I withdraw from my validator?
 #### **Q:** What happens to the ETH balance if my validator has `0x02` credentials and goes below 32 ETH?
 #### **Q:** What happens to the ETH balance if my validator has `0x02` credentials and goes above 2048 ETH?
 #### **Q:** Can I top up ETH in my `0x02` validator?
