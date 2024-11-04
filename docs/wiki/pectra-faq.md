@@ -18,7 +18,11 @@ Overall
 ---
 **FAQ**:
 #### **Q:** What is EIP-7702/Account abstraction?
+EIP-7702 is the latest account abstraction proposal that adds additional functionality to externally owned accounts (EOAs). It introduces a new transaction type that temporarily authorizes specific contract code for an EOA during a single transaction, allowing EOAs to function as smart contract accounts. This enables several use cases for users, including transaction batching, gas sponsorship, and privilege de-escalation.
 #### **Q:** Where can I find the specification for EIP-7702? How can I use it as a wallet dev?
+The specificaton for EIP-7702 can be found [here](https://eips.ethereum.org/EIPS/eip-7702).
+
+As a wallet developer, you’ll need to add support for the new transaction type and provide an interface that enables users to access its new functionalities. It remains to be seen how the design space of EIP-7702 will play out, but it’s possible that wallet developers may whitelist specific contract codes for wallet users.
 #### **Q:** How do I use account abstraction?
 #### **Q:** Do I have to wait for my wallet to support EIP-7702?
 #### **Q:** What do I need to know about EIP-7702 as a smart contract dev?
