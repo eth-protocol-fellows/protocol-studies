@@ -272,6 +272,7 @@ ethone's
 ethresear
 ethresearch
 ethroadmap
+ethstaker
 ETHW
 EVM
 evmlab
