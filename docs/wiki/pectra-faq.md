@@ -18,7 +18,7 @@ The MaxEB feature will allow the user to have a > 32ETH effective balance. This 
 
 With EIP-7702, The user wallet would be able to delegate control to a smart contract. This pattern allows a new wallet and app interaction design space, leading the path for future full account abstraction solutions.
 
-The Execution layer triggered exits feature allows the withdrawal address set in the `0x02` withdrawal credential is able to perform exits directly in the execution layer without any reliance on pre-signed BLS keys. This feature is mainly targetted at staking pools, who would be able to use smart contracts to fully control the validator lifecycle.
+The Execution layer triggered exits feature allows the withdrawal address set in the `0x02` withdrawal credential is able to perform exits directly in the execution layer without any reliance on pre-signed BLS keys. This feature is mainly targeted at staking pools, who would be able to use smart contracts to fully control the validator lifecycle.
 
 Users/Devs
 ---
