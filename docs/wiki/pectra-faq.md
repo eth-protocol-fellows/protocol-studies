@@ -42,7 +42,7 @@ As a smart contract developer, you should know that after Prague the majority of
 As a security engineer / auditor, you must be aware that the previous assumption that a frame cannot be reentered when `msg.sender == tx.origin` no longer holds. This means the check is no longer suitable for reentrancy guards or flash loan protection.
 
 #### **Q:** What does the EIP-2537 BLS precompile add in pectra?
-EIP-2537 Adds operation on BLS12-381 curve as a precompile to Ethereum. BLS12-381 precompile enables efficient BLS signature verification. This is useful for applications where multiple signatures need to be verified, such as proof checking systems. 
+[EIP-2537](https://eips.ethereum.org/EIPS/eip-2537) introduces operations on the BLS12-381 curve as precompiles to Ethereum. BLS12-381 precompiles enables efficient BLS signature verification. This is useful for applications where multiple signatures need to be verified, such as proof-checking systems. 
 
 #### **Q:** How can I use the `BLOCKHASH` OPCODE?
 The last 8192 blockhash are now stored and available for access in the `BLOCKHASH` system contract. The `BLOCKHASH` opcode semantics remains the same as before, just that the block number can now be specified in big-endian encoding. The blockhash system contract can also be called via the ethCall RPC method, with the block number in question being passed as calldata. 
