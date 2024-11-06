@@ -85,19 +85,20 @@ You can consolidate your validator to `0x02` withdrawal credentials via a self c
 MaxEB or the [EIP-7251](https://eips.ethereum.org/EIPS/eip-7251) increases the `MAX_EFFECTIVE_BALANCE` to 2048 ETH while keeping the minimum staking balance at 32 ETH. Before MaxEB, any entity that wanted to contribute a large amount of ETH to consensus had to spin up multiple validators because each was capped at a maximum of 32 ETH. EIP-7251 will allow large stake operators to consolidate their ETH into fewer validators, using the same stake with up to 64 times less individual validators. It also allows solo stakers' ETH to be compounded into their existing validator and contribute to their rewards without having to use the exact validator amount. For example, 35 ETH will be considered the validator's effective balance by the protocol, instead of leaving out 3 ETH ineffective and waiting till 64 ETH for 2 validators. Overall, consolidating validators will allow for fewer attestations in the consensus network and easing the bandwidth usage by nodes.
 
 #### **Q:** How do I consolidate my validators?
-To consolidate your validators, you first need to make sure that both, the source and target validator have either `0x01` or `0x02` credentials assigned.
-Validators with withdrawal credentials with `0x00` prefix or pointing to different execution layer addresses cannot be consolidated.
+To consolidate your validators, you first need to ensure that both the source and target validators have either `0x01` or `0x02` credentials assigned.
+Validators with withdrawal credentials using the `0x00` prefix or pointing to different execution layer addresses cannot be consolidated.
 
-To consolidate two validators, you need to send a transaction from your withdrawal address to the consolidation system contract, containing the public keys of the source and target validators to consolidate.
+To consolidate two validators, send a transaction from your withdrawal address to the consolidation system contract, including the public keys of the source and target validators you wish to consolidate.
 
-We expect that functionality to be added in various tools in the coming months. 
-For testing right now, you can use the [Submit Consolidations](https://dora.mekong.ethpandaops.io/validators/submit_consolidations) page in dora. Connect with the wallet that is used as withdrawal address for your validators and you should be able to slect between your validators and craft a appropiate consolidation transaction.
+We expect this functionality to be added to various tools in the coming months.
+For testing right now, you can use the [Submit Consolidations](https://dora.mekong.ethpandaops.io/validators/submit_consolidations) page in Dora. Connect with the wallet used as the withdrawal address for your validators, and you should be able to select your validators and craft an appropriate consolidation transaction.
 
-A consolidation with source and target pointing to the same validator is called a self-consolidation. 
-In this situaltion, the validator will not be exited or any funds moved away. It will only get `0x02` credentials assigned.
+A consolidation where the source and target point to the same validator is called a self-consolidation.
+In this situation, the validator will not be exited, and no funds will be moved. It will simply be assigned 0x02 credentials.
 
 #### **Q:** What are the validator requirements for consolidation?
-The validators must be active on the beacon chain at the time of consolidation execution. This means they cannot be exiting or pending activation or any other state besides active. Both the source and the target validators must have `0x01` or `0x02` withdrawal credentials pointing to the same withdrawal address. If these two conditions are met, then the validator may be consolidated. 
+The validators must be active on the beacon chain at the time of consolidation execution. This means they cannot be exiting, pending activation, or in any state other than active.
+Both the source and target validators must have `0x01` or `0x02` withdrawal credentials pointing to the same withdrawal address. If these two conditions are met, the validators may be consolidated.
 
 #### **Q:** What happens to my original, individual validators?
 During a consolidation, there is a source and a target validator. The source validator is completely exited and the balance is then transferred to the target validator. The target validator will have the sum of the balances of the source validator and the target validator and will continue to perform its beacon chain duties without any change. 
@@ -114,14 +115,14 @@ The consolidation will fail as the validators must be active on the beacon chain
 #### **Q:** How can I partially withdraw some ETH from my `0x02` validator?
 You can issue a EL triggered partial withdrawal to withdraw some ETH from the `0x02` validator.
 Send a transaction to the withdrawal system contract (pending address to be finalized when Electra goes live on mainnet) with your validator `pubkey` and the `amount` (a positive non-zero Gwei amount).
-As for consolidations, this transaction must be sent from the withdrawal address set in your validators withdrawal credentials.
+As with consolidations, this transaction must be sent from the withdrawal address set in your validator's withdrawal credentials.
 
-We expect that functionality to be added in various tools in the coming months. 
-For testing right now, you can use the [Submit Withdrawals](https://dora.mekong.ethpandaops.io/validators/submit_withdrawals) page in dora. Connect with the wallet that is used as withdrawal address for your validators and you should be able to slect between your validators and craft a appropiate withdrawal transaction.
+We expect this functionality to be added to various tools in the coming months.
+For testing right now, you can use the [Submit Withdrawals](https://dora.mekong.ethpandaops.io/validators/submit_withdrawals) page in Dora. Connect with the wallet that is used as the withdrawal address for your validators, and you should be able to select between your validators and craft an appropriate withdrawal transaction.
 
 #### **Q:** How much ETH can I withdraw from my validator?
-You can parially withdraw the portion above full validator amount, as long as the validator contains >32ETH at the time of completion of the withdrawal. For example, if you currently have 34ETH, and you request a partial withdrawal, a maximum of 2ETH can be be withdrawn.
-You may also decide to request a full withdrawal by specifying a amount of `0` in the request. When sending such a full witdrawal request, your validator will be exited and the full balance withdrawn.
+You can partially withdraw the portion above the full validator amount, as long as the validator contains >32 ETH at the time of withdrawal completion. For example, if you currently have 34 ETH and request a partial withdrawal, a maximum of 2 ETH can be withdrawn.
+You may also decide to request a full withdrawal by specifying an amount of `0` in the request. When sending such a full withdrawal request, your validator will be exited, and the full balance withdrawn.
 
 #### **Q:** What happens to the ETH balance if my validator has `0x02` credentials and goes below 32 ETH?
 A normally behaved validator will not have its balance dropped below 32ETH even if you initiate a partial withdrawal request. This can only be achieved if validator receives penalty. Nothing will happen except reduced rewards. However if balance drops below 16ETH, the validator will be exited and the balance will be transferred to the execution layer withdrawal address.
