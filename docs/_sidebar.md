@@ -85,6 +85,7 @@
     - [KZG](/wiki/Cryptography/KZG.md)
   - [Post-Quantum Cryptography](/wiki/Cryptography/post-quantum-cryptography.md)
 - [Protocol Fellowship](/wiki/epf.md)
+- [Pectra FAQ](/wiki/pectra-faq.md)
 
 - **Wiki Info**
   - [GitHub Repository](https://github.com/eth-protocol-fellows/protocol-studies)
