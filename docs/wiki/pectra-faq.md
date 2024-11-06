@@ -12,6 +12,14 @@ Overall
 #### **Q:** What is Prague/Electra?
 **A:** Prague and Electra are the names of the upcoming Ethereum hard fork. The included EIPs can be found [here](https://eips.ethereum.org/EIPS/eip-7600). Prague is the name of the fork on the execution client side, and Electra is the upgrade name on the consensus layer client side. 
 
+There are 3 main features along with some smaller EIPs included in Pectra. They are: Max effective balance, Account abstraction and Execution Layer triggered exits.
+
+The MaxEB feature will allow the user to have a > 32ETH effective balance. This would allow users to consolidate many validators (or deposit new ones) into one up to 2048ETH. The requirement to use this feature is the setting of the `0x02` withdrawal credentials. A user can either make a deposit directly with `0x02` credentials or the user can move from `0x01` to `0x02`.
+
+With EIP-7702, The user wallet would be able to delegate control to a smart contract. This pattern allows a new wallet and app interaction design space, leading the path for future full account abstraction solutions.
+
+The Execution layer triggered exits feature allows the withdrawal address set in the `0x02` withdrawal credential is able to perform exits directly in the execution layer without any reliance on pre-signed BLS keys. This feature is mainly targetted at staking pools, who would be able to use smart contracts to fully control the validator lifecycle.
+
 Users/Devs
 ---
 **FAQ**:
