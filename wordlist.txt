@@ -70,6 +70,7 @@ bitvector's
 bitvectors
 bitwise
 BLOBHASH
+blockhash
 blockchain
 blockchain's
 blockchains

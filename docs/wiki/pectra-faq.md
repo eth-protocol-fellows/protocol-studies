@@ -12,7 +12,15 @@ Overall
 #### **Q:** What is Prague/Electra?
 **A:** Prague and Electra are the names of the upcoming Ethereum hard fork. The included EIPs can be found [here](https://eips.ethereum.org/EIPS/eip-7600). Prague is the name of the fork on the execution client side, and Electra is the upgrade name on the consensus layer client side. 
 
-## Users/Devs
+There are 3 main features along with some smaller EIPs included in Pectra. They are: Max effective balance, Account abstraction and Execution Layer triggered exits.
+
+The MaxEB feature will allow the user to have a > 32ETH effective balance. This would allow users to consolidate many validators (or deposit new ones) into one up to 2048ETH. The requirement to use this feature is the setting of the `0x02` withdrawal credentials. A user can either make a deposit directly with `0x02` credentials or the user can move from `0x01` to `0x02`.
+
+With EIP-7702, The user wallet would be able to delegate control to a smart contract. This pattern allows a new wallet and app interaction design space, leading the path for future full account abstraction solutions.
+
+The Execution Layer (EL) _triggered exits_ is a new feature that allows the withdrawal address set in the `0x02` withdrawal credential to perform exits directly in EL, without relying on on pre-signed BLS keys. This feature is mainly targeted at staking pools, enabling them to use smart contracts to fully control the validator lifecycle.
+
+Users/Devs
 ---
 **FAQ**:
 #### **Q:** What is EIP-7702/Account abstraction?
@@ -34,12 +42,15 @@ As a smart contract developer, you should know that after Prague the majority of
 As a security engineer / auditor, you must be aware that the previous assumption that a frame cannot be reentered when `msg.sender == tx.origin` no longer holds. This means the check is no longer suitable for reentrancy guards or flash loan protection.
 
 #### **Q:** What does the EIP-2537 BLS precompile add in pectra?
+[EIP-2537](https://eips.ethereum.org/EIPS/eip-2537) introduces operations on the BLS12-381 curve as precompiles to Ethereum. BLS12-381 precompiles enables efficient BLS signature verification. This is useful for applications where multiple signatures need to be verified, such as proof-checking systems. 
 
 #### **Q:** How can I use the `BLOCKHASH` OPCODE?
+The last 8192 blockhash are now stored and available for access in the `BLOCKHASH` system contract. The `BLOCKHASH` opcode semantics remains the same as before, just that the block number can now be specified in big-endian encoding. The blockhash system contract can also be called via the ethCall RPC method, with the block number in question being passed as calldata. 
 
 #### **Q:** What are system contracts?
+System contracts are interfaces defined as contracts, which are essential for certain Ethereum functions to occur. The contract approach is used instead of each client implementing the logic in order to simplify maintenance as well as allow for upgrades in the future with minimal overhead.
 
-## Stakers
+Stakers
 ---
 **FAQ**:
 #### **Q:** What changes about deposits?
