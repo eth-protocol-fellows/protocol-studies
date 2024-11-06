@@ -92,7 +92,7 @@ The consolidation will fail as the validators must be active on the beacon chain
 You can issue a EL triggered exit to partially withdraw some ETH from the `0x02` validator. Send a transaction to partial withdrawal request address (pending address to be finalized when Electra goes live on mainnet) with `amount` being a positive non-zero Gwei amount.
 
 #### **Q:** How much ETH can I withdraw from my validator?
-You can withdraw the portion above full validator amount, as long as the validator contains >32ETH at the time of completion of the withdrawal. For example, if you currently have 34ETH, and you request a partial withdrawal, 2ETH will be withdrawn.
+You can withdraw the portion above full validator amount, as long as the validator contains >32ETH at the time of completion of the withdrawal. For example, if you currently have 34ETH, and you request a partial withdrawal, a maximum of 2ETH can be be withdrawn.
 
 #### **Q:** What happens to the ETH balance if my validator has `0x02` credentials and goes below 32 ETH?
 A normally behaved validator will not have its balance dropped below 32ETH even if you initiate a partial withdrawal request. This can only be achieved if validator receives penalty. Nothing will happen except reduced rewards. However if balance drops below 16ETH, the validator will be exited and the balance will be transferred to the execution layer withdrawal address.
