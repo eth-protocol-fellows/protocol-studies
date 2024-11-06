@@ -73,7 +73,7 @@ The `0x02` withdrawal credential enables you to control the validator exit from 
 Yes, you can deposit a validator with `0x02` credentials directly. This will allow you to have a single validator with a balance of up to 2048 ETH. The `staking-cli` will support the `0x02` withdrawal credentials in the coming months before the Pectra mainnet Ethereum fork.
 To try out deposits right now, you can use the [`staking-cli`](https://github.com/eth-educators/ethstaker-deposit-cli) from ethstaker, which already supports `0x02` credentials via the `--compounding` flag. You may also specify deposit amounts higher or lower than 32 ETH via the `--amount` flag.
 The generated deposit data files can then be sent to the networks launchpad to do the deposit transactions as usual.
-For the testnets, you can use the [`Submit Deposits`](https://dora.mekong.ethpandaops.io/validators/deposits/submit) page to submit the generated deposits. Support for the official launchpad is coming in the next months too.
+For the testnets, you can use the [`Submit Deposits`](https://dora.mekong.ethpandaops.io/validators/deposits/submit) page in Dora to submit the generated deposits. Support for the official launchpad is coming in the next months too.
 
 #### **Q:** I have a validator with `0x00` credentials, how do I move to `0x02`?
 There is no direct way to move from `0x00` to `0x02`. You will need to first move your validator from `0x00` to `0x01` withdrawal credentials with a BLS change operation, then consolidate your validators to `0x02` withdrawal credentials. You can alternatively exit the validator and make a new deposit with `0x02` withdrawal credentials during the deposit.
