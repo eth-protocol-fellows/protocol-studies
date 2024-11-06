@@ -12,7 +12,7 @@ Overall
 #### **Q:** What is Prague/Electra?
 **A:** Prague and Electra are the names of the upcoming Ethereum hard fork. The included EIPs can be found [here](https://eips.ethereum.org/EIPS/eip-7600). Prague is the name of the fork on the execution client side, and Electra is the upgrade name on the consensus layer client side. 
 
-## Users/Devs
+Users/Devs
 ---
 **FAQ**:
 #### **Q:** What is EIP-7702/Account abstraction?
