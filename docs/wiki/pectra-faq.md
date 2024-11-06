@@ -42,7 +42,7 @@ The last 8192 blockhash are now stored and available for access in the `BLOCKHAS
 #### **Q:** What are system contracts?
 System contracts are interfaces defined as contracts, which are essential for certain Ethereum functions to occur. The contract approach is used instead of each client implementing the logic in order to simplify maintenance as well as allow for upgrades in the future with minimal overhead.
 
-## Stakers
+Stakers
 ---
 **FAQ**:
 #### **Q:** What changes about deposits?
