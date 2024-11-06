@@ -37,7 +37,7 @@ As a security engineer / auditor, you must be aware that the previous assumption
 EIP-2537 Adds operation on BLS12-381 curve as a precompile to Ethereum. BLS12-381 precompile enables efficient BLS signature verification. This is useful for applications where multiple signatures need to be verified, such as proof checking systems. 
 
 #### **Q:** How can I use the `BLOCKHASH` OPCODE?
-The last 8192 blockhashes are now stored and available for access in the `BLOCKHASH` system contract. The `BLOCKHASH` opcode semantics remains the same as before, just that the block number can now be specified in big-endian encoding. The blockhash system contract can also be called via the ethCall RPC method, with the block number in question being passed as calldata. 
+The last 8192 blockhash are now stored and available for access in the `BLOCKHASH` system contract. The `BLOCKHASH` opcode semantics remains the same as before, just that the block number can now be specified in big-endian encoding. The blockhash system contract can also be called via the ethCall RPC method, with the block number in question being passed as calldata. 
 
 #### **Q:** What are system contracts?
 System contracts are interfaces defined as contracts, which are essential for certain Ethereum functions to occur. The contract approach is used instead of each client implementing the logic in order to simplify maintenance as well as allow for upgrades in the future with minimal overhead.
