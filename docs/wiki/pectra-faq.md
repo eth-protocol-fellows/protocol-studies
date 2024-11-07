@@ -18,7 +18,7 @@ The [MaxEB](https://eips.ethereum.org/EIPS/eip-7251) feature will allow the user
 
 With [EIP-7702](https://eips.ethereum.org/EIPS/eip-7702), The user wallet would be able to delegate control to a smart contract. This pattern allows a new wallet and app interaction design space, leading the path for future full account abstraction solutions.
 
-The [Execution Layer (EL) triggered exits](https://eips.ethereum.org/EIPS/eip-7002) is a new feature that allows the withdrawal address set in the `0x02` withdrawal credential to perform exits directly in EL, without relying on pre-signed BLS keys. This feature is mainly targeted at staking pools, enabling them to use smart contracts to fully control the validator lifecycle.
+The [Execution Layer (EL) triggered exits](https://eips.ethereum.org/EIPS/eip-7002) is a new feature that allows the withdrawal address set in the `0x01` or `0x02` withdrawal credential to perform exits directly in EL, without relying on pre-signed BLS keys. This feature is mainly targeted at staking pools, enabling them to use smart contracts to fully control the validator lifecycle.
 
 Users/Devs
 ---
@@ -67,7 +67,7 @@ There are 2 ways in which a validator can have `0x02` withdrawal credentials:
 1. When you deposit a new validator with `0x02` withdrawal credentials
 2. When you consolidate existing validators to `0x02` withdrawal credentials by sending a transaction to consolidation request address
 
-The `0x02` withdrawal credential enables you to control the validator exit from your execution layer address as well as allows you to possess maximum effective balances of >32 ETH and <2048ETH. This means you can run one validator and have a single validator with a balance of up to 2048 ETH.
+While both the `0x01` and `0x02` withdrawal credential enables you to control the validator exit from your execution layer address, only `0x02` allows the validator to possess a maximum effective balances of >32 ETH and <2048ETH. This means you can run one validator and have a single validator with a balance of up to 2048 ETH.
 
 #### **Q:** Can I deposit a validator with `0x02` credentials directly?
 Yes, you can deposit a validator with `0x02` credentials directly. This will allow you to have a single validator with a balance of up to 2048 ETH.
