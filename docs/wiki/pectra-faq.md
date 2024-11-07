@@ -18,7 +18,7 @@ The [MaxEB](https://eips.ethereum.org/EIPS/eip-7251) feature will allow the user
 
 With [EIP-7702](https://eips.ethereum.org/EIPS/eip-7702), The user wallet would be able to delegate control to a smart contract. This pattern allows a new wallet and app interaction design space, leading the path for future full account abstraction solutions.
 
-The [Execution Layer (EL) triggered exits](https://eips.ethereum.org/EIPS/eip-7002 is a new feature that allows the withdrawal address set in the `0x02` withdrawal credential to perform exits directly in EL, without relying on pre-signed BLS keys. This feature is mainly targeted at staking pools, enabling them to use smart contracts to fully control the validator lifecycle.
+The [Execution Layer (EL) triggered exits](https://eips.ethereum.org/EIPS/eip-7002) is a new feature that allows the withdrawal address set in the `0x02` withdrawal credential to perform exits directly in EL, without relying on pre-signed BLS keys. This feature is mainly targeted at staking pools, enabling them to use smart contracts to fully control the validator lifecycle.
 
 Users/Devs
 ---
