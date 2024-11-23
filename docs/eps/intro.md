@@ -29,7 +29,7 @@ The first part of the program consists of 6 sessions with introductions to high 
 | [Week 3](/eps/week3.md)         | Consensus layer                    | [Alex Stokes](https://github.com/ralexstokes)                                                    |
 | [Week 4](/eps/week4.md)         | Testing and security               | [Mario Vega](https://github.com/marioevz)                                                        |
 | [Week 5](/eps/week5.md)         | Roadmap and research               | [Domothy](https://github.com/domothyb)                                                           |
-| [Week 5](/eps/node_workshop.md) | Node workshop                      | [Mario](https://github.com/taxmeifyoucan)                                                        |
+| [Week 5](/eps/nodes_workshop.md) | Node workshop                      | [Mario](https://github.com/taxmeifyoucan)                                                        |
 
 The second part of the program offers two distinct tracks focused on development and research with deeper dive into each domain. 
 
