@@ -95,12 +95,12 @@ neighbours = [ip, udp-port, tcp-port, node-id, ...]
 ```
 Where the neighbours are the list of 16 nodes that are able to connect with the new node.
 
-**ENRRequest packet structure**
+**ENR Request packet structure**
 ```
 packet-data = [expiration]
 ```
 
-**ENRResponse packet structure**
+**ENR Response packet structure**
 ```
 packet-data = [request-hash, ENR]
 ```
@@ -113,7 +113,7 @@ Worth mentioning that all the table entries are sorted by *last seen/least-recen
 If one of the entities has not been responded to in 12 hours, it is removed from the table, and the next encounter node is added to the tail of the list.
 
 ### ENR: Ethereum Node Records
-The ENR os a standard format for p2p connectivity, which was originally proposed in the [EIP-778](https://eips.ethereum.org/EIPS/eip-778).
+The ENR is a standard format for p2p connectivity, which was originally proposed in the [EIP-778](https://eips.ethereum.org/EIPS/eip-778).
 A node record contains the node's network endpoints, such as the IP address and port, as well as the node's public key and the sequence number of the record.
 
 The record content structure is as follows:
@@ -152,6 +152,25 @@ There are two additional formats able to be understand by an Ethereum node: mult
 
 ### RLPx protocol (Transport)
 
+So far, this article has been refering to the discovering protocol only, but what about the secure information exchange process? Well, RLPx is the TCP-based transport protocol that enables secure peer-to-peer communication in the EL. It handles connection establishment, and message exchange between Ethereum nodes. The name comes from the RLP serialization format.
+
+Before deep diving on the protocol, here it is a summary followed by a digram:
+
+* Secure connection through an encrypted authentication
+* Session establishment
+* Message framing and information exchange
+
+
+![RLPx diagram](../../images/el-architecture/rlpx-communication.png)
+
+#### Secure connection establishment
+
+Once the peers are discovered, RLPx establishes a secure connection between them by authenticating them through cryptographic-based handshake.
+This process begins with an authentication initiation where the initiator node generates an ephemeral key pair using the secp256k1 elliptic curve. This ephemeral key plays a crucial role in establishing perfect forward secrecy for the session.
+
+#### Session and multiplexing
+
+#### Messaging framing
 
 ### Further Reading
 * [Geth devp2p docs](https://geth.ethereum.org/docs/tools/devp2p)
