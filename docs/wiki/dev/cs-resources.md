@@ -81,12 +81,14 @@
 - 🎥 [The Unix Workbench | Johns Hopkins](https://www.coursera.org/learn/unix)
 - 📄 [Git tips and tricks](https://blog.gitbutler.com/git-tips-and-tricks/)
 - 📄 [Popular Git config options](https://jvns.ca/blog/2024/02/16/popular-git-config-options/)
+
 ## Misc
 
 - 📄 [Things Every Programmer Should Know](https://github.com/mtdvio/every-programmer-should-know)
 - 📄 [What Every Programmer Should Know About Memory](https://akkadia.org/drepper/cpumemory.pdf)
 - 📄 [What Every Computer Scientist Should Know About Floating-Point Arithmetic](https://docs.oracle.com/cd/E19957-01/806-3568/ncg_goldberg.html)
-- 🗣️ [Big and Little Endian inside / out](https://www.youtube.com/watch?v=oBSuXP-1Tc0)
+- 🗣️  [Big and Little Endian inside / out](https://www.youtube.com/watch?v=oBSuXP-1Tc0)
+- 🎥 [The Perfect Dependency - SQLite Case Study](https://www.youtube.com/watch?v=ZP7ef4eVnac)
 
 ## Resources
 
