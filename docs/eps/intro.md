@@ -56,7 +56,7 @@ Apart from weekly lectures, there are less regular, ad-hoc hangout calls for inf
 
 The study group is an open and permissionless, and it is up to each participant as to how they want to approach it. Whether you want to learn as much as possible, focus only on certain topics or share your knowledge with others, you are welcomed. 
 
-> Join our community in [Discord server](https://discord.gg/addwpQbhpq). We use it for the easiest community engagement but we are aware that Discord is proprietary and doesn't respect user privacy. Consider using alternative FOSS clients like [Dissent](https://github.com/diamondburned/dissent) or [Discordo](https://github.com/ayn2op/discordo).
+> Join our community in [Discord server](https://discord.gg/8RPnPGEQtJ). We use it for the easiest community engagement but we are aware that Discord is proprietary and doesn't respect user privacy. Consider using alternative FOSS clients like [Dissent](https://github.com/diamondburned/dissent) or [Discordo](https://github.com/ayn2op/discordo).
 
 Study group participants collaboratively develop the [Protocol wiki](/wiki/wiki-intro.md), serving as an evolving knowledge base for current and future core developers. This can provide students with practical experience in contributing to open source resources, while gaining invaluable experience in documentation and community-driven development.
 
@@ -64,7 +64,7 @@ While this program is designed to act as a precursor to the Ethereum Protocol Fe
 
 ## Important links
 
-- [Discord server](https://discord.gg/addwpQbhpq)
+- [Discord server](https://discord.gg/8RPnPGEQtJ)
 - [Weekly talks on StreamEth](https://streameth.org/65cf97e702e803dbd57d823f/epf_study_group)
 - [Youtube](https://www.youtube.com/@ethprotocolfellows)
 - [Sessions calendar](https://calendar.google.com/calendar/u/0?cid=ZXBmc3R1ZHlncm91cEBnbWFpbC5jb20) 
