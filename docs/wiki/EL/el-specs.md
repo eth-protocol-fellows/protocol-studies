@@ -190,6 +190,8 @@ $$
 \xi \equiv 8 \qquad (50)
 $$
 
+If H<sub>number</sub> = F<sub>number</sub>, it is special case of [London Hard Fork](https://eips.ethereum.org/EIPS/eip-1559?utm_source=chatgpt.com).
+
 | Symbol          | What it represents                         | value                                              | comments                                                                                                                   |
 | --------------- | ------------------------------------------ | -------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
 | $F(H) $ | Base Fee per Gas                           |                                                    | Paid be the sender as part of the Total Fee , The Base Fee is finally burnt by Execution Layer and taken out of the system |
