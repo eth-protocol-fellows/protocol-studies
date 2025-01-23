@@ -56,7 +56,8 @@
 - Testing and security
   - [Testing overview](/wiki/testing/overview.md)
   - [Incidents](/wiki/testing/incidents.md)
-  - [hive](/wiki/testing/hive.md)
+  - [Hive](/wiki/testing/hive.md)
+  - [Kurtosis](/wiki/testing/kurtosis.md)
   - [Formal verification](/wiki/testing/formal-verification.md)
 - Research
   - [Roadmap overview](/wiki/research/roadmap.md)
