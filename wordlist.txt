@@ -16,6 +16,7 @@ aggregative
 Aleth
 allowfullscreen
 amidst
+amongst
 Andreas
 Antonopoulos
 API
@@ -50,6 +51,7 @@ Barnabe
 Barnabé
 Barnabé's
 BDN
+beaconblock
 Beiko
 Bertoni
 Besu
@@ -68,6 +70,7 @@ bitvector's
 bitvectors
 bitwise
 BLOBHASH
+blockhash
 blockchain
 blockchain's
 blockchains
@@ -173,12 +176,14 @@ decrementation
 decrementing
 DeFi
 Degatchi
+dht
 DELEGATECALL
 delegator
 delegators
 deliverables
 Dencun
 deployer
+descendent
 deserialization
 Deserialize
 deserialized
@@ -238,6 +243,7 @@ ELs
 emptyset
 Encodings
 Endian
+enr
 env
 EOA
 EOAs
@@ -261,11 +267,14 @@ ETHCC
 Ethereum
 Ethereum's
 ethers
+Ethervm
 ethone
 ethone's
 ethresear
 ethresearch
 ethroadmap
+ethstaker
+ETHW
 EVM
 evmlab
 EVMONE
@@ -276,6 +285,7 @@ exchangeTransitionConfigurationV
 Explainer
 Extractable
 extraData
+fanout
 farcaster
 fastssz
 faytey
@@ -327,6 +337,7 @@ Goldwasser
 Goomy
 Goron
 Gorondan
+gossipsub
 Gottfried
 Gottlob
 gpg
@@ -341,6 +352,7 @@ hackathon
 hackmd
 Hager
 halmos
+hardfork
 HashedStorages
 Herc’s
 hevm
@@ -382,6 +394,7 @@ interop
 invariants
 IOP
 IPC
+ipfs
 IRTF
 ISA
 Jitsi
@@ -390,6 +403,7 @@ JSON
 JUMPDEST
 JVM
 JWT
+Kademlia
 Karapetsas
 Katex
 KEC
@@ -411,6 +425,7 @@ Lamport's
 lceil
 ldots
 Lefteris
+leftarrow
 leq
 leveldb
 lfloor
@@ -436,6 +451,7 @@ LSP
 LST
 Lua
 LuaVM
+Luca
 Lyubashevsky
 mainnet
 Mana
@@ -461,6 +477,7 @@ mevboost
 Michaël
 middleware
 minimalistic
+misconfigure
 Mitigations
 mload
 MMPTs
@@ -534,6 +551,7 @@ pepc's
 performence
 permissionless
 permissionlessness
+pex
 PGA
 Pigovian
 Pilipovic
@@ -543,6 +561,7 @@ pmod
 POC
 POS
 POSIX
+postel's
 possibile
 Potuz's
 POV
@@ -573,6 +592,7 @@ privateKey
 probabilistically
 programmability
 proto
+proto's
 protobuf
 Protolambda
 prover
@@ -583,6 +603,8 @@ Prysm
 Prysmatic
 PSE
 PSE's
+pseudorandom
+pseudorandomly
 ptc
 publically
 pubsub
@@ -605,6 +627,9 @@ README
 reciept
 referrerpolicy
 remerkleable
+reentrancy
+reorganisation
+reorganisations
 replayable
 repo
 responder
@@ -619,7 +644,9 @@ Rikard
 RIPEMD
 Ritchie
 rK
+RLMD
 RLP
+RLPx
 roadmap
 rollup
 rollup's
@@ -674,6 +701,7 @@ solvm
 SPHINCS
 Sproul
 src
+ssd
 SSF
 SSLE
 SSTORE
@@ -701,11 +729,13 @@ substate
 Substate
 subtrees
 Summa
+Supermajority
 systemd
 Szabo
 Takenobu
 Tani
 tbhl
+TCP
 Teku
 testnet
 testnets
@@ -746,8 +776,11 @@ unaggregated
 unbundle
 Unbundling
 underbrace
+underflow
+underflows
 Unformatted
 unguessable
+unhandled
 unincentivized
 upstreamed
 utils
@@ -761,6 +794,7 @@ validators
 Vanstone
 Varun
 VB's
+VDF
 VDFs
 Vec
 verifications
@@ -779,9 +813,11 @@ walkthrough
 WB
 webkit
 WebRTC
+Whistleblower
 Whitepaper
 WIP
-withdrawlsHash
+withdrawable
+withdrawalHash
 WSS
 Xatu
 xff
@@ -792,7 +828,10 @@ Yan
 Yellowpaper
 Yoni
 Yoichi
+Zanolini
 Zaverucha
+Zhang
+Zipfian
 zk
 zkEVMs
 ZKSNARK
@@ -826,3 +865,28 @@ Shamir
 surveilling
 Taleb
 Zimmermann
+DHT
+ENR
+fanout
+gossipsub
+IPFS
+kademlia
+PEX
+SSD
+DHT
+Katya
+Rahul's
+Kira's
+Mayowa
+Pooja
+Radicle
+Agatevure
+gconnect
+hotfix
+Kanban
+Mayowa
+ptsd
+Vasa
+Zaryab
+Afser
+Preethi
