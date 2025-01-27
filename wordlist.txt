@@ -50,6 +50,7 @@ Bankless
 Barnabe
 Barnabé
 Barnabé's
+Bastin
 BDN
 beaconblock
 Beiko
@@ -115,6 +116,7 @@ Challanges
 changeset
 changesets
 Charmes
+Chirag
 cli
 CLRS
 cmd
@@ -304,6 +306,7 @@ Forkchoice
 forkchoiceUpdatedV
 Forky
 Formatting
+FOCIL
 FOSS
 frac
 frameborder
@@ -563,11 +566,14 @@ POS
 POSIX
 postel's
 possibile
+Potuz
 Potuz's
 POV
 PQ
 PQC
 PQCA
+PR
+PR'ed
 pre
 preAccesedStorageKeys
 precompile
@@ -645,6 +651,7 @@ RIPEMD
 Ritchie
 rK
 RLMD
+RLNC
 RLP
 RLPx
 roadmap
@@ -674,6 +681,7 @@ serialize
 serializer
 Serokell
 sexualized
+SG
 SHA
 Shacham
 shadowfork
