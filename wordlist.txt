@@ -560,6 +560,7 @@ pex
 PGA
 Pigovian
 Pilipovic
+pipelining
 PKCS
 Playdate
 pmod
@@ -834,6 +835,7 @@ xff
 XMSS
 XORed
 xy
+YAML
 Yan
 Yellowpaper
 Yoni
