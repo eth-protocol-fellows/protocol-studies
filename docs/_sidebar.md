@@ -49,6 +49,7 @@
   - [CL Clients](/wiki/CL/cl-clients.md)
   - [SSZ Serialization](/wiki/CL/SSZ.md)
     - [Merkleization](/wiki/CL/merkleization.md)
+  - [Weak Subjectivity](/wiki/CL/syncing.md)
 - Development
   - [Core development](/wiki/dev/core-development.md)
   - [Coordination](/wiki/dev/pm.md)
@@ -56,7 +57,8 @@
 - Testing and security
   - [Testing overview](/wiki/testing/overview.md)
   - [Incidents](/wiki/testing/incidents.md)
-  - [hive](/wiki/testing/hive.md)
+  - [Hive](/wiki/testing/hive.md)
+  - [Kurtosis](/wiki/testing/kurtosis.md)
   - [Formal verification](/wiki/testing/formal-verification.md)
 - Research
   - [Roadmap overview](/wiki/research/roadmap.md)
