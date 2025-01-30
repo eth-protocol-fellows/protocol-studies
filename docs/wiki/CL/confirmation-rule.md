@@ -31,6 +31,51 @@ balances speed against reduced safety guarantees, potentially confirming blocks 
 under optimal conditions.
 
 ### 2.3 Algorythm
+#### 2.3.1 High-level view
+In the research paper [^1], the Confirmation Rule is based on two safety indicators:
+* $Q_b^n$ : quantifies the support ratio for a specific block b relative to the total committee weight from the slot of b
+to slot n. This indicator **is** directly observable by users.
+
+and
+
+* $P_n^b$ : measures the honest proportion of support for block b; This indicator **is not** directly observable by users.
+
+With a suitable value of $P_n^b$, a user can reliably confirm block b. 
+
+Conversely, under certain adversarial conditions, reaching a specific threshold of $Q_n^b$, allows for the inference of 
+$P_n^b$, thereby enabling the confirmation of block b.
+
+#### 2.3.2 System model
+**Validators**
+-  $W$ a possibly infinite set of validators
+- $J$ the set of all honest validators (unknown composition), $J \subseteq W$
+- $A$ the set of all Byzantine validators, $A : = W \setminus J$
+- $signer(m)$ the signer of a given message $m$
+
+**Confirmation Rule Executors** 
+
+Validators and confirmation rule executors are different entities. 
+The latter are those executing the Confirmation Rule by having read-only access to the internal state of an honest
+validator of their choice.
+
+**Network Model**
+
+Honest validators have synchronised time
+ - $t$ is the time when (any) message is being sent
+ - $max(t, GST) + \triangle $ is the time (any) message is being received by
+
+    where
+   - $GST = Global Stabilization Time$ - known to all confirmation rule executors
+   - $\triangle$ is the maximum message latency after $GST$
+
+**Gossiping** 
+
+It's assumed that any honest validator immediately broadcasts any message that they receive.
+
+**View** 
+
+The view of a validator corresponds to the set of all the messages that the validator has received.
+- $V^{v,t}$ represents the set of all messages received by validator $v$ at time $t$.
 
 #### 2.3.3 Algorythm main properties - Safety
 
@@ -42,7 +87,7 @@ under optimal conditions.
 This means adding conditions that ensure that once a block is confirmed, the FFG-Casper protocol will 
 never remove (filter out) this block from the set of blocks to give as input to the LMD-GHOST protocol.
 
-This is the Confirmation Rule pull request featuring the proposed changes to protocol consensus-specs [^2]
+Confirmation Rule PR [^2]
 
 # [Resources]
 [^1]: https://arxiv.org/pdf/2405.00549
