@@ -1,0 +1,132 @@
+.content *::-webkit-scrollbar {
+  background-color: transparent;
+  width: 12px;
+}
+.content *::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+.content *::-webkit-scrollbar-thumb {
+  border-radius: 20px;
+  border: 3px solid transparent;
+  background-color: rgba(0,0,0,0.3);
+  background-clip: content-box;
+}
+.content {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: center;
+}
+.markdown-section {
+  flex: 1 1 0%;
+  margin: 0 48px;
+}
+.nav {
+  width: var(--toc-width, 280px);
+  min-width: 200px;
+  align-self: flex-start;
+  flex: 0 0 auto;
+}
+aside.nav.nothing {
+  width: 0;
+}
+
+.page_toc {
+  border-left-style: solid;
+  border-left-width: 1px;
+  border-left-color: rgba(0, 0, 0, 0.07);
+  border-image-slice: 1;
+  padding-left: 5px;
+  position: -webkit-sticky;
+  position: fixed;
+  overflow-y: scroll;
+  max-height: 100vh;
+  top: 0;
+  bottom: auto;
+  margin-right: 10px;
+  scrollbar-width: thin !important;
+  scrollbar-color: grey transparent;
+}
+
+.page_toc a > * {
+  pointer-events: none;
+}
+
+.page_toc code {
+  background-color: #f8f8f8;
+  border-radius: 2px;
+  color: #e96900;
+  font-family: 'Roboto Mono', Monaco, courier, monospace;
+  font-size: 0.8rem;
+  margin: 0 2px;
+  padding: 3px 5px;
+}
+
+.page_toc p.title {
+  margin: 0px 0 0px 9px;
+  padding-top: 15px;
+  padding-bottom: 5px;
+  font-weight: 400;
+  font-size: 1.2em;
+}
+.page_toc .anchor:hover:after {
+  content: "";
+}
+
+.page_toc ul {
+  list-style-type: none;
+  margin-top: 0px;
+  padding-left: 10px;
+  color: var(--base-color, black);
+  text-decoration: none;
+  font-weight: 400;
+  line-height: 1.2em;
+}
+
+.page_toc ul a:hover span {
+  border-bottom: none !important;
+  text-decoration:underline !important;
+}
+
+.page_toc ul a {
+  color: var(--base-color, black);
+  text-decoration: none;
+  font-weight: 400;
+  line-height: 1.2em;
+}
+
+.page_toc ul li {
+  padding-top: 7px;
+}
+
+@media screen and (max-width: 900px) {
+  .page_toc {
+    position: relative;
+    top: -20px;
+    padding: 10px 0;
+    border: none;
+    border-bottom: 1px solid #ddd;
+    font-size: 1.0em;
+  }
+  .nav {
+    margin: 0 auto;
+    width: 900px;
+  }
+  .page_toc p.title {
+    font-weight: 400;
+    font-size: 1.2em;
+  }
+  .content {
+    display: block;
+  }
+  .markdown-section {
+    margin: 0 auto;
+  }
+}
+
+/*
+.page_toc .active {
+  border-left: 5px solid;
+  color: var(--theme-color, #42b983);
+  padding-left: 10px;
+}
+*/

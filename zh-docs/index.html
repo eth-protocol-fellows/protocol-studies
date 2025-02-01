@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Protocol Wiki</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="title" content="Protocol Wiki">
+  <meta name="description" content="EPF Study Group Wiki">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="assets/favicon/favicon.ico">
+
+  
+  <meta property="og:type" content="website">
+    <!-- <meta property="og:url" content="https:/> -->
+  <meta property="og:title" content="Protocol Wiki">
+  <meta property="og:description" content="EPF Study Group Wiki">
+  <meta property="og:image" content="https://raw.githubusercontent.com/eth-protocol-fellows/protocol-studies/wiki-pages/docs/images/epfsg_hero.jpg">
+
+  <meta property="twitter:card" content="summary_large_image">
+   <!-- <meta property="twitter:url" content="https://> -->
+  <meta property="twitter:title" content="Protocol Wiki">
+  <meta property="twitter:description" content="EPF Study Group Wiki">
+  <meta property="twitter:image" content="https://raw.githubusercontent.com/eth-protocol-fellows/protocol-studies/wiki-pages/docs/images/epfsg_hero.jpg">
+
+  <!-- Themeable Simple theme dark (use either this or the one below) -->
+  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify-themeable@0/dist/css/theme-simple-dark.css">  -->
+
+  <!-- Themeable Simple based on OS default (use either this or the one above) -->
+  <link rel="stylesheet" media="(prefers-color-scheme: light)"
+    href="https://cdn.jsdelivr.net/npm/docsify-themeable@0/dist/css/theme-simple.css">
+  <link rel="stylesheet" media="(prefers-color-scheme: dark)"
+    href="https://cdn.jsdelivr.net/npm/docsify-themeable@0/dist/css/theme-simple-dark.css">
+
+  <link rel="stylesheet" href="assets/css/theme.css">
+
+  <!-- Font Awesome Stylesheets -->
+  <link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free/css/fontawesome.css" />
+  <link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free/css/brands.css" />
+  <link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free/css/regular.css" />
+  <link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free/css/solid.css" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap"
+    rel="stylesheet">
+
+  <style>
+    :root {
+      --base-font-family: "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
+      --base-line-height: 1.4;
+      --base-font-size: 1.125rem;
+
+      --cover-max-width: 45em;
+
+      --heading-h2-border-style: none;
+      --heading-h1-margin: 1rem 0rem -0.5rem 0rem;
+      --heading-h2-margin: 1rem 0rem -1.5rem 0rem;
+      --heading-h3-margin: 1rem 0rem -.5rem 0rem;
+      --heading-h4-margin: 1rem 0rem -.5rem 0rem;
+      --heading-h5-margin: 1rem 0rem -.5rem 0rem;
+      --heading-h6-margin: 1rem 0rem 0rem 0rem;
+      --heading-h1-font-size: 1.60rem;
+      --heading-h2-font-size: 1.40rem;
+      --heading-h3-font-size: 1.20rem;
+      --heading-h4-font-size: 1.15rem;
+      --heading-h5-font-size: 1.1rem;
+      --heading-h6-font-size: 1rem;
+      --heading-h1-font-weight: 400;
+      --heading-h2-font-weight: 400;
+      --heading-h3-font-weight: 400;
+      --heading-h4-font-weight: 400;
+      --heading-h5-font-weight: 400;
+      --heading-h6-font-weight: 400;
+
+      --link-color: #0374B5;
+      --link-text-decoration: underline;
+      --link-text-decoration--hover: underline;
+
+      --sidebar-name-color: #0374B5;
+      --sidebar-nav-link-color--active: #0374B5;
+      --sidebar-nav-link-border-color--active: #0374B5;
+      --sidebar-nav-link-font-weight--active: bold;
+
+      --sidebar-nav-pagelink-background--active:
+          no-repeat 0px center / 5px 6px
+          linear-gradient(225deg, transparent 2.75px, #0374B5 2.75px 4.25px, transparent 4.25px),
+          no-repeat 5px center / 5px 6px
+          linear-gradient(135deg, transparent 2.75px, #0374B5 2.75px 4.25px, transparent 4.25px);
+      --sidebar-nav-pagelink-background--collapse:
+          no-repeat 2px calc(50% - 2.5px) / 6px 5px
+          linear-gradient(45deg, transparent 2.75px, #0374B5 2.75px 4.25px, transparent 4px),
+          no-repeat 2px calc(50% + 2.5px) / 6px 5px
+          linear-gradient(135deg, transparent 2.75px, #0374B5 2.75px 4.25px, transparent 4px);
+      --sidebar-nav-pagelink-background--loaded:
+          no-repeat 0px center / 5px 6px
+          linear-gradient(225deg, transparent 2.75px, #0374B5 2.75px 4.25px, transparent 4.25px),
+          no-repeat 5px center / 5px 6px
+          linear-gradient(135deg, transparent 2.75px, #0374B5 2.75px 4.25px, transparent 4.25px);
+
+      --navbar-root-margin: 0 0 0 .8em;
+      --navbar-root-color--active: #0374B5;
+
+      --blockquote-border-color: #0374B5;
+
+      --pagination-title-color: #0374B5;
+
+      --docsifytabs-tab-color: var(--base-color);
+    }
+
+  </style>
+  <link rel="stylesheet" href="assets/css/custom.css">
+</head>
+
+<body>
+  <div id="app"></div>
+  <script>
+    // Enter the URL of your own GitHub Repository in between the two quotes below
+    var gitLinkRepoURL = 'https://github.com/eth-protocol-fellows/protocol-studies';
+
+    // Customize the text for your Edit this Page on GitHub link between the two quotes below
+    var editThisPageLinkText = 'Contribute to the wiki';
+
+    // Set standalone to true to permanently hide the Sidebar and Navbar
+    var standalone = false;
+
+    // Set ToC to true to permanently show page Table of Contents (Sidebar and Navbar must also be hidden)
+    var ToC = false;
+
+    // Set navbar to true to permanently override the hiding of the Navbar when displaying as standalone
+    var navbar = false;
+
+    // Set footer to true to permanently show the Footer ('_footer.md)
+    var footer = false;
+
+    // Get value from GET-parameter in URL
+    // @param {array} name Parameter-name
+    // @param {*} isTrue Return if found
+    // @param {*} isFalse Return if not found
+    // @returns {string|null} Parameter-value
+    function getURLParameterByName(name, isTrue = null, isFalse = null, url = window.location.href) {
+
+      let exists = false;
+
+      if (Array.isArray(name)) {
+
+        name.forEach(element => {
+          if (getURLParameterByName(element)) {
+            exists = true;
+          }
+        });
+
+      } else {
+
+        name = name.toLowerCase().replace(/[\[\]]/g, '\\$&');
+
+        var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)');
+        var results = regex.exec(url.toLowerCase());
+
+        exists = (results && results[2]) ? true : false;
+      }
+
+      if (exists && isTrue) {
+        return isTrue;
+      }
+
+      if (!exists && isFalse) {
+        return isFalse;
+      }
+
+      return exists;
+    }
+
+    // Docsify
+    window.$docsify = {
+      // GENERAL SETTINGS
+      // -----------------------------------------------------------------
+      name: '<img class="logo" src="/assets/favicon/favicon.ico"/> Protocol Wiki',
+      homepage: 'readme.md',
+      loadSidebar: !(getURLParameterByName(['standalone', 'embedded']) || standalone || false),
+      loadNavbar: !(getURLParameterByName(['standalone', 'embedded']) && !(getURLParameterByName('navbar')) || standalone && !navbar ||false),
+      externalLinkTarget: (getURLParameterByName(['standalone', 'embedded'], '_top', '_blank')),
+      loadFooter: (getURLParameterByName('footer') || footer || true),
+      sidebarDisplayLevel: 0, // set sidebar display level
+
+
+      // SIDEBAR NAVIGATION
+      // -----------------------------------------------------------------
+      auto2top: true,
+      maxLevel: 2,
+      // Set subMaxLevel to 0 to remove automatic display of page table of contents (TOC) in Sidebar
+      subMaxLevel: 2,
+      hideSidebar: (getURLParameterByName(['standalone', 'embedded']) || standalone),
+
+      // PLUGIN SETTINGS
+      // -----------------------------------------------------------------
+      pagination: {
+        previousText: 'PREV',
+        nextText: 'NEXT',
+        crossChapter: false,
+        crossChapterText: false,
+      },
+
+      toc: {
+        scope: '.markdown-section',
+        headings: 'h2,h3',
+        title: '',
+      },
+
+      // Search configurations
+      // See: https://docsify.js.org/#/plugins?id=full-text-search
+      // -----------------------------------------------------------------
+      search: {
+        maxAge: 86400000, // Expiration time, the default one day
+        paths: 'auto', 
+        placeholder: 'Type to search',
+        noData: 'No Results!',
+
+        // Headline depth, 1 - 6
+        depth: 2,
+
+        hideOtherSidebarContent: false, // whether or not to hide other sidebar content
+
+        // To avoid search index collision
+        // between multiple websites under the same domain
+        namespace: 'epf',
+        // You can provide a regexp to match prefixes. In this case,
+        // the matching substring will be used to identify the index
+        // pathNamespaces: /^(\/(zh-cn|ru-ru))?(\/(v1|v2))?/,
+      },
+
+      // custom plugins
+      // -----------------------------------------------------------------
+
+      
+      plugins: [
+        function (hook, vm) {
+
+          hook.afterEach(function (html, next) {
+            // Invoked each time after the Markdown file is parsed.
+            // beforeEach and afterEach support asynchronous。
+            // ...
+            // call `next(html)` when task is done.
+
+            var htmlElement = document.createElement('div');
+            htmlElement.innerHTML = html;
+
+            if (getURLParameterByName(['standalone', 'embedded']) || standalone) {
+
+              // Carry any existing URL parms in links
+              var URLparms = '';
+
+              if (getURLParameterByName('standalone') || standalone) {
+                URLparms = `?standalone=true`;
+              }
+
+              if (getURLParameterByName('embedded')) {
+                URLparms = `?embedded=true`;
+              }
+
+              if (getURLParameterByName('hidegitlink')) {
+                URLparms = URLparms + `&hidegitlink=true`;
+              }
+
+              if (getURLParameterByName('navbar') || navbar) {
+                URLparms = URLparms + `&navbar=true`;
+              }
+
+              if (getURLParameterByName('toc') || ToC) {
+                URLparms = URLparms + `&toc=true`;
+              }
+
+              if (getURLParameterByName('footer') || footer) {
+                URLparms = URLparms + `&footer=true`;
+              }
+
+              const links = Array.from(htmlElement.querySelectorAll('a'))
+
+              for (const link of links) {
+                //console.log(link.getAttribute('href'));
+                // Find any local Markdown file links not including Docsify id anchor links
+                if ((link.getAttribute('href')?.match(/^#/) && (link.getAttribute('href').includes('id=')) === false)) {
+                  // Modify each Markdown file link to include existing parms
+                  var existingLink = link.getAttribute('href');
+                  //console.log(existingLink);
+                  // Update Markdown file link
+                  var newURL = existingLink + URLparms;
+                  //console.log("Changed:");
+                  //console.log(newURL);
+                  link.setAttribute('href', newURL);
+                  //console.log(link.getAttribute('href'));
+                }
+              }
+            }
+              
+            /* JS to change Embedly cards to light or dark theme based on system setting when using the light + dark theme (uncomment to use) */
+            /*
+            const embeds = Array.from(htmlElement.querySelectorAll('.embedly-card'))
+            if (!(embeds.length === 0)) {
+               if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)  {
+                  // dark mode
+                  // console.log("dark");
+                  embeds.forEach(embed => {
+                    embed.setAttribute('data-card-theme', 'dark');
+                  });
+                  } else {
+                  // light mode
+                  // console.log("light");
+                  embeds.forEach(embed => {
+                    embed.setAttribute('data-card-theme', 'light');
+                  });
+              }
+              window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+                // console.log(`changed to ${e.matches ? "dark" : "light"} mode`);
+                // console.log(e.matches);            
+                document.location.reload();
+              });
+
+            }
+            */
+
+            next(htmlElement.innerHTML);
+
+          });
+
+          hook.beforeEach(function (html) {
+            if (/githubusercontent\.com/.test(vm.route.file)) {
+              url = vm.route.file
+                .replace('raw.githubusercontent.com', 'github.com')
+                .replace(/\/master/, '/blob/master')
+            } else {
+              url = gitLinkRepoURL + '/blob/main/docs/' + vm.route.file
+            }
+            var editHtml = `<a href="${url}" class="btn-primary"/> :memo:  ${editThisPageLinkText}</a>`
+
+            if ((!(getURLParameterByName('hidegitlink'))) && (!!gitLinkRepoURL)) {
+              return html + '<br />' + '\n\n' + editHtml
+            } else {
+              return html
+            }
+
+          });
+          
+          // Invoked on each page load after new HTML has been appended to the DOM
+          hook.doneEach(function () {
+            var hasEmbedly = document.getElementsByClassName('embedly-card');
+            if (hasEmbedly.length > 0) {
+                // elements with class "embedly-card" exist
+                var script = document.createElement('script');
+                script.type = 'text/javascript';
+                script.src = 'https://cdn.embedly.com/widgets/platform.js';    
+                document.head.appendChild(script);
+            }
+
+            // Remove optional ToC area if full width header image is present
+            var hasImageHeader = document.getElementsByClassName('header-image-full-width');
+            if (hasImageHeader.length > 0) {
+              const elements = document.getElementsByClassName("nav");
+              while (elements.length > 0) elements[0].remove();
+            }
+
+            // Adjust left margin for optional ToC area if faded header image is present
+            var hasImageFade = document.getElementsByClassName('header-image-fade');
+            var hasNav = document.getElementsByClassName('nav');
+            if (hasImageFade.length > 0 && hasNav.length > 0) {
+              var editCSS = document.createElement('style')
+              editCSS.innerHTML = ".markdown-section {margin-right: 0px;}";
+              document.body.appendChild(editCSS);
+            }
+
+            // Update all iframes with source domains 'youtube.com', 'youtube-nocookie.com', 'docs.google.com' or 'onedrive.live.com' to include the default responsive CSS Markdown class `video-container-16by9`
+            const allIframes = Array.from(document.querySelectorAll('iframe[src*="youtube.com"], iframe[src*="youtube-nocookie.com"], iframe[src*="docs.google.com"], iframe[src*="onedrive.live.com"]'));
+
+            // Filter out iframes that are not already wrapped with a div including the classes 'video-container-16by9' and 'video-container-4by3'
+            const targetIframes = allIframes.filter(function(iframe) {
+              const parentDiv = iframe.parentNode;
+              return !parentDiv.matches('.video-container-16by9, .video-container-4by3');
+            });
+
+            // Wrap each target iframe with a div element
+            targetIframes.forEach(function(iframe) {
+              const wrapperDiv = document.createElement('div');
+              wrapperDiv.classList.add('video-container-16by9');
+              // Preserve existing classes on the iframe
+              iframe.classList.forEach(function(className) {
+                wrapperDiv.classList.add(className);
+              });
+              // Replace the iframe with the wrapper div
+              iframe.parentNode.replaceChild(wrapperDiv, iframe);
+              wrapperDiv.appendChild(iframe);
+            });
+
+          });
+
+        }
+      ]
+    }
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/docsify.min.js"></script>
+
+  <!-- Adjust Page Margins When Standalone or Embedded -->
+  <script>
+    if (getURLParameterByName(['standalone', 'embedded']) || standalone) {
+      var editCSS = document.createElement('style')
+      editCSS.innerHTML = ".markdown-section {padding: 1rem 14px;}";
+      document.body.appendChild(editCSS);
+    }
+  </script>
+   
+  <!-- Mermaid diagrams plugin-->
+
+  <script type="module">
+    import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";
+    mermaid.initialize({ startOnLoad: true });
+    window.mermaid = mermaid;
+  </script>
+  <script src="//unpkg.com/docsify-mermaid@2.0.1/dist/docsify-mermaid.js"></script>
+
+  <!-- Customizable Theme-->
+  <script src="https://cdn.jsdelivr.net/npm/docsify-themeable@0/dist/js/docsify-themeable.min.js"></script>
+
+  <!-- Font Awesome Plugin -->
+  <script src="https://unpkg.com/docsify-fontawesome/dist/docsify-fontawesome.min.js"></script>
+
+  <!-- Tabs Plugin-->
+  <script src="https://cdn.jsdelivr.net/npm/docsify-tabs@1/dist/docsify-tabs.min.js"></script>
+
+  <!-- Run External Scripts Plugin -->
+  <script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/plugins/external-script.min.js"></script>
+
+  <!-- Footer Plugin -->
+  <script src="//cdn.jsdelivr.net/npm/@alertbox/docsify-footer/dist/docsify-footer.min.js"></script>
+
+  <!-- Pagination Plugin -->
+  <script src="//unpkg.com/docsify-pagination/dist/docsify-pagination.min.js"></script>
+  <!-- Sidebar Plugin -->
+  <script src="//cdn.jsdelivr.net/npm/docsify-sidebar-collapse/dist/docsify-sidebar-collapse.min.js"></script>
+
+  <!-- Table of Contents Plugin -->
+  <script>
+    if (getURLParameterByName('toc') || ToC) {
+      document.write('<link rel="stylesheet" type="text/css" href="assets/css/toc.css" />');
+      document.write('<script src="https://unpkg.com/docsify-toc@1.1.0/dist/toc.js"><\/script>');
+    }
+  </script>
+
+  <!-- Footnotes -->
+  <!-- Taken from https://github.com/sy-records/docsify-footnotes/blob/main/src/index.js and removed the emoji. -->
+  <script>
+    const footnotes = function(hook) {
+      hook.beforeEach(function(markdown) {
+        if (/\[\^([A-Za-z0-9\-]+)\][^:]/.test(markdown)) {
+          markdown = markdown
+                  .replace(/\[\^([A-Za-z0-9\-]+)\][^:]/gm, '<sup class="footnote-symbol" id="fn-$1">[\[$1]\](#fnref-$1)</sup>')
+                  .replace(/\[\^([A-Za-z0-9\-]+)\]\: /gm, '<strong class="footnote-reference-symbol" id="fnref-$1">[\[$1\]](#fn-$1)</strong> ');
+        }
+        return markdown;
+      });
+    };
+
+    $docsify = $docsify || {};
+    $docsify.plugins = [].concat(footnotes, $docsify.plugins || []);
+  </script>
+
+<script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"></script>
+
+<!-- KaTex -->
+<script src="//cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css" />
+<script src="//cdn.jsdelivr.net/npm/marked@4"></script>
+<!--docsify-katex -->
+<script src="//cdn.jsdelivr.net/npm/docsify-katex@latest/dist/docsify-katex.js"></script>
+
+</script>
+
+</body>
+
+</html>
