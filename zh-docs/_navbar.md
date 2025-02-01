@@ -1,4 +1,4 @@
-* [Home](readme.md)
-* [Study Group](/eps/intro.md)
+* [首页](readme.md)
+* [学习小组](/eps/intro.md)
 * [Protocol Wiki](/wiki/wiki-intro.md)
-* [Contribute](contributing.md)
+* [贡献](contributing.md)
