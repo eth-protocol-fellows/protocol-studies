@@ -44,7 +44,7 @@ Bell Labs was an unparalleled incubator of the century's most defining technolog
 
 > 🎦 WATCH: [Jon talk about innovations at Bell Labs.](https://www.youtube.com/watch?v=OJsKgiGGzzs)
 
-In many ways, [Ethereum functions](https://ethereum.foundation/infinitegarden) like an open Bell Labs.
+In many ways, [Ethereum foundation](https://ethereum.foundation/infinitegarden) like an open Bell Labs.
 
 Unix introduced concepts like hierarchical file systems, the shell as a command-line interface, single-purpose utilities that could be combined to perform complex tasks.
 These foundational principles laid the groundwork for what became known as the UNIX philosophy — favoring simplicity, flexibility, and reusability in software design.
