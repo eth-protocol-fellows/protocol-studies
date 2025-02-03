@@ -1,5 +1,7 @@
 # Pectra FAQ
 
+<!-- markdownlint-disable MD013 -->
+
 **What is Pectra?**
 Pectra, (Prague - Electra), is the next network upgrade scheduled for Ethereum. The full list of EIPs as well as an introduction to the features can be found [here](https://notes.ethereum.org/@ethpandaops/mekong#What-is-in-the-Mekong-testnet).
 
@@ -10,7 +12,7 @@ For App developers, Stakers and Node operators who are interested in the upcomin
 
 **FAQ**:
 
-#### **Q:** What is Prague/Electra?
+### **Q:** What is Prague/Electra?
 
 **A:** Prague and Electra are the names of the upcoming Ethereum hard fork. The included EIPs can be found [here](https://eips.ethereum.org/EIPS/eip-7600). Prague is the name of the fork on the execution client side, and Electra is the upgrade name on the consensus layer client side.
 
@@ -26,7 +28,7 @@ The [Execution Layer (EL) triggered exits](https://eips.ethereum.org/EIPS/eip-70
 
 **FAQ**:
 
-#### **Q:** What is EIP-7702 and how does it relate to Account abstraction?
+### **Q:** What is EIP-7702 and how does it relate to Account abstraction?
 
 While [EIP-7702](https://eips.ethereum.org/EIPS/eip-7702) isn’t quite account abstraction, it does provide execution abstraction, i.e adds additional functionality to externally owned accounts (EOAs. This allows your EOA to do things like send transaction batches and delegate to other cryptographic key schemes, like passkeys. It does this by setting the code associated with the EOA to a protocol-level proxy designation. A full specification can be found [here](https://eips.ethereum.org/EIPS/eip-7702). It introduces a new transaction type that temporarily authorizes specific contract code for an EOA during a single transaction, allowing EOAs to function as smart contract accounts. This enables several use cases for users, including transaction batching, gas sponsorship, and privilege de-escalation.
 
@@ -66,7 +68,7 @@ System contracts are interfaces defined as contracts, which are essential for ce
 
 **FAQ**:
 
-#### **Q:** What changes about deposits?
+### **Q:** What changes about deposits?
 
 The process of making and submitting deposits will not change. You can continue to use the same tools as earlier. However, the mechanism for processing deposits on Ethereum will undergo an improvement. This improvement is described by [EIP-6110](https://eips.ethereum.org/EIPS/eip-6110) and will allow almost immediate processing of deposits.
 
