@@ -1,6 +1,6 @@
-# Pectra FAQ
-
 <!-- markdownlint-disable MD013 -->
+
+# Pectra FAQ
 
 **What is Pectra?**
 Pectra, (Prague - Electra), is the next network upgrade scheduled for Ethereum. The full list of EIPs as well as an introduction to the features can be found [here](https://notes.ethereum.org/@ethpandaops/mekong#What-is-in-the-Mekong-testnet).
