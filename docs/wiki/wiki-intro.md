@@ -1,5 +1,7 @@
 # Welcome to Protocol Wiki
 
+<!-- markdownlint-disable MD013 -->
+
 Protocol Wiki is a learning resource for anyone diving into Ethereum protocol, its development and research. It has been created during EPF Study Group as collaborative effort to create a contextual documentation of important domains of the protocol.
 
 ## Using the wiki

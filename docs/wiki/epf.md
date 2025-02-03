@@ -1,5 +1,7 @@
 # Ethereum Protocol Fellowship
 
+<!-- markdownlint-disable MD013 -->
+
 EPF is a program for everyone interested in starting to contribute to Ethereum core protocol. Organized by EF Protocol Support, the program is divided into yearly cohorts, each running for 4-5 months. The program was originally started as CDAP by Piper Merriam and grew with each cohort.
 
 Because the protocol, its development and research is fully public and open, anyone can start contributing. But the understanding of current issues, identifying a project to work on and connecting with other contributors can pose a barrier to start, EPF helps to smooth this process.
