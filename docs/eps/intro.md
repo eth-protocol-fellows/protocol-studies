@@ -12,7 +12,7 @@ Originally started in 2024, the study group is a participatory educational progr
 
 The study group content is structured in 2 stages - an intense introduction and deep dive. The first 2 weeks consist of studying existing curriculum from [previous study group](/eps/SG2024.md). The following 6 weeks will provide new live lectures from core developers and researchers with materials covering parts of the execution and consensus layers of Ethereum. 
 
-As a participant, you will spend first 2 weeks studying daily topics, catching up on existing content - starting with the protocol introduction and progressing to more advanced topics. The study group will organize daily calls for discussing the topic(s) of the day and answering questions. If you are just diving into Ethereum protocol, we recommend dedicating at least 2 hours a day during the first 2 weeks. 
+As a participant, you will spend the first 2 weeks studying daily topics, catching up on existing content - starting with the protocol introduction and progressing to more advanced topics. The study group will organize daily calls for discussing the topic(s) of the day and answering questions. If you are just diving into Ethereum protocol, we recommend dedicating at least 2 hours a day during the first 2 weeks. 
 
 ### Schedule
 
