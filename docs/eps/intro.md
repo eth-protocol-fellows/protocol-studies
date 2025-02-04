@@ -1,4 +1,4 @@
-# EPF Protocol Studies
+# Ethereum Protocol Studies
 
 Ethereum Protocol Studies group (EPS) is a community formed to gather knowledge, learn, and educate the public about the Ethereum protocol. 
 
