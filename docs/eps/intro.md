@@ -1,18 +1,18 @@
 # EPF Protocol Studies
 
-Ethereum Protocol Fellowship Study Group (EPFsg) is a community formed to gather knowledge, learn and educate public about the Ethereum protocol. 
+Ethereum Protocol Studies group (EPS) is a community formed to gather knowledge, learn, and educate the public about the Ethereum protocol. 
 
-The protocol evolves and grows quickly, it's an always-changing infinite garden. To sustain its credible neutrality, this pace should be reflected in the growing core community and education. Everyone using, building or living on Ethereum should be able to learn and become involved in the core protocol. The complexity of the architecture, codebases and dynamic development with scattered resources can discourage many talented people from participating on the core level. 
+The protocol evolves and grows quickly, it's an always-changing infinite garden. To sustain its credible neutrality, this pace should be reflected in growing and educating the core community. Everyone using, building or living on Ethereum should be able to learn and become involved in the core protocol. The complexity of the architecture, codebases and dynamic development paired with scattered resources can discourage many talented people from participating.
 
-Originally started in 2024, Study Group is a participative educational program that aims to improve core protocol education by introducing a curriculum focused on all parts of the Ethereum stack, building a wiki knowledgbase and creating community by gather people learning about the protocol. 
+Originally started in 2024, the study group is a participatory educational program that aims to improve core protocol education by introducing a curriculum focused on all parts of the Ethereum stack, building a wiki knowledgbase and creating a community focused on learning about the protocol. 
 
-> The study group in 2025 is 8 week long program starting in February 17. If you'd like to participate, join our [Discord server](https://discord.gg/8RPnPGEQtJ) to follow all events and fill [the participant survey](https://forms.gle/G5V95qyGV8uMjKGcA) 
+> The study group in 2025 is 8 week long program starting in February 17. If you'd like to participate, join our [Discord server](https://discord.gg/8RPnPGEQtJ) to follow all events and fill out [the participant survey](https://forms.gle/G5V95qyGV8uMjKGcA) 
 
 ## Program Structure
 
-The study group content is structured in 2 stages - an intense introduction and deep dive. The first 2 weeks consist of studying existing curriculum from [previous study group](/eps/SG2024.md). Other 6 weeks are providing new live lectures from core developers and researchers with materials covering every part of execution and consensus layer of Ethereum. 
+The study group content is structured in 2 stages - an intense introduction and deep dive. The first 2 weeks consist of studying existing curriculum from [previous study group](/eps/SG2024.md). The following 6 weeks will provide new live lectures from core developers and researchers with materials covering parts of the execution and consensus layers of Ethereum. 
 
-As a participant, you will spend first 2 weeks studying daily tpics, catching up on existing content which starts from protocol introduction to more advanced topics. The study group will organize daily calls for discussing the subject of the day and answering any of your questions. To start learning from begining, this part requires a dedication of at least 2 hours a day during the whole week, ideally even more. 
+As a participant, you will spend first 2 weeks studying daily topics, catching up on existing content - starting with the protocol introduction and progressing to more advanced topics. The study group will organize daily calls for discussing the topic(s) of the day and answering questions. If you are just diving into Ethereum protocol, we recommend dedicating at least 2 hours a day during the first 2 weeks. 
 
 ### Schedule
 
