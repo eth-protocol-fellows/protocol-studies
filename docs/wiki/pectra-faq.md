@@ -20,6 +20,8 @@ With [EIP-7702](https://eips.ethereum.org/EIPS/eip-7702), The user wallet would 
 
 The [Execution Layer (EL) triggered exits](https://eips.ethereum.org/EIPS/eip-7002) is a new feature that allows the withdrawal address set in the `0x01` or `0x02` withdrawal credential to perform exits directly in EL, without relying on pre-signed BLS keys. This feature is mainly targeted at staking pools, enabling them to use smart contracts to fully control the validator lifecycle.
 
+More resources and data on Pectra can be found at https://pectra.wtf/. 
+
 Users/Devs
 ---
 **FAQ**:
@@ -50,7 +52,6 @@ The last 8192 blockhash are now stored and available for access in the `BLOCKHAS
 #### **Q:** What are system contracts?
 System contracts are interfaces defined as contracts, which are essential for certain Ethereum functions to occur. The contract approach is used instead of each client implementing the logic in order to simplify maintenance as well as allow for upgrades in the future with minimal overhead.
 
-Stakers
 ---
 **FAQ**:
 #### **Q:** What changes about deposits?
@@ -60,7 +61,7 @@ The process of making and submitting deposits will not change. You can continue 
 After the changes included in [EIP-6110](https://eips.ethereum.org/EIPS/eip-6110), the deposits should show up in <20 minutes during regular finalizing periods of the chain. However, there is still a deposit queue for your validator to be activated, the EIP merely ensures that the deposit is seen faster and more securely by the chain and does not influence how quickly a validator is activated. 
 
 #### **Q:** What are `0x02` withdrawal credentials?
-Up until the Pectra fork, Ethereum accepted two types of withdrawal credentials: `0x00` and `0x01`. The main change is that `0x01`  contain an execution layer address that receives partial and full withdrawals. The `0x02` withdrawal credentials are a new type of withdrawal credentials that will be introduced in the Pectra upgrade. The `0x02` withdrawal credentials will allow for maximum effective balances of >32 ETH and <2048ETH either via larger deposits or via consolidations of existing validators. The `0x02` withdrawal credentials also enable the ability to exit validators with the execution layer withdrawal address, enabling complete control of the validator via the execution layer. 
+Up until the Pectra fork, Ethereum accepted two types of withdrawal credentials: `0x00` and `0x01`. The main change is that `0x01` contain an execution layer address that receives partial and full withdrawals. The `0x02` withdrawal credentials are a new type of withdrawal credentials that will be introduced in the Pectra upgrade. The `0x02` withdrawal credentials will allow for maximum effective balances of >32 ETH and <2048ETH either via larger deposits or via consolidations of existing validators. The `0x02` withdrawal credentials also enable the ability to exit validators with the execution layer withdrawal address, enabling complete control of the validator via the execution layer. 
 
 #### **Q:** How do I switch to `0x02` withdrawal credentials? How does it help me?
 There are 2 ways in which a validator can have `0x02` withdrawal credentials:
