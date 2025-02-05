@@ -8,7 +8,7 @@ Ethereum Protocol Fellowship Study Group (EPFsg) is an open study program for an
 
 **[Start your studies](/eps/intro.md) using the wiki here** and learn more about the study group in its original [announcement blog](https://blog.ethereum.org/2024/02/07/epf-study-group). 
 
-> The study group is not just a list of resources but a community of people maintaining them and learning about the core protocol. **Join the community in our [Discord server](https://discord.com/invite/addwpQbhpq)**.
+> The study group is not just a list of resources but a community of people maintaining them and learning about the core protocol. **Join the community in our [Discord server](https://discord.gg/8RPnPGEQtJ)**.
 
 
 ## Protocol Wiki 
