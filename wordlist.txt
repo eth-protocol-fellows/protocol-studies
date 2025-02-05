@@ -46,10 +46,13 @@ autoplay
 AVS
 backend
 backfill
+backfills
+backfilling
 Bankless
 Barnabe
 Barnabé
 Barnabé's
+Bastin
 BDN
 beaconblock
 Beiko
@@ -115,6 +118,7 @@ Challanges
 changeset
 changesets
 Charmes
+Chirag
 cli
 CLRS
 cmd
@@ -304,6 +308,7 @@ Forkchoice
 forkchoiceUpdatedV
 Forky
 Formatting
+FOCIL
 FOSS
 frac
 frameborder
@@ -555,6 +560,7 @@ pex
 PGA
 Pigovian
 Pilipovic
+pipelining
 PKCS
 Playdate
 pmod
@@ -563,11 +569,14 @@ POS
 POSIX
 postel's
 possibile
+Potuz
 Potuz's
 POV
 PQ
 PQC
 PQCA
+PR
+PR'ed
 pre
 preAccesedStorageKeys
 precompile
@@ -645,6 +654,7 @@ RIPEMD
 Ritchie
 rK
 RLMD
+RLNC
 RLP
 RLPx
 roadmap
@@ -674,6 +684,7 @@ serialize
 serializer
 Serokell
 sexualized
+SG
 SHA
 Shacham
 shadowfork
@@ -824,6 +835,7 @@ xff
 XMSS
 XORed
 xy
+YAML
 Yan
 Yellowpaper
 Yoni

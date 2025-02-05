@@ -135,7 +135,7 @@ A normally behaved validator will not have its balance dropped below 32ETH even 
 The balance will continue to collect at the validator until the next partial withdrawal is triggered. The validator will however contain a maximum effective balance of 2048 ETH, the remaining balance will be considered ineffective in the beacon chain.
 
 #### **Q:** What balances between 32ETH and 2048ETH can I earn on?
-The effective balance increments 1ETH at a time. This means the accrued balance needs to meet a threshold before the effective balance changes. e.g, If your balance is 33.74 effective balance will be 33. If you effective balance is 33.75 then your effective balance will be 34.
+The effective balance increments 1 ETH at a time. This means the accrued balance needs to meet a threshold before the effective balance changes. E.g, if the accrued balance is 33.74 ETH, the effective balance will be 33 ETH. If the accrued balance increases to 33.75 ETH, then the effective balance will also be 33 ETH. Consequently, an accrued balance of 34.25 ETH would correspond to an effective balance of 34 ETH.
 
 #### **Q:** Can I top up ETH in my `0x02` validator?
 You can either consolidate a validator into the `0x02` validator to increase its balance or make a fresh deposit.
