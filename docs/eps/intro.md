@@ -6,7 +6,7 @@ The protocol evolves and grows quickly, it's an always-changing infinite garden.
 
 Originally started in 2024, the study group is a participatory educational program that aims to improve core protocol education by introducing a curriculum focused on all parts of the Ethereum stack, building a wiki knowledgbase and creating a community focused on learning about the protocol. 
 
-> The study group in 2025 is 8 week long program starting in February 17. If you'd like to participate, join our [Discord server](https://discord.gg/8RPnPGEQtJ), attend the [town hall](../assets/ics/eps25townhall.ics) on Feb 12 at 1500 UTC and fill out [the participant survey](https://forms.gle/G5V95qyGV8uMjKGcA)
+> The study group in 2025 is 8 week long program starting in February 17. If you'd like to participate, join our [Discord server](https://discord.gg/8RPnPGEQtJ), attend the [town hall](/docs/assets/ics/eps25townhall.ics) on Feb 12 at 1500 UTC and fill out [the participant survey](https://forms.gle/G5V95qyGV8uMjKGcA)
 
 ![Ethereum Protocol Studies](/docs/images/EPS2-1080.jpg)
 
