@@ -4,7 +4,7 @@ Ethereum Protocol Studies group (EPS) is a community formed to gather knowledge,
 
 The protocol evolves and grows quickly, it's an always-changing infinite garden. To sustain its credible neutrality, this pace should be reflected in growing and educating the core community. Everyone using, building or living on Ethereum should be able to learn and become involved in the core protocol. The complexity of the architecture, codebases and dynamic development paired with scattered resources can discourage many talented people from participating.
 
-Originally started in 2024, the study group is a participatory educational program that aims to improve core protocol education by introducing a curriculum focused on all parts of the Ethereum stack, building a wiki knowledgbase and creating a community focused on learning about the protocol. 
+Originally started in 2024, the study group is a participatory educational program that aims to improve core protocol education by introducing a curriculum focused on all parts of the Ethereum stack, building a wiki knowledge base and creating a community focused on learning about the protocol.
 
 > The study group in 2025 is 8 week long program starting in February 17. If you'd like to participate, join our [Discord server](https://discord.gg/8RPnPGEQtJ), attend the [town hall](https://calendar.google.com/calendar/event?action=TEMPLATE&tmeid=MzVtNWRvNXQ4Z3JxdGVrdmJmYjJ1NjI2bjEgam9zaHVhLmRhdmlzQGV0aGVyZXVtLm9yZw&tmsrc=joshua.davis%40ethereum.org) on Feb 12 at 1500 UTC and fill out [the participant survey](https://forms.gle/G5V95qyGV8uMjKGcA)
 
@@ -18,7 +18,7 @@ The study group content is structured in 2 stages - an intense introduction and 
 
 Each session is led by core developer or researcher, comes with reading materials to get you familiar with the topic context and some also include exercises to strengthen  and practice your understanding.
 
-TBD           
+To be decided.           
                             
 ### Streams and recordings
 
