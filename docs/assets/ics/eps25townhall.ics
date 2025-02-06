@@ -1,0 +1,19 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//ical.marudot.com//iCal Event Maker
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+DTSTAMP:20250206T151639Z
+UID:1738854242598-64367@ical.marudot.com
+DTSTART:20250212T150000Z
+DTEND:20250212T160000Z
+SUMMARY:Town Hall - Ethereum Protocol Studies
+DESCRIPTION:An information session and Q&A about the 2025 Ethereum Protocol Studies group.
+LOCATION:https://meet.ethereum.org/eps-town-hall-25
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Town Hall - Ethereum Protocol Studies
+TRIGGER:-PT15M
+END:VALARM
+END:VEVENT
+END:VCALENDAR
