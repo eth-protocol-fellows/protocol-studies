@@ -8,7 +8,7 @@ Originally started in 2024, the study group is a participatory educational progr
 
 > The study group in 2025 is 8 week long program starting in February 17. If you'd like to participate, join our [Discord server](https://discord.gg/8RPnPGEQtJ), attend the [town hall](https://bordel.wtf/epstownhall25.ics) on Feb 12 at 1500 UTC and fill out [the participant survey](https://forms.gle/G5V95qyGV8uMjKGcA).
 
-![Ethereum Protocol Studies](/docs/images/EPS2-1080.jpg)
+![Ethereum Protocol Studies](https://raw.githubusercontent.com/eth-protocol-fellows/protocol-studies/376d1fca6907d2796da0a7876703b525ef528727/docs/images/EPS2-1080.jpg)
 
 ## Program Structure
 
