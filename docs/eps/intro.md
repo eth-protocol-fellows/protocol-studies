@@ -1,6 +1,6 @@
 # Ethereum Protocol Studies
 
-Ethereum Protocol Studies group (EPS) is a community formed to gather knowledge, learn, and educate the public about the Ethereum protocol. 
+[Ethereum Protocol Studies group (EPS)](https://blog.ethereum.org/2025/02/05/ethereum-protocol-studies) is a community formed to gather knowledge, learn, and educate the public about the Ethereum protocol. 
 
 The protocol evolves and grows quickly, it's an always-changing infinite garden. To sustain its credible neutrality, this pace should be reflected in growing and educating the core community. Everyone using, building or living on Ethereum should be able to learn and become involved in the core protocol. The complexity of the architecture, codebases and dynamic development paired with scattered resources can discourage many talented people from participating.
 
