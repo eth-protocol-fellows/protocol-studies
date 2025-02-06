@@ -200,6 +200,8 @@ In Ethereum two primary types of transaction pools are recognized:
 
 2. **Blob Pools**: Unlike legacy pools, blob pools maintain a priority heap for transaction eviction but incorporate distinct mechanisms for operation. Notably, the implementation of blob pools is well-documented, with an extensive comments section available for review [here](https://github.com/ethereum/go-ethereum/blob/064f37d6f67a012eea0bf8d410346fb1684004b4/core/txpool/blobpool/blobpool.go#L132). A key feature of blob pools is the use of logarithmic functions in their eviction queues.
 
+Note that these examples are using go-ethereum, specific naming and implementation details might differ in various clients while main principles stays the same. 
+
 ### EVM
 
 [Wiki - EVM](/wiki/EL/evm.md)
