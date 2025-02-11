@@ -55,7 +55,7 @@ Overall, PeerDAS integrates deterministic custody allocation, probabilistic data
 - [Possible futures of the Ethereum protocol, part 2: The Surge by Vitalik Buterin](https://vitalik.eth.limo/general/2024/10/17/futures2.html)
 - [From 4844 to Danksharding: a path to scaling Ethereum DA (ethresear.ch)](https://ethresear.ch/t/from-4844-to-danksharding-a-path-to-scaling-ethereum-da/18046)
 - [PeerDAS – a simpler DAS approach using battle-tested p2p components (ethresear.ch)](https://ethresear.ch/t/peerdas-a-simpler-das-approach-using-battle-tested-p2p-components/16541)
-- [DevCon Sea: Scaling Ethereum with DAS by Franesco](https://www.youtube.com/watch?v=toR2UKzE_zA)
+- [DevCon Sea: Scaling Ethereum with DAS by Francesco](https://www.youtube.com/watch?v=toR2UKzE_zA)
 - [DevCon Sea: From PeerDAS to FullDAS](https://www.youtube.com/watch?v=Y8VKmyJMAUk&t=9s)
 - [EthPrague: PeerDAS by Dapplion](https://www.youtube.com/watch?v=fCIPNxGXmmE&t=43s)
 - [PeerDAS in Pectra and beyond by Francesco](https://www.youtube.com/watch?v=WOdpO1tH_Us&t=334s)
