@@ -1,12 +1,14 @@
 # Ethereum Protocol Studies
 
-Ethereum Protocol Studies group (EPS) is a community formed to gather knowledge, learn, and educate the public about the Ethereum protocol. 
+[Ethereum Protocol Studies group (EPS)](https://blog.ethereum.org/2025/02/05/ethereum-protocol-studies) is a community formed to gather knowledge, learn, and educate the public about the Ethereum protocol. 
 
 The protocol evolves and grows quickly, it's an always-changing infinite garden. To sustain its credible neutrality, this pace should be reflected in growing and educating the core community. Everyone using, building or living on Ethereum should be able to learn and become involved in the core protocol. The complexity of the architecture, codebases and dynamic development paired with scattered resources can discourage many talented people from participating.
 
-Originally started in 2024, the study group is a participatory educational program that aims to improve core protocol education by introducing a curriculum focused on all parts of the Ethereum stack, building a wiki knowledgbase and creating a community focused on learning about the protocol. 
+Originally started in 2024, the study group is a participatory educational program that aims to improve core protocol education by introducing a curriculum focused on all parts of the Ethereum stack, building a wiki knowledge base and creating a community focused on learning about the protocol.
 
-> The study group in 2025 is 8 week long program starting in February 17. If you'd like to participate, join our [Discord server](https://discord.gg/8RPnPGEQtJ) to follow all events and fill out [the participant survey](https://forms.gle/G5V95qyGV8uMjKGcA) 
+> The study group in 2025 is 8 week long program starting in February 17. If you'd like to participate, join our [Discord server](https://discord.gg/8RPnPGEQtJ), attend the [town hall](https://bordel.wtf/epstownhall25.ics) on Feb 12 at 1500 UTC and fill out [the participant survey](https://forms.gle/G5V95qyGV8uMjKGcA).
+
+![Ethereum Protocol Studies](https://raw.githubusercontent.com/eth-protocol-fellows/protocol-studies/376d1fca6907d2796da0a7876703b525ef528727/docs/images/EPS2-1080.jpg)
 
 ## Program Structure
 
@@ -16,7 +18,7 @@ The study group content is structured in 2 stages - an intense introduction and 
 
 Each session is led by core developer or researcher, comes with reading materials to get you familiar with the topic context and some also include exercises to strengthen  and practice your understanding.
 
-TBD           
+To be decided.           
                             
 ### Streams and recordings
 
@@ -36,6 +38,7 @@ While this program is designed to act as a precursor to the Ethereum Protocol Fe
 
 ## Important links
 
+- [Town Hall call link](https://meet.ethereum.org/eps-town-hall-25)
 - [Discord server](https://discord.gg/8RPnPGEQtJ)
 - [Weekly talks on StreamEth](https://streameth.org/65cf97e702e803dbd57d823f/epf_study_group)
 - [Youtube](https://www.youtube.com/@ethprotocolfellows)
