@@ -1,17 +1,18 @@
 # Introduction to Ethereum PeerDAS
 
 > :warning: This article is a [stub](https://en.wikipedia.org/wiki/Wikipedia:Stub), help the wiki by [contributing](/contributing.md) and expanding it.
+
 > :warning: This document covers an active area of research. It may be outdated at the time of reading and is subject to future updates as the design space evolves.
 
-**PeerDAS** (Peer-to-Peer Data Availability Sampling) is a networking protocol introduced in [EIP-7594](https://eips.ethereum.org/EIPS/eip-7594). It is designed to optimize data distribution and verification across Ethereum's network. PeerDAS ensures that data from Layer 2 (L2) solutions—such as rollups—remains reliably accessible without overwhelming nodes.
+**PeerDAS** (Peer Data Availability Sampling) is a networking protocol introduced in [EIP-7594](https://eips.ethereum.org/EIPS/eip-7594). It is designed to optimize data distribution and verification across Ethereum's network. PeerDAS ensures that blobs, mainly containing data from Layer 2 (L2) solutions like rollups, remain reliably accessible without overwhelming nodes.
 
 ## PeerDAS in the Ethereum Roadmap
 
-Scaling is essential for Ethereum. The network must increase its capacity to process transactions and store data, making transactions cheaper and more accessible to users. As demand for blockchain applications grows, Ethereum must support higher throughput without compromising decentralization or security.
+Scaling is essential for Ethereum. The network must increase its capacity to process more transactions and store data, making transactions cheaper and more accessible to users. As demand for blockchain applications grows, Ethereum needs to support higher throughput without compromising decentralization or security.
 
-PeerDAS is a critical component of [Danksharding](https://ethereum.org/en/roadmap/danksharding/) and plays a key role in Ethereum's rollup-centric roadmap. It is part of the [Surge](https://vitalik.eth.limo/general/2024/10/17/futures2.html) phase, which focuses on scaling transaction throughput and reducing costs.
+PeerDAS is a critical component of [Danksharding](https://ethereum.org/en/roadmap/danksharding/) and plays a key role in Ethereum's rollup-centric roadmap. It is part of the [Surge](https://vitalik.eth.limo/general/2024/10/17/futures2.html) roadmap category, which focuses on scaling transaction throughput and reducing costs.
 
-Layer 2 (L2) solutions, such as rollups, rely on Ethereum for data availability and security. Initially, rollups posted their transaction data directly to Ethereum as calldata, a method that was both expensive and inefficient. [EIP-4844 (Proto-Danksharding)](https://eips.ethereum.org/EIPS/eip-4844) introduced **blobs**—a new data structure that allows rollups to post data at a significantly lower cost. While EIP-4844 was an important improvement, it is only a stepping stone toward Danksharding. In Danksharding, blobs will be transformed into **data columns** and distributed across the network using PeerDAS. This transformation will further reduce costs and improve scalability.
+Layer 2 (L2) solutions, such as rollups, rely on Ethereum for data availability and security. Initially, rollups posted their transaction data directly to Ethereum execution layer as calldata, a method that was both expensive and inefficient. [EIP-4844 (Proto-Danksharding)](https://eips.ethereum.org/EIPS/eip-4844) introduced **blobs**—a new data structure that allows rollups to post data at a significantly lower cost. While EIP-4844 was an important improvement, it is only a stepping stone toward Danksharding. In Danksharding, blobs will be transformed into **data columns** and distributed across the network using PeerDAS. This transformation will further reduce costs and improve scalability.
 
 Ethereum researchers have outlined a gradual, multi-stage roadmap for PeerDAS that balances increased throughput with network robustness:
 
@@ -51,6 +52,8 @@ Overall, PeerDAS integrates deterministic custody allocation, probabilistic data
 
 - [EIP-7594: PeerDAS](https://eips.ethereum.org/EIPS/eip-7594)
 - [Fulu specifications including PeerDAS](https://github.com/ethereum/consensus-specs/tree/dev/specs/fulu)
+- [Scaling Ethereum L1 with PeerDAS - dapplion, presentation](https://www.youtube.com/watch?v=_PW6jFTWLPc)
+- [PeerDAS in Pectra and beyond - Francesco D'Amato, presentation](https://www.youtube.com/watch?v=WOdpO1tH_Us)
 - [PeerDAS Book by Manu Nalepa](https://hackmd.io/@manunalepa/peerDAS/https%3A%2F%2Fhackmd.io%2F%40manunalepa%2FB1idHCOfke)
 - [Possible futures of the Ethereum protocol, part 2: The Surge by Vitalik Buterin](https://vitalik.eth.limo/general/2024/10/17/futures2.html)
 - [From 4844 to Danksharding: a path to scaling Ethereum DA (ethresear.ch)](https://ethresear.ch/t/from-4844-to-danksharding-a-path-to-scaling-ethereum-da/18046)
