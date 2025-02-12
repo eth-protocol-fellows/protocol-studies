@@ -172,6 +172,7 @@ Danno
 Dany
 DAO
 dapp
+Dapplion
 dapps
 DAS
 dataset
@@ -320,10 +321,12 @@ frontrunning
 fulfillments
 fullscreen
 Fullstack
+Fulu
 func
 fungibility
 fuzzer
 FuzzyVM
+gasless
 GasLimit
 Gasper
 gasPrice
@@ -351,6 +354,7 @@ gradlew
 Grafana
 Grandine
 Grigore
+Grup
 Guillaume
 gwei
 hackathon
@@ -461,6 +465,7 @@ Lyubashevsky
 mainnet
 Mana
 Manas
+Manu
 Mário
 mathbb
 Maximalism
@@ -504,6 +509,7 @@ mvepbs
 MVI
 Nagu
 Nakamoto
+Nalepa
 Namecoin
 namespace
 namespaces
@@ -732,6 +738,7 @@ StoragesHistory
 StoragesTrie
 StreamEth
 subcurrency
+subnet
 subnets
 suboptimal
 subprotocols
