@@ -16,10 +16,30 @@ The study group content is structured in 2 stages - an intense introduction and 
 
 ### Schedule
 
-Each session is led by core developer or researcher, comes with reading materials to get you familiar with the topic context and some also include exercises to strengthen  and practice your understanding.
 
-To be decided.           
-                            
+Each session is created by a core developer or researcher, comes with reading materials to get you familiar with the topic context and some also include exercises to strengthen and practice your understanding. More resources on each topic can be found in the wiki section and if they are any missing, contribute to add them. 
+
+During first 2 weeks, participants watch previous videos and study existing materials for the given day in their own time. Every day at _3PM UTC we will hold a daily office hours running for 2 hours_ where everyone can discuss their learnings, ask questions, exchange knowledge, etc. 
+
+> We recommend watching videos from the study group using faster playback speed, 1.25 or 1.5x to save some time
+
+#### Week 1
+
+The first week will go over the first 5 weeks of previous Study Group content. The first day provides introduction to the Study Grroup and protocol itself, then we will dive into each part of the protocol. On Wednesday, the node workshop will be also held live during the office hours. 
+
+| Day    | Topic                                               | Speaker                                                                                          |
+| ------ | --------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
+| Feb 17 | [Intro to EPS and Ethereum protocol](/eps/week1.md) | [Josh Davis](https://github.com/JoshDavisLight), [Mario Havel](https://github.com/taxmeifyoucan) |
+| Feb 18 | [Consensus layer](/eps/week3.md)                    | [Alex Stokes](https://github.com/ralexstokes)                                                    |
+| Feb 19 | [Execution Layer](/eps/week3.md)                    | [Lightclient](https://github.com/lightclient)                                                    |
+| Feb 19 | [Using clients](/eps/node_workshop.md)              | [Mario](https://github.com/taxmeifyoucan)                                                        |
+| Feb 20 | [Testing and security](/eps/week4.md)               | [Mario Vega](https://github.com/marioevz)                                                        |
+| Feb 21 | [Roadmap and research](/eps/week5p.md)              | [Domothy](https://github.com/domothyb)                                                           |
+
+#### Week 2
+
+TBD 
+          
 ### Streams and recordings
 
 Talks and calls are announced week in advance based on the schedule above. Recordings of all talks can be found on [Youtube](https://www.youtube.com/@ethprotocolfellows) or [StreamEth](https://streameth.org/archive?organization=ethereum_protocol_fellowship) archive. 
@@ -52,7 +72,7 @@ For our weekly meetings, we are using a self-hosted FOSS platform Jitsi. Even th
 
 - Restart your browser and rejoin
 - Try a different browser (especially if you are using a Chromium based, try Firefox and vice versa)
-- Use the [mobile Jitsi app](https://jitsi.org/downloads/) instead of desktop (you just need to point it to our domain)
+- Use the [mobile Jitsi app](https://jitsi.org/downloads/) instead of desktop (you just need to point it to our domain meet.ethereum.org)
 - Check your network and firewall settings, make sure your browser allows WebRTC
 - Visit Jitsi [community forum](https://community.jitsi.org/) to search for specific issue or report your problem
 
@@ -61,10 +81,10 @@ For our weekly meetings, we are using a self-hosted FOSS platform Jitsi. Even th
 - **Will I learn to develop applications on the Ethereum blockchain?**
     - No. This program is not focused on Solidity or development of decentralized applications. 
 - **When does it start and is the duration?**
-    - The program ran from February 2024 and continued for 10 weeks, concluding by the end of April.
+    - The program runs from February 17 and continues for 8 weeks, concluding in April.
 - **Am I automatically accepted to EPF after attending EPFsg**
     - No. The study group is a great way to prepare for EPF, but it doesn't guarantee anything. However, EPF is a permissionless program, so you can always participate. 
 - **Where is the study group located?**
     - As all core Ethereum teams, EPFsg is distributed around the globe. We will do our best to accommodate call times for the program participants.
 - **Do I need to apply and be accepted?**
-    - The program is fully open, anyone can participate. We only ask you to submit a [form](https://forms.gle/7TqmryC217EPwgqr9) to let us know about your preferences, but it doesn't have any effect on your participation. 
+    - The program is fully open, anyone can participate. We only ask you to submit a [form](https://forms.gle/G5V95qyGV8uMjKGcA) survey to let us know about your preferences, but it doesn't have any effect on your participation. 

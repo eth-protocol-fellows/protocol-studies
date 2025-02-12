@@ -1,7 +1,7 @@
 - [Home](readme.md)
 - **Study Group**
 - [Start here](/eps/intro.md)
-- Study Group 2024
+- [Study Group 2024](/eps/SG2024.md)
   - [Week 0](/eps/week0.md)
   - [Week 1](/eps/week1.md)
   - [Week 2](/eps/week2.md)
