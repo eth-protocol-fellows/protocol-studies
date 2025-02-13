@@ -21,11 +21,13 @@ Each session is created by a core developer or researcher, comes with reading ma
 
 During first 2 weeks, participants watch previous videos and study existing materials for the given day in their own time. Every day at _3PM UTC we will hold a daily office hours running for 2 hours_ where everyone can discuss their learnings, ask questions, exchange knowledge, etc. 
 
-> We recommend watching videos from the study group using faster playback speed, 1.25 or 1.5x to save some time
+> Events are published in the Discord server or you can subscribe to [this calendar](https://calendar.google.com/calendar/u/0?cid=Y18xY2RhMjMxNzc5NmI4NDgzZTliMjBhMGVjZTFkMDFhZWFkN2U1ZTY3N2IxNjVhOGUzZTJlMjQ3ZTQ0M2UwODhkQGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20) to follow all sessions
 
 #### Week 1
 
 The first week will go over the first 5 weeks of previous Study Group content. The first day provides introduction to the Study Grroup and protocol itself, then we will dive into each part of the protocol. On Wednesday, the node workshop will be also held live during the office hours. 
+
+> We recommend watching videos from the study group using faster playback speed, 1.25 or 1.5x to save some time
 
 | Day    | Topic                                               | Speaker                                                                                          |
 | ------ | --------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
@@ -62,7 +64,7 @@ While this program is designed to act as a precursor to the Ethereum Protocol Fe
 - [Discord server](https://discord.gg/8RPnPGEQtJ)
 - [Weekly talks on StreamEth](https://streameth.org/65cf97e702e803dbd57d823f/epf_study_group)
 - [Youtube](https://www.youtube.com/@ethprotocolfellows)
-- [Sessions calendar](https://calendar.google.com/calendar/u/0?cid=ZXBmc3R1ZHlncm91cEBnbWFpbC5jb20) 
+- [Sessions calendar](https://calendar.google.com/calendar/u/0?cid=Y18xY2RhMjMxNzc5NmI4NDgzZTliMjBhMGVjZTFkMDFhZWFkN2U1ZTY3N2IxNjVhOGUzZTJlMjQ3ZTQ0M2UwODhkQGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20) 
 - [EPF mailing list](https://groups.google.com/a/ethereum.org/g/protocol-fellowship-group)
 - [EF Blog](https://blog.ethereum.org)
 
