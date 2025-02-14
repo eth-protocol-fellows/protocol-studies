@@ -14,7 +14,9 @@ Note: The fee recipient of the built payload may deviate from the suggested fee 
 
 <img src="images/el-architecture/payload-building-routine.png" width="1000"/>
 
-Nodes are gossiping transactions via a peer-to-peer network. These transactions are deemed valid and are waiting to be included in a block. Validity here, among other things, refers to the condition where the nonce of the transaction is the next valid nonce for the account and the account holds sufficient value to cover the transaction. Occasionally, the node is assigned the responsibility of generating a block. The consensus layer employs a random selection process to determine which validator will construct the block during each epoch. If your validator is chosen to build the block, your consensus layer client will proceed with constructing it using the execution engine's fork choice updated method, providing the necessary context for block construction.
+Nodes broadcast transactions through a peer-to-peer network using the gossip protocol. These transactions are validated against specific criteria (e.g. , checking nonce correctness, sufficient balance, and proper signatures) and stored in the mempool awaiting inclusion in a block.
+
+Each slot has a designated block proposer, selected through a psuedo-random process by the consensus layer. When a validator is chosen as the block proposer for a slot, its consensus client initiates block construction through the execution engine's fork choice updated method, which provides the necessary context for building the block.
 
 We can simplify and emulate the process of constructing blocks, though this approach is specific to the Go types used in geth. However, the concepts can generally be applied to different clients.
 
