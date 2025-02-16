@@ -31,7 +31,7 @@ The first week will go over the first 5 weeks of previous Study Group content. T
 | ------ | --------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
 | Feb 17 | [Intro to EPS and Ethereum protocol](/eps/week1.md) | [Josh Davis](https://github.com/JoshDavisLight), [Mario Havel](https://github.com/taxmeifyoucan) |
 | Feb 18 | [Consensus layer](/eps/week3.md)                    | [Alex Stokes](https://github.com/ralexstokes)                                                    |
-| Feb 19 | [Execution Layer](/eps/week3.md)                    | [Lightclient](https://github.com/lightclient)                                                    |
+| Feb 19 | [Execution Layer](/eps/week2.md)                    | [Lightclient](https://github.com/lightclient)                                                    |
 | Feb 19 | [Using clients](/eps/node_workshop.md)              | [Mario](https://github.com/taxmeifyoucan)                                                        |
 | Feb 20 | [Testing and security](/eps/week4.md)               | [Mario Vega](https://github.com/marioevz)                                                        |
 | Feb 21 | [Roadmap and research](/eps/week5p.md)              | [Domothy](https://github.com/domothyb)                                                           |
