@@ -52,7 +52,7 @@ These rights confer the ticket holder (that can be a different party than the Va
 
 The improvement sa-ePBS brings, comes however with the technical cost of dealing with equivocations and head split views, and that [is not a trivial problem to solve](#open-issues).
 
-[ET](#execution-tickets-et-1) and [APS-Burn](/wiki/research/APS/aps.md) are two of the possibile allocation mechanisms for implementing in-protocol Attester-Proposer Separation. The Beacon proposers can commit to execution proposers only, so there would be no commitments to the contents of the execution payload, which solves the timing games issues that the block-auction ePBS version faces.
+[ET](#execution-tickets-et-1) and [APS-Burn](/wiki/research/APS/aps.md) are two of the possible allocation mechanisms for implementing in-protocol Attester-Proposer Separation. The Beacon proposers can commit to execution proposers only, so there would be no commitments to the contents of the execution payload, which solves the timing games issues that the block-auction ePBS version faces.
 
 ## Execution Tickets (ET)
 

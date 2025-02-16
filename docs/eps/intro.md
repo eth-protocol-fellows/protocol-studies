@@ -25,7 +25,7 @@ During first 2 weeks, participants watch previous videos and study existing mate
 
 #### Week 1
 
-The first week will go over the first 5 weeks of previous Study Group content. The first day provides introduction to the Study Grroup and protocol itself, then we will dive into each part of the protocol. On Wednesday, the node workshop will be also held live during the office hours. 
+The first week will go over the first 5 weeks of previous Study Group content. The first day provides introduction to the Study Group and protocol itself, then we will dive into each part of the protocol. On Wednesday, the node workshop will be also held live during the office hours. 
 
 | Day    | Topic                                               | Speaker                                                                                          |
 | ------ | --------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
