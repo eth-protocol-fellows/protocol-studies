@@ -2,8 +2,9 @@
 
 > **Consensus clients**, formerly known as *eth2 clients*, run Ethereum's proof-of-stake consensus algorithm allowing the network to reach agreement about the head of the Beacon Chain. Consensus clients do not participate in validating/broadcasting transactions or executing state transitions: that is done by execution clients. Consensus clients do not attest to, or propose new blocks: that is done by the validator client which is an optional add-on to the consensus client.
 
-
 ## Overview Table
+
+These clients are developed in different programming languages, provide have unique features and offer different performance profiles. All clients support Ethereum mainnet out of the box along with active testnets. Variety of implementations allows the network to benefit from client diversity. If you are choosing a client to use, current client diversity should be one of the main factors.
 
 | Client                                                                  | Language   | Developer           | Status      |
 | ----------------------------------------------------------------------- | ---------- | ------------------- | ----------- |
@@ -13,7 +14,7 @@
 | [Prysm](https://github.com/prysmaticlabs/prysm)                         | Go         | Prysmatic Labs      | Production  |
 | [Teku](https://github.com/ConsenSys/teku)                               | Java       | ConsenSys           | Production  |
 | [Grandine](https://github.com/grandinetech/grandine)                    | Rust       | Grandine Developers | Production  |
-| [Caplin](https://github.com/ledgerwatch/erigon)                         | N/A        | Erigon              | Development |
+| [Caplin](https://github.com/ledgerwatch/erigon)                         | Go         | Erigon              | Development |
 | [LambdaClass](https://github.com/lambdaclass/lambda_ethereum_consensus) | Elixir     | LambdaClass         | Development |
 
 
@@ -26,16 +27,19 @@ In the interest of supporting the health of the Beacon Chain (formerly ETH2), it
 
 ### Lighthouse
 Lighthouse, written in Rust by Sigma Prime, emphasizes security and performance. It's widely adopted but caution is advised as a supermajority could potentially lead to chain splits.
-Lighthouse is licensed under Apache 2.0 and known for its robustness in production environments.
+Lighthouse is licensed under Apache 2.0 and known for its robustness in production environments. 
+
+Lighthouse provides binaries for every platform including ARM and allows cross compilation. There are portable versions which are compromising compiler performance options for a better platform compatibility. Released binaries are signed by gpg key `15E66D941F697E28F49381F426416DC3F30674B0` from security@sigmaprime.io.
 
 Noteworthy Features:
-- [Become a staked Validator](https://lighthouse-book.sigmaprime.io/mainnet-validator.html)
+- [Cross compilation](https://lighthouse-book.sigmaprime.io/cross-compiling.html)
 - [Slashing Protection](https://lighthouse-book.sigmaprime.io/slashing-protection.html)
 - [Dopperganger Protection](https://lighthouse-book.sigmaprime.io/validator-doppelganger.html)
 - [Running a Slasher](https://lighthouse-book.sigmaprime.io/slasher.html)
-- [Builder API for MEV](https://lighthouse-book.sigmaprime.io/builders.html)
 - [Block Proposer-only](https://lighthouse-book.sigmaprime.io/advanced-proposer-only.html)
 - [Prometheus and Grafana](https://lighthouse-book.sigmaprime.io/advanced_metrics.html)
+
+
 
 ### Lodestar
 Lodestar is a TypeScript-based Ethereum consensus client by ChainSafe, tailored for rapid prototyping and browser compatibility.
@@ -91,9 +95,18 @@ Noteworthy Features:
 - [Running a Slasher](https://github.com/grandinetech/grandine/tree/develop/slasher)
 - [Prometheus](https://docs.grandine.io/metrics.html) and [Grafana](https://github.com/grandinetech/grandine/tree/develop/metrics)
 
-### Caplin and LambdaClass
-These clients are currently in development, aiming to contribute unique features to the Ethereum consensus landscape. Caplin by Erigon, Grandine, and LambdaClass are respectively focusing on enhancing performance, security, and scalability, though specific details are forthcoming as these projects evolve.
+### Caplin
 
+Caplin is a consensus client integrated within Erigon execution client. It's basically an extra feature in Erigon that allows to run it without any external CL.  
+
+- https://erigon.gitbook.io/erigon/advanced-usage/consensus-layer/caplin
+- https://github.com/ledgerwatch/erigon/?tab=readme-ov-file#caplin
+
+### LambdaClass
+
+LambdaClass develops a client written in Elixir. It has been started during EPF4 and grew into fully featured implementation. It is still actively developed and not used in production.
+
+- https://github.com/lambdaclass/lambda_ethereum_consensus
 
 ## Additional resources
 
