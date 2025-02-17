@@ -86,7 +86,7 @@ The Paris hard fork was a pivotal event in Ethereum's history, setting the stage
 
 ## Beacon Chain and its Preliminaries
 
-The Beacon Chain is the backbone of Ethereum’s consensus. It coordinates validators, manages the PoS protocol, and ensures consensus across the network. This section with cover the anatomy of Beacon chain.
+The Beacon Chain is the backbone of Ethereum’s consensus. It coordinates validators, manages the PoS protocol, and ensures consensus across the network. This section will cover the anatomy of Beacon chain.
 
 ### Validators
 
@@ -232,7 +232,7 @@ A block becomes a checkpoint if it receives attestations from a majority of vali
 
 <figcaption>
 
-_Checkpoints for a scenario where epoch contain 64 slots_
+_Checkpoints for a scenario where an epoch contain 64 slots_
 
 </figcaption>
 </figure>
@@ -245,7 +245,7 @@ Validators cast two types of votes: **LMD GHOST** votes for blocks and **Casper 
 
 A supermajority, defined as ⅔ of the total validator balance, is required for a checkpoint to be justified. For instance, if validators have balances of 8 ETH, 8 ETH, and 32 ETH, a supermajority needs the vote of the 32 ETH validator. Once a checkpoint receives a supermajority, it becomes justified. If the subsequent epoch's checkpoint also achieves justification, the previous checkpoint is finalized, securing all preceding blocks. Typically, this process spans two epochs (12.8 minutes).
 
-When a user transaction is included in a block, On average it would be somewhere in the middle of an epoch. It takes half an epoch (about 3.2 minutes) to reach the next checkpoint, suggesting transaction finality of 2.5 epochs: 16 minutes. Optimally, more than ⅔ of attestations will have been included by the 22nd (2/3rd of 32) slot of an epoch. Thus, transaction finality is an average of 14 minutes (16+32+22 slots). Block confirmations emerge from a block’s attestations, then move to its justification, to its finality. Use cases can decide whether they need finality or an earlier safety threshold is sufficient.
+When a user transaction is included in a block, on average it would be somewhere in the middle of an epoch. It takes half an epoch (about 3.2 minutes) to reach the next checkpoint, suggesting transaction finality of 2.5 epochs: 16 minutes. Optimally, more than ⅔ of attestations will have been included by the 22nd (2/3rd of 32) slot of an epoch. Thus, transaction finality is an average of 14 minutes (16+32+22 slots). Block confirmations emerge from a block’s attestations, then move to its justification, to its finality. Use cases can decide whether they need finality or an earlier safety threshold is sufficient.
 
 <a id="img_finality"></a>
 <figure class="diagram" style="text-align:center">

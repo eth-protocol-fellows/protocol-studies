@@ -36,7 +36,7 @@ In the interest of supporting the health of the Execution Layer, [it is recommen
 
 ## Individual clients 
 
-Altough clients implement the same specification, each client offers different set of features and benefits. They come in different programming languages enabling developers of different backgrounds to contribute. 
+Although clients implement the same specification, each client offers different set of features and benefits. They come in different programming languages enabling developers of different backgrounds to contribute. 
 
 ### Besu
 
@@ -51,7 +51,7 @@ Noteworthy Features:
 ### Erigon
 
 Initially a fork of Geth introduced as turbo-geth, Erigon focuses on optimizing performance, fast synchronization capabilities, and reducing disk space usage. Erigon introduced a new way of managing MPT database resulting in roughly a 5-times reduction in the archive node disk size.
-Erigon's architecture allows it to complete a full archive node sync in under three days with less than 3 TB of data storage, making it ideal for running this kind of node. It also includes its own embedded CL client, enabling it to run independtly. 
+Erigon's architecture allows it to complete a full archive node sync in under three days with less than 3 TB of data storage, making it ideal for running this kind of node. It also includes its own embedded CL client, enabling it to run independently. 
 
 Noteworthy Features:
 - [Supported Networks](https://erigon.gitbook.io/erigon/basic-usage/supported-networks)
@@ -76,7 +76,7 @@ Nethermind is suitable for both private Ethereum networks and decentralized appl
 
 Noteworthy Features:
 - [Private Networks](https://docs.nethermind.io/fundamentals/private-networks)
-- [Performence tuning](https://docs.nethermind.io/fundamentals/performance-tuning)
+- [Performance tuning](https://docs.nethermind.io/fundamentals/performance-tuning)
 - [Prometheus and Grafana](https://docs.nethermind.io/monitoring/metrics/grafana-and-prometheus)
 
 ### Reth

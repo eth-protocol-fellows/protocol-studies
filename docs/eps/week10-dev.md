@@ -25,7 +25,7 @@ Additionally, you can get ready by studying the following resources:
 - How they are integrated
 - Which precompiles exist 
 - How L2s and L1s use them
-- Challanges of creating precompiles
+- Challenges of creating precompiles
 
 ## Additional reading and exercises
 
