@@ -14,7 +14,7 @@ A transaction contains following fields:
 
 - **gasLimit ($T_g$)**: An integer value equal to the maximum amount of gas to be used in execution of this transaction. Execution of this transaction will stop if the gasLimit is exhausted.
 
-- **to ($T_t$)**: The 20-byte address of the recipient of this transaction. The `to` also field determines the mode or purpose of the transaction:
+- **to ($T_t$)**: The 20-byte address of the recipient of this transaction. The `to` field also determines the mode or purpose of the transaction:
 
 | Value of `to`    | Transaction Mode   | Description                                               |
 | ---------------- | ------------------ | --------------------------------------------------------- |
@@ -265,7 +265,7 @@ const { rlp, keccak256, ecsign } = require("ethereumjs-util");
 const payload = JSON.parse(process.argv[2]);
 const privateKey = Buffer.from(process.argv[3].replace("0x", ""), "hex");
 
-//valdiate privatekey length
+//validate privatekey length
 if (privateKey.length != 32) {
   console.error("Private key must be 64 characters long!");
   process.exit(1);
