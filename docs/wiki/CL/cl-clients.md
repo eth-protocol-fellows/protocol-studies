@@ -34,7 +34,7 @@ Lighthouse provides binaries for every platform including ARM and allows cross c
 Noteworthy Features:
 - [Cross compilation](https://lighthouse-book.sigmaprime.io/cross-compiling.html)
 - [Slashing Protection](https://lighthouse-book.sigmaprime.io/slashing-protection.html)
-- [Dopperganger Protection](https://lighthouse-book.sigmaprime.io/validator-doppelganger.html)
+- [Doppelganger Protection](https://lighthouse-book.sigmaprime.io/validator-doppelganger.html#doppelganger-protection)
 - [Running a Slasher](https://lighthouse-book.sigmaprime.io/slasher.html)
 - [Block Proposer-only](https://lighthouse-book.sigmaprime.io/advanced-proposer-only.html)
 - [Prometheus and Grafana](https://lighthouse-book.sigmaprime.io/advanced_metrics.html)
@@ -84,9 +84,9 @@ Noteworthy Features:
 - [Prometheus and Grafana](https://docs.teku.consensys.io/how-to/monitor/use-metrics)
 
 ### Grandine
-Grandine is a fast and lightweight Ethereum consensus client designed with a focus on high performance and simplicity.
+Grandine is a fast and lightweight Ethereum consensus client designed with a focus on high performance and simplicity. It's written in Rust, same as Lighthouse and shares some of its libraries. 
 Developed with parallelization and efficient resource utilization at its core, Grandine aims to push the boundaries of Ethereum's consensus layer by offering a streamlined alternative to existing clients.
-Its architecture is optimized to minimize latency and maximize throughput, making it well-suited for environments where performance is critical.
+Its architecture is optimized to minimize latency and maximize throughput on high end machines, making it well-suited for environments where high performance is critical.
 
 Noteworthy Features:
 - [Validator Client](https://docs.grandine.io/validator_client.html)

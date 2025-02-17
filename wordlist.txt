@@ -46,10 +46,13 @@ autoplay
 AVS
 backend
 backfill
+backfills
+backfilling
 Bankless
 Barnabe
 Barnabé
 Barnabé's
+Bastin
 BDN
 beaconblock
 Beiko
@@ -70,6 +73,7 @@ bitvector's
 bitvectors
 bitwise
 BLOBHASH
+blockhash
 blockchain
 blockchain's
 blockchains
@@ -114,6 +118,7 @@ Challanges
 changeset
 changesets
 Charmes
+Chirag
 cli
 CLRS
 cmd
@@ -167,6 +172,7 @@ Danno
 Dany
 DAO
 dapp
+Dapplion
 dapps
 DAS
 dataset
@@ -266,11 +272,13 @@ ETHCC
 Ethereum
 Ethereum's
 ethers
+Ethervm
 ethone
 ethone's
 ethresear
 ethresearch
 ethroadmap
+ethstaker
 ETHW
 EVM
 evmlab
@@ -301,6 +309,7 @@ Forkchoice
 forkchoiceUpdatedV
 Forky
 Formatting
+FOCIL
 FOSS
 frac
 frameborder
@@ -312,10 +321,12 @@ frontrunning
 fulfillments
 fullscreen
 Fullstack
+Fulu
 func
 fungibility
 fuzzer
 FuzzyVM
+gasless
 GasLimit
 Gasper
 gasPrice
@@ -343,6 +354,7 @@ gradlew
 Grafana
 Grandine
 Grigore
+Grup
 Guillaume
 gwei
 hackathon
@@ -453,6 +465,7 @@ Lyubashevsky
 mainnet
 Mana
 Manas
+Manu
 Mário
 mathbb
 Maximalism
@@ -496,6 +509,7 @@ mvepbs
 MVI
 Nagu
 Nakamoto
+Nalepa
 Namecoin
 namespace
 namespaces
@@ -552,6 +566,7 @@ pex
 PGA
 Pigovian
 Pilipovic
+pipelining
 PKCS
 Playdate
 pmod
@@ -560,11 +575,14 @@ POS
 POSIX
 postel's
 possibile
+Potuz
 Potuz's
 POV
 PQ
 PQC
 PQCA
+PR
+PR'ed
 pre
 preAccesedStorageKeys
 precompile
@@ -624,6 +642,7 @@ README
 reciept
 referrerpolicy
 remerkleable
+reentrancy
 reorganisation
 reorganisations
 replayable
@@ -641,6 +660,7 @@ RIPEMD
 Ritchie
 rK
 RLMD
+RLNC
 RLP
 RLPx
 roadmap
@@ -670,6 +690,7 @@ serialize
 serializer
 Serokell
 sexualized
+SG
 SHA
 Shacham
 shadowfork
@@ -717,6 +738,7 @@ StoragesHistory
 StoragesTrie
 StreamEth
 subcurrency
+subnet
 subnets
 suboptimal
 subprotocols
@@ -820,6 +842,7 @@ xff
 XMSS
 XORed
 xy
+YAML
 Yan
 Yellowpaper
 Yoni
@@ -882,3 +905,7 @@ hotfix
 Kanban
 Mayowa
 ptsd
+Vasa
+Zaryab
+Afser
+Preethi

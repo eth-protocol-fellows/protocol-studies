@@ -198,7 +198,6 @@ section.content , .markdown-section code{
 /* sidebar */
 li.file,
 li.folder {
-  transition: all 0.3s ease-in-out;
   padding: 8px 15px;
   margin-bottom: 4px;
 }
@@ -380,4 +379,12 @@ body .pagination-item-label {
   overflow-x:scroll;
   width: 100%;
   display:block;
+}
+
+.sidebar-nav li,
+.sidebar-nav li * {
+  white-space: normal !important;
+  overflow: visible !important;
+  text-overflow: clip !important; 
+  word-break: break-word !important;
 }

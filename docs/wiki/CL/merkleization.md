@@ -304,7 +304,8 @@ assert a.hash_tree_root() == indexed_attestation_root
 
 Now, you can visualize the full picture of the merkleization of `IndexedAttestation`:
 
-![merkleization of IndexedAttestation](/docs/images/merkelization-IndexedAttestation.png)
+![merkleization of IndexedAttestation](../../images/merkelization-IndexedAttestation.png)
+**Merkleization of IndexedAttestation**
 
 Here is the full working code:
 

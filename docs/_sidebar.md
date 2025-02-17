@@ -1,7 +1,7 @@
 - [Home](readme.md)
 - **Study Group**
-- [EPFsg overview](/eps/intro.md)
-- Presentations
+- [Start here](/eps/intro.md)
+- [Study Group 2024](/eps/SG2024.md)
   - [Week 0](/eps/week0.md)
   - [Week 1](/eps/week1.md)
   - [Week 2](/eps/week2.md)
@@ -22,7 +22,7 @@
 - [Contributing](contributing.md)
 - **Protocol Wiki**
 - The Protocol
-  - [Prehistory](/wiki/protocol/prehistory.md) 
+  - [Prehistory](/wiki/protocol/prehistory.md)
   - [Architecture](/wiki/protocol/architecture.md)
   - [Design rationale](/wiki/protocol/design-rationale.md)
   - [Evolution](/wiki/protocol/history.md)
@@ -49,6 +49,7 @@
   - [CL Clients](/wiki/CL/cl-clients.md)
   - [SSZ Serialization](/wiki/CL/SSZ.md)
     - [Merkleization](/wiki/CL/merkleization.md)
+  - [Weak Subjectivity](/wiki/CL/syncing.md)
 - Development
   - [Core development](/wiki/dev/core-development.md)
   - [Coordination](/wiki/dev/pm.md)
@@ -56,7 +57,8 @@
 - Testing and security
   - [Testing overview](/wiki/testing/overview.md)
   - [Incidents](/wiki/testing/incidents.md)
-  - [hive](/wiki/testing/hive.md)
+  - [Hive](/wiki/testing/hive.md)
+  - [Kurtosis](/wiki/testing/kurtosis.md)
   - [Formal verification](/wiki/testing/formal-verification.md)
 - Research
   - [Roadmap overview](/wiki/research/roadmap.md)
@@ -73,10 +75,13 @@
     - [TBHL](/wiki/research/PBS/TBHL.md)
     - [ET](/wiki/research/PBS/ET.md)
   - [eODS](/wiki/research/eODS.md)
+  - [PeerDAS](/wiki/research/peerdas.md)
   - Preconfirmations
     - [Preconfirmations](/wiki/research/Preconfirmations/Preconfirmations.md)
     - [Based Sequencing with Preconfs](/wiki/research/Preconfirmations/BasedSequencingPreconfs.md)
   - [Light clients](/wiki/research/light-clients.md)
+  - Account abstraction
+    - [EIP-7702](/wiki/research/account-abstraction/eip-7702.md)
 - [Cryptography](/wiki/Cryptography/intro.md)
   - [ECDSA](/wiki/Cryptography/ecdsa.md)
   - [BLS](/wiki/Cryptography/bls.md)
@@ -85,6 +90,7 @@
     - [KZG](/wiki/Cryptography/KZG.md)
   - [Post-Quantum Cryptography](/wiki/Cryptography/post-quantum-cryptography.md)
 - [Protocol Fellowship](/wiki/epf.md)
+- [Pectra FAQ](/wiki/pectra-faq.md)
 
 - **Wiki Info**
   - [GitHub Repository](https://github.com/eth-protocol-fellows/protocol-studies)
