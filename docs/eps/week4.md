@@ -5,7 +5,7 @@ Week 4 is diving into the testing tools and practices necessary to keep the netw
 Join the presentation by [Mario Vega](https://github.com/marioevz) on [Monday, March 11, 4PM UTC](https://savvytime.com/converter/utc-to-germany-berlin-united-kingdom-london-ny-new-york-city-ca-san-francisco-china-shanghai-japan-tokyo-australia-sydney/mar-11-2024/4pm).
 
 
-Watch the presentation on Ethereum core testing infrastracture on [Youtube](https://www.youtube.com/watch?v=PQVW5dJ8J0c). Presentations slides are [available here](https://github.com/eth-protocol-fellows/protocol-studies/tree/main/docs/eps/presentations/week4.pdf). 
+Watch the presentation on Ethereum core testing infrastructure on [Youtube](https://www.youtube.com/watch?v=PQVW5dJ8J0c). Presentations slides are [available here](https://github.com/eth-protocol-fellows/protocol-studies/tree/main/docs/eps/presentations/week4.pdf). 
 
 [recording](https://www.youtube.com/embed/PQVW5dJ8J0c?si=fv5ww4_6zInGXpjO ':include :type=iframe width=100% height=560 frameborder="0" allow="fullscreen" allowfullscreen encrypted-media gyroscope picture-in-picture web-share')
 
