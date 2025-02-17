@@ -14,7 +14,7 @@ A transaction contains following fields:
 
 - **gasLimit ($T_g$)**: An integer value equal to the maximum amount of gas to be used in execution of this transaction. Execution of this transaction will stop if the gasLimit is exhausted.
 
-- **to ($T_t$)**: The 20-byte address of the recipient of this transaction. The `to` also field determines the mode or purpose of the transaction:
+- **to ($T_t$)**: The 20-byte address of the recipient of this transaction. The `to` field also determines the mode or purpose of the transaction:
 
 | Value of `to`    | Transaction Mode   | Description                                               |
 | ---------------- | ------------------ | --------------------------------------------------------- |
