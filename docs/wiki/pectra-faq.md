@@ -16,7 +16,7 @@ There are 3 main features along with some smaller EIPs included in Pectra. They 
 
 The [MaxEB](https://eips.ethereum.org/EIPS/eip-7251) feature will allow the user to have a > 32ETH effective balance. This would allow users to consolidate many validators (or deposit new ones) into one up to 2048ETH. The requirement to use this feature is the setting of the `0x02` withdrawal credentials. A user can either make a deposit directly with `0x02` credentials or the user can move from `0x01` to `0x02`.
 
-With [EIP-7702](https://eips.ethereum.org/EIPS/eip-7702), The user wallet would be able to delegate control to a smart contract. This pattern allows a new wallet and app interaction design space, leading the path for future full account abstraction solutions.
+With [EIP-7702](https://eips.ethereum.org/EIPS/eip-7702), the user wallet would be able to delegate control to a smart contract. This pattern allows a new wallet and app interaction design space, leading the path for future full account abstraction solutions.
 
 The [Execution Layer (EL) triggered exits](https://eips.ethereum.org/EIPS/eip-7002) is a new feature that allows the withdrawal address set in the `0x01` or `0x02` withdrawal credential to perform exits directly in EL, without relying on pre-signed BLS keys. This feature is mainly targeted at staking pools, enabling them to use smart contracts to fully control the validator lifecycle.
 
@@ -29,7 +29,7 @@ Users/Devs
 While [EIP-7702](https://eips.ethereum.org/EIPS/eip-7702) isn’t quite account abstraction, it does provide execution abstraction, i.e adds additional functionality to externally owned accounts (EOAs. This allows your EOA to do things like send transaction batches and delegate to other cryptographic key schemes, like passkeys. It does this by setting the code associated with the EOA to a protocol-level proxy designation. A full specification can be found [here](https://eips.ethereum.org/EIPS/eip-7702). It introduces a new transaction type that temporarily authorizes specific contract code for an EOA during a single transaction, allowing EOAs to function as smart contract accounts. This enables several use cases for users, including transaction batching, gas sponsorship, and privilege de-escalation.
 
 #### **Q:** Where can I find the specification for EIP-7702? How can I use it as a wallet dev?
-The specification for [EIP-7702](https://eips.ethereum.org/EIPS/eip-7702) is can be found [here](https://eips.ethereum.org/EIPS/eip-7702). To get started as a wallet developer, you'll need to determine a smart contract wallet core to use with the EOA. Pay close attention to how the wallets [should be initialized](https://eips.ethereum.org/EIPS/eip-7702#front-running-initialization). Once you have determined the core wallet to use, you'll need to expose behavior like `eth_sendTransaction` and other custom methods for [EIP-7702](https://eips.ethereum.org/EIPS/eip-7702) specific functionality like batch transactions.
+The specification for [EIP-7702](https://eips.ethereum.org/EIPS/eip-7702) can be found [here](https://eips.ethereum.org/EIPS/eip-7702). To get started as a wallet developer, you'll need to determine a smart contract wallet core to use with the EOA. Pay close attention to how the wallets [should be initialized](https://eips.ethereum.org/EIPS/eip-7702#front-running-initialization). Once you have determined the core wallet to use, you'll need to expose behavior like `eth_sendTransaction` and other custom methods for [EIP-7702](https://eips.ethereum.org/EIPS/eip-7702) specific functionality like batch transactions.
 
 #### **Q:** As a user, how can I use EIP-7702?
 To get the [benefits](https://ethereum.org/en/roadmap/account-abstraction/) of EIP-7702, which is an early attempt at account abstraction, you need to use a wallet that supports it. Once your wallet of choice supports account abstraction, you will be able to make use of it. 
@@ -43,7 +43,7 @@ As a smart contract developer, you should know that after Prague the majority of
 #### **Q:** What do I need to know about EIP-7702 as a security engineer/auditor?
 As a security engineer / auditor, you must be aware that the previous assumption that a frame cannot be reentered when `msg.sender == tx.origin` no longer holds. This means the check is no longer suitable for reentrancy guards or flash loan protection.
 
-#### **Q:** What does the EIP-2537 BLS precompile add in pectra?
+#### **Q:** What does the EIP-2537 BLS precompile add in Pectra?
 [EIP-2537](https://eips.ethereum.org/EIPS/eip-2537) introduces operations on the BLS12-381 curve as precompiles to Ethereum. BLS12-381 precompiles enables efficient BLS signature verification. This is useful for applications where multiple signatures need to be verified, such as proof-checking systems. 
 
 #### **Q:** How can I use the `BLOCKHASH` OPCODE?
@@ -110,7 +110,7 @@ During a consolidation, there is a source and a target validator. The source val
 #### **Q:** When does the balance appear on my consolidated validator?
 Once the source validator has completely exited and ceased performing all duties, the balance will be credited to the target validator. 
 
-#### **Q:** When happens if I consolidate one validator with`0x01` and another with `0x00` credentials?
+#### **Q:** What happens if I consolidate one validator with `0x01` and another with `0x00` credentials?
 The consolidation request will be deemed invalid and will not be processed. It will fail if both validators don't contain a `0x01` withdrawal credential with the exact same execution layer address. 
 
 #### **Q:** What happens if I consolidate validators that are exited?
