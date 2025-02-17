@@ -4,7 +4,7 @@
 >
 > Ethereum's consensus protocol combines two separate consensus protocols. _LMD GHOST_ essentially provides liveness. _Casper FFG_ provides finality. Together they are known as _Gasper_.
 >
-> In a _live"_ protocol, something good always happens. In a _safe_ protocol, nothing bad ever happens. No practical protocol can be always safe and always live.
+> In a _live_ protocol, something good always happens. In a _safe_ protocol, nothing bad ever happens. No practical protocol can be always safe and always live.
 
 ## Fork-choice Mechanism
 
@@ -47,7 +47,7 @@ Sometimes, however, the new block might be a descendant of a different block in 
 
 Running the fork choice rule on the updated block tree might show that the new head block is on a different branch than the previous head block. When this happens, the node must perform a reorg (reorganisation). This means it will remove (revert) blocks it previously included and adopt the blocks on the new head's branch.
 
-For example, if a node has blocks $A, B, D, E,$ and $F$ in its chain, and it views $F$ as the head block, it knows about block $$ but it does not appear in its view of the chain; it is on a side branch.
+For example, if a node has blocks $A, B, D, E,$ and $F$ in its chain, and it views $F$ as the head block, it knows about block $C$ but it does not appear in its view of the chain; it is on a side branch.
 
 <a id="img_reorg0"></a>
 
@@ -101,7 +101,7 @@ Thus, while Ethereum strives for both safety and liveness, it leans towards ensu
 
 ## The Ghosts in the Machine
 
-Ethereum's Proof-of-Stake consensus protocol combines two separate protocols: [LMD GHOST](/wiki/CL/gasper?id=lmd-ghost.md) and [Casper FFG](/wiki/CL/gasper?id=casper-ffg.md). Together, they form the consensus protocol known as "Gasper". Detailed Information about both protocols and how they work in combination are covered in the next section [Gasper].
+Ethereum's Proof-of-Stake consensus protocol combines two separate protocols: [LMD GHOST](/wiki/CL/gasper?id=lmd-ghost.md) and [Casper FFG](/wiki/CL/gasper?id=casper-ffg.md). Together, they form the consensus protocol known as "Gasper". Detailed Information about both protocols and how they work in combination are covered in the next section [Gasper](/wiki/CL/gasper).
 
 Gasper aims to combine the strengths of both LMD GHOST and Casper FFG. LMD GHOST provides liveness, ensuring the chain keeps running by producing new blocks regularly. However, it is prone to forks and not formally safe. Casper FFG, on the other hand, provides safety by periodically finalizing the chain, protecting it from long reversions.
 

@@ -4,7 +4,7 @@ This page covers resources on all consensus client implementations, whether in p
 
 > Consensus clients originally used to be called _eth2.0 clients_ which is now a deprecated nomenclature but you can still find this reference in their repositories.
 
-There are multiple Consensus Layer clients developed to participate in the Ethereum Proof-of-Stake (PoS) mechanism. The most popular, FOSS and production ready are [Lighthouse](https://lighthouse-book.sigmaprime.io/), [Lodestar](https://lodestar.chainsafe.io/), [Nimbus](https://nimbus.team/index.html), [Prysm](https://prysmaticlabs.com/) and [Teku](https://consensys.io/teku). These clients are developed in different programming languages, provide have unique features and offer different performance profiles. All clients support Ethereum mainnet out of the box along with active testnets. Variety of implementations allows the network to benefit from client diversity. If you are choosing a client to use, current client diversity should be one of the main factors.
+There are multiple Consensus Layer clients developed to participate in the Ethereum Proof-of-Stake (PoS) mechanism. The most popular, FOSS and production ready are [Lighthouse](https://lighthouse-book.sigmaprime.io/), [Lodestar](https://lodestar.chainsafe.io/), [Nimbus](https://nimbus.team/index.html), [Prysm](https://prysmaticlabs.com/) and [Teku](https://consensys.io/teku). These clients are developed in different programming languages, have unique features and offer different performance profiles. All clients support Ethereum mainnet out of the box along with active testnets. Variety of implementations allows the network to benefit from client diversity. If you are choosing a client to use, current client diversity should be one of the main factors.
 
 ## Clients in production
 
@@ -26,15 +26,15 @@ Lighthouse provides a more illustrative guide to install the client using docker
 
 #### Building from Source
 
-Just like Prysm, it also has multiple hardware and OS support to built the client from source. The [documentation](https://lighthouse-book.sigmaprime.io/installation-source.html). Make sure you have correct dependencies installed before building the client.
+Just like Prysm, it also has multiple hardware and OS support to build the client from source. The [documentation](https://lighthouse-book.sigmaprime.io/installation-source.html). Make sure you have correct dependencies installed before building the client.
 
 #### Pre-built Binaries
 
-Pre-built binaries for many various operating systems and architectures are available. They also provide portable versions which are compromising compiler performance options for a better platform compatibility. Released binaries are signed by gpg key `15E66D941F697E28F49381F426416DC3F30674B0` from security@sigmaprime.io. Read the [documentation](https://lighthouse-book.sigmaprime.io/installation-binaries.html) on the steps to install the client using pre-built binaries.
+Pre-built binaries for various operating systems and architectures are available. They also provide portable versions which are compromising compiler performance options for a better platform compatibility. Released binaries are signed by gpg key `15E66D941F697E28F49381F426416DC3F30674B0` from security@sigmaprime.io. Read the [documentation](https://lighthouse-book.sigmaprime.io/installation-binaries.html) on the steps to install the client using pre-built binaries.
 
 ### Additional features and security considerations
 
-Lighthouse client is quite advanced that it proves the following additional features:
+Lighthouse client is quite advanced and provides the following additional features:
 
 - [Slashing Protection](https://lighthouse-book.sigmaprime.io/faq.html#what-is-slashing-protection)
 - [Doppelganger Protection](https://lighthouse-book.sigmaprime.io/validator-doppelganger.html#doppelganger-protection)
@@ -119,11 +119,11 @@ Currently there is no light client support with Prysm.
 
 ### Security considerations and best practices
 
-Consensus client security is somewhat more essential than the Execution Layer client security since Consensus client are not only responsible for the security of the network but also for the security of the validators. Responsibilities such as valid block execution, choosing the correct chain to managing the staking related financials. Prysm has outlined a few [best practices](https://docs.prylabs.network/docs/security-best-practicespractices) to follow to ensure the security of the client and the network. Out of which the following holds the utmost importance:
+Consensus client security is somewhat more essential than the Execution Layer client security since Consensus client are not only responsible for the security of the network but also for the security of the validators. Responsibilities such as valid block execution, choosing the correct chain to managing the staking related financials. Prysm has outlined a few [best practices](https://docs.prylabs.network/docs/security-best-practices) to follow to ensure the security of the client and the network. Out of which the following holds the utmost importance:
 
 #### Slashing Avoidance
 
-Validators are hold accountable for their on-chain actions towards the safety and liveness of the protocol using possible slashing conditions. Guidelines to avoid slashing are outlined in the [documentation](https://docs.prylabs.network/docs/security-best-practices#slash-avoidance).
+Validators are held accountable for their on-chain actions towards the safety and liveness of the protocol using possible slashing conditions. Guidelines to avoid slashing are outlined in the [documentation](https://docs.prylabs.network/docs/security-best-practices#slash-avoidance).
 
 #### Wallet and key management
 
