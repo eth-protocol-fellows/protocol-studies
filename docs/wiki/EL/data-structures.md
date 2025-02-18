@@ -29,7 +29,7 @@ The image below depicts a simplified version of the working of a Merkle Tree:
 - The first level of non-leaf nodes contains the Hash of its child leaf nodes
   `Hash(1,2)`
 - The same process continues till we reach the top of the tree, which the Hash of all the previous Hashes
-  `Hash[Hash(1,2),Hash(3,4),Hash(5,6),Hash(7,8)]`
+  `Hash[Hash[Hash(1,2),Hash(3,4)],Hash[Hash(5,6),Hash(7,8)]]`
 
 More on [Merkle Trees in Ethereum](https://blog.ethereum.org/2015/11/15/merkling-in-ethereum)
 
