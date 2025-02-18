@@ -1,6 +1,6 @@
-# Study Group Week 4 | Testing and Security
+# Study Group Lecture 4 | Testing and Security
 
-Week 4 is diving into the testing tools and practices necessary to keep the network secure. 
+Lecture 4 is diving into the testing tools and practices necessary to keep the network secure. 
 
 Join the presentation by [Mario Vega](https://github.com/marioevz) on [Monday, March 11, 4PM UTC](https://savvytime.com/converter/utc-to-germany-berlin-united-kingdom-london-ny-new-york-city-ca-san-francisco-china-shanghai-japan-tokyo-australia-sydney/mar-11-2024/4pm).
 
