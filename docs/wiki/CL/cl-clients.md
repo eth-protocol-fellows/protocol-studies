@@ -91,7 +91,7 @@ Its architecture is optimized to minimize latency and maximize throughput on hig
 Noteworthy Features:
 - [Validator Client](https://docs.grandine.io/validator_client.html)
 - [Slashing Protection](https://docs.grandine.io/slashing_protection.html)
-- [Builer and MEV](https://docs.grandine.io/builder_api_and_mev.html)
+- [Builder and MEV](https://docs.grandine.io/builder_api_and_mev.html)
 - [Running a Slasher](https://github.com/grandinetech/grandine/tree/develop/slasher)
 - [Prometheus](https://docs.grandine.io/metrics.html) and [Grafana](https://github.com/grandinetech/grandine/tree/develop/metrics)
 
@@ -112,6 +112,6 @@ LambdaClass develops a client written in Elixir. It has been started during EPF4
 
 - [ETH Docker](https://eth-docker.net/)
 - [Ethernodes](https://ethernodes.org/)
-- [Client Diverisity](https://clientdiversity.org/)
+- [Client Diversity](https://clientdiversity.org/)
 - [Run the majority client at your own peril!](https://dankradfeist.de/ethereum/2022/03/24/run-the-majority-client-at-your-own-peril.html)
 - [Ethereum Hardware Resource Analysis](https://www.migalabs.io/blog/post/ethereum-hardware-resource-analysis-update)
