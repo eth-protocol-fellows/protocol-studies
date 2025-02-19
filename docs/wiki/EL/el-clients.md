@@ -18,6 +18,7 @@ Current execution clients used in production are:
 There are more execution clients that are in active development and haven't reached maturity yet or has been used in the past:
 
 | Client                                                          | Language   | Developer           | Status      |
+| --------------------------------------------------------------- | ---------- | ------------------- | ----------- |
 | [Nimbus](https://github.com/status-im/nimbus-eth1)              | Nim        | Nimbus              | Development |
 | [Silkworm](https://github.com/erigontech/silkworm)              | C++        | Erigon              | Development |
 | [JS Client](https://github.com/ethereumjs/ethereumjs-monorepo)  | Typescript | Paradigm            | Development |
