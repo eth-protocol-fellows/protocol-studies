@@ -19,7 +19,7 @@ Get yourself familiar with Ethereum client architecture as described in Day 1 an
     - https://btholt.github.io/complete-intro-to-linux-and-the-cli/, https://ubuntu.com/tutorials/command-line-for-beginners
 - Make yourself familiar with [Ephemery testnet](https://ephemery.dev)
 
-### Prepare your enviroment 
+### Prepare your environment 
 
 To follow the workshop, make sure to prepare your environment. 
 

@@ -16,7 +16,7 @@ Note: The fee recipient of the built payload may deviate from the suggested fee 
 
 Nodes broadcast transactions through a peer-to-peer network using the gossip protocol. These transactions are validated against specific criteria (e.g. , checking nonce correctness, sufficient balance, and proper signatures) and stored in the mempool awaiting inclusion in a block.
 
-Each slot has a designated block proposer, selected through a psuedo-random process by the consensus layer. When a validator is chosen as the block proposer for a slot, its consensus client initiates block construction through the execution engine's fork choice updated method, which provides the necessary context for building the block.
+Each slot has a designated block proposer, selected through a pseudo-random process by the consensus layer. When a validator is chosen as the block proposer for a slot, its consensus client initiates block construction through the execution engine's fork choice updated method, which provides the necessary context for building the block.
 
 We can simplify and emulate the process of constructing blocks, though this approach is specific to the Go types used in geth. However, the concepts can generally be applied to different clients.
 

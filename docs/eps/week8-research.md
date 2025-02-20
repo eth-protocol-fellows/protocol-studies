@@ -1,4 +1,4 @@
-# Study Group Week 8 | Protocol services
+# Study Group Lecture 13 | Protocol services
 
 This research talk is dedicated to MEV and censorship resistance, discusses the current state and proposals being worked on. 
 
@@ -8,7 +8,7 @@ Watch the presentation by [Barnabé Monnot](https://twitter.com/barnabemonnot) o
 
 ## Pre-reading
 
-Before starting with the week 8 development content, make yourself familiar with resources in previous weeks, especially week 5. It's important to understand the current architecture of the protocol, existence of MEV and implications of PBS.
+Before starting with the content, make yourself familiar with resources in previous weeks, especially Day 5 on roadmap. It's important to understand the current architecture of the protocol, existence of MEV and implications of PBS.
 
 Additionally, you can get ready by studying the following resources:
 

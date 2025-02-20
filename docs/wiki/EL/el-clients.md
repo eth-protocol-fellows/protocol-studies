@@ -7,13 +7,14 @@ Execution clients can be configured as full nodes which holds the state, histori
 ## Overview Table
 
 Current execution clients used in production are:
-| Client                                                          | Language   | Developer           | Status      |
-| --------------------------------------------------------------- | ---------- | ------------------- | ----------- |
-| [Besu](https://github.com/hyperledger/besu)                     | Java       | Hyperledger         | Production  |
-| [Erigon](https://github.com/ledgerwatch/erigon)                 | Go         | Ledgerwatch         | Production  |
-| [Geth](https://github.com/ethereum/go-ethereum)                 | Go         | Ethereum Foundation | Production  |
-| [Nethermind](https://github.com/NethermindEth/nethermind)       | C#         | Nethermind          | Production  |
-| [Reth](https://github.com/paradigmxyz/reth)                     | Rust       | Paradigm            | Production  |
+
+| Client      | Language | Developer          | Status     |
+|-------------|----------|-------------------|------------|
+| [Besu](https://github.com/hyperledger/besu) | Java | Hyperledger | Production |
+| [Erigon](https://github.com/ledgerwatch/erigon) | Go | Ledgerwatch | Production |
+| [Geth](https://github.com/ethereum/go-ethereum) | Go | Ethereum Foundation | Production |
+| [Nethermind](https://github.com/NethermindEth/nethermind) | C# | Nethermind | Production |
+| [Reth](https://github.com/paradigmxyz/reth) | Rust | Paradigm | Production |
 
 There are more execution clients that are in active development and haven't reached maturity yet or has been used in the past:
 
@@ -21,7 +22,7 @@ There are more execution clients that are in active development and haven't reac
 | --------------------------------------------------------------- | ---------- | ------------------- | ----------- |
 | [Nimbus](https://github.com/status-im/nimbus-eth1)              | Nim        | Nimbus              | Development |
 | [Silkworm](https://github.com/erigontech/silkworm)              | C++        | Erigon              | Development |
-| [JS Client](https://github.com/ethereumjs/ethereumjs-monorepo)  | Typescript | Paradigm            | Development |
+| [JS Client](https://github.com/ethereumjs/ethereumjs-monorepo)  | Typescript | Ethereum Foundation            | Development |
 | [ethrex](https://github.com/lambdaclass/ethrex)                 | Rust       | LambdaClass         | Development |
 | [Akula](https://github.com/akula-bft/akula)                     | Rust       | Akula Developers    | Deprecated  |
 | [Aleth](https://github.com/ethereum/aleth)                      | C++        | Aleth Developers    | Deprecated  |
@@ -106,5 +107,11 @@ The JavaScript client is developed by EF JS team as a part of the [EthereumJS mo
 
 - [ETH Docker](https://eth-docker.net/)
 - [Ethernodes](https://ethernodes.org/)
+<<<<<<< HEAD
 - [Client Diverisity](https://clientdiversity.org/)
 - [Run the majority client at your own peril!](https://dankradfeist.de/ethereum/2022/03/24/)
+=======
+- [Client Diversity](https://clientdiversity.org/)
+- [Run the majority client at your own peril!](https://dankradfeist.de/ethereum/2022/03/24/
+
+>>>>>>> main

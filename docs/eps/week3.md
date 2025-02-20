@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 # Study Group Lecture 2 | Consensus Layer
+=======
+# Study Group Lecture 3 | Consensus Layer
+>>>>>>> main
 
 The second day of EPFsg dives into the Consensus layer of Ethereum. 
 

@@ -1,6 +1,6 @@
 # Study Group Lecture 4 | Testing and Security
 
-Lecture 4 is diving into the testing tools and practices necessary to keep the network secure.
+Lecture 4 is diving into the testing tools and practices necessary to keep the network secure. 
 
 Watch the presentation on Ethereum core testing infrastructure on [Youtube](https://www.youtube.com/watch?v=PQVW5dJ8J0c). Presentations slides are [available here](https://github.com/eth-protocol-fellows/protocol-studies/tree/main/docs/eps/presentations/week4.pdf). 
 
@@ -12,7 +12,7 @@ For archive of the discussion during the talk, check [this thread](https://disco
 
 ## Pre-reading
 
-Before starting with the lecture 4 content, make yourself familiar with resources in [lecture 3](/eps/week3.md) and earlier. 
+Before starting with the lecture 4 content, make yourself familiar with resources in [lecture 3](/eps/week3.md) and before. 
 
 Additionally, you can read and get ready by studying the following resources:
 
