@@ -62,7 +62,7 @@ There are bunch of things we are not going to demonstrate during the workshop so
 - Connect to your node using a wallet, development tooling, web3.py or JS console 
 - Connect your node to the [crawler](https://www.ethernets.io/help/) and check what details it learns about it, discover new peers
 
-- https://github.com/eth-educators/ethstaker-guides/blob/main/holesky-node.md
+- https://github.com/eth-educators/ethstaker-guides/blob/main/docs/holesky-node.md
 - https://notes.ethereum.org/@launchpad/node-faq-merge
 - https://www.coincashew.com/coins/overview-eth/guide-or-how-to-setup-a-validator-on-eth2-mainnet/part-i-installation/monitoring-your-validator-with-grafana-and-prometheus
 
