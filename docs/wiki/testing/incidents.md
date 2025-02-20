@@ -27,3 +27,7 @@ For a comprehensive list of Ethereum incidents and their detailed analysis, you 
 
 - [The DAO Attack (2016)](https://www.coindesk.com/learn/understanding-the-dao-attack)
   One of the most significant incidents in Ethereum's history, where a vulnerability in The DAO smart contract was exploited, leading to the loss of approximately 3.6M ETH. This incident ultimately led to a hard fork of the Ethereum blockchain, creating Ethereum Classic (ETC) and the current Ethereum (ETH) chain.
+
+- [Shanghai DOS Attacks (2016)](https://ethos.dev/shanghai-attacks)
+  The network faced a series of DOS attacks during DevCon2 in Shanghai, where attackers exploited underpriced EVM opcodes (particularly EXTCODESIZE) to slow down block processing resulting in network congestion. This led to subsequent hard forks (Tangerine Whistle and Spurious Dragon) that adjusted gas costs for targeted opcodes to prevent similar attacks.
+
