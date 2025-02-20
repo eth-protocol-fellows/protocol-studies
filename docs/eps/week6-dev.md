@@ -8,7 +8,7 @@ Watch presentations from [Hsiao-Wei](https://twitter.com/icebearhww) and [Sam](h
 
 ## Pre-reading
 
-Before starting with the week 6 content, make yourself familiar with resources in previous weeks, especially 1-3. 
+Before starting with the lecture 6 content, make yourself familiar with resources in previous days, especially 1-3. 
 
 Additionally, you can read and get ready by studying the following resources:
 

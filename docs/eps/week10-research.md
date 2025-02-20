@@ -1,6 +1,6 @@
-# Study Group Week 10 | The Ethereum fork-choice
+# Study Group Lecture 15 | The Ethereum fork-choice
 
-Week 10 research talk will cover a variety of topics related to the fork-choice of Ethereum, its evolution and its role in future upgrades.
+Last talk of the original study group covers a variety of topics related to the fork-choice of Ethereum, its evolution and its role in future upgrades.
 
 Watch the presentation by [Francesco](https://twitter.com/fradamt) on [StreamEth](https://streameth.org/65cf97e702e803dbd57d823f/epf_study_group) or [Youtube](https://www.youtube.com/watch?v=x-_2gAVFlw8). Presentation is [available here](https://github.com/eth-protocol-fellows/protocol-studies/blob/main/docs/eps/presentations/week10-research.pdf).
 
@@ -8,7 +8,7 @@ Watch the presentation by [Francesco](https://twitter.com/fradamt) on [StreamEth
 
 ## Pre-reading
 
-Before starting with the week 10 development content, make yourself familiar with resources in previous weeks, especially week 3 and week 5. You should have understanding of Beacon Chain and current consensus research topics.
+Before starting with the Day 15 content, make yourself familiar with resources in previous weeks, especially day 2 on CL and day 5 on roadmap. You should have understanding of Beacon Chain and current consensus research topics.
 
 Additionally, you can get ready by studying the following resources.
 

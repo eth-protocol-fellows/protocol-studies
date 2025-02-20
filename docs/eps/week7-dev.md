@@ -1,6 +1,6 @@
-# Study Group Week 7 | Execution client architecture
+# Study Group Lecture 7 | Execution client architecture
 
-Week 7 development track is an insight into Ethereum execution layer client codebase, explaining its architecture and highlighting novel approaches. 
+Day 7 development track is an insight into Ethereum execution layer client codebase, explaining its architecture and highlighting novel approaches. 
 
 Watch the presentation recording by [Dragan](https://twitter.com/rakitadragan) on StreamEth or Youtube. Slides are [available here](https://github.com/eth-protocol-fellows/protocol-studies/blob/main/docs/eps/presentations/week7-dev.pdf). 
 
@@ -8,7 +8,7 @@ Watch the presentation recording by [Dragan](https://twitter.com/rakitadragan) o
 
 ## Pre-reading
 
-Before starting with the week 7 development content, make yourself familiar with resources in previous weeks, especially 2. The execution client intro provided an important knowledge about execution client and its main features with examples from geth codebase. This talk will be diving into reth client design which is written in rust and developed with a modern design approach to EL clients. 
+Before starting with the lecture 7 development content, make yourself familiar with resources in previous days, especially Day 3 on EL. The execution client intro provided an important knowledge about execution client and its main features with examples from geth codebase. This talk will be diving into reth client design which is written in rust and developed with a modern design approach to EL clients. 
 
 Additionally, you can read and get ready by studying the following resources:
 
