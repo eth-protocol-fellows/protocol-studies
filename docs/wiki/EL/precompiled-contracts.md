@@ -85,7 +85,7 @@ Refer the wiki on [EVM](/wiki/EL/evm.md) to understand how assembly code works.
  Following precompiles are currently proposed:
 
 - [EIP-2537: Precompile for BLS12-381 curve operations](https://eips.ethereum.org/EIPS/eip-2537)
-- [EIP-7212: Precompile for secp256r1 Curve Support](https://eips.ethereum.org/EIPS/eip-7212)
+- [RIP-7212: Precompile for secp256r1 Curve Support](https://github.com/ethereum/RIPs/blob/master/RIPS/rip-7212.md)
 - [EIP-7545: Verkle proof verification precompile](https://eips.ethereum.org/EIPS/eip-7545)
 - [EIP-5988: Add Poseidon hash function precompile](https://eips.ethereum.org/EIPS/eip-5988)
 
