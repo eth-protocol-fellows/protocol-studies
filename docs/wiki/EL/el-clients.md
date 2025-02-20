@@ -18,6 +18,7 @@ Current execution clients used in production are:
 There are more execution clients that are in active development and haven't reached maturity yet or has been used in the past:
 
 | Client                                                          | Language   | Developer           | Status      |
+| --------------------------------------------------------------- | ---------- | ------------------- | ----------- |
 | [Nimbus](https://github.com/status-im/nimbus-eth1)              | Nim        | Nimbus              | Development |
 | [Silkworm](https://github.com/erigontech/silkworm)              | C++        | Erigon              | Development |
 | [JS Client](https://github.com/ethereumjs/ethereumjs-monorepo)  | Typescript | Paradigm            | Development |
@@ -34,7 +35,7 @@ There are more execution clients that are in active development and haven't reac
 The overwhelming majority of node operators are currently using Geth as an Execution Client. 
 In the interest of supporting the health of the Execution Layer, [it is recommended to use different clients](](https://clientdiversity.org/#why)) when running nodes. 
 
-## Individual clients 
+## Individual clients
 
 Although clients implement the same specification, each client offers different set of features and benefits. They come in different programming languages enabling developers of different backgrounds to contribute. 
 
@@ -106,4 +107,4 @@ The JavaScript client is developed by EF JS team as a part of the [EthereumJS mo
 - [ETH Docker](https://eth-docker.net/)
 - [Ethernodes](https://ethernodes.org/)
 - [Client Diverisity](https://clientdiversity.org/)
-- [Run the majority client at your own peril!](https://dankradfeist.de/ethereum/2022/03/24/
+- [Run the majority client at your own peril!](https://dankradfeist.de/ethereum/2022/03/24/)
