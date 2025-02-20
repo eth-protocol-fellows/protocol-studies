@@ -1,9 +1,8 @@
-# Study Group Week 5 | Using Ethereum clients  
+# Study Group Lecture | Using Ethereum clients  
 
-During week 5, apart of [the regular presentation](https://epf.wiki/#/eps/week5), we prepared a workshop to give you a hands-on experience of using Ethereum clients. We will learn how to spin up an Ethereum node by running execution and consensus client. 
+During Day 3, apart of [the regular presentation](https://epf.wiki/#/eps/week3), [Mario](https://twitter.com/TMIYChao) prepared a workshop to give you a hands-on experience of using Ethereum clients. We will learn how to spin up an Ethereum node by running execution and consensus client. 
 
-
-Watch the recording of the workshop by [Mario](https://twitter.com/TMIYChao) on StreamEth or Youtube. 
+You can [join us for the live workshop](https://meet.ethereum.org/eps-office-hours) on Wednesday after regular Office Hours at 3PM UTC or watch the recording of the workshop from last year.
 
 [recording](https://www.youtube.com/embed/KxXowOZ2DLs?si=yLpNoczrUmxj4kE4 ':include :type=iframe width=100% height=560 frameborder="0" allow="fullscreen" allowfullscreen encrypted-media gyroscope picture-in-picture web-share')
 
@@ -11,18 +10,23 @@ Make sure to prepare your environment and learn basics necessary to understand t
 
 ## Prerequisites
 
-Get yourself familiar with Ethereum client architecture as described in Week 1 and you can check Week 2 and 3 for even better understanding of what workshop executes. The workshop will default to geth+lighthouse but if you have other preferred client to try, make yourself familiar with its documentation. 
+Get yourself familiar with Ethereum client architecture as described in Day 1 and you can check Day 2 and 3 for even better understanding of what workshop executes. The workshop will default to geth+lighthouse but if you have other preferred client to try, make yourself familiar with its documentation. 
 
 - https://ethereum.org/en/developers/docs/nodes-and-clients/node-architecture/
 - https://ethereum.org/en/developers/docs/nodes-and-clients/run-a-node/
 - Client documentation of your preferred client pair 
 - Basic bash/cli shell skills 
     - https://btholt.github.io/complete-intro-to-linux-and-the-cli/, https://ubuntu.com/tutorials/command-line-for-beginners
+- Make yourself familiar with [Ephemery testnet](https://ephemery.dev)
 
-Prepare your environment, update the system and install dependencies so it doesn't block you during the workshop.  
+### Prepare your environment 
 
-- The workshop environment will be fresh Debian 12 instance but you can use any preferred distro. Process might be very similar on other unix based systems like Mac but you can always setup a VM to replicate the environment. 
-- Install basic utils we will need like curl, git, gpg, docker, compilers 
+To follow the workshop, make sure to prepare your environment. 
+
+- Update the system and install dependencies so it doesn't block you during the workshop.  
+- Install basic utils we will need like curl, git, gpg, docker
+- Install compilers for languages of clients you'd like to try to compile (we default to using prebuilt binaries)
+- The workshop environment will be a fresh Debian 12 instance but you can use any preferred distro, Mac or WSL. Process might be very similar on other unix based systems and you can always setup a VM to replicate the same environment. 
 
 We will only run a client on testnet so the hardware requirements are minimal - the goal of the workshop is not to sync the tip of the chain but only demonstrate how the node works. Default client pair will be geth+lighthouse but if there is enough time we can demonstrate switching the pair. 
 
@@ -47,7 +51,7 @@ We will only run a client on testnet so the hardware requirements are minimal - 
 - Additional exercise if there is time
     - Systemd service
     - Monitoring node
-- After the stream, we can switch to [jitsi](meet.ethquokkaops.io/EPFsgWorkshop) for further discussion and troubleshooting
+- Join the [Office Hours call](https://meet.ethereum.org/eps-office-hours) to follow the workshop, ask questions and get help with troubleshooting.
 
 ## Additional reading and exercises 
 

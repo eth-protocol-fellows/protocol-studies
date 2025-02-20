@@ -13,6 +13,7 @@ ACL
 addons
 Aditional
 aggregative
+Akula
 Aleth
 allowfullscreen
 amidst
@@ -172,6 +173,7 @@ Danno
 Dany
 DAO
 dapp
+Dapplion
 dapps
 DAS
 dataset
@@ -263,6 +265,7 @@ epubs
 ERC
 ERCs
 Erigon
+Erigon's
 estimateGas
 eth
 ethash
@@ -270,12 +273,14 @@ Ethash
 ETHCC
 Ethereum
 Ethereum's
+Ethernodes
 ethers
 Ethervm
 ethone
 ethone's
 ethresear
 ethresearch
+ethrex
 ethroadmap
 ethstaker
 ETHW
@@ -320,10 +325,12 @@ frontrunning
 fulfillments
 fullscreen
 Fullstack
+Fulu
 func
 fungibility
 fuzzer
 FuzzyVM
+gasless
 GasLimit
 Gasper
 gasPrice
@@ -331,6 +338,7 @@ gasUsed
 Georgios
 geq
 geth
+Geth's
 getPayloadBodiesByHashV
 getPayloadV
 getters
@@ -351,6 +359,7 @@ gradlew
 Grafana
 Grandine
 Grigore
+Grup
 Guillaume
 gwei
 hackathon
@@ -396,6 +405,7 @@ instantiation
 intermediated
 intermediation
 interop
+interprocess
 invariants
 IOP
 IPC
@@ -429,11 +439,15 @@ Lamport
 Lamport's
 lceil
 ldots
+learnings
+Ledgerwatch
 Lefteris
 leftarrow
 leq
 leveldb
 lfloor
+LGPL
+libmdbx
 libp
 lifecycle
 Lightclient
@@ -461,6 +475,7 @@ Lyubashevsky
 mainnet
 Mana
 Manas
+Manu
 Mário
 mathbb
 Maximalism
@@ -490,6 +505,7 @@ MODEXP
 modularity
 moduli
 Monnot
+monorepo
 mortem
 MPC
 MPT
@@ -504,6 +520,7 @@ mvepbs
 MVI
 Nagu
 Nakamoto
+Nalepa
 Namecoin
 namespace
 namespaces
@@ -578,6 +595,7 @@ PQCA
 PR
 PR'ed
 pre
+prebuilt
 preAccesedStorageKeys
 precompile
 precompiled
@@ -732,6 +750,7 @@ StoragesHistory
 StoragesTrie
 StreamEth
 subcurrency
+subnet
 subnets
 suboptimal
 subprotocols
@@ -745,6 +764,7 @@ systemd
 Szabo
 Takenobu
 Tani
+TBD
 tbhl
 TCP
 Teku
@@ -758,6 +778,7 @@ TLA
 tldr
 TLS
 TODO
+toolset
 touchedAccounts
 TPS
 tracoor
@@ -829,6 +850,7 @@ Whitepaper
 WIP
 withdrawable
 withdrawalHash
+WSL
 WSS
 Xatu
 xff

@@ -380,3 +380,11 @@ body .pagination-item-label {
   width: 100%;
   display:block;
 }
+
+.sidebar-nav li,
+.sidebar-nav li * {
+  white-space: normal !important;
+  overflow: visible !important;
+  text-overflow: clip !important; 
+  word-break: break-word !important;
+}

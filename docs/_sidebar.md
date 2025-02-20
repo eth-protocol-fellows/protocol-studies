@@ -1,7 +1,7 @@
 - [Home](readme.md)
 - **Study Group**
-- [EPFsg overview](/eps/intro.md)
-- Presentations
+- [Start here](/eps/intro.md)
+- [Study Group 2024](/eps/SG2024.md)
   - [Week 0](/eps/week0.md)
   - [Week 1](/eps/week1.md)
   - [Week 2](/eps/week2.md)
@@ -22,7 +22,7 @@
 - [Contributing](contributing.md)
 - **Protocol Wiki**
 - The Protocol
-  - [Prehistory](/wiki/protocol/prehistory.md) 
+  - [Prehistory](/wiki/protocol/prehistory.md)
   - [Architecture](/wiki/protocol/architecture.md)
   - [Design rationale](/wiki/protocol/design-rationale.md)
   - [Evolution](/wiki/protocol/history.md)
@@ -75,10 +75,13 @@
     - [TBHL](/wiki/research/PBS/TBHL.md)
     - [ET](/wiki/research/PBS/ET.md)
   - [eODS](/wiki/research/eODS.md)
+  - [PeerDAS](/wiki/research/peerdas.md)
   - Preconfirmations
     - [Preconfirmations](/wiki/research/Preconfirmations/Preconfirmations.md)
     - [Based Sequencing with Preconfs](/wiki/research/Preconfirmations/BasedSequencingPreconfs.md)
   - [Light clients](/wiki/research/light-clients.md)
+  - Account abstraction
+    - [EIP-7702](/wiki/research/account-abstraction/eip-7702.md)
 - [Cryptography](/wiki/Cryptography/intro.md)
   - [ECDSA](/wiki/Cryptography/ecdsa.md)
   - [BLS](/wiki/Cryptography/bls.md)

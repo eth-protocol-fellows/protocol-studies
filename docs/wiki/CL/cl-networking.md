@@ -27,7 +27,7 @@ There are many [patterns][noise-patterns] which describe the key exchange proces
 
 ## Snappy - Compression
 
-[Snappy][snappy] is a compression scheme created by engineers at Google in 2011. It's main design considerations prioritize compression/decompression speed, while still having a reasonable compression ratio.
+[Snappy][snappy] is a compression scheme created by engineers at Google in 2011. Its main design considerations prioritize compression/decompression speed, while still having a reasonable compression ratio.
 
 ## Related R&D
 
