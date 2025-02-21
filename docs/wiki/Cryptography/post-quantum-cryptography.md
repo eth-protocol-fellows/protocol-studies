@@ -28,7 +28,7 @@ Note that these predictions are somewhat subjective and might not reflect real p
 
 ### 2025
 
-In Feb 2025, Microsoft announced [a million qubits on a single chip.](https://news.microsoft.com/source/features/innovation/microsofts-majorana-1-chip-carves-new-path-for-quantum-computing/)
+In Feb 2025, Microsoft announced [a million qubits on a single chip.](https://news.microsoft.com/source/features/innovation/microsofts-majorana-1-chip-carves-new-path-for-quantum-computing/). [Video explanation with context](https://www.youtube.com/watch?v=jwnez8HdN7E). 
 
 ## Post-Quantum risk to Ethereum
 
