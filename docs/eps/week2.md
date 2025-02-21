@@ -1,4 +1,4 @@
-# Study Group Week 2 | Execution Layer
+# Study Group Lecture 2 | Execution Layer
 
 During the second week, we will dive into the Execution layer of Ethereum. 
 

@@ -1,6 +1,6 @@
-# Study Group Week 5 | Research and Roadmap
+# Study Group Lecture 5 | Research and Roadmap
 
-Week 5 provided an overview of current research ecosystem and updated roadmap. Second part of the week also included a node [workshop](/eps/nodes_workshop.md). 
+Lecture 5 provided an overview of current research ecosystem and updated roadmap.
 
 Watch the presentation by [Domothy](https://twitter.com/domothy) on StreamEth or Youtube. Slides are [available here](https://github.com/eth-protocol-fellows/protocol-studies/blob/main/docs/eps/presentations/week5.pdf). 
 
@@ -8,7 +8,7 @@ Watch the presentation by [Domothy](https://twitter.com/domothy) on StreamEth or
 
 ## Pre-reading
 
-Before starting with the week 5 content, make yourself familiar with resources in previous weeks. 
+Before starting with the lecture 5 content, make yourself familiar with resources in previous weeks. 
 
 Additionally, you can read and get ready by studying the following resources:
 

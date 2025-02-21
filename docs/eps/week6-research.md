@@ -1,6 +1,6 @@
-# Study Group Week 6 | Sharding and DAS
+# Study Group Lecture 11 | Sharding and DAS
 
-Week 6 research track is going to be a dive into data availability sampling and danksharding. 
+Lecture 11 is going to be a dive into data availability sampling and danksharding. 
 
 Watch the presentation by [Dankrad](https://twitter.com/dankrad) on StreamEth or Youtube. Slides are [available here](https://github.com/eth-protocol-fellows/protocol-studies/blob/main/docs/eps/presentations/week6_research.pdf). 
 
@@ -8,7 +8,7 @@ Watch the presentation by [Dankrad](https://twitter.com/dankrad) on StreamEth or
 
 ## Pre-reading
 
-Before starting with the week 6 content, make yourself familiar with resources in introductory weeks. 
+Before starting with the lecture 11 content, make yourself familiar with resources in the introductory week. 
 
 Additionally, you can read and get ready by studying the following resources:
 

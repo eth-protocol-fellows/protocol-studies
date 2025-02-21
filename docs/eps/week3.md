@@ -1,4 +1,4 @@
-# Study Group Week 3 | Consensus Layer
+# Study Group Lecture 3 | Consensus Layer
 
 The third week of EPFsg dives into the Consensus layer of Ethereum. 
 

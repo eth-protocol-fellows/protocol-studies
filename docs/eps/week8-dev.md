@@ -1,6 +1,6 @@
-# Study Group Week 8 | Consensus client architecture
+# Study Group Lecture 8 | Consensus client architecture
 
-The Week 8 development track provides a look into Ethereum consensus layer client codebase, explaining its architecture and functions. 
+The lecture 8 development track provides a look into Ethereum consensus layer client codebase, explaining its architecture and functions. 
 
 Watch the presentation recording by [Paul Harris](https://twitter.com/rolfyone) on StreamEth or Youtube. Slides are [available here](https://github.com/eth-protocol-fellows/protocol-studies/blob/main/docs/eps/presentations/week8-dev.pdf). 
 
@@ -8,7 +8,7 @@ Watch the presentation recording by [Paul Harris](https://twitter.com/rolfyone) 
 
 ## Pre-reading
 
-Before starting with the week 8 development content, make yourself familiar with resources in previous weeks, especially week 3 resources on consensus layer. 
+Before starting with the week 8 development content, make yourself familiar with resources in previous weeks, especially day 2 resources on consensus layer. 
 
 Paul dives into Teku, consensus client implementation in Java and explains an example on how an EIP gets implemented. You should have at least basic knowledge of the language syntax to follow properly. 
 
