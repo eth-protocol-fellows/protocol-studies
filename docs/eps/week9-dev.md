@@ -1,4 +1,4 @@
-# Study Group Lecutre 9 | Local testing and prototyping 
+# Study Group Lecture 9 | Local testing and prototyping 
 
 This development talk is dedicated to testing and prototyping forks locally, it discusses the current state and ideas being worked on. 
 
