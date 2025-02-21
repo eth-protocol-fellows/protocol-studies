@@ -12,17 +12,17 @@ Originally started in 2024, the study group is a participatory educational progr
 
 ## Program Structure
 
-The study group content is structured in 2 stages - an intense introduction and deep dive. The first 2 weeks consist of studying existing curriculum from [previous study group](/eps/SG2024.md). The following 6 weeks will provide new live lectures from core developers and researchers with materials covering parts of the execution and consensus layers of Ethereum. 
+The study group content is structured in 2 stages - an intense introduction and deep dive. The first 2 weeks consist of studying existing curriculum from [previous study group](https://blog.ethereum.org/2024/02/07/epf-study-group). The following 6 weeks will provide new live lectures from core developers and researchers with materials covering parts of the execution and consensus layers of Ethereum. 
 
 ### Schedule
 
-
 Each session is created by a core developer or researcher, comes with reading materials to get you familiar with the topic context and some also include exercises to strengthen and practice your understanding. More resources on each topic can be found in the wiki section and if they are any missing, contribute to add them. 
+
+> Study Group events like Office Hours are published in the Discord server or you can subscribe to [this calendar](https://calendar.google.com/calendar/u/0?cid=Y18xY2RhMjMxNzc5NmI4NDgzZTliMjBhMGVjZTFkMDFhZWFkN2U1ZTY3N2IxNjVhOGUzZTJlMjQ3ZTQ0M2UwODhkQGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20) to follow all sessions
 
 During first 2 weeks, participants watch previous videos and study existing materials for the given day in their own time. Every day at _3PM UTC we will hold a daily office hours running for 2 hours_ where everyone can discuss their learnings, ask questions, exchange knowledge, etc. Join at the [Office Hours call link](https://meet.ethereum.org/eps-office-hours).
 
-
-> Events are published in the Discord server or you can subscribe to [this calendar](https://calendar.google.com/calendar/u/0?cid=Y18xY2RhMjMxNzc5NmI4NDgzZTliMjBhMGVjZTFkMDFhZWFkN2U1ZTY3N2IxNjVhOGUzZTJlMjQ3ZTQ0M2UwODhkQGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20) to follow all sessions
+> We recommend watching videos from the study group using faster playback speed, 1.25 or 1.5x to save some time
 
 #### Week 1
 
@@ -71,7 +71,7 @@ Apart from weekly lectures, there are less regular, ad-hoc hangout calls for inf
 
 The study group is an open and permissionless, and it is up to each participant as to how they want to approach it. Whether you want to learn as much as possible, focus only on certain topics or share your knowledge with others, you are welcomed. 
 
-> Join our community in [Discord server](https://discord.gg/8RPnPGEQtJ). We use it for the easiest community engagement but we are aware that Discord is proprietary and doesn't respect user privacy. Consider using alternative FOSS clients like [Dissent](https://github.com/diamondburned/dissent) or [Discordo](https://github.com/ayn2op/discordo).
+> Join our community in [Discord server](https://discord.gg/8RPnPGEQtJ). We use it for the easiest community engagement but we are aware that Discord is proprietary and doesn't respect user privacy. Consider using alternative FOSS clients like [Dissent](https://github.com/diamondburned/dissent) or [Discordo](https://github.com/ayn2op/discordo). For enhancing the regular client, check [BetterDiscord](https://github.com/BetterDiscord/BetterDiscord/) project.
 
 Study group participants collaboratively develop the [Protocol wiki](/wiki/wiki-intro.md), serving as an evolving knowledge base for current and future core developers. This can provide students with practical experience in contributing to open source resources, while gaining invaluable experience in documentation and community-driven development.
 
