@@ -18,6 +18,8 @@ The study group content is structured in 2 stages - an intense introduction and 
 
 Each session is created by a core developer or researcher, comes with reading materials to get you familiar with the topic context and some also include exercises to strengthen and practice your understanding. More resources on each topic can be found in the wiki section and if they are any missing, contribute to add them. 
 
+> Study Group events like Office Hours are published in the Discord server or you can subscribe to [this calendar](https://calendar.google.com/calendar/u/0?cid=Y18xY2RhMjMxNzc5NmI4NDgzZTliMjBhMGVjZTFkMDFhZWFkN2U1ZTY3N2IxNjVhOGUzZTJlMjQ3ZTQ0M2UwODhkQGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20) to follow all sessions
+
 During first 2 weeks, participants watch previous videos and study existing materials for the given day in their own time. Every day at _3PM UTC we will hold a daily office hours running for 2 hours_ where everyone can discuss their learnings, ask questions, exchange knowledge, etc. Join at the [Office Hours call link](https://meet.ethereum.org/eps-office-hours).
 
 > We recommend watching videos from the study group using faster playback speed, 1.25 or 1.5x to save some time
@@ -81,7 +83,7 @@ While this program is designed to act as a precursor to the Ethereum Protocol Fe
 - [Discord server](https://discord.gg/8RPnPGEQtJ)
 - [Weekly talks on StreamEth](https://streameth.org/65cf97e702e803dbd57d823f/epf_study_group)
 - [Youtube](https://www.youtube.com/@ethprotocolfellows)
-- [Sessions calendar](https://calendar.google.com/calendar/u/0?cid=ZXBmc3R1ZHlncm91cEBnbWFpbC5jb20) 
+- [Sessions calendar](https://calendar.google.com/calendar/u/0?cid=Y18xY2RhMjMxNzc5NmI4NDgzZTliMjBhMGVjZTFkMDFhZWFkN2U1ZTY3N2IxNjVhOGUzZTJlMjQ3ZTQ0M2UwODhkQGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20) 
 - [EPF mailing list](https://groups.google.com/a/ethereum.org/g/protocol-fellowship-group)
 - [EF Blog](https://blog.ethereum.org)
 
