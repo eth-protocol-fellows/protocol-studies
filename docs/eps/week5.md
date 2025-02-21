@@ -62,3 +62,12 @@ Additionally, you can read and get ready by studying the following resources:
 - [Ethereum data structures](https://arxiv.org/pdf/2108.05513.pdf)
 - https://ethresear.ch/t/execution-tickets/17944
 - https://notes.ethereum.org/@ipsilon/evm-object-format-overview
+
+### V's overview of the roadmap tracks
+
+- [Merge](https://vitalik.eth.limo/general/2024/10/14/futures1.html)
+- [Surge](https://vitalik.eth.limo/general/2024/10/17/futures2.html)
+- [Scourge](https://vitalik.eth.limo/general/2024/10/20/futures3.html)
+- [Verge](https://vitalik.eth.limo/general/2024/10/23/futures4.html)
+- [Purge](https://vitalik.eth.limo/general/2024/10/26/futures5.html)
+- [Splurge](https://vitalik.eth.limo/general/2024/10/29/futures6.html)
