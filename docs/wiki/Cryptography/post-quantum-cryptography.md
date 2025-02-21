@@ -4,7 +4,7 @@ Classical cryptography safeguards information by leveraging the inherent difficu
 
 In essence, these problems makes determining the structure of a secret subgroup (size, elements) within a large group computationally intractable without the knowledge of a "secret" (private) key. This one-way "trapdoor function" is employed by public-key cryptography algorithms for their security.
 
-[RSA's](https://en.wikipedia.org/wiki/RSA_(cryptosystem)) security rests on the **factoring of large prime numbers**. In contrast, [ECDSA's](/wiki/Cryptography/ecdsa.md) security is based on the elliptic curve **discrete logarithm problem**. Solving either of these hidden subgroup problems becomes exponentially harder as the key size increases, making them computationally infeasible for classical computers to crack. This fundamental difficulty safeguards encrypted data.
+[RSA's](<https://en.wikipedia.org/wiki/RSA_(cryptosystem)>) security rests on the **factoring of large prime numbers**. In contrast, [ECDSA's](/wiki/Cryptography/ecdsa.md) security is based on the elliptic curve **discrete logarithm problem**. Solving either of these hidden subgroup problems becomes exponentially harder as the key size increases, making them computationally infeasible for classical computers to crack. This fundamental difficulty safeguards encrypted data.
 
 However, the landscape is shifting.
 
@@ -25,6 +25,10 @@ Steady progress is being made in quantum research; one survey respondent notes:
 > It is not always the case [..] but I find that my predictions are often more pessimistic than what actually happens. I take this as a sign that the research is accelerating.
 
 Note that these predictions are somewhat subjective and might not reflect real progress which is mostly not open to public. Advanced threat actor might have access to powerful quantum computing sooner than public and use strategies like [retrospective decryption](https://en.wikipedia.org/wiki/Harvest_now%2C_decrypt_later).
+
+### 2025
+
+In Feb 2025, Microsoft announced [a million qubits on a single chip.](https://news.microsoft.com/source/features/innovation/microsofts-majorana-1-chip-carves-new-path-for-quantum-computing/). [Video explanation with context](https://www.youtube.com/watch?v=jwnez8HdN7E). 
 
 ## Post-Quantum risk to Ethereum
 
@@ -67,7 +71,7 @@ The [NIST Post-Quantum Cryptography standardization](https://csrc.nist.gov/proje
 - [FALCON](https://falcon-sign.info/) by Thomas Prest et al.
 - [SPHINCS+](https://falcon-sign.info/) by Andreas Hulsing et al.
 
- NIST's ["2022 status report"](https://tsapps.nist.gov/publication/get_pdf.cfm?pub_id=934458) documents the standardization process, evaluation criteria, and security models.
+NIST's ["2022 status report"](https://tsapps.nist.gov/publication/get_pdf.cfm?pub_id=934458) documents the standardization process, evaluation criteria, and security models.
 
 ### Post-Quantum Cryptography Alliance
 
