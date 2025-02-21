@@ -34,7 +34,7 @@ There are more execution clients that are in active development and haven't reac
 ## Distribution
 
 The overwhelming majority of node operators are currently using Geth as an Execution Client. 
-In the interest of supporting the health of the Execution Layer, [it is recommended to use different clients](](https://clientdiversity.org/#why)) when running nodes. 
+In the interest of supporting the health of the Execution Layer, [it is recommended to use different clients](https://clientdiversity.org/#why) when running nodes. 
 
 ## Individual clients
 
