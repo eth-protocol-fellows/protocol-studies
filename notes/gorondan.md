@@ -7,7 +7,7 @@ Reading the material in the previous EPF programs, I realize that after finalizi
 
 ## Areas of Interest
 
-* staking design - I feel that this topic transcends on-going and future protocol development and it will have a palpable impact on the application layer in the short to medium term. Also long term, but that is most likely to be subjected to the [time factor](../../docs/wiki/research/roadmap.md#roadmap-overview).
+* staking design - I feel that this topic transcends on-going and future protocol development and it will have a palpable impact on the application layer in the short to medium term. Also long term, but that is most likely to be subjected to the [time factor](../docs/wiki/research/roadmap.md#roadmap-overview).
 
 ## Potential project
 My goal is to partake in a project that would propose minimal viable enshrinement of liquid staking. 
