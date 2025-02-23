@@ -8,7 +8,7 @@ TBHL modifies the conventional slot structure in Ethereum, introducing a dual-bl
 
 ## Slot Anatomy and Operational Phases
 
-![Slot Anatomy of TBHL](/docs/wiki/research/img/scaling/Slot-Anatomy-of-TBHL-Mike.png)
+![Slot Anatomy of TBHL](../img/scaling/Slot-Anatomy-of-TBHL-Mike.png)
 
 
 _Figure – The slot anatomy of TBHL. Credit by mike neuder and justin drake._
