@@ -35,7 +35,7 @@ The first week will cover the first five weeks of previous Study Group content. 
 | Day 3, Feb 19 | [Execution Layer](/eps/week2.md)                    | [Lightclient](https://github.com/lightclient)   |
 | Day 3, Feb 19 | [Using clients, nodes](/eps/nodes_workshop.md)      | [Mario](https://github.com/taxmeifyoucan)       |
 | Day 4, Feb 20 | [Testing and security](/eps/week4.md)               | [Mario Vega](https://github.com/marioevz)       |
-| Day 5, Feb 21 | [Roadmap and research](/eps/week5p.md)              | [Domothy](https://github.com/domothyb)          |
+| Day 5, Feb 21 | [Roadmap and research](/eps/week5.md)               | [Domothy](https://github.com/domothyb)          |
 
 #### Week 2
 
