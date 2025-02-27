@@ -57,7 +57,7 @@ Run this command to open Kurtosis web interface:
 kurtosis web
 ```
 
-![Kurtosis web interface](/docs/wiki/testing/img/kurtosis-web.png)
+![Kurtosis web interface](./img/kurtosis-web.png)
 
 ## Kurtosis Enclave
 
