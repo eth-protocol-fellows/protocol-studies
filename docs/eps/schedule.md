@@ -2,7 +2,7 @@
 
 The study group was originally run as a 10-week study program with 16 sessions in total. The original sessions are divided into 3 areas, each covering one part of the Ethereum protocol curriculum. 
 
-Watch each lecture sequentially, study supplied materials and excercices. We recommend making notes and in case of any extra information, explanation needed, come to ask to Office Hours or a discord channel. 
+Watch each lecture sequentially, study supplied materials and exercises. We recommend making notes and in case of any extra information, explanation needed, come to ask to Office Hours or a discord channel. 
 
 ## Schedule
 
