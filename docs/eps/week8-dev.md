@@ -33,3 +33,4 @@ Additionally, you can get ready by studying the following resources:
 - [Teku and the Merge, PEEPanEIP#83](https://www.youtube.com/watch?v=YTWaZ-NBpbM)
 - [EIP 7251 - Max EB](https://github.com/ethereum/consensus-specs/tree/dev/specs/_features/eip7251)
 - [Beacon-api](https://github.com/ethereum/beacon-APIs)
+- [Lighthouse Consensus Client architecture](https://www.youtube.com/watch?v=pLHhTh_vGZ0) - A similar talk on CL client architecture in Rust client Lighthouse
