@@ -89,7 +89,7 @@ While this program is designed to act as a precursor to the Ethereum Protocol Fe
 
 ## Calls troubleshooting
 
-For our weekly meetings, we are using a self-hosted FOSS platform Jitsi. Even though we are doing our best, some people might experience problems during these calls, here are few tips on troubleshooting:
+For our weekly meetings, we are using a self-hosted FOSS platform Jitsi. Even though we are doing our best, some people might experience problems during these calls, here are a few tips on troubleshooting:
 
 - Restart your browser and rejoin
 - Try a different browser (especially if you are using a Chromium based, try Firefox and vice versa)
