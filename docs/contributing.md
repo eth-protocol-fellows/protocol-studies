@@ -67,6 +67,7 @@ The audience of this wiki is technical and the content should reflect that. Ther
 - Use bullet points or tables for topics which require enumerating 
 - Highlight keywords to support scanning and skimming through the article
 - Provide visualizations to explain the topic better
+- When adding pictures, add them to a directory for images and use their relative path
 - When using acronyms or a technical jargon, make sure to introduce it first 
 - Ethereum is changing fast, write the content to be as much future proof as possible 
 - Don't use LLMs to generate the text

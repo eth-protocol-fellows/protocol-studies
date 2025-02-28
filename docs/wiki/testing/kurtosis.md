@@ -49,7 +49,7 @@ kurtosis run github.com/ethpandaops/ethereum-package
 
 The running enclave status will appear:
 
-![Kurtosis quick start terminal](/docs/wiki/testing/img/kurtosis-quick-start.png)
+![Kurtosis quick start terminal](./img/kurtosis-quick-start.png)
 
 Run this command to open Kurtosis web interface:
 
@@ -57,7 +57,7 @@ Run this command to open Kurtosis web interface:
 kurtosis web
 ```
 
-![Kurtosis web interface](/docs/wiki/testing/img/kurtosis-web.png)
+![Kurtosis web interface](./img/kurtosis-web.png)
 
 ## Kurtosis Enclave
 
@@ -80,7 +80,7 @@ kurtosis enclave rm <enclave-name> -f
 
 Explore the enclave in the web interface by clicking on the enclave's name:
 
-![Kurtosis enclave in web interface](/docs/wiki/testing/img/kurtosis-web-enclave.png)
+![Kurtosis enclave in web interface](./kurtosis-web-enclave.png)
 
 You can run multiple enclaves at the same time, but be cautious of your machine's resources to avoid performance issues. Additionally, assigning a custom name to each enclave can be useful when managing several enclaves simultaneously.
 
@@ -168,11 +168,11 @@ The full list of services can be found [here](https\://ethpandaops.io/posts/kurt
 
 Some of these tools have a web interface. To open the interface, use the link provided in the user services list:
 
-![Kurtosis tools](/docs/wiki/testing/img/kurtosis-tools.png)
+![Kurtosis tools](./kurtosis-tools.png)
 
 Dora is one of the most commonly used tools for the Beacon Chain. Here is how its interface looks like:
 
-![Dora](/docs/wiki/testing/img/kurtosis-dora.png)
+![Dora](./kurtosis-dora.png)
 
 ## Working with Logs
 

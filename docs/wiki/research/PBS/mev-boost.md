@@ -33,7 +33,7 @@ The process of block creation through PBS works as follows:
 
 ### Block Auction
 
-Instead of builders directly offering their assembled blocks to validators with a specified price, the standard practice is to use relays. Relays validate the transaction bundles before passing them onto the proposer (validator). Also, implementations can introduce escrows responsible for providing data availability by storing blocks sent by builders and commitments sent by validators. 
+Instead of builders directly offering their assembled blocks to validators with a specified price, the standard practice is to use relays. Relays validate the transaction bundles before passing the Headers onto the proposer (validator). The proposer accepts and signs the Header with their key, and returns the SignedHeader to the Relay. Now, the Relay releases the Full Block to the Proposer. Also, implementations can introduce escrows responsible for providing data availability by storing blocks sent by builders and commitments sent by validators. 
 
 ### Benefits of mev-boost:
 
