@@ -21,6 +21,7 @@ jobs:
       - name: Check markdown links
         id: check-links
         uses: lycheeverse/lychee-action@v2
+        continue-on-error: true
         with:
           files: "**/*.md"
           retries: 3
@@ -29,7 +30,8 @@ jobs:
           output: /tmp/broken_links_report.txt
 
       - name: Log output
-        if: steps.check-links.outputs.broken_links > 0
+        if: steps.check-links.outcome == 'failure'
         run: |
           echo "### 🔗 Broken Links Report" >> $GITHUB_STEP_SUMMARY
           cat /tmp/broken_links_report.txt >> $GITHUB_STEP_SUMMARY
+          exit 1
