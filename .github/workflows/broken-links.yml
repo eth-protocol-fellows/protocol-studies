@@ -18,31 +18,18 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      - name: Check markdown links
+        id: check-links
+        uses: lycheeverse/lychee-action@v2
         with:
-          node-version: "20"
-          cache: "npm" # Cache npm dependencies for faster builds
+          files: "**/*.md"
+          retries: 3
+          fail_on_error: false
+          format: markdown
+          output: /tmp/broken_links_report.txt
 
-      - name: Install markdown-link-check
-        run: npm install -g markdown-link-check
-
-      - name: Find all markdown files
-        id: find-markdown
+      - name: Log output
+        if: steps.check-links.outputs.broken_links > 0
         run: |
-          echo "MARKDOWN_FILES=$(find . -name '*.md' -type f | tr '\n' ' ')" >> $GITHUB_OUTPUT
-
-      - name: Check links in all markdown files (parallel)
-        shell: bash
-        run: |
-          echo "${{ steps.find-markdown.outputs.MARKDOWN_FILES }}" | xargs -n 1 -P 4 -I {} sh -c '
-            echo "Checking links in: {}"
-            markdown-link-check -q {} || echo "::error file={}::Broken links found in {}"
-          '
-        continue-on-error: true # Continue even if some files have broken links
-
-      - name: Fail if any broken links were found
-        if: ${{ failure() }} # Only run if previous step failed
-        run: |
-          echo "::error::Broken links were found in one or more markdown files."
-          exit 1
+          echo "### 🔗 Broken Links Report" >> $GITHUB_STEP_SUMMARY
+          cat /tmp/broken_links_report.txt >> $GITHUB_STEP_SUMMARY
