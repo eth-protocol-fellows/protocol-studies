@@ -1,9 +1,30 @@
-# Execution p2p
+# Execution P2P
 
 > :warning: This article is a [stub](https://en.wikipedia.org/wiki/Wikipedia:Stub), help the wiki by [contributing](/contributing.md) and expanding it.
 
+## Peer To Peer(P2P) Communication
+Peer-to-peer (P2P) communication is a decentralized networking model where participants, known as peers, communicate directly without relying on a central server. Unlike traditional client-server architectures, where a central authority controls data flow and coordination, P2P networks distribute tasks and responsibilities among all nodes.
 
-[DevP2P](https://github.com/ethereum/devp2p) is a set of networking protocols that underpins Ethereum’s execution-layer peer-to-peer network. It was created before libp2p existed and designed specifically to serve Ethereum's early networking requirements.
+P2P networks offer several advantages over centralized systems:
+
+- Decentralization – No single point of failure, reducing the risk of outages or censorship.
+- Scalability – The network can dynamically grow as more peers join.
+- Fault Tolerance – Nodes can leave or fail without disrupting the entire network.
+- Security & Privacy – Direct communication between peers reduces reliance on intermediaries,enhancing privacy and security.
+
+P2P communication is the foundation of many distributed applications, enabling efficient data sharing, real-time coordination, and resilient connectivity in decentralized systems.
+
+## Importance of P2P in Ethereum
+
+Ethereum’s decentralized nature relies on a robust peer-to-peer (P2P) networking layer to ensure efficient transaction propagation, block distribution, and state synchronization among nodes.
+**DevP2P** was specifically designed to meet Ethereum’s execution-layer networking requirements, defining protocols for node discovery, transport encryption, and capability negotiation. While **libp2p** is a more modular and general-purpose P2P framework used in other decentralized applications, devp2p remains tailored to Ethereum’s needs. 
+As noted in the devp2p documentation:  
+
+> _"It's hard to compare the two projects because they have different scope and are designed with different goals in mind. devp2p is an integrated system definition that wants to serve Ethereum's needs well (although it may be a good fit for other applications, too), while libp2p is a collection of programming library parts serving no single application in particular. That said, both projects are very similar in spirit and devp2p is slowly adopting parts of libp2p as they mature."_  
+
+# DevP2P
+
+[DevP2P](https://github.com/ethereum/devp2p) is a set of networking protocols that underpins Ethereum’s execution-layer peer-to-peer network. It defines how Ethereum nodes discover peers, establish encrypted connections, and exchange blockchain data efficiently. Designed specifically to meet Ethereum’s networking needs, devp2p serves as an integrated system definition, ensuring optimized performance for Ethereum’s execution-layer communication.
 
 ## Core Components
 
@@ -24,7 +45,7 @@ The pre-defined keys include:
 
 | Key         | Description                                          |
 |:------------|:-----------------------------------------------------|
-| `id`        | Identity scheme name (e.g., "v4")                    |
+| `id`        | Identity scheme name (Default: "v4")                    |
 | `secp256k1` | Compressed secp256k1 public key (33 bytes)           |
 | `ip`        | IPv4 address (4 bytes)                               |
 | `tcp`       | TCP port (big-endian integer)                        |
@@ -64,8 +85,8 @@ A structured, distributed system that allows Ethereum nodes to discover peers wi
   - The "v4" identity scheme is used to verify node authenticity.  
   - Peers can request a node’s latest ENR via an **ENRRequest** packet.  
 
-- **Kademlia Table**  
-  - Nodes maintain a **routing table** with 256 **k-buckets** (each holding up to 16 entries).  
+- **[Kademlia Table](https://en.wikipedia.org/wiki/Kademlia)**  
+  - Nodes maintain a **routing table** with 256 **[k-buckets](https://en.wikipedia.org/wiki/Kademlia#Fixed-size_routing_tables)** (each holding up to 16 entries).  
   - A bucket stores nodes within a specific distance range (e.g., `[2^i, 2^(i+1))`).  
   - Nodes are sorted by last-seen time, ensuring stale nodes are replaced when the table is full.  
 
@@ -92,8 +113,9 @@ A structured, distributed system that allows Ethereum nodes to discover peers wi
 
 #### Discv5
 
-discv5 enables nodes to find and connect with peers without relying on centralized directories.
-Inspired by the Kademlia DHT, discv5 differs by storing only signed node records (ENR) instead of arbitrary key-value pairs. This ensures authenticity and integrity in peer discovery.
+Discv5 is Ethereum’s improved decentralized peer discovery protocol, building upon the foundation of Discv4 with enhanced service discovery and security mechanisms. Like its predecessor, Discv5 enables nodes to locate and connect with peers in a decentralized manner, without relying on centralized directories. However, it introduces encrypted communication, service discovery, and adaptive routing.
+
+Inspired by the Kademlia DHT, discv5 differs by storing only signed node records (ENR) instead of arbitrary key-value pairs. This ensures authenticity and integrity in peer discovery.This ensures authenticity and integrity in peer discovery while maintaining flexibility for protocol extensions.
 
 - **Ethereum Node Records (ENR)**
   - Each node maintains an **Ethereum Node Record (ENR)**, storing **connectivity details, cryptographic keys, and metadata**.
@@ -101,8 +123,8 @@ Inspired by the Kademlia DHT, discv5 differs by storing only signed node records
   - Peers can request the latest ENR using an **ENRRequest packet**.
 
 - **Encrypted Wire Protocol**
-  - Uses **AES-GCM encryption** for confidentiality and authenticity.
-  - Establishes **session keys via ECDH** (Elliptic Curve Diffie-Hellman).
+  - Uses **[AES-GCM encryption](https://en.wikipedia.org/wiki/AES-GCM-SIV)** for confidentiality and authenticity.
+  - Establishes **session keys via ECDH** ([Elliptic Curve Diffie-Hellman](https://en.wikipedia.org/wiki/Elliptic-curve_Diffie%E2%80%93Hellman)).
   - Implements a **WHOAREYOU challenge-response mechanism** to prevent spoofing.
 
 - **Kademlia-Based Routing & Node Table**
@@ -154,7 +176,7 @@ Inspired by the Kademlia DHT, discv5 differs by storing only signed node records
 
 #### ECIES Encryption
 
-- RLPx uses **Elliptic Curve Integrated Encryption Scheme (ECIES)** for secure **handshaking and session establishment**.
+- RLPx uses **Elliptic Curve Integrated Encryption Scheme ([ECIES](https://cryptobook.nakov.com/asymmetric-key-ciphers/ecies-public-key-encryption))** for secure **handshaking and session establishment**.
 - The cryptosystem consists of:
   - **Elliptic Curve**: secp256k1
   - **Key Derivation Function (KDF)**: NIST SP 800-56 Concatenation KDF
@@ -208,6 +230,21 @@ Inspired by the Kademlia DHT, discv5 differs by storing only signed node records
 | `aes-secret` | `keccak256(ephemeral-key || shared-secret)` |
 | `mac-secret` | `keccak256(ephemeral-key || aes-secret)` |
 
+##### Static-Shared-Secret vs. Ephemeral-Key
+
+###### Static-Shared-Secret
+
+- Derived using Elliptic Curve Diffie-Hellman (ECDH) between a node’s long-term (static) private key and the peer’s long-term public key.
+- Remains unchanged across multiple sessions with the same peer.
+
+If an attacker compromises a node’s private key, past and future communications with that peer can be decrypted, making it vulnerable to long-term key exposure.
+
+###### Ephemeral-Key (Forward Secrecy)
+
+- A temporary keypair generated for each handshake, used to derive a fresh session secret.
+- Computed using ECDH between ephemeral private keys exchanged during the handshake.
+
+Since ephemeral keys are discarded after a session ends, even if an attacker later obtains a node’s long-term private key, past communications remain secure. This property is known as forward secrecy
 
 
 #### Message Framing
@@ -285,3 +322,5 @@ Inspired by the Kademlia DHT, discv5 differs by storing only signed node records
 | **Ethereum Snapshot Protocol (`snap`)** | Used for **state synchronization**, allowing nodes to download portions of the state trie. |
 | **Light Ethereum Subprotocol (`les`)** | Supports **light clients**, enabling them to request data from full nodes without storing the full state. |
 | **Portal Network (`portal`)** | A decentralized **state, block, and transaction retrieval network** for lightweight clients. |
+
+
