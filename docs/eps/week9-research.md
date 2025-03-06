@@ -11,6 +11,7 @@ Watch the presentation by [Piper Merriam](https://twitter.com/parithosh_j), on [
 Before starting with this research content, make yourself familiar with resources in previous weeks, especially day 5 presentation on roadmap. You should understand the execution client database structure, the difference between ancient and current data. 
 
 Additionally, you can get ready by studying the following resources:
+- [Decentralizing access to Ethereum utilizing Ethereum's Portal Networks](https://www.youtube.com/watch?v=LZ_yWmm7ISg)
 - [Statelessness and history expiry, Ethereum.org](https://ethereum.org/en/roadmap/statelessness/)
 - [Portal Network web](https://www.ethportal.net/)
 - [EL Data structure](https://epf.wiki/#/wiki/EL/data-structures)
