@@ -20,7 +20,7 @@ Each session is created by a core developer or researcher, comes with reading ma
 
 > Study Group events like Office Hours are published in the Discord server or you can subscribe to [this calendar](https://calendar.google.com/calendar/u/0?cid=Y18xY2RhMjMxNzc5NmI4NDgzZTliMjBhMGVjZTFkMDFhZWFkN2U1ZTY3N2IxNjVhOGUzZTJlMjQ3ZTQ0M2UwODhkQGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20) to follow all sessions
 
-During first 2 weeks, participants watch previous videos and study existing materials for the given day in their own time. Every day at _3PM UTC we will hold a daily office hours running for 2 hours_ where everyone can discuss their learnings, ask questions, exchange knowledge, etc. Join at the [Office Hours call link](https://meet.ethereum.org/eps-office-hours).
+During the first 2 weeks, participants watch previous videos and study existing materials for the given day in their own time. Every day at _3PM UTC we will hold a daily office hours running for 2 hours_ where everyone can discuss their learnings, ask questions, exchange knowledge, etc. Join at the [Office Hours call link](https://meet.ethereum.org/eps-office-hours).
 
 > We recommend watching videos from the study group using faster playback speed, 1.25 or 1.5x to save some time
 
@@ -89,7 +89,7 @@ While this program is designed to act as a precursor to the Ethereum Protocol Fe
 
 ## Calls troubleshooting
 
-For our weekly meetings, we are using a self-hosted FOSS platform Jitsi. Even though we are doing our best, some people might experience problems during these calls, here are few tips on troubleshooting:
+For our weekly meetings, we are using a self-hosted FOSS platform Jitsi. Even though we are doing our best, some people might experience problems during these calls, here are a few tips on troubleshooting:
 
 - Restart your browser and rejoin
 - Try a different browser (especially if you are using a Chromium based, try Firefox and vice versa)
