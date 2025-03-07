@@ -3,7 +3,7 @@
 - [Start here](/eps/intro.md)
 - [Study Group content](/eps/schedule.md)
   - **Week 1 - Intro**
-  - [Week 0](/eps/week0.md)
+  - [Prepare for studies](/eps/week0.md)
   - [Lecture 1 - Intro](/eps/week1.md)
   - [Lecture 2 - CL](/eps/week3.md)
   - [Lecture 3 - EL](/eps/week2.md)
@@ -18,11 +18,13 @@
   - [Lecture 10 - Precompiles](/eps/week10-dev.md)
   - **Week 3 - Research**
   - [Lecture 11 - DAS](/eps/week6-research.md)  
-  - [Lecture 12 | Verkle](/eps/week7-research.md)
-  - [Lecture 13 | MEV](/eps/week8-research.md)
-  - [Lecture 14 | Portal](/eps/week9-research.md)
-  - [Lecture 15 | SSF](/eps/week10-research.md)
-  
+  - [Lecture 12 - Verkle](/eps/week7-research.md)
+  - [Lecture 13 - MEV](/eps/week8-research.md)
+  - [Lecture 14 - Portal](/eps/week9-research.md)
+  - [Lecture 15 - SSF](/eps/week10-research.md)
+  - **Week 4**
+  - [Lecture 16 - Gasper](/eps/day16.md)
+  - [Lecture 17 - EVM](/eps/day17.md)
 - [Contributing](contributing.md)
 - **Protocol Wiki**
 - The Protocol
