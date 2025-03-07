@@ -13,14 +13,20 @@ Before starting with the Day 16 content, make yourself familiar with resources i
 
 Additionally, you can get ready by studying the following resources.
 
-- [Annotated spec on fork choice](https://eth2book.info/capella/part3/forkchoice/phase0/)
-- 
+- Vitalik's [Beacon Chain Fork Choice](https://github.com/ethereum/annotated-spec/blob/master/phase0/fork-choice.md) - outdated, but still excellent
+- [Consensus chapter](https://eth2book.info/latest/part2/consensus/) in the Upgrading Ethereum book
+- [Annotated spec on fork choice](https://eth2book.info/latest/part3/forkchoice/phase0/) 
 
 ## Outline
 
-- Forkchoice intro
-- 
+- Introduction to Fork Choice
+- LMD GHOST
+- Casper FFG
+- Gasper
+- Q&A
 
 ## Additional reading and exercises
 
+- Original Casper FFG paper: [Casper the Friendly Finality Gadget](https://arxiv.org/abs/1710.09437)
 - Gasper: [Combining GHOST and Casper (Gasper paper)](https://arxiv.org/abs/2003.03052)
+- [The blue eyes puzzle](https://xkcd.com/blue_eyes.html) - think hard! Don't give in and look up the solution too soon.
