@@ -19,7 +19,7 @@ Get yourself familiar with Ethereum client architecture as described in Day 1 an
     - https://btholt.github.io/complete-intro-to-linux-and-the-cli/, https://ubuntu.com/tutorials/command-line-for-beginners
 - Make yourself familiar with [Ephemery testnet](https://ephemery.dev)
 
-### Prepare your enviroment 
+### Prepare your environment 
 
 To follow the workshop, make sure to prepare your environment. 
 
@@ -62,7 +62,7 @@ There are bunch of things we are not going to demonstrate during the workshop so
 - Connect to your node using a wallet, development tooling, web3.py or JS console 
 - Connect your node to the [crawler](https://www.ethernets.io/help/) and check what details it learns about it, discover new peers
 
-- https://github.com/eth-educators/ethstaker-guides/blob/main/holesky-node.md
+- https://github.com/eth-educators/ethstaker-guides/blob/main/docs/holesky-node.md
 - https://notes.ethereum.org/@launchpad/node-faq-merge
 - https://www.coincashew.com/coins/overview-eth/guide-or-how-to-setup-a-validator-on-eth2-mainnet/part-i-installation/monitoring-your-validator-with-grafana-and-prometheus
 

@@ -1,6 +1,6 @@
-# Study Group Week 2 | Execution Layer
+# Study Group Lecture 3 | Execution Layer
 
-During the second week, we will dive into the Execution layer of Ethereum. 
+During the third day, we will dive into the Execution layer of Ethereum. 
 
 Watch the presentation diving into EL internals with Lightclient on [StreamEth](https://streameth.org/watch?event=&session=65dcdef0a6d370a1ab326de1) or [Youtube](https://www.youtube.com/watch?v=pniTkWo70OY). 
 

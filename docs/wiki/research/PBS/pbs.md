@@ -41,16 +41,20 @@ However, some clients are actively developing and testing PBS implementations. T
 
 Proposer-Builder Separation (PBS) also introduces a more intricate relationship between different actors in the Ethereum network:
 
-1. **Builders:**
+1. **Searchers:**
+   - Searchers are entities external to the Ethereum Protocol. Searchers do not directly interact with the blockchain. Instead, they submit their constructed bundles to builders.
+   - Searchers continuously scan the public mempool to find MEV oppertunities such as Frontrunning, Sandwich or Arbitrage.
+   - They construct bundles which are an ordered list of transaction which execute some MEV strategy as well as a bid to the builder.
+2. **Builders:**
    - Builders are specialized entities that focus on constructing blocks with optimal transaction ordering and inclusion. They compete with each other to create the most profitable block for the proposer, taking into account factors like gas fees, transaction priority, and potential MEV (Maximal Extractable Value).
    - Builders do not directly interact with the blockchain. Instead, they submit their constructed blocks to relays.
    - This submission includes the block's data (transactions, execution payload, etc.) and a bid that they are willing to pay to have their block proposed.
-2. **Relays:**
+3. **Relays:**
    - Relays receive blocks from multiple builders, confirm their validity and submit the valid block with the highest bid to the escrow for the validator to sign.
    - Relays act as intermediaries between builders and proposers. They receive blocks from builders and forward them to proposers.
    - Relays can perform additional functions like block validation and filtering to ensure that only valid and high-quality blocks are sent to proposers.
    - Some relays may specialize in specific types of blocks, such as those with high MEV potential.
-3. **Validators (Proposers):**
+4. **Validators (Proposers):**
    - Under PBS, validators take on the role of proposers. They receive blocks from relays and choose the best one based on predefined criteria, typically the block that offers the highest reward.
    - Once the proposer selects a block, they propose it to the network for validation and inclusion in the blockchain.
    - Validators are still responsible for securing the network and ensuring consensus on the blockchain's state.

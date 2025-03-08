@@ -1,6 +1,6 @@
-# Study Group Week 9 | Purge and Portal Network
+# Study Group Lecture 14 | Purge and Portal Network
 
-Week 9 research talk is focused on history expiry and dives into Portal Network, an overlay network for light clients enabling alternative access to current and historical data. 
+This talk is focused on history expiry and dives into Portal Network, an overlay network for light clients enabling alternative access to current and historical data. 
 
 Watch the presentation by [Piper Merriam](https://twitter.com/parithosh_j), on [StreamEth](https://streameth.org/65cf97e702e803dbd57d823f/epf_study_group) and [Youtube](https://www.youtube.com/@ethprotocolfellows/streams).
 
@@ -8,9 +8,10 @@ Watch the presentation by [Piper Merriam](https://twitter.com/parithosh_j), on [
 
 ## Pre-reading
 
-Before starting with the week 9 research content, make yourself familiar with resources in previous weeks, especially week 5 presentation on roadmap. You should understand the execution client database structure, the difference between ancient and current data. 
+Before starting with this research content, make yourself familiar with resources in previous weeks, especially day 5 presentation on roadmap. You should understand the execution client database structure, the difference between ancient and current data. 
 
 Additionally, you can get ready by studying the following resources:
+- [Decentralizing access to Ethereum utilizing Ethereum's Portal Networks](https://www.youtube.com/watch?v=LZ_yWmm7ISg)
 - [Statelessness and history expiry, Ethereum.org](https://ethereum.org/en/roadmap/statelessness/)
 - [Portal Network web](https://www.ethportal.net/)
 - [EL Data structure](https://epf.wiki/#/wiki/EL/data-structures)

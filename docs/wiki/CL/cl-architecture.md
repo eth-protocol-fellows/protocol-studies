@@ -244,3 +244,4 @@ def process_slots(state: BeaconState, slot: Slot) -> None:
 - Austin Griffith, [Byzantine Generals - ETH.BUILD.](https://www.youtube.com/watch?v=c7yvOlwBPoQ)
 - Michael Sproul, ["Inside Ethereum"](https://www.youtube.com/watch?v=LviEOQD9e8c) 
 - [Eth2 Handbook by Ben Edgington](https://eth2book.info/capella/part2/consensus/)
+- [Lighthouse Consensus Client architecture](https://www.youtube.com/watch?v=pLHhTh_vGZ0)

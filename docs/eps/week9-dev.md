@@ -1,4 +1,4 @@
-# Study Group Week 9 | Local testing and prototyping 
+# Study Group Lecture 9 | Local testing and prototyping 
 
 This development talk is dedicated to testing and prototyping forks locally, it discusses the current state and ideas being worked on. 
 
@@ -8,7 +8,7 @@ Watch the presentation by [Parithosh](https://twitter.com/parithosh_j) on Stream
 
 ## Pre-reading
 
-Before starting with the week 9 development content, make yourself familiar with resources in previous weeks, especially week 4 presentation on testing and the node workshop. It's important to understand the current architecture of the protocol and its basic tooling. 
+Before starting with the day 9 content, make yourself familiar with resources in previous weeks, especially day 4 presentation on testing and the node workshop. It's important to understand the current architecture of the protocol and its basic tooling. 
 
 Additionally, you can get ready by studying the following resources:
 - [Quest for the Best Tests, a Retrospective on #TestingTheMerge by Pari](https://archive.devcon.org/archive/watch/6/quest-for-the-best-tests-a-retrospective-on-testingthemerge/?tab=YouTube)

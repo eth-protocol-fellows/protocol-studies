@@ -1,6 +1,6 @@
-# Study Group Week 7 | Verkle Trees
+# Study Group Lecture 12 | Verkle Trees
 
-Week 7 research talk is focused on verkle trees, an important domain of current research and development aiming to replace the MPT and enable statelessness.
+Lecture 12 is a research talk focused on verkle trees, an important domain of current research and development aiming to replace the MPT and enable statelessness.
 
 Watch the talk by [Guillaume](https://twitter.com/gballet/), [Ignacio](https://twitter.com/ignaciohagopian) and [Josh](https://twitter.com/rudolf6_) on StreamEth or Youtube. Slides are [available here](https://github.com/eth-protocol-fellows/protocol-studies/blob/main/docs/eps/presentations/week7-research.pdf). 
 
@@ -8,7 +8,7 @@ Watch the talk by [Guillaume](https://twitter.com/gballet/), [Ignacio](https://t
 
 ## Pre-reading
 
-Before starting with the week 7 development content, make yourself familiar with resources in previous weeks, especially week 2 and other content focused on execution layer. You should have at least understanding of merkle trees and current data structures in Ethereum.
+Before starting with the the content, make yourself familiar with resources in previous weeks, especially Day 3 and other content focused on execution layer. You should have at least understanding of merkle trees and current data structures in Ethereum.
 
 Additionally, you can read and get ready by studying the following resources:
 
@@ -27,6 +27,7 @@ Additionally, you can read and get ready by studying the following resources:
 
 ## Additional reading and exercises 
 
+- [Stateless book](https://stateless.fyi)
 - [Anatomy of a verkle proof](https://ihagopian.com/posts/anatomy-of-a-verkle-proof)
 - Overview of many various resources https://verkle.info
 - Checkout [verkle implementers calls](https://github.com/ethereum/pm/issues/977)

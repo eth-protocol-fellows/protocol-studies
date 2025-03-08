@@ -1,6 +1,6 @@
-# Study Group Week 3 | Consensus Layer
+# Study Group Lecture 2 | Consensus Layer
 
-The third week of EPFsg dives into the Consensus layer of Ethereum. 
+The second day of EPFsg dives into the Consensus layer of Ethereum. 
 
 Watch the presentation on overview of the CL with Alex Stokes on [StreamEth](https://streameth.org/watch?event=&session=65e9f54579935301489a01eb) or [Youtube](https://www.youtube.com/watch?v=FqKjWYt6yWk). Presentations slides are [available here](https://github.com/eth-protocol-fellows/protocol-studies/tree/main/docs/eps/presentations/week3_presentation.pdf). 
 
