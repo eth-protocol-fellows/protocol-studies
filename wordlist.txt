@@ -567,7 +567,7 @@ params
 Pari
 Parithosh
 Pawel
-Paweł
+Paweł 
 Pectra
 PeerDAS
 Peeters
