@@ -1,4 +1,3 @@
-personal_ws-1.1 en 10000 utf-8
 aantop
 ABI
 accelerometer
@@ -96,6 +95,7 @@ broadcasted
 BSON
 Buterin
 Buterin's
+Bylica
 bypassability
 bytecode
 bytecodes
@@ -410,6 +410,7 @@ invariants
 IOP
 IPC
 ipfs
+Ipsilon
 IRTF
 ISA
 Jitsi
@@ -565,6 +566,7 @@ params
 Pari
 Parithosh
 Pawel
+Paweł
 Pectra
 PeerDAS
 Peeters
@@ -734,7 +736,7 @@ ssd
 SSF
 SSLE
 SSTORE
-sstorge
+sstore
 SSZ
 staker
 stakers
