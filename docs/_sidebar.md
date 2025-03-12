@@ -46,6 +46,7 @@
   - [JSON-RPC](/wiki/EL/JSON-RPC.md)
   - [DevP2P](/wiki/EL/devp2p.md)
   - [RLP Serialization](/wiki/EL/RLP.md)
+  - [EOF](/wiki/EL/eof.md)
 - Consensus Layer
   - [Overview](/wiki/CL/overview.md)
   - [Client architecture](/wiki/CL/cl-architecture.md)
