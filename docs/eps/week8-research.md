@@ -14,7 +14,7 @@ Additionally, you can get ready by studying the following resources:
 
 - [MEV basics](https://ethereum.org/en/developers/docs/mev/)
 - [RIG projects](https://rig.ethereum.org/)
-- [Wiki on MEV and PBS](https://github.com/eth-protocol-fellows/protocol-studies/tree/pbs/docs/wiki/research/PBS)
+- [Wiki on MEV and PBS](https://epf.wiki/#/wiki/research/PBS/pbs)
 
 ## Outline
 

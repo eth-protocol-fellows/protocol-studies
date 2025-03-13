@@ -49,3 +49,10 @@ Third week covers the research track and it's the last week using the original s
 | Day 14, Mar 6 | [Purge and Portal Network](/eps/week9-research.md) | [Piper Merriam](https://github.com/pipermerriam)   |
 | Day 15, Mar 7 | [SSF and PoS Upgrades](/eps/week10-research.md)    | [Francesco D'Amato](https://github.com/fradamt)    |     
 
+
+### Week 4
+
+| Day, Date     | Topic                            | Speaker                                            |
+| ------------- | -------------------------------- | -------------------------------------------------- |
+| Day 16, Mar 10 | [Gasper](/eps/day16.md)         | [Ben Edgington](https://github.com/benjaminion)    |
+| Day 17, Mar 12 | EVM                             | [Pawel Bylica](https://github.com/chfast)          |
