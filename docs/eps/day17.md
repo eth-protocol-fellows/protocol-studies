@@ -10,7 +10,7 @@ The second session of this week is diving into Ethereum Virtual Machine (EVM) wi
 ## Pre-reading
 
 Before starting with the Day 17 content, make yourself familiar with resources in previous weeks, especially day 3 on EL and day 12 on EL client. You should have general understanding of what is EVM and different parts of execution layer.
-Some falilarity with process virtual machines, assemblers or interpreters may be handly, but is not required.
+Some familiarity with virtual machines, assemblers or interpreters may be handy, but is not required.
 
 Additionally, you can get ready by browsing the following concepts related to Ethereum execution:
 
