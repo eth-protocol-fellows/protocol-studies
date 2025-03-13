@@ -14,6 +14,13 @@ jobs:
       pull-requests: write
 
     steps:
+      # ⚠️ [Security Warning] `pull_request_warning` and fork checkout is a SECURITY RISK. ⚠️
+      # > Generally speaking, when the PR contents are treated as passive data,
+      # > i.e. not in a position of influence over the build/testing process, it is safe.
+      # > But the repository owners must be extra careful not to trigger any script that may operate
+      # > on PR controlled contents like in the case of npm install.
+      # or more information, see: https://securitylab.github.com/resources/github-actions-preventing-pwn-requests/
+
       - name: Checkout code
         uses: actions/checkout@v4
         with:
