@@ -4,7 +4,7 @@ The first day of the study group is dedicated to a general introduction to the p
 
 ## Recording
 
-Watch _Ethereum Protocol 101_ talk by Mario Havel [on StreamEth](https://streameth.org/watch?event=&session=65d77e4f437a5c85775fef9d). [Slides](https://github.com/eth-protocol-fellows/protocol-studies/tree/main/docs/eps/presentations/week1_protocol_intro.pdf)
+Watch **Ethereum Protocol 101** talk by Mario Havel [on StreamEth](https://streameth.org/watch?event=&session=65d77e4f437a5c85775fef9d). [Slides](https://github.com/eth-protocol-fellows/protocol-studies/tree/main/docs/eps/presentations/week1_protocol_intro.pdf)
 
 [recording](https://streameth.org/embed/?playbackId=9bc1ekw2jk5sz6c7&vod=true&streamId=&playerName=Intro+to+Ethereum+%7C+Mario+Havel+%7C+Week+1 ':include :type=iframe width=100% height=520 frameborder="0" allow="fullscreen" allowfullscreen')
 
