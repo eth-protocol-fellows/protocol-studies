@@ -80,7 +80,7 @@ jobs:
 
             2. **If these are names or one-off nouns:**
                - Wrap them in \`<nospellcheck>\` tags
-               - Example: \`<nospellcheck>Vitalik Buterin</nospellcheck>\`
+               - Example: \`<nospellcheck>Alex Pereira</nospellcheck>\`
                - Use this for people's names or unique terms that appear rarely
 
             3. **If these are valid terms:**
