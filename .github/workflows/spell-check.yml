@@ -1,7 +1,7 @@
-name: 🥢 Spell check 
+name: 🥢 Spell check
 
 on:
-  pull_request:
+  pull_request_target:
     branches:
       - main
 
@@ -12,14 +12,13 @@ jobs:
     permissions:
       contents: read
       pull-requests: write
-    env: 
-      TYPOS: ""
-    
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
         with:
           ref: ${{ github.event.pull_request.head.sha }}
+          repository: ${{ github.event.pull_request.head.repo.full_name }}
           fetch-depth: 2
 
       - name: Install aspell
@@ -29,23 +28,29 @@ jobs:
         id: find_typos
         run: |
           echo "Checking for typos..."
-          # https://unix.stackexchange.com/a/9500
           IFS=$'\n'
           set -f
           for file in $(find . -name "*.md" ); do
-            output="$(aspell --lang=en_US --mode=markdown --home-dir=. --personal=wordlist.txt --ignore-case=true --camel-case list <$file)"
-            echo "$output"
-            # Exit if aspell has errors
-            if [ $? -ne 0 ]; then
-              exit 1
+            if [ ! -s "$file" ]; then
+              continue
             fi
-            if [[ -n "$output" ]]; then
-              # Format output.
-              output=$(echo "$output" | sed 's/^/    1. /')
-              TYPOS+="- 📄 $file:"
-              TYPOS+=$'\n'
-              TYPOS+="$output"
-              TYPOS+=$'\n'
+            echo "Checking $file..."
+            # Get typos with line numbers using grep
+            output="$(aspell --lang=en_US --mode=markdown --home-dir=. --personal=wordlist.txt --ignore-case=true --camel-case --add-sgml-skip nospellcheck list <"$file")"
+            if [ $? -eq 0 ]; then
+              if [[ -n "$output" ]]; then
+                while IFS= read -r word; do
+                  # Find line numbers for each typo
+                  line_nums=$(grep -n "$word" "$file" | cut -d: -f1 | tr '\n' ',' | sed 's/,$//')
+                  TYPOS+="- 📄 $file (line(s) $line_nums):"
+                  TYPOS+=$'\n'
+                  TYPOS+="    1. \`$word\`"
+                  TYPOS+=$'\n'
+                done <<< "$output"
+              fi
+            else
+              echo "::error::aspell failed on $file"
+              exit 1
             fi
           done
           {
@@ -65,18 +70,35 @@ jobs:
             const body = `
             Hi @${author},
 
-            Following typos were found in the pull request:
-            
+            I found some potential typos in your pull request:
+
             ${typos}
 
-            ## ℹ️ Here's how to fix them:
-            - **Fix typos:** Open the relevant files and fix any identified typos.
-            - **Update wordlist:** If a flagged word is actually a project-specific term add it to \`wordlist.txt\` in the project root.
-                Each word should be listed on a separate line. [Learn more.](http://aspell.net/man-html/Format-of-the-Personal-and-Replacement-Dictionaries.html)
-            - **🚧 Remember:**
-              - When adding new words it MUST NOT have any spaces or special characters within or around it.
-              - \`wordlist\` is NOT case sensitive.
-              - Use backticks to quote code variables so as to not bloat the \`wordlist\`.
+            ## ℹ️ How to fix:
+            1. **If these are actual typos:**
+               - Open the files at the specified line numbers and fix them
+
+            2. **If these are names or one-off nouns:**
+               - Wrap them in \`<nospellcheck>\` tags
+               - Example: \`<nospellcheck>Vitalik Buterin</nospellcheck>\`
+               - Use this for people's names or unique terms that appear rarely
+
+            3. **If these are valid terms:**
+               - Add them to \`wordlist.txt\` (one word per line)
+               - Terms must be plain text without spaces/special chars
+               - The list is case-insensitive
+
+            4. **If these are code terms:**
+               - Wrap them in backticks (\`) in your markdown
+
+            ## ℹ️ Checking for typos locally
+            1. Install [aspell](https://www.gnu.org/software/aspell/) for your platform
+            2. Navigate to project root and run:
+            \`\`\`bash
+            for f in **/*.md ; do echo $f ; aspell --lang=en_US --mode=markdown --home-dir=. --personal=wordlist.txt --ignore-case=true --camel-case --add-sgml-skip nospellcheck list < $f | sort | uniq -c ; done
+            \`\`\`
+
+            [Learn more about wordlist format](http://aspell.net/man-html/Format-of-the-Personal-and-Replacement-Dictionaries.html)
             `;
 
             github.rest.issues.createComment({
@@ -86,4 +108,4 @@ jobs:
               body: body
             });
 
-            core.setFailed('🥢 Spell check: Typos found in docs. Please fix them.');
+            core.setFailed('🥢 Spell check found potential typos. See PR comment for details.');
