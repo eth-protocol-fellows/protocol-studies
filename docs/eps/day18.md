@@ -9,24 +9,20 @@ The first live session this week is dedicated to execution layer networking stac
 
 ## Pre-reading
 
-Before starting with the Day 16 content, make yourself familiar with resources in previous weeks, especially day 2 on CL and day 6 on specs (at least the CL part). You should have general understanding of Beacon Chain and different mechanism in Ethereum consensus layer. 
+Before starting with the Day 16 content, make yourself familiar with resources in previous weeks, especially day 3 on EL and day 7 on EL client. You should have general understanding of the execution layer and basic overview of its networking capabilities. 
 
 Additionally, you can get ready by studying the following resources.
 
-- Vitalik's [Beacon Chain Fork Choice](https://github.com/ethereum/annotated-spec/blob/master/phase0/fork-choice.md) - outdated, but still excellent
-- [Consensus chapter](https://eth2book.info/latest/part2/consensus/) in the Upgrading Ethereum book
-- [Annotated spec on fork choice](https://eth2book.info/latest/part3/forkchoice/phase0/) 
+- [Devp2p spec](https://github.com/ethereum/devp2p)
+- [devp2p development update by Felix Lange (Devcon4)](https://www.youtube.com/watch?v=N2VTqUZRxjY)
+
 
 ## Outline
 
-- Introduction to Fork Choice
-- LMD GHOST
-- Casper FFG
-- Gasper
-- Q&A
+- EL networking
+- devp2p...
 
 ## Additional reading and exercises
 
-- Original Casper FFG paper: [Casper the Friendly Finality Gadget](https://arxiv.org/abs/1710.09437)
-- Gasper: [Combining GHOST and Casper (Gasper paper)](https://arxiv.org/abs/2003.03052)
-- [The blue eyes puzzle](https://xkcd.com/blue_eyes.html) - think hard! Don't give in and look up the solution too soon.
+- [Demo of devp2p Wireshark Dissector](https://www.youtube.com/watch?v=AhE4KbV-f1w)
+- 

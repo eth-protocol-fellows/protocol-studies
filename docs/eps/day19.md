@@ -9,24 +9,20 @@ The second live session the week is focused on consensus layer networking which 
 
 ## Pre-reading
 
-Before starting with the Day 16 content, make yourself familiar with resources in previous weeks, especially day 2 on CL and day 6 on specs (at least the CL part). You should have general understanding of Beacon Chain and different mechanism in Ethereum consensus layer. 
+Before starting with the Day 16 content, make yourself familiar with resources in previous weeks, especially day 2 on CL and day 6 on specs (at least the CL part). You should have general understanding of Beacon Chain, its networking features and different mechanism in Ethereum consensus layer. 
 
 Additionally, you can get ready by studying the following resources.
 
-- Vitalik's [Beacon Chain Fork Choice](https://github.com/ethereum/annotated-spec/blob/master/phase0/fork-choice.md) - outdated, but still excellent
-- [Consensus chapter](https://eth2book.info/latest/part2/consensus/) in the Upgrading Ethereum book
-- [Annotated spec on fork choice](https://eth2book.info/latest/part3/forkchoice/phase0/) 
+- [Introduction to libp2p - David Dias](https://www.youtube.com/watch?v=CRe_oDtfRLw)
+- libp2p [docs](https://docs.libp2p.io/) and [specs](https://github.com/libp2p/specs)
 
 ## Outline
 
-- Introduction to Fork Choice
-- LMD GHOST
-- Casper FFG
-- Gasper
-- Q&A
+- CL networking protocol
+- libp2p
+- PeerDAS...
 
 ## Additional reading and exercises
 
-- Original Casper FFG paper: [Casper the Friendly Finality Gadget](https://arxiv.org/abs/1710.09437)
-- Gasper: [Combining GHOST and Casper (Gasper paper)](https://arxiv.org/abs/2003.03052)
-- [The blue eyes puzzle](https://xkcd.com/blue_eyes.html) - think hard! Don't give in and look up the solution too soon.
+-  [Demystifying libp2p Gossipsub: A Scalable and Extensible p2p Gossip Protocol by Raúl Kripalani ](https://www.youtube.com/watch?v=BUc4xta7Mfk)
+-  [libp2p in Ethereumfrom block diffusionto PeerDAS and FullDAS - Csaba Kiraly ](https://www.youtube.com/watch?v=sI_Qr1vHUk4)
