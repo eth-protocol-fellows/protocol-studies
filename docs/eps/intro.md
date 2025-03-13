@@ -66,7 +66,7 @@ Third week covers the research track and it's the last week using the original s
 | Day, Date     | Topic                            | Speaker                                            |
 | ------------- | -------------------------------- | -------------------------------------------------- |
 | Day 16, Mar 10 | [Gasper](/eps/day16.md)         | [Ben Edgington](https://github.com/benjaminion)    |
-| Day 17, Mar 12 | EVM                             | [Pawel Bylica](https://github.com/chfast)          |
+| Day 17, Mar 12 | [EVM](https://epf.wiki/#/eps/day17)                             | [Pawel Bylica](https://github.com/chfast)          |
 
 ### Streams and recordings
 
