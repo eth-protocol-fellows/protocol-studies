@@ -2,10 +2,11 @@
 
 The introductory part of the study group is now over and we are now starting the deeper dive with live sessions from core developers. 
 
-For the first session of this week, we are diving into the consensus mechanism of Ethereum with Ben Edgington. Ben is a seasoned core contributor who worked on Teku consensus client, Optimism and is author of Eth2 Book, the annotated specification. 
+For the first session of this week, we are diving into the consensus mechanism of Ethereum with [Ben Edgington](). Ben is a seasoned core contributor who worked on Teku consensus client, Optimism and is author of Eth2 Book, the annotated specification. 
 
-> Join the live talk by Ben on [Monday, 10.3. at 3PM UTC](https://www.timeanddate.com/worldclock/converter.html?iso=20250310T150000&p1=1440&p2=37&p3=136&p4=237&p5=923&p6=204&p7=671&p8=16&p9=41&p10=107&p11=28) to watch the lecture and ask questions directly. [Use this link to connect.](https://meet.ethereum.org/eps-office-hours) 
+Watch the lecture on [Youtube](https://www.youtube.com/watch?v=Brv0WgFjsSs). [Slides](https://github.com/eth-protocol-fellows/protocol-studies/blob/main/docs/eps/presentations/day16_gasper.pdf).
 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/_Brv0WgFjsSs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ## Pre-reading
 
