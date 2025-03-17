@@ -115,7 +115,7 @@ The beacon chain  invokes the new payload function and transfers the execution 
 ###### Transaction Execution in Geth
 Geth, like other Ethereum execution clients, processes transactions by verifying signatures, checking nonces, deducting gas fees, and updating the state. Transactions first enter the mempool, where they wait to be included in a block. Once picked up, Geth executes them, modifying account balances, contract storage, and other state data.
 
-🔗[ Transaction Execution Code](https://github.com/ethereum/execution-specs/blob/0f9e4345b60d36c23fffaa69f70cf9cdb975f4ba/src/ethereum/shanghai/fork.py#L542)
+🔗[ Transaction Execution Specs Code](https://github.com/ethereum/execution-specs/blob/0f9e4345b60d36c23fffaa69f70cf9cdb975f4ba/src/ethereum/shanghai/fork.py#L542)
 
 ###### Block Processing & State Updates
 Every new block contains multiple transactions that Geth processes in order. Once all transactions are executed, the final state is committed, and a state root hash is stored to ensure consistency. This process follows a defined set of rules to maintain network integrity.
