@@ -125,7 +125,7 @@ Every new block contains multiple transactions that Geth processes in order. Onc
 ###### Networking & Peer-to-Peer Communication
 Ethereum nodes communicate using DevP2P, a protocol that allows execution clients to exchange transactions and blocks. When a new transaction is sent, it propagates across the network through peer-to-peer connections, ensuring all nodes remain in sync. Each recipient verifies the transaction before forwarding it, preventing spam and invalid state transitions.
 
-🔗[DevP2P Specification](https://github.com/ethereum/devp2p/blob/master/discv4.md)
+🔗[DevP2P Specification]( https://github.com/ethereum/devp2p/blob/master/caps/eth.md)
 
 ###### EVM Execution
 At its core, Geth runs the Ethereum Virtual Machine (EVM), which processes smart contract logic. Every transaction that interacts with a contract is executed inside the EVM, ensuring consistency and determinism across all nodes.
