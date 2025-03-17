@@ -1,6 +1,6 @@
 # Data Structures in Execution Layer
 
-The execution client stores the current state and historical blockchain data. In practice, the Ethereum data are stored in trie like structures, mainly Merkle Patricia Tree. 
+The execution client stores the current state and historical blockchain data. In practice, the Ethereum data are stored in trie like structures, mainly Merkle Patricia Tree.
 
 ## RLP
 
@@ -47,6 +47,9 @@ Patricia tries are designed to be more space-efficient than traditional trie str
 
 Ethereum's primary data structure for storing the execution layer state is a **Merkle Patricia Trie** (pronounced "try"). It is named so, since it is a Merkle tree that uses features of PATRICIA (Practical Algorithm To Retrieve Information Coded in Alphanumeric), and because it is designed for efficient data retrieval of items that comprise the Ethereum state.
 
+- From Merkle Trees, it inherits the cryptographic verification properties where each node contains hashes of its children.
+- From Patricia Tries, it inherits efficient key-value storage and retrieval capabilities through prefix-based node organization.
+
 There are three types of nodes within the MPT:
 
 - **Branch Nodes**: A branch node consists of a 17-element array, which includes one node value and 16 branches. This node type is the primary mechanism for branching and navigating through the trie.
@@ -56,7 +59,23 @@ There are three types of nodes within the MPT:
 Every single node has a hash value. The node's hash is calculated as the SHA-3 hash value of its contents. This hash also acts as a key to refer that specific node.
 Nibbles serve as the distinguishing unit for key values in the MPT. It represents a single hexadecimal digit. Each trie node can branch out to as many as 16 offshoots, ensuring a concise representation and efficient memory usage.
 
-##### **TODO: Patricia Tree Diagram**
+The image below depicts a simplified version of a Merkle Patricia Trie.  Similar to the Merkle Trie, the root can only be computed from each individual piece of the state.
+
+```
+                    [Root]
+                       |
+            +----------+----------+
+            |                    |
+        [Branch]            [Extension]
+         / | \                  |
+        /  |  \                 |
+  [Leaf] [Leaf] [Branch]        |
+                 / \            |
+                /   \           |
+           [Leaf] [Extension]  [Leaf]
+                     |
+                   [Leaf]
+```
 
 # Ethereum
 
@@ -126,12 +145,12 @@ The intermediate nodes of Merkle/MP tree are hashes of the children. The nodes o
 
 ### Why Verkle Trees?
 
-To make a client stateless it is essential that to validate a block, client should not have to store the entire/previous blockchain state. The incoming block should be able to provide the client with the necessary data to validate the block. This extra proof data are called _witness_ enabling a stateless client validating the data without the full state. 
+To make a client stateless it is essential that to validate a block, client should not have to store the entire/previous blockchain state. The incoming block should be able to provide the client with the necessary data to validate the block. This extra proof data are called _witness_ enabling a stateless client validating the data without the full state.
 Using the information inside the block, client should also be able to maintain/grow a local state with each incoming block. Using this a client guarantees that for the current block (and succeeding ones that it validates) the state transition is correct. It doesn't guarantee that the state is correct for the previous blocks that the current block refers to because block producer can build on an invalid or non-canonical block.
 
 Verkle trees are designed to be more efficient in terms of storage and communication cost. For a 1000 leaves/data, a binary Merkle Tree takes around 4MB of witness data, Verkle tree reduces it to 150 kB. If we include the witness data in the block then it will not impact the blocksize that much but it would enable the stateless clients to be more efficient and scalable. Using this the stateless client will be able to trust the computation done without having to store the entire state.
 
-The transition to new verkle tree database poses a major challenge. To securely create the new verkle data, clients needs to generate them from the existing MPT which takes a lot of computation and space. Distribution and verification of the verkled database is currently being researched. 
+The transition to new verkle tree database poses a major challenge. To securely create the new verkle data, clients needs to generate them from the existing MPT which takes a lot of computation and space. Distribution and verification of the verkled database is currently being researched.
 
 ## Resources
 
