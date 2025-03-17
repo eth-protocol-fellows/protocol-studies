@@ -16,10 +16,11 @@ EOF was designed to address several limitations of the original EVM bytecode for
 - Future-Proofing: Provides a foundation for future EVM improvements and features through versioned containers
 
 ## Related EIPs and Implementations
-Several EIPs complementing EOF’s implementation in the coming Ethereum Pectra upgrade are included in the [EIP-7692](https://eips.ethereum.org/EIPS/eip-7692) such as:
+EOF is specified in several EIPs covering different features, changes to various opcodes and introducing new ones. All these EIPs are tracked by a single meta EIP listing all of them; [EIP-7692](https://eips.ethereum.org/EIPS/eip-7692)
 
-- EIP-3540: Introduces EOF Version 1, establishing the initial structure for structured bytecode.
-- EIP-3670, EIP-4200, EIP-4750, EIP-5450, EIP-6206, EIP-7480, EIP-663, EIP-7069, EIP-7620, EIP-7698: Enhance EOF functionalities, improving security, efficiency, and usability across Ethereum’s ecosystem.
+Some of the EIPs included in EIP-7692 are:
+- (EIP-3540)[https://eips.ethereum.org/EIPS/eip-3540]: Introduces EOF Version 1, establishing the initial structure for structured bytecode.
+- (EIP-7620)[https://eips.ethereum.org/EIPS/eip-7620]: Removes the possibility to create contracts using `CREATE` or `CREATE2` instructions. It introduces a new/replacement method in form of pair of instructions : `EOFCREATE` and `RETURNCODE` to provide a way to create contracts using EOF containers.
 
 
 ## Differences from Legacy EVM Bytecode
@@ -33,6 +34,7 @@ Several EIPs complementing EOF’s implementation in the coming Ethereum Pectra 
 
 
 ## Resources
+- [evmobjectformat.org](https://evmobjectformat.org/)
 - [EOF Parser and Visualizer](https://eof.wtf/)
 - [EVM | Pawel Bylica | Lecture 17](https://www.youtube.com/watch?v=gYnx_YQS8cM)
 - [Mega EOF Endgame](https://github.com/ipsilon/eof/blob/main/spec/eof.md)
