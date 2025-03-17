@@ -27,7 +27,7 @@
   - [Lecture 17 - EVM](/eps/day17.md)
   - **Week 5 - Networking**
   - [Lecture 18 - devp2p](/eps/day18.md)
-  - [Lecture 18 - libp2p](/eps/day19.md)
+  - [Lecture 19 - libp2p](/eps/day19.md)
 - [Contributing](contributing.md)
 - **Protocol Wiki**
 - The Protocol
