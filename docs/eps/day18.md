@@ -16,13 +16,11 @@ Additionally, you can get ready by studying the following resources.
 - [Devp2p spec](https://github.com/ethereum/devp2p)
 - [devp2p development update by Felix Lange (Devcon4)](https://www.youtube.com/watch?v=N2VTqUZRxjY)
 
-
 ## Outline
 
 - EL networking
-- devp2p...
+- devp2p
 
 ## Additional reading and exercises
 
 - [Demo of devp2p Wireshark Dissector](https://www.youtube.com/watch?v=AhE4KbV-f1w)
-- 
