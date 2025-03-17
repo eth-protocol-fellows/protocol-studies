@@ -63,10 +63,21 @@ Third week covers the research track and it's the last week using the original s
 
 ### Week 4
 
+Starting week 4, we are entering the main part of the study group that dives deeper into each part of the protocol. This week starts with talks diving into the core function of each layer.
+
 | Day, Date     | Topic                            | Speaker                                            |
 | ------------- | -------------------------------- | -------------------------------------------------- |
 | Day 16, Mar 10 | [Gasper](/eps/day16.md)         | [Ben Edgington](https://github.com/benjaminion)    |
-| Day 17, Mar 12 | EVM                             | [Pawel Bylica](https://github.com/chfast)          |
+| Day 17, Mar 12 | [EVM](/eps/day17.md)            | [Pawel Bylica](https://github.com/chfast)          |
+
+### Week 5
+
+Week 5 continues deeper dive to each part of the protocol with lectures on networking.
+
+| Day, Date     | Topic                            | Speaker                                            |
+| ------------- | -------------------------------- | -------------------------------------------------- |
+| Day 16, Mar 17 | [devp2p](/eps/day18.md)         | [Felix Lange](https://github.com/fjl)              |
+| Day 17, Mar 19 | [libp2p](/eps/day19.md)         | [DappLion](https://github.com/dappplion)           |
 
 ### Streams and recordings
 

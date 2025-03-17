@@ -64,7 +64,7 @@ func build(env Environment, pool txpool.Pool, state state.StateDB) (types.Block,
 * stack ops
     * push, pop, swap
 * system
-    * call, create, return, sstorage
+    * call, create, return, sstore
 * memory
     * mload, mstore, mstore8
 

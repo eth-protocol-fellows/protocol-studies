@@ -43,7 +43,7 @@ Proposer-Builder Separation (PBS) also introduces a more intricate relationship 
 
 1. **Searchers:**
    - Searchers are entities external to the Ethereum Protocol. Searchers do not directly interact with the blockchain. Instead, they submit their constructed bundles to builders.
-   - Searchers continuously scan the public mempool to find MEV oppertunities such as Frontrunning, Sandwich or Arbitrage.
+   - Searchers continuously scan the public mempool to find MEV opportunities such as Frontrunning, Sandwich or Arbitrage.
    - They construct bundles which are an ordered list of transaction which execute some MEV strategy as well as a bid to the builder.
 2. **Builders:**
    - Builders are specialized entities that focus on constructing blocks with optimal transaction ordering and inclusion. They compete with each other to create the most profitable block for the proposer, taking into account factors like gas fees, transaction priority, and potential MEV (Maximal Extractable Value).
