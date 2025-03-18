@@ -1,6 +1,6 @@
 # Data Structures in Execution Layer
 
-The execution client stores the current state and historical blockchain data. In practice, the Ethereum data are stored in trie like structures, mainly Merkle Patricia Tree.
+The execution client stores the current state and historical blockchain data. In practice, the Ethereum data are stored in trie like structures, mainly Merkle Patricia Tree. 
 
 ## RLP
 
@@ -49,15 +49,12 @@ A simple diagram will display how Patricia Trie traversal works. Suppose we are 
 ![Patricia Trie](../../images/data-structures/patricia-trie.png)
 
 1. Start at the root node, which serves as the entry point, and contains "r", which will be the starting prefix for all stored keys.
-2. Follow the edge labels (compressed path representation) such as "om".  Patricia Trie merges common prefixes into a single edge instead of how standard tries store each character in a separate node.
+2. Follow the edge labels (compressed path representation) such as "om".  Patricia Trie merges common prefixes into a single edge instead of how standard tries store each character in a separate node.  This prefix compression makes the trie more compact leading to storage efficiency and efficient lookups.
 3. Continue traversing until a leaf node for the key "romulus" is reached to obtain the value.
 
-Ethereum uses Patricia Trie due to prefix compression making the trie more compact leading to storage efficiency and efficient lookups.
+## Merkle Patricia Trie
 
-
-## Merkle Patricia Trie in Ethereum
-
-Ethereum's primary data structure for storing the execution layer state is a **Merkle Patricia Trie** (pronounced "try"). It is named so, since it is a Merkle tree that uses features of PATRICIA (Practical Algorithm To Retrieve Information Coded in Alphanumeric), and because it is designed for efficient data retrieval of items that comprise the Ethereum state.
+Now that we have a fair understanding of both Merkle Trees and Patricia Tries, we can dive into Ethereum's primary data structure for storing the execution layer state, the **Merkle Patricia Trie** (pronounced "try"). It is named so, since it is a Merkle tree that uses features of PATRICIA (Practical Algorithm To Retrieve Information Coded in Alphanumeric), and because it is designed for efficient data retrieval of items that comprise the Ethereum state.
 
 - From Merkle Trees, it inherits the cryptographic verification properties where each node contains hashes of its children.
 - From Patricia Tries, it inherits efficient key-value storage and retrieval capabilities through prefix-based node organization.
@@ -71,13 +68,33 @@ There are three types of nodes within the MPT:
 Every single node has a hash value. The node's hash is calculated as the SHA-3 hash value of its contents. This hash also acts as a key to refer that specific node.
 Nibbles serve as the distinguishing unit for key values in the MPT. It represents a single hexadecimal digit. Each trie node can branch out to as many as 16 offshoots, ensuring a concise representation and efficient memory usage.
 
-##### **TODO: Patricia Tree Diagram**
+The following diagram illustrates how traversal and hashing work together in the MPT. As an example of data retrieval from a leaf node, let's obtain the value `hi` using the key `11110AA`.
+
+![Merkle Patricia Trie Diagram](../../images/data-structures/merkle-patricia-trie.png)
+
+### 1. Start at the Root (Extension Node in this Scenario)
+- The key we are searching for is `11110AA`.
+- The root node is an **extension node** because all keys in this trie share the common prefix `1111`.
+  - Instead of storing `1111` across multiple branch nodes, it is compressed into a single edge, making the lookup more efficient.
+- The extension node's hash is the root hash and is computed as:
+  `N1 = hash(RLP(HP(prefix, path=1111), N2))`.
+  - Since `N1` depends on `N2`, any change in `N2` would alter the root hash.
+
+### **2. Navigate to the Branch Node (N2)**
+- After `1111`, the next hex character in our key (`11110AA`) is `0`, so we take the `0` branch from `N2`, which leads us to **leaf node (`N5`)**.
+- The branch node’s hash is computed as:
+  `N2 = hash(RLP(N5, ...))`.
+  - Since `N2` depends on `N5`, any modification to `N5` affects `N2`, which in turn affects `N1`.
+
+### **3. Arrive at the Leaf Node (N5)**
+- `N5` is a **leaf node** where the search ends.
+- The leaf node stores:
+  - **Prefix**: `AA` (the remaining unique part of the key after `11110`).
+  - **Value**: `"hi"`.
 
 # Ethereum
 
-Ethereum's primary data structure for storing the execution layer state is a **Merkle Patricia Trie** (pronounced "try"). It is named so, since it is a Merkle tree that uses features of PATRICIA (Practical Algorithm To Retrieve Information Coded in Alphanumeric), and because it is designed for efficient data retrieval of items that comprise the Ethereum state.
-
-Ethereum state is stored in four different modified merkle patricia tries (MMPTs):
+Ethereum state is stored in four different modified Merkle Patricia Tries (MMPTs):
 
 - Transaction Trie
 - Receipt Trie
@@ -141,12 +158,12 @@ The intermediate nodes of Merkle/MP tree are hashes of the children. The nodes o
 
 ### Why Verkle Trees?
 
-To make a client stateless it is essential that to validate a block, client should not have to store the entire/previous blockchain state. The incoming block should be able to provide the client with the necessary data to validate the block. This extra proof data are called _witness_ enabling a stateless client validating the data without the full state.
+To make a client stateless it is essential that to validate a block, client should not have to store the entire/previous blockchain state. The incoming block should be able to provide the client with the necessary data to validate the block. This extra proof data are called _witness_ enabling a stateless client validating the data without the full state. 
 Using the information inside the block, client should also be able to maintain/grow a local state with each incoming block. Using this a client guarantees that for the current block (and succeeding ones that it validates) the state transition is correct. It doesn't guarantee that the state is correct for the previous blocks that the current block refers to because block producer can build on an invalid or non-canonical block.
 
 Verkle trees are designed to be more efficient in terms of storage and communication cost. For a 1000 leaves/data, a binary Merkle Tree takes around 4MB of witness data, Verkle tree reduces it to 150 kB. If we include the witness data in the block then it will not impact the blocksize that much but it would enable the stateless clients to be more efficient and scalable. Using this the stateless client will be able to trust the computation done without having to store the entire state.
 
-The transition to new verkle tree database poses a major challenge. To securely create the new verkle data, clients needs to generate them from the existing MPT which takes a lot of computation and space. Distribution and verification of the verkled database is currently being researched.
+The transition to new verkle tree database poses a major challenge. To securely create the new verkle data, clients needs to generate them from the existing MPT which takes a lot of computation and space. Distribution and verification of the verkled database is currently being researched. 
 
 ## Resources
 
@@ -156,5 +173,7 @@ The transition to new verkle tree database poses a major challenge. To securely 
 - [Implementing Merkle Tree and Patricia Trie](https://medium.com/coinmonks/implementing-merkle-tree-and-patricia-trie-b8badd6d9591) • [archived](https://web.archive.org/web/20210118071101/https://medium.com/coinmonks/implementing-merkle-tree-and-patricia-trie-b8badd6d9591)
 - [Radix Trie](https://en.wikipedia.org/wiki/Radix_tree#) • [archived](https://web.archive.org/web/20250105072609/https://en.wikipedia.org/wiki/Radix_tree)
 - [Radix Trie Diagram](https://samczsun.com/content/images/2021/05/1920px-Patricia_trie.svg-1-.png)  • [archived](https://web.archive.org/web/20231209235318/https://samczsun.com/content/images/2021/05/1920px-Patricia_trie.svg-1-.png)
+- [Merkle Patricia Trie Diagram](https://www.researchgate.net/publication/353863430/figure/fig2/AS:1056193841741826@1628827643578/Ethereum-Encoded-Merkle-Patricia-Trie.png)
+- [Merkle Patricia Trie Diagram Explanation](https://www.researchgate.net/publication/353863430_Ethereum_Data_Structures)
 
 [More on Merkle Patricia Trie](https://ethereum.org/developers/docs/data-structures-and-encoding/patricia-merkle-trie)
