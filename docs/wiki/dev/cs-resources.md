@@ -60,7 +60,7 @@
 
 - 🎥 [Distributed Systems | MIT](https://pdos.csail.mit.edu/6.824/schedule.html)
 - 📄 [Times, Clocks and Ordering of Events in Distributed Systems - Lamport's paper, the Quintessential distributed systems primer](http://research.microsoft.com/en-us/um/people/lamport/pubs/time-clocks.pdf)
-- 📄 [The Byzantine Generals Problem](https://people.eecs.berkeley.edu/~luca/cs174/byzantine.pdf)
+- 📄 [The Byzantine Generals Problem](https://lamport.azurewebsites.net/pubs/byz.pdf)
 - 📄 [Practical Byzantine Fault Tolerance](http://pmg.csail.mit.edu/papers/osdi99.pdf)
 - 📄 [Bitcoin Whitepaper](https://bitcoin.org/bitcoin.pdf)
 - 📄 [Ethereum Whitepaper](https://ethereum.org/en/whitepaper/)
