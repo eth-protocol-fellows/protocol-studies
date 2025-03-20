@@ -28,6 +28,9 @@
   - **Week 5 - Networking**
   - [Lecture 18 - devp2p](/eps/day18.md)
   - [Lecture 19 - libp2p](/eps/day19.md)
+  - **Week 6**
+  - [Lecture 18 - Validator](/eps/day20.md)
+  - [Lecture 19 - EngineAPI](/eps/day21.md)
 - [Contributing](contributing.md)
 - **Protocol Wiki**
 - The Protocol
