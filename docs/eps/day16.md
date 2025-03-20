@@ -6,8 +6,6 @@ For the first session of this week, we are diving into the consensus mechanism o
 
 Watch the presentation recording by [Ben Edgington](https://x.com/benjaminion_xyz) on Youtube. Slides are [available here](https://docs.google.com/presentation/d/1mSn8JUfY88HvcCauLBkKRuy3f6YFlV9VcJptav0Ef24/edit#slide=id.p). 
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/cOivWPEBEMo?si=49cgW5VqZubKAHtw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-
 <iframe width="560" height="315" src="https://www.youtube.com/embed/cOivWPEBEMo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ## Pre-reading
