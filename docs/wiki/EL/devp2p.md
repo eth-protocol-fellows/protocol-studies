@@ -3,7 +3,7 @@
 > :warning: This article is a [stub](https://en.wikipedia.org/wiki/Wikipedia:Stub), help the wiki by [contributing](/contributing.md) and expanding it.
 
 ## Peer To Peer(P2P) Communication
-Peer-to-peer (P2P) communication is a decentralized networking model where participants, known as peers, communicate directly without relying on a central server. Unlike traditional client-server architectures, where a central authority controls data flow and coordination, P2P networks distribute tasks and responsibilities among all nodes.
+Peer-to-peer (P2P) communication is a networking model where participants, known as peers, communicate directly without relying on a central server.
 
 P2P networks offer several advantages over centralized systems:
 
@@ -12,12 +12,17 @@ P2P networks offer several advantages over centralized systems:
 - Fault Tolerance – Nodes can leave or fail without disrupting the entire network.
 - Security & Privacy – Direct communication between peers reduces reliance on intermediaries,enhancing privacy and security.
 
-P2P communication is the foundation of many distributed applications, enabling efficient data sharing, real-time coordination, and resilient connectivity in decentralized systems.
+P2P communication is the foundation of many distributed applications, enabling efficient data sharing([IPFS](https://ipfs.tech/)), real-time coordination(Dectralised RTC), and resilient connectivity in decentralized systems.
 
 ## Importance of P2P in Ethereum
 
 Ethereum’s decentralized nature relies on a robust peer-to-peer (P2P) networking layer to ensure efficient transaction propagation, block distribution, and state synchronization among nodes.
-**DevP2P** was specifically designed to meet Ethereum’s execution-layer networking requirements, defining protocols for node discovery, transport encryption, and capability negotiation. While **libp2p** is a more modular and general-purpose P2P framework used in other decentralized applications, devp2p remains tailored to Ethereum’s needs. 
+
+There are basically 2 differnent P2P networking Stacks in use by Ethereum:
+
+- **LibP2P** There a [Page](https://epf.wiki/#/wiki/CL/cl-networking) about LibP2P about in this wiki.
+- **DevP2P** was specifically designed to meet Ethereum’s execution-layer networking requirements, defining protocols for node discovery, transport encryption, and capability negotiation.
+
 As noted in the devp2p documentation:  
 
 > _"It's hard to compare the two projects because they have different scope and are designed with different goals in mind. devp2p is an integrated system definition that wants to serve Ethereum's needs well (although it may be a good fit for other applications, too), while libp2p is a collection of programming library parts serving no single application in particular. That said, both projects are very similar in spirit and devp2p is slowly adopting parts of libp2p as they mature."_  
@@ -311,16 +316,14 @@ Since ephemeral keys are discarded after a session ends, even if an attacker lat
 
 ### 4. Application-Level Subprotocols  
 
-- **RLPx supports multiple application-level subprotocols** that enable specialized communication between Ethereum nodes.
-- These subprotocols are **built on top of the RLPx transport layer** and are used for  data exchange, state synchronization, and light client support.
-
-#### Common Ethereum Subprotocols  
+#### [Common Ethereum Subprotocols](https://github.com/ethereum/devp2p/tree/master/caps)
 
 | **Subprotocol** | **Purpose** |
 |---------------|------------|
-| **Ethereum Wire Protocol (`eth`)** | Handles **blockchain data exchange**, including block propagation and transaction relaying. |
-| **Ethereum Snapshot Protocol (`snap`)** | Used for **state synchronization**, allowing nodes to download portions of the state trie. |
-| **Light Ethereum Subprotocol (`les`)** | Supports **light clients**, enabling them to request data from full nodes without storing the full state. |
-| **Portal Network (`portal`)** | A decentralized **state, block, and transaction retrieval network** for lightweight clients. |
+| **[Ethereum Wire Protocol (`eth`)](https://github.com/ethereum/devp2p/blob/master/caps/eth.md)** | Handles **blockchain data exchange**, including block propagation and transaction relaying. |
+| **[Ethereum Snapshot Protocol (`snap`)](https://github.com/ethereum/devp2p/blob/master/caps/snap.md)** | Used for **state synchronization**, allowing nodes to download portions of the state trie. |
+| **[Light Ethereum Subprotocol (`les`)](https://github.com/ethereum/devp2p/blob/master/caps/les.md)** | Supports **light clients**, enabling them to request data from full nodes without storing the full state. |
 
+- **RLPx supports multiple application-level subprotocols** that enable specialized communication between Ethereum nodes.
+- These subprotocols are **built on top of the RLPx transport layer** and are used for  data exchange, state synchronization, and light client support.
 
