@@ -2,7 +2,7 @@
 
 The introductory part of the study group is now over and we are now starting the deeper dive with live sessions from core developers. The second week of the main phase of the study group is dedicated to networking. 
 
-The second live session the week is focused on consensus layer networking which is based on libp2p. The lecture is given by [DappLion](https://github.com/dappplion), a seasoned consensus layer contributer, part SigP Lighthouse team, previously lead of Lodestar client, his main focus is currently PeerDAS.
+The second live session the week is focused on consensus layer networking which is based on libp2p. The lecture is given by [DappLion](https://github.com/dapplion), a seasoned consensus layer contributer, part SigP Lighthouse team, previously lead of Lodestar client, his main focus is currently PeerDAS.
 
 > Join the live talk by DappLion on [Wednesday, 19.3. at 3PM UTC](https://www.timeanddate.com/worldclock/converter.html?iso=20250319T150000&p1=1440&p2=37&p3=136&p4=237&p5=923&p6=204&p7=671&p8=16&p9=41&p10=107&p11=28) to watch the lecture and ask questions directly. [Use this link to connect.](https://meet.ethereum.org/eps-office-hours) 
 
