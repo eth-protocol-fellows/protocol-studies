@@ -4,23 +4,30 @@ The introductory part of the study group is now over and we are now starting the
 
 The first live session this week is dedicated to execution layer networking stack, diving into devp2p. [Felix Lange](https://github.com/fjl) is a long term core developer from go-ethereum team and the maintainer of devp2p specification. 
 
-> Join the live talk by Felix on [Monday, 17.3. at 3PM UTC](https://www.timeanddate.com/worldclock/converter.html?iso=20250317T150000&p1=1440&p2=37&p3=136&p4=237&p5=923&p6=204&p7=671&p8=16&p9=41&p10=107&p11=28) to watch the lecture and ask questions directly. [Use this link to connect.](https://meet.ethereum.org/eps-office-hours) 
+https://www.youtube.com/watch?v=kYJ7Rj0OGv4
 
+Watch the lecture on [Youtube](https://www.youtube.com/watch?v=44-ddRK2aBc) and follow the [Devp2p spec](https://github.com/ethereum/devp2p) as demonstrated in the lecture 
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/44-ddRK2aBc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ## Pre-reading
 
-Before starting with the Day 16 content, make yourself familiar with resources in previous weeks, especially day 3 on EL and day 7 on EL client. You should have general understanding of the execution layer and basic overview of its networking capabilities. 
+Before starting with the Day 18 content, make yourself familiar with resources in previous weeks, especially day 3 on EL and day 7 on EL client. You should have general understanding of the execution layer and basic overview of its networking capabilities. 
 
 Additionally, you can get ready by studying the following resources.
 
 - [Devp2p spec](https://github.com/ethereum/devp2p)
-- [devp2p development update by Felix Lange (Devcon4)](https://www.youtube.com/watch?v=N2VTqUZRxjY)
 
 ## Outline
 
 - EL networking
-- devp2p
+- devp2p specs
+- ENR
+- Discv5
+- Subprotocols
 
 ## Additional reading and exercises
 
 - [Demo of devp2p Wireshark Dissector](https://www.youtube.com/watch?v=AhE4KbV-f1w)
+- [devp2p development update by Felix Lange (Devcon4)](https://www.youtube.com/watch?v=N2VTqUZRxjY)
+- [Hive devp2p test simulator](https://github.com/ethereum/hive/tree/master/simulators/devp2p)
