@@ -16,7 +16,7 @@ Additionally, you can get ready by studying the following resources.
 - [Annotated spec on validator incentives](https://eth2book.info/capella/part2/incentives/)
 - [The evolution of Prysm with Preston Van Loon](https://www.youtube.com/watch?v=Lvlit-nIRfM)
 - [Keymanager APIs](https://ethereum.github.io/keymanager-APIs/)
-- [Remote Singer API](https://github.com/ethereum/remote-signing-api)
+- [Remote Signer API](https://github.com/ethereum/remote-signing-api)
 - [Validator Lifecycle](https://docs.prylabs.network/docs/how-prysm-works/validator-lifecycle)
 
 ## Outline
