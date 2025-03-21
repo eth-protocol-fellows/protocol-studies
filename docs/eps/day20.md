@@ -15,14 +15,19 @@ Additionally, you can get ready by studying the following resources.
 
 - [Annotated spec on validator incentives](https://eth2book.info/capella/part2/incentives/)
 - [The evolution of Prysm with Preston Van Loon](https://www.youtube.com/watch?v=Lvlit-nIRfM)
+- [Keymanager APIs](https://ethereum.github.io/keymanager-APIs/)
+- [Remote Signer API](https://github.com/ethereum/remote-signing-api)
+- [Validator Lifecycle](https://docs.prylabs.network/docs/how-prysm-works/validator-lifecycle)
 
 ## Outline
 
-- Beacon API
-- Validator Service
-- Keystore
+- Validator Client
+- Validator Service Initialization
+- Keystore Management
+- Performing Validator Duties
 
 ## Additional reading and exercises
 
 - Run a node with a validator client on Hoodi or Ephemery, follow logs to see its behaviour and functions
     - [Spin up your own Ethereum validator on testnet | Devcon Bogotá](https://www.youtube.com/watch?v=dWCck2IniNc)
+- Test your validator client out on local devnet through https://github.com/ethpandaops/ethereum-package
