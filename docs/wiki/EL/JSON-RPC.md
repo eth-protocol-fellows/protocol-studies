@@ -125,7 +125,7 @@ curl <node-endpoint> \
 -H "Content-Type: application/json" \
 -d '{"jsonrpc":"2.0","method":"eth_blockNumber","params":[],"id":1}'
 ```
-Please note how the *params* field is empty, as the method pass "latest" as default value.
+Please note how the *params* field is empty, as the method passes "latest" as its default value.
 
 Another way is to use the `axios` library in Javascript/TypeScript. For example, to get the address balance, you can use the following code:
 
