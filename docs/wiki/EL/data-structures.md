@@ -20,11 +20,11 @@ To learn more about Hashing, you may refer to [this](https://github.com/ethereum
 
 Merkle Root is stored in the **Block Header**. Read more about the structure of a Block inside Ethereum (_will be linked this to relevant doc once its ready_)
 
-The main parent node is called Root, hence the hash inside is Root Hash. There is infinitesimally small chance(1 in 1.16x10^77 for a single SHA-256 hash) to create two different states with the same root hash, and any attempt to modify state with different values will result in a different state root hash.
+The main parent node is called Root, hence the hash inside is Root Hash. There is an infinitesimally small chance(1 in 1.16x10^77 for a single SHA-256 hash) to create two different states with the same root hash, and any attempt to modify state with different values will result in a different state root hash.
 
 The image below depicts a simplified version of the working of a Merkle Tree:
 
-- The leaf nodes contain the actual data(for simplicity, we have taken numbers)
+- The leaf nodes contain the actual data (for simplicity, we have taken numbers)
 - Every non-leaf node is a hash of its children.
 - The first level of non-leaf nodes contains the Hash of its child leaf nodes
   `Hash(1,2)`
@@ -37,15 +37,27 @@ More on [Merkle Trees in Ethereum](https://blog.ethereum.org/2015/11/15/merkling
 
 ## Primer on Patricia Tree
 
-Patricia Tries (also called Radix tree) are n-ary trees which unlike Merkle Trees, are used for storage of data instead of verification.
+Patricia Tries (also called Radix tree) are n-ary trees that, unlike Merkle Trees, are used for efficient storage of data instead of verification.
 
-Simply put, Patricia Tries is a tree data structure where all the data is store in the leaf nodes, and each non-leaf nodes is a character of a unique string identifying the data. Using the unique string we navigate through the character nodes and finally reach the data. Hence, it is very efficient at data retrieval.
+Simply put, Patricia Tries is a tree data structure where:
+ - The number of children of each node is at most the radix r of the radix trie, where r = 2^x for some integer x ≥ 1.
+ - Unlike regular trees, edges can be labeled with sequences of characters, making the structure much more space-efficient.
+ - Each node that is the only child is merged with its parent, which is also more space efficient compared to a Merkle Tree for example.
 
-Patricia tries are designed to be more space-efficient than traditional trie structures by eliminating redundant nodes with single children. They achieve compactness by sharing prefixes among keys. This means that common prefixes are shared among different keys, reducing the overall storage requirements.
+A simple diagram will display how Patricia Trie traversal works. Suppose we are searching for the value associated with the key "romulus". The value will be held at the leaf node.
+- Unlike a regular trie, where data might be stored in intermediary nodes, Patricia Tries store values only in leaf nodes. This improves space efficiency and makes cryptographic verification easier.
+![Patricia Trie](../../images/data-structures/patricia-trie.png)
 
-## Merkle Patricia Trie in Ethereum
+1. Start at the root node, which serves as the entry point, and contains "r", which will be the starting prefix for all stored keys.
+2. Follow the edge labels (compressed path representation) such as "om".  Patricia Trie merges common prefixes into a single edge instead of how standard tries store each character in a separate node.  This prefix compression makes the trie more compact leading to storage efficiency and efficient lookups.
+3. Continue traversing until a leaf node for the key "romulus" is reached to obtain the value.
 
-Ethereum's primary data structure for storing the execution layer state is a **Merkle Patricia Trie** (pronounced "try"). It is named so, since it is a Merkle tree that uses features of PATRICIA (Practical Algorithm To Retrieve Information Coded in Alphanumeric), and because it is designed for efficient data retrieval of items that comprise the Ethereum state.
+## Merkle Patricia Trie
+
+Now that we have a fair understanding of both Merkle Trees and Patricia Tries, we can dive into Ethereum's primary data structure for storing the execution layer state, the **Merkle Patricia Trie** (pronounced "try"). It is named so, since it is a Merkle tree that uses features of PATRICIA (Practical Algorithm To Retrieve Information Coded in Alphanumeric), and because it is designed for efficient data retrieval of items that comprise the Ethereum state.
+
+- From Merkle Trees, it inherits the cryptographic verification properties where each node contains hashes of its children.
+- From Patricia Tries, it inherits efficient key-value storage and retrieval capabilities through prefix-based node organization.
 
 There are three types of nodes within the MPT:
 
@@ -56,13 +68,33 @@ There are three types of nodes within the MPT:
 Every single node has a hash value. The node's hash is calculated as the SHA-3 hash value of its contents. This hash also acts as a key to refer that specific node.
 Nibbles serve as the distinguishing unit for key values in the MPT. It represents a single hexadecimal digit. Each trie node can branch out to as many as 16 offshoots, ensuring a concise representation and efficient memory usage.
 
-##### **TODO: Patricia Tree Diagram**
+The following diagram illustrates how traversal and hashing work together in the MPT. As an example of data retrieval from a leaf node, let's obtain the value `hi` using the key `11110AA`.
+
+![Merkle Patricia Trie Diagram](../../images/data-structures/merkle-patricia-trie.png)
+
+### 1. Start at the Root (Extension Node in this Scenario)
+- The key we are searching for is `11110AA`.
+- The root node is an **extension node** because all keys in this trie share the common prefix `1111`.
+  - Instead of storing `1111` across multiple branch nodes, it is compressed into a single edge, making the lookup more efficient.
+- The extension node's hash is the root hash and is computed as:
+  `N1 = hash(RLP(HP(prefix, path=1111), N2))`.
+  - Since `N1` depends on `N2`, any change in `N2` would alter the root hash.
+
+### **2. Navigate to the Branch Node (N2)**
+- After `1111`, the next hex character in our key (`11110AA`) is `0`, so we take the `0` branch from `N2`, which leads us to **leaf node (`N5`)**.
+- The branch node’s hash is computed as:
+  `N2 = hash(RLP(N5, ...))`.
+  - Since `N2` depends on `N5`, any modification to `N5` affects `N2`, which in turn affects `N1`.
+
+### **3. Arrive at the Leaf Node (N5)**
+- `N5` is a **leaf node** where the search ends.
+- The leaf node stores:
+  - **Prefix**: `AA` (the remaining unique part of the key after `11110`).
+  - **Value**: `"hi"`.
 
 # Ethereum
 
-Ethereum's primary data structure for storing the execution layer state is a **Merkle Patricia Trie** (pronounced "try"). It is named so, since it is a Merkle tree that uses features of PATRICIA (Practical Algorithm To Retrieve Information Coded in Alphanumeric), and because it is designed for efficient data retrieval of items that comprise the Ethereum state.
-
-Ethereum state is stored in four different modified merkle patricia tries (MMPTs):
+Ethereum state is stored in four different modified Merkle Patricia Tries (MMPTs):
 
 - Transaction Trie
 - Receipt Trie
@@ -139,5 +171,9 @@ The transition to new verkle tree database poses a major challenge. To securely 
 - [More on Verkle Tree](https://notes.ethereum.org/@vbuterin/verkle_tree_eip#Simple-Summary)
 - [Verge transition](https://notes.ethereum.org/@parithosh/verkle-transition)
 - [Implementing Merkle Tree and Patricia Trie](https://medium.com/coinmonks/implementing-merkle-tree-and-patricia-trie-b8badd6d9591) • [archived](https://web.archive.org/web/20210118071101/https://medium.com/coinmonks/implementing-merkle-tree-and-patricia-trie-b8badd6d9591)
+- [Radix Trie](https://en.wikipedia.org/wiki/Radix_tree#) • [archived](https://web.archive.org/web/20250105072609/https://en.wikipedia.org/wiki/Radix_tree)
+- [Radix Trie Diagram](https://samczsun.com/content/images/2021/05/1920px-Patricia_trie.svg-1-.png)  • [archived](https://web.archive.org/web/20231209235318/https://samczsun.com/content/images/2021/05/1920px-Patricia_trie.svg-1-.png)
+- [Merkle Patricia Trie Diagram](https://www.researchgate.net/publication/353863430/figure/fig2/AS:1056193841741826@1628827643578/Ethereum-Encoded-Merkle-Patricia-Trie.png)
+- [Merkle Patricia Trie Diagram Explanation](https://www.researchgate.net/publication/353863430_Ethereum_Data_Structures)
 
 [More on Merkle Patricia Trie](https://ethereum.org/developers/docs/data-structures-and-encoding/patricia-merkle-trie)
