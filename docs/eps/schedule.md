@@ -72,5 +72,5 @@ Week 5 continues deeper dive to each part of the protocol with lectures on netwo
 
 | Day, Date     | Topic                            | Speaker                                            |
 | ------------- | -------------------------------- | -------------------------------------------------- |
-| Day 16, Mar 17 | [Validator Client](/eps/day20.md)   | [James](https://github.com/james-prysm)             |
-| Day 17, Mar 19 | [Engine API](/eps/day21.md)         | [Mikhail](https://github.com/https://github.com/mkalinin) |
+| Day 16, Mar 17 | [Validator Client](/eps/day20.md)   | [James](https://github.com/james-prysm)        |
+| Day 17, Mar 19 | [Engine API](/eps/day21.md)         | [Mikhail](https://github.com/mkalinin)         |
