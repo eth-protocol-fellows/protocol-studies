@@ -37,9 +37,10 @@ The second week of the study group provides an overview of developer experience 
 | Day 9, Feb 27  | [Devops and testing](/eps/week9-dev.md)            | [Parithosh](https://github.com/parithosh)                                              |
 | Day 10, Feb 28 | [EL precompiles](/eps/week10-dev.md)               | [Danno Ferrin](https://github.com/shemnon)                                             |
 
-Third week covers the research track and it's the last week using the original study group materials. Each lecture provides a technical explanation of an active area of research, covering major important items from most [Ethereum roadmap](https://epf.wiki/#/wiki/research/roadmap) tracks. 
 
 ### Week 3
+
+Third week covers the research track and it's the last week using the original study group materials. Each lecture provides a technical explanation of an active area of research, covering major important items from most [Ethereum roadmap](https://epf.wiki/#/wiki/research/roadmap) tracks. 
 
 | Day, Date     | Topic                                              | Speaker                                            |
 | ------------- | -------------------------------------------------- | -------------------------------------------------- |
@@ -49,10 +50,27 @@ Third week covers the research track and it's the last week using the original s
 | Day 14, Mar 6 | [Purge and Portal Network](/eps/week9-research.md) | [Piper Merriam](https://github.com/pipermerriam)   |
 | Day 15, Mar 7 | [SSF and PoS Upgrades](/eps/week10-research.md)    | [Francesco D'Amato](https://github.com/fradamt)    |     
 
-
 ### Week 4
+
+Starting week 4, we are entering the main part of the study group that dives deeper into each part of the protocol. This week starts with talks diving into the core function of each layer.
 
 | Day, Date     | Topic                            | Speaker                                            |
 | ------------- | -------------------------------- | -------------------------------------------------- |
 | Day 16, Mar 10 | [Gasper](/eps/day16.md)         | [Ben Edgington](https://github.com/benjaminion)    |
-| Day 17, Mar 12 | EVM                             | [Pawel Bylica](https://github.com/chfast)          |
+| Day 17, Mar 12 | [EVM](/eps/day17.md)            | [Pawel Bylica](https://github.com/chfast)          |
+
+### Week 5
+
+Week 5 continues deeper dive to each part of the protocol with lectures on networking.
+
+| Day, Date     | Topic                            | Speaker                                            |
+| ------------- | -------------------------------- | -------------------------------------------------- |
+| Day 16, Mar 17 | [devp2p](/eps/day18.md)         | [Felix Lange](https://github.com/fjl)              |
+| Day 17, Mar 19 | [libp2p](/eps/day19.md)         | [DappLion](https://github.com/dappplion)           |
+
+### Week 6
+
+| Day, Date     | Topic                            | Speaker                                            |
+| ------------- | -------------------------------- | -------------------------------------------------- |
+| Day 16, Mar 17 | [Validator Client](/eps/day20.md)   | [James](https://github.com/james-prysm)        |
+| Day 17, Mar 19 | [Engine API](/eps/day21.md)         | [Mikhail](https://github.com/mkalinin)         |

@@ -10,21 +10,27 @@
   - [Lecture 4 - Testing](/eps/week4.md)
   - [Lecture 5 - Roadmap](/eps/week5.md)
   - [Node Workshop](/eps/nodes_workshop.md)
-  - **Week 2 - Development**
+  - **Week 2 - Dev Overview**
   - [Lecture 6 - Specs](/eps/week6-dev.md)
   - [Lecture 7 - EL Client](/eps/week7-dev.md)
   - [Lecture 8 - CL Client](/eps/week8-dev.md)
   - [Lecture 9 - Devops](/eps/week9-dev.md)
   - [Lecture 10 - Precompiles](/eps/week10-dev.md)
-  - **Week 3 - Research**
+  - **Week 3 - Research Overview**
   - [Lecture 11 - DAS](/eps/week6-research.md)  
   - [Lecture 12 - Verkle](/eps/week7-research.md)
   - [Lecture 13 - MEV](/eps/week8-research.md)
   - [Lecture 14 - Portal](/eps/week9-research.md)
   - [Lecture 15 - SSF](/eps/week10-research.md)
-  - **Week 4**
+  - **Week 4 - Core Features** 
   - [Lecture 16 - Gasper](/eps/day16.md)
   - [Lecture 17 - EVM](/eps/day17.md)
+  - **Week 5 - Networking**
+  - [Lecture 18 - devp2p](/eps/day18.md)
+  - [Lecture 19 - libp2p](/eps/day19.md)
+  - **Week 6**
+  - [Lecture 20 - Validator](/eps/day20.md)
+  - [Lecture 21 - EngineAPI](/eps/day21.md)
 - [Contributing](contributing.md)
 - **Protocol Wiki**
 - The Protocol
@@ -46,6 +52,7 @@
   - [JSON-RPC](/wiki/EL/JSON-RPC.md)
   - [DevP2P](/wiki/EL/devp2p.md)
   - [RLP Serialization](/wiki/EL/RLP.md)
+  - [EOF](/wiki/EL/eof.md)
 - Consensus Layer
   - [Overview](/wiki/CL/overview.md)
   - [Client architecture](/wiki/CL/cl-architecture.md)
