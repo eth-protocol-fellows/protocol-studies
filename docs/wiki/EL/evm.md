@@ -152,8 +152,9 @@ Select Opcodes used in this discussion:
 | 5B     | JUMPDEST     | Mark destination for jumps                         |
 | f3     | RETURN       | Halt execution returning output data               |
 | 35     | CALLDATALOAD | Copy 32 bytes from calldata to stack               |
-| 36     | CALLDATASIZE | Push total size (in bytes) of calldata to stack    |
 | 37     | CALLDATACOPY | Copy input data from calldata to memory            |
+| 80–8F  | DUP1–DUP16   | Duplicate Nth stack item to top                    |
+| 90–9F  | SWAP1–SWAP16 | Swap top with N+1th stack item                     |
 
 Refer [Appendix H of Yellow Paper](https://ethereum.github.io/yellowpaper/paper.pdf) for a comprehensive list.
 
@@ -164,7 +165,7 @@ Ethereum clients such as [geth](https://github.com/ethereum/go-ethereum) impleme
 
 We have covered **what** EVM is, let's explore **how** it works.
 
-# EVM Data Storage
+# EVM Data Locations
 
 The EVM has four main places to store data during execution:
 - **Stack**
@@ -180,11 +181,19 @@ Stack is a simple data structure with two operations: **PUSH** and **POP**. Push
 
 Since the stack is where most opcodes operate, it is responsible for holding the values used to read from and write to **memory** and **storage**, which we'll detail later.
 
-The primary utility of the stack by the EVM is to store intermediate values in computations.
+The primary utility of the stack by the EVM is to store intermediate values in computations and to supply arguments to opcodes.
 
 ![EVM stack](../../images/evm/stack.gif)
 
-> The EVM stack has a maximum size of 1024 items consisting of 32 bytes each and is reset after each contract execution. Only the top 16 items are easily accessible. If you run out of stack, the contract execution will fail.
+> The EVM stack has a maximum size of 1024 items consisting of 32 bytes each and is reset after each contract execution. Only the top 16 items are accessible. If you run out of stack, the contract execution will fail.
+
+The reason behind this 16 item stack size is due to the **DUP** and **SWAP** opcodes.
+
+- **DUPn**: Duplicate nth stack item to top.
+- **SWAPn**: Swap top with n+1th stack item.
+
+The max `n` in the **DUP** and **SWAP** opcodes is 16, As mentioned, the EVM only allows single byte opcodes. In the case of **DUP** and **SWAP**, the byte is split into two 4 bit values called nibbles. The lower nibble specifies the value on the stack to swap or duplicate and is limited to 16 due to only being 4 bits in length, hence a max of **DUP16** and **SWAP16**.
+
 
 During bytecode execution, EVM stack functions as a _scratchpad_: opcodes consume data from the top and push results back (See the `ADD` opcode below). Consider a simple addition program:
 
@@ -239,11 +248,11 @@ Refer [Appendix G of Yellow Paper](https://ethereum.github.io/yellowpaper/paper.
 
 ## Memory
 
-EVM memory is a byte array of $2^{256}$ (or [practically infinite](https://www.talkcrypto.org/blog/2019/04/08/all-you-need-to-know-about-2256/)) bytes . All locations in memory are well-defined initially as zero.
+EVM memory is a byte array of $2^{256}$ (or [practically infinite](https://www.talkcrypto.org/blog/2019/04/08/all-you-need-to-know-about-2256/)) bytes. All locations in memory are well-defined initially as zero.
 
 ![EVM Memory](../../images/evm/evm-memory.gif)
 
-Unlike stack, which provides data to individual instructions, memory stores ephemeral data that is relevant to the entire program.  This data often includes return data and dynamic types such as arrays that will be mutated during the contract function execution.
+Unlike stack, which provides data to individual instructions, memory stores ephemeral data that is relevant to the entire program.  Since the stack has a hard limit of one word slots, **memory** supplements the stack by allowing indexed access to arbitrarily sized data. Stack values can be stored to or loaded from **memory** on demand.
 
 ### Writing to memory
 
@@ -280,20 +289,16 @@ EVM doesn't have a direct equivalent to `MSTORE8` for reading. You must read the
 > EVM memory is shown as blocks of 32 bytes to illustrate how memory expansion works. In reality, it is a seamless sequence of bytes, without any inherent divisions or blocks.
 
 ## Calldata
-The **calldata** memory type is very similar to **Memory** as discussed above in that they both store dynamically sized data that is removed after contract execution. However, the **calldata** memory structure stores read-only data originating from a function's parameters.  The EVM will store the parameter as calldata since it's cheaper than copying the value to **Memory**.
+The **calldata** is read-only input data passed to the EVM via message call instructions or from a transaction and is stored as a sequence of bytes that are accessible via specific opcodes.
 
 ###  Reading from calldata
-If the transaction calling this smart contract passes in calldata, the inputted data can be loaded using the `CALLDATALOAD` opcode, which reads 32 bytes from calldata at a given offset and pushes it onto the stack once the program counter reaches its position in the bytecode. More info on the `CALLDATALOAD` opcode can be found [here](https://veridelisi.medium.com/learn-evm-opcodes-v-a59dc7cbf9c9).
-
-
-Additional opcodes for **calldata** include:
-- `CALLDATASIZE`: Puts a number onto the stack, where that number is the number of bytes in calldata.
-- `CALLDATACOPY`: Copies a segment of calldata to memory and takes three stack arguments: destination memory offset, calldata offset, and length in bytes.
-
+The calldata for the current environment can be accessed using either:
+-  `CALLDATALOAD` opcode which reads 32 bytes from a desired offset onto the stack, [learn more](https://veridelisi.medium.com/learn-evm-opcodes-v-a59dc7cbf9c9).
+- or, using `CALLDATACOPY` to copy a portion of calldata to memory.
 
 ## Storage
 
-Storage is designed as a **word-addressed word array**. Unlike memory, storage is associated with an Ethereum account and is **persisted** across transactions as part of the world state.  It can be thought of as the **database** associated with the smart contract, which is why it contains the contract's "state" variables. Storage size is fixed at 2^256 slots, 32 bytes each.
+Storage is designed as a **word-addressed word array**. Unlike memory, storage is associated with an Ethereum account and is **persisted** across transactions as part of the world state.  It can be thought of as a key-value **database** associated with the smart contract, which is why it contains the contract's "state" variables. Storage size is fixed at 2^256 slots, 32 bytes each.
 
 ![EVM Storage](../../images/evm/evm-storage.jpg)
 
@@ -301,7 +306,7 @@ Storage can only be accessed via the code of its associated account. External ac
 
 ## Writing to storage
 
-`SSTORE` takes two values from the stack: a storage **slot** and a 32-byte **value**. It then writes the value to storage of the account.  Notice: Slots can be thought of as the basic unit of storage, so when writing to storage, we deal with slots as opposed to individual bytes.  Depending upon the data type being stored, the value will take up a full slot or could be combined with other data in the same slot if the their combined length is less than 32 bytes long. More info on how different data types are packed into slots can be found [here](https://medium.com/coinmonks/solidity-storage-how-does-it-work-8354afde3eb).
+`SSTORE` takes two values from the stack: a storage **slot** and a 32-byte **value**. It then writes the value to storage of the account.  Notice: Slots can be thought of as the basic unit of storage, so when writing to storage, we deal with slots as opposed to individual bytes.  Writing to storage is expensive. High-level languages like Solidity optimize storage by packing multiple variables into a single 32-byte slot when their combined size is less than or equal to 32 bytes.
 
 ![EVM Storage write](../../images/evm/sstore.gif)
 
