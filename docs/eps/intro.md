@@ -79,6 +79,14 @@ Week 5 continues deeper dive to each part of the protocol with lectures on netwo
 | Day 16, Mar 17 | [devp2p](/eps/day18.md)         | [Felix Lange](https://github.com/fjl)              |
 | Day 17, Mar 19 | [libp2p](/eps/day19.md)         | [DappLion](https://github.com/dapplion)           |
 
+
+### Week 6
+
+| Day, Date     | Topic                            | Speaker                                            |
+| ------------- | -------------------------------- | -------------------------------------------------- |
+| Day 16, Mar 24 | [Validator Client](/eps/day20.md)   | [James](https://github.com/james-prysm)        |
+| Day 17, Mar 31 | [Engine API](/eps/day21.md)         | [Mikhail](https://github.com/mkalinin)         |
+
 ### Streams and recordings
 
 Talks and calls are announced week in advance based on the schedule above. Recordings of all talks can be found on [Youtube](https://www.youtube.com/@ethprotocolfellows) or [StreamEth](https://streameth.org/archive?organization=ethereum_protocol_fellowship) archive. 

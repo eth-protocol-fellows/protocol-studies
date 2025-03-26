@@ -2,10 +2,13 @@
 
 The introductory part of the study group is now over and we are now starting the deeper dive with live sessions from core developers. 
 
-The first lecture this week is focused on validator client in the consensus layer. The talk is given by [James](https://github.com/james-prysm), developer from Prysm, go implementation of Beacon Chain. 
+This lecture is focused on the validator client implementation in the consensus layer. The talk is given by [James](https://github.com/james-prysm), developer from Prysm, go implementation of Beacon Chain. 
 
-> Join the live talk by James on [Monday, 24.3. at 3PM UTC](https://www.timeanddate.com/worldclock/converter.html?iso=20250324T150000&p1=1440&p2=37&p3=136&p4=237&p5=923&p6=204&p7=671&p8=16&p9=41&p10=107&p11=28) to watch the lecture and ask questions directly. [Use this link to connect.](https://meet.ethereum.org/eps-office-hours) 
+[Slides](https://github.com/eth-protocol-fellows/protocol-studies/blob/main/docs/eps/presentations/day20_validator.pdf).
 
+Watch the lecture on [Youtube](https://www.youtube.com/watch?v=rgrNMbYrOmM) and follow the [slides](https://github.com/eth-protocol-fellows/protocol-studies/blob/main/docs/eps/presentations/day20_validator.pdf) and code examples from Prysm.
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/rgrNMbYrOmM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ## Pre-reading
 
