@@ -17,9 +17,9 @@ Additionally, you can get ready by studying the following resources.
 
 ## Outline
 
-- Engine API
-- 
+- Engine API design space and history
+- EL client behaviour when importing blocks
 
 ## Additional reading and exercises
 
--
+- [Paris spec section on Engine API](https://github.com/ethereum/execution-apis/blob/main/src/engine/paris.md#routines)
