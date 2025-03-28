@@ -107,11 +107,5 @@ The JavaScript client is developed by EF JS team as a part of the [EthereumJS mo
 
 - [ETH Docker](https://eth-docker.net/)
 - [Ethernodes](https://ethernodes.org/)
-<<<<<<< HEAD
 - [Client Diversity](https://clientdiversity.org/)
 - [Run the majority client at your own peril!](https://dankradfeist.de/ethereum/2022/03/24/)
-=======
-- [Client Diversity](https://clientdiversity.org/)
-- [Run the majority client at your own peril!](https://dankradfeist.de/ethereum/2022/03/24/
-
->>>>>>> main

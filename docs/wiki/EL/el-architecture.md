@@ -112,15 +112,32 @@ The beacon chain  invokes the new payload function and transfers the execution 
 
 ##### Geth
 
-TODO: STF code links and walk through in Geth
+###### Transaction Execution in Geth
+Geth, like other Ethereum execution clients, processes transactions by verifying signatures, checking nonces, deducting gas fees, and updating the state. Transactions first enter the mempool, where they wait to be included in a block. Once picked up, Geth executes them, modifying account balances, contract storage, and other state data.
 
-Check week 2 talk by lightclient for an overview.
+🔗[ Transaction Execution Specs Code](https://github.com/ethereum/execution-specs/blob/0f9e4345b60d36c23fffaa69f70cf9cdb975f4ba/src/ethereum/shanghai/fork.py#L542)
+
+###### Block Processing & State Updates
+Every new block contains multiple transactions that Geth processes in order. Once all transactions are executed, the final state is committed, and a state root hash is stored to ensure consistency. This process follows a defined set of rules to maintain network integrity.
+
+🔗 [State Transition Code](https://github.com/ethereum/execution-specs/blob/0f9e4345b60d36c23fffaa69f70cf9cdb975f4ba/src/ethereum/shanghai/fork.py#L145)
+
+###### Networking & Peer-to-Peer Communication
+Ethereum nodes communicate using DevP2P, a protocol that allows execution clients to exchange transactions and blocks. When a new transaction is sent, it propagates across the network through peer-to-peer connections, ensuring all nodes remain in sync. Each recipient verifies the transaction before forwarding it, preventing spam and invalid state transitions.
+
+🔗[DevP2P Specification]( https://github.com/ethereum/devp2p/blob/master/caps/eth.md)
+
+###### EVM Execution
+At its core, Geth runs the Ethereum Virtual Machine (EVM), which processes smart contract logic. Every transaction that interacts with a contract is executed inside the EVM, ensuring consistency and determinism across all nodes.
+
+🔗 [EVM Code in Geth]( https://github.com/ethereum/go-ethereum/blob/master/core/vm/evm.go#L90)
 
 ##### Sync
 
 Execution client synchronizes the chain by downloading block data from its peers and verifying them using the block validation rule. Sync finishes when blockchain data is verified and clients catches up with the tip of the chain which enables building the latest state. 
 
-Because it's inefficient to validate block by block and transaction by transaction since the genesis, EL clients employ other strategies to securely sync the tip of the chain, e.g. snap sync. 
+Because it's inefficient to validate block by block and transaction by transaction since the genesis, EL clients employ other strategies to securely sync the tip of the chain, e.g. [snap sync](https://github.com/ethereum/devp2p/blob/master/caps/snap.md?plain=1#L1)
+
 
 ##### Payload building
 
