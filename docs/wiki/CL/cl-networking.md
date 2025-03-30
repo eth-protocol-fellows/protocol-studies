@@ -10,7 +10,7 @@ The [Phase 0 -- Networking][consensus-networking] page specifies the network fun
 
 ## libp2p - P2P protocol
 
-[libp2p][libp2p-docs] is used as the peer-to-peer protocol. [libp2p and Ethereum][libp2p-and-eth] is a great article for a deep-dive on the history of libp2p, and its adoption in the Consensus clients.
+[libp2p][libp2p-docs] is the protocol used for peer to peer communication. It was orginially developed for IPFS. [libp2p and Ethereum][libp2p-and-eth] is a great article for a deep-dive on the history of libp2p, and its adoption in the Consensus clients. It allows comunication over multiple transport protocols like TCP, QUIC, WebRTC, etc.
 
 <figure class="diagram" style="text-align:center">
 
@@ -23,6 +23,13 @@ _The various protocols which are a part of libp2p._
 </figcaption>
 </figure>
 
+libp2p protocol is a multi-transport stack.
+
+1. **Transport** : It must support TCP (Transmission Control Protocol), may support [QUIC][quic] (Quick UDP Internet Connections) which must both allow incoming and outgoing connections. TCP and QUIC both support IPv4 and IPv6, but due for better compatibility IPv4 support is required.
+2. **Encryption and Identification** : [libp2p-noise][libp2p-noise] secure channel is used for encryption
+3. **Multiplexing** : Multiplexing allows multiple independent communications streams to run concurrently over a single network connection. Two multiplexers are commonplace in libp2p implementations: [mplex][mplex] and [yamux][yamux]. Their protocol IDs are, respectively: `/mplex/6.7.0` and `/yamux/1.0.0`. Clients must support mplex and may support yamux with precedence given to the latter.
+4. **Message Passing** : To pass messages over the network libp2p implements [Gossipsub][gossipsub] (PubSub) and [Req/Resp][req-resp] (Request/Response). Gossipsub uses topics and Req/Resp uses messages for communication.
+
 <figure class="diagram" style="text-align:center">
 
 ![gossibsub_optimization](../../images/cl/cl-networking/gossipsub_optimization.png)
@@ -34,6 +41,11 @@ _Gossipsub Optimization_
 </figcaption>
 </figure>
 
+#### What optimization does Gossibhub provide?
+**Approach 1:** Maintain a fully connected mesh (all peers connected to each other 1:1), which scales poorly (O(n^2)). Why this scales poorly? Each node may recieve the same message from other (n-1) nodes , hence wasting a lot of bandiwidth. If a the message is a block data, then the wasted bandwith is exponentially large.
+
+**Approach 2:** Pubsub (Publish-Subscribe Model) messaging pattern is used where senders (publishers) don’t send messages directly to receivers (subscribers). Instead, messages are published to a common channel (or topic), and subscribers receive messages from that channel without direct interaction with the publisher. The nodes mesh with a particular number of other nodes for a topic, and those with other nodes. Hence, allowing more efficient message passing.
+
 ## libp2p-noise - Encryption
 
 The [Noise framework][noise-framework] is not a protocol itself, but a framework for designing key exchange protocols. The [specification][noise-specification] is a great place to start.
@@ -41,15 +53,18 @@ The [Noise framework][noise-framework] is not a protocol itself, but a framework
 There are many [patterns][noise-patterns] which describe the key exchange process. The pattern used in the consensus clients is [`XX`][noise-xx] (transmit-transmit), meaning that both the initiator, and responder transmit their public key in the initial stages of the key exchange.
 
 ## ENR (Ethereum Node Records)
+
 [Ethereum Node Records][ENR] provide a structured, flexible way to store and share node identity and connectivity details in Ethereum’s peer-to-peer network. It is a future-proof format that allows easier exchange of identifying information between new peers and is the preferred [network address format][network-add-format] for Ethereum nodes.
 
 Its core components are:
+
 1. **Signature**: Each record is signed using an identity scheme (e.g., secp256k1) to ensure authenticity.
 2. **Sequence Number** (seq): A 64-bit unsigned integer that increments whenever the record is updated, allowing peers to determine the latest version.
 3. **Key/Value Pairs**: The record holds various connectivity details as key-value pairs.
 
 ## discv5
-Discovery Version 5 [(discv5)][discv5] (Protocol version v5.1) is used for peer discovery. It enables nodes to exchange and update ENRs dynamically, ensuring up-to-date peer discovery.
+
+Discovery Version 5 [(discv5)][discv5] (Protocol version v5.1) runs on UDP and meant for peer discovery only. It enables nodes to exchange and update ENRs dynamically, ensuring up-to-date peer discovery. It runs in parallel with libp2p.
 
 <figure class="diagram" style="text-align:center">
 
@@ -110,3 +125,8 @@ _discv5_
 [gossipsub-report]: https://research.protocol.ai/publications/gossipsub-v1.1-evaluation-report/vyzovitis2020.pdf
 [ENR]: https://eips.ethereum.org/EIPS/eip-778
 [network-add-format]: https://dean.eigenmann.me/blog/2020/01/21/network-addresses-in-ethereum/
+[quic]: https://datatracker.ietf.org/doc/rfc9000/
+[yamux]: https://github.com/libp2p/specs/blob/master/yamux/README.md
+[mplex]: https://github.com/libp2p/specs/tree/master/mplex
+[gossipsub]: https://github.com/libp2p/specs/tree/master/pubsub/gossipsub
+[req-resp]: https://github.com/ethereum/consensus-specs/blob/dev/specs/phase0/p2p-interface.md#the-reqresp-domain
