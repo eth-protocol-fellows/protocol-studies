@@ -46,6 +46,9 @@ _Gossipsub Optimization_
 
 **Approach 2:** Pubsub (Publish-Subscribe Model) messaging pattern is used where senders (publishers) don’t send messages directly to receivers (subscribers). Instead, messages are published to a common channel (or topic), and subscribers receive messages from that channel without direct interaction with the publisher. The nodes mesh with a particular number of other nodes for a topic, and those with other nodes. Hence, allowing more efficient message passing.
 
+###### **Gossipsub : TODO**
+###### **Req/Resp : TODO**
+
 ## libp2p-noise - Encryption
 
 The [Noise framework][noise-framework] is not a protocol itself, but a framework for designing key exchange protocols. The [specification][noise-specification] is a great place to start.
