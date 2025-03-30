@@ -1,6 +1,6 @@
 # Networking
 
-The Consensus clients use [libp2p][libp2p] as the peer-to-peer protocol, [libp2p-noise][libp2p-noise] for encryption, [discv5][discv5] for peer discovery, [SSZ][ssz] for encoding, and, optionally, [Snappy][snappy] for compression.
+The Consensus clients use [libp2p][libp2p-docs] as the peer-to-peer protocol, [libp2p-noise][libp2p-noise] for encryption, [discv5][discv5] for peer discovery, [SSZ][ssz] for encoding, and, optionally, [Snappy][snappy] for compression.
 
 For those looking to deepen their understanding of libp2p, Study Group Session Week-5, [Lecture 19]("https://epf.wiki/#/eps/day19") by Dapplion is a great resource.
 
@@ -10,7 +10,7 @@ The [Phase 0 -- Networking][consensus-networking] page specifies the network fun
 
 ## libp2p - P2P protocol
 
-[libp2p][libp2p-docs] is the protocol used for peer to peer communication. It was orginially developed for IPFS. [libp2p and Ethereum][libp2p-and-eth] is a great article for a deep-dive on the history of libp2p, and its adoption in the Consensus clients. It allows comunication over multiple transport protocols like TCP, QUIC, WebRTC, etc.
+[libp2p][libp2p-docs] is the protocol used for peer to peer communication. It was orginally developed for IPFS. [libp2p and Ethereum][libp2p-and-eth] is a great article for a deep-dive on the history of libp2p, and its adoption in the Consensus clients. It allows communication over multiple transport protocols like TCP, QUIC, WebRTC, etc.
 
 <figure class="diagram" style="text-align:center">
 
@@ -42,7 +42,7 @@ _Gossipsub Optimization_
 </figure>
 
 #### What optimization does Gossibhub provide?
-**Approach 1:** Maintain a fully connected mesh (all peers connected to each other 1:1), which scales poorly (O(n^2)). Why this scales poorly? Each node may recieve the same message from other (n-1) nodes , hence wasting a lot of bandiwidth. If a the message is a block data, then the wasted bandwith is exponentially large.
+**Approach 1:** Maintain a fully connected mesh (all peers connected to each other 1:1), which scales poorly (O(n^2)). Why this scales poorly? Each node may recieve the same message from other (n-1) nodes , hence wasting a lot of bandwidth. If the message is a block data, then the wasted bandwith is exponentially large.
 
 **Approach 2:** Pubsub (Publish-Subscribe Model) messaging pattern is used where senders (publishers) don’t send messages directly to receivers (subscribers). Instead, messages are published to a common channel (or topic), and subscribers receive messages from that channel without direct interaction with the publisher. The nodes mesh with a particular number of other nodes for a topic, and those with other nodes. Hence, allowing more efficient message passing.
 
