@@ -12,9 +12,11 @@
 ## Casper FFG (Friendly Finality Gadget)
 
 <!-- 
+
+- BFT fundamentals: gst, gat, synchronous, deterministic 
+- FFG Algorithm
 - justified chain
 - checkpoints and finality
-- gst, gat, synchronised  
 -->
 
 
@@ -38,3 +40,9 @@ Solutions:
 - [LMD Ghost](https://inevitableeth.com/home/ethereum/network/consensus/lmd-ghost)
 - [RLMD GHOST with Luca Zanolini](https://www.youtube.com/watch?v=F2olypDSVnA)
 - [Comparison of different LMD Ghost Implementations by ProtoLambda](https://github.com/protolambda/lmd-ghost)
+
+<!--
+Vitalik's CBC Casper explainer
+Ethan Butchman Podcast
+Ebb and Flow paper
+-->
