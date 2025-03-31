@@ -30,7 +30,9 @@
   - [Lecture 19 - libp2p](/eps/day19.md)
   - **Week 6**
   - [Lecture 20 - Validator](/eps/day20.md)
+  - **Week 7**
   - [Lecture 21 - EngineAPI](/eps/day21.md)
+  - [Lecture 22 - CL data](/eps/day22.md)
 - [Contributing](contributing.md)
 - **Protocol Wiki**
 - The Protocol

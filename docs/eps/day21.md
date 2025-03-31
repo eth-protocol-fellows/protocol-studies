@@ -9,7 +9,7 @@ This lecture dives into Engine API, the connection between consensus and executi
 
 ## Pre-reading
 
-Before starting with the Day 16 content, make yourself familiar with resources in previous weeks, especially day 2 on CL and day 6 on specs (at least the CL part). You should have general understanding of Beacon Chain, its networking features and different mechanism in Ethereum consensus layer. 
+Before starting with the Day 21 content, make yourself familiar with resources in previous weeks, especially day 2 on CL, day 3 on EL and node workshop. You should have general understanding of roles of Beacon Chain and execution layer, how they interact to create an Ethereum node and build blocks.
 
 Additionally, you can get ready by studying the following resources.
 
