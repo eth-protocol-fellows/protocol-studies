@@ -11,6 +11,7 @@ Before starting with the Day 22 content, make yourself familiar with resources i
 
 Additionally, you can get ready by studying the following resources.
 
+- [Lighthouse tree-states ELI5 part 1](https://blog.sigmaprime.io/tree-states-part1.html)
 - [SSZ](https://epf.wiki/#/wiki/CL/SSZ)
 
 ## Outline
