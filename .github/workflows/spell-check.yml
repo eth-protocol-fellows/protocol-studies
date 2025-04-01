@@ -43,7 +43,7 @@ jobs:
             fi
             echo "Checking $file..."
             # Get typos with line numbers using grep
-            output="$(aspell --lang=en_US --mode=markdown --home-dir=. --personal=wordlist.txt --ignore-case=true --camel-case --add-sgml-skip nospellcheck list <"$file")"
+            output="$(aspell --lang=en_US --mode=markdown --home-dir=. --personal=wordlist.txt --ignore-case=true --camel-case --add-sgml-skip name list <"$file")"
             if [ $? -eq 0 ]; then
               if [[ -n "$output" ]]; then
                 while IFS= read -r word; do
@@ -86,8 +86,8 @@ jobs:
                - Open the files at the specified line numbers and fix them
 
             2. **If these are names or one-off nouns:**
-               - Wrap them in \`<nospellcheck>\` tags
-               - Example: \`<nospellcheck>Alex Pereira</nospellcheck>\`
+               - Wrap them in \`<name>\` tags
+               - Example: \`<name>Alex Pereira</name>\`
                - Use this for people's names or unique terms that appear rarely
 
             3. **If these are valid terms:**
