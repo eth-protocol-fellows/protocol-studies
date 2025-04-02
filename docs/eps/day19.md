@@ -2,14 +2,15 @@
 
 The introductory part of the study group is now over and we are now starting the deeper dive with live sessions from core developers. The second week of the main phase of the study group is dedicated to networking. 
 
-The second live session the week is focused on consensus layer networking which is based on libp2p. The lecture is given by [DappLion](https://github.com/dappplion), a seasoned consensus layer contributer, part SigP Lighthouse team, previously lead of Lodestar client, his main focus is currently PeerDAS.
+The second live session the week is focused on consensus layer networking which is based on libp2p. The lecture is given by [DappLion](https://github.com/dapplion), a seasoned consensus layer contributer, part SigP Lighthouse team, previously lead of Lodestar client, his main focus is currently PeerDAS.
 
-> Join the live talk by DappLion on [Wednesday, 19.3. at 3PM UTC](https://www.timeanddate.com/worldclock/converter.html?iso=20250319T150000&p1=1440&p2=37&p3=136&p4=237&p5=923&p6=204&p7=671&p8=16&p9=41&p10=107&p11=28) to watch the lecture and ask questions directly. [Use this link to connect.](https://meet.ethereum.org/eps-office-hours) 
+Watch the lecture on [Youtube](https://www.youtube.com/watch?v=kYJ7Rj0OGv4) and follow the [libp2p spec](https://github.com/libp2p/specs) as shown in the talk 
 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/kYJ7Rj0OGv4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ## Pre-reading
 
-Before starting with the Day 16 content, make yourself familiar with resources in previous weeks, especially day 2 on CL and day 6 on specs (at least the CL part). You should have general understanding of Beacon Chain, its networking features and different mechanism in Ethereum consensus layer. 
+Before starting with the Day 19 content, make yourself familiar with resources in previous weeks, especially day 2 on CL and day 16 on consensus mechanism. You should have general understanding of Beacon Chain, its networking features and different mechanism in Ethereum consensus layer. 
 
 Additionally, you can get ready by studying the following resources.
 
@@ -20,7 +21,9 @@ Additionally, you can get ready by studying the following resources.
 
 - CL networking protocol
 - libp2p
-- PeerDAS...
+- Yamux
+- Noise
+- GossipSub
 
 ## Additional reading and exercises
 

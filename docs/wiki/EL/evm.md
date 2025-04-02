@@ -136,21 +136,25 @@ Identifying opcodes from operands is straightforward. Currently, only `PUSH*` op
 
 Select Opcodes used in this discussion:
 
-| Opcode | Name     | Description                                        |
-| ------ | -------- | -------------------------------------------------- |
-| 60     | PUSH1    | Push 1 byte on the stack                           |
-| 01     | ADD      | Add the top 2 values of the stack                  |
-| 02     | MUL      | Multiply the top 2 values of the stack             |
-| 39     | CODECOPY | Copy code running in current environment to memory |
-| 51     | MLOAD    | Load word from memory                              |
-| 52     | MSTORE   | Store word to memory                               |
-| 53     | MSTORE8  | Store byte to memory                               |
-| 59     | MSIZE    | Get the byte size of the expanded memory           |
-| 54     | SLOAD    | Load word from storage                             |
-| 55     | SSTORE   | Store word to storage                              |
-| 56     | JUMP     | Alter the program counter                          |
-| 5B     | JUMPDEST | Mark destination for jumps                         |
-| f3     | RETURN   | Halt execution returning output data               |
+| Opcode | Name         | Description                                        |
+| ------ | --------     | -------------------------------------------------- |
+| 60     | PUSH1        | Push 1 byte on the stack                           |
+| 01     | ADD          | Add the top 2 values of the stack                  |
+| 02     | MUL          | Multiply the top 2 values of the stack             |
+| 39     | CODECOPY     | Copy code running in current environment to memory |
+| 51     | MLOAD        | Load word from memory                              |
+| 52     | MSTORE       | Store word to memory                               |
+| 53     | MSTORE8      | Store byte to memory                               |
+| 59     | MSIZE        | Get the byte size of the expanded memory           |
+| 54     | SLOAD        | Load word from storage                             |
+| 55     | SSTORE       | Store word to storage                              |
+| 56     | JUMP         | Alter the program counter                          |
+| 5B     | JUMPDEST     | Mark destination for jumps                         |
+| f3     | RETURN       | Halt execution returning output data               |
+| 35     | CALLDATALOAD | Copy 32 bytes from calldata to stack               |
+| 37     | CALLDATACOPY | Copy input data from calldata to memory            |
+| 80–8F  | DUP1–DUP16   | Duplicate Nth stack item to top                    |
+| 90–9F  | SWAP1–SWAP16 | Swap top with N+1th stack item                     |
 
 Refer [Appendix H of Yellow Paper](https://ethereum.github.io/yellowpaper/paper.pdf) for a comprehensive list.
 
@@ -161,13 +165,35 @@ Ethereum clients such as [geth](https://github.com/ethereum/go-ethereum) impleme
 
 We have covered **what** EVM is, let's explore **how** it works.
 
+# EVM Data Locations
+
+The EVM has four main places to store data during execution:
+- **Stack**
+- **Memory**
+- **Storage**
+- **Calldata**
+
+Let's explore each of these data stores more in depth.
+
 ## Stack
 
 Stack is a simple data structure with two operations: **PUSH** and **POP**. Push adds an item to top of the stack, while pop removes the top-most item. Stack operates on Last-In-First-Out (LIFO) principle - the last element added is the first removed. If you try to pop from an empty stack, a **stack underflow error** occurs.
 
+Since the stack is where most opcodes operate, it is responsible for holding the values used to read from and write to **memory** and **storage**, which we'll detail later.
+
+The primary utility of the stack by the EVM is to store intermediate values in computations and to supply arguments to opcodes.
+
 ![EVM stack](../../images/evm/stack.gif)
 
-> The EVM stack has a maximum size of 1024 items.
+> The EVM stack has a maximum size of 1024 items consisting of 32 bytes each and is reset after each contract execution. Only the top 16 items are accessible. If you run out of stack, the contract execution will fail.
+
+The reason behind this 16 item stack size is due to the **DUP** and **SWAP** opcodes.
+
+- **DUPn**: Duplicate nth stack item to top.
+- **SWAPn**: Swap top with n+1th stack item.
+
+The max `n` in the **DUP** and **SWAP** opcodes is 16, As mentioned, the EVM only allows single byte opcodes. In the case of **DUP** and **SWAP**, the byte is split into two 4 bit values called nibbles. The lower nibble specifies the value on the stack to swap or duplicate and is limited to 16 due to only being 4 bits in length, hence a max of **DUP16** and **SWAP16**.
+
 
 During bytecode execution, EVM stack functions as a _scratchpad_: opcodes consume data from the top and push results back (See the `ADD` opcode below). Consider a simple addition program:
 
@@ -177,7 +203,9 @@ Reminder: All values are in hexadecimal, so `0x06 + 0x07 = 0x0d (decimal: 13)`.
 
 Let's take a moment to celebrate our first EVM assembly code 🎉.
 
-## Program counter
+### Program counter
+
+Recall that the bytecode is a flat array of bytes with each opcode being a 1 byte.  The EVM needs a way to track what is the next byte (opcode) to execute in the bytecode array.  This is where the EVM **program counter** comes in. It will keep track of the next opcode's offset, which is the location in the byte array of the next instruction to execute on the stack.
 
 In the example above, the values on the left of the assembly code represent the byte offset (starting at 0) of each opcode within the bytecode:
 
@@ -187,7 +215,9 @@ In the example above, the values on the left of the assembly code represent the 
 | 60 07    | PUSH1 07 | 2                              | 02            |
 | 01       | ADD      | 1                              | 04            |
 
-EVM **program counter** stores the byte offset of the next opcode (highlighted) to be executed.
+Notice how the table above doesn't include offset 01. This is because the operand 06 takes position of offset 01, and the same concept applies for operand 07 taking position of offset 03.
+
+Essentially, the **program counter** ensures the EVM knows the position of each next instruction to execute and when to stop executing as illustrated in the example below.
 
 ![EVM program counter](../../images/evm/program-counter.gif)
 
@@ -202,7 +232,7 @@ The code runs in an infinite loop, repeatedly adding 7. It introduces two new op
 
 > High level languages like [Solidity](https://soliditylang.org/) leverage jumps for constructs like if conditions, for loops, and internal functions calls.
 
-## Gas
+### Gas
 
 Our innocent little program may seem harmless. However, infinite loops in EVM pose a significant threat: they can **devour resources**, potentially causing network [**DoS attacks**.](https://en.wikipedia.org/wiki/Denial-of-service_attack)
 
@@ -218,11 +248,11 @@ Refer [Appendix G of Yellow Paper](https://ethereum.github.io/yellowpaper/paper.
 
 ## Memory
 
-EVM memory is a byte array of $2^{256}$ (or [practically infinite](https://www.talkcrypto.org/blog/2019/04/08/all-you-need-to-know-about-2256/)) bytes . All locations in memory are well-defined initially as zero.
+EVM memory is a byte array of $2^{256}$ (or [practically infinite](https://www.talkcrypto.org/blog/2019/04/08/all-you-need-to-know-about-2256/)) bytes. All locations in memory are well-defined initially as zero.
 
 ![EVM Memory](../../images/evm/evm-memory.gif)
 
-Unlike stack, which provides data to individual instructions, memory stores ephemeral data that is relevant to the entire program.
+Unlike stack, which provides data to individual instructions, memory stores ephemeral data that is relevant to the entire program.  Since the stack has a hard limit of one word slots, **memory** supplements the stack by allowing indexed access to arbitrarily sized data. Stack values can be stored to or loaded from **memory** on demand.
 
 ### Writing to memory
 
@@ -258,9 +288,17 @@ EVM doesn't have a direct equivalent to `MSTORE8` for reading. You must read the
 
 > EVM memory is shown as blocks of 32 bytes to illustrate how memory expansion works. In reality, it is a seamless sequence of bytes, without any inherent divisions or blocks.
 
+## Calldata
+The **calldata** is read-only input data passed to the EVM via message call instructions or from a transaction and is stored as a sequence of bytes that are accessible via specific opcodes.
+
+###  Reading from calldata
+The calldata for the current environment can be accessed using either:
+-  `CALLDATALOAD` opcode which reads 32 bytes from a desired offset onto the stack, [learn more](https://veridelisi.medium.com/learn-evm-opcodes-v-a59dc7cbf9c9).
+- or, using `CALLDATACOPY` to copy a portion of calldata to memory.
+
 ## Storage
 
-Storage is designed as a **word-addressed word array**. Unlike memory, storage is associated with an Ethereum account and is **persisted** across transactions as part of the world state.
+Storage is designed as a **word-addressed word array**. Unlike memory, storage is associated with an Ethereum account and is **persisted** across transactions as part of the world state.  It can be thought of as a key-value **database** associated with the smart contract, which is why it contains the contract's "state" variables. Storage size is fixed at 2^256 slots, 32 bytes each.
 
 ![EVM Storage](../../images/evm/evm-storage.jpg)
 
@@ -268,13 +306,13 @@ Storage can only be accessed via the code of its associated account. External ac
 
 ## Writing to storage
 
-`SSTORE` takes two values from the stack: a storage **slot** and a 32-byte **value**. It then writes the value to storage of the account.
+`SSTORE` takes two values from the stack: a storage **slot** and a 32-byte **value**. It then writes the value to storage of the account.  Notice: Slots can be thought of as the basic unit of storage, so when writing to storage, we deal with slots as opposed to individual bytes.  Writing to storage is expensive. High-level languages like Solidity optimize storage by packing multiple variables into a single 32-byte slot when their combined size is less than or equal to 32 bytes.
 
 ![EVM Storage write](../../images/evm/sstore.gif)
 
 We've been running a contract account's bytecode all this time. Only now we see the account and the world state, and it matches the code inside the EVM.
 
-Again, it’s important to note that storage is not part of the EVM itself, rather the currently executing contract account.
+Again, it’s important to note that storage is not part of the EVM itself, rather the currently executing contract account.  More specifically, the contract account contains a **storage root*** that points to a separate Merkle Patricia Trie for that contract's storage.
 
 The example above shows only a small section of the account's storage. Like memory, all the values in storage are well-defined as zero.
 
@@ -290,6 +328,8 @@ Notice that the storage value persists between examples, demonstrating its persi
 > Check out the wiki on [transaction](/wiki/EL/transaction.md) to see EVM in action.
 
 ## Wrapping up
+
+We've explored how opcodes are the core instructions executed by the EVM, operating on the stack to perform computations. Computed results can be stored ephemerally in memory or persisted in contract storage.
 
 Developers rarely write EVM assembly code directly unless performance optimization is crucial. Instead, most developers work with higher-level languages like [Solidity](https://soliditylang.org/), which is then compiled into bytecode.
 
@@ -338,6 +378,10 @@ The resources below has been categorized into different sections based on differ
 - 📝 Zaryab Afser, ["Journey of smart contracts from Solidity to Bytecode"](https://www.decipherclub.com/ethereum-virtual-machine-article-series/)
 - 🎥 Ethereum Engineering Group, [EVM: From Solidity to byte code, memory and storage](https://www.youtube.com/watch?v=RxL_1AfV7N4&t=2s)
 - 📝 Trust Chain, [7 part series about how Solidity uses EVM under the hood.](https://trustchain.medium.com/reversing-and-debugging-evm-smart-contracts-392fdadef32d)
+- [Learn EVM Opcodes](https://veridelisi.medium.com/learn-evm-opcodes-v-a59dc7cbf9c9) • [archived](https://web.archive.org/web/20240806231824/https://veridelisi.medium.com/learn-evm-opcodes-v-a59dc7cbf9c9)
+- [More on EVM Storage](https://medium.com/coinmonks/solidity-storage-how-does-it-work-8354afde3eb)  • [archived](https://web.archive.org/web/20230808231549/https://medium.com/coinmonks/solidity-storage-how-does-it-work-8354afde3eb)
+- [Storage, Memory, and Stack Overview](https://ethereum.stackexchange.com/questions/23720/usage-of-memory-storage-and-stack-areas-in-evm) • [archived](https://web.archive.org/web/20240529150647/https://ethereum.stackexchange.com/questions/23720/usage-of-memory-storage-and-stack-areas-in-evm)
+- [Calldata](https://learnevm.com/chapters/fn/calldata) • [archived](https://web.archive.org/web/20250306133755/https://learnevm.com/chapters/fn/calldata)
 
 ### Tools & EVM Puzzles
 

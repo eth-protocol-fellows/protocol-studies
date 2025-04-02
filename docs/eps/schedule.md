@@ -67,3 +67,10 @@ Week 5 continues deeper dive to each part of the protocol with lectures on netwo
 | ------------- | -------------------------------- | -------------------------------------------------- |
 | Day 16, Mar 17 | [devp2p](/eps/day18.md)         | [Felix Lange](https://github.com/fjl)              |
 | Day 17, Mar 19 | [libp2p](/eps/day19.md)         | [DappLion](https://github.com/dappplion)           |
+
+### Week 6
+
+| Day, Date     | Topic                            | Speaker                                            |
+| ------------- | -------------------------------- | -------------------------------------------------- |
+| Day 16, Mar 24 | [Validator Client](/eps/day20.md)   | [James](https://github.com/james-prysm)        |
+| Day 17, Mar 31 | [Engine API](/eps/day21.md)         | [Mikhail](https://github.com/mkalinin)         |
