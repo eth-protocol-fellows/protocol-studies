@@ -11,7 +11,7 @@ For a comprehensive list of Ethereum incidents and their detailed analysis, you 
 
 ## Recent Incidents
 
-- [Post-Mortem, Holesky pectra upgrade issue](https://github.com/ethereum/pm/blob/master/Pectra/holesky-postmortem.md)
+- [Post-Mortem, Holesky Finality Issue (20/03/2025)](https://github.com/ethereum/pm/blob/master/Pectra/holesky-postmortem.md)
   In March 2025, after Pectra upgrade on Holesky testnet, blocks were not getting finalized due to many EL clients having incorrect deposit contract address configurations. This caused some EL clients to reject the invalid blocks while others accepted them, resulting in network split.
 
 - [Post-Mortem, Blob Propagation Issues (27/03/2024)](https://gist.github.com/benhenryhunter/687299bcfe064674537dc9348d771e83)
