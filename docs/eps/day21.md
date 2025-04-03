@@ -1,11 +1,11 @@
 # Study Group Lecture 21 | Engine API
 
-The introductory part of the study group is now over and we are now starting the deeper dive with live sessions from core developers. 
-
 This lecture dives into Engine API, the connection between consensus and execution layer. The lecture is given by [Mikhail](https://github.com/mkalinin). 
 
-> Join the live talk by Mikhail on [Monday, 31.3. at 3PM UTC](https://www.timeanddate.com/worldclock/converter.html?iso=20250331T150000&p1=1440&p2=37&p3=136&p4=237&p5=923&p6=204&p7=671&p8=16&p9=41&p10=107&p11=28) to watch the lecture and ask questions directly. [Use this link to connect.](https://meet.ethereum.org/eps-office-hours) 
+Watch the lecture on [Youtube](https://www.youtube.com/watch?v=rgrNMbYrOmM). [Slides are available](https://docs.google.com/presentation/d/1L2OW2_jeu7xxogFb1BjbXJZgxBzbqImU7lhLwz50o8o/edit?usp=sharing).
 
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/fR7LBXAMH7g" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ## Pre-reading
 
