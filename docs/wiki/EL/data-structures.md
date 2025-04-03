@@ -126,7 +126,7 @@ The structure `T` consists of the following:
 - **from** – The address of the sender, that will be signing the transaction. This must be an externally-owned account as contract accounts cannot send transactions.
 - **to**: Address of an account to receive funds, or zero for contract creation.
 - **value**: amount of ETH to transfer from sender to recipient.
-- **input data** – optional field to include arbitrary data.
+- **input data**: optional field to include arbitrary data.
 - **data**: Input data for a message call together with the message signature.
 - **(v, r, s)**: Values encoding signature of a sender. Serves as identifier of the sender.
 
@@ -146,10 +146,45 @@ If you know the index of a transaction in a block, you can easily find it's corr
 The primary role of the receipts trie is to provide a canonical, authenticated record of transaction results, primarily used for indexing historical data without having to re-execute transactions. During snap sync, full nodes download block bodies — which contain both transactions and their corresponding receipts — and locally reconstruct the receipt trie for each block. The reconstructed trie is then validated against the receiptsRoot in the block header. Snap sync avoids the need for full nodes to re-execute historical transactions solely to regenerate receipts, significantly accelerating the sync process.
 
 While receipts enable light clients to verify transaction outcomes via Merkle proofs against the receiptsRoot, this is a secondary use. Since light clients only store block headers, they rely on full nodes to query efor these proofs and `receiptsRoot`.  This structure allows light clients to independently verify the legitimacy of the data without storing the full transaction history.
+ 
+## World State Trie
 
-### TODO: Explain World State Trie
+The **World State Trie** is the core data structure that represents Ethereum's current state. It maps the keccak-256 hashed 20 byte account addresses to their RLP encoded states utilizing a **Merkle Patricia Trie** where the key-value pairs are stored as byte arrays to byte arrays in the leaves of the trie.
+
+Accounts can be thought of as either smart contract accounts or non-smart contract accounts, which are also known as **EOA's** (Externally Owned Accounts). **EOA's** are used to initiate transactions or trigger the execution of smart contract logic using an associated private key whereas contract accounts execute the contracts when called.
+
+The states of each account consist of the following fields:
+- **Nonce**: A scalar value identifying the number of transactions successfully sent from this account.
+- **Balance**: The amount of ETH in Wei owned by this account.
+- **Code Hash**: The hash of the EVM code if it's a contract account. For EOAs, it's the keccak-256 hash of an empty string `(keccak256(''))`, which uniquely identifies the account as an EOA.
+- **Storage Root Hash**: The 32 byte hash that points to the root of the account’s ***Storage Trie***, which would be an empty trie for an EOA.
+
+The **World State Trie** is not stored in the chain, but the 32-byte keccak-256 **state root** of the trie is stored in every block header after all transactions in a block have been processed.  The **state root** is used as a cryptographic commitment for the entire system state since it's cryptographically dependent on all the data in the trie.  For example, a node can prove an account's existence given the **state root** and a **Merkle proof** containing the account and it's sibling nodes needed to recreate the **state root**.  Furthermore, the **state root** in each block anchors Ethereum’s consensus: any node can independently compute or verify this root by applying the block’s transactions to the previous state trie.
+
+Below is a simplified diagram of the ***World State Trie***.
 
 ![Merkle Tree](../../images/eth-tries.png)
+
+Let's traverse the trie to find the account with a **45 ETH** balance. The key for this account is shown as `a711355`, meaning these seven hex digits direct us from the root node down to the leaf node.
+
+> This short key `a711355` is just for demonstration. Actual addresses in Ethereum get hashed (32 bytes) and thus typically yield up to 64 nibbles in the trie. But the traversal steps are the same—each nibble selects the next branch/extension node until we arrive at the leaf node storing the final account data.
+
+1. **Key to Nibbles**  
+   - The key string `a711355` represents seven hex digits: `a`, `7`, `1`, `1`, `3`, `5`, `5`.
+   - Each digit is a nibble (4 bits), so the entire key is a sequence of seven nibbles.
+
+2. **Path Through the Trie**  
+   - **Extension node** at the root might store a prefix like `a7`, consuming the first two nibbles.
+   - **Branch node** follows, allowing navigation by each subsequent nibble (`1`, `1`, `3`, `5`, `5`).
+
+3. **Leaf Node**  
+   - Consuming all nibbles brings us to the **leaf node**. In our simplified example, its stored value is **“45 ETH”**.
+   - In Ethereum’s real MPT, this leaf node actually holds the RLP-encoded account object `[nonce, balance, storageRoot, codeHash]`.
+
+### Persistant Storage
+The **World State Trie** is a living structure that evolves with each block, unlike the transaction and receipt tries which are rebuilt from scratch for every block. A full node will keep track of the current state of the **World State Trie** and enough trie nodes required to rewind during a re-org.  Archival nodes will keep track of all previous states since genesis.
+
+In summary, Ethereum's world state is a secure and verifiable representation of the current state of all accounts at a given block height."
 
 ### TODO: Explain Storage Trie
 
@@ -196,3 +231,5 @@ The transition to new verkle tree database poses a major challenge. To securely 
 - [Snap Sync](https://geth.ethereum.org/docs/fundamentals/sync-modes) • [archived](https://web.archive.org/web/20250228111146/https://geth.ethereum.org/docs/fundamentals/sync-modes)
 
 -[More on Merkle Patricia Trie](https://ethereum.org/developers/docs/data-structures-and-encoding/patricia-merkle-trie)
+- [Ethereum Yellow Paper](https://ethereum.github.io/yellowpaper/paper.pdf) • [archived](https://web.archive.org/web/20250228142704/https://ethereum.github.io/yellowpaper/paper.pdf)
+- [State Trie Keys](https://medium.com/codechain/secure-tree-why-state-tries-key-is-256-bits-1276beb68485#:~:text=This%20is%20because%20when%20Ethereum,the%20secure%20tree%20in%20Ethereum) • [archived](https://web.archive.org/web/20230524084537/https://medium.com/codechain/secure-tree-why-state-tries-key-is-256-bits-1276beb68485)
