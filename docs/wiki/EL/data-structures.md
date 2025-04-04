@@ -24,11 +24,11 @@ The main parent node is called Root, hence the hash inside is Root Hash. There i
 
 The image below depicts a simplified version of the working of a Merkle Tree:
 
-- The leaf nodes contain the actual data (for simplicity, we have taken numbers)
+- The leaf nodes contain the actual data(for simplicity, we have taken numbers).
 - Every non-leaf node is a hash of its children.
-- The first level of non-leaf nodes contains the Hash of its child leaf nodes
+- The first level of non-leaf nodes contains the Hash of its child leaf nodes.
   `Hash(1,2)`
-- The same process continues till we reach the top of the tree, which the Hash of all the previous Hashes
+- The same process continues till we reach the top of the tree, which the Hash of all the previous Hashes.
   `Hash[Hash[Hash(1,2),Hash(3,4)],Hash[Hash(5,6),Hash(7,8)]]`
 
 More on [Merkle Trees in Ethereum](https://blog.ethereum.org/2015/11/15/merkling-in-ethereum)
@@ -122,15 +122,30 @@ The structure `T` consists of the following:
 - **Nonce**: For every new transaction submitted by the same sender, the nonce is increased. This value allows for tracking order of transactions and prevents replay attacks.
 - **maxPriorityFeePerGas** - The maximum price of the consumed gas to be included as a tip to the validator.
 - **gasLimit**: The maximum amount of gas units that can be consumed by the transaction.
-- **maxFeePerGas** - the maximum fee per unit of gas willing to be paid for the transaction (including baseFeePerGas and maxPriorityFeePerGas)
+- **maxFeePerGas** - the maximum fee per unit of gas willing to be paid for the transaction (including baseFeePerGas and maxPriorityFeePerGas).
 - **from** – The address of the sender, that will be signing the transaction. This must be an externally-owned account as contract accounts cannot send transactions.
 - **to**: Address of an account to receive funds, or zero for contract creation.
 - **value**: amount of ETH to transfer from sender to recipient.
-- **input data** – optional field to include arbitrary data
+- **input data** – optional field to include arbitrary data.
 - **data**: Input data for a message call together with the message signature.
-- **(v, r, s)**: Values encoding signature of a sender. Serves as identifier of the sender
+- **(v, r, s)**: Values encoding signature of a sender. Serves as identifier of the sender.
 
-### TODO: Explain Receipt Trie
+##  Receipt Trie
+
+The Receipt Trie is similar to the Transaction Trie in that it is a block level data structure, and each leaf of the trie represents some RLP-encoded data related to the transaction. However, the Receipt Trie is used to verify that the instructions in each transaction were actually executed.  This verification data is held in the leaf node and contains a few fields, which are described in the [transaction anatomy](./transaction.md#receipts) section of the wiki.
+
+In this section, we will focus on the `Receipt Trie` itself.
+
+The `ReceiptRoot` of the `Receipt Trie` is the keccak 256-bit hash of the root node.
+
+Here is a simple diagram of a Receipt Trie, which follows the Merkle Patricia Trie flow for value lookups.
+![Receipt Tree](../../images/data-structures/receipt-trie.png)
+
+If you know the index of a transaction in a block, you can easily find it's corresponding receipt in the `Receipt Trie`.  This is because the transaction's position (index) in a block is used as the key in the `Receipt Trie`'s leaf node containing the receipt for that transaction.  Using the transaction's index as the receipt's key provides some nice benefits such as avoiding needing to calculate or look up transaction hashes to locate receipts in the trie.
+
+The primary role of the receipts trie is to provide a canonical, authenticated record of transaction results, primarily used for indexing historical data without having to re-execute transactions. During snap sync, full nodes download block bodies — which contain both transactions and their corresponding receipts — and locally reconstruct the receipt trie for each block. The reconstructed trie is then validated against the receiptsRoot in the block header. Snap sync avoids the need for full nodes to re-execute historical transactions solely to regenerate receipts, significantly accelerating the sync process.
+
+While receipts enable light clients to verify transaction outcomes via Merkle proofs against the receiptsRoot, this is a secondary use. Since light clients only store block headers, they rely on full nodes to query efor these proofs and `receiptsRoot`.  This structure allows light clients to independently verify the legitimacy of the data without storing the full transaction history.
 
 ### TODO: Explain World State Trie
 
@@ -175,5 +190,9 @@ The transition to new verkle tree database poses a major challenge. To securely 
 - [Radix Trie Diagram](https://samczsun.com/content/images/2021/05/1920px-Patricia_trie.svg-1-.png)  • [archived](https://web.archive.org/web/20231209235318/https://samczsun.com/content/images/2021/05/1920px-Patricia_trie.svg-1-.png)
 - [Merkle Patricia Trie Diagram](https://www.researchgate.net/publication/353863430/figure/fig2/AS:1056193841741826@1628827643578/Ethereum-Encoded-Merkle-Patricia-Trie.png)
 - [Merkle Patricia Trie Diagram Explanation](https://www.researchgate.net/publication/353863430_Ethereum_Data_Structures)
+- [Receipts Trie Including Diagram](https://medium.com/coinmonks/ethereum-data-transaction-receipt-trie-and-logs-simplified-30e3ae8dc3cf) • [archived](https://web.archive.org/web/20250000000000/https://medium.com/coinmonks/ethereum-data-transaction-receipt-trie-and-logs-simplified-30e3ae8dc3cf)
+- [Ethereum Data Structures](https://arxiv.org/pdf/2108.05513/1000) • [archived](https://web.archive.org/web/20240430050355/https://arxiv.org/pdf/2108.05513/1000)
+- [DevP2P Wire Protocol](https://github.com/ethereum/devp2p/blob/master/caps/eth.md)  • [archived](https://web.archive.org/web/20250328095848/https://github.com/ethereum/devp2p/blob/master/caps/eth.md)
+- [Snap Sync](https://geth.ethereum.org/docs/fundamentals/sync-modes) • [archived](https://web.archive.org/web/20250228111146/https://geth.ethereum.org/docs/fundamentals/sync-modes)
 
-[More on Merkle Patricia Trie](https://ethereum.org/developers/docs/data-structures-and-encoding/patricia-merkle-trie)
+-[More on Merkle Patricia Trie](https://ethereum.org/developers/docs/data-structures-and-encoding/patricia-merkle-trie)
