@@ -151,9 +151,9 @@ While receipts enable light clients to verify transaction outcomes via Merkle pr
 
 The **World State Trie** is the core data structure that represents Ethereum's current state. It maps the keccak-256 hashed 20 byte account addresses to their RLP encoded states utilizing a **Merkle Patricia Trie** where the key-value pairs are stored as byte arrays to byte arrays in the leaves of the trie.
 
-Accounts can be thought of as either smart contract accounts or non-smart contract accounts, which are also known as **EOA's** (Externally Owned Accounts). **EOA's** are used to initiate transactions or trigger the execution of smart contract logic using an associated private key whereas contract accounts execute the contracts when called.
+Accounts can be categorized as either smart contract accounts with code or Externally Owned Accounts (EOAs) associated with private keys. EOAs are used to initiate transactions with other EOAs or smart contract accounts, triggering the execution of the associated contract code.
 
-The states of each account consist of the following fields:
+Each account consists of the following fields:
 - **Nonce**: A scalar value identifying the number of transactions successfully sent from this account.
 - **Balance**: The amount of ETH in Wei owned by this account.
 - **Code Hash**: The hash of the EVM code if it's a contract account. For EOAs, it's the keccak-256 hash of an empty string `(keccak256(''))`, which uniquely identifies the account as an EOA.
@@ -182,9 +182,9 @@ Let's traverse the trie to find the account with a **45 ETH** balance. The key f
    - In Ethereum’s real MPT, this leaf node actually holds the RLP-encoded account object `[nonce, balance, storageRoot, codeHash]`.
 
 ### Persistant Storage
-The **World State Trie** is a living structure that evolves with each block, unlike the transaction and receipt tries which are rebuilt from scratch for every block. A full node will keep track of the current state of the **World State Trie** and enough trie nodes required to rewind during a re-org.  Archival nodes will keep track of all previous states since genesis.
+The **World State Trie** is a living structure that evolves with each block, unlike the transaction and receipt tries which are rebuilt from scratch for every block.  Ethereum operates as a state machine, where the current state is updated by executing transactions in a block. Each node must track this current state to verify transactions and update it accordingly. Therefore, intermediate states exist during block processing, but nodes retain only the final post-block state.  A full node will keep track of the current state of the **World State Trie** and enough trie nodes required to rewind during a re-org.  Archival nodes will keep track of all previous states since genesis.
 
-In summary, Ethereum's world state is a secure and verifiable representation of the current state of all accounts at a given block height."
+In summary, Ethereum's world state is a secure and verifiable representation of the current state of all accounts at a given block height.
 
 ### TODO: Explain Storage Trie
 
