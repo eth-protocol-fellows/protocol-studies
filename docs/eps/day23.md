@@ -7,13 +7,17 @@ This lecture dives into data structures of the Execution layer, the Merkle Patri
 
 ## Pre-reading
 
-Before starting with the Day 23 content, make yourself familiar with resources in previous weeks, especially day 3 on EL and day 7 on EL client structure 
+Before starting with the Day 23 content, make yourself familiar with resources in previous weeks, especially day 3 on EL and day 7 on EL client architecture. 
 
 Additionally, you can get ready by studying the following resources.
 
+- [Merkling in Ethereum](https://blog.ethereum.org/2015/11/15/merkling-in-ethereum)
+- [MPT on ethereum.org ](https://ethereum.org/en/developers/docs/data-structures-and-encoding/patricia-merkle-trie/)
 - 
 
 ## Outline
 
 ## Additional reading and exercises
-
+- [Implementing MPT](https://medium.com/coinmonks/implementing-merkle-tree-and-patricia-trie-b8badd6d9591)
+- [Ethereum Data Structures paper](https://www.researchgate.net/publication/353863430_Ethereum_Data_Structures)
+- [Bonsai Trees guide](https://consensys.io/blog/bonsai-tries-guide)
