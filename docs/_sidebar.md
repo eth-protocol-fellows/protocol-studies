@@ -33,6 +33,10 @@
   - **Week 7**
   - [Lecture 21 - EngineAPI](/eps/day21.md)
   - [Lecture 22 - CL data](/eps/day22.md)
+  **Week 8**
+  - [Lecture 23 - EL Data](/eps/day23.md)
+  - [Lecture 24 - Next upgrades](/eps/day24.md)
+
 - [Contributing](contributing.md)
 - **Protocol Wiki**
 - The Protocol

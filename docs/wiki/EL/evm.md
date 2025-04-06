@@ -192,8 +192,7 @@ The reason behind this 16 item stack size is due to the **DUP** and **SWAP** opc
 - **DUPn**: Duplicate nth stack item to top.
 - **SWAPn**: Swap top with n+1th stack item.
 
-The max `n` in the **DUP** and **SWAP** opcodes is 16, As mentioned, the EVM only allows single byte opcodes. In the case of **DUP** and **SWAP**, the byte is split into two 4 bit values called nibbles. The lower nibble specifies the value on the stack to swap or duplicate and is limited to 16 due to only being 4 bits in length, hence a max of **DUP16** and **SWAP16**.
-
+The maximum n for **DUP** and **SWAP** is `16`, corresponding to opcodes 0x80–0x8f and 0x90–0x9f respectively. These opcodes are explicitly defined in the EVM and form a fixed set — making the 16-item limit an EVM-level constraint.
 
 During bytecode execution, EVM stack functions as a _scratchpad_: opcodes consume data from the top and push results back (See the `ADD` opcode below). Consider a simple addition program:
 

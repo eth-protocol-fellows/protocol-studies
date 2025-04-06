@@ -28,7 +28,7 @@ Additionally, you can get ready by studying the following resources:
     - Examples of EIP-7251 (maxEB)
 
 ## Additional reading and exercises 
-
+- [Teku github](https://github.com/Consensys/teku)
 - [Teku code conventions for contributors](https://wiki.hyperledger.org/display/BESU/Coding+Conventions) 
 - [Teku and the Merge, PEEPanEIP#83](https://www.youtube.com/watch?v=YTWaZ-NBpbM)
 - [EIP 7251 - Max EB](https://github.com/ethereum/consensus-specs/tree/dev/specs/_features/eip7251)
