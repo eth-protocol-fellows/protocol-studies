@@ -12,6 +12,7 @@ Additionally, you can get ready by studying the following resources.
 
 - [Merkling in Ethereum](https://blog.ethereum.org/2015/11/15/merkling-in-ethereum)
 - [MPT on ethereum.org ](https://ethereum.org/en/developers/docs/data-structures-and-encoding/patricia-merkle-trie/)
+- https://en.wikipedia.org/wiki/Trie#Patricia_trees
 
 ## Outline
 
@@ -43,6 +44,9 @@ Additionally, you can get ready by studying the following resources.
    - vector commitment like Verkle/starkle trees
 
 ## Additional reading and exercises
+- [Bonsai Trees guide](https://consensys.io/blog/bonsai-tries-guide)
+- [Nethermind half-path](https://github.com/NethermindEth/nethermind/pull/6331)
+- [Nethermind paprika](https://github.com/NethermindEth/Paprika/blob/main/docs/design.md)
+- [Erigon schema]( https://github.com/erigontech/erigon/blob/main/erigon-lib/kv/tables.go)
 - [Implementing MPT](https://medium.com/coinmonks/implementing-merkle-tree-and-patricia-trie-b8badd6d9591)
 - [Ethereum Data Structures paper](https://www.researchgate.net/publication/353863430_Ethereum_Data_Structures)
-- [Bonsai Trees guide](https://consensys.io/blog/bonsai-tries-guide)
