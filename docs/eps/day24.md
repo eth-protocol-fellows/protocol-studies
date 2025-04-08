@@ -11,6 +11,15 @@ After the lecture, we will hold wrap-up office hours to answer your questions, s
 Before starting with the Day 23 content, make yourself familiar with resources in previous weeks, especially day 5 on Roadmap. 
 
 - https://ethereum.org/en/roadmap/pectra/
+- https://epf.wiki/#/wiki/pectra-faq
 
 ## Outline
+
+- EIPs in Pectra
+- EIPs considered for Fusaka
+
 ## Additional reading and exercises
+
+- https://github.com/ethereum/pm/tree/master/Pectra
+- https://github.com/ethereum/pm/tree/master/Fusaka
+- [PeerDAS in Pectra and beyond](https://www.youtube.com/watch?v=WOdpO1tH_Us)

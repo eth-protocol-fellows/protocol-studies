@@ -2,8 +2,9 @@
 
 This lecture dives into data structures of the Execution layer, the Merkle Patricia Tree and how different clients implement it. The lecture is given by [Gary](https://github.com/garyschulte) and [Karim](https://github.com/matkt) from Besu team.
 
-> Join the live talk on [Monday, 7.4. at 4PM UTC](https://www.timeanddate.com/worldclock/converter.html?iso=20250407T160000&p1=1440&p2=37&p3=136&p4=237&p5=923&p6=204&p7=671&p8=16&p9=41&p10=107&p11=28) to watch the lecture and ask questions directly. [Use this link to connect](https://meet.ethereum.org/eps-office-hours) 
+Watch the lecture on [Youtube](https://youtu.be/EY_pVZTXS1w). [Slides are available here](https://docs.google.com/presentation/d/1YJbrZpgxjTHy7QlgXFRG5OjSK-G5uPrExBPu3Hiefvk/edit?usp=sharing).
 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/EY_pVZTXS1w" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 ## Pre-reading
 
 Before starting with the Day 23 content, make yourself familiar with resources in previous weeks, especially day 3 on EL and day 7 on EL client architecture. 
@@ -31,17 +32,6 @@ Additionally, you can get ready by studying the following resources.
    - half-path, nethermind
    - erigon/reth flat db model
    - bonsai archive
-4. Challenges and Solutions in State Management
-   - Continuous evolution and historical accuracy across different hardforks
-   - self destruct as a case study
-   - snap sync as a method of skipping history
-   - state growth
-   - size and rate of growth across time
-   - state expiry proposal
-   - statelessness
-   - proposing vs validating: state vs state witness
-   - proof size of MPT
-   - vector commitment like Verkle/starkle trees
 
 ## Additional reading and exercises
 - [Bonsai Trees guide](https://consensys.io/blog/bonsai-tries-guide)
