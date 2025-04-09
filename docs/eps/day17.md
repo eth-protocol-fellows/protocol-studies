@@ -1,8 +1,8 @@
 # Study Group Lecture 17 | EVM
 
-The introductory part of the study group is now over and we are now starting the deeper dive with live sessions from core developers. 
+The introductory part of the study group is now over and we are now starting the deeper dive with live sessions from core developers.
 
-The second session of this week is diving into Ethereum Virtual Machine (EVM) with a lecture by [Paweł Bylica](https://github.com/chfast) from Ipsilon team. 
+The second session of this week is diving into Ethereum Virtual Machine (EVM) with a lecture by [<name>Paweł</name> Bylica](https://github.com/chfast) from Ipsilon team.
 
 Watch the lecture recording on [Youtube](https://www.youtube.com/watch?v=gYnx_YQS8cM). [Slides](https://github.com/eth-protocol-fellows/protocol-studies/blob/main/docs/eps/presentations/day17_evm.pdf).
 

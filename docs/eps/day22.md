@@ -1,6 +1,6 @@
 # Study Group Lecture 22 | CL Data Structures
 
-This lecture dives into data structures of the Conesnsus layer, how Beacon state, blobs and other data is stored. The lecture is given by [Michael](https://github.com/michaelsproul/) from Lighthouse team.
+This lecture dives into data structures of the consensus layer, how Beacon state, blobs and other data is stored. The lecture is given by [Michael](https://github.com/michaelsproul/) from Lighthouse team.
 
 Watch the lecture on [Youtube](https://youtu.be/1CWqDDZauoU). [Slides are available](https://docs.google.com/presentation/d/1pp5AQ4DXmIXZ20JrI3eI9S3RyKckfhgPYqglmFXqobo/edit?usp=sharing).
 
@@ -8,7 +8,7 @@ Watch the lecture on [Youtube](https://youtu.be/1CWqDDZauoU). [Slides are availa
 
 ## Pre-reading
 
-Before starting with the Day 22 content, make yourself familiar with resources in previous weeks, especially day 2 on CL and day 16 on Gasper. You should have general understanding of Beacon Chain, its features and different mechanism in Ethereum consensus layer. 
+Before starting with the Day 22 content, make yourself familiar with resources in previous weeks, especially day 2 on CL and day 16 on Gasper. You should have general understanding of Beacon Chain, its features and different mechanism in Ethereum consensus layer.
 
 Additionally, you can get ready by studying the following resources.
 
@@ -21,4 +21,4 @@ Additionally, you can get ready by studying the following resources.
 
 ## Additional reading and exercises
 
-- [Lighthouse Consensus Client architecture](https://www.youtube.com/watch?v=pLHhTh_vGZ0) 
+- [Lighthouse Consensus Client architecture](https://www.youtube.com/watch?v=pLHhTh_vGZ0)
