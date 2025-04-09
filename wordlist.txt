@@ -567,7 +567,6 @@ params
 Pari
 Parithosh
 Pawel
-Paweł 
 Pectra
 PeerDAS
 Peeters
@@ -945,9 +944,11 @@ BPO
 precompile
 opcode
 StackTooDeep
-GAS2ETH
 PBS
-proposer-builder
-eth/69
 FOCIL
 SSLE
+Hoodi
+Lange
+Wireshark
+SigP
+opcode's

@@ -136,25 +136,25 @@ Identifying opcodes from operands is straightforward. Currently, only `PUSH*` op
 
 Select Opcodes used in this discussion:
 
-| Opcode | Name         | Description                                        |
-| ------ | --------     | -------------------------------------------------- |
-| 60     | PUSH1        | Push 1 byte on the stack                           |
-| 01     | ADD          | Add the top 2 values of the stack                  |
-| 02     | MUL          | Multiply the top 2 values of the stack             |
-| 39     | CODECOPY     | Copy code running in current environment to memory |
-| 51     | MLOAD        | Load word from memory                              |
-| 52     | MSTORE       | Store word to memory                               |
-| 53     | MSTORE8      | Store byte to memory                               |
-| 59     | MSIZE        | Get the byte size of the expanded memory           |
-| 54     | SLOAD        | Load word from storage                             |
-| 55     | SSTORE       | Store word to storage                              |
-| 56     | JUMP         | Alter the program counter                          |
-| 5B     | JUMPDEST     | Mark destination for jumps                         |
-| f3     | RETURN       | Halt execution returning output data               |
-| 35     | CALLDATALOAD | Copy 32 bytes from calldata to stack               |
-| 37     | CALLDATACOPY | Copy input data from calldata to memory            |
-| 80–8F  | DUP1–DUP16   | Duplicate Nth stack item to top                    |
-| 90–9F  | SWAP1–SWAP16 | Swap top with N+1th stack item                     |
+| Opcode | Name           | Description                                        |
+| ------ | -------------- | -------------------------------------------------- |
+| 60     | `PUSH1`        | Push 1 byte on the stack                           |
+| 01     | `ADD`          | Add the top 2 values of the stack                  |
+| 02     | `MUL`          | Multiply the top 2 values of the stack             |
+| 39     | `CODECOPY`     | Copy code running in current environment to memory |
+| 51     | `MLOAD`        | Load word from memory                              |
+| 52     | `MSTORE`       | Store word to memory                               |
+| 53     | `MSTORE8`      | Store byte to memory                               |
+| 59     | `MSIZE`        | Get the byte size of the expanded memory           |
+| 54     | `SLOAD`        | Load word from storage                             |
+| 55     | `SSTORE`       | Store word to storage                              |
+| 56     | `JUMP`         | Alter the program counter                          |
+| 5B     | `JUMPDEST`     | Mark destination for jumps                         |
+| f3     | `RETURN`       | Halt execution returning output data               |
+| 35     | `CALLDATALOAD` | Copy 32 bytes from calldata to stack               |
+| 37     | `CALLDATACOPY` | Copy input data from calldata to memory            |
+| 80–8F  | `DUP1–DUP16`   | Duplicate Nth stack item to top                    |
+| 90–9F  | `SWAP1–SWAP16` | Swap top with N+1th stack item                     |
 
 Refer [Appendix H of Yellow Paper](https://ethereum.github.io/yellowpaper/paper.pdf) for a comprehensive list.
 
@@ -168,6 +168,7 @@ We have covered **what** EVM is, let's explore **how** it works.
 # EVM Data Locations
 
 The EVM has four main places to store data during execution:
+
 - **Stack**
 - **Memory**
 - **Storage**
@@ -189,8 +190,8 @@ The primary utility of the stack by the EVM is to store intermediate values in c
 
 The reason behind this 16 item stack size is due to the **DUP** and **SWAP** opcodes.
 
-- **DUPn**: Duplicate nth stack item to top.
-- **SWAPn**: Swap top with n+1th stack item.
+- **`DUPn`**: Duplicate nth stack item to top.
+- **`SWAPn`**: Swap top with n+1th stack item.
 
 The maximum n for **DUP** and **SWAP** is `16`, corresponding to opcodes 0x80–0x8f and 0x90–0x9f respectively. These opcodes are explicitly defined in the EVM and form a fixed set — making the 16-item limit an EVM-level constraint.
 
@@ -204,7 +205,7 @@ Let's take a moment to celebrate our first EVM assembly code 🎉.
 
 ### Program counter
 
-Recall that the bytecode is a flat array of bytes with each opcode being a 1 byte.  The EVM needs a way to track what is the next byte (opcode) to execute in the bytecode array.  This is where the EVM **program counter** comes in. It will keep track of the next opcode's offset, which is the location in the byte array of the next instruction to execute on the stack.
+Recall that the bytecode is a flat array of bytes with each opcode being a 1 byte. The EVM needs a way to track what is the next byte (opcode) to execute in the bytecode array. This is where the EVM **program counter** comes in. It will keep track of the next opcode's offset, which is the location in the byte array of the next instruction to execute on the stack.
 
 In the example above, the values on the left of the assembly code represent the byte offset (starting at 0) of each opcode within the bytecode:
 
@@ -251,7 +252,7 @@ EVM memory is a byte array of $2^{256}$ (or [practically infinite](https://www.t
 
 ![EVM Memory](../../images/evm/evm-memory.gif)
 
-Unlike stack, which provides data to individual instructions, memory stores ephemeral data that is relevant to the entire program.  Since the stack has a hard limit of one word slots, **memory** supplements the stack by allowing indexed access to arbitrarily sized data. Stack values can be stored to or loaded from **memory** on demand.
+Unlike stack, which provides data to individual instructions, memory stores ephemeral data that is relevant to the entire program. Since the stack has a hard limit of one word slots, **memory** supplements the stack by allowing indexed access to arbitrarily sized data. Stack values can be stored to or loaded from **memory** on demand.
 
 ### Writing to memory
 
@@ -288,16 +289,19 @@ EVM doesn't have a direct equivalent to `MSTORE8` for reading. You must read the
 > EVM memory is shown as blocks of 32 bytes to illustrate how memory expansion works. In reality, it is a seamless sequence of bytes, without any inherent divisions or blocks.
 
 ## Calldata
+
 The **calldata** is read-only input data passed to the EVM via message call instructions or from a transaction and is stored as a sequence of bytes that are accessible via specific opcodes.
 
-###  Reading from calldata
+### Reading from calldata
+
 The calldata for the current environment can be accessed using either:
--  `CALLDATALOAD` opcode which reads 32 bytes from a desired offset onto the stack, [learn more](https://veridelisi.medium.com/learn-evm-opcodes-v-a59dc7cbf9c9).
+
+- `CALLDATALOAD` opcode which reads 32 bytes from a desired offset onto the stack, [learn more](https://veridelisi.medium.com/learn-evm-opcodes-v-a59dc7cbf9c9).
 - or, using `CALLDATACOPY` to copy a portion of calldata to memory.
 
 ## Storage
 
-Storage is designed as a **word-addressed word array**. Unlike memory, storage is associated with an Ethereum account and is **persisted** across transactions as part of the world state.  It can be thought of as a key-value **database** associated with the smart contract, which is why it contains the contract's "state" variables. Storage size is fixed at 2^256 slots, 32 bytes each.
+Storage is designed as a **word-addressed word array**. Unlike memory, storage is associated with an Ethereum account and is **persisted** across transactions as part of the world state. It can be thought of as a key-value **database** associated with the smart contract, which is why it contains the contract's "state" variables. Storage size is fixed at 2^256 slots, 32 bytes each.
 
 ![EVM Storage](../../images/evm/evm-storage.jpg)
 
@@ -305,13 +309,13 @@ Storage can only be accessed via the code of its associated account. External ac
 
 ## Writing to storage
 
-`SSTORE` takes two values from the stack: a storage **slot** and a 32-byte **value**. It then writes the value to storage of the account.  Notice: Slots can be thought of as the basic unit of storage, so when writing to storage, we deal with slots as opposed to individual bytes.  Writing to storage is expensive. High-level languages like Solidity optimize storage by packing multiple variables into a single 32-byte slot when their combined size is less than or equal to 32 bytes.
+`SSTORE` takes two values from the stack: a storage **slot** and a 32-byte **value**. It then writes the value to storage of the account. Notice: Slots can be thought of as the basic unit of storage, so when writing to storage, we deal with slots as opposed to individual bytes. Writing to storage is expensive. High-level languages like Solidity optimize storage by packing multiple variables into a single 32-byte slot when their combined size is less than or equal to 32 bytes.
 
 ![EVM Storage write](../../images/evm/sstore.gif)
 
 We've been running a contract account's bytecode all this time. Only now we see the account and the world state, and it matches the code inside the EVM.
 
-Again, it’s important to note that storage is not part of the EVM itself, rather the currently executing contract account.  More specifically, the contract account contains a **storage root*** that points to a separate Merkle Patricia Trie for that contract's storage.
+Again, it’s important to note that storage is not part of the EVM itself, rather the currently executing contract account. More specifically, the contract account contains a **storage root\*** that points to a separate Merkle Patricia Trie for that contract's storage.
 
 The example above shows only a small section of the account's storage. Like memory, all the values in storage are well-defined as zero.
 
@@ -352,6 +356,7 @@ While Ethereum protocol undergoes many changes in each upgrade, changes in EVM a
 The resources below has been categorized into different sections based on different EVM learning stages.
 
 #### Basics of EVM
+
 - 🎥 Whiteboard Crypto, ["EVM: An animated non-technical introduction."](https://youtu.be/sTOcqS4msoU)
 - 📝 Vasa, [Getting Deep Into EVM: How Ethereum Works Backstage](https://medium.com/swlh/getting-deep-into-evm-how-ethereum-works-backstage-ab6ad9c0d0bf)
 - 📝 Zaryab Afser, [The ABCs of Ethereum Virtual Machine](https://www.decipherclub.com/the-abcs-of-ethereum-virtual-machine/)
@@ -359,8 +364,9 @@ The resources below has been categorized into different sections based on differ
 - 📝 Decipher Club, [EVM learning resources based on your level of expertise](https://www.decipherclub.com/evm-learning-resources/)
 
 #### Understanding EVM Architecture & Core Components
+
 - 📝 Gavin Wood, ["Ethereum Yellow Paper."](https://ethereum.github.io/yellowpaper/paper.pdf)
-- 📝  Ethereum Book, [Chapter 13, Ethereum Book](https://cypherpunks-core.github.io/ethereumbook/13evm.html?ref=decipherclub.com)
+- 📝 Ethereum Book, [Chapter 13, Ethereum Book](https://cypherpunks-core.github.io/ethereumbook/13evm.html?ref=decipherclub.com)
 - 📘 Andreas M. Antonopoulos & Gavin Wood, ["Mastering Ethereum."](https://github.com/ethereumbook/ethereumbook)
 - 🎥 Jordan McKinney, ["Ethereum Explained: The EVM."](https://www.youtube.com/watch?v=kCswGz9naZg)
 - 📝 LeftAsExercise, ["Smart contracts and the Ethereum virtual machine."](https://leftasexercise.com/2021/08/08/q-smart-contracts-and-the-ethereum-virtual-machine/) • [archived](https://web.archive.org/web/20230324200211/https://leftasexercise.com/2021/08/08/q-smart-contracts-and-the-ethereum-virtual-machine/)
@@ -368,6 +374,7 @@ The resources below has been categorized into different sections based on differ
 - 🎥 Alex, [EVM - Some Assembly Required](https://www.youtube.com/watch?v=yxgU80jdwL0)
 
 #### Deep-Dive into EVM
+
 - 📝 Takenobu Tani, [EVM illustrated](https://github.com/takenobu-hs/ethereum-evm-illustrated)
 - 📝 Shafu, ["EVM from scratch."](https://evm-from-scratch.xyz/)
 - 📝 NOXX, ["3 part series: EVM Deep Dives - The Path to Shadowy Super Coder."](https://noxx.substack.com/p/evm-deep-dives-the-path-to-shadowy) • [archived](https://web.archive.org/web/20240106034644/https://noxx.substack.com/p/evm-deep-dives-the-path-to-shadowy)
@@ -378,7 +385,7 @@ The resources below has been categorized into different sections based on differ
 - 🎥 Ethereum Engineering Group, [EVM: From Solidity to byte code, memory and storage](https://www.youtube.com/watch?v=RxL_1AfV7N4&t=2s)
 - 📝 Trust Chain, [7 part series about how Solidity uses EVM under the hood.](https://trustchain.medium.com/reversing-and-debugging-evm-smart-contracts-392fdadef32d)
 - [Learn EVM Opcodes](https://veridelisi.medium.com/learn-evm-opcodes-v-a59dc7cbf9c9) • [archived](https://web.archive.org/web/20240806231824/https://veridelisi.medium.com/learn-evm-opcodes-v-a59dc7cbf9c9)
-- [More on EVM Storage](https://medium.com/coinmonks/solidity-storage-how-does-it-work-8354afde3eb)  • [archived](https://web.archive.org/web/20230808231549/https://medium.com/coinmonks/solidity-storage-how-does-it-work-8354afde3eb)
+- [More on EVM Storage](https://medium.com/coinmonks/solidity-storage-how-does-it-work-8354afde3eb) • [archived](https://web.archive.org/web/20230808231549/https://medium.com/coinmonks/solidity-storage-how-does-it-work-8354afde3eb)
 - [Storage, Memory, and Stack Overview](https://ethereum.stackexchange.com/questions/23720/usage-of-memory-storage-and-stack-areas-in-evm) • [archived](https://web.archive.org/web/20240529150647/https://ethereum.stackexchange.com/questions/23720/usage-of-memory-storage-and-stack-areas-in-evm)
 - [Calldata](https://learnevm.com/chapters/fn/calldata) • [archived](https://web.archive.org/web/20250306133755/https://learnevm.com/chapters/fn/calldata)
 
