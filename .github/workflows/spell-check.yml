@@ -52,7 +52,7 @@ jobs:
                   line_nums=$(grep -n "$word" "$file" | cut -d: -f1 | tr '\n' ',' | sed 's/,$//')
                   TYPOS+="- 📄 $file (line(s) $line_nums):"
                   TYPOS+=$'\n'
-                  TYPOS+="    1. ⭕ $word"
+                  TYPOS+="    1. ❌ $word"
                   TYPOS+=$'\n'
                 done <<< "$output"
               fi
