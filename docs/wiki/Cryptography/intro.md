@@ -15,7 +15,7 @@ Ethereum’s security model depends on carefully chosen cryptographic constructi
 
 Unlike account abstraction models (ERC-4337), EOAs require signatures for every operation.
 
-The v, r, s signature format has historical quirks—legacy transactions use v ∈ {27, 28}, while EIP-1559 defines v ∈ {0, 1} to prevent replay attacks.
+The v, r, s signature format has historical quirks—legacy transactions use v ∈ {27, 28}, while [EIP-155](https://eips.ethereum.org/EIPS/eip-155) defines v ∈ {0, 1} to prevent replay attacks.
 
 **Caveats:**
 
