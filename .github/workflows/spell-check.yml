@@ -73,15 +73,15 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
             const author = '${{github.event.pull_request.user.login}}';
-            const typos = `${{ env.TYPOS }}`;
+            const typos = `${{ env.TYPOS }}`.replace(/`/g, '\\`');
             const body = `
             Hi @${author},
 
-            I found some potential typos in your pull request:
+            ⚠️ Potential typos found in your pull request:
 
             ${typos}
 
-            ## ℹ️ How to fix:
+            ## ℹ️ How to fix this error:
             1. **If these are actual typos:**
                - Open the files at the specified line numbers and fix them
 
