@@ -51,7 +51,7 @@ jobs:
                   line_nums=$(grep -n "$word" "$file" | cut -d: -f1 | tr '\n' ',' | sed 's/,$//')
                   TYPOS+="- 📄 $file (line(s) $line_nums):"
                   TYPOS+=$'\n'
-                  TYPOS+="    1. \`$word\`"
+                  TYPOS+="    1. ❌ $word"
                   TYPOS+=$'\n'
                 done <<< "$output"
               fi
@@ -77,11 +77,11 @@ jobs:
             const body = `
             Hi @${author},
 
-            I found some potential typos in your pull request:
+            ⚠️ Potential typos found in your pull request:
 
             ${typos}
 
-            ## ℹ️ How to fix:
+            ## ℹ️ How to fix this error:
             1. **If these are actual typos:**
                - Open the files at the specified line numbers and fix them
 
