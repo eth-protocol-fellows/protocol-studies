@@ -51,7 +51,7 @@ jobs:
                   line_nums=$(grep -n "$word" "$file" | cut -d: -f1 | tr '\n' ',' | sed 's/,$//')
                   TYPOS+="- 📄 $file (line(s) $line_nums):"
                   TYPOS+=$'\n'
-                  TYPOS+="    1. \`$word\`"
+                  TYPOS+="    1. ⭕ $word"
                   TYPOS+=$'\n'
                 done <<< "$output"
               fi
@@ -73,7 +73,7 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
             const author = '${{github.event.pull_request.user.login}}';
-            const typos = `${{ env.TYPOS }}`.replace(/`/g, '\\`');
+            const typos = `${{ env.TYPOS }}`;
             const body = `
             Hi @${author},
 
