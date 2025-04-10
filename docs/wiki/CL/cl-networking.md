@@ -68,9 +68,9 @@ Key features of libp2p:
 ## **Peers**
 
 #### Peer Ids
-Peer Identity is a unique reference to specific peer in the network and remain constant as long as the peer lives. Peer Ids are [multihashes][multihash], which are a self-describing values having the following format:<br/>
+[Peer Identity][peer-identity] is a unique reference to specific peer in the network and remain constant as long as the peer lives. Peer Ids are [multihashes][multihash], which are a self-describing values having the following format:<br/>
 
-`<varint hash function code><varint digest size in bytes><hash function output>`
+`<varint hash function code><varint digest size in bytes><hash function output>` 
 
 <figure class="diagram" style="text-align:center">
 
@@ -83,6 +83,15 @@ _Multihash Format , in hex_
 </figcaption>
 </figure>
 
+- Keys are encoded in a protobuf containing key type and encoded key. There are 4 specified methods for encoding: RSA, Ed255199v(must), Secp256k1, ECDSA.
+- There are 2 ways of the string representation of peer IDs in text: `base58btc` (starts with `QM` or `1`) and as a multibase encoded CID with libp2p slowly moving to the latter.
+
+### What optimization does Gossibhub provide?
+
+**Approach 1:** Maintain a fully connected mesh (all peers connected to each other 1:1), which scales poorly (O(n^2)). Why this scales poorly? Each node may recieve the same message from other (n-1) nodes , hence wasting a lot of bandwidth. If the message is a block data, then the wasted bandwith is exponentially large.
+
+**Approach 2:** Pubsub (Publish-Subscribe Model) messaging pattern is used where senders (publishers) don’t send messages directly to receivers (subscribers). Instead, messages are published to a common channel (or topic), and subscribers receive messages from that channel without direct interaction with the publisher. The nodes mesh with a particular number of other nodes for a topic, and those with other nodes. Hence, allowing more efficient message passing.
+
 <figure class="diagram" style="text-align:center">
 
 ![gossibsub_optimization](../../images/cl/cl-networking/gossipsub_optimization.png)
@@ -93,12 +102,6 @@ _Gossipsub Optimization_
 
 </figcaption>
 </figure>
-
-#### What optimization does Gossibhub provide?
-
-**Approach 1:** Maintain a fully connected mesh (all peers connected to each other 1:1), which scales poorly (O(n^2)). Why this scales poorly? Each node may recieve the same message from other (n-1) nodes , hence wasting a lot of bandwidth. If the message is a block data, then the wasted bandwith is exponentially large.
-
-**Approach 2:** Pubsub (Publish-Subscribe Model) messaging pattern is used where senders (publishers) don’t send messages directly to receivers (subscribers). Instead, messages are published to a common channel (or topic), and subscribers receive messages from that channel without direct interaction with the publisher. The nodes mesh with a particular number of other nodes for a topic, and those with other nodes. Hence, allowing more efficient message passing.
 
 ###### **Gossipsub : TODO**
 
