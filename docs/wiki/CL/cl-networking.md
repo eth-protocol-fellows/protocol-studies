@@ -26,9 +26,62 @@ _The various protocols which are a part of libp2p._
 libp2p protocol is a multi-transport stack.
 
 1. **Transport** : It must support TCP (Transmission Control Protocol), may support [QUIC][quic] (Quick UDP Internet Connections) which must both allow incoming and outgoing connections. TCP and QUIC both support IPv4 and IPv6, but due for better compatibility IPv4 support is required.
-2. **Encryption and Identification** : [libp2p-noise][libp2p-noise] secure channel is used for encryption
+2. **Encryption and Identification** : [libp2p-noise][libp2p-noise] secure channel is used for encryption and uses [multiaddress][multiaddr] (often abbreviated as multiaddr) is the convention for encoding multiple layers of addressing into a single "future-proof" path structure.
+- **Multiaddress**: Multiaddress defines a human-readable and machine-optimized encodings of common transport and overlay protocols and allows many layers of addressing to be combined and used together.<br/> For example: the below given addressing format is a combination of "location multiaddr" (ip and port) and the identity multiaddr (libp2p peer id).
+
+<figure class="diagram" style="text-align:center">
+
+![multiaddr](../../images/cl/cl-networking/multiaddr.png)
+
+<figcaption>
+
+_Multiaddr format_
+
+</figcaption>
+</figure>
+
 3. **Multiplexing** : Multiplexing allows multiple independent communications streams to run concurrently over a single network connection. Two multiplexers are commonplace in libp2p implementations: [mplex][mplex] and [yamux][yamux]. Their protocol IDs are, respectively: `/mplex/6.7.0` and `/yamux/1.0.0`. Clients must support mplex and may support yamux with precedence given to the latter.
 4. **Message Passing** : To pass messages over the network libp2p implements [Gossipsub][gossipsub] (PubSub) and [Req/Resp][req-resp] (Request/Response). Gossipsub uses topics and Req/Resp uses messages for communication.
+
+Key features of libp2p: 
+
+1. **Protocol IDs:** are unique string identifiers used for protocol negociation. Their basic structure is: `/app/protocol/version`. Some common protocols, all use protobuf to define message schemes, defined are: 
+  - Ping: `/ipfs/ping/1.0.0` is a simple protocol to test the connectivity and performance of connected peers
+  - Identify : `/ipfs/id/1.0.0` allows to peers to exchange information about each other, mainly public key and know network addresses. Uses the following protobuf properties: 
+| Field              | Type      | Purpose                                                                 |
+|-------------------|-----------|-------------------------------------------------------------------------|
+| `protocolVersion` | `string`  | libp2p protocol version (e.g., `ipfs/1.0.0`)                             |
+| `agentVersion`    | `string`  | Client info (like browser's user-agent, e.g., `go-ipfs/0.1.0`)           |
+| `publicKey`       | `bytes`   | Node's public key (for identity, optional if secure channel is used)     |
+| `listenAddrs`     | `bytes[]` | Multiaddrs where the peer is listening                                   |
+| `observedAddr`    | `bytes`   | Your IP address as seen by the peer (helps with NAT detection)           |
+| `protocols`       | `string[]`| List of supported application protocols (e.g., `/chat/1.0.0`)            |
+| `signedPeerRecord`| `bytes`   | Authenticated version of `listenAddrs` for sharing with other peers      |
+
+  - Identify/push: `/ipfs/id/push/1.0.0` same as "Identify" just that this is sent proactivily and not in reponse to a request. It is useful to push a new address to its connected peers.
+
+  **kad-dht** : libp2p uses Distributed Hash Table (DHT) based on the [Kademlia][kademlia] routing algorithm for its routing functionality. 
+
+2. **Handler Functions:** are invoked during a incoming stream 
+3. **Bi-Directional Binary Stream:** the medium over which the libp2p protocol transpires 
+
+## **Peers**
+
+#### Peer Ids
+Peer Identity is a unique reference to specific peer in the network and remain constant as long as the peer lives. Peer Ids are [multihashes][multihash], which are a self-describing values having the following format:<br/>
+
+`<varint hash function code><varint digest size in bytes><hash function output>`
+
+<figure class="diagram" style="text-align:center">
+
+![multihash_format](https://raw.githubusercontent.com/multiformats/multihash/master/img/multihash.006.jpg)
+
+<figcaption>
+
+_Multihash Format , in hex_
+
+</figcaption>
+</figure>
 
 <figure class="diagram" style="text-align:center">
 
@@ -42,11 +95,13 @@ _Gossipsub Optimization_
 </figure>
 
 #### What optimization does Gossibhub provide?
+
 **Approach 1:** Maintain a fully connected mesh (all peers connected to each other 1:1), which scales poorly (O(n^2)). Why this scales poorly? Each node may recieve the same message from other (n-1) nodes , hence wasting a lot of bandwidth. If the message is a block data, then the wasted bandwith is exponentially large.
 
 **Approach 2:** Pubsub (Publish-Subscribe Model) messaging pattern is used where senders (publishers) don’t send messages directly to receivers (subscribers). Instead, messages are published to a common channel (or topic), and subscribers receive messages from that channel without direct interaction with the publisher. The nodes mesh with a particular number of other nodes for a topic, and those with other nodes. Hence, allowing more efficient message passing.
 
 ###### **Gossipsub : TODO**
+
 ###### **Req/Resp : TODO**
 
 ## libp2p-noise - Encryption
@@ -105,6 +160,8 @@ _discv5_
 - [Eth1+Eth2 client relationship][eth1+2-client]
 - Libp2p, ["docs"][libp2p-docs] and ["specs"][libp2p-specs]
 - Technical Report, ["Gossipsub-v1.1 Evaluation Report"][gossipsub-report]
+- [Libp2p resource][PLN-launchpad]
+- [Libp2p tutorial][libp2p-tutorial]
 
 [consensus-networking]: https://github.com/ethereum/consensus-specs/blob/dev/specs/phase0/p2p-interface.md
 [libp2p-and-eth]: https://blog.libp2p.io/libp2p-and-ethereum/
@@ -133,3 +190,8 @@ _discv5_
 [mplex]: https://github.com/libp2p/specs/tree/master/mplex
 [gossipsub]: https://github.com/libp2p/specs/tree/master/pubsub/gossipsub
 [req-resp]: https://github.com/ethereum/consensus-specs/blob/dev/specs/phase0/p2p-interface.md#the-reqresp-domain
+[multiaddr]: https://github.com/libp2p/specs/blob/master/addressing/README.md
+[PLN-launchpad]: https://pl-launchpad.io/curriculum/libp2p/objectives/
+[kademlia]: https://docs.ipfs.tech/concepts/dht/#kademlia
+[libp2p-tutorial]: https://proto.school/introduction-to-libp2p
+[multihash]: https://github.com/multiformats/multihash?tab=readme-ov-file
