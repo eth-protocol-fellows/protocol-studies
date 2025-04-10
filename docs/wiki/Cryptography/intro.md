@@ -48,7 +48,7 @@ Implementation Nuances:
 
 Ethereum’s BLS spec (EIP-2335) enforces strict subgroup checks to avoid rogue-key attacks.
 
-Tools like blst and herumi optimize for different environments (e.g., x86 vs. ARM).
+Tools like <name>blst</name> and <name>herumi</name> optimize for different environments (e.g., x86 vs. ARM).
 
 4. ### Verkle Trees: A Shift in State Proofs
 **Current Limitation:** Merkle proofs for storage are too large (~1 KB per proof).
@@ -95,6 +95,6 @@ Hybrid approaches (e.g., BLS + SPHINCS+) might bridge the transition.
 - [Secp256k1 in Ethereum](https://ethereum.org/en/developers/docs/evm/)
 - [Verkle Trees](https://verkle.info/)
 - [The different types of ZK-EVMs](https://vitalik.eth.limo/general/2022/08/04/zkevm.html)
-- [ZK-SNARKS vs STARKS](https://eprint.iacr.org/2018/046)
+- [ZK-SNARKS](https://eprint.iacr.org/2018/046)
 
 https://summerofprotocols.com/wp-content/uploads/2023/12/53-BEIKO-001-2023-12-13.pdf
