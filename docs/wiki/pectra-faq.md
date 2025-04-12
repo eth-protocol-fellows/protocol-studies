@@ -128,8 +128,8 @@ In this situation, the validator will not be exited, and no funds will be moved.
 
 #### **Q:** What are the validator requirements for consolidation?
 
-The validators must be active on the beacon chain at the time of consolidation execution. This means they cannot be exiting, pending activation, or in any state other than active.
-Both the source and target validators must have `0x01` or `0x02` withdrawal credentials pointing to the same withdrawal address. If these two conditions are met, the validators may be consolidated.
+The validators must be active on the Beacon Chain at the time of consolidation execution. This means they cannot be exiting, pending activation, or in any state other than active. 
+The source address must authorize the consolidation transaction and the target must be a validator with `0x02` credentials. Validators with different withdrawal credentials can be also consolidated. 
 
 #### **Q:** What happens to my original, individual validators?
 
