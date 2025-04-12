@@ -84,7 +84,32 @@ _Multihash Format , in hex_
 </figure>
 
 - Keys are encoded in a protobuf containing key type and encoded key. There are 4 specified methods for encoding: RSA, Ed255199v(must), Secp256k1, ECDSA.
-- There are 2 ways of the string representation of peer IDs in text: `base58btc` (starts with `QM` or `1`) and as a multibase encoded CID with libp2p slowly moving to the latter.
+- There are 2 ways of the string representation of peer IDs in text: `base58btc` (starts with `QM` or `1`) and as a multibase encoded CID with libp2p slowly moving to the later.
+
+## **How a connection is establised?**
+To understand how setting up a connection works, read this [specs][libp2p-connection]. Libp2p is modular by design meaning each protocol defined in it does one job like encryption, multiplexing, discovery, NAT Traversal, message passing.
+
+### 🧱 libp2p Protocol Stack
+
+| **Layer**              | **Protocol(s)**                                      | **Purpose**                                                                 |
+|------------------------|------------------------------------------------------|-----------------------------------------------------------------------------|
+| 🧠 **Application Layer** | `pubsub`, `gossipsub`, `ping`, custom protocols      | Run user-defined or built-in logic (chat, file transfer, pub-sub, etc.)     |
+| 🔀 **Multiplexing Layer** | `yamux`, `mplex`                                      | Allow multiple logical streams over a single connection                     |
+| 🔐 **Security Layer**     | `noise`, `tls`, `secio` (deprecated)                 | Encrypt and authenticate peer connections                                   |
+| 🔌 **Transport Layer**    | `tcp`, `websockets`, `quic`, `webrtc`, `webtransport`| Handle physical or virtual data transfer between machines                   |
+| 🌍 **NAT/Relay Layer**    | `relay`, `dcutr`, `autonat`, `pnet`                  | Enable connectivity through NAT/firewalls or in private networks            |
+| 📡 **Discovery Layer**    | `mdns`, `kademlia`, `rendezvous`, `identify`         | Find and learn about peers on the network                                   |
+
+
+### 📝 Notes:
+- **Not all protocols are required** — libp2p is modular and you can choose only what you need.
+- A minimal connection usually includes at least: `transport` + `security` + `multiplexing` + `application protocol`.
+- `relay` and `dcutr` are used when NATs prevent direct connections.
+
+#### Protocol Negociation:
+multistream-select
+
+Peer store. Why?
 
 ### What optimization does Gossibhub provide?
 
@@ -106,6 +131,8 @@ _Gossipsub Optimization_
 ###### **Gossipsub : TODO**
 
 ###### **Req/Resp : TODO**
+
+### **QUIC : TODO**
 
 ## libp2p-noise - Encryption
 
@@ -198,3 +225,5 @@ _discv5_
 [kademlia]: https://docs.ipfs.tech/concepts/dht/#kademlia
 [libp2p-tutorial]: https://proto.school/introduction-to-libp2p
 [multihash]: https://github.com/multiformats/multihash?tab=readme-ov-file
+[multistream-select]: https://github.com/multiformats/multistream-select
+[libp2p-connection]: https://github.com/libp2p/specs/blob/master/connections/README.md
