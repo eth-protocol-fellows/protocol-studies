@@ -43,7 +43,7 @@ _Multiaddr format_
 3. **Multiplexing** : Multiplexing allows multiple independent communications streams to run concurrently over a single network connection. Two multiplexers are commonplace in libp2p implementations: [mplex][mplex] and [yamux][yamux]. Their protocol IDs are, respectively: `/mplex/6.7.0` and `/yamux/1.0.0`. Clients must support mplex and may support yamux with precedence given to the latter.
 4. **Message Passing** : To pass messages over the network libp2p implements [Gossipsub][gossipsub] (PubSub) and [Req/Resp][req-resp] (Request/Response). Gossipsub uses topics and Req/Resp uses messages for communication.
 
-### 🧱 libp2p Protocol Stack
+### **libp2p Protocol Stack**
 
 | **Layer**              | **Protocol(s)**                                      | **Purpose**                                                                 |
 |------------------------|------------------------------------------------------|-----------------------------------------------------------------------------|
@@ -128,7 +128,7 @@ Result: We now have a list of peers identifiable with Peer ID and reachable via 
 2. **Transport** : How to connect to peers?
   - `TCP` : most basic transport, reliable but may be blocked by NAT/firewalls
   - `WebSockets` : TCP over HTTP, are NAT/firewall friendly
-  - `QUIC` : UDP based, faster connection setup, supports multiplexing and encryption natively
+  - `QUIC` : UDP based, faster connection setup, supports multiplexing and encryption (TLS 1.3) natively
   - `WebRTC` : enable two private nodes (e.g. two browsers) to establish a direct connection 
   - `WebTransport` : establish a stream-multiplexed and bidirectional connection to servers, run on top of a HTTP/3 connection with a fallback using HTTP/2
 
@@ -137,9 +137,9 @@ If the peer is behind NAT (when direct connection fails):
   - `dcutr` (Direct Connection Upgrade Through Relay) : used to try and replace a relay connection with a direct one, using [hole punching][hole-punching]. It involves simultaneous dial attempts from both peers.
 
 3. **Encryption** : How to make the connection private and authenticated?
-  - `noise` : 
-  - `tls` :
-  - `secio` :
+  - `noise` :  framework for building security protocols, fast, default choice for many, Noise XX handshake for mutual authentication.
+  - `tls` (Transport Layer Security) : strong securtity guarantees, mututal authentication done using peer's key
+  - `secio` :  deprecated due to complexity and lower assurance compared to Noise/TLS.
 
 4. **Multiplexing** : How to open multiple logical streams over the same connection?
   - `yamux` : Simple, fast, and currently the default in many implementations.
@@ -149,11 +149,6 @@ If the peer is behind NAT (when direct connection fails):
   - `ping` : basic liveliness check ,measure rount-trip time
   - `pubsub`, `gossibsub`, `episub` : for broadcasting messages
   - Custom protocols that the implementation defines
-
-#### Protocol Negociation:
-multistream-select
-
-Peer store. Why?
 
 ### What optimization does Gossibhub provide?
 
@@ -173,10 +168,8 @@ _Gossipsub Optimization_
 </figure>
 
 ###### **Gossipsub : TODO**
-
 ###### **Req/Resp : TODO**
-
-### **QUIC : TODO**
+###### **QUIC : TODO**
 
 ## libp2p-noise - Encryption
 
@@ -272,3 +265,4 @@ _discv5_
 [multistream-select]: https://github.com/multiformats/multistream-select
 [libp2p-connection]: https://github.com/libp2p/specs/blob/master/connections/README.md
 [hole-punching]: https://github.com/libp2p/specs/blob/master/connections/hole-punching.md
+[peer-identity]: https://github.com/libp2p/specs/blob/master/peer-ids/peer-ids.md
