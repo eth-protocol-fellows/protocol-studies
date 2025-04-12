@@ -43,6 +43,23 @@ _Multiaddr format_
 3. **Multiplexing** : Multiplexing allows multiple independent communications streams to run concurrently over a single network connection. Two multiplexers are commonplace in libp2p implementations: [mplex][mplex] and [yamux][yamux]. Their protocol IDs are, respectively: `/mplex/6.7.0` and `/yamux/1.0.0`. Clients must support mplex and may support yamux with precedence given to the latter.
 4. **Message Passing** : To pass messages over the network libp2p implements [Gossipsub][gossipsub] (PubSub) and [Req/Resp][req-resp] (Request/Response). Gossipsub uses topics and Req/Resp uses messages for communication.
 
+### 🧱 libp2p Protocol Stack
+
+| **Layer**              | **Protocol(s)**                                      | **Purpose**                                                                 |
+|------------------------|------------------------------------------------------|-----------------------------------------------------------------------------|
+| 🧠 **Application Layer** | `pubsub`, `gossipsub`, `ping`, custom protocols      | Run user-defined or built-in logic (chat, file transfer, pub-sub, etc.)     |
+| 🔀 **Multiplexing Layer** | `yamux`, `mplex`                                      | Allow multiple logical streams over a single connection                     |
+| 🔐 **Security Layer**     | `noise`, `tls`, `secio` (deprecated)                 | Encrypt and authenticate peer connections                                   |
+| 🔌 **Transport Layer**    | `tcp`, `websockets`, `quic` (has multiplexing and security), `webrtc`, `webtransport`| Handle physical or virtual data transfer between machines                   |
+| 🌍 **NAT/Relay Layer**    | `relay`, `dcutr`, `autonat`, `pnet`                  | Enable connectivity through NAT/firewalls or in private networks            |
+| 📡 **Discovery Layer**    | `mdns`, `kademlia`, `rendezvous`, `identify`         | Find and learn about peers on the network                                   |
+
+
+### Notes:
+- **Not all protocols are required** — libp2p is modular and you can choose only what you need.
+- A minimal connection includes at least: `transport` + `security` + `multiplexing` + `application protocol`.
+- `relay` and `dcutr` are used when NATs prevent direct connections.
+
 Key features of libp2p: 
 
 1. **Protocol IDs:** are unique string identifiers used for protocol negociation. Their basic structure is: `/app/protocol/version`. Some common protocols, all use protobuf to define message schemes, defined are: 
@@ -65,7 +82,7 @@ Key features of libp2p:
 2. **Handler Functions:** are invoked during a incoming stream 
 3. **Bi-Directional Binary Stream:** the medium over which the libp2p protocol transpires 
 
-## **Peers**
+### **Peers**
 
 #### Peer Ids
 [Peer Identity][peer-identity] is a unique reference to specific peer in the network and remain constant as long as the peer lives. Peer Ids are [multihashes][multihash], which are a self-describing values having the following format:<br/>
@@ -86,25 +103,52 @@ _Multihash Format , in hex_
 - Keys are encoded in a protobuf containing key type and encoded key. There are 4 specified methods for encoding: RSA, Ed255199v(must), Secp256k1, ECDSA.
 - There are 2 ways of the string representation of peer IDs in text: `base58btc` (starts with `QM` or `1`) and as a multibase encoded CID with libp2p slowly moving to the later.
 
-## **How a connection is establised?**
-To understand how setting up a connection works, read this [specs][libp2p-connection]. Libp2p is modular by design meaning each protocol defined in it does one job like encryption, multiplexing, discovery, NAT Traversal, message passing.
+### **How a connection is establised?**
+To understand how setting up a connection works, read this [specs][libp2p-connection].
 
-### 🧱 libp2p Protocol Stack
+<figure class="diagram" style="text-align:center">
 
-| **Layer**              | **Protocol(s)**                                      | **Purpose**                                                                 |
-|------------------------|------------------------------------------------------|-----------------------------------------------------------------------------|
-| 🧠 **Application Layer** | `pubsub`, `gossipsub`, `ping`, custom protocols      | Run user-defined or built-in logic (chat, file transfer, pub-sub, etc.)     |
-| 🔀 **Multiplexing Layer** | `yamux`, `mplex`                                      | Allow multiple logical streams over a single connection                     |
-| 🔐 **Security Layer**     | `noise`, `tls`, `secio` (deprecated)                 | Encrypt and authenticate peer connections                                   |
-| 🔌 **Transport Layer**    | `tcp`, `websockets`, `quic`, `webrtc`, `webtransport`| Handle physical or virtual data transfer between machines                   |
-| 🌍 **NAT/Relay Layer**    | `relay`, `dcutr`, `autonat`, `pnet`                  | Enable connectivity through NAT/firewalls or in private networks            |
-| 📡 **Discovery Layer**    | `mdns`, `kademlia`, `rendezvous`, `identify`         | Find and learn about peers on the network                                   |
+![flowchart of setting up a connection](../../images/cl/cl-networking/libp2p-connection.png)
 
+<figcaption>
 
-### 📝 Notes:
-- **Not all protocols are required** — libp2p is modular and you can choose only what you need.
-- A minimal connection usually includes at least: `transport` + `security` + `multiplexing` + `application protocol`.
-- `relay` and `dcutr` are used when NATs prevent direct connections.
+_flowchart of setting up a connection_
+
+</figcaption>
+</figure>
+
+1. **Discovery**: How to find another peer?
+  - `mdns` (Multicast DNS) : discover peers on the same local network with zero configuration, very simple. Send query for all peers, receive response and other peers' information into local database.
+  - `rendezvous` : peers register themselves at a shared common peer or server (rendezvous point) and others query the same point to get peer information
+  - `kademlia` (DHT) : A distributed hash table for global discovery. Peer query the DHT with peer ID to get its latest multiaddrs. 
+  - `identify` : protocol that allows peers to exchange metadata (addresses, protocols supported, version etc) after connecting
+
+Result: We now have a list of peers identifiable with Peer ID and reachable via multiaddrs (IP + port + protocol stack)
+
+2. **Transport** : How to connect to peers?
+  - `TCP` : most basic transport, reliable but may be blocked by NAT/firewalls
+  - `WebSockets` : TCP over HTTP, are NAT/firewall friendly
+  - `QUIC` : UDP based, faster connection setup, supports multiplexing and encryption natively
+  - `WebRTC` : enable two private nodes (e.g. two browsers) to establish a direct connection 
+  - `WebTransport` : establish a stream-multiplexed and bidirectional connection to servers, run on top of a HTTP/3 connection with a fallback using HTTP/2
+
+If the peer is behind NAT (when direct connection fails):
+  - `relay` : it is like TURN , routes through another peer
+  - `dcutr` (Direct Connection Upgrade Through Relay) : used to try and replace a relay connection with a direct one, using [hole punching][hole-punching]. It involves simultaneous dial attempts from both peers.
+
+3. **Encryption** : How to make the connection private and authenticated?
+  - `noise` : 
+  - `tls` :
+  - `secio` :
+
+4. **Multiplexing** : How to open multiple logical streams over the same connection?
+  - `yamux` : Simple, fast, and currently the default in many implementations.
+  - `mplex` : lightweight and older
+
+5. **Application** : run application protocols over the above setup
+  - `ping` : basic liveliness check ,measure rount-trip time
+  - `pubsub`, `gossibsub`, `episub` : for broadcasting messages
+  - Custom protocols that the implementation defines
 
 #### Protocol Negociation:
 multistream-select
@@ -227,3 +271,4 @@ _discv5_
 [multihash]: https://github.com/multiformats/multihash?tab=readme-ov-file
 [multistream-select]: https://github.com/multiformats/multistream-select
 [libp2p-connection]: https://github.com/libp2p/specs/blob/master/connections/README.md
+[hole-punching]: https://github.com/libp2p/specs/blob/master/connections/hole-punching.md
