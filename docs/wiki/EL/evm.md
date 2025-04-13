@@ -317,7 +317,7 @@ We've been running a contract account's bytecode all this time. Only now we see 
 
 Again, it’s important to note that storage is not part of the EVM itself, rather the currently executing contract account.  More specifically, the contract account contains a **storage root** that points to a separate Merkle Patricia Trie for that contract's storage.
 
-The example above shows only a small section of the account's storage. Like memory, all the values in storage are well-defined as zero. Also, when a contract executes an `SSTORE` opcode that sets a storage slot’s value from non-zero back to zero, the operation becomes eligible for a gas refund (the gas is not returned immediately, but is credited to the transaction’s refund counter)​.  This refund is applied at the end of the transaction to offset some of the gas cost, effectively rewarding the freeing of storage space. 
+The example above shows only a small section of the account's storage. Like memory, all the values in storage are well-defined as zero. Also, when a contract executes an `SSTORE` opcode that sets a storage slot’s value from non-zero back to zero, the operation becomes eligible for a gas refund (the gas is not returned immediately but is credited to the transaction’s refund counter)​.  This refund serves as a reward to accounts for freeing up valuable storage from the state trie and is applied at the end of the transaction to offset some of the gas cost. 
 
 
 ### Reading from storage
