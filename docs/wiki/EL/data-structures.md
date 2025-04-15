@@ -16,7 +16,7 @@ It is important to note that Merkle trees are in a **binary tree**, so it requir
 
 Merkle Trees provide a tamper-proof structure to store transaction data. Hash functions have an Avalanche Effect i.e. a small change in the data will result in a huge change in the resulting hash. Hence, if the data in the leaf nodes are ever modified, the Root Hash will not match the expected value.
 You can try out [SHA-256](https://emn178.github.io/online-tools/sha256.html) hashing function yourself as well.
-To learn more about Hashing, you may refer to [this](https://github.com/ethereumbook/ethereumbook/blob/develop/04keys-addresses.asciidoc)
+To learn more about Hashing, you may refer to [this](https://github.com/ethereumbook/ethereumbook/blob/develop/04keys-addresses.asciidoc).
 
 Merkle Root is stored in the **Block Header**. Read more about the structure of a Block inside Ethereum (_will be linked this to relevant doc once its ready_)
 
@@ -132,7 +132,7 @@ The structure `T` consists of the following:
 
 ##  Receipt Trie
 
-The Receipt Trie is similar to the Transaction Trie in that it is a block level data structure, and each leaf of the trie represents some RLP-encoded data related to the transaction. However, the Receipt Trie is used to verify that the instructions in each transaction were actually executed.  This verification data is held in the leaf node and contains a few fields, which are described in the [transaction anatomy](./transaction.md#receipts) section of the wiki.
+The Receipt Trie is similar to the Transaction Trie in that it is a block level data structure, and each leaf of the trie represents some RLP-encoded data related to the transaction. However, the Receipt Trie is used to verify that the instructions in each transaction were actually executed.  This verification data is held in the leaf node and contains a few fields, which are described in the [transaction anatomy](wiki/EL/transaction.md#receipts) section of the wiki.
 
 In this section, we will focus on the `Receipt Trie` itself.
 
@@ -145,7 +145,7 @@ If you know the index of a transaction in a block, you can easily find it's corr
 
 The primary role of the receipts trie is to provide a canonical, authenticated record of transaction results, primarily used for indexing historical data without having to re-execute transactions. During snap sync, full nodes download block bodies — which contain both transactions and their corresponding receipts — and locally reconstruct the receipt trie for each block. The reconstructed trie is then validated against the receiptsRoot in the block header. Snap sync avoids the need for full nodes to re-execute historical transactions solely to regenerate receipts, significantly accelerating the sync process.
 
-While receipts enable light clients to verify transaction outcomes via Merkle proofs against the receiptsRoot, this is a secondary use. Since light clients only store block headers, they rely on full nodes to query efor these proofs and `receiptsRoot`.  This structure allows light clients to independently verify the legitimacy of the data without storing the full transaction history.
+While receipts enable light clients to verify transaction outcomes via Merkle proofs against the receiptsRoot, this is a secondary use. Since light clients only store block headers, they rely on full nodes to query for these proofs and `receiptsRoot`.  This structure allows light clients to independently verify the legitimacy of the data without storing the full transaction history.
  
 ## World State Trie
 
@@ -181,12 +181,31 @@ Let's traverse the trie to find the account with a **45 ETH** balance. The key f
    - Consuming all nibbles brings us to the **leaf node**. In our simplified example, its stored value is **“45 ETH”**.
    - In Ethereum’s real MPT, this leaf node actually holds the RLP-encoded account object `[nonce, balance, storageRoot, codeHash]`.
 
-### Persistant Storage
+### Persistent Storage
+
 The **World State Trie** is a living structure that evolves with each block, unlike the transaction and receipt tries which are rebuilt from scratch for every block.  Ethereum operates as a state machine, where the current state is updated by executing transactions in a block. Each node must track this current state to verify transactions and update it accordingly. Therefore, intermediate states exist during block processing, but nodes retain only the final post-block state.  A full node will keep track of the current state of the **World State Trie** and enough trie nodes required to rewind during a re-org.  Archival nodes will keep track of all previous states since genesis.
 
 In summary, Ethereum's world state is a secure and verifiable representation of the current state of all accounts at a given block height.
 
-### TODO: Explain Storage Trie
+## Storage Trie
+
+In the previous section, we described how each account leaf in the **World State Trie** contains a `storageRoot`, which is the keccak-256 hash of the root node of a separate Merkle Patricia Trie, the **Storage Trie**. This trie is not embedded in the **World State Trie** but referenced via the `storageRoot`, enabling storage to be updated and proven independently while still contributing to the global state root.
+
+The **Storage Trie** represents a contract’s persistent state as a mapping of 256-bit storage slots indices (keys) to 256-bit RLP-encoded values.  Each such key-value pair is referred to as a storage slot.  Like the **World State Trie**, it uses a secure key scheme where each slot index is hashed with keccak-256 before insertion.  This prevents attackers from crafting keys that cause long traversal paths or highly unbalanced trie structures, which could otherwise be exploited for DOS attacks by inducing excessive computation during trie lookups or updates.
+
+> While high-level languages (e.g., Solidity) define how contract variables are laid out across storage slots, this layout abstraction originates in the language itself.  The execution layer merely implements this abstraction. At the EL layer level, the trie treats all slots as uniform key-value entries.
+
+Each account has its own **Storage Trie**, which starts as an empty trie. The trie is modified via the `SSTORE` opcode and read via `SLOAD` during contract execution. For EOAs, the storage trie remains empty and is never accessed. These opcodes are defined in the EVM and described further in the [EVM documentation’s storage section](wiki/EL/evm.md#evm-data-locations).
+
+To retrieve the value of a storage slot (e.g., index `0x00`) from the leaf of **Storage Trie**:
+1. RLP-encode the slot index and keccak-256 hash the result.
+2. Use the resulting hash as a key to traverse the trie, starting at `storageRoot`.
+3. Follow the path using the nibbles of the hash to reach the corresponding leaf node.
+4. Extract and decode the RLP-encoded value stored at the leaf.
+
+Proofs can be constructed from the nodes along this path to verify a slot’s value against the `storageRoot`.
+
+In summary, the **Storage Trie** is fundamental to Ethereum’s account model, providing each contract with its own isolated and verifiable storage space. Unlike the **World State Trie**, which maps addresses to account metadata, the **Storage Trie** maintains contract-specific key-value state across blocks.
 
 ## Future Implementations
 
@@ -233,3 +252,4 @@ The transition to new verkle tree database poses a major challenge. To securely 
 -[More on Merkle Patricia Trie](https://ethereum.org/developers/docs/data-structures-and-encoding/patricia-merkle-trie)
 - [Ethereum Yellow Paper](https://ethereum.github.io/yellowpaper/paper.pdf) • [archived](https://web.archive.org/web/20250228142704/https://ethereum.github.io/yellowpaper/paper.pdf)
 - [State Trie Keys](https://medium.com/codechain/secure-tree-why-state-tries-key-is-256-bits-1276beb68485#:~:text=This%20is%20because%20when%20Ethereum,the%20secure%20tree%20in%20Ethereum) • [archived](https://web.archive.org/web/20230524084537/https://medium.com/codechain/secure-tree-why-state-tries-key-is-256-bits-1276beb68485)
+

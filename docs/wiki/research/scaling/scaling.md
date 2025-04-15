@@ -69,24 +69,15 @@ TODO
 
 TODO
 
-Resources:
+## Resources:
 
-[Ethereum Consensus Mechanism](https://ethereum.org/developers/docs/consensus-mechanisms), [archived](https://web.archive.org/web/20240214225609/https://ethereum.org/developers/docs/consensus-mechanisms)
-
-[Ethereum Proof-of-Stake Consensus Specifications](https://github.com/ethereum/consensus-specs/tree/dev?tab=readme-ov-file#ethereum-proof-of-stake-consensus-specifications), [archived](https://web.archive.org/web/20240208050731/https://github.com/ethereum/consensus-specs/tree/dev)
-
-[Ethereum Proof-of-Stake Consensus Specifications](https://ethereum.github.io/consensus-specs/), [archived](https://web.archive.org/web/20240217155014/https://ethereum.github.io/consensus-specs/)
-
-[Vitalik The Limits to Blockchain Scalability](https://vitalik.eth.limo/general/2021/05/23/scaling.html), [archived](https://web.archive.org/web/20240205202358/https://vitalik.eth.limo/general/2021/05/23/scaling.html)
-
-[Ethereum Scaling](https://ethereum.org/en/developers/docs/scaling), [archived](https://web.archive.org/web/20240209083702/https://ethereum.org/en/developers/docs/scaling)
-
-[An Incomplete Guide to Rollups](https://vitalik.eth.limo/general/2021/01/05/rollup.html), [archived](https://web.archive.org/web/20240212014637/https://vitalik.eth.limo/general/2021/01/05/rollup.html)
-
-[Gemini Cryptopedia The Blockchain Trilemma: Fast, Secure, and Scalable Networks](https://www.gemini.com/cryptopedia/blockchain-trilemma-decentralization-scalability-definition), [archived](https://web.archive.org/web/20240209073156/https://www.gemini.com/cryptopedia/blockchain-trilemma-decentralization-scalability-definition)
-
-[Combining GHOST and Casper](https://eips.ethereum.org/assets/eip-2982/arxiv-2003.03052-Combining-GHOST-and-Casper.pdf), [archived](https://web.archive.org/web/20230907004049/https://eips.ethereum.org/assets/eip-2982/arxiv-2003.03052-Combining-GHOST-and-Casper.pdf)
-
-[Ethereum Blocks](https://ethereum.org/developers/docs/blocks), [archived](https://web.archive.org/web/20240214052915/https://ethereum.org/developers/docs/blocks)
-
-[On Block Sizes, Gas Limits and Scalability](https://ethresear.ch/t/on-block-sizes-gas-limits-and-scalability/18444), [archived](https://web.archive.org/web/20240220230246/https://ethresear.ch/t/on-block-sizes-gas-limits-and-scalability/18444)
+- [Ethereum Consensus Mechanism](https://ethereum.org/developers/docs/consensus-mechanisms), [archived](https://web.archive.org/web/20240214225609/https://ethereum.org/developers/docs/consensus-mechanisms)
+- [Ethereum Proof-of-Stake Consensus Specifications](https://github.com/ethereum/consensus-specs/tree/dev?tab=readme-ov-file#ethereum-proof-of-stake-consensus-specifications), [archived](https://web.archive.org/web/20240208050731/https://github.com/ethereum/consensus-specs/tree/dev)
+- [Ethereum Proof-of-Stake Consensus Specifications](https://ethereum.github.io/consensus-specs/), [archived](https://web.archive.org/web/20240217155014/https://ethereum.github.io/consensus-specs/)
+- [Vitalik The Limits to Blockchain Scalability](https://vitalik.eth.limo/general/2021/05/23/scaling.html), [archived](https://web.archive.org/web/20240205202358/https://vitalik.eth.limo/general/2021/05/23/scaling.html)
+- [Ethereum Scaling](https://ethereum.org/en/developers/docs/scaling), [archived](https://web.archive.org/web/20240209083702/https://ethereum.org/en/developers/docs/scaling)
+- [An Incomplete Guide to Rollups](https://vitalik.eth.limo/general/2021/01/05/rollup.html), [archived](https://web.archive.org/web/20240212014637/https://vitalik.eth.limo/general/2021/01/05/rollup.html)
+- [Gemini Cryptopedia The Blockchain Trilemma: Fast, Secure, and Scalable Networks](https://www.gemini.com/cryptopedia/blockchain-trilemma-decentralization-scalability-definition), [archived](https://web.archive.org/web/20240209073156/https://www.gemini.com/cryptopedia/blockchain-trilemma-decentralization-scalability-definition)
+- [Combining GHOST and Casper](https://eips.ethereum.org/assets/eip-2982/arxiv-2003.03052-Combining-GHOST-and-Casper.pdf), [archived](https://web.archive.org/web/20230907004049/https://eips.ethereum.org/assets/eip-2982/arxiv-2003.03052-Combining-GHOST-and-Casper.pdf)
+- [Ethereum Blocks](https://ethereum.org/developers/docs/blocks), [archived](https://web.archive.org/web/20240214052915/https://ethereum.org/developers/docs/blocks)
+- [On Block Sizes, Gas Limits and Scalability](https://ethresear.ch/t/on-block-sizes-gas-limits-and-scalability/18444), [archived](https://web.archive.org/web/20240220230246/https://ethresear.ch/t/on-block-sizes-gas-limits-and-scalability/18444)

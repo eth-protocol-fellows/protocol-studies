@@ -76,16 +76,32 @@ Week 5 continues deeper dive to each part of the protocol with lectures on netwo
 
 | Day, Date     | Topic                            | Speaker                                            |
 | ------------- | -------------------------------- | -------------------------------------------------- |
-| Day 16, Mar 17 | [devp2p](/eps/day18.md)         | [Felix Lange](https://github.com/fjl)              |
-| Day 17, Mar 19 | [libp2p](/eps/day19.md)         | [DappLion](https://github.com/dapplion)           |
+| Day 18, Mar 17 | [devp2p](/eps/day18.md)         | [Felix Lange](https://github.com/fjl)              |
+| Day 19, Mar 19 | [libp2p](/eps/day19.md)         | [DappLion](https://github.com/dapplion)            |
 
 
 ### Week 6
 
 | Day, Date     | Topic                            | Speaker                                            |
 | ------------- | -------------------------------- | -------------------------------------------------- |
-| Day 16, Mar 24 | [Validator Client](/eps/day20.md)   | [James](https://github.com/james-prysm)        |
-| Day 17, Mar 31 | [Engine API](/eps/day21.md)         | [Mikhail](https://github.com/mkalinin)         |
+| Day 20, Mar 24 | [Validator Client](/eps/day20.md)   | [James](https://github.com/james-prysm)        |
+
+
+### Week 7 
+
+| Day, Date      | Topic                            | Speaker                                            |
+| -------------  | -------------------------------- | -------------------------------------------------- |
+| Day 21, Mar 31 | [Engine API](/eps/day21.md)      | [Mikhail](https://github.com/mkalinin)             |
+| Day 22, Apr 3  | [CL Data](/eps/day22.md)         | [Michael](https://github.com/michaelsproul/)       |
+
+
+### Week 8
+
+| Day, Date     | Topic                            | Speaker                                                                      |
+| ------------- | -------------------------------- | --------------------------------------------------                           |
+| Day 23, Apr 7 | [EL Data](/eps/day23.md)         | [Gary](https://github.com/garyschulte), [Karim](https://github.com/matkt) |
+| Day 24, Apr 9 | [Next Upgrades](/eps/day24.md)   | [Marius](https://github.com/MariusVanDerWijden)                              |          
+
 
 ### Streams and recordings
 
