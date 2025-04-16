@@ -6,7 +6,6 @@ The last lecture of the Study Group is looking forward to the future, covering u
 Watch the lecture on [Youtube](https://youtu.be/QvZKdWZqL04do). [Slides are available here](https://docs.google.com/presentation/d/10wwANwKcdTLWwBu9NbTG6GtIEAoXQLqox6LIS03oHMo/edit?usp=sharing).
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/QvZKdWZqL04do" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-## Pre-reading
 
 ## Pre-reading
 
