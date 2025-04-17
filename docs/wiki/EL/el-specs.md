@@ -1,6 +1,6 @@
 # Execution Layer Specification
 
-The execution layer was originally specified in the yellow paper as it encompassed the whole Ethereum. The most up to date specification is [EELS python spec](https://ethereum.github.io/execution-specs/). 
+The execution layer was originally specified in the yellow paper as it encompassed the whole Ethereum. The most up to date specification is [EELS python spec](https://ethereum.github.io/execution-specs/).
 
 > - [Yellow Paper, paris version 705168a – 2024-03-04](https://ethereum.github.io/yellowpaper/paper.pdf) (note: This is outdated does not take into account post merge updates)
 > - [Python Execution Layer specification](https://ethereum.github.io/execution-specs/)
@@ -8,7 +8,7 @@ The execution layer was originally specified in the yellow paper as it encompass
 
 This page provides an overview of EL specification, its architecture and context for the pyspec.
 
-## State transition function 
+## State transition function
 
 The Execution Layer, from the EELS perspective, focuses exclusively on executing the state transition function (STF). This role addresses two primary questions[¹]:
 
@@ -43,11 +43,11 @@ The id's in the above image as represented in the yellow paper (paris version) :
 
 | Id.   | equation no. | yellow paper                                                    | comments                                                                                                                                                                                                                                                                                                                                                                                                                                        |
 | ----- | ------------ | --------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 1     | 7            | $$TRIE(L_I^*(\sigma[a]_s)) \equiv \sigma[a]_s $$           | This gives the root of the account storage Trie ,$\sigma[a]_s $ on the right, after mapping each node with the function $L_I((k,v)) \equiv (KEC(k), RLP(v))$ . The equation on the left is referring to mapping over underlying key and values of the account storage $\sigma[a]_s $ these are two different objects the left $\sigma[a]_s $ and the right $\sigma[a]_s $ which represents the root hash |
-| 2     |              | page 4 paragraph 2                                              | The account state $\sigma[a] $ is described in the yellow paper                                                                                                                                                                                                                                                                                                                                                                         |
-| 3     | 10           | $$L_s(\sigma) \equiv \{p(a) : \sigma[a] \neq \empty \} $$ | This is the world state collapse function , applied to all accounts considered not empty:                                                                                                                                                                                                                                                                                                                                                       |
-| 4 & 5 | 36           | $$TRIE(L_s(\sigma)) = P(B_H)_{H_{stateRoot}} $$           | The equation defines the Parent block's state root header as the root given by the TRIE function where $P(B_H)$ is the Parent Block                                                                                                                                                                                                                                                                                                      |
-| 6.    | 33b          | $$H_{stateRoot} \equiv TRIE(L_s(\Pi(\sigma, B))) $$       | this gives us the state root of the current block                                                                                                                                                                                                                                                                                                                                                                                               |
+| 1     | [7](https://ethereum.github.io/yellowpaper/paper.pdf#page=4)            | $$TRIE(L_I^*(\sigma[a]_s)) \equiv \sigma[a]_s $$           | This gives the root of the account storage Trie ,$\sigma[a]_s $ on the right, after mapping each node with the function $L_I((k,v)) \equiv (KEC(k), RLP(v))$ . The equation on the left is referring to mapping over underlying key and values of the account storage $\sigma[a]_s $ these are two different objects the left $\sigma[a]_s $ and the right $\sigma[a]_s $ which represents the root hash |
+| 2     |              | [page 4](https://ethereum.github.io/yellowpaper/paper.pdf#page=4), paragraph 2                                              | The account state $\sigma[a] $ is described in the yellow paper                                                                                                                                                                                                                                                                                                                                                                         |
+| 3     | [10](https://ethereum.github.io/yellowpaper/paper.pdf#page=4)           | $$L_s(\sigma) \equiv \{p(a) : \sigma[a] \neq \empty \} $$ | This is the world state collapse function , applied to all accounts considered not empty:                                                                                                                                                                                                                                                                                                                                                       |
+| 4 & 5 | [39](https://ethereum.github.io/yellowpaper/paper.pdf#page=7)           | $$TRIE(L_s(\sigma)) = P(B_H)_{H_{stateRoot}} $$           | The equation defines the Parent block's state root header as the root given by the TRIE function where $P(B_H)$ is the Parent Block                                                                                                                                                                                                                                                                                                      |
+| 6.    | [35b](https://ethereum.github.io/yellowpaper/paper.pdf#page=7)          | $$H_{stateRoot} \equiv TRIE(L_s(\Pi(\sigma, B))) $$       | this gives us the state root of the current block                                                                                                                                                                                                                                                                                                                                                                                               |
 
 The specified procedure for the state transition function in the code documentation includes the following steps:
 
@@ -143,7 +143,7 @@ The Ethereum economic model, as outlined in [EIP-1559](https://eips.ethereum.org
 
 Additional checks ensure legacy compatibility and security, such as the ommer (uncle block) hash and difficulty fields being set to predefined values, reflecting the transition from Proof of Work to Proof of Stake (57j-57l).
 
-These criteria form part of the Ethereum economic model, particularly influenced by EIP-1559, which introduces a dynamic base fee mechanism. This mechanism aims to optimize network usage and fee predictability, enhancing user experience and economic stability. Additionally, [EIP-4844](https://eips.ethereum.org/EIPS/eip-4844) introduced a new type of transaction, blob transactions, that augments the economic model from EIP-1559. 
+These criteria form part of the Ethereum economic model, particularly influenced by EIP-1559, which introduces a dynamic base fee mechanism. This mechanism aims to optimize network usage and fee predictability, enhancing user experience and economic stability. Additionally, [EIP-4844](https://eips.ethereum.org/EIPS/eip-4844) introduced a new type of transaction, blob transactions, that augments the economic model from EIP-1559.
 
 Lets explore this in more depth and try to gain a better understanding on whats going on with these equations that's not easily visible in either the python spec or the yellow paper.
 
@@ -420,7 +420,7 @@ $$
 
 $$+$$
 
-$$ 
+$$
 \sum_{j=0}^{ length(T_{accessList}) - 1} \left( G_{\text{accesslistaddress}} + length(T_{accessList}[j]_s) *  G_{\text{accessliststorage}} \right)
 $$
 
@@ -476,7 +476,7 @@ $$totalBlobGas  \equiv  (G_{gasPerBlob = 2^{17}} \times length(T_{blobVersionedH
 The Blob Gas Price is determined through a formula that adjusts based on the excess blob gas generated in the network. The formula is as follows:
 
 $$
-blobGasPrice  \\  \approx  \\ 
+blobGasPrice  \\  \approx  \\
 factor_{minBlobBaseFee = 1} \times e^{numerator_{excessBlobGas} / denominator_{blobGaspriceUpdateFraction = 3338477}}
 $$
 
