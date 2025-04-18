@@ -5,6 +5,7 @@ This lecture dives into data structures of the Execution layer, the Merkle Patri
 Watch the lecture on [Youtube](https://youtu.be/EY_pVZTXS1w). [Slides are available here](https://docs.google.com/presentation/d/1YJbrZpgxjTHy7QlgXFRG5OjSK-G5uPrExBPu3Hiefvk/edit?usp=sharing).
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/EY_pVZTXS1w" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
 ## Pre-reading
 
 Before starting with the Day 23 content, make yourself familiar with resources in previous weeks, especially day 3 on EL and day 7 on EL client architecture.
