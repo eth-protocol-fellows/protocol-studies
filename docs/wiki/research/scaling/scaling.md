@@ -67,7 +67,8 @@ Both solutions have their own advantages, drawbacks, and unique tech stacks. How
   - Onchain contracts: These control the various rollups and may include smart contracts that track user deposits, monitor state updates, and more.
   - Offchain virtual machines (VMs): Usually a modified EVM-compatible chain that executes transactions.
 
-Ethereum acts as both a data availability (DA) layer and a settlement layer, meaning that Layer 2s inherit the security of Layer 1. Once a rollup transaction is committed to Ethereum’s base layer, it cannot be rolled back.
+Ethereum acts as both a data availability (DA) layer and a settlement layer, meaning that Layer 2s inherit the security of Layer 1. Once a rollup transaction is committed to Ethereum’s base layer, it cannot be rolled back.  
+Historically, rollups posted their transaction data in the `calldata` section of Ethereum transactions, but this led to excessive growth in historical node storage. EIP-4844 (proto-danksharding) introduces a new mechanism that allows rollups to submit data in blobs — a separate, more efficient data space — along with a separate gas model for blob usage and minor changes to how consensus nodes process this data. You can learn more about blobs, danksharding, and EIP-4844 in the [following section](https://epf.wiki/#/wiki/research/scaling/core-changes/eip-4844).
 
 ### Optimistic Rollups
 
