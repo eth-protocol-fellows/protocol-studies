@@ -177,19 +177,6 @@ _Gossipsub Optimization_
 </figcaption>
 </figure>
 
-### Hole Punching
-
-A Relay B
-|--Connect------->| |
-|----------------------------->Connect-|
-|<----------------------------Response-|
-|<------Response--| |
-|--Sync---------->| |
-|----------------------------->Sync----|
-|---(wait T/2)------------------------>|
-|----------------<-------------Direct--|
-|<------------Direct------------------>|
-
 ###### **Gossipsub : TODO**
 
 ###### **Req/Resp : TODO**
