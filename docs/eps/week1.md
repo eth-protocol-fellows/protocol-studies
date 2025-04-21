@@ -65,7 +65,7 @@ Ethereum network leverage decentralization to become permissionless, credible ne
 
 The current research and development is summarized by the [roadmap](https://twitter.com/VitalikButerin/status/1741190491578810445/photo/1) overview, however cannot be fully accurate. There is no single path for Ethereum R&D, the [roadmap](https://ethroadmap.com/) only sums up its current landscape. The core ecosystem is an always growing [infinite garden](https://ethereum.foundation/infinitegarden). However, with more and more progress, Ethereum might slowly approach its ossification. 
 
-> Simplified overview of the current Ethereum design can be found documentation on [node architecture](https://ethereum.org/developers/docs/nodes-and-clients/node-architecture) and in the week 1 presentation
+> Simplified overview of the current Ethereum design can be found documentation on [node architecture](https://ethereum.org/en/developers/docs/nodes-and-clients/node-architecture) and in the week 1 presentation
 
 As hinted above, the main high level components of Ethereum are execution and consensus layer. These are 2 networks which are connected and dependent on each other. Execution layer provides the execution engine, handles user transaction and all state (address, contract data) while consensus implements the proof-of-stake mechanism ensuring security and [fault tolerance](https://inevitableeth.com/home/concepts/bft).
 
@@ -75,7 +75,7 @@ Everything mentioned above - the ideas, design and specifications comes down to 
 
 Since Ethereum is formally specified, it can be implemented in different ways in any language. This results in a variety of implementations throughout the years with some already deprecated and some just being developed. The current list of production ready implementations can be found in the [docs on Nodes and clients](https://ethereum.org/en/developers/docs/nodes-and-clients#execution-clients) and week 1 presentation. 
 
-> This strategy is called [client diversity](https://ethereum.org/developers/docs/nodes-and-clients/client-diversity). Ethereum does not rely on a single 'official' implementation but users can choose any client and be sure it does the job. If an issue occurs within a single client implementation, it doesn't affect the rest of the network. 
+> This strategy is called [client diversity](https://ethereum.org/en/developers/docs/nodes-and-clients/client-diversity). Ethereum does not rely on a single 'official' implementation but users can choose any client and be sure it does the job. If an issue occurs within a single client implementation, it doesn't affect the rest of the network. 
 
 ### Testing
 

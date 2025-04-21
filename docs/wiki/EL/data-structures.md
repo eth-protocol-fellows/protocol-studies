@@ -236,7 +236,7 @@ The transition to new verkle tree database poses a major challenge. To securely 
 
 ## Resources
 
-- [More on Merkle Patricia Trie](https://ethereum.org/developers/docs/data-structures-and-encoding/patricia-merkle-trie)
+- [More on Merkle Patricia Trie](https://ethereum.org/en/developers/docs/data-structures-and-encoding/patricia-merkle-trie)
 - [More on Verkle Tree](https://notes.ethereum.org/@vbuterin/verkle_tree_eip#Simple-Summary)
 - [Verge transition](https://notes.ethereum.org/@parithosh/verkle-transition)
 - [Implementing Merkle Tree and Patricia Trie](https://medium.com/coinmonks/implementing-merkle-tree-and-patricia-trie-b8badd6d9591) • [archived](https://web.archive.org/web/20210118071101/https://medium.com/coinmonks/implementing-merkle-tree-and-patricia-trie-b8badd6d9591)
@@ -248,7 +248,7 @@ The transition to new verkle tree database poses a major challenge. To securely 
 - [Ethereum Data Structures](https://arxiv.org/pdf/2108.05513/1000) • [archived](https://web.archive.org/web/20240430050355/https://arxiv.org/pdf/2108.05513/1000)
 - [DevP2P Wire Protocol](https://github.com/ethereum/devp2p/blob/master/caps/eth.md)  • [archived](https://web.archive.org/web/20250328095848/https://github.com/ethereum/devp2p/blob/master/caps/eth.md)
 - [Snap Sync](https://geth.ethereum.org/docs/fundamentals/sync-modes) • [archived](https://web.archive.org/web/20250228111146/https://geth.ethereum.org/docs/fundamentals/sync-modes)
-- [More on Merkle Patricia Trie](https://ethereum.org/developers/docs/data-structures-and-encoding/patricia-merkle-trie)
+- [More on Merkle Patricia Trie](https://ethereum.org/en/developers/docs/data-structures-and-encoding/patricia-merkle-trie)
 - [Ethereum Yellow Paper](https://ethereum.github.io/yellowpaper/paper.pdf) • [archived](https://web.archive.org/web/20250228142704/https://ethereum.github.io/yellowpaper/paper.pdf)
 - [State Trie Keys](https://medium.com/codechain/secure-tree-why-state-tries-key-is-256-bits-1276beb68485#:~:text=This%20is%20because%20when%20Ethereum,the%20secure%20tree%20in%20Ethereum) • [archived](https://web.archive.org/web/20230524084537/https://medium.com/codechain/secure-tree-why-state-tries-key-is-256-bits-1276beb68485)
 
