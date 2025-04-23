@@ -2,7 +2,7 @@
 
 The Consensus clients use [libp2p][libp2p-docs] as the peer-to-peer protocol, [libp2p-noise][libp2p-noise] for encryption, [discv5][discv5] for peer discovery, [SSZ][ssz] for encoding, and, optionally, [Snappy][snappy] for compression.
 
-For those looking to deepen their understanding of libp2p, Study Group Session Week-5, [Lecture 19]("https://epf.wiki/#/eps/day19") by Dapplion is a great resource.
+For those looking to deepen their understanding of libp2p, Study Group Session Week-5, [Lecture 19](https://epf.wiki/#/eps/day19) by Dapplion is a great resource.
 
 ## Specs
 
@@ -10,7 +10,7 @@ The [Phase 0 -- Networking][consensus-networking] page specifies the network fun
 
 ## libp2p - P2P protocol
 
-[libp2p][libp2p-docs] is the protocol used for peer to peer communication. It was orginally developed for IPFS. [libp2p and Ethereum][libp2p-and-eth] is a great article for a deep-dive on the history of libp2p, and its adoption in the Consensus clients. It allows communication over multiple transport protocols like TCP, QUIC, WebRTC, etc.
+[libp2p][libp2p-docs] is a protocol for peer-to-peer communication, orginally developed for [IPFS](https://ipfs.io). [libp2p and Ethereum][libp2p-and-eth] is a great article for a deep-dive on the history of libp2p, and its adoption in the Consensus layer. It allows communication over multiple transport protocols like TCP, QUIC, WebRTC, etc.
 
 <figure class="diagram" style="text-align:center">
 
@@ -199,6 +199,10 @@ Its core components are:
 2. **Sequence Number** (seq): A 64-bit unsigned integer that increments whenever the record is updated, allowing peers to determine the latest version.
 3. **Key/Value Pairs**: The record holds various connectivity details as key-value pairs.
 
+In its text form, the RLP of ENR is encoded in base64 and can be shared across clients as a string, e.g.:
+`
+enr:-Jq4QOXd31zNJBTBAT0ZZIRWH4z_NmRhnmAFfwNan0zr_-IUUAsOTbU_Lhzh4BSq8UknFGvr1rXQUYK0P-_ZUVenXkABhGV0aDKQaGGQMVAAEBv__________4JpZIJ2NIJpcIRBbZouiXNlY3AyNTZrMaEDxEArICqVUZNxhUxBYHZjzsm4KxqraeSION3yYorLZSuDdWRwgiMp
+`
 ## discv5
 
 Discovery Version 5 [(discv5)][discv5] (Protocol version v5.1) runs on UDP and meant for peer discovery only. It enables nodes to exchange and update ENRs dynamically, ensuring up-to-date peer discovery. It runs in parallel with libp2p.
