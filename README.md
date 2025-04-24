@@ -15,9 +15,11 @@ You can visit the wiki at https://epf.wiki or head to `/docs` for the source.
 ### Wiki maintainers
 
 #### General maintainers 
-@taxmeifyoucan, @joshdavislight, @raxhvl, @siddharthV1
+@taxmeifyoucan, @joshdavislight, @raxhvl, @shane-moore
 
 #### EL
+
+@siddharthV1 
 
 #### CL
 
@@ -25,4 +27,8 @@ You can visit the wiki at https://epf.wiki or head to `/docs` for the source.
 
 #### Research 
 
-#### Meta, website
+@gorondan
+
+#### Meta, website, CI
+
+
