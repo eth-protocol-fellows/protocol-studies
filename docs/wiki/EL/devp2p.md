@@ -152,7 +152,7 @@ There are two additional formats able to be understand by an Ethereum node: mult
 
 ### RLPx protocol (Transport)
 
-So far, this article has been refering to the discovering protocol only, but what about the secure information exchange process? Well, RLPx is the TCP-based transport protocol that enables secure peer-to-peer communication in the EL. It handles connection establishment, and message exchange between Ethereum nodes. The name comes from the RLP serialization format.
+So far, this article has been refering to the discovering protocol only, but what about the secure information exchange process? Well, RLPx is the TCP-based transport protocol that enables secure peer-to-peer communication in the EL. It handles connection establishment, and message exchange between Ethereum nodes. The name comes from the [RLP serialization format](../EL/RLP.md).
 
 Before deep diving on the protocol, here it is a summary followed by a digram:
 
@@ -165,10 +165,14 @@ Before deep diving on the protocol, here it is a summary followed by a digram:
 
 #### Secure connection establishment
 
-Once the peers are discovered, RLPx establishes a secure connection between them by authenticating them through cryptographic-based handshake.
-This process begins with an authentication initiation where the initiator node generates an ephemeral key pair using the secp256k1 elliptic curve. This ephemeral key plays a crucial role in establishing perfect forward secrecy for the session.
+Once the nodes are discovered, RLPx establishes a secure connection between them by authenticating each other through cryptographic-based handshake.
+This process begins by initating an authentication where the initiator node generates an ephemeral key pair using the secp256k1 elliptic curve. This ephemeral key plays a crucial role in establishing perfect forward secrecy for the session. Then the initiator sends an authentication message including the ephemeral public key and a nonce to the recepient, which accepts the connection, decrypts and verify the auth message with the public key exchanged during the communication.
+
+The recipient sends an acknowledge message back to the initiator, and then sends a first encrypted frame containing a [Hello message](https://github.com/ethereum/devp2p/blob/master/rlpx.md#hello-0x00) which includes the port, their IDs and their client's IDs, and the protocol information. Once the nodes have authenticaded each other, they can start with the communication.
 
 #### Session and multiplexing
+
+Once the authentication is proven they can interact  
 
 #### Messaging framing
 
@@ -177,6 +181,7 @@ This process begins with an authentication initiation where the initiator node g
 * [Ethereum devp2p GitHub](https://github.com/ethereum/devp2p)
 * [Ethereum networking layer](https://ethereum.org/en/developers/docs/networking-layer/)
 * [Ethereum Addresses](https://ethereum.org/en/developers/docs/networking-layer/network-addresses/)
+* Alchemy (2022). [How are Ethereum transactions propagated (broadcast)?](https://www.alchemy.com/overviews/transaction-propagation)
 * Andrew S. Tanenbaum, Nick Feamster, David J. Wetherall (2021). *Computer Networks*. 6th edition. Pearson. London.
 * Clause E. Shannon (1948). "A Mathematical Theory of Communication". *Bell System Technical Journal*. Vol. 27.
 * Jim Kurose and Keith Ross (2020). *Computer Networking: A Top-Down Approach*. 8th edition. Pearson.
