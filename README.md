@@ -11,3 +11,18 @@ You can visit the wiki at https://epf.wiki or head to `/docs` for the source.
 [Join us](https://discord.com/invite/addwpQbhpq) to learn about the protocol and start [contributing](/docs/contributing.md).
 
 ![](/docs/images/epfsg_hero.jpg)
+
+### Wiki maintainers
+
+#### General maintainers 
+@taxmeifyoucan, @joshdavislight, @raxhvl, @siddharthV1
+
+#### EL
+
+#### CL
+
+#### Testing and tooling 
+
+#### Research 
+
+#### Meta, website
