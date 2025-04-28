@@ -83,16 +83,37 @@ Upgrades related to censorship resistance, decentralization and mitigating proto
                                               
 ### The Verge
 Upgrades related to verifying blocks more easily
+Succinct proofs for light-client security and state verification.
 
-| Upgrade | Track | Topic | Description | Expected effect | State of the art |
-| :------ | :---: | :---: | :---------: | :-------------: | :--------------- |
-|         |       |       |             |                 |                  |
+| Upgrade                          | Track           | Topic                    | Description                                                              | Expected effect                                       | State of the art           |
+|:--------------------------------:|:---------------:|:------------------------:|:------------------------------------------------------------------------:|:-----------------------------------------------------:|:--------------------------:|
+| Data Availability Sampling (DAS)| Full rollup     | Blob data verification   | Probabilistic blob sampling for light clients without full downloads.     | Secures L2 DA & light clients with minimal overhead.  | in research / EIP-7594 ([eips.ethereum.org](https://eips.ethereum.org/EIPS/eip-7594?utm_source=chatgpt.com))         |
+| Verkle Tree Commitments          | Statelessness   | Verifiable trie proofs   | Replace Merkle proofs with vector commitments for O(1)-sized proofs.      | Dramatically smaller proofs; leaner light clients.     | draft / EIP-7736 ([eips.ethereum.org](https://eips.ethereum.org/EIPS/eip-7736?utm_source=chatgpt.com))              |
 
-### The Purge
-Upgrades related to reducing the computational costs of running nodes and simplifying the protocol
+### The Purge  
 
-### The Splurge
-Other upgrades that don't fit well into the previous categories.
+Targets protocol and data bloat by pruning historical and inactive state.  
+
+Vitalik’s “Possible Futures” Part 5: “The Purge” stresses history and state expiry to balance permanence with efficiency  ([Possible futures of the Ethereum protocol, part 5: The Purge](https://vitalik.eth.limo/general/2024/10/26/futures5.html?utm_source=chatgpt.com)).  
+
+| Upgrade                          | Topic                  | Description                                                                                                                 | Expected effect                                 | State of the art                                                      |
+|:---------------------------------|:-----------------------:|:---------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------:|:--------------------------------------------------------------------:|
+| History Expiry (EIP-4444)        | Prune old blocks        | Clients prune execution-layer blocks and receipts older than ~1 year, bounding disk usage.                                  | Lowers storage requirements for full nodes.     | draft / EIP-4444[^2search0]                                           |
+| State Expiry (EIP-7736)          | Verkle-based expiry     | Remove inactive Verkle leaves not accessed for a defined period; resurrect via proofs when needed.                         | Shrinks active state size to ~20–50 GB.         | draft / EIP-7736[^3search0]                                            |
+
+---
+
+### The Splurge  
+
+Encompasses additional features that, while non-urgent, greatly improve usability, security, and long-term resilience.  
+
+| Upgrade                             | Category               | Description                                                                                                                   | Expected effect                                   | State of the art                                                                        |
+|:------------------------------------|:----------------------:|:-----------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------:|:---------------------------------------------------------------------------------------:|
+| Account Abstraction (EIP-4337)       | UX / Wallets           | Introduces UserOperation mempool, bundlers, and paymasters for smart-contract wallet txs without consensus changes.           | Enables social recovery, sponsored txs, batched ops. | shipped / EIP-4337[^5search0]                                                             |
+| Quantum-Safe Signatures             | Future-proofing        | Research into hash-based, lattice-based, and STARK-based multi-signature schemes to replace BLS/ECDSA for validator and user signatures. | Protects PoS and user accounts from quantum attacks. | research / hash-based PQS[^6search1], NIST PQC overview[^6search3]                           |
+| Formal Verification Tooling         | Safety / Audits        | Expand toolchain for proving correctness of protocol clients and smart contracts using Coq, SMT, TLA+, Dafny, Isabelle/HOL. | Higher assurance of protocol invariants and client safety. | evolving / [ethereum.org][^7search0], benchmarking tools[^7search1] |
+
+---
 
 ## Resources
 
