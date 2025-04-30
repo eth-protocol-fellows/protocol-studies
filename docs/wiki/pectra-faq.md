@@ -155,22 +155,22 @@ The contract is not written in solidity, nor do they have a typical solidity ABI
 
 The functionality in pseudo code:
 
-```
+```pseudo
 function(bytes input) {
-	if input.length == 0 {
-		return required_fee
-	}
-	if input.length == 96 {
-		if msg.value < required_fee {
-			return error
-		}
-		source := input[0:48]
-		target := input[48:96]
-		store_consolidation(msg.sender, source, target)
-		emit event(msg.sender, source, target)
-		return
-	}
-	return error
+    if input.length == 0 {
+        return required_fee
+    }
+    if input.length == 96 {
+        if msg.value < required_fee {
+            return error
+        }
+        source := input[0:48]
+        target := input[48:96]
+        store_consolidation(msg.sender, source, target)
+        emit event(msg.sender, source, target)
+        return
+     }
+     return error
 }
 ```
 
@@ -200,22 +200,23 @@ The EIP-7002 contract is deployed here 0x00000961Ef480Eb55e80D19ad83579A64c00700
 The withdrawals are put in a queue and at maxmium 16 are dequeued per block.
 The contract is not written in solidity, nor do they have a typical solidity ABI in order to not enshrine the API.
 The functionality of the withdrawal contract in pseudo code:
-```
+
+```pseudo
 function(bytes input) {
-	if input.length == 0 {
-		return required_fee
-	}
-	if input.length == 56 {
-		if msg.value < required_fee {
-			return error
-		}
-		pk := input[0:48]
-		amount := input[48:56]
-		store_withdrawal(msg.sender, pk, amount)
-		emit event(msg.sender, pk, amount)
-		return
-	}
-	return error
+    if input.length == 0 {
+        return required_fee
+    }
+    if input.length == 56 {
+        if msg.value < required_fee {
+            return error
+        }
+        pk := input[0:48]
+        amount := input[48:56]
+        store_withdrawal(msg.sender, pk, amount)
+        emit event(msg.sender, pk, amount)
+        return
+    }
+    return error
 }
 ```
 
