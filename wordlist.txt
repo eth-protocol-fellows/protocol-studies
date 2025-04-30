@@ -247,6 +247,7 @@ eK
 EL
 Elmore
 ELs
+EL's
 emptyset
 Encodings
 Endian
