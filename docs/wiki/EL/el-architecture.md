@@ -180,13 +180,13 @@ All execution clients require an up‑to-date world state to validate and build 
 Let's look at how the flows of both **full sync** and **snap sync** work.
 
 ### Full Sync
-Full Sync trades absolute trustlessness for time and resources. You replay every block and transaction from genesis to tip, rebuilding the state trie step by step:
+Full Sync trades absolute trustlessness for time and resources. The client replays every block and transaction from genesis to tip, rebuilding the state trie step by step:
 1. Use `GetBlockHeaders` over the `eth/*` protocol to download every block header since genesis.
 2. Use `GetBlockBodies` to retrieve every block’s transactions and uncles.
 3. Sequentially execute each transaction in EVM order, updating the local trie at each block.
 4. Confirm that the local state trie’s root matches the tip’s root. Every state transition has been verified.
 
-This method guarantees maximal security but can take days on mainnet and consumes significant CPU, disk, and network resources.
+This method guarantees maximal security but can take days on mainnet and consumes significant CPU, disk, and network resources.  Full sync is a naive default strategy because it starts from genesis and takes longer over time as block height continually grows.  Additionally, full sync from genesis will no longer be supported after [EIP-4444](https://eips.ethereum.org/EIPS/eip-4444) is fully implemented. Syncing after EIP-4444 will be **checkpoint syncs** instead, meaning that syncing will start from a weak subjectivity checkpoint instead of from genesis.
 
 ### Snap Sync
 Snap Sync reconstructs the pivot block's state by fetching only the trie leaves (accounts and storage slots) plus Merkle proofs, then separately downloading any needed contract bytecode, and finally rebuilding the tries locally:
@@ -197,15 +197,17 @@ Snap Sync reconstructs the pivot block's state by fetching only the trie leaves 
    - **Accounts**: uses `GetAccountRange` to pull contiguous world state trie leaf values.
    - **Storage**: uses `GetStorageRanges` to pull consecutive storage slot leaf nodes for each account.
 5. Send `GetByteCodes` for every code hash found in the account bodies to get back the contract code for that account
-6. Locally insert every fetched leaf into a fresh trie, verifying each batch against the pivot root via Merkle proofs.
+6. Locally insert every fetched leaf into a fresh snapshot DB, verifying each batch against the pivot block’s stateRoot via Merkle range proofs.
+> Note: In practice, clients store these fetched leaves in a snapshot-specific database format, which differs from the Merkle trie used during normal execution. This format is optimized for range queries and quick reconstruction. The full MPT structure is created and validated during the healing phase.
 
-After step 6, we have a snapshot of the pivot block's state. However, the blockchain is also progressing at the same time and invalidating some of the regenerated state data. This means it is also necessary to have a healing phase where errors in the state are fixed.  During healing, the client walks the reconstructed trie and verifies that it hashes to the pivot block’s stateRoot. Any missing or inconsistent trie nodes or bytecode blobs are fetched using targeted snap requests. Healing ensures the final state is complete and cryptographically valid, even if parts of the snapshot were stale, incomplete, or assembled from mixed sources.  
+### Healing Phase
+After step 6, we have a snapshot of the pivot block’s state stored in a flat snapshot database. However, since the chain continues to progress, data can be stale, incomplete, or inconsistent. Therefore, a healing phase is required.  During healing, the client walks the snapshot DB and verifies that the state data is complete and consistent with the pivot block’s stateRoot. Any missing trie nodes, storage slots, or contract bytecode are fetched using targeted snap requests. Healing ensures that the final state is complete, consistent, and can be fully reconstructed into a valid MPT.
 
 At this point, we have a snapshot of the pivot block's state, so we apply the transactions of blocks following the pivot on the downloaded state to get to the tip of the chain.
 
 Snap Sync reduces mainnet bootstrap times from days to hours. Its trade‑off is that it's hardware intensive for the healing phase to be able to outpace trie changes from new blocks being produced.
 
-Both **full sync* and **snap sync** finishes when blockchain data is verified and clients catches up with the tip of the chain which enables building the latest state. 
+Both **full sync** and **snap sync** finishes when blockchain data is verified and clients catches up with the tip of the chain which enables building the latest state. 
 
 ##### Payload building
 
@@ -324,3 +326,4 @@ Read more about its [features](https://github.com/erthink/libmdbx#features). Add
 - ["Snapping Snap Sync: Practical Attacks on Go Ethereum Synchronising Nodes" (ETH Zurich)](https://appliedcrypto.ethz.ch/content/dam/ethz/special-interest/infk/inst-infsec/appliedcrypto/research/TavernaPaterson-SnappingSnapSync.pdf)
 - [Geth Docs – Sync Modes](https://geth.ethereum.org/docs/fundamentals/sync-modes?utm_source=chatgpt.com) • [archived](https://web.archive.org/web/20240505050000/https://geth.ethereum.org/docs/fundamentals/sync-modes)
 - [YouTube – "How to Sync an Ethereum Node with Snap Sync"](https://www.youtube.com/watch?v=fk50UbUgkMM)
+- [Ethereum.org – Execution Layer Sync Modes](https://ethereum.org/en/developers/docs/nodes-and-clients/#execution-layer-sync-modes) • [archived](https://web.archive.org/web/20240507022042/https://ethereum.org/en/developers/docs/nodes-and-clients/#execution-layer-sync-modes)
