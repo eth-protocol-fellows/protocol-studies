@@ -83,18 +83,20 @@ Here are basic examples of debug methods:
 
 #### Engine
 
-[Engine API](https://hackmd.io/@danielrachi/engine_api) is different from aforementioned methods. Clients serve Engine API on a different and authenticated endpoint rather than normal http JSON RPC because it is not a user facing API. It's intended for connection between consensus and execution client, making it basically an internal node communication process. 
-Inter-client communication exchanging information about consensus, forkchoice, validation of blocks, etc: 
+[Engine API](https://hackmd.io/@danielrachi/engine_api) is different from the aforementioned general Ethereum JSON‑RPC methods. Execution clients serve the Engine API on a separate, authenticated endpoint rather than on the normal HTTP JSON‑RPC port because it is not a user-facing API. Its sole purpose is to facilitate inter-client communication exchanging information about consensus, fork choice, and block validation between the consensus and execution clients.
 
+Inter-client communication operates over a JSON‑RPC interface over HTTP and is secured using a JSON Web Token (JWT). The JWT authenticates the sender as a valid consensus layer client, although it does not provide traffic encryption. Furthermore, the Engine JSON‑RPC endpoint is only accessible by the consensus layer, ensuring that malicious external parties cannot interact with it.
+
+The following table lists core Engine API methods and provides a brief description of their purpose and the parameters they accept:
 | **Method**                               |               **Params**               | **Description**                                                           |
 |------------------------------------------|:--------------------------------------:|---------------------------------------------------------------------------|
-| engine_exchangeTransitionConfigurationV1 |        Consensus client config         | exchanges client configuration                                            |
-| engine_forkchoiceUpdatedV1*              |  forkchoice_state, payload attributes  | updates the forkchoice state                                              |
-| engine_getPayloadBodiesByHashV1*         |           block_hash (array)           | given block hashes returns bodies of the corresponding execution payloads |
-| engine_getPayloadV1*                     |  forkchoice_state, payload attributes  | obtains execution payload from payload build process                      |
-| debug_newPayloadV1*                      |                tx_hash                 | returns execution payload validation                                      |
+| engine_exchangeTransitionConfigurationV1 |        Consensus client config         | Exchanges configuration details between CL and EL                                            |
+| engine_forkchoiceUpdatedV1*              |  forkchoice_state, payload attributes  | Updates the forkchoice state and optionally initiates payload building                                            |
+| engine_getPayloadBodiesByHashV1*         |           block_hash (array)           | Given block hashes, returns the corresponding execution payload bodies |
+| engine_getPayloadV1*                     |  forkchoice_state, payload attributes  | Obtains an execution payload that has been built by the EL                      |
+| debug_newPayloadV1*                      |                tx_hash                 | Returns execution payload validation details for debugging purposes                                      |
 
-Those methods marked with an asterisk (*) have more than one version. The [Ethereum JSON-RPC specification](https://ethereum.github.io/execution-apis/api-documentation/) provides a detailed description.
+Those methods marked with an asterisk (*) have more than one version to support network upgrades and evolving protocol features. The [Ethereum JSON-RPC specification](https://ethereum.github.io/execution-apis/api-documentation/) provides detailed documentation on these methods.
 
 ## Encoding
 
@@ -180,3 +182,4 @@ Usually, all the web3 libraries wrap the JSON-RPC methods providing a more frien
 * [JSON-RPC | Infura docs](https://docs.infura.io/api/networks/ethereum/json-rpc-methods)
 * [reth book | JSON-RPC](https://paradigmxyz.github.io/reth/jsonrpc/intro.html)
 * [OpenRPC](https://open-rpc.org/getting-started)
+* [Engine API | Mikhail | Lecture 21](https://youtu.be/fR7LBXAMH7g)
