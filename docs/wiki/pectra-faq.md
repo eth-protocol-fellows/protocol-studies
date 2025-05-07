@@ -148,7 +148,7 @@ The consolidation request will be deemed invalid and will not be processed. It w
 The consolidation will fail as the validators must be active on the beacon chain at the time of consolidation execution.
 
 #### **Q:** Whats the ABI of the consolidation system contract?
-The EIP-7251 consolidations contract is deployed here 0x0000BBdDc7CE488642fb579F8B00f3a590007251, source here: https://github.com/ethereum/sys-asm/blob/main/src/consolidations/main.eas. 
+The EIP-7251 consolidations contract is deployed here `0x0000BBdDc7CE488642fb579F8B00f3a590007251`, source here: https://github.com/ethereum/sys-asm/blob/main/src/consolidations/main.eas. 
 The consolidations are put in a queue and dequeued at a rate of 2 per block.
 The contract is not written in solidity, nor do they have a typical solidity ABI in order to not enshrine the API.
 
