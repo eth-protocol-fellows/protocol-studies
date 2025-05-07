@@ -250,7 +250,7 @@ There are two additional formats able to be understand by an Ethereum node: mult
 
 ### RLPx protocol (Transport)
 
-So far, this article has been refering to the discovering protocol only, but what about the secure information exchange process? Well, RLPx is the TCP-based transport protocol that enables secure peer-to-peer communication in the EL. It handles connection establishment, and message exchange between Ethereum nodes. The name comes from the [RLP serialization format](../EL/RLP.md).
+So far, this article has been referring to the discovering protocol only, but what about the secure information exchange process? Well, RLPx is the TCP-based transport protocol that enables secure peer-to-peer communication in the EL. It handles connection establishment, and message exchange between Ethereum nodes. The name comes from the [RLP serialization format](../EL/RLP.md).
 
 Before deep diving on the protocol, here it is a summary followed by a digram:
 
@@ -264,9 +264,9 @@ Before deep diving on the protocol, here it is a summary followed by a digram:
 #### Secure connection establishment
 
 Once the nodes are discovered, RLPx establishes a secure connection between them by authenticating each other through cryptographic-based handshake.
-This process begins by initating an authentication where the initiator node generates an ephemeral key pair using the secp256k1 elliptic curve. This ephemeral key plays a crucial role in establishing perfect forward secrecy for the session. Then the initiator sends an authentication message including the ephemeral public key and a nonce to the recepient, which accepts the connection, decrypts and verify the auth message with the public key exchanged during the communication.
+This process begins by initating an authentication where the initiator node generates an ephemeral key pair using the secp256k1 elliptic curve. This ephemeral key plays a crucial role in establishing perfect forward secrecy for the session. Then the initiator sends an authentication message including the ephemeral public key and a nonce to the recipient, which accepts the connection, decrypts and verify the auth message with the public key exchanged during the communication.
 
-The recipient sends an acknowledge message back to the initiator, and then sends a first encrypted frame containing a [Hello message](https://github.com/ethereum/devp2p/blob/master/rlpx.md#hello-0x00) which includes the port, their IDs and their client's IDs, and the protocol information. Once the nodes have authenticaded each other, they can start with the communication.
+The recipient sends an acknowledge message back to the initiator, and then sends a first encrypted frame containing a [Hello message](https://github.com/ethereum/devp2p/blob/master/rlpx.md#hello-0x00) which includes the port, their IDs and their client's IDs, and the protocol information. Once the nodes have authenticated each other, they can start with the communication.
 
 #### Session and multiplexing
 Once the authentication is proven they can interact by creating a secure session first through the following process:
@@ -279,7 +279,7 @@ Once the authentication is proven they can interact by creating a secure session
 
 ##### Encryption Process
 
-1. **Initiator generates a random ephemeral keypair**.
+1. **Initiator generates a random ephemeral key pair**.
 2. Computes **shared secret** using **Elliptic Curve Diffie-Hellman (ECDH)**.
 3. Derives encryption (`kE`) and MAC (`kM`) keys from the **shared secret**.
 4. Encrypts the message using **AES-128-CTR**.
@@ -296,7 +296,7 @@ Once the authentication is proven they can interact by creating a secure session
 
 ##### Node Identity
 
-- **Ethereum nodes maintain a persistent secp256k1 keypair** for identity.
+- **Ethereum nodes maintain a persistent secp256k1 key pair** for identity.
 - The **public key** serves as the **Node ID**.
 - The **private key is stored securely** and remains unchanged across sessions.
 
@@ -321,7 +321,7 @@ If an attacker compromises a node’s private key, past and future communication
 
 ###### Ephemeral-Key (Forward Secrecy)
 
-- A temporary keypair generated for each handshake, used to derive a fresh session secret.
+- A temporary key pair generated for each handshake, used to derive a fresh session secret.
 - Computed using ECDH between ephemeral private keys exchanged during the handshake.
 
 Since ephemeral keys are discarded after a session ends, even if an attacker later obtains a node’s long-term private key, past communications remain secure. This property is known as forward secrecy

@@ -12,6 +12,7 @@ ACD
 ACL
 addons
 Aditional
+AES
 aggregative
 Akula
 Aleth
@@ -234,6 +235,7 @@ EAL
 EB
 ECADD
 ECC
+ECDH
 ECDSA
 ECDSA's
 ECMUL
@@ -356,6 +358,7 @@ getPayloadV
 getters
 ghost
 Gilles
+GCM
 Goerli
 Golang
 Goldwasser
@@ -672,6 +675,7 @@ RANDAO
 Rareskills
 RB
 rceil
+reachability
 README
 reciept
 referrerpolicy
@@ -874,6 +878,7 @@ WebRTC
 Whistleblower
 Wetherall
 Whitepaper
+WHOAREYOU
 WIP
 withdrawable
 withdrawalHash
@@ -978,3 +983,12 @@ Wireshark
 SigP
 opcode's
 Karim
+TalkReq
+Plaintext
+digram
+initating
+decrypts
+ECIES
+KDF
+HMAC
+decrypted
