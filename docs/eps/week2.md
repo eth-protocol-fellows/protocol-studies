@@ -17,7 +17,7 @@ For archive of the discussion during the talk, check [this thread](https://disco
 Before starting with week 2 content, make yourself familiar with resources in [week 1](/eps/week1.md). 
 
 Additionally, you should read through the following documents to prepare for the presentation:
-* [Nodes and clients](https://ethereum.org/developers/docs/nodes-and-clients)
+* [Nodes and clients](https://ethereum.org/en/developers/docs/nodes-and-clients)
 * [Ethereum: mechanics](https://cs251.stanford.edu/lectures/lecture7.pdf) (a lecture based on these slides is also available on YouTube: [An Overview of the Ethereum Execution Layer - Dan Boneh](https://www.youtube.com/watch?v=7sxBjSfmROc))
 
 ## Outline

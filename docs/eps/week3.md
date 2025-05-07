@@ -15,7 +15,7 @@ For archive of the discussion during the talk, check [this thread](https://disco
 Before starting with the week 3 content, make yourself familiar with resources in [week 2](/eps/week2.md). 
 
 Additionally, you can read and get ready by studying the following resources:
-- [Ethereum.org docs on Proof-of-stake](https://ethereum.org/developers/docs/consensus-mechanisms/pos) and its subtopics
+- [Ethereum.org docs on Proof-of-stake](https://ethereum.org/en/developers/docs/consensus-mechanisms/pos) and its subtopics
 - [Beacon Chain explainer](https://ethos.dev/beacon-chain)
 - [PoS and Solar Punk Future, Danny Ryan 2022](https://www.youtube.com/watch?v=8N10a1EBhBc), a talk before the Merge, great insight into the Merge and Beacon Chain development and testing
 
