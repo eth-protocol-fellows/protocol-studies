@@ -38,7 +38,7 @@ It is faster than TCP because it does not have to establish a connection before 
 As a peer-to-peer network Ethereum implies a series of rules to enable communication between its participant nodes. This section cover an explanation of which are those rules and how they are implemented in the EL.
 Considering each Ethereum node is built upon two different components: the execution client and the consensus client, each one of them has its own peer-to-peer network with its own purpose.
 The execution client is responsible for gossiping transactions, while the consensus client is responsible for gossiping the blocks.
-
+>  There are historical reasons for different CL/EL p2p networks and their underlying technologies. Ethereum was originally built on devp2p as its own custom networking stack. By the time Beacon Chain was created, libp2p was ready for production and adopted there.
 Keeping this in mind, the scope of the EL network covers two different stacks working in parallel: the discovery one, and the information transport itself. 
 The discovery stack is responsible for finding the node peers, while the transport stack is responsible for sending and receiving messages between them.
 Taking the computer networks background into account, then we can infer that the discovery stack relies on the UDP protocol, while the information exchange stack relies on the TCP protocol.
