@@ -285,6 +285,7 @@ ethash
 Ethash
 ETHCC
 Ethereum
+Ethereumjs
 Ethereum's
 Ethernodes
 ethers
