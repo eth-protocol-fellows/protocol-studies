@@ -82,13 +82,20 @@ packet-data = [request-hash, ENR]
 Where ENR is the Ethereum Node Record, a standard format for connectivity for nodes. Which it is explained below.
 
 ---
-Currently, the execution clients are using the [Discv4 protocol](https://github.com/ethereum/devp2p/blob/master/discv4.md) for the discovery process, although it is planned to be migrated to [Discv5](https://github.com/ethereum/devp2p/blob/master/discv5/discv5.md) in the future. 
+
+
 This Kademlia-like protocol includes the routing table, which keeps information about other nodes in the neighbourhood consisting of *k-buckets* (where *k* is the number of nodes in the bucket, currently defined as 16).
 Worth mentioning that all the table entries are sorted by *last seen/least-recently seen* at the head, and most-recently seen at the tail.
 If one of the entities has not been responded to in 12 hours, it is removed from the table, and the next encounter node is added to the tail of the list.
 
 
 #### Discovery Protocols (Discv4 & Discv5)
+Currently, most execution clients have adopted the [Discv5 protocol](https://github.com/ethereum/devp2p/blob/master/discv5/discv5.md) for the discovery process, while some are still transitioning from [Discv4](https://github.com/ethereum/devp2p/blob/master/discv4.md). Below is a table categorizing execution clients based on their Discv5 support status (as of May 2025).
+
+| **Category**       | **Execution Clients**                     |
+|---------------------|-------------------------------------------|
+| **Supports Discv5** | [Geth](https://github.com/search?q=repo%3Aethereum%2Fgo-ethereum%20discv5&type=code), [Nethermind](https://github.com/search?q=repo%3ANethermindEth%2Fnethermind+discv5&type=issues), [Reth](https://github.com/search?q=repo%3Aparadigmxyz%2Freth%20discv5&type=code)                    |
+| **Pending Migration** | [Besu](https://github.com/search?q=repo%3Ahyperledger%2Fbesu+discv5&type=issues), [Ethereumjs](https://github.com/ethereumjs/ethereumjs-monorepo/tree/master/packages/devp2p), [Erigon](https://github.com/search?q=repo%3Aerigontech%2Ferigon+discv4&type=code)                    |
 ##### Discv4
 A structured, distributed system that allows Ethereum nodes to discover peers without central coordination.  
 
