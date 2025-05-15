@@ -961,6 +961,76 @@ TODO
 
 TODO
 
+### Gas Accounting Examples
+Up to this point, we've talked about EL post-merge gas mechanics in a variety of scenarios. Let's tie it all together with some examples.
+
+Note: Gas parameters will differ depending upon if the contract was created before [EIP-1559](https://eips.ethereum.org/EIPS/eip-1559) was implemented.
+
+### Example 1:  Simple ETH Transfer
+
+#### Transaction Parameters if EIP-1559 is supported:
+- `gasLimit` – Max gas the transaction is allowed to consume.  
+- `maxFeePerGas` – Max total fee (per gas unit) the sender is willing to pay.  
+- `maxPriorityFeePerGas` – Miner tip (per gas unit) to incentivize inclusion.  
+- `gasPrice` – Ignored if `maxFeePerGas` is set.
+
+#### Transaction Parameters if pre-EIP-1559:
+
+- `gasLimit` – Same meaning.  
+- `gasPrice` – The only fee used and is paid entirely to the miner.  
+
+#### Block Parameters if EIP-1559 is supported:
+- `baseFee` – Protocol determined minimum fee per gas unit that adjusts per block.
+
+#### If pre-EIP-1559:
+- No `baseFee`
+
+At this point, the transaction is ready for processing within a block.  Initially, an upfront amount is reserved, meaning it's deducted from the sender.
+
+#### If EIP-1559:
+- `reserved = gasLimit × maxFeePerGas`
+
+#### If pre-EIP-1559:
+- `reserved = gasLimit × gasPrice`
+
+After initial deductions, the transaction's execution cost is determined and the gas is either burned, awarded to the proposer, or returned to the sender.
+
+#### If EIP-1559 is active:
+- `effectiveGasPrice = baseFee + priorityGasFee`
+- `actualCost = gasUsed × effectiveGasPrice`
+- The `baseFee` portion is burned.
+- The `priorityGasFee` (tip) goes to the block proposer.
+
+### If pre-EIP-1559:
+- `effectiveGasPrice = gasPrice`
+- `actualCost = gasUsed × gasPrice`
+- The entire amount goes to the block proposer, and none is burned.
+
+The refunded amount is calculated via `reserved − actualCost` and is returned to the sender.
+
+### Example 2: Blob Transaction per &nbsp; [EIP-4844](https://eips.ethereum.org/EIPS/eip-4844)
+
+Blob carrying transactions pay both the usual EVM gas fees and a separate blob gas fee for large data blobs. Note that there were no blobs for pre-EIP-1559 transactions.  In this example, we will only discuss fees associated with the blob.
+
+#### Transaction Parameters
+- `blobVersionedHashes` – identifies each data blob.  
+- `totalBlobGas` – computed as `GasPerBlob × numberOfBlobs`.  
+- `maxFeePerBlobGas` – maximum gwei per blob gas unit the sender will pay.
+
+#### Block Parameters
+- `blobGasPrice` – dynamic per block blob gas unit price.
+
+Initially, an upfront amount is reserved, meaning it's deducted from the sender.
+- `reserved_blob  = totalBlobGas × maxFeePerBlobGas`
+
+#### Execution Cost
+- `blobFee = totalBlobGas × blobGasPrice` and is fully burned by the protocol.
+
+#### Refund to Sender Calculation
+- `refund_blob = reserved_blob − blobFee` and is returned to sender.
+
+These examples should help tie together how gas is handled during a transaction lifecycle.
+
 ## Appendix
 
 ### Code A
@@ -1314,7 +1384,13 @@ sed -i -E ':a;N;$!ba;s/`code2([^`]*)`/\$\$\1\$\$/g' $1
 sed -i -E 's/(\$+)\s*([^$]+?)\s*(\$+)/\1\2\3/g' $1
 ````
 
-[¹]: https://archive.devcon.org/archive/watch/6/eels-the-future-of-execution-layer-specifications/?tab=YouTube
+### Resources
+- https://archive.devcon.org/archive/watch/6/eels-the-future-of-execution-layer-specifications/?tab=YouTube
+- [EIP‑1559](https://eips.ethereum.org/EIPS/eip-1559) • [archived](https://web.archive.org/web/20230101000000/https://eips.ethereum.org/EIPS/eip-1559)
+- [EIP‑4844](https://eips.ethereum.org/EIPS/eip-4844) • [archived](https://web.archive.org/web/20230701000000/https://eips.ethereum.org/EIPS/eip-4844)
+- [Yellow Paper](https://ethereum.github.io/yellowpaper/paper.pdf) • [archived](https://web.archive.org/web/20240310000000/https://ethereum.github.io/yellowpaper/paper.pdf)
+- [EL Specs](https://github.com/ethereum/execution-specs) • [archived](https://web.archive.org/web/20240501000000/https://github.com/ethereum/execution-specs)
+
 
 > [!NOTE]
 > All the topics in this PR are open for collaboration on a separate branch
