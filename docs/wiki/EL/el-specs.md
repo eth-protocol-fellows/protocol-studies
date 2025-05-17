@@ -964,53 +964,56 @@ TODO
 ### Gas Accounting Examples
 Up to this point, we've talked about EL post-merge gas mechanics in a variety of scenarios. Let's tie it all together with some examples.
 
-Note: Gas parameters will differ depending upon if the contract was created before [EIP-1559](https://eips.ethereum.org/EIPS/eip-1559) was implemented.
+Note: Each transaction type has distinct parameters and fee handling behavior.
 
 ### Example 1:  Simple ETH Transfer
+####  Supported Transaction Types
+- **Type 0**: Legacy transaction  
+- **Type 1**: Legacy + Access List ([EIP-2930](https://eips.ethereum.org/EIPS/eip-2930))  
+- **Type 2**: EIP-1559 transaction ([EIP-1559](https://eips.ethereum.org/EIPS/eip-1559))
 
-#### Transaction Parameters if EIP-1559 is supported:
-- `gasLimit` – Max gas the transaction is allowed to consume.  
-- `maxFeePerGas` – Max total fee (per gas unit) the sender is willing to pay.  
-- `maxPriorityFeePerGas` – Miner tip (per gas unit) to incentivize inclusion.  
-- `gasPrice` – Ignored if `maxFeePerGas` is set.
+#### Transaction Parameters (Defined by Sender)
 
-#### Transaction Parameters if pre-EIP-1559:
+| Tx Type      | Parameter               | Description                                                       |
+|--------------|-------------------------|-------------------------------------------------------------------|
+| Type 0 / 1 / 2   | `gasLimit`              | Max gas the transaction can consume                               |
+| Type 0 / 1   | `gasPrice`              | Full gas price paid to the proposer                               |
+| Type 2       | `maxFeePerGas`          | Max total fee per gas unit (includes base + tip)                  |
+| Type 2       | `maxPriorityFeePerGas`  | Optional tip to incentivize block inclusion                       |
 
-- `gasLimit` – Same meaning.  
-- `gasPrice` – The only fee used and is paid entirely to the miner.  
+#### Block Parameters (Defined by Protocol)
 
-#### Block Parameters if EIP-1559 is supported:
-- `baseFee` – Protocol determined minimum fee per gas unit that adjusts per block.
+| Tx Type | Parameter   | Description                                          |
+|------------|-------------|------------------------------------------------------|
+| Type 2     | `baseFee`   | Dynamic base gas price per unit (burned by protocol) |
 
-#### If pre-EIP-1559:
-- No `baseFee`
-
+#### Upfront Reservation
 At this point, the transaction is ready for processing within a block.  Initially, an upfront amount is reserved, meaning it's deducted from the sender.
+| Tx Type    | Formula                          |
+|------------|----------------------------------|
+| Type 0 / 1 | `gasLimit × gasPrice`            |
+| Type 2     | `gasLimit × maxFeePerGas`        |
 
-#### If EIP-1559:
-- `reserved = gasLimit × maxFeePerGas`
-
-#### If pre-EIP-1559:
-- `reserved = gasLimit × gasPrice`
-
+#### Execution Phase
 After initial deductions, the transaction's execution cost is determined and the gas is either burned, awarded to the proposer, or returned to the sender.
 
-#### If EIP-1559 is active:
-- `effectiveGasPrice = baseFee + priorityGasFee`
-- `actualCost = gasUsed × effectiveGasPrice`
-- The `baseFee` portion is burned.
-- The `priorityGasFee` (tip) goes to the block proposer.
+| Tx Type    | Effective Gas Price                                  | Actual Cost                    |
+|------------|------------------------------------------------------|--------------------------------|
+| Type 0 / 1 | `gasPrice`                                           | `gasUsed × gasPrice`          |
+| Type 2     | `baseFee + min(maxPriorityFeePerGas, maxFeePerGas − baseFee)` | `gasUsed × effectiveGasPrice` |
 
-### If pre-EIP-1559:
-- `effectiveGasPrice = gasPrice`
-- `actualCost = gasUsed × gasPrice`
-- The entire amount goes to the block proposer, and none is burned.
+Note:  
+- For Type 0/1, the full amount is paid directly to the proposer.  
+For Type 2, the baseFee is burned and the tip, `min(maxPriorityFeePerGas, maxFeePerGas - baseFee)`, goes to the proposer. The effectiveGasPrice ensures the total gas cost stays within maxFeePerGas, potentially reducing the tip if the baseFee is high.
 
 The refunded amount is calculated via `reserved − actualCost` and is returned to the sender.
 
-### Example 2: Blob Transaction per &nbsp; [EIP-4844](https://eips.ethereum.org/EIPS/eip-4844)
+### Example 2: Blob Transaction
 
-Blob carrying transactions pay both the usual EVM gas fees and a separate blob gas fee for large data blobs. Note that there were no blobs for pre-EIP-1559 transactions.  In this example, we will only discuss fees associated with the blob.
+Blob carrying transactions pay both the usual EVM gas fees and a separate blob gas fee for large data blobs. Note that there were no blobs for pre-EIP-1559 transaction types.  In this example, we will only discuss fees associated with the blob.
+
+####  Blob Transaction Type
+- **Type 3**: EIP-4844 transaction ([EIP-4844](https://eips.ethereum.org/EIPS/eip-4844))
 
 #### Transaction Parameters
 - `blobVersionedHashes` – identifies each data blob.  
