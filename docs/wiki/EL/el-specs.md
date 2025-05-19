@@ -961,6 +961,79 @@ TODO
 
 TODO
 
+### Gas Accounting Examples
+Up to this point, we've talked about EL post-merge gas mechanics in a variety of scenarios. Let's tie it all together with some examples.
+
+Note: Each transaction type has distinct parameters and fee handling behavior.
+
+### Example 1:  Simple ETH Transfer
+####  Supported Transaction Types
+- **Type 0**: Legacy transaction  
+- **Type 1**: Legacy + Access List ([EIP-2930](https://eips.ethereum.org/EIPS/eip-2930))  
+- **Type 2**: EIP-1559 transaction ([EIP-1559](https://eips.ethereum.org/EIPS/eip-1559))
+
+#### Transaction Parameters (Defined by Sender)
+
+| Tx Type      | Parameter               | Description                                                       |
+|--------------|-------------------------|-------------------------------------------------------------------|
+| Type 0 / 1 / 2   | `gasLimit`              | Max gas the transaction can consume                               |
+| Type 0 / 1   | `gasPrice`              | Full gas price paid to the proposer                               |
+| Type 2       | `maxFeePerGas`          | Max total fee per gas unit (includes base + tip)                  |
+| Type 2       | `maxPriorityFeePerGas`  | Optional tip to incentivize block inclusion                       |
+
+#### Block Parameters (Defined by Protocol)
+
+| Tx Type | Parameter   | Description                                          |
+|------------|-------------|------------------------------------------------------|
+| Type 2     | `baseFee`   | Dynamic base gas price per unit (burned by protocol) |
+
+#### Upfront Reservation
+At this point, the transaction is ready for processing within a block.  Initially, an upfront amount is reserved, meaning it's deducted from the sender.
+| Tx Type    | Formula                          |
+|------------|----------------------------------|
+| Type 0 / 1 | `gasLimit × gasPrice`            |
+| Type 2     | `gasLimit × maxFeePerGas`        |
+
+#### Execution Phase
+After initial deductions, the transaction's execution cost is determined and the gas is either burned, awarded to the proposer, or returned to the sender.
+
+| Tx Type    | Effective Gas Price                                  | Actual Cost                    |
+|------------|------------------------------------------------------|--------------------------------|
+| Type 0 / 1 | `gasPrice`                                           | `gasUsed × gasPrice`          |
+| Type 2     | `baseFee + min(maxPriorityFeePerGas, maxFeePerGas − baseFee)` | `gasUsed × effectiveGasPrice` |
+
+Note:  
+- For Type 0/1, the full amount is paid directly to the proposer.  
+For Type 2, the baseFee is burned and the tip, `min(maxPriorityFeePerGas, maxFeePerGas - baseFee)`, goes to the proposer. The effectiveGasPrice ensures the total gas cost stays within maxFeePerGas, potentially reducing the tip if the baseFee is high.
+
+The refunded amount is calculated via `reserved − actualCost` and is returned to the sender.
+
+### Example 2: Blob Transaction
+
+Blob carrying transactions pay both the usual EVM gas fees and a separate blob gas fee for large data blobs. Note that there were no blobs for pre-EIP-1559 transaction types.  In this example, we will only discuss fees associated with the blob.
+
+####  Blob Transaction Type
+- **Type 3**: EIP-4844 transaction ([EIP-4844](https://eips.ethereum.org/EIPS/eip-4844))
+
+#### Transaction Parameters
+- `blobVersionedHashes` – identifies each data blob.  
+- `totalBlobGas` – computed as `GasPerBlob × numberOfBlobs`.  
+- `maxFeePerBlobGas` – maximum gwei per blob gas unit the sender will pay.
+
+#### Block Parameters
+- `blobGasPrice` – dynamic per block blob gas unit price.
+
+Initially, an upfront amount is reserved, meaning it's deducted from the sender.
+- `reserved_blob  = totalBlobGas × maxFeePerBlobGas`
+
+#### Execution Cost
+- `blobFee = totalBlobGas × blobGasPrice` and is fully burned by the protocol.
+
+#### Refund to Sender Calculation
+- `refund_blob = reserved_blob − blobFee` and is returned to sender.
+
+These examples should help tie together how gas is handled during a transaction lifecycle.
+
 ## Appendix
 
 ### Code A
@@ -1314,7 +1387,13 @@ sed -i -E ':a;N;$!ba;s/`code2([^`]*)`/\$\$\1\$\$/g' $1
 sed -i -E 's/(\$+)\s*([^$]+?)\s*(\$+)/\1\2\3/g' $1
 ````
 
-[¹]: https://archive.devcon.org/archive/watch/6/eels-the-future-of-execution-layer-specifications/?tab=YouTube
+### Resources
+- https://archive.devcon.org/archive/watch/6/eels-the-future-of-execution-layer-specifications/?tab=YouTube
+- [EIP‑1559](https://eips.ethereum.org/EIPS/eip-1559) • [archived](https://web.archive.org/web/20230101000000/https://eips.ethereum.org/EIPS/eip-1559)
+- [EIP‑4844](https://eips.ethereum.org/EIPS/eip-4844) • [archived](https://web.archive.org/web/20230701000000/https://eips.ethereum.org/EIPS/eip-4844)
+- [Yellow Paper](https://ethereum.github.io/yellowpaper/paper.pdf) • [archived](https://web.archive.org/web/20240310000000/https://ethereum.github.io/yellowpaper/paper.pdf)
+- [EL Specs](https://github.com/ethereum/execution-specs) • [archived](https://web.archive.org/web/20240501000000/https://github.com/ethereum/execution-specs)
+
 
 > [!NOTE]
 > All the topics in this PR are open for collaboration on a separate branch
