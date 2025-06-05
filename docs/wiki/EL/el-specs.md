@@ -536,7 +536,7 @@ intrinsicGas &\leq T_{gasLimit}\\ \land \nonumber \\
 maxGasFee + T_{value} &\leq \sigma[Sender(T)]_{balance}\\ \land \nonumber \\
 m &\geq H_{baseFeePerGas}\\ \land \nonumber \\
 \text{if} \space T_{type} = 2 \lor 3 : T_{maxFeePerGas} &\geq T_{maxPriorityFeePerGas} \\ \land \nonumber \\
-T_{gasLimit} \leq Header_{gasLimit} \nonumber \\ &− last( \left[ Block_{reciept} \right] )_{cumulativeGasUsed} \\
+T_{gasLimit} \leq Header_{gasLimit} \nonumber \\ &− last( \left[ Block_{receipt} \right] )_{cumulativeGasUsed} \\
 \end{align}
 $$
 
