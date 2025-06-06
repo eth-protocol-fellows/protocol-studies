@@ -87,7 +87,7 @@ Succinct proofs for light-client security and state verification.
 
 | Upgrade                          | Track           | Topic                    | Description                                                              | Expected effect                                       | State of the art           |
 |:--------------------------------:|:---------------:|:------------------------:|:------------------------------------------------------------------------:|:-----------------------------------------------------:|:--------------------------:|
-| Data Availability Sampling (DAS)| Full rollup     | Blob data verification   | Probabilistic blob sampling for light clients without full downloads.     | Secures L2 DA & light clients with minimal overhead.  | in research / EIP-7594 ([eips.ethereum.org](https://eips.ethereum.org/EIPS/eip-7594.com))         |
+| Data Availability Sampling (DAS)| Full rollup     | Blob data verification   | Probabilistic blob sampling for light clients without full downloads.     | Secures L2 DA & light clients with minimal overhead.  | in research / EIP-7594 ([eips.ethereum.org](https://eips.ethereum.org/EIPS/eip-7594))         |
 | Verkle Tree Commitments          | Statelessness   | Verifiable trie proofs   | Replace Merkle proofs with vector commitments for O(1)-sized proofs.      | Dramatically smaller proofs; leaner light clients.     | draft / EIP-7736 ([eips.ethereum.org](https://eips.ethereum.org/EIPS/eip-7736))              |
 
 ### The Purge  
