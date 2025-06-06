@@ -56,6 +56,7 @@ Barnabé
 Barnabé's
 Bastin
 BDN
+benchmarking
 beaconblock
 Beiko
 Bertoni
@@ -97,6 +98,7 @@ borderless
 BPE
 broadcasted
 BSON
+bundlers
 Buterin
 Buterin's
 Bylica
@@ -387,6 +389,7 @@ HashedStorages
 Herc’s
 hevm
 hoc
+HOL
 Holesky
 homomorphic
 hopinheimer
@@ -618,6 +621,7 @@ POV
 PQ
 PQC
 PQCA
+PQS
 PR
 PR'ed
 pre
@@ -808,6 +812,7 @@ TLA
 tldr
 TLS
 TODO
+toolchain
 toolset
 touchedAccounts
 TPS
