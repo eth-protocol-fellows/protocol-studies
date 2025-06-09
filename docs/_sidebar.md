@@ -2,40 +2,36 @@
 - **Study Group**
 - [Start here](/eps/intro.md)
 - [Study Group content](/eps/schedule.md)
-  - **Week 1 - Intro**
+  - **Introduction**
   - [Prepare for studies](/eps/week0.md)
-  - [Lecture 1 - Intro](/eps/week1.md)
-  - [Lecture 2 - CL](/eps/week3.md)
-  - [Lecture 3 - EL](/eps/week2.md)
-  - [Lecture 4 - Testing](/eps/week4.md)
-  - [Lecture 5 - Roadmap](/eps/week5.md)
-  - [Node Workshop](/eps/nodes_workshop.md)
-  - **Week 2 - Dev Overview**
-  - [Lecture 6 - Specs](/eps/week6-dev.md)
-  - [Lecture 7 - EL Client](/eps/week7-dev.md)
-  - [Lecture 8 - CL Client](/eps/week8-dev.md)
-  - [Lecture 9 - Devops](/eps/week9-dev.md)
-  - [Lecture 10 - Precompiles](/eps/week10-dev.md)
-  - **Week 3 - Research Overview**
-  - [Lecture 11 - DAS](/eps/week6-research.md)  
-  - [Lecture 12 - Verkle](/eps/week7-research.md)
-  - [Lecture 13 - MEV](/eps/week8-research.md)
-  - [Lecture 14 - Portal](/eps/week9-research.md)
-  - [Lecture 15 - SSF](/eps/week10-research.md)
-  - **Week 4 - Core Features** 
-  - [Lecture 16 - Gasper](/eps/day16.md)
-  - [Lecture 17 - EVM](/eps/day17.md)
-  - **Week 5 - Networking**
-  - [Lecture 18 - devp2p](/eps/day18.md)
-  - [Lecture 19 - libp2p](/eps/day19.md)
-  - **Week 6**
-  - [Lecture 20 - Validator Client](/eps/day20.md)
-  - **Week 7**
-  - [Lecture 21 - EngineAPI](/eps/day21.md)
-  - [Lecture 22 - CL Data](/eps/day22.md)
-  - **Week 8**
-  - [Lecture 23 - EL Data](/eps/day23.md)
-  - [Lecture 24 - Next upgrades](/eps/day24.md)
+  - [Protocol intro and overview](/eps/week1.md)
+  - [CL intro](/eps/week3.md)
+  - [EL intro](/eps/week2.md)
+  - [Using clients](/eps/nodes_workshop.md)
+  - [CL/EL specs](/eps/week6-dev.md)
+  - [Testing and security](/eps/week4.md)
+  - [Local prototyping](/eps/week9-dev.md)
+  - [Research overview](/eps/week5.md)
+  - **Consensus Layer**
+  - [Gasper](/eps/day16.md)
+  - [CL client architecture](/eps/week8-dev.md)
+  - [CL Data structures](/eps/day22.md)
+  - [libp2p](/eps/day19.md)
+  - [Validator Client](/eps/day20.md)
+  - **Execution Layer**
+  - [EL client architecture](/eps/week7-dev.md)
+  - [EVM](/eps/day17.md)
+  - [EL Data](/eps/day23.md)
+  - [devp2p](/eps/day18.md)
+  - [Engine API](/eps/day21.md)
+  - [EL precompiles](/eps/week10-dev.md)
+  - **Research**
+  - [Upcoming upgrades](/eps/day24.md)
+  - [Sharding and DAS](/eps/week6-research.md)
+  - [Verkle trees](/eps/week7-research.md)
+  - [MEV and censorship](/eps/week8-research.md)
+  - [Purge and Portal Network](/eps/week9-research.md)
+  - [SSF and PoS Upgrades](/eps/week10-research.md)
 
 - [Contributing](contributing.md)
 - **Protocol Wiki**
