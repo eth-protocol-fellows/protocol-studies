@@ -1,6 +1,6 @@
 # Execution Layer Specification
 
-The execution layer was originally specified in the yellow paper as it encompassed the whole Ethereum. The most up to date specification is [EELS python spec](https://ethereum.github.io/execution-specs/). 
+The execution layer was originally specified in the yellow paper as it encompassed the whole Ethereum. The most up to date specification is [EELS python spec](https://ethereum.github.io/execution-specs/).
 
 > - [Yellow Paper, paris version 705168a – 2024-03-04](https://ethereum.github.io/yellowpaper/paper.pdf) (note: This is outdated does not take into account post merge updates)
 > - [Python Execution Layer specification](https://ethereum.github.io/execution-specs/)
@@ -8,7 +8,7 @@ The execution layer was originally specified in the yellow paper as it encompass
 
 This page provides an overview of EL specification, its architecture and context for the pyspec.
 
-## State transition function 
+## State transition function
 
 The Execution Layer, from the EELS perspective, focuses exclusively on executing the state transition function (STF). This role addresses two primary questions[¹]:
 
@@ -43,11 +43,11 @@ The id's in the above image as represented in the yellow paper (paris version) :
 
 | Id.   | equation no. | yellow paper                                                    | comments                                                                                                                                                                                                                                                                                                                                                                                                                                        |
 | ----- | ------------ | --------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 1     | 7            | $$TRIE(L_I^*(\sigma[a]_s)) \equiv \sigma[a]_s $$           | This gives the root of the account storage Trie ,$\sigma[a]_s $ on the right, after mapping each node with the function $L_I((k,v)) \equiv (KEC(k), RLP(v))$ . The equation on the left is referring to mapping over underlying key and values of the account storage $\sigma[a]_s $ these are two different objects the left $\sigma[a]_s $ and the right $\sigma[a]_s $ which represents the root hash |
-| 2     |              | page 4 paragraph 2                                              | The account state $\sigma[a] $ is described in the yellow paper                                                                                                                                                                                                                                                                                                                                                                         |
-| 3     | 10           | $$L_s(\sigma) \equiv \{p(a) : \sigma[a] \neq \empty \} $$ | This is the world state collapse function , applied to all accounts considered not empty:                                                                                                                                                                                                                                                                                                                                                       |
-| 4 & 5 | 36           | $$TRIE(L_s(\sigma)) = P(B_H)_{H_{stateRoot}} $$           | The equation defines the Parent block's state root header as the root given by the TRIE function where $P(B_H)$ is the Parent Block                                                                                                                                                                                                                                                                                                      |
-| 6.    | 33b          | $$H_{stateRoot} \equiv TRIE(L_s(\Pi(\sigma, B))) $$       | this gives us the state root of the current block                                                                                                                                                                                                                                                                                                                                                                                               |
+| 1     | [7](https://ethereum.github.io/yellowpaper/paper.pdf#page=4)            | $$TRIE(L_I^*(\sigma[a]_s)) \equiv \sigma[a]_s $$           | This gives the root of the account storage Trie ,$\sigma[a]_s $ on the right, after mapping each node with the function $L_I((k,v)) \equiv (KEC(k), RLP(v))$ . The equation on the left is referring to mapping over underlying key and values of the account storage $\sigma[a]_s $ these are two different objects the left $\sigma[a]_s $ and the right $\sigma[a]_s $ which represents the root hash |
+| 2     |              | [page 4](https://ethereum.github.io/yellowpaper/paper.pdf#page=4), paragraph 2                                              | The account state $\sigma[a] $ is described in the yellow paper                                                                                                                                                                                                                                                                                                                                                                         |
+| 3     | [10](https://ethereum.github.io/yellowpaper/paper.pdf#page=4)           | $$L_s(\sigma) \equiv \{p(a) : \sigma[a] \neq \empty \} $$ | This is the world state collapse function , applied to all accounts considered not empty:                                                                                                                                                                                                                                                                                                                                                       |
+| 4 & 5 | [39](https://ethereum.github.io/yellowpaper/paper.pdf#page=7)           | $$TRIE(L_s(\sigma)) = P(B_H)_{H_{stateRoot}} $$           | The equation defines the Parent block's state root header as the root given by the TRIE function where $P(B_H)$ is the Parent Block                                                                                                                                                                                                                                                                                                      |
+| 6.    | [35b](https://ethereum.github.io/yellowpaper/paper.pdf#page=7)          | $$H_{stateRoot} \equiv TRIE(L_s(\Pi(\sigma, B))) $$       | this gives us the state root of the current block                                                                                                                                                                                                                                                                                                                                                                                               |
 
 The specified procedure for the state transition function in the code documentation includes the following steps:
 
@@ -143,7 +143,7 @@ The Ethereum economic model, as outlined in [EIP-1559](https://eips.ethereum.org
 
 Additional checks ensure legacy compatibility and security, such as the ommer (uncle block) hash and difficulty fields being set to predefined values, reflecting the transition from Proof of Work to Proof of Stake (57j-57l).
 
-These criteria form part of the Ethereum economic model, particularly influenced by EIP-1559, which introduces a dynamic base fee mechanism. This mechanism aims to optimize network usage and fee predictability, enhancing user experience and economic stability. Additionally, [EIP-4844](https://eips.ethereum.org/EIPS/eip-4844) introduced a new type of transaction, blob transactions, that augments the economic model from EIP-1559. 
+These criteria form part of the Ethereum economic model, particularly influenced by EIP-1559, which introduces a dynamic base fee mechanism. This mechanism aims to optimize network usage and fee predictability, enhancing user experience and economic stability. Additionally, [EIP-4844](https://eips.ethereum.org/EIPS/eip-4844) introduced a new type of transaction, blob transactions, that augments the economic model from EIP-1559.
 
 Lets explore this in more depth and try to gain a better understanding on whats going on with these equations that's not easily visible in either the python spec or the yellow paper.
 
@@ -420,7 +420,7 @@ $$
 
 $$+$$
 
-$$ 
+$$
 \sum_{j=0}^{ length(T_{accessList}) - 1} \left( G_{\text{accesslistaddress}} + length(T_{accessList}[j]_s) *  G_{\text{accessliststorage}} \right)
 $$
 
@@ -476,7 +476,7 @@ $$totalBlobGas  \equiv  (G_{gasPerBlob = 2^{17}} \times length(T_{blobVersionedH
 The Blob Gas Price is determined through a formula that adjusts based on the excess blob gas generated in the network. The formula is as follows:
 
 $$
-blobGasPrice  \\  \approx  \\ 
+blobGasPrice  \\  \approx  \\
 factor_{minBlobBaseFee = 1} \times e^{numerator_{excessBlobGas} / denominator_{blobGaspriceUpdateFraction = 3338477}}
 $$
 
@@ -536,7 +536,7 @@ intrinsicGas &\leq T_{gasLimit}\\ \land \nonumber \\
 maxGasFee + T_{value} &\leq \sigma[Sender(T)]_{balance}\\ \land \nonumber \\
 m &\geq H_{baseFeePerGas}\\ \land \nonumber \\
 \text{if} \space T_{type} = 2 \lor 3 : T_{maxFeePerGas} &\geq T_{maxPriorityFeePerGas} \\ \land \nonumber \\
-T_{gasLimit} \leq Header_{gasLimit} \nonumber \\ &− last( \left[ Block_{reciept} \right] )_{cumulativeGasUsed} \\
+T_{gasLimit} \leq Header_{gasLimit} \nonumber \\ &− last( \left[ Block_{receipt} \right] )_{cumulativeGasUsed} \\
 \end{align}
 $$
 
@@ -961,6 +961,79 @@ TODO
 
 TODO
 
+### Gas Accounting Examples
+Up to this point, we've talked about EL post-merge gas mechanics in a variety of scenarios. Let's tie it all together with some examples.
+
+Note: Each transaction type has distinct parameters and fee handling behavior.
+
+### Example 1:  Simple ETH Transfer
+####  Supported Transaction Types
+- **Type 0**: Legacy transaction  
+- **Type 1**: Legacy + Access List ([EIP-2930](https://eips.ethereum.org/EIPS/eip-2930))  
+- **Type 2**: EIP-1559 transaction ([EIP-1559](https://eips.ethereum.org/EIPS/eip-1559))
+
+#### Transaction Parameters (Defined by Sender)
+
+| Tx Type      | Parameter               | Description                                                       |
+|--------------|-------------------------|-------------------------------------------------------------------|
+| Type 0 / 1 / 2   | `gasLimit`              | Max gas the transaction can consume                               |
+| Type 0 / 1   | `gasPrice`              | Full gas price paid to the proposer                               |
+| Type 2       | `maxFeePerGas`          | Max total fee per gas unit (includes base + tip)                  |
+| Type 2       | `maxPriorityFeePerGas`  | Optional tip to incentivize block inclusion                       |
+
+#### Block Parameters (Defined by Protocol)
+
+| Tx Type | Parameter   | Description                                          |
+|------------|-------------|------------------------------------------------------|
+| Type 2     | `baseFee`   | Dynamic base gas price per unit (burned by protocol) |
+
+#### Upfront Reservation
+At this point, the transaction is ready for processing within a block.  Initially, an upfront amount is reserved, meaning it's deducted from the sender.
+| Tx Type    | Formula                          |
+|------------|----------------------------------|
+| Type 0 / 1 | `gasLimit × gasPrice`            |
+| Type 2     | `gasLimit × maxFeePerGas`        |
+
+#### Execution Phase
+After initial deductions, the transaction's execution cost is determined and the gas is either burned, awarded to the proposer, or returned to the sender.
+
+| Tx Type    | Effective Gas Price                                  | Actual Cost                    |
+|------------|------------------------------------------------------|--------------------------------|
+| Type 0 / 1 | `gasPrice`                                           | `gasUsed × gasPrice`          |
+| Type 2     | `baseFee + min(maxPriorityFeePerGas, maxFeePerGas − baseFee)` | `gasUsed × effectiveGasPrice` |
+
+Note:  
+- For Type 0/1, the full amount is paid directly to the proposer.  
+For Type 2, the baseFee is burned and the tip, `min(maxPriorityFeePerGas, maxFeePerGas - baseFee)`, goes to the proposer. The effectiveGasPrice ensures the total gas cost stays within maxFeePerGas, potentially reducing the tip if the baseFee is high.
+
+The refunded amount is calculated via `reserved − actualCost` and is returned to the sender.
+
+### Example 2: Blob Transaction
+
+Blob carrying transactions pay both the usual EVM gas fees and a separate blob gas fee for large data blobs. Note that there were no blobs for pre-EIP-1559 transaction types.  In this example, we will only discuss fees associated with the blob.
+
+####  Blob Transaction Type
+- **Type 3**: EIP-4844 transaction ([EIP-4844](https://eips.ethereum.org/EIPS/eip-4844))
+
+#### Transaction Parameters
+- `blobVersionedHashes` – identifies each data blob.  
+- `totalBlobGas` – computed as `GasPerBlob × numberOfBlobs`.  
+- `maxFeePerBlobGas` – maximum gwei per blob gas unit the sender will pay.
+
+#### Block Parameters
+- `blobGasPrice` – dynamic per block blob gas unit price.
+
+Initially, an upfront amount is reserved, meaning it's deducted from the sender.
+- `reserved_blob  = totalBlobGas × maxFeePerBlobGas`
+
+#### Execution Cost
+- `blobFee = totalBlobGas × blobGasPrice` and is fully burned by the protocol.
+
+#### Refund to Sender Calculation
+- `refund_blob = reserved_blob − blobFee` and is returned to sender.
+
+These examples should help tie together how gas is handled during a transaction lifecycle.
+
 ## Appendix
 
 ### Code A
@@ -1314,7 +1387,13 @@ sed -i -E ':a;N;$!ba;s/`code2([^`]*)`/\$\$\1\$\$/g' $1
 sed -i -E 's/(\$+)\s*([^$]+?)\s*(\$+)/\1\2\3/g' $1
 ````
 
-[¹]: https://archive.devcon.org/archive/watch/6/eels-the-future-of-execution-layer-specifications/?tab=YouTube
+### Resources
+- https://archive.devcon.org/archive/watch/6/eels-the-future-of-execution-layer-specifications/?tab=YouTube
+- [EIP‑1559](https://eips.ethereum.org/EIPS/eip-1559) • [archived](https://web.archive.org/web/20230101000000/https://eips.ethereum.org/EIPS/eip-1559)
+- [EIP‑4844](https://eips.ethereum.org/EIPS/eip-4844) • [archived](https://web.archive.org/web/20230701000000/https://eips.ethereum.org/EIPS/eip-4844)
+- [Yellow Paper](https://ethereum.github.io/yellowpaper/paper.pdf) • [archived](https://web.archive.org/web/20240310000000/https://ethereum.github.io/yellowpaper/paper.pdf)
+- [EL Specs](https://github.com/ethereum/execution-specs) • [archived](https://web.archive.org/web/20240501000000/https://github.com/ethereum/execution-specs)
+
 
 > [!NOTE]
 > All the topics in this PR are open for collaboration on a separate branch

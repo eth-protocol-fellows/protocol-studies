@@ -12,6 +12,7 @@ ACD
 ACL
 addons
 Aditional
+AES
 aggregative
 Akula
 Aleth
@@ -55,6 +56,7 @@ Barnabé
 Barnabé's
 Bastin
 BDN
+benchmarking
 beaconblock
 Beiko
 Bertoni
@@ -90,10 +92,13 @@ Boneh
 bool
 booleans
 bootup
+bootnode
+bootnodes
 borderless
 BPE
 broadcasted
 BSON
+bundlers
 Buterin
 Buterin's
 Bylica
@@ -140,6 +145,7 @@ Composability
 composable
 computability
 computable
+connectionless
 config
 congestions
 Conor
@@ -177,6 +183,7 @@ dapp
 Dapplion
 dapps
 DAS
+Datagram
 dataset
 deboost
 decrementation
@@ -204,12 +211,14 @@ Devops
 devp
 Devs
 DEX
+DHT
 Diffie
 DILITHIUM
 Dimitar
 disambiguated
 Discordo
 discv
+discport
 distro
 DNS
 docsify
@@ -228,6 +237,7 @@ EAL
 EB
 ECADD
 ECC
+ECDH
 ECDSA
 ECDSA's
 ECMUL
@@ -247,11 +257,15 @@ eK
 EL
 Elmore
 ELs
+EL's
 emptyset
 Encodings
+endian
 Endian
 enr
 env
+enode
+ENR
 EOA
 EOAs
 EOF
@@ -273,6 +287,7 @@ ethash
 Ethash
 ETHCC
 Ethereum
+Ethereumjs
 Ethereum's
 Ethernodes
 ethers
@@ -299,6 +314,7 @@ fanout
 farcaster
 fastssz
 faytey
+Feamster
 Feist
 Femboy
 Ferrin
@@ -345,6 +361,7 @@ getPayloadV
 getters
 ghost
 Gilles
+GCM
 Goerli
 Golang
 Goldwasser
@@ -372,6 +389,7 @@ HashedStorages
 Herc’s
 hevm
 hoc
+HOL
 Holesky
 homomorphic
 hopinheimer
@@ -387,6 +405,7 @@ IETF
 iframe
 ify
 Imandra
+img
 impera
 implementers
 incentivize
@@ -412,6 +431,7 @@ IOP
 IPC
 ipfs
 Ipsilon
+IPv
 IRTF
 ISA
 Jitsi
@@ -434,6 +454,7 @@ Kira
 Kleppmann
 Koblitz
 Kubernetes
+Kurose
 Kurtosis
 Kyber
 KZG
@@ -443,6 +464,7 @@ lceil
 ldots
 learnings
 Ledgerwatch
+Leffew
 Lefteris
 leftarrow
 leq
@@ -466,6 +488,7 @@ Longrightarrow
 lookahead
 lookups
 lor
+loopback
 LSB
 LSM
 LSP
@@ -515,6 +538,7 @@ MSB
 MSIZE
 mstore
 MUL
+multiaddr
 multiproofs
 Murr
 MVE
@@ -528,6 +552,8 @@ namespace
 namespaces
 Nand
 natively
+neighbours
+neighbourhood
 neq
 Nethermind
 neuder
@@ -583,6 +609,7 @@ pipelining
 PKCS
 Playdate
 pmod
+png
 POC
 POS
 POSIX
@@ -594,6 +621,7 @@ POV
 PQ
 PQC
 PQCA
+PQS
 PR
 PR'ed
 pre
@@ -652,6 +680,7 @@ RANDAO
 Rareskills
 RB
 rceil
+reachability
 README
 reciept
 referrerpolicy
@@ -755,6 +784,8 @@ subcurrency
 subnet
 subnets
 suboptimal
+Subprotocol
+subprotocol
 subprotocols
 substack
 substate
@@ -765,6 +796,7 @@ Supermajority
 systemd
 Szabo
 Takenobu
+Tanenbaum
 Tani
 TBD
 tbhl
@@ -780,6 +812,7 @@ TLA
 tldr
 TLS
 TODO
+toolchain
 toolset
 touchedAccounts
 TPS
@@ -804,6 +837,7 @@ txdatanonzero
 txdatazero
 txpool
 txs
+UDP
 UI
 uint
 unaggregated
@@ -848,7 +882,9 @@ WB
 webkit
 WebRTC
 Whistleblower
+Wetherall
 Whitepaper
+WHOAREYOU
 WIP
 withdrawable
 withdrawalHash
@@ -952,3 +988,15 @@ Lange
 Wireshark
 SigP
 opcode's
+Karim
+TalkReq
+Plaintext
+digram
+initating
+decrypts
+ECIES
+KDF
+HMAC
+decrypted
+trie's
+Synchronising

@@ -26,7 +26,7 @@ The [Execution Layer (EL) triggered exits](https://eips.ethereum.org/EIPS/eip-70
 
 ## Users/Devs
 
-More resources and data on Pectra can be found at https://pectra.wtf/. 
+More resources and data on Pectra can be found at [https://pectra.wtf/](https://pectra.wtf/).
 
 **FAQ**:
 
@@ -128,8 +128,8 @@ In this situation, the validator will not be exited, and no funds will be moved.
 
 #### **Q:** What are the validator requirements for consolidation?
 
-The validators must be active on the Beacon Chain at the time of consolidation execution. This means they cannot be exiting, pending activation, or in any state other than active. 
-The source address must authorize the consolidation transaction and the target must be a validator with `0x02` credentials. Validators with different withdrawal credentials can be also consolidated. 
+The validators must be active on the Beacon Chain at the time of consolidation execution. This means they cannot be exiting, pending activation, or in any state other than active.
+The source address must authorize the consolidation transaction and the target must be a validator with `0x02` credentials. Validators with different withdrawal credentials can be also consolidated.
 
 #### **Q:** What happens to my original, individual validators?
 
@@ -139,14 +139,45 @@ During a consolidation, there is a source and a target validator. The source val
 
 Once the source validator has completely exited and ceased performing all duties, the balance will be credited to the target validator.
 
-
 #### **Q:** What happens if I consolidate one validator with `0x01` and another with `0x00` credentials?
 
-The consolidation request will be deemed invalid and will not be processed. It will fail if both validators don't contain a `0x01` withdrawal credential with the exact same execution layer address. 
+The consolidation request will be deemed invalid and will not be processed. It will fail if both validators don't contain a `0x01` withdrawal credential with the exact same execution layer address.
 
 #### **Q:** What happens if I consolidate validators that are exited?
 
 The consolidation will fail as the validators must be active on the beacon chain at the time of consolidation execution.
+
+#### **Q:** Whats the ABI of the consolidation system contract?
+The EIP-7251 consolidations contract is deployed here `0x0000BBdDc7CE488642fb579F8B00f3a590007251`, source here: https://github.com/ethereum/sys-asm/blob/main/src/consolidations/main.eas. 
+The consolidations are put in a queue and dequeued at a rate of 2 per block.
+The contract is not written in solidity, nor do they have a typical solidity ABI in order to not enshrine the API.
+
+The functionality in pseudo code:
+
+```pseudo
+function(bytes input) {
+    if input.length == 0 {
+        return required_fee
+    }
+    if input.length == 96 {
+        if msg.value < required_fee {
+            return error
+        }
+        source := input[0:48]
+        target := input[48:96]
+        store_consolidation(msg.sender, source, target)
+        emit event(msg.sender, source, target)
+        return
+     }
+     return error
+}
+```
+
+The input consists of 96 bytes containing both the BLS public key of the source and the target of the consolidation.
+Both source and target must have 0x01 or 0x02 withdrawal credentials set.
+The contract can be queried again with no input data to compute the required consolidation fee.
+The funds will be consolidated from source to target.
+The 7251 EIP contains an example on how to interact with the [contract from solidity](https://eips.ethereum.org/EIPS/eip-7251#fee-overpayment).
 
 #### **Q:** How can I partially withdraw some ETH from my `0x02` validator?
 
@@ -161,6 +192,36 @@ For testing right now, you can use the [Submit Withdrawals](https://dora.mekong.
 
 You can partially withdraw the portion above the full validator amount, as long as the validator contains >32 ETH at the time of withdrawal completion. For example, if you currently have 34 ETH and request a partial withdrawal, a maximum of 2 ETH can be withdrawn.
 You may also decide to request a full withdrawal by specifying an amount of `0` in the request. When sending such a full withdrawal request, your validator will be exited, and the full balance withdrawn.
+
+#### **Q:** Whats the ABI of the withdrawal system contract?
+
+The EIP-7002 contract is deployed here `0x00000961Ef480Eb55e80D19ad83579A64c00700` source here: https://github.com/ethereum/sys-asm/blob/main/src/withdrawals/main. 
+The withdrawals are put in a queue and at maximum 16 are dequeued per block.
+The contract is not written in solidity, nor do they have a typical solidity ABI in order to not enshrine the API.
+The functionality of the withdrawal contract in pseudo code:
+
+```pseudo
+function(bytes input) {
+    if input.length == 0 {
+        return required_fee
+    }
+    if input.length == 56 {
+        if msg.value < required_fee {
+            return error
+        }
+        pk := input[0:48]
+        amount := input[48:56]
+        store_withdrawal(msg.sender, pk, amount)
+        emit event(msg.sender, pk, amount)
+        return
+    }
+    return error
+}
+```
+
+As you can see the input consists of 56 bytes containing the BLS public key that we want to withdraw from as well as the amount we would like to withdraw.
+You can call the contract with no input data to query the fee required to withdraw.
+An example of how to interact with it from solidity can be found [here](https://eips.ethereum.org/EIPS/eip-7002#fee-overpayment).
 
 #### **Q:** What happens to the ETH balance if my validator has `0x02` credentials and goes below 32 ETH?
 
