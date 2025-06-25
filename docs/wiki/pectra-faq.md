@@ -195,7 +195,7 @@ You may also decide to request a full withdrawal by specifying an amount of `0` 
 
 #### **Q:** Whats the ABI of the withdrawal system contract?
 
-The EIP-7002 contract is deployed here `0x00000961Ef480Eb55e80D19ad83579A64c00700` source here: https://github.com/ethereum/sys-asm/blob/main/src/withdrawals/main. 
+The EIP-7002 contract is deployed here `0x00000961Ef480Eb55e80D19ad83579A64c00700` source here: https://github.com/ethereum/sys-asm/blob/main/src/withdrawals/main.eas. 
 The withdrawals are put in a queue and at maximum 16 are dequeued per block.
 The contract is not written in solidity, nor do they have a typical solidity ABI in order to not enshrine the API.
 The functionality of the withdrawal contract in pseudo code:
