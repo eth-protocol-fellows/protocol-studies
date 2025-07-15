@@ -12,7 +12,7 @@ Ethereum has its roots in the early internet's open spirit, with its design phil
 
 ## The information super highway
 
-From its humble beginnings in 1969 as a Cold War project ([ARPANET](https://en.wikipedia.org/wiki/ARPANET)), the internet has evolved into an unprecedented global phenomenon.
+From its humble beginnings in 1969 as a Cold War project ([ARPANET](https://en.wikipedia.org/wiki/ARPANET)), the Internet has evolved into an unprecedented global phenomenon.
 
 > "The Internet's pace of adoption eclipses all other technologies that preceded it. Radio was in existence 38 years before 50 million people tuned in; TV took 13 years to reach that benchmark. Sixteen years after the first PC kit came out, 50 million people were using one. Once it was opened to the general public, the Internet crossed that line in four years."\
 > — [The Emerging Digital Economy,(July 1998).](https://www.commerce.gov/sites/default/files/migrated/reports/emergingdig_0.pdf)
@@ -91,7 +91,7 @@ In the article, Gardner included a RSA-129 cipher and offered $100 to the first 
 ![MIT's RSA Challenge](img/overview/rsa-challenge.jpg)
 **MIT's RSA challenge.**
 
-In 1994, a group of computer scientists and volunteers [cracked the cipher](https://en.wikipedia.org/wiki/The_Magic_Words_are_Squeamish_Ossifrage) and donated the money to the [Free Software Foundation.](https://www.fsf.org/) This effort highlighted a crucial point: perfect security in cryptography is an illusion. Encryption methods, like RSA, are constantly evolving, especially in anticipation of [quantum computers.](/wiki/Cryptography/post-quantum-cryptography.md)
+In 1994, a group of computer scientists and volunteers [cracked the cipher](https://en.wikipedia.org/wiki/The_Magic_Words_are_Squeamish_Ossifrage) and donated the money to the [Free Software Foundation](https://www.fsf.org/). This effort highlighted a crucial point: perfect security in cryptography is an illusion. Encryption methods, like RSA, are constantly evolving, especially in anticipation of [quantum computers.](/wiki/Cryptography/post-quantum-cryptography.md)
 
 Nevertheless, modern RSA encryption (1024 to 4096 bits) created a secure pathway on the information superhighway, enabling banks and credit card companies to protect financial transactions. This fostered trust and facilitated the growth of e-commerce and online banking.
 
@@ -116,7 +116,7 @@ To boost revenues, a general trend emerged where companies ceased distributing s
 > "Why is this? As the majority of hobbyists must be aware, most of you steal your software. Hardware must be paid for, but software is something to share. Who cares if the people who worked on it get paid?"\
 > — Bill Gates, [An Open Letter to Hobbyists.](https://en.wikipedia.org/wiki/An_Open_Letter_to_Hobbyists)
 
-Amidst the growing debate over software ownership, [Richard Stallman](https://en.wikipedia.org/wiki/Richard_Stallman), a research assistant at MIT's AI laboratory, found himself in a personal battle. He was frustrated by his inability to modify the source code of his newly installed Xerox printers. He believed such restriction to be "a crime against humanity:"
+Amidst the growing debate over software ownership, [Richard Stallman](https://en.wikipedia.org/wiki/Richard_Stallman), a research assistant at MIT's AI laboratory, found himself in a personal battle. He was frustrated by his inability to modify the source code of his newly installed Xerox printers. He believed such restriction to be "a crime against humanity":
 
 > "If you cook, you probably exchange recipes and share them with your friends, which they are free to change as they wish. Imagine a world, where you can't change your recipe because somebody went out of their way to set it up so that its impossible to change. And if you try to share the recipe with your friends, they would call you a **pirate** and put you in prison."\
 > — Richard stallman, in a [documentary](https://www.youtube.com/watch?v=XMm0HsmOTFI)
@@ -290,9 +290,9 @@ In 2014, with the help of [Gavin Wood](https://en.wikipedia.org/wiki/Gavin_Wood)
 
 On July 30, 2015, Ethereum [went live](https://etherscan.io/block/1) as a platform aimed at building tools for a self-sovereign economy using digital currency.
 
-As of the time of writing, Ethereum has a market capitalization of **$400 billion.**
+As of the time of writing, Ethereum has a market capitalization of **$400 billion**.
 
-> 📄 READ: [Vitalik's post about the origin of Ethereum.](https://vitalik.eth.limo/general/2017/09/14/prehistory.html)
+> 📄 READ: [Vitalik's post about the origin of Ethereum](https://vitalik.eth.limo/general/2017/09/14/prehistory.html).
 
 > 🎦 WATCH: [Mario Havel talks about the Ethereum philosophy.](https://streameth.org/ethereum_protocol_fellowship/watch?session=65d77e4f437a5c85775fef9d)
 
