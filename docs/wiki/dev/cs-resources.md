@@ -52,9 +52,33 @@
 
 ## Networking
 
+This section covers a brief overview of the differences and similarities between the OSI (Open Systems Interconnection) and TCP/IP (Transmission Control Protocol/Internet Protocol) models,
+as well as the protocols involved in the transport layer used in DevP2P: TCP and UDP.
+
+In terms of networking, both models refer to the same process of communication between layers.
+Just as Kurose and Ross explain (2020), the computer networks are divided into different layers, and each one of them has a specific responsibility. The OSI model has seven layers, while the TCP/IP model has four layers. The OSI model is more theoretical and the TCP/IP model is more practical.
+The OSI model is a reference model created by the International Organization for Standardization (ISO) to provide a framework for understanding networks. The TCP/IP model was created by the Department of Defense (DoD) to ensure that messages could be transmitted between computers regardless of the types of computers involved.
+The TCP/IP model is a concise version of the OSI model:
+
+![alt text](../../images/el-architecture/osi-tcpip-models.png)
+
+In summary, the OSI model layers are:
+1. Physical layer: responsible for the transmission and reception of raw data between devices.
+2. Data link layer: responsible for the node-to-node delivery of the message.
+3. Network layer: responsible for the delivery of packets from the source to the destination.
+4. Transport layer: responsible for the delivery of data between the source and the destination.
+5. Session layer: responsible for the establishment, management, and termination of connections between applications.
+6. Presentation layer: responsible for the translation, compression, and encryption of data.
+7. Application layer: responsible for providing network services directly to the end-user.
+
+Assuming the communication schema proposed by Claude Shannon (1948), every communication implies both a sender and a receiver, a message to be exchanged between them, a transmission medium, and a protocol to be followed.
+This is important to mention because regardless of the computer architecture, it could be part of a network if it follows the communication and protocol specifications of the models mentioned above.
+
 - 🎥 [Introduction to Computer Networking](https://www.youtube.com/playlist?list=PLEAYkSg4uSQ2dr0XO_Nwa5OcdEcaaELSG)
 - 🎥 [Computers and the Internet | Khan Academy](https://www.khanacademy.org/computing/code-org/computers-and-the-internet)
 - 🎥 [Computer Networking: a Top-Down Approach](https://gaia.cs.umass.edu/kurose_ross/online_lectures.htm)
+- Clause E. Shannon (1948). "A Mathematical Theory of Communication". *Bell System Technical Journal*. Vol. 27.
+- Jim Kurose and Keith Ross (2020). *Computer Networking: A Top-Down Approach*. 8th edition. Pearson.
 
 ## Distributed systems and blockchain
 

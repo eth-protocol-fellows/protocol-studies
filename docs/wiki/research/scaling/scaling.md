@@ -41,7 +41,7 @@ Modular blockchain approach suggests dividing a blockchain system into different
 
 The primary objective of Ethereum's scalability efforts is to increase TPS metric without compromising decentralization or security.
 
-Layer 1 scaling is the set of all those techniques that increases the TPS of the underlying blockchain protocol itself. blockchains with "bigger blocks" have a major TPS but are more difficult to verify and likely to become more centralized. For this reason, an increase in the capacity of each block must be accompanied by various modifications to the protocol that allow decentralization to be maintained. Examples of layer 1 scaling solutions include Sharding, Proof-Of-Stake consensus mechanisms, and protocol upgrades aimed at optimizing block processing efficiency.
+Layer 1 scaling refers to all techniques that increases the TPS of the underlying blockchain protocol itself. A naive solution to scaling would be to use blockchains with "bigger blocks" that can reach higher TPS numbers. However, the problem with this approach is that increasing the number of transactions to be verified in a given time period may lead to a scenario where only a limited number of node operators—those with powerful enough hardware—can participate in the network. This, in turn, can lead to increased centralization. For this reason, an increase in the capacity of each block must be accompanied by various modifications to the protocol that allow decentralization to be maintained. Examples of layer 1 scaling solutions include sharding, Proof-Of-Stake consensus mechanisms, and protocol upgrades aimed at optimizing block processing efficiency.
 
 !["Layer 1 Scaling"](../img/scaling/layer-1-scaling.png "Layer 1 Scaling")
 
@@ -59,15 +59,31 @@ The solution predominantly adopted by the Ethereum community to solve the scalab
 
 See the [Next Section](/wiki/research/scaling/core-changes/core-changes.md).
 
-### Ethereum Layer 2 scaling
+## Ethereum Layer 2 scaling
 
-## ZK Rollups
+Given the current rollup-centric roadmap, multiple Layer 2 networks have emerged. These can be categorized into two main groups based on their security model: optimistic rollups and zk-rollups.
 
-TODO
+Both solutions have their own advantages, drawbacks, and unique tech stacks. However, they share a few core components:
+  - Onchain contracts: These control the various rollups and may include smart contracts that track user deposits, monitor state updates, and more.
+  - Offchain virtual machines (VMs): Usually a modified EVM-compatible chain that executes transactions.
 
-## Optimistic Rollups
+Ethereum acts as both a data availability (DA) layer and a settlement layer, meaning that Layer 2s inherit the security of Layer 1. Once a rollup transaction is committed to Ethereum’s base layer, it cannot be rolled back.  
+Historically, rollups posted their transaction data in the `calldata` section of Ethereum transactions, but this led to excessive growth in historical node storage. EIP-4844 (proto-danksharding) introduces a new mechanism that allows rollups to submit data in blobs — a separate, more efficient data space — along with a separate gas model for blob usage and minor changes to how consensus nodes process this data. You can learn more about blobs, danksharding, and EIP-4844 in the [following section](https://epf.wiki/#/wiki/research/scaling/core-changes/eip-4844).
 
-TODO
+### Optimistic Rollups
+
+Optimistic rollups emerged as a way to improve transaction throughput while still relying on cryptoeconomic incentives to inherit Ethereum's security.
+Their verification model is based on a technique called optimistic verification—every transaction submitted to Layer 1 is assumed to be valid by default.
+An entity called an operator or aggregator submits a batch of L2 transactions to Layer 1 in a process called anchoring. After that, there is a challenge period, during which anyone can dispute the validity of a transaction batch by submitting a fraud proof.
+If a challenge is successful, the challenger is rewarded, and the operator is penalized through a process called slashing. This mechanism incentivizes operators to only submit transactions that won't be challenged.
+
+### ZK Rollups
+
+ZK rollups are scaling solutions that enhance Ethereum’s throughput with mathematical certainty using advanced cryptographic techniques.
+Transactions on the Layer 2 are bundled into batches, and a zero-knowledge proof is generated to verify their correctness. This proof is then submitted to Layer 1, where it is verified. Once verified, there is mathematical assurance that all transactions in the batch are valid.
+Although they're called ZK rollups due to their use of zero-knowledge proofs, the primary benefit is actually succinctness—the ability to produce a compact proof that is much smaller than the actual size of all the transactions.
+There are two main types of zero-knowledge proof systems used in practice, zk-SNARKs(Zero-Knowledge Succinct Non-Interactive Argument of Knowledge) and zk-STARKs(Zero-Knowledge Scalable Transparent Argument of Knowledge).  
+zk-SNARKs currently have broader adoption in the ZK rollup landscape, but zk-STARKs are gaining momentum due to their scalability and lack of a trusted setup.
 
 ## Resources:
 
@@ -81,3 +97,4 @@ TODO
 - [Combining GHOST and Casper](https://eips.ethereum.org/assets/eip-2982/arxiv-2003.03052-Combining-GHOST-and-Casper.pdf), [archived](https://web.archive.org/web/20230907004049/https://eips.ethereum.org/assets/eip-2982/arxiv-2003.03052-Combining-GHOST-and-Casper.pdf)
 - [Ethereum Blocks](https://ethereum.org/developers/docs/blocks), [archived](https://web.archive.org/web/20240214052915/https://ethereum.org/developers/docs/blocks)
 - [On Block Sizes, Gas Limits and Scalability](https://ethresear.ch/t/on-block-sizes-gas-limits-and-scalability/18444), [archived](https://web.archive.org/web/20240220230246/https://ethresear.ch/t/on-block-sizes-gas-limits-and-scalability/18444)
+- [L2beat: an overview of all L2 rollups](https://l2beat.com/scaling/summary)

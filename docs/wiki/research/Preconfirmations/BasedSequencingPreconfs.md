@@ -179,7 +179,7 @@ Previous discussions on Ethereum Based Sequencing with Preconfirmations[^4] reve
 - [Preconfirmations](/docs/wiki/research/Preconfirmations/Preconfirmations.md)
 - [Ethereum Sequencing and Preconfirmations Call #1](https://youtu.be/2IK136vz-PM)
 - [Espresso Shared Sequencing](https://hackmd.io/@EspressoSystems/SharedSequencing)
-- [Zksync Deposit Sharing](https://docs.zksync.io/zk-stack/components/shared-bridges.html)
+- [Zksync Deposit Sharing](https://docs.zksync.io/zksync-protocol/contracts/l1-contracts/shared-bridges)
 - [Polygon Aggregate Layer](https://polygon.technology/blog/aggregated-blockchains-a-new-thesis)
 
 
@@ -189,5 +189,5 @@ Previous discussions on Ethereum Based Sequencing with Preconfirmations[^4] reve
 [^3]: https://epf.wiki/#/wiki/research/Preconfirmations/Preconfirmations
 [^4]: https://youtu.be/2IK136vz-PM
 [^5]: https://hackmd.io/@EspressoSystems/SharedSequencing
-[^6]: https://docs.zksync.io/zk-stack/components/shared-bridges.html
+[^6]: https://docs.zksync.io/zksync-protocol/contracts/l1-contracts/shared-bridges
 [^7]: https://polygon.technology/blog/aggregated-blockchains-a-new-thesis
