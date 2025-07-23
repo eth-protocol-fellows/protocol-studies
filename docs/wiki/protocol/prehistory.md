@@ -292,7 +292,7 @@ On July 30, 2015, Ethereum [went live](https://etherscan.io/block/1) as a platfo
 
 As of the time of writing, Ethereum has a market capitalization of **$400 billion**.
 
-> 📄 READ: [Vitalik's post about the origin of Ethereum](https://vitalik.eth.limo/general/2017/09/14/prehistory.html).
+> 📄 READ: [Vitalik's post about the origin of Ethereum.](https://vitalik.eth.limo/general/2017/09/14/prehistory.html)
 
 > 🎦 WATCH: [Mario Havel talks about the Ethereum philosophy.](https://streameth.org/ethereum_protocol_fellowship/watch?session=65d77e4f437a5c85775fef9d)
 
