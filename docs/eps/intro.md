@@ -64,7 +64,7 @@ Every part of the execution layer, the original Ethereum  itself.
 
 ### Research
 
-The research track provides a technical explanation of active areaa of research, covering major important items from most [Ethereum roadmap](https://epf.wiki/#/wiki/research/roadmap) tracks. 
+The research track provides a technical explanation of active area of research, covering major important items from most [Ethereum roadmap](https://epf.wiki/#/wiki/research/roadmap) tracks. 
 
 | Topic                                              | Speaker                                            |
 | -------------------------------------------------- | -------------------------------------------------- |
