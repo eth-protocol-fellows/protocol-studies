@@ -77,7 +77,7 @@ Key features of libp2p:
   | `protocols` | `string[]`| List of supported application protocols (e.g., `/chat/1.0.0`) |
   | `signedPeerRecord`| `bytes` | Authenticated version of `listenAddrs` for sharing with other peers |
 
-- Identify/push: `/ipfs/id/push/1.0.0` same as "Identify" just that this is sent proactivily and not in reponse to a request. It is useful to push a new address to its connected peers.
+- Identify/push: `/ipfs/id/push/1.0.0` same as "Identify" just that this is sent proactivily and not in response to a request. It is useful to push a new address to its connected peers.
 
 **kad-dht** : libp2p uses Distributed Hash Table (DHT) based on the [Kademlia][kademlia] routing algorithm for its routing functionality.
 
@@ -146,7 +146,7 @@ If the peer is behind NAT (when direct connection fails):
 3. **Encryption** : How to make the connection private and authenticated?
 
 - `noise` : framework for building security protocols, fast, default choice for many, Noise XX handshake for mutual authentication.
-- `tls` (Transport Layer Security) : strong securtity guarantees, mututal authentication done using peer's key
+- `tls` (Transport Layer Security) : strong security guarantees, mututal authentication done using peer's key
 - `secio` : deprecated due to complexity and lower assurance compared to Noise/TLS.
 
 4. **Multiplexing** : How to open multiple logical streams over the same connection?
@@ -162,7 +162,7 @@ If the peer is behind NAT (when direct connection fails):
 
 ### What optimization does Gossibhub provide?
 
-**Approach 1:** Maintain a fully connected mesh (all peers connected to each other 1:1), which scales poorly (O(n^2)). Why this scales poorly? Each node may recieve the same message from other (n-1) nodes , hence wasting a lot of bandwidth. If the message is a block data, then the wasted bandwith is exponentially large.
+**Approach 1:** Maintain a fully connected mesh (all peers connected to each other 1:1), which scales poorly (O(n^2)). Why this scales poorly? Each node may receive the same message from other (n-1) nodes , hence wasting a lot of bandwidth. If the message is a block data, then the wasted bandwidth is exponentially large.
 
 **Approach 2:** Pubsub (Publish-Subscribe Model) messaging pattern is used where senders (publishers) don’t send messages directly to receivers (subscribers). Instead, messages are published to a common channel (or topic), and subscribers receive messages from that channel without direct interaction with the publisher. The nodes mesh with a particular number of other nodes for a topic, and those with other nodes. Hence, allowing more efficient message passing.
 
