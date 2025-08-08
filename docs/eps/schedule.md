@@ -32,7 +32,7 @@ The second week of the study group provides an overview of developer experience 
 | Day, Date      | Topic                                              | Speaker                                                                                |
 | -------------- | -------------------------------------------------- | -------------------------------------------------------------------------------------- |
 | Day 6, Feb 24  | [Consensus and Execution specs](/eps/week6-dev.md) | [Hsiao-Wei Wang](https://github.com/hwwhww), [Sam Wilson](https://github.com/SamWilsn) |
-| Day 7, Feb 25  | [Execution client architecture](/eps/week7-dev.md) | [Dragan Pilipovic](https://github.com/dragan2234)                                      |
+| Day 7, Feb 25  | [Execution client architecture](/eps/week7-dev.md) | [Dragan Rakita](https://github.com/rakitadragan)                                       |
 | Day 8, Feb 26  | [Consensus client architecture](/eps/week8-dev.md) | [Paul Harris](https://github.com/rolfyone)                                             |
 | Day 9, Feb 27  | [Devops and testing](/eps/week9-dev.md)            | [Parithosh](https://github.com/parithosh)                                              |
 | Day 10, Feb 28 | [EL precompiles](/eps/week10-dev.md)               | [Danno Ferrin](https://github.com/shemnon)                                             |
