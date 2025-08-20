@@ -92,10 +92,9 @@ The Beacon Chain is the backbone of Ethereum’s consensus. It coordinates valid
 
 Validators are essentially the participants in the PoS Protocol. They propose and validate new blocks, ensuring the integrity and security of the blockchain. Validators must stake ETH as collateral, aligning their interests with the network’s health. Validators are chosen to propose blocks based on several factors:
 
-- **Staked Ether**: Each validator can stake a maximum of 32 ETH. Stakers with more ETH can increase their influence by running multiple validator nodes, each staking 32 ETH. This system ensures decentralization and aligns the interests of validators with the network's security and integrity.
+- **Staked Ether**: To become a validator, an individual must deposit a minimum of 32 ETH into the official deposit contract. Each validator can stake a maximum of 2048 ETH. This ETH acts as collateral to incentivize honest behavior. The validator's ETH is at risk if they fail to perform their duties or engage in malicious activities.
 - **Randomness**: The selection process incorporates cryptographic randomness to prevent predictability and manipulation. This is achieved through the [RANDAO](https://inevitableeth.com/home/ethereum/network/consensus/randao) and [VDF (Verifiable Delay Function)](https://inevitableeth.com/home/ethereum/upgrades/consensus-updates/vdf) mechanisms.
 - **Committees**: Validators are grouped into committees for block proposal and attestation. Each committee is responsible for validating and attesting to blocks, ensuring a decentralized and secure validation process.
-- **Staking Requirements**: To become a validator, an individual must deposit a minimum of 32 ETH into the official deposit contract. This ETH acts as collateral to incentivize honest behavior. The validator's ETH is at risk if they fail to perform their duties or engage in malicious activities.
 
 ### Slots and Epochs
 
@@ -141,7 +140,7 @@ An **attestation** is a validator’s vote, weighted by the validator’s stake.
 
 The contents of the Beacon Chain is primarily a registry of validator addresses, the state of each validator, and attestations.  Validators are activated by the Beacon Chain and can transition to states
 
-**IMPORTANT NOTE on Staking Validators Semantics:** *In Ethereum's PoS, users activate validators by staking ETH, similar to buying hardware in PoW. Stakers are associated with the amount staked, while validators have a maximum balance of 32 ETH each. For every 32 ETH staked, one validator is activated. Validators are run by validator clients, which use a beacon node to follow and read the Beacon Chain. A single validator client can manage multiple validators.*
+**IMPORTANT NOTE on Staking Validators Semantics:** *In Ethereum's PoS, users activate validators by staking ETH, similar to buying hardware in PoW. Stakers are associated with the amount staked, while validators have a minimum activation balance of 32 ETH and a maximum effective balance of 2048 ETH each. Validators are run by validator clients, which use a beacon node to follow and read the Beacon Chain. A single validator client can manage multiple validators.*
 
 ### Committees
 
@@ -319,7 +318,7 @@ There are four conditions under which a validator can be slashed:
 
 ## Beacon Chain Validator Activation and Lifecycle:
 
-A validator requires 32 ETH to be activated. Validators are deactivated if their balance falls to 16 ETH, with any remaining balance withdrawable. Validators can also voluntarily exit after serving 2,048 epochs (approximately nine days). 
+A validator requires a minimum balance of 32 ETH to be activated. Validators are deactivated if their balance falls to 16 ETH, with any remaining balance withdrawable. Validators can also voluntarily exit after serving 2,048 epochs (approximately nine days). 
 
 Upon exit, there is a delay of four epochs before withdrawal, during which validators can still be slashed. 
 
@@ -354,3 +353,4 @@ Research and developmental phases for future -->
 - [Evolution of Ethereum Proof-of-Stake](https://github.com/ethereum/pos-evolution/blob/master/pos-evolution.md)
 - Alt Explainer, [Ethereum's Proof-of-Stake consensus explained](https://www.youtube.com/watch?v=5gfNUVmX3Es)
 - [Eth2 Handbook by Ben Edgington](https://eth2book.info/capella/part2/consensus/)
+- [MaxEB](https://eips.ethereum.org/EIPS/eip-7251)
