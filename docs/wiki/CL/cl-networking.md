@@ -42,7 +42,7 @@ _Multiaddr format_
 </figure>
 
 3. **Multiplexing** : Multiplexing allows multiple independent communications streams to run concurrently over a single network connection. Two multiplexers are commonplace in libp2p implementations: [mplex][mplex] and [yamux][yamux]. Their protocol IDs are, respectively: `/mplex/6.7.0` and `/yamux/1.0.0`. Clients must support mplex and may support yamux with precedence given to the latter.
-4. **Message Passing** : To pass messages over the network libp2p implements [Gossipsub][gossipsub] (PubSub) and [Req-Resp][req-resp] (Request/Response). Gossipsub uses topics and Req/Resp uses messages for communication.
+4. **Message Passing** : To pass messages over the network libp2p implements [Gossipsub][gossipsub] (PubSub) and [Req/Resp][req-resp] (Request/Response). Gossipsub uses topics and Req/Resp uses messages for communication.
 
 ### **libp2p Protocol Stack**
 
@@ -179,7 +179,7 @@ _Gossipsub Optimization_
 
 ###### **Gossipsub : TODO**
 
-###### **Req-Resp : TODO**
+###### **Req/Resp : TODO**
 
 ###### **QUIC : TODO**
 
