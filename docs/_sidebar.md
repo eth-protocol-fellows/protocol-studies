@@ -2,11 +2,12 @@
 - **Study Group**
 - [Start here](/eps/intro.md)
 - [Study Group content](/eps/schedule.md)
+
   - **Introduction**
   - [Prepare for studies](/eps/week0.md)
   - [Protocol intro and overview](/eps/week1.md)
-  - [CL intro](/eps/week3.md)
   - [EL intro](/eps/week2.md)
+  - [CL intro](/eps/week3.md)
   - [Using clients](/eps/nodes_workshop.md)
   - [CL/EL specs](/eps/week6-dev.md)
   - [Testing and security](/eps/week4.md)

@@ -1,8 +1,8 @@
-# Study Group Lecture 3 | Execution Layer
+# Study Group Lecture 2 | Execution Layer
 
-During the third day, we will dive into the Execution layer of Ethereum. 
+During the second day, we will dive into the Execution layer of Ethereum.
 
-Watch the presentation diving into EL internals with Lightclient on [StreamEth](https://streameth.org/watch?event=&session=65dcdef0a6d370a1ab326de1) or [Youtube](https://www.youtube.com/watch?v=pniTkWo70OY). 
+Watch the presentation diving into EL internals with Lightclient on [StreamEth](https://streameth.org/watch?event=&session=65dcdef0a6d370a1ab326de1) or [Youtube](https://www.youtube.com/watch?v=pniTkWo70OY).
 
 The overview document created in the presentation is [available here](https://github.com/eth-protocol-fellows/protocol-studies/blob/main/docs/eps/presentations/week2_notes.md?plain=1).
 
@@ -10,57 +10,63 @@ The overview document created in the presentation is [available here](https://gi
 
 For written summary of week 2 presentation, check the [notes](https://ab9jvcjkej.feishu.cn/docx/BRDdd8kP9o00a2x6F4scRo0fnJh)
 
-For archive of the discussion during the talk, check [this thread](https://discord.com/channels/1205546645496795137/1210292746817110027/1210292751158222848) in our [Discord server](https://discord.gg/epfsg). 
+For archive of the discussion during the talk, check [this thread](https://discord.com/channels/1205546645496795137/1210292746817110027/1210292751158222848) in our [Discord server](https://discord.gg/epfsg).
 
 ## Pre-reading
 
-Before starting with week 2 content, make yourself familiar with resources in [week 1](/eps/week1.md). 
+Before starting with week 2 content, make yourself familiar with resources in [week 1](/eps/week1.md).
 
 Additionally, you should read through the following documents to prepare for the presentation:
-* [Nodes and clients](https://ethereum.org/developers/docs/nodes-and-clients)
-* [Ethereum: mechanics](https://cs251.stanford.edu/lectures/lecture7.pdf) (a lecture based on these slides is also available on YouTube: [An Overview of the Ethereum Execution Layer - Dan Boneh](https://www.youtube.com/watch?v=7sxBjSfmROc))
+
+- [Nodes and clients](https://ethereum.org/developers/docs/nodes-and-clients)
+- [Ethereum: mechanics](https://cs251.stanford.edu/lectures/lecture7.pdf) (a lecture based on these slides is also available on YouTube: [An Overview of the Ethereum Execution Layer - Dan Boneh](https://www.youtube.com/watch?v=7sxBjSfmROc))
 
 ## Outline
 
-###  Overview of the execution layer node
-* Block validation
-    * in overly simplistic terms, ELs process the state transition
-    * each transaction is validated by the client, executed, and its result accumulated into the state trie
-    * there are additional mechanisms which also must be updated each block, such as the EIP-1559 base fee, the EIP-4844 excess blob gas, the EIP-4844 beacon root ring buffer, beacon chain withdrawals, etc.
-    * new nodes must also be able to join the network without too much friction, so ELs provide efficient syncing mechanism to bootstrap others
-* Block building
-    * ELs also build blocks based on transactions they see around the network
-    * this requires a tx pool system over p2p
+### Overview of the execution layer node
+
+- Block validation
+  - in overly simplistic terms, ELs process the state transition
+  - each transaction is validated by the client, executed, and its result accumulated into the state trie
+  - there are additional mechanisms which also must be updated each block, such as the EIP-1559 base fee, the EIP-4844 excess blob gas, the EIP-4844 beacon root ring buffer, beacon chain withdrawals, etc.
+  - new nodes must also be able to join the network without too much friction, so ELs provide efficient syncing mechanism to bootstrap others
+- Block building
+  - ELs also build blocks based on transactions they see around the network
+  - this requires a tx pool system over p2p
 
 ### State transition function
-* header validation
-    * verify merkle roots
-    * verify gas limit
-    * verify timestamp
-* block validation
-    * walkthrough [`Process(..)`](https://github.com/ethereum/go-ethereum/blob/master/core/state_processor.go#L60) in `state_processor.go`
+
+- header validation
+  - verify merkle roots
+  - verify gas limit
+  - verify timestamp
+- block validation
+  - walkthrough [`Process(..)`](https://github.com/ethereum/go-ethereum/blob/master/core/state_processor.go#L60) in `state_processor.go`
 
 ### EVM high-level
-* stack machine intro
-* look at simple programs
-* review different classes of opcodes: stack/mem manipulators, env getters, ethereum system operations, etc.
+
+- stack machine intro
+- look at simple programs
+- review different classes of opcodes: stack/mem manipulators, env getters, ethereum system operations, etc.
 
 ### p2p high-level
-* p2p serves three main things
-    * historical data
-    * pending txs
-    * state
-* discuss snap sync
-    * phase 1: downloading snap tiles
-    * phase 2: healing
+
+- p2p serves three main things
+  - historical data
+  - pending txs
+  - state
+- discuss snap sync
+  - phase 1: downloading snap tiles
+  - phase 2: healing
 
 ### JSON-RPC
-* the "interface" to ethereum
-    * the vision is that all clients provide the exact same API and users can run any client they choose and have perfect integration with all tooling
-    * not quite there, but we are fairly close
-* review main RPC methods
 
-## Additional reading and exercises 
+- the "interface" to ethereum
+  - the vision is that all clients provide the exact same API and users can run any client they choose and have perfect integration with all tooling
+  - not quite there, but we are fairly close
+- review main RPC methods
+
+## Additional reading and exercises
 
 - https://www.evm.codes/
 - https://ethervm.io/
