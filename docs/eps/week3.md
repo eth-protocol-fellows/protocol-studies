@@ -36,10 +36,10 @@ Additionally, you can read and get ready by studying the following resources:
 - [Gasper paper](https://arxiv.org/pdf/2003.03052.pdf)
 - [Bitwise LMD GHOST: An efficient CBC Casper fork choice rule](https://medium.com/@aditya.asgaonkar/bitwise-lmd-ghost-an-efficient-cbc-casper-fork-choice-rule-6db924e57d1f)
 - [Eth2book, annotated spec](https://eth2book.info/)
-- [Stuff you should know about PoS by Domothy](https://domothy.com/proof-of-stake/)
+- [Stuff you should know about PoS by Domothy](https://web.archive.org/web/20240803111840/https://domothy.com/proof-of-stake/)
 - [Slashing scenario explanation by Dankrad Feist](https://dankradfeist.de/ethereum/2022/03/24/run-the-majority-client-at-your-own-peril.html)
 - [Beacon Chain design mistakes by Justin Drake](https://www.youtube.com/watch?v=10Ym34y3Eoo)
-- [Casper and Consensus from Devcon 3](https://archive.devcon.org/archive/watch/3/casper-and-consensus/?tab=YouTube)
+- [Casper and Consensus from Devcon 3](https://www.youtube.com/watch?v=2r2k6awEJr8)
 - [Anatomy of a slot](https://www.youtube.com/watch?v=EswDO0kL_O0)
 
 After learning about both EL and CL, run a client pair. Spin a pair of one execution and consensus client, read their logs to learn how they operate. 
