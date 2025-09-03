@@ -533,6 +533,7 @@ Monnot
 monorepo
 mortem
 MPC
+mplex
 MPT
 MSB
 MSIZE
@@ -672,6 +673,7 @@ Pyspec
 pytest
 qquad
 qubits
+QUIC
 Quintus
 Raa
 radix
@@ -690,6 +692,7 @@ reorganisation
 reorganisations
 replayable
 repo
+Req/Resp
 responder
 restaking
 retesteth
@@ -896,6 +899,7 @@ XMSS
 XORed
 xy
 YAML
+yamux
 Yan
 Yellowpaper
 Yoni

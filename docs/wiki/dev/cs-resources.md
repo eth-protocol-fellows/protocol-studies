@@ -20,7 +20,7 @@
 - 📄 [Set Theory](https://www.youtube.com/playlist?list=PL5KkMZvBpo5AH_5GpxMiryJT6Dkj32H6N)
 - 📄 [Basic number theory](https://www.codechef.com/wiki/tutorial-number-theory/)
 - 🎥 [Mathematics for Computer Science | MIT](https://openlearninglibrary.mit.edu/courses/course-v1:OCW+6.042J+2T2019/course/)
-- 📘 [Discrete Mathematics with Applications](https://www.amazon.com/Discrete-Mathematics-Applications-Susanna-Epp/dp/1337694193/)
+- 📘 [Discrete Mathematics with Applications](https://archive.org/download/schaums-outline-of-basic-mathematics-with-applications-to-science-and-technology-2ed/Discrete%20mathematics%20and%20its%20applications%E2%80%9D%20%288th%20ed%29.pdf)
 
 ## Cryptography
 
