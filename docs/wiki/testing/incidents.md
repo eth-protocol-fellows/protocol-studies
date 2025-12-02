@@ -23,6 +23,9 @@ For a comprehensive list of Ethereum incidents and their detailed analysis, you 
 - [Post-Mortem Report: Ethereum Mainnet Finality (05/11/2023)](https://medium.com/offchainlabs/post-mortem-report-ethereum-mainnet-finality-05-11-2023-95e271dfd8b2)
   The Mainnet had some disruptions, which led to blocks not getting produced leading to a significant delay in transactions reaching finality, this continued for two days and resulted in an inactivity consequence, the network fully recovered without intervention.
 
+- [Reth Mainnet State Root Mismatch (01/09/2025](https://laced-king-de5.notion.site/Incident-Post-Mortem-Reth-Mainnet-State-Root-Mismatch-26732f2c348480dea8b8c2a8753696dc)
+  A bug in Reth’s handling of trie updates caused trie tables in Reth nodes to contain incorrect information, resulting in nodes computing an incorrect state root at later blocks. 
+
 ## Historical Incidents
 
 - [Post-Mortem Report: Minority Split (2021-08-27)](https://github.com/ethereum/go-ethereum/blob/master/docs/postmortems/2021-08-22-split-postmortem.md)
