@@ -13,7 +13,7 @@ For archive of the discussion during the talk, check the corresponding thread in
 ## Pre-reading
 
 This is an introductory talk which doesn't assume a lot of prior knowledge. Check some general requirements in [week 0](/eps/week0.md). Here are few more introductory materials to get you started:
-- [Inevitable Ethereum - World Computer](https://inevitableeth.com/home/ethereum/world-computer)
+- [Inevitable Ethereum - World Computer](https://inevitableeth.com/ethereum/world-computer)
 - [Ethereum in 30 minutes](https://www.youtube.com/watch?v=UihMqcj-cqc)
 - [Ethereum.org docs](https://ethereum.org/en/what-is-ethereum/)
 
@@ -131,5 +131,5 @@ If you are interested in early days of Ethereum, the story of its founders and c
 
 A very recent publication providing a comprehensive insight is [Absolute Essentials of Ethereum](https://www.routledge.com/Absolute-Essentials-of-Ethereum/Dylan-Ennis/p/book/9781032334189). It covers a [variety of topics](https://www.coindesk.com/consensus-magazine/2024/02/07/absolute-essentials-of-ethereum-by-paul-dylan-ennis-an-excerpt/) and I can strongly recommend it. 
 
-[Mastering Ethereum](https://github.com/ethereumbook/ethereumbook) is one of the great blockchain books by aantop covering everything from basics to technical details. It's few years old and already outdated but still can be a good inspiration. 
+[Mastering Ethereum](https://github.com/ethereumbook/ethereumbook) is one of the great blockchain books by aantop covering everything from basics to technical details. It has been updated in second edition resleased in November 2025, providing most comprehensive overview of Ethereum.
 

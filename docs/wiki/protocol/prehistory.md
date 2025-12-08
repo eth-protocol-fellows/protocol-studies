@@ -298,6 +298,8 @@ As of the time of writing, Ethereum has a market capitalization of **$400 billio
 
 > 📄 READ: [Evolution of Ethereum.](/wiki/protocol/history.md)
 
+> 📄 Read: [The original Ethereum Dev Plan](https://hudsonjameson.com/files/Ethereum-Dev-Plan-preview.pdf), and [this thread](https://xcancel.com/hudsonjameson/status/1973786503659626893) discussing Ethereum's original vision.
+
 ## Resources
 
 - 📄 Computer History Museum, ["The history of Computer Networking"](https://www.computerhistory.org/timeline/networking-the-web/)
