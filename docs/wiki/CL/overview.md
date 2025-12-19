@@ -93,7 +93,7 @@ The Beacon Chain is the backbone of Ethereum’s consensus. It coordinates valid
 Validators are essentially the participants in the PoS Protocol. They propose and validate new blocks, ensuring the integrity and security of the blockchain. Validators must stake ETH as collateral, aligning their interests with the network’s health. Validators are chosen to propose blocks based on several factors:
 
 - **Staked Ether**: To become a validator, an individual must deposit a minimum of 32 ETH into the official deposit contract. Each validator can stake a maximum of 2048 ETH. This ETH acts as collateral to incentivize honest behavior. The validator's ETH is at risk if they fail to perform their duties or engage in malicious activities.
-- **Randomness**: The selection process incorporates cryptographic randomness to prevent predictability and manipulation. This is achieved through the [RANDAO](https://inevitableeth.com/home/ethereum/network/consensus/randao) and [VDF (Verifiable Delay Function)](https://inevitableeth.com/home/ethereum/upgrades/consensus-updates/vdf) mechanisms.
+- **Randomness**: The selection process incorporates cryptographic randomness to prevent predictability and manipulation. This is achieved through the [RANDAO](https://inevitableeth.com/ethereum/randao) and [VDF (Verifiable Delay Function)](https://inevitableeth.com/ethereum/vdf) mechanisms.
 - **Committees**: Validators are grouped into committees for block proposal and attestation. Each committee is responsible for validating and attesting to blocks, ensuring a decentralized and secure validation process.
 
 ### Slots and Epochs
