@@ -5,7 +5,7 @@
 Ethereum's evolving ecosystem is set to introduce new paradigms for rollups and chain interactions, emphasizing seamless transitions and enhanced user experiences. This wiki article introduces a framework for Ethereum sequencing and preconfirmations, originally proposed by Justin Drake[^1][^4], a step toward realizing this vision, offering a unified platform for all Ethereum chains and rollups. 
 
 
-## [Motivation](Motivation)
+## [Motivation](#Motivation)
 
 ### [United Chains of Ethereum](#united-chains-of-ethereum)
 
