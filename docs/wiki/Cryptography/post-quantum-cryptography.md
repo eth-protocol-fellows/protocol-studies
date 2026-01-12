@@ -4,7 +4,7 @@ Classical cryptography safeguards information by leveraging the inherent difficu
 
 In essence, these problems makes determining the structure of a secret subgroup (size, elements) within a large group computationally intractable without the knowledge of a "secret" (private) key. This one-way "trapdoor function" is employed by public-key cryptography algorithms for their security.
 
-[RSA's](<https://en.wikipedia.org/wiki/RSA_(cryptosystem)>) security rests on the **factoring of large prime numbers**. In contrast, [ECDSA's](/wiki/Cryptography/ecdsa.md) security is based on the elliptic curve **discrete logarithm problem**. Solving either of these hidden subgroup problems becomes exponentially harder as the key size increases, making them computationally infeasible for classical computers to crack. This fundamental difficulty safeguards encrypted data.
+[RSA's](<https://en.wikipedia.org/wiki/RSA_(cryptosystem)>) security rests on the **factoring of large prime numbers**. In contrast, [ECDSA's](/docs/wiki/Cryptography/ecdsa.md) security is based on the elliptic curve **discrete logarithm problem**. Solving either of these hidden subgroup problems becomes exponentially harder as the key size increases, making them computationally infeasible for classical computers to crack. This fundamental difficulty safeguards encrypted data.
 
 However, the landscape is shifting.
 
@@ -32,7 +32,7 @@ In Feb 2025, Microsoft announced [a million qubits on a single chip.](https://ne
 
 ## Post-Quantum risk to Ethereum
 
-Ethereum accounts are secured by a two-tier cryptosystem. A private key is used to generate a public key through [elliptic curve multiplication](/wiki/Cryptography/ecdsa.md). This public key is hashed using [keccak256](/wiki/Cryptography/keccak256.md) to derive the Ethereum address.
+Ethereum accounts are secured by a two-tier cryptosystem. A private key is used to generate a public key through [elliptic curve multiplication](/docs/wiki/Cryptography/ecdsa.md). This public key is hashed using [keccak256](/docs/wiki/Cryptography/keccak256.md) to derive the Ethereum address.
 
 The immediate post-quantum threat is the ability to reverse elliptic curve multiplication securing ECDSA thus exposing the private key. This makes all externally owned accounts (EOA) vulnerable to a quantum attack. Assuming the hashing function that maps a public-key to an ethereum address is still safe, extracting its private key is still challenging but vulnerable nonetheless.
 
@@ -49,7 +49,7 @@ The approach, however, is not perfect. Some users will still loose funds since n
 
 > Picture a single large exchange wallet being drained by a quantum computer. Everyone would naturally assume it was a security failure of some kind on the exchange’s end. Or if a smart wallet relying on discrete log assumption gets drained, a smart contract bug/exploit would be the first thing that comes to mind. Or the quantum-enabled attacker avoids high profile targets altogether and slowly steals funds from various large EOAs, and we never even know a quantum attack took place.
 
-Further, KZG commitment schemes powering [EIP-4844](/wiki/research/scaling/core-changes/eip-4844.md) would also need to be upgraded to prevent fraudulent commits.
+Further, KZG commitment schemes powering [EIP-4844](/docs/wiki/research/scaling/core-changes/eip-4844.md) would also need to be upgraded to prevent fraudulent commits.
 
 ## Research
 

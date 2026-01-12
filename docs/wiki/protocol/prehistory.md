@@ -91,7 +91,7 @@ In the article, Gardner included a RSA-129 cipher and offered $100 to the first 
 ![MIT's RSA Challenge](img/overview/rsa-challenge.jpg)
 **MIT's RSA challenge.**
 
-In 1994, a group of computer scientists and volunteers [cracked the cipher](https://en.wikipedia.org/wiki/The_Magic_Words_are_Squeamish_Ossifrage) and donated the money to the [Free Software Foundation](https://www.fsf.org/). This effort highlighted a crucial point: perfect security in cryptography is an illusion. Encryption methods, like RSA, are constantly evolving, especially in anticipation of [quantum computers.](/wiki/Cryptography/post-quantum-cryptography.md)
+In 1994, a group of computer scientists and volunteers [cracked the cipher](https://en.wikipedia.org/wiki/The_Magic_Words_are_Squeamish_Ossifrage) and donated the money to the [Free Software Foundation](https://www.fsf.org/). This effort highlighted a crucial point: perfect security in cryptography is an illusion. Encryption methods, like RSA, are constantly evolving, especially in anticipation of [quantum computers.](/docs/wiki/Cryptography/post-quantum-cryptography.md)
 
 Nevertheless, modern RSA encryption (1024 to 4096 bits) created a secure pathway on the information superhighway, enabling banks and credit card companies to protect financial transactions. This fostered trust and facilitated the growth of e-commerce and online banking.
 
@@ -296,7 +296,7 @@ As of the time of writing, Ethereum has a market capitalization of **$400 billio
 
 > 🎦 WATCH: [Mario Havel talks about the Ethereum philosophy.](https://streameth.org/ethereum_protocol_fellowship/watch?session=65d77e4f437a5c85775fef9d)
 
-> 📄 READ: [Evolution of Ethereum.](/wiki/protocol/history.md)
+> 📄 READ: [Evolution of Ethereum.](/docs/wiki/protocol/history.md)
 
 > 📄 Read: [The original Ethereum Dev Plan](https://hudsonjameson.com/files/Ethereum-Dev-Plan-preview.pdf), and [this thread](https://xcancel.com/hudsonjameson/status/1973786503659626893) discussing Ethereum's original vision.
 

@@ -7,7 +7,7 @@
 
 | Upgrade |    URGE     |       Track       |                          Item                           |                                                                Cross-references                                                                 |
 |:-------:|:-----------:|:-----------------:|:-------------------------------------------------------:|:-----------------------------------------------------------------------------------------------------------------------------------------------:|
-|  eODS   | the Scourge | Staking economics | Censorship resistances, liquid staking decentralization | [SSF](/docs/wiki/research/SSF.md), [IL](/docs/wiki/research/cl-upgrades.md), [ePBS](/wiki/research/PBS/ePBS.md), [ET](/wiki/research/PBS/ET.md) |
+|  eODS   | the Scourge | Staking economics | Censorship resistances, liquid staking decentralization | [SSF](/docs/wiki/research/SSF.md), [IL](/docs/wiki/research/cl-upgrades.md), [ePBS](/docs/wiki/research/PBS/ePBS.md), [ET](/docs/wiki/research/PBS/ET.md) |
 
 ## Relevant context 
 

@@ -88,7 +88,7 @@ The study group is an open and permissionless, and it is up to each participant 
 
 > Join our community in [Discord server](https://discord.gg/8RPnPGEQtJ). We use it for the easiest community engagement but we are aware that Discord is proprietary and doesn't respect user privacy. Consider using alternative FOSS clients like [Dissent](https://github.com/diamondburned/dissent) or [WebCord](https://github.com/SpacingBat3/WebCord). For enhancing the regular client, check [BetterDiscord](https://github.com/BetterDiscord/BetterDiscord/) project.
 
-Study group participants collaboratively develop the [Protocol wiki](/wiki/wiki-intro.md), serving as an evolving knowledge base for current and future core developers. This can provide students with practical experience in contributing to open source resources, while gaining invaluable experience in documentation and community-driven development.
+Study group participants collaboratively develop the [Protocol wiki](/docs/wiki/wiki-intro.md), serving as an evolving knowledge base for current and future core developers. This can provide students with practical experience in contributing to open source resources, while gaining invaluable experience in documentation and community-driven development.
 
 While this program is designed to act as a precursor to the Ethereum Protocol Fellowship, the study group is for anyone that is interested in learning more about the inner workings of the Ethereum Protocol. Those that have some general knowledge or use of Ethereum and/or blockchains as well as those that have some computer science, technical, or developer experience will get the most from this program.
 

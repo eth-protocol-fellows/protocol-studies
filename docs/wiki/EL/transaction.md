@@ -1,6 +1,6 @@
 # Transaction
 
-A **transaction** is a cryptographically-signed instruction issued by **an external account**, broadcasted to the entire network using [JSON-RPC](/wiki/EL/JSON-RPC.md).
+A **transaction** is a cryptographically-signed instruction issued by **an external account**, broadcasted to the entire network using [JSON-RPC](/docs/wiki/EL/JSON-RPC.md).
 
 A transaction contains following fields:
 
@@ -26,7 +26,7 @@ A transaction contains following fields:
 
 - **data ($T_d$) or init($T_i$)**: An unlimited size byte array specifying the input to the EVM. In contract `creation mode`, this value is considered as `init bytecode`, otherwise byte array of `input data`.
 
-- **Signature ($T_v, T_r, T_s$)**: [ECDSA](/wiki/Cryptography/ecdsa.md) signature of the sender.
+- **Signature ($T_v, T_r, T_s$)**: [ECDSA](/docs/wiki/Cryptography/ecdsa.md) signature of the sender.
 
 
 ## Contract creation

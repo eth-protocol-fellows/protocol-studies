@@ -59,7 +59,7 @@ The protocol changes over time, with each network upgrade bringing new improveme
 
 These core tenets have always led the Ethereum development and should be considered with every decision on design change. In addition to this, it manages growing complexity by encapsulating it and/or sandwiching it. The current network architecture is the result of many iterations of [network upgrade history](https://ethereum.org/history).
 
-> Read more about Ethereum design principles in [the archive](https://web.archive.org/web/20220815014507mp_/https://ethereumbuilders.gitbooks.io/guide/content/en/design_philosophy.html) and also in [this wiki](/wiki/protocol/design-rationale.md)
+> Read more about Ethereum design principles in [the archive](https://web.archive.org/web/20220815014507mp_/https://ethereumbuilders.gitbooks.io/guide/content/en/design_philosophy.html) and also in [this wiki](/docs/wiki/protocol/design-rationale.md)
 
 Ethereum network leverage decentralization to become permissionless, credible neutral and censorship resistant. It continues evolving to address the latest research, new and always present challenges. To maintain security and decentralization, blockchain technology has certain limits, mainly its scalability. Because Ethereum needs to always adhere to its principles, it motivates us to find clever solutions for these problems rather than accepting trade-offs. 
 

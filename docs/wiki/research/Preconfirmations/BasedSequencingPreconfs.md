@@ -76,7 +76,7 @@ _Figure: Different Sequencing Options and their Problem Space, Credit Justin Dra
 
 ### [Preconfirm Mechanism](#preconfirm-mechanism)
 
-In the [Preconfirmations](/wiki/research/Preconfirmations/Preconfirmations.md) article, I explained the details on how Preconfirmations work and the promise acquisition process flow[^2][^3]. 
+In the [Preconfirmations](/docs/wiki/research/Preconfirmations/Preconfirmations.md) article, I explained the details on how Preconfirmations work and the promise acquisition process flow[^2][^3]. 
 
 - **User Interaction with Proposers:** Users can identify which proposers within the look-ahead period have opted for based sequencing and request preconfirmations from them. These preconfirmations are akin to promises that the user's transaction will be included and executed in the future, with penalties applied for non-fulfillment.
 

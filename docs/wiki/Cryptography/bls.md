@@ -104,7 +104,7 @@ Verification of this aggregated signature would involve a corresponding aggregat
 
 ## BLS Signatures in Ethereum
 
-With respect to Blockchain, digital signatures typically leverage elliptic curve groups. Ethereum primarily employs [ECDSA](/wiki/Cryptography/ecdsa.md) signatures using the [secp256k1](https://www.secg.org/sec2-v2.pdf) curve, while the beacon chain protocol adopts BLS signatures based on the [BLS12-381](https://hackmd.io/@benjaminion/bls12-381) curve. Unlike ECDSA, BLS signatures utilize a unique feature of certain elliptic curves known as "[pairing](https://medium.com/@VitalikButerin/exploring-elliptic-curve-pairings-c73c1864e627)." This allows for the aggregation of multiple signatures, enhancing the efficiency of the consensus protocol. While ECDSA signatures are [much quicker](https://datatracker.ietf.org/doc/html/draft-irtf-cfrg-bls-signature-04#section-1.1) to process, the aggregative capability of BLS signatures offers significant advantages for blockchain scalability and consensus efficiency.
+With respect to Blockchain, digital signatures typically leverage elliptic curve groups. Ethereum primarily employs [ECDSA](/docs/wiki/Cryptography/ecdsa.md) signatures using the [secp256k1](https://www.secg.org/sec2-v2.pdf) curve, while the beacon chain protocol adopts BLS signatures based on the [BLS12-381](https://hackmd.io/@benjaminion/bls12-381) curve. Unlike ECDSA, BLS signatures utilize a unique feature of certain elliptic curves known as "[pairing](https://medium.com/@VitalikButerin/exploring-elliptic-curve-pairings-c73c1864e627)." This allows for the aggregation of multiple signatures, enhancing the efficiency of the consensus protocol. While ECDSA signatures are [much quicker](https://datatracker.ietf.org/doc/html/draft-irtf-cfrg-bls-signature-04#section-1.1) to process, the aggregative capability of BLS signatures offers significant advantages for blockchain scalability and consensus efficiency.
 
 The process to create and verify a BLS signature is straightforward, involving a series of steps that can be explained through diagrams, descriptions, and mathematical principles, although understanding the mathematical detail is not essential for practical application.
 
@@ -158,7 +158,7 @@ _A validator randomly generates its secret key. Its public key is then derived f
 
 ### Signing in the Beacon Chain
 
-In Ethereum's beacon chain, the only messages that get signed are the [hash tree roots](https://eth2book.info/capella/part2/building_blocks/merkleization/) of objects. These roots, called "signing roots," are 32-byte strings. The [`compute_signing_root()`](/wiki/CL/functions#compute_signing_root) function integrates the hash tree root with a specific "domain," enhancing the security.
+In Ethereum's beacon chain, the only messages that get signed are the [hash tree roots](https://eth2book.info/capella/part2/building_blocks/merkleization/) of objects. These roots, called "signing roots," are 32-byte strings. The [`compute_signing_root()`](/docs/wiki/CL/functions#compute_signing_root) function integrates the hash tree root with a specific "domain," enhancing the security.
 
 <!-- define and link context (domain separation and forks) in CL-->
 
@@ -204,7 +204,7 @@ $$
 e(g_1, \sigma) = e(pk, H(m))
 $$
 
-This checks whether the message signed with the secret key $sk$ matches the observed signature $\sigma$, using the fundamental properties of [pairings](/wiki/Cryptography/bls#how-bls-works).
+This checks whether the message signed with the secret key $sk$ matches the observed signature $\sigma$, using the fundamental properties of [pairings](/docs/wiki/Cryptography/bls#how-bls-works).
 
 <figure class="diagram" style="margin-left:10%; width:80%">
 

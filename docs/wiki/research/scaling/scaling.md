@@ -57,7 +57,7 @@ The solution predominantly adopted by the Ethereum community to solve the scalab
 
 ## Ethereum Core Changes Towards a Rollup-Centric Roadmap
 
-See the [Next Section](/wiki/research/scaling/core-changes/core-changes.md).
+See the [Next Section](/docs/wiki/research/scaling/core-changes/core-changes.md).
 
 ## Ethereum Layer 2 scaling
 

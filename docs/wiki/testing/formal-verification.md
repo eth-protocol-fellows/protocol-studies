@@ -91,15 +91,15 @@ Note how this abstraction conveniently ignores all the irrelevant interactions a
 
 Safety and liveliness assurance is central to Ethereum's decentralized infrastructure. Formal verification plays a critical role in verifying correctness of:
 
-- The protocol's [execution](/wiki/EL/el-specs.md) and [consensus](/wiki/CL/cl-specs.md) specifications.
-- [Client](/wiki/EL/el-clients.md) implementations.
+- The protocol's [execution](/docs/wiki/EL/el-specs.md) and [consensus](/docs/wiki/CL/cl-specs.md) specifications.
+- [Client](/docs/wiki/EL/el-clients.md) implementations.
 - On-chain smart contract applications end users interact with.
 
 ### Protocol verification
 
 Formal verification is used by the [Runtime Verification team](https://github.com/runtimeverification) to verify [bacon chain specification](https://runtimeverification.com/blog/a-formal-model-in-k-of-the-beacon-chain-ethereum-2-0s-primary-proof-of-stake-blockchain), and the [Gasper finality mechanism](https://runtimeverification.com/blog/formally-verifying-finality-in-gasper-the-core-of-the-beacon-chain).
 
-[KEVM](https://github.com/runtimeverification/evm-semantics) builds upon [K framework](https://kframework.org/) for crafting formal semantics and conducting verification of the [Ethereum Virtual Machine (EVM)](/wiki/EL/evm.md) specification for correctness.
+[KEVM](https://github.com/runtimeverification/evm-semantics) builds upon [K framework](https://kframework.org/) for crafting formal semantics and conducting verification of the [Ethereum Virtual Machine (EVM)](/docs/wiki/EL/evm.md) specification for correctness.
 
 Formal verification is an essential tool in the test suite and was used to discover a subtle [array-out-of-bound runtime error](https://consensys.io/blog/formal-verification-of-ethereum-2-0-part-1-fixing-the-array-out-of-bound-runtime-error) within the state transition component.
 

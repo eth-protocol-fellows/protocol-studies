@@ -211,7 +211,7 @@ Both **full sync** and **snap sync** finishes when blockchain data is verified a
 
 ##### Payload building
 
-More details in [block production](/wiki/EL/block-production.md)
+More details in [block production](/docs/wiki/EL/block-production.md)
 
 #### Methods
 
@@ -291,16 +291,16 @@ Note that these examples are using go-ethereum, specific naming and implementati
 
 ### EVM
 
-[Wiki - EVM](/wiki/EL/evm.md)
+[Wiki - EVM](/docs/wiki/EL/evm.md)
 TODO: Move relevant code from specs into EVM
 
 ### DevP2P
 
-[Wiki - DevP2P](/wiki/EL/devp2p.md)
+[Wiki - DevP2P](/docs/wiki/EL/devp2p.md)
 
 ### Data structures
 
-More details in the page on [EL data structures](/wiki/EL/data-structures.md).
+More details in the page on [EL data structures](/docs/wiki/EL/data-structures.md).
 
 ### Storage
 

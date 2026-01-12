@@ -2,7 +2,7 @@
 
 Ethereum client implementations undergo constant testing on different levels which ensures security and stability of the network. For a decentralized network, ensuring all clients communicate correctly, behave the same way and therefore agree on transaction outcomes as defined by the protocol is indispensable. A difference in a single state transition would cause a network split resulting in finalization failure and many problems for users. To achieve stability, Ethereum clients must undergo rigorous testing against a standardized suite of test cases. 
 
-These tests verify adherence to [execution](/wiki/EL/el-specs.md) and [consensus](/wiki/CL/cl-specs.md) specifications, guaranteeing all clients interpret and execute transactions identically. This rigorous testing also functions as a proactive bug-detection tool that safeguards against network forks (disagreements on the canonical blockchain state).
+These tests verify adherence to [execution](/docs/wiki/EL/el-specs.md) and [consensus](/docs/wiki/CL/cl-specs.md) specifications, guaranteeing all clients interpret and execute transactions identically. This rigorous testing also functions as a proactive bug-detection tool that safeguards against network forks (disagreements on the canonical blockchain state).
 
 ## Resources
 
