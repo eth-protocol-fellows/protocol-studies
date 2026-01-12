@@ -12,7 +12,7 @@ Before starting with the content, make yourself familiar with resources in previ
 
 Additionally, you can read and get ready by studying the following resources:
 
-- [Data structures in Ethereum](/wiki/EL/data-structures.md)
+- [Data structures in Ethereum](/docs/wiki/EL/data-structures.md)
 - [Guillaume Ballet - The Verge](https://www.youtube.com/watch?v=F1Ne19Vew6w)
 
 ## Outline

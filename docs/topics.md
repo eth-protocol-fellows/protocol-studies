@@ -39,7 +39,7 @@
 [History expiry]()  
 
 ### J
-[JSON-RPC](/wiki/EL/JSON-RPC.md)
+[JSON-RPC](/docs/wiki/EL/JSON-RPC.md)
 
 ### K
 

@@ -8,7 +8,7 @@
 
 ## Fork-choice Mechanism
 
-As described in [BFT](/wiki/CL/overview.md?id=byzantine-fault-tolerance-bft-and-byzantine-generals39-problem), for various reasons - like network delays, outages, out-of-order messages, or malicious behavior — nodes in the network can have different views of the network's state. Eventually, we want every honest node to agree on an identical, linear history and a common view of the system's state. The protocol's fork choice rule is what helps achieve this agreement.
+As described in [BFT](/docs/wiki/CL/overview.md?id=byzantine-fault-tolerance-bft-and-byzantine-generals39-problem), for various reasons - like network delays, outages, out-of-order messages, or malicious behavior — nodes in the network can have different views of the network's state. Eventually, we want every honest node to agree on an identical, linear history and a common view of the system's state. The protocol's fork choice rule is what helps achieve this agreement.
 
 #### Block Tree
 Given a block tree and decision criteria based on a node's local view of the network, the fork choice rule is designed to select the branch that is most likely to become the final, linear, canonical chain. It chooses the branch least likely to be pruned out as nodes converge on a common view.
@@ -101,7 +101,7 @@ Thus, while Ethereum strives for both safety and liveness, it leans towards ensu
 
 ## The Ghosts in the Machine
 
-Ethereum's Proof-of-Stake consensus protocol combines two separate protocols: [LMD GHOST](/wiki/CL/gasper?id=lmd-ghost.md) and [Casper FFG](/wiki/CL/gasper?id=casper-ffg.md). Together, they form the consensus protocol known as "Gasper". Detailed Information about both protocols and how they work in combination are covered in the next section [Gasper](/wiki/CL/gasper).
+Ethereum's Proof-of-Stake consensus protocol combines two separate protocols: [LMD GHOST](/docs/wiki/CL/gasper?id=lmd-ghost.md) and [Casper FFG](/docs/wiki/CL/gasper?id=casper-ffg.md). Together, they form the consensus protocol known as "Gasper". Detailed Information about both protocols and how they work in combination are covered in the next section [Gasper](/docs/wiki/CL/gasper).
 
 Gasper aims to combine the strengths of both LMD GHOST and Casper FFG. LMD GHOST provides liveness, ensuring the chain keeps running by producing new blocks regularly. However, it is prone to forks and not formally safe. Casper FFG, on the other hand, provides safety by periodically finalizing the chain, protecting it from long reversions.
 
@@ -140,9 +140,9 @@ There are also test networks that mint and manage test Ethereum for developers, 
 
 </figure>
 
-**Consensus Layer** is responsible for maintaining consensus chain (beacon chain) and processing the consensus blocks (beacon blocks) and attestations received from other peers. **Consensus clients** participate in a separate [peer-to-peer network](/wiki/CL/cl-networking.md) with a different specification from execution clients. They need to participate in block gossip to receive new blocks from peers and broadcast blocks when it's their turn to propose.
+**Consensus Layer** is responsible for maintaining consensus chain (beacon chain) and processing the consensus blocks (beacon blocks) and attestations received from other peers. **Consensus clients** participate in a separate [peer-to-peer network](/docs/wiki/CL/cl-networking.md) with a different specification from execution clients. They need to participate in block gossip to receive new blocks from peers and broadcast blocks when it's their turn to propose.
 
-Both EL and CL clients run in parallel and need to be connected for communication. The consensus client provides instructions to the execution client, and the execution client passes transaction bundles to the consensus client to include in Beacon blocks. Communication is achieved using a local RPC connection via the **Engine-API**. They share an [ENR](/wiki/CL/cl-networking?id=enr-ethereum-node-records) with separate keys for each client (eth1 key and eth2 key).
+Both EL and CL clients run in parallel and need to be connected for communication. The consensus client provides instructions to the execution client, and the execution client passes transaction bundles to the consensus client to include in Beacon blocks. Communication is achieved using a local RPC connection via the **Engine-API**. They share an [ENR](/docs/wiki/CL/cl-networking?id=enr-ethereum-node-records) with separate keys for each client (eth1 key and eth2 key).
 
 ### Control Flow
 

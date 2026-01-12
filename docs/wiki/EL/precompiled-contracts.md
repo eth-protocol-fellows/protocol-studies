@@ -2,7 +2,7 @@
 
 Precompiled contracts are a set of special accounts, each containing a built-in function with a determined gas cost, often related to complex cryptographic computations. Currently, they are defined at addresses ranging from `0x01` to `0x0a`.
 
-Unlike contract accounts, precompiles are part of the Ethereum protocol and implemented by [execution clients](/wiki/EL/el-clients.md). This presents an interesting caveat - their `EXTCODESIZE` within EVM is 0. Nonetheless, they function like contract accounts with code when executed.
+Unlike contract accounts, precompiles are part of the Ethereum protocol and implemented by [execution clients](/docs/wiki/EL/el-clients.md). This presents an interesting caveat - their `EXTCODESIZE` within EVM is 0. Nonetheless, they function like contract accounts with code when executed.
 
 Precompiles are included in the initial `"accessed_addresses"` of a transaction as defined by [EIP-2929](https://eips.ethereum.org/EIPS/eip-2929) to save gas costs.
 
@@ -38,7 +38,7 @@ The beauty of precompiles lies in design of its interface, which is identical to
 
 Gas costs for precompiles are directly tied to the input data – fixed inputs translate to fixed costs. To determine these costs, developers rely on a combination of reference implementations and benchmarks. Benchmarks typically measure execution time on specific hardware, while some, like `MODEXP`, [define consumption directly in terms of gas usage per second](https://eips.ethereum.org/EIPS/eip-2565#1-modify-computational-complexity-formula-to-better-reflect-the-computational-complexity). This meticulous approach aims to prevent denial-of-service attacks by ensuring predictable resource allocation.
 
-Under the hood, client implementations leverage optimized libraries to execute precompiles. While this approach enhances efficiency, it introduces a potential security risk. If a bug is found within these libraries, it could disrupt the entire protocol layer. To mitigate this risk, rigorous [testing](/wiki/testing/overview.md) is crucial (e.g. [MODEXP test specs](https://github.com/ethereum/execution-spec-tests/tree/main/tests/byzantium/eip198_modexp_precompile)).
+Under the hood, client implementations leverage optimized libraries to execute precompiles. While this approach enhances efficiency, it introduces a potential security risk. If a bug is found within these libraries, it could disrupt the entire protocol layer. To mitigate this risk, rigorous [testing](/docs/wiki/testing/overview.md) is crucial (e.g. [MODEXP test specs](https://github.com/ethereum/execution-spec-tests/tree/main/tests/byzantium/eip198_modexp_precompile)).
 
 To prevent security vulnerabilities, precompiles are designed to avoid nested calls.
 
@@ -76,7 +76,7 @@ which yields the hash:
 
 > ▶️ [Try it in the EVM playground!](https://www.evm.codes/playground?fork=cancun&unit=Wei&codeType=Mnemonic&code='~FirsKplaceqparameters%20inYZ5948656C6C6FjHello%20in%20UTF-8w0vMSTOREvv~Call%20SHA-256%20precompilJ%7BV02%7DNSizeNW5QSizewV1BQW2jaddressZ49FFFFFFFFjgasvbPOPjPop_ofqb~LOAD_fromYGo%20stackXvMLOAD'~%2F%2F%20wZ1%20v%5CnqGhJj%20~bSTATICCALLvv_qresulKZvPUSHY%20memoryXwV20WOffsetwV0xQjargsNXjretKt%20Je%20G%20t9%20V%019GJKNQVWXYZ_bjqvw~_)
 
-Refer the wiki on [EVM](/wiki/EL/evm.md) to understand how assembly code works.
+Refer the wiki on [EVM](/docs/wiki/EL/evm.md) to understand how assembly code works.
 
 ## Proposed precompiles
 

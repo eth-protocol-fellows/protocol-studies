@@ -6,12 +6,12 @@
 
 | Upgrade |    URGE     |   Track   |               Topic               |                                                          Cross-references                                                          |
 | :-----: | :---------: | :-------: | :-------------------------------: | :--------------------------------------------------------------------------------------------------------------------------------: |
-|   ET    | the Scourge | MEV track | Endgame block production pipeline | intersection with: [IL](/wiki/research/inclusion-lists.md), [ePBS](/wiki/research/PBS/ePBS.md), [PEPC](/wiki/research/PBS/PEPC.md) |
+|   ET    | the Scourge | MEV track | Endgame block production pipeline | intersection with: [IL](/docs/wiki/research/inclusion-lists.md), [ePBS](/docs/wiki/research/PBS/ePBS.md), [PEPC](/docs/wiki/research/PBS/PEPC.md) |
 
 
 
 ## Relevant context
-Recent proposals and development towards enshrining Proposer-Builder Separation ([PBS](/wiki/research/PBS/pbs.md)) seek to diminish execution block construction reliance on a few centralized, off-chain entities (relays), that in the context of current MEV, act as intermediaries between Validators as payload proposers and specialized, more sophisticated block builders. Today, with [MEV-boost](/wiki/research/PBS/mev-boost.md), validators-as-proposers forfeit their rights to build execution payloads, in an open-bids permissionless auction, Builders offering Proposers a well-sequenced payload against payment.
+Recent proposals and development towards enshrining Proposer-Builder Separation ([PBS](/docs/wiki/research/PBS/pbs.md)) seek to diminish execution block construction reliance on a few centralized, off-chain entities (relays), that in the context of current MEV, act as intermediaries between Validators as payload proposers and specialized, more sophisticated block builders. Today, with [MEV-boost](/docs/wiki/research/PBS/mev-boost.md), validators-as-proposers forfeit their rights to build execution payloads, in an open-bids permissionless auction, Builders offering Proposers a well-sequenced payload against payment.
 
 ![MEV-boost](/docs/wiki/research/img/MEV-boost.webp)
 
@@ -52,7 +52,7 @@ These rights confer the ticket holder (that can be a different party than the Va
 
 The improvement sa-ePBS brings, comes however with the technical cost of dealing with equivocations and head split views, and that [is not a trivial problem to solve](#open-issues).
 
-[ET](#execution-tickets-et-1) and [APS-Burn](/wiki/research/APS/aps.md) are two of the possible allocation mechanisms for implementing in-protocol Attester-Proposer Separation. The Beacon proposers can commit to execution proposers only, so there would be no commitments to the contents of the execution payload, which solves the timing games issues that the block-auction ePBS version faces.
+[ET](#execution-tickets-et-1) and [APS-Burn](/docs/wiki/research/APS/aps.md) are two of the possible allocation mechanisms for implementing in-protocol Attester-Proposer Separation. The Beacon proposers can commit to execution proposers only, so there would be no commitments to the contents of the execution payload, which solves the timing games issues that the block-auction ePBS version faces.
 
 ## Execution Tickets (ET)
 

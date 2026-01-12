@@ -4,7 +4,7 @@ The execution client stores the current state and historical blockchain data. In
 
 ## RLP
 
-[Wiki - RLP](/wiki/EL/RLP.md)
+[Wiki - RLP](/docs/wiki/EL/RLP.md)
 
 ## Primer on Merkle Tree
 

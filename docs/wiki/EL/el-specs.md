@@ -316,7 +316,7 @@ After initial header verification, the block advances to the execution phase([ap
 7. **Delete empty accounts** touched in the previous steps to clean up the state.
 8. **Process transactions within the block:**
    - Transactions are decoded and added to the transaction trie for execution.
-   - **Execute the [Transaction](/wiki/EL/transaction):** Critical to the block execution process, this involves:
+   - **Execute the [Transaction](/docs/wiki/EL/transaction):** Critical to the block execution process, this involves:
      1. Recovering the transaction sender's address using the signature components $T_v, T_r, T_s$.
      2. Verifying intrinsic transaction validity.
      3. Calculating the effective gas price.
@@ -519,7 +519,7 @@ The process of executing a transaction within the Ethereum network is governed b
 
 $$\Upsilon(\sigma_t, T_{index}) \qquad (4)$$
 
-Upon invocation of $\Upsilon$, the system first verifies the intrinsic validity of the transaction. Once validated, the [Ethereum Virtual Machine](/wiki/EL/evm) (EVM) initiates state modifications based on the transaction's directives.
+Upon invocation of $\Upsilon$, the system first verifies the intrinsic validity of the transaction. Once validated, the [Ethereum Virtual Machine](/docs/wiki/EL/evm) (EVM) initiates state modifications based on the transaction's directives.
 
 ### Transaction Intrinsic Validity
 
@@ -776,23 +776,23 @@ The semantics described above are implemented in the [Ethereum Execution Layer S
 - `ethereum/execution/evm.py`
 ### $T$ Execution Stage 3 : Main Execution ($\Xi)  $
 
-#### [Machine](/wiki/EL/evm?id=evm) State $\mu$
+#### [Machine](/docs/wiki/EL/evm?id=evm) State $\mu$
 
 $$\mu \equiv (\mu_{gasAvailable}, \mu_{programCounter},\\ \mu_{memoryContents}, \mu_{activeWordsInMemory},\\ \mu_{stackContents} ) $$
 | | initial Value | notes |
 |-|-|-|
 |$$\mu$$ | | Initial Machine State |
 |$$\mu'$$ | | Resultant Machine State after an operation where $\mu' \equiv \mu \space \text{except :} \\  \mu'_{gas} \equiv \mu_{gas} - C_{generalGasCost}(\sigma, \mu, A, I) $ |
-|$$\mu_{gasAvailable}$$ | | total [gas available](/wiki/EL/evm?id=gas) for the transaction |
-|$$\mu_{programCounter}$$ | 0 | [Natural number counter](/wiki/EL/evm?id=program-counter) to track the code position we are in , max number size is 256 bits |
-|$$\mu_{memoryContents}$$ | $$[0_{256Bit}, ..., 0_{256Bit}]$$ | [word(256bit) Addressed byte array](/wiki/EL/evm?id=memory) |
+|$$\mu_{gasAvailable}$$ | | total [gas available](/docs/wiki/EL/evm?id=gas) for the transaction |
+|$$\mu_{programCounter}$$ | 0 | [Natural number counter](/docs/wiki/EL/evm?id=program-counter) to track the code position we are in , max number size is 256 bits |
+|$$\mu_{memoryContents}$$ | $$[0_{256Bit}, ..., 0_{256Bit}]$$ | [word(256bit) Addressed byte array](/docs/wiki/EL/evm?id=memory) |
 |$$\mu_{activeWordsInMemory}$$ | 0 | Length of the active words in memory, expanded in chunks of 32bytes |
-|$$\mu_{stackContents}$$ | | [Stack](/wiki/EL/evm?id=stack) item : word(256bit), Max Items = 1024 |
+|$$\mu_{stackContents}$$ | | [Stack](/docs/wiki/EL/evm?id=stack) item : word(256bit), Max Items = 1024 |
 |$$\mu_{outputFromNormalHalting}$$ | () | Represents the output(bytes) from the last function call, determined by the normal halting function. While the EELS pyspec features a dedicated field in the EVM object for the output , Geth doesn't; instead, it utilizes the returnData field, which serves the same purpose.|
 
 #### Current Operation
 
-The `currentOperation` is determined based on the position of the `programCounter` within the [bytecode](/wiki/EL/evm?id=evm-bytecode) array:
+The `currentOperation` is determined based on the position of the `programCounter` within the [bytecode](/docs/wiki/EL/evm?id=evm-bytecode) array:
 
 $$ currentOperation \equiv \ w \equiv
 \begin{cases}

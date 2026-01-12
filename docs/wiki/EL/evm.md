@@ -67,7 +67,7 @@ Each account state consists of various components such as storage, code, balance
 
 Ethereum has two kinds of accounts:
 
-- **External account:** An account [controlled by an associated private key](/wiki/Cryptography/ecdsa.md) and empty EVM code.
+- **External account:** An account [controlled by an associated private key](/docs/wiki/Cryptography/ecdsa.md) and empty EVM code.
 - **Contract account:** An account controlled by an associated non-empty EVM code. The EVM code as part of such an account is colloquially known as a _smart contract._
 
 Refer [Ethereum data structures](wiki/EL/data-structures.md) for details on how the world state is implemented.
@@ -329,7 +329,7 @@ The example above shows only a small section of the account's storage. Like memo
 Notice that the storage value persists between examples, demonstrating its persistence within the world state. Since the world state is replicated across all nodes, storage operations are gas expensive.
 
 > ℹ️ Note
-> Check out the wiki on [transaction](/wiki/EL/transaction.md) to see EVM in action.
+> Check out the wiki on [transaction](/docs/wiki/EL/transaction.md) to see EVM in action.
 
 ## Wrapping up
 

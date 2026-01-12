@@ -3,9 +3,9 @@
 ## Overview
 
 
-Simple Serialize (SSZ) is a serialization and [Merkleization](/wiki/CL/merkleization.md) scheme designed specifically for Ethereum's Beacon Chain. SSZ replaces the [RLP serialization](/wiki/EL/RLP.md) used on the execution layer (EL) everywhere across the consensus layer (CL) except the [peer discovery protocol](https://github.com/ethereum/devp2p). Its development and adoption are aimed at enhancing the efficiency, security, and scalability of Ethereum's CL.
+Simple Serialize (SSZ) is a serialization and [Merkleization](/docs/wiki/CL/merkleization.md) scheme designed specifically for Ethereum's Beacon Chain. SSZ replaces the [RLP serialization](/docs/wiki/EL/RLP.md) used on the execution layer (EL) everywhere across the consensus layer (CL) except the [peer discovery protocol](https://github.com/ethereum/devp2p). Its development and adoption are aimed at enhancing the efficiency, security, and scalability of Ethereum's CL.
 
-This document is about SSZ Serialization. You can learn more about SSZ merkleization at the [merkleization wiki page](/wiki/CL/merkleization.md).
+This document is about SSZ Serialization. You can learn more about SSZ merkleization at the [merkleization wiki page](/docs/wiki/CL/merkleization.md).
 
 
 ## SSZ Tools

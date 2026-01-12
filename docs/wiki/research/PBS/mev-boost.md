@@ -12,7 +12,7 @@ Here's how mev-boost works:
 On one side, mev-boost implements the [builder API](https://github.com/ethereum/builder-specs) used by an Ethereum node to outsource it block production. On the other, it connects to a network of relays and handles the communication between builders and proposers.
 
 1. **Block Building:**
-   Specialized builders compete to create the most profitable block for the proposer. They do this by optimizing transaction ordering and inclusion, taking into account factors like gas fees, transaction priority, and potential [MEV (Maximal Extractable Value)](/wiki/research/PBS/mev.md).
+   Specialized builders compete to create the most profitable block for the proposer. They do this by optimizing transaction ordering and inclusion, taking into account factors like gas fees, transaction priority, and potential [MEV (Maximal Extractable Value)](/docs/wiki/research/PBS/mev.md).
    Builders submit their constructed blocks to relays.
 2. **Relay Network:**
    Mev-boost operates a network of relays that act as intermediaries between builders and proposers.
@@ -50,7 +50,7 @@ While mev-boost offers certain benefits, it also raises some concerns:
 
 It's important to note that mev-boost is just one implementation of PBS. Other implementations with different designs and features are also being developed and explored, for example [mev-rs](https://github.com/ralexstokes/mev-rs) is under development.
 
-Overall, mev-boost represents a significant step towards realizing the potential benefits of PBS in Ethereum. However, continuous research and development are crucial to address the challenges and ensure a secure, decentralized, and efficient implementation. One path towards more stable PBS model is [enshrining it in the protocol](/wiki/research/PBS/ePBS.md), adding mev-boost like features directly to the Ethereum clients.  
+Overall, mev-boost represents a significant step towards realizing the potential benefits of PBS in Ethereum. However, continuous research and development are crucial to address the challenges and ensure a secure, decentralized, and efficient implementation. One path towards more stable PBS model is [enshrining it in the protocol](/docs/wiki/research/PBS/ePBS.md), adding mev-boost like features directly to the Ethereum clients.  
 
 ## Resources
 

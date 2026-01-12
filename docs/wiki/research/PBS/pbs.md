@@ -24,7 +24,7 @@ As explained in this [article](https://ethos.dev/beacon-chain), slots are the ti
 
 ## Current State
 
-Currently, PBS (Proposer Builder Separation) exists outside of the protocol by builders helping in block building through entities like relays. Please refer [mev-boost](/wiki/research/PBS/mev-boost.md) for more details on one of the widely used Out-of-protocol solution. This design relies on small set of trusted relays and even builders which introduces centralization risks and makes Ethereum more vulnerable to censorship.
+Currently, PBS (Proposer Builder Separation) exists outside of the protocol by builders helping in block building through entities like relays. Please refer [mev-boost](/docs/wiki/research/PBS/mev-boost.md) for more details on one of the widely used Out-of-protocol solution. This design relies on small set of trusted relays and even builders which introduces centralization risks and makes Ethereum more vulnerable to censorship.
 PBS is not yet implemented in the Ethereum mainnet which means validators act as both proposers and builders. So each validator is responsible for:
 
 1. **Selecting transactions:** Validators choose which transactions to include in a block based on factors like gas fees and transaction priority.
@@ -120,7 +120,7 @@ Enshrined PBS involves embedding PBS mechanisms directly into Ethereum's consens
 
 Referring to this [eth research discussion](https://ethresear.ch/t/why-enshrine-proposer-builder-separation-a-viable-path-to-epbs/15710), ePBS, particularly through Two-Block HeadLock (TBHL) and optimistic relaying, presents a pathway towards addressing current challenges and enhancing the efficiency, security, and decentralization of block production and MEV extraction processes.
 
-For more detailed on ePBS check out this [ePBS wiki entry](/wiki/research/PBS/ePBS.md).
+For more detailed on ePBS check out this [ePBS wiki entry](/docs/wiki/research/PBS/ePBS.md).
 
 ### Protocol-Enforced Proposer Commitments (PEPC)
 
@@ -132,7 +132,7 @@ Regarding the need for a flexible approach to proposer duties PEPC aims to provi
 
 All of this would also be complementary to existing out-of-protocol mechanisms like Eigenlayer, enhancing the credibility of proposer commitments by moving from an optimistic model to a pessimistic enforcement model where violating commitments inherently invalidates blocks.
 
-For more detailed explanation check out [PEPC](/wiki/research/PBS/ePBS?id=protocol-enforced-proposer-commitments-pepc).
+For more detailed explanation check out [PEPC](/docs/wiki/research/PBS/ePBS?id=protocol-enforced-proposer-commitments-pepc).
 
 ### EIP-7547: Inclusion Lists
 

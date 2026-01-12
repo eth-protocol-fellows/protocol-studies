@@ -277,7 +277,7 @@ This discussion is a preliminary treatment of Elliptic Curve Cryptography. For a
 And finally: **never roll your own crypto!** Use trusted libraries and protocols to protect your data and transactions.
 
 > ℹ️ Note  
-> ECDSA faces potential obsolescence from quantum computers – learn about how [Post-Quantum Cryptography tackles this challenge.](/wiki/Cryptography/post-quantum-cryptography.md)
+> ECDSA faces potential obsolescence from quantum computers – learn about how [Post-Quantum Cryptography tackles this challenge.](/docs/wiki/Cryptography/post-quantum-cryptography.md)
 
 ## Further reading
 

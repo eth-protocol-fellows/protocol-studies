@@ -22,13 +22,13 @@ The Ethereum network consists of many individual nodes. Each node operates indep
 
 Users send transactions to this network of nodes, and the consensus protocol ensures that all honest nodes eventually agree on a single, consistent transaction history. This means they agree on the order of transactions and their outcomes. For example, if I have 1 ETH and tell the network to send it to both Alice and Bob at the same time, the network must eventually agree on whether I sent it to Alice or Bob. It would be a failure if both Alice and Bob received the Ether, or if neither did. A consensus protocol is the process that enables this agreement on transaction order.
 
-Ethereum's consensus protocol actually _bolts together_ two different consensus protocols. One is called [LMD GHOST](/wiki/CL/gasper.md?lmd-ghost), the other [Casper FFG](/wiki/CL/gasper.md?casper-ffg). The combination has become known as [Gasper](/wiki/CL/gasper.md). In subsequent sections we will be looking at these both separately and in combination.
+Ethereum's consensus protocol actually _bolts together_ two different consensus protocols. One is called [LMD GHOST](/docs/wiki/CL/gasper.md?lmd-ghost), the other [Casper FFG](/docs/wiki/CL/gasper.md?casper-ffg). The combination has become known as [Gasper](/docs/wiki/CL/gasper.md). In subsequent sections we will be looking at these both separately and in combination.
 
 ## Proof-of-work and Proof-of-stake
 
 This is a good point to clarify that neither Proof-of-work (PoW) nor Proof-of-Stake (PoS) are consensus protocols by themselves. They are often incorrectly referred to as such, but they are actually mechanisms that enable consensus protocols. Both PoW and PoS primarily serve as Sybil resistance mechanisms, placing a cost on participating in the protocol. This prevents attackers from overwhelming the system cheaply.
 
-However, both PoW and PoS are closely linked to the consensus mechanisms they support through [fork choice](/wiki/CL/cl-architecture.md?id=fork-choice-rules) rules. They help assign a weight or score to a chain of blocks: in PoW, it's the total computational work done; in PoS, it's the total value staked that supports a particular chain. Beyond these basics, PoW and PoS can support various consensus protocols, each with its own dynamics and trade-offs.
+However, both PoW and PoS are closely linked to the consensus mechanisms they support through [fork choice](/docs/wiki/CL/cl-architecture.md?id=fork-choice-rules) rules. They help assign a weight or score to a chain of blocks: in PoW, it's the total computational work done; in PoS, it's the total value staked that supports a particular chain. Beyond these basics, PoW and PoS can support various consensus protocols, each with its own dynamics and trade-offs.
 
 ### Blockchains
 
@@ -56,7 +56,7 @@ _Time moves from left to right and, except for the Genesis block, each block poi
 
 The chain grows as nodes add new blocks to its tip. This is done by temporarily selecting a "leader", the node that extends the chain. In PoW, the leader is the miner who first solves the PoW puzzle for its block. In Ethereum's PoS, the proposer(leader) is pseudo-randomly selected from active validator set.
 
-The leader (block proposer) adds a block to the chain, choosing and ordering its contents. The block must be valid according to protocol rules, or the network will ignore it. Using blocks is an optimization. Adding individual transactions one by one would create a huge consensus overhead. So blocks are batches of transactions, In Ethereum's execution chain, block size is limited by the block gas limit (the amount of work needed to process the transactions). [Beacon block](/wiki/CL/beacon-api.md?id=beaconblockbody) sizes are limited by hard-coded constants.
+The leader (block proposer) adds a block to the chain, choosing and ordering its contents. The block must be valid according to protocol rules, or the network will ignore it. Using blocks is an optimization. Adding individual transactions one by one would create a huge consensus overhead. So blocks are batches of transactions, In Ethereum's execution chain, block size is limited by the block gas limit (the amount of work needed to process the transactions). [Beacon block](/docs/wiki/CL/beacon-api.md?id=beaconblockbody) sizes are limited by hard-coded constants.
 
 ## Transition to Proof-of-Stake
 
@@ -195,7 +195,7 @@ Attestations help finalize blocks by reaching consensus on the blockchain’s st
 
 ### Design and Implementation
 
-A key design decision in EIP-4844 is the use of [KZG commitments](/wiki/Cryptography/kzg.md) to verify blobs and support future proposer-builder separation. To use KZG commitments, a Trusted Setup is needed. For the Deneb hardfork, a [KZG Ceremony](https://github.com/ethereum/kzg-ceremony) was conducted to create this Trusted Setup.
+A key design decision in EIP-4844 is the use of [KZG commitments](/docs/wiki/Cryptography/kzg.md) to verify blobs and support future proposer-builder separation. To use KZG commitments, a Trusted Setup is needed. For the Deneb hardfork, a [KZG Ceremony](https://github.com/ethereum/kzg-ceremony) was conducted to create this Trusted Setup.
 
 <a id="img_blobs"></a>
 
