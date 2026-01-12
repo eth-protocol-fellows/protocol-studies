@@ -1,6 +1,6 @@
 # JSON-RPC
 
-The JSON-RPC specification is a remote procedure call protocol encoded in JSON based on [OpenRPC](https://open-rpc.org/getting-started). It allows calling functions on a remote server, and for the return of the results.
+The JSON-RPC specification is a remote procedure call protocol encoded in JSON based on [OpenRPC](https://www.open-rpc.org/docs/getting-started). It allows calling functions on a remote server, and for the return of the results.
 It is part of the Execution API specification which provides a set of methods to interact with the Ethereum blockchain.
 It is better known to be the way of how the users interact with the network using a client, even how the consensus layer (CL) and the execution layer (EL) interact through the Engine API.
 This section provides a description of the JSON-RPC methods.
@@ -28,7 +28,7 @@ Where:
 
 Every method is composed of a namespace prefix and the method name, separated by an underscore.
 
-Ethereum clients must implement the basic minimum set of RPC methods required by spec to interact with the network. On top of that, there are also client specific methods for controlling the node or implementing extra unique features. Always refer to client documentation listing available methods and namespace, for example notice different namespaces in [Geth](https://geth.ethereum.org/docs/interacting-with-geth/rpc) and [Reth](https://paradigmxyz.github.io/reth/jsonrpc/intro.html) docs. 
+Ethereum clients must implement the basic minimum set of RPC methods required by spec to interact with the network. On top of that, there are also client specific methods for controlling the node or implementing extra unique features. Always refer to client documentation listing available methods and namespace, for example notice different namespaces in [Geth](https://geth.ethereum.org/docs/interacting-with-geth/rpc) and [Reth](https://reth.rs/jsonrpc/intro/) docs. 
 
 Here are examples of most common namespaces: 
 
@@ -179,7 +179,7 @@ Usually, all the web3 libraries wrap the JSON-RPC methods providing a more frien
 ### Further Reading
 * [Ethereum JSON-RPC Specification](https://ethereum.github.io/execution-apis/api-documentation/)
 * [Execution API Specification](https://github.com/ethereum/execution-apis/tree/main)
-* [JSON-RPC | Infura docs](https://docs.infura.io/api/networks/ethereum/json-rpc-methods)
-* [reth book | JSON-RPC](https://paradigmxyz.github.io/reth/jsonrpc/intro.html)
-* [OpenRPC](https://open-rpc.org/getting-started)
+* [JSON-RPC | Infura docs](https://docs.metamask.io/services/reference/ethereum/json-rpc-methods/)
+* [reth book | JSON-RPC](https://reth.rs/jsonrpc/intro/)
+* [OpenRPC](https://www.open-rpc.org/docs/getting-started)
 * [Engine API | Mikhail | Lecture 21](https://youtu.be/fR7LBXAMH7g)
