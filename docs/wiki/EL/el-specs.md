@@ -711,8 +711,69 @@ $$
 
 #### Message Type: Call
 
-TODO
+In the context of the Ethereum Yellow Paper, a message call is represented by the function:
 
+$$
+\Theta(\sigma, A, s, o, r, c, g, p, v, \tilde{v}, d, e, w) \\ or \\
+\Theta(state_{\sigma}, AccruedSubState_{A}, sender_s, originalTransactor_o, recipient_r, \\ codeAddress_c, availableGas_g, effectiveGasPrice_p, value_v, \\ apparentValue_{\tilde{v}}, callData_d, stackDepth_e, stateModificationPermission_w)
+$$
+
+| $\Theta$ Call Parameter | Mapping | Notes |
+| ----------------------- | ------- | ----- |
+| $state_{\sigma}$ | $I_{state}$ | The current global state before message call execution begins. |
+| $AccruedSubState_{A}$ | $A$ | Represents the accumulated substate prior to the message call, including logs and refunds. |
+| $sender_s$ | $I_{sender}$ | The immediate caller of the message call, which may be an externally owned account or contract. |
+| $originalTransactor_o$ | $I_{origin}$ | The original external account that initiated the transaction and remains constant across calls. |
+| $recipient_r$ | $I_{recipient}$ | The address whose balance is adjusted and whose storage may be modified by the call. |
+| $codeAddress_c$ | $I_{code}$ | The address whose code is executed, typically equal to the recipient. |
+| $availableGas_g$ | $I_{gas}$ | The amount of gas available for execution of the message call. |
+| $effectiveGasPrice_p$ | $I_{gasPrice}$ | The gas price used for gas accounting during execution. |
+| $value_v$ | $I_{value}$ | The amount of ether transferred from the sender to the recipient. |
+| $apparentValue_{\tilde{v}}$ | $I_{apparentValue}$ | The value visible to the executing code, differing in DELEGATECALL. |
+| $callData_d$ | $I_{callData}$ | Arbitrary-length byte array supplied as input data to the call. |
+| $stackDepth_e$ | $I_{depth}$ | The depth of the message call stack at the point of execution. |
+| $stateModificationPermission_w$ | $I_{isStatic}$ | Indicates whether state modification is permitted; false for STATICCALL. |
+
+---
+
+### Execution Result
+
+The evaluation of a message call produces a 5-tuple: $(σ′, g′, A′, z, o)$. After execution begins, the EVM evaluates the call using the following logic:
+
+1. **Execution of Account Code**
+   If the recipient account $r$ exists and contains code, the EVM executes the bytecode $\sigma[r]_c$ using the execution function $\Xi$. If no code exists, it is treated as a no-op (only value transfer occurs).
+
+2. **Exceptional Halting and State Reversion**
+   If execution halts due to an exception (e.g., OOG), the state reverts to the point before the transfer:
+   $$\sigma' = \sigma \text{ if } \sigma'' = \emptyset, \text{ else } \sigma''$$
+
+3. **Gas and Substate Commitment**
+   - **Gas:** If failed, all gas is consumed ($g'=0$). If successful, remaining gas $g''$ is returned.
+   - **Substate:** Logs and refunds ($A'$) are only committed if execution is successful ($\sigma'' \neq \emptyset$).
+
+4. **Execution Status Code ($z$)**
+   - $z = 0$ if execution failed ($\sigma'' = \emptyset$).
+   - $z = 1$ if execution succeeded.
+
+5. **Precompiled Contracts**
+   If the recipient $r$ is within the set $\pi = \{1, 2, 3, 4, 5, 6, 7, 8, 9\}$, execution is redirected to native functions:
+
+| Address | Function |
+| ------- | -------- |
+| 1 | ECDSA public key recovery |
+| 2 | SHA-256 hashing |
+| 3 | RIPEMD-160 hashing |
+| 4 | Identity function |
+| 5–8 | Elliptic curve operations (alt_bn128) |
+| 9 | BLAKE2 compression function |
+
+---
+
+**Implementation Reference:**
+The semantics described above are implemented in the [Ethereum Execution Layer Specification (EELS)](https://github.com/ethereum/execution-specs). Relevant modules include:
+- `ethereum/execution/message.py`
+- `ethereum/execution/call.py`
+- `ethereum/execution/evm.py`
 ### $T$ Execution Stage 3 : Main Execution ($\Xi)  $
 
 #### [Machine](/wiki/EL/evm?id=evm) State $\mu$
