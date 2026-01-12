@@ -363,7 +363,7 @@ $$
 | $I_{chainId}$             | Identifier for the blockchain, ensuring transactions are signed for a specific chain.                                    |
 | $I_{traces}$              | A placeholder for execution traces, intended for future use or debugging purposes.                                       |
 | $I_{excessBlobGas}$       | Calculated from the parent block, it represents surplus gas allocated for blob transactions.                             |
-| $I_{blobVersionedHashes}$ |                                                                                                                          |
+| $I_{blobVersionedHashes}$ |                      the ordered list of versioned hashes of blobs that are attached to the current transaction.                                                                                                     |
 
 ## Gas Accounting
 
