@@ -310,9 +310,27 @@ Blockchain and state data processed by execution client need to be stored in the
 
 TODO
 
-**Pebble** 
+## Pebble
 
-TODO
+### Usage in the Execution Layer
+
+Pebble is used by some execution clients as a replacement for LevelDB, fulfilling the same role as the primary embedded key–value store for blockchain data, execution state, and indices. The Execution Layer’s data model, key namespaces, and atomicity boundaries remain unchanged; only the underlying storage engine differs.
+
+### Internals and advantages over LevelDB
+
+Pebble retains the LSM-tree architecture but improves it for write-heavy, latency-sensitive workloads typical of Ethereum execution. It supports multiple active memtables to reduce write stalls, exposes detailed SSTable and compaction metadata, and provides significantly more control over compaction behavior. These improvements allow clients to better manage write amplification and achieve more predictable performance under frequent state updates.
+
+Pebble also offers stronger batch semantics and snapshot support, enabling execution clients to better align database operations with block execution and concurrent RPC reads.
+
+### Relation to the Execution Layer Specification
+
+The Execution Layer Specification models storage as an abstract key–value database and does not prescribe a concrete backend. Pebble fits this abstraction directly, allowing clients to adopt it without changing execution semantics or protocol logic.
+
+### Reference
+
+Pebble documentation and design notes:  
+https://github.com/cockroachdb/pebble
+
 
 **MDBX**.
 
