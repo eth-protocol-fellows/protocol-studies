@@ -3,7 +3,7 @@
 # Pectra FAQ
 
 **What is Pectra?**
-ectra, (Prague - Electra), is an Ethereum network upgrade that activated on Ethereum mainnet at epoch `364032`, on **07-May-2025 at 10:05 (UTC)**.. The full list of EIPs as well as an introduction to the features can be found [here](https://notes.ethereum.org/@ethpandaops/mekong#What-is-in-the-Mekong-testnet).
+Pectra, (Prague - Electra), is an Ethereum network upgrade that activated on Ethereum mainnet at epoch `364032`, on **07-May-2025 at 10:05 (UTC)**.. The full list of EIPs as well as an introduction to the features can be found [here](https://notes.ethereum.org/@ethpandaops/mekong#What-is-in-the-Mekong-testnet).
 
 **Who is this guide for?**
 For App developers, Stakers and Node operators who are interested in the upcoming Pectra upgrade.
