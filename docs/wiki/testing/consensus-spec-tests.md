@@ -20,7 +20,7 @@ When running multiple consensus clients that rely on the same test vectors, it i
     ![consensus-spec-tests-different-versions](./img/consensus-spec-tests-different-versions.png)
 >    
 >- Manually switching (`git checkout`) to the required test version for a client and rerunning the tests can cause **issues with unpacking SSZ Snappy files** and lead to failing tests.
-    ![consensus-spec-tests-incorect-unpacking-SSZ](./img/consensus-spec-tests-incorect-unpacking-SSZ.png)
+    ![consensus-spec-tests-incorrect-unpacking-SSZ](./img/consensus-spec-tests-incorrect-unpacking-SSZ.png)
 > See [issue](https://github.com/sntntn/grandine/issues/15) for a concrete example.
 >
 > Because of this, the **recommended practice** is to **keep separate copies** of `consensus-spec-tests` for each consensus client, even if it requires more disk space.
