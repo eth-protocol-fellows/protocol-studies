@@ -1,6 +1,6 @@
 >⚠️ **Statelessness** is a concept that could be applied in many other fields, not only in Ethereum.
 
-## Idea of statelessness
+# Idea of statelessness
 
 The idea of statelessness comes from an **unresolved problem** caused by the **continuous growth** of the Ethereum state.
 If we want Ethereum to stay **decentralized**, we must not allow the state to **keep growing**, because that would mean that only **large clients** could **run it**, while **smaller ones** would **run out of disk space**.
@@ -189,6 +189,8 @@ This produces one proof (witness) that can verify all points at once.
 
 This is very valuable for stateless clients, because it allows them to verify a large number of values efficiently with minimal data.
 
+> You can hear more about polynomial commitments from Justin Drake in these videos: [video 1](https://www.youtube.com/watch?v=bz16BURH_u8&list=PLCGgAwcxXAWwr4l-v_v48wrSJusYGwYLk), [video 2](https://www.youtube.com/watch?v=BfV7HBHXfC0&list=PLCGgAwcxXAWwr4l-v_v48wrSJusYGwYLk&index=3), [video 3](https://www.youtube.com/watch?v=TbNauD5wgXM&list=PLCGgAwcxXAWwr4l-v_v48wrSJusYGwYLk&index=4)
+
 ----
 
 # Current challenges
@@ -199,7 +201,7 @@ This is very valuable for stateless clients, because it allows them to verify a 
     - the conversion process is described here: [The Verge - Converting the Ethereum state to Verkle trees](https://www.youtube.com/watch?v=F1Ne19Vew6w)
 - All required EIPs for statelessness must be implemented before the transition.
 
-## Documentation
+# Documentation
 
 - [Ethereum stateless book](https://stateless.fyi/)
 - [Statelessness, state expiry and history expiry](https://ethereum.org/roadmap/statelessness/)
