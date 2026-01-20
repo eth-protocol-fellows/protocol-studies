@@ -10,7 +10,7 @@ The [Phase 0 -- Networking][consensus-networking] page specifies the network fun
 
 ## libp2p - P2P protocol
 
-[libp2p][libp2p-docs] is a protocol for peer-to-peer communication, orginally developed for [IPFS](https://ipfs.io). [libp2p and Ethereum][libp2p-and-eth] is a great article for a deep-dive on the history of libp2p, and its adoption in the Consensus layer. It allows communication over multiple transport protocols like TCP, QUIC, WebRTC, etc.
+[libp2p][libp2p-docs] is a protocol for peer-to-peer communication, originally developed for [IPFS](https://ipfs.io). [libp2p and Ethereum][libp2p-and-eth] is a great article for a deep-dive on the history of libp2p, and its adoption in the Consensus layer. It allows communication over multiple transport protocols like TCP, QUIC, WebRTC, etc.
 
 <figure class="diagram" style="text-align:center">
 
@@ -63,7 +63,7 @@ _Multiaddr format_
 
 Key features of libp2p:
 
-1. **Protocol IDs:** are unique string identifiers used for protocol negociation. Their basic structure is: `/app/protocol/version`. Some common protocols, all use protobuf to define message schemes, defined are:
+1. **Protocol IDs:** are unique string identifiers used for protocol negotiation. Their basic structure is: `/app/protocol/version`. Some common protocols, all use protobuf to define message schemes, defined are:
 
 - Ping: `/ipfs/ping/1.0.0` is a simple protocol to test the connectivity and performance of connected peers
 - Identify : `/ipfs/id/1.0.0` allows to peers to exchange information about each other, mainly public key and know network addresses. Uses the following protobuf properties:
@@ -77,7 +77,7 @@ Key features of libp2p:
   | `protocols` | `string[]`| List of supported application protocols (e.g., `/chat/1.0.0`) |
   | `signedPeerRecord`| `bytes` | Authenticated version of `listenAddrs` for sharing with other peers |
 
-- Identify/push: `/ipfs/id/push/1.0.0` same as "Identify" just that this is sent proactivily and not in response to a request. It is useful to push a new address to its connected peers.
+- Identify/push: `/ipfs/id/push/1.0.0` same as "Identify" just that this is sent proactively and not in response to a request. It is useful to push a new address to its connected peers.
 
 **kad-dht** : libp2p uses Distributed Hash Table (DHT) based on the [Kademlia][kademlia] routing algorithm for its routing functionality.
 
@@ -106,7 +106,7 @@ _Multihash Format , in hex_
 - Keys are encoded in a protobuf containing key type and encoded key. There are 4 specified methods for encoding: RSA, Ed255199v(must), Secp256k1, ECDSA.
 - There are 2 ways of the string representation of peer IDs in text: `base58btc` (starts with `QM` or `1`) and as a multibase encoded CID with libp2p slowly moving to the later.
 
-### **How a connection is establised?**
+### **How a connection is established?**
 
 To understand how setting up a connection works, read this [specs][libp2p-connection].
 
@@ -146,7 +146,7 @@ If the peer is behind NAT (when direct connection fails):
 3. **Encryption** : How to make the connection private and authenticated?
 
 - `noise` : framework for building security protocols, fast, default choice for many, Noise XX handshake for mutual authentication.
-- `tls` (Transport Layer Security) : strong security guarantees, mututal authentication done using peer's key
+- `tls` (Transport Layer Security) : strong security guarantees, mutual authentication done using peer's key
 - `secio` : deprecated due to complexity and lower assurance compared to Noise/TLS.
 
 4. **Multiplexing** : How to open multiple logical streams over the same connection?
@@ -156,11 +156,11 @@ If the peer is behind NAT (when direct connection fails):
 
 5. **Application** : run application protocols over the above setup
 
-- `ping` : basic liveliness check ,measure rount-trip time
-- `pubsub`, `gossibsub`, `episub` : for broadcasting messages
+- `ping` : basic liveliness check ,measure round-trip time
+- `pubsub`, `gossipsub`, `episub` : for broadcasting messages
 - Custom protocols that the implementation defines
 
-### What optimization does Gossibhub provide?
+### What optimization does GossipSub provide?
 
 **Approach 1:** Maintain a fully connected mesh (all peers connected to each other 1:1), which scales poorly (O(n^2)). Why this scales poorly? Each node may receive the same message from other (n-1) nodes , hence wasting a lot of bandwidth. If the message is a block data, then the wasted bandwidth is exponentially large.
 
@@ -168,7 +168,7 @@ If the peer is behind NAT (when direct connection fails):
 
 <figure class="diagram" style="text-align:center">
 
-![gossibsub_optimization](../../images/cl/cl-networking/gossipsub_optimization.png)
+![gossipsub_optimization](../../images/cl/cl-networking/gossipsub_optimization.png)
 
 <figcaption>
 
