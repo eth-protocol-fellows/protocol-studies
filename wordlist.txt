@@ -32,6 +32,7 @@ ARPANET
 ary
 ASE
 Ashish
+asynchronicity
 Asli
 Assche
 Assertoor
@@ -120,6 +121,7 @@ cdots
 centralisation
 centric
 Certora
+CEX
 chainId
 Challanges
 changeset
@@ -318,6 +320,7 @@ Feamster
 Feist
 Femboy
 Ferrin
+FCR
 FFG
 finalise
 financials
@@ -434,6 +437,7 @@ Ipsilon
 IPv
 IRTF
 ISA
+iteratively
 Jitsi
 js
 JSON
@@ -531,6 +535,8 @@ modularity
 moduli
 Monnot
 monorepo
+Monotonicity
+monotonicity
 mortem
 MPC
 mplex
