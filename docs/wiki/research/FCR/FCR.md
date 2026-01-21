@@ -17,7 +17,7 @@ FCR is designed to provide **fast, safe block confirmation**, much earlier than 
 
 ## Current Confirmation Mechanism
 
-Currently, Ethereum provides only one (slow) confirmation mechanism with strong safety guarantees: **finalization**.
+The only **Confirmation Rule** currently available in the Ethereum protocol, [Gasper](https://ethereum.org/developers/docs/consensus-mechanisms/pos/gasper/), is the **FFG Finalization Rule**. While this Confirmation Rule is extremely safe and works under **asynchronous** network conditions, finalization is **too slow** for many use cases. 
 
 - Best case: ~13 minutes  
 - Average: ~16 minutes  
@@ -25,8 +25,6 @@ Currently, Ethereum provides only one (slow) confirmation mechanism with strong 
 A finalized block:
 - will never conflict with the canonical chain of any honest validator
 - can only be reverted if **> 1/3 of validators are slashed**
-
-While extremely safe, finalization is **too slow** for many real-world use cases.
 
 ### UX Limitations
 
@@ -69,11 +67,13 @@ While extremely safe, finalization is **too slow** for many real-world use cases
 
 </details>
 
-Neither approach satisfies the **safety property**.
+Neither approach satisfies the [**safety property**](/docs/wiki/research/FCR/FCR.md#properties-of-the-confirmation-rule).
 
 ---
 
 ## What FCR Guarantees
+
+Fast Confirmation Rule relies on **synchrony** conditions, but provides a **best-case confirmation time** of **12 seconds** only, greatly improving on the latency of the FFG Finalization Rule.
 
 **FCR never confirms a block that is not canonical.**
 
@@ -108,6 +108,8 @@ It provides a confirmation rule with formal guarantees.
 </details>
 
 ...
+
+> Users can then rely on the Confirmation Rule that best suits their needs depending on their belief about the network conditions and the need for a quick response.
 
 ---
 
@@ -159,7 +161,9 @@ These assumptions hold most of the time, allowing the protocol to provide users 
 
 ---
 
-**Detailed specs** can be found [**here**](https://github.com/ethereum/consensus-specs/pull/4747)
+### Specification overview
+
+(*) The current specification is available in the [**consensus-specs PR**](https://github.com/ethereum/consensus-specs/pull/4747)
 
 ---
 
@@ -208,8 +212,14 @@ Until Single Slot Finality becomes available, **FCR fills a critical gap in Ethe
 
 # Documentation
 
+- [html Paper: A Fast Confirmation Rule (aka Fast Synchronous Finality) for the Ethereum Consensus Protocol](https://arxiv.org/html/2405.00549v3)
 - [Fast Confirmation Rule (FCR) breakout room playlist](https://www.youtube.com/watch?v=y5_75Y_09No&list=PLJqWcTqh_zKH4c_vgCCPZ33Ilb9SdEIcq)
 - [Fast Confirmation Rule specs](https://github.com/ethereum/consensus-specs/pull/4747)
 - Draft short FCR explainer - link will be added when completed 
 - [Fast Confirmation Rule - <name>Roberto Saltini</name> (2025 video)](https://www.youtube.com/watch?v=dZU-Ch22MKY&list=PLCGgAwcxXAWyHcMm0X57jVuHtJ6e8gwIP&index=25)
 - [Fast Confirmation Rule - Devcon SEA - Roberto & Luca (2024 video)](https://www.youtube.com/watch?v=p7JPRTELnJc&list=PLCGgAwcxXAWyHcMm0X57jVuHtJ6e8gwIP&index=25)
+
+# Implementation
+- [Prysm PR #15164](https://github.com/OffchainLabs/prysm/pull/15164)
+- [Lighthouse PoC EPF work by <name>Harsh Pratap Singh</name>](https://hackmd.io/6H_e-WqaQFyBENsifLiH6g)
+
