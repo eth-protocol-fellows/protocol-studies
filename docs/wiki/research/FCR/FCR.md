@@ -8,7 +8,7 @@ FCR outputs a simple decision:
 - block is **confirmed**
 - block is **not confirmed**
 
-FCR is designed to provide **fast, safe block confirmation**, much earlier than Ethereum finalization, and to help bridge the gap until [**Single Slot Finality (SSF)**](https://ethereum.org/roadmap/single-slot-finality/) is implemented.
+FCR is designed to provide **fast, safe block confirmation**, much earlier than Ethereum finalization, and to help bridge the gap until [Single Slot Finality (SSF)](https://ethereum.org/roadmap/single-slot-finality/) is implemented.
 
 > canonical chain is the chain that is followed by the honest validators.
 ---
@@ -67,7 +67,7 @@ A finalized block:
 
 </details>
 
-Neither approach satisfies the [**safety property**](/docs/wiki/research/FCR/FCR.md#properties-of-the-confirmation-rule).
+Neither approach satisfies the [safety property](/wiki/research/FCR/FCR.md#properties-of-the-confirmation-rule).
 
 ---
 
@@ -107,7 +107,6 @@ It provides a confirmation rule with formal guarantees.
 
 </details>
 
-...
 
 > Users can then rely on the Confirmation Rule that best suits their needs depending on their belief about the network conditions and the need for a quick response.
 
@@ -115,7 +114,7 @@ It provides a confirmation rule with formal guarantees.
 
 # Gasper Overview
 
-Ethereum PoS consensus is defined by [**Gasper**](https://ethereum.org/developers/docs/consensus-mechanisms/pos/gasper/), where:
+Ethereum PoS consensus is defined by [Gasper](https://ethereum.org/developers/docs/consensus-mechanisms/pos/gasper/), where:
 - Time unit is **Slot**: 12 seconds (currently)
 - **Epoch**: 32 slots  
 - Each epoch divides set of validators into 32 committees
@@ -163,7 +162,7 @@ These assumptions hold most of the time, allowing the protocol to provide users 
 
 ### Specification overview
 
-(*) The current specification is available in the [**consensus-specs PR**](https://github.com/ethereum/consensus-specs/pull/4747)
+⚙️ The current specification is available in the [consensus-specs PR](https://github.com/ethereum/consensus-specs/pull/4747)
 
 ---
 
@@ -197,11 +196,11 @@ The check is applied iteratively along the suffix of the chain, starting from th
 
 ---
 
-(*) **The complexity of the confirmation rule arises from the need to correctly handle all edge cases.**
+🧩 **The complexity of the confirmation rule arises from the need to correctly handle all edge cases.**
 
 ---
 
-## Summary
+# Summary
 
 FCR provides:
 - Fast confirmation with strong safety guarantees (1-2 slots best-case latency)
