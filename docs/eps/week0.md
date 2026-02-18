@@ -12,14 +12,14 @@ The call discussed the program details, schedule and answered your questions. Re
 
 ## Pre-reading
 
-Before the program, you should be familiar with some general concepts from Ethereum and computer science. If you are not familiar with basics of using Ethereum or have non experience with software development, we recommend gaining at least some understanding of following:
+Before the program, you should be familiar with some general concepts from Ethereum and computer science. If you are not familiar with the basics of using Ethereum or have no experience with software development, we recommend gaining at least some understanding of following:
 
 - Cryptography
     - Hashing
     - Public key cryptography
 - Data structures
     - Merkle trees
-- Networking, p2p and distributed systems
+- Networking, P2P and distributed systems
 - Software development basics
     - Programming languages, compilers
 - Ethereum as a platform
