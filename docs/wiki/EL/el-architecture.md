@@ -302,13 +302,17 @@ TODO: Move relevant code from specs into EVM
 
 More details in the page on [EL data structures](/wiki/EL/data-structures.md).
 
-### Storage and database backend
+### Storage and database backends
 
 Blockchain and state data processed by execution client need to be stored in the disk. These are necessary to validate new blocks, verify history and to serve peers in the network. Client stores historical data, also called the ancient database, which include previous blocks. Another database of trie structure contains the current state and small number of recent states. In practice, clients keep various databases for different data categories. Each client can implement a different backend to handle this data, e.g. leveldb, pebble, mdbx.
 
-**Leveldb** 
+**Leveldb**
 
-TODO
+LevelDB is one of the database implementations used by clients, providing a generic ordered key–value interface and had no knowledge of Ethereum-specific structures.
+
+LevelDB is an embedded key–value database based on a log-structured merge tree design. Writes are first appended to a write-ahead log for crash recovery and inserted into an in-memory memtable. When the memtable is full, it is flushed to disk as an immutable sorted string table. On disk, these tables are organized into multiple levels and periodically merged through background compaction. This design favors high sequential write throughput but results in write amplification and variable latency when data is frequently updated.
+
+Execution clients mostly switched away from this specific db implementation to more modern reimplementations with active support or more experimental designs with improved performance. 
 
 **Pebble**
 
