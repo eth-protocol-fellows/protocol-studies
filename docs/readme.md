@@ -4,7 +4,7 @@ The EPF Wiki is a collection of technical resources about the Ethereum protocol.
 
 ## Protocol Study Group
 
-Ethereum Protocol Fellowship Study Group (EPFsg) is an open study program for anyone interested in learning about internals of the protocol. The study group resources are available as self study curriculum but there is also live Study Group organized annualy between February-April. Following blog.ethereum.org for announcements to join a community of students. 
+Ethereum Protocol Fellowship Study Group (EPFsg) is an open study program for anyone interested in learning about internals of the protocol. The study group resources are available as self study curriculum but there is also live Study Group organized annually between February-April. Following blog.ethereum.org for announcements to join a community of students. 
 
 **[Start your studies](/eps/intro.md) by diving into providing resources** and get ready for live study group in 2026!
 
