@@ -18,7 +18,7 @@
     - gas_used // Total gas used by all transactions in this block
     - timestamp // Unix timestamp for when the block was proposed
     - extra_data // Arbitrary 32-byte field for additional data (e.g. miner ID)
-    - mix_hash / prev_randao // PoW: used in nonce verification; PoS: random seed for validators [EIP-4399](https://eips.ethereum.org/EIPS/eip-4399) – Paris
+    - mix_hash / <name>prev_randao</name> // PoW: used in nonce verification; PoS: random seed for validators [EIP-4399](https://eips.ethereum.org/EIPS/eip-4399) – Paris
     - nonce // PoW only: solution for the mining puzzle
     - base_fee_per_gas // Minimum base fee per gas [EIP-1559](https://eips.ethereum.org/EIPS/eip-1559) – London
     - withdrawals_root // Root of the withdrawals list trie [EIP-4895](https://eips.ethereum.org/EIPS/eip-4895) – Shanghai
