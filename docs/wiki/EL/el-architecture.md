@@ -314,9 +314,16 @@ LevelDB is an embedded key–value database based on a log-structured merge tree
 
 Execution clients mostly switched away from this specific db implementation to more modern reimplementations with active support or more experimental designs with improved performance. 
 
-**Pebble** 
+**Pebble**
 
-TODO
+Pebble is used by some execution clients as a replacement for LevelDB, fulfilling the same role as the primary embedded key–value store for blockchain data, execution state, and indices. Geth have chosen pebble as an alternative and now default backend because LevelDB stopped being maintained. It provides same set of features with certain advantages as its development continues. 
+
+
+Compared to LevelDB, Pebble retains the LSM-tree architecture but improves it for write-heavy, latency-sensitive workloads typical of Ethereum execution. It supports multiple active memtables to reduce write stalls, exposes detailed SSTable and compaction metadata, and provides significantly more control over compaction behavior. These improvements allow clients to better manage write amplification and achieve more predictable performance under frequent state updates. 
+Pebble also offers stronger batch semantics and snapshot support, enabling execution clients to better align database operations with block execution and concurrent RPC reads.
+
+https://github.com/cockroachdb/pebble
+
 
 **MDBX**.
 

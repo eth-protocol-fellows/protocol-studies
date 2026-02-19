@@ -50,6 +50,7 @@
     - [Precompiled Contracts](/wiki/EL/precompiled-contracts.md)
   - [Block Building](/wiki/EL/block-production.md)
   - [Data Structures](/wiki/EL/data-structures.md)
+    - [Summary](/wiki/EL/el-data-structures-summary.md)
   - [Transaction anatomy](/wiki/EL/transaction.md)
   - [JSON-RPC](/wiki/EL/JSON-RPC.md)
   - [DevP2P](/wiki/EL/devp2p.md)
@@ -91,6 +92,7 @@
     - [ET](/wiki/research/PBS/ET.md)
   - [eODS](/wiki/research/eODS.md)
   - [PeerDAS](/wiki/research/peerdas.md)
+  - [FCR](/wiki/research/FCR/FCR.md)
   - Preconfirmations
     - [Preconfirmations](/wiki/research/Preconfirmations/Preconfirmations.md)
     - [Based Sequencing with Preconfs](/wiki/research/Preconfirmations/BasedSequencingPreconfs.md)
