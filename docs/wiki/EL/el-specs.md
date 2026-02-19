@@ -437,13 +437,13 @@ $$
 
 ### Effective Gas Price & Priority Fee
 
-The equations below were modified to include blob transactions ( $T_{type} = 3$ )
+The equations below were modified to include blob and set code transactions ( $T_{type} = 3 \lor 4$ )
 
 $$ p \equiv effectiveGasPrice \equiv
 \begin{aligned}
 &\begin{cases}
 T_{gasPrice}, & \text{if} \space T_{type} = 0 \lor 1\\
-priorityFee + H_{baseFeePerGas} , & \text{if} \space T_{type} = 2 \lor 3
+priorityFee + H_{baseFeePerGas} , & \text{if} \space T_{type} = 2 \lor 3 \lor 4
 \end{cases}\\
 \end{aligned} \qquad (62)
 $$
@@ -452,7 +452,7 @@ $$ f \equiv priorityFee \equiv
 \begin{aligned}
 &\begin{cases}
 T_{gasPrice} - H_{baseFeePerGas}, & \text{if} \space T_{type} = 0 \lor 1\\
-min(T_{maxPriorityFeePerGas} , T_{maxFeePerGas} -  H_{baseFeePerGas}) , & \text{if} \space T_{type} = 2 \lor 3
+min(T_{maxPriorityFeePerGas} , T_{maxFeePerGas} -  H_{baseFeePerGas}) , & \text{if} \space T_{type} = 2 \lor 3 \lor 4
 \end{cases}\\
 \end{aligned}
 $$
@@ -496,7 +496,7 @@ $$
 \begin{aligned}
 &\begin{cases}
 T_{gasLimit} \times  T_{gasPrice}    , & \text{if} \space T_{type} = 0 \lor 1\\
-T_{gasLimit} \times  T_{maxFeePerGas}   , & \text{if} \space T_{type} = 2 \\
+T_{gasLimit} \times  T_{maxFeePerGas}   , & \text{if} \space T_{type} = 2 \lor 4 \\
 (T_{gasLimit} \times  T_{maxFeePerGas}) +  maxBlobFee  , & \text{if} \space T_{type} =  3
 \end{cases}\\
 \end{aligned}
@@ -535,7 +535,7 @@ T_{nonce} &= \sigma[Sender(T)]_{nonce} \\ \land \nonumber \\
 intrinsicGas &\leq T_{gasLimit}\\ \land \nonumber \\
 maxGasFee + T_{value} &\leq \sigma[Sender(T)]_{balance}\\ \land \nonumber \\
 m &\geq H_{baseFeePerGas}\\ \land \nonumber \\
-\text{if} \space T_{type} = 2 \lor 3 : T_{maxFeePerGas} &\geq T_{maxPriorityFeePerGas} \\ \land \nonumber \\
+\text{if} \space T_{type} = 2 \lor 3 \lor 4 : T_{maxFeePerGas} &\geq T_{maxPriorityFeePerGas} \\ \land \nonumber \\
 T_{gasLimit} \leq Header_{gasLimit} \nonumber \\ &− last( \left[ Block_{receipt} \right] )_{cumulativeGasUsed} \\
 \end{align}
 $$
@@ -544,7 +544,7 @@ $$ \text{Where, }m \equiv
 \begin{aligned} \\
 &\begin{cases}
 T_{gasPrice}, & \text{if} \space T_{type} = 0 \lor 1\\
-T_{maxFeePerGas} , & \text{if} \space T_{type} = 2 \lor 3
+T_{maxFeePerGas} , & \text{if} \space T_{type} = 2 \lor 3 \lor 4
 \end{cases}\\
 \end{aligned}
 $$
@@ -630,7 +630,7 @@ The initialization of the substate sets the groundwork for transaction execution
 Depending on the transaction type, accessed addresses are initialized differently:
 
 - For $T_{type} = 0$, the coinbase address, the caller , the current target and all the pre-compile contract addressees are added to the accessed account substate
-- For $T_{type} = 1, 2, or \space 3$, the coinbase address , the caller , the current target, all the pre-compiles and those in the access list are added
+- For $T_{type} = 1, 2, 3 or \space 4$, the coinbase address , the caller , the current target, all the pre-compiles and those in the access list are added
 
 $$A^*  \equiv (A^{*}_{selfDestructSet} = \empty, $$
 $$A^{*}_{logSeries} = (), $$
@@ -641,7 +641,7 @@ $$A^{*}_{accesedAccountAddresses} =  \{ H_{coinBase},$$
 $$Message_{caller}, Message_{current_target}  $$
 $$allPrecompiledContract_{addresses}\}$$
 $$A^{*}_{accesedStorageKeys} = \empty $$
-if $T_{type} = 1 \lor 2 \lor 3$:
+if $T_{type} = 1 \lor 2 \lor 3 \lor 4$:
 $$A^{*}_{accesedAccountAddresses} =  \{ H_{coinBase},$$
 $${ \bigcup_{Entry \in T_{accessList}} \{ Entry_{address}  \}},$$
 $$Message_{caller}, Message_{current_target}  $$
@@ -1166,7 +1166,23 @@ Initially, an upfront amount is reserved, meaning it's deducted from the sender.
 #### Refund to Sender Calculation
 - `refund_blob = reserved_blob − blobFee` and is returned to sender.
 
-These examples should help tie together how gas is handled during a transaction lifecycle.
+### Example 3: Set EOA Code Transaction
+
+EIP-7702 introduces a new transaction type that enables an Externally Owned Account (EOA) to temporarily set its code to that of a smart contract during a transaction. This paves the way for account abstraction features like transaction bundling and sponsored gas.
+
+#### Set EOA Code Transaction Type
+- **Type 4**: EIP-7702 transaction ([EIP-7702](https://eips.ethereum.org/EIPS/eip-7702))
+
+#### Transaction Parameters
+Along with the standard EIP-1559 parameters (`chainId`, `nonce`, `maxPriorityFeePerGas`, `maxFeePerGas`, `gasLimit`, `to`, `value`, `data`, `accessList`), Type 4 transactions include:
+- `authorizationList` – A list of tuples containing `chainId`, `address`, `nonce`, `yParity`, `r`, and `s`. This serves as an authorization from the address owner to set their address to mimic the chosen smart contract.
+
+#### Execution Cost
+- **Type 4** gas fee accounting behaves identical to **Type 2** transactions. 
+- The `baseFee` is burned and the priority fee is awarded to the proposer. The distinguishing cost feature in Type 4 is the computational overhead of applying the `authorizationList` during intrinsic gas calculation and substate execution.
+
+  These examples should help tie together how gas is handled during a transaction lifecycle.
+
 
 ## Appendix
 
