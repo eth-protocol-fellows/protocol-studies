@@ -302,17 +302,28 @@ TODO: Move relevant code from specs into EVM
 
 More details in the page on [EL data structures](/wiki/EL/data-structures.md).
 
-### Storage
+### Storage and database backends
 
 Blockchain and state data processed by execution client need to be stored in the disk. These are necessary to validate new blocks, verify history and to serve peers in the network. Client stores historical data, also called the ancient database, which include previous blocks. Another database of trie structure contains the current state and small number of recent states. In practice, clients keep various databases for different data categories. Each client can implement a different backend to handle this data, e.g. leveldb, pebble, mdbx.
 
-**Leveldb** 
+**Leveldb**
 
-TODO
+LevelDB is one of the database implementations used by clients, providing a generic ordered key–value interface and had no knowledge of Ethereum-specific structures.
 
-**Pebble** 
+LevelDB is an embedded key–value database based on a log-structured merge tree design. Writes are first appended to a write-ahead log for crash recovery and inserted into an in-memory memtable. When the memtable is full, it is flushed to disk as an immutable sorted string table. On disk, these tables are organized into multiple levels and periodically merged through background compaction. This design favors high sequential write throughput but results in write amplification and variable latency when data is frequently updated.
 
-TODO
+Execution clients mostly switched away from this specific db implementation to more modern reimplementations with active support or more experimental designs with improved performance. 
+
+**Pebble**
+
+Pebble is used by some execution clients as a replacement for LevelDB, fulfilling the same role as the primary embedded key–value store for blockchain data, execution state, and indices. Geth have chosen pebble as an alternative and now default backend because LevelDB stopped being maintained. It provides same set of features with certain advantages as its development continues. 
+
+
+Compared to LevelDB, Pebble retains the LSM-tree architecture but improves it for write-heavy, latency-sensitive workloads typical of Ethereum execution. It supports multiple active memtables to reduce write stalls, exposes detailed SSTable and compaction metadata, and provides significantly more control over compaction behavior. These improvements allow clients to better manage write amplification and achieve more predictable performance under frequent state updates. 
+Pebble also offers stronger batch semantics and snapshot support, enabling execution clients to better align database operations with block execution and concurrent RPC reads.
+
+https://github.com/cockroachdb/pebble
+
 
 **MDBX**.
 

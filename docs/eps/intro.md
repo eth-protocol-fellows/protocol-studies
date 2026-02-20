@@ -6,83 +6,23 @@ The protocol evolves and grows quickly, it's an always-changing infinite garden.
 
 Originally started in 2024, the study group is a participatory educational program that aims to improve core protocol education by introducing a curriculum focused on all parts of the Ethereum stack, building a wiki knowledge base and creating a community focused on learning about the protocol.
 
-> The Study Group is active for 2 months a year, meeting live and creating new content. But meanwhile, you can use all existing content for your own studies and join our [Discord server](https://discord.gg/8RPnPGEQtJ) to chat about it
+> The Study Group is active for 2 months starting February 23rd 2026, meeting live and creating new content. Join our [community chat](https://discord.gg/8RPnPGEQtJ) and start your studies journey
 
 ![Ethereum Protocol Studies](https://raw.githubusercontent.com/eth-protocol-fellows/protocol-studies/376d1fca6907d2796da0a7876703b525ef528727/docs/images/EPS2-1080.jpg)
 
-## Program Structure
+## Learn and participate 
 
-The study group content is structured into 4 tracks. Introduction with high level overview of the protocol, development process and research. Then it dives deeper into each part of the protocol in consensus, execution and research. 
+The study group content is structured into 3 modules. Introduction with high level overview of the protocol, development process and research. Then it dives deeper into each part of the protocol in consensus and execution layer. 
 
 ### Study Group content
 
-Each session is created by a core developer or researcher, comes with reading materials to get you familiar with the topic context and some also include exercises to strengthen and practice your understanding. More resources on each topic can be found in the wiki section and if they are any missing, contribute to add them. 
+**The study group curriculum is available at https://study.epf.wiki**
 
-> We recommend watching videos from the study group using faster playback speed, 1.25 or 1.5x to save some time
+This is a learning platform that contains interactive sessions, excercises, quizes and more resources to get you started learning about the protocol in depth. 
 
-#### Protocol introduction
+The original study group content that was present here is still available under [archive.md].
 
-The first part of the Study Group is an introduction to the protocol, overview of its parts and development process. 
-
-| Topic                                               | Speaker                                                                                |
-| --------------------------------------------------- | -------------------------------------------------------------------------------------- |
-| [Intro to EPS and Ethereum protocol](/eps/week1.md) | [Mario Havel](https://github.com/taxmeifyoucan)                                        |
-| [Consensus layer intro](/eps/week3.md)              | [Alex Stokes](https://github.com/ralexstokes)                                          |
-| [Execution layer intro](/eps/week2.md)              | [Lightclient](https://github.com/lightclient)                                          |
-| [Using clients, nodes](/eps/nodes_workshop.md)      | [Mario](https://github.com/taxmeifyoucan)                                              |
-| [Consensus and Execution specs](/eps/week6-dev.md)  | [Hsiao-Wei Wang](https://github.com/hwwhww), [Sam Wilson](https://github.com/SamWilsn) |
-| [Testing and security](/eps/week4.md)               | [Mario Vega](https://github.com/marioevz)                                              |
-| [Local prototyping](/eps/week9-dev.md)              | [Parithosh](https://github.com/parithosh)                                              |
-| [Roadmap and research overview](/eps/week5.md)      | [Domothy](https://github.com/domothyb)                                                 |
-
-#### Consensus layer
-
-The consensus layer track covers all parts of the CL, including overview of the proof-of-stake implementation, networking and data.
-
-| Topic                                              | Speaker                                         |
-| -------------------------------------------------- | ----------------------------------------------- |
-| [Gasper](/eps/day16.md)                            | [Ben Edgington](https://github.com/benjaminion) |
-| [Consensus client architecture](/eps/week8-dev.md) | [Paul Harris](https://github.com/rolfyone)      |
-| [CL Data structures](/eps/day22.md)                | [Michael](https://github.com/michaelsproul/)    |
-| [libp2p](/eps/day19.md)                            | [DappLion](https://github.com/dapplion)         |
-| [Validator Client](/eps/day20.md)                  | [James](https://github.com/james-prysm)         |
-
-
-### Execution layer
-
-Every part of the execution layer, the original Ethereum  itself.
-
-| Topic                                              | Speaker                                                                   |
-| -------------------------------------------------- | ------------------------------------------------------------------------- |
-| [Execution client architecture](/eps/week7-dev.md) | [Dragan Pilipovic](https://github.com/dragan2234)                         |
-| [EVM](/eps/day17.md)                               | [Pawel Bylica](https://github.com/chfast)                                 |
-| [EL Data](/eps/day23.md)                           | [Gary](https://github.com/garyschulte), [Karim](https://github.com/matkt) |
-| [devp2p](/eps/day18.md)                            | [Felix Lange](https://github.com/fjl)                                     |
-| [Engine API](/eps/day21.md)                        | [Mikhail](https://github.com/mkalinin)                                    |
-| [EL precompiles](/eps/week10-dev.md)               | [Danno Ferrin](https://github.com/shemnon)                                |
-
-
-### Research
-
-The research track provides a technical explanation of active area of research, covering major important items from most [Ethereum roadmap](https://epf.wiki/#/wiki/research/roadmap) tracks. 
-
-| Topic                                              | Speaker                                            |
-| -------------------------------------------------- | -------------------------------------------------- |
-| [Upcoming upgrades overview](/eps/day24.md)        | [Marius](https://github.com/MariusVanDerWijden)    |
-| [Sharding and DAS](/eps/week6-research.md)         | [Dankrad Feist](https://github.com/dankrad)        |
-| [Verkle trees](/eps/week7-research.md)             | [Josh Rudolf](https://github.com/jrudolf)          |
-| [MEV and censorship](/eps/week8-research.md)       | [Barnabe Monnot](https://github.com/barnabemonnot) |
-| [Purge and Portal Network](/eps/week9-research.md) | [Piper Merriam](https://github.com/pipermerriam)   |
-| [SSF and PoS Upgrades](/eps/week10-research.md)    | [Francesco D'Amato](https://github.com/fradamt)    |
-
-
-### Streams and recordings
-
-Talks and calls are announced week in advance based on the schedule above. Recordings of all talks can be found on [Youtube](https://www.youtube.com/@ethprotocolfellows) or [StreamEth](https://streameth.org/archive?organization=ethereum_protocol_fellowship) archive. 
-
-Apart from weekly lectures, there are less regular, ad-hoc hangout calls for informal chats and calls for wiki contributors working the content. Join the Discord group to get notified about all of these events.
-
-## Participate
+### Program structure 
 
 The study group is an open and permissionless, and it is up to each participant as to how they want to approach it. Whether you want to learn as much as possible, focus only on certain topics or share your knowledge with others, you are welcomed. 
 
