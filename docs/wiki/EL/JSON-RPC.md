@@ -105,9 +105,9 @@ There is a convention for encoding the parameters of the JSON-RPC methods, which
   * For example, the number 65 is represented as "0x41".
   * The number 0 is represented as "0x0".
   * Some invalid usages are "0x" and "ff". Since the first case does not have a following digit and the second one is not prefixed with "0x". 
-* Unformatted data is, such as hashes, account addresses or byte arrays are hex encoded using a "0x" prefix as well.
+* Unformatted data, such as hashes, account addresses or byte arrays, are hex encoded using a "0x" prefix as well.
   * For example: 0x400 (1014 in decimal)
-  * An invalid case is 0x400 because there are no leading zeroes allowed
+  * An invalid case is 0x0400 because leading zeroes are not allowed
 
 ## Transport agnostic
 
