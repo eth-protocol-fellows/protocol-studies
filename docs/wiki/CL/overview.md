@@ -195,7 +195,7 @@ Attestations help finalize blocks by reaching consensus on the blockchain’s st
 
 ### Design and Implementation
 
-A key design decision in EIP-4844 is the use of [KZG commitments](/wiki/Cryptography/kzg.md) to verify blobs and support future proposer-builder separation. To use KZG commitments, a Trusted Setup is needed. For the Deneb hardfork, a [KZG Ceremony](https://github.com/ethereum/kzg-ceremony) was conducted to create this Trusted Setup.
+A key design decision in EIP-4844 is the use of [KZG commitments](/wiki/Cryptography/KZG.md) to verify blobs and support future proposer-builder separation. To use KZG commitments, a Trusted Setup is needed. For the Deneb hardfork, a [KZG Ceremony](https://github.com/ethereum/kzg-ceremony) was conducted to create this Trusted Setup.
 
 <a id="img_blobs"></a>
 
