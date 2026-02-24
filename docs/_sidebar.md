@@ -1,8 +1,39 @@
 - [Home](readme.md)
-- [Contributing](contributing.md)
 - **Study Group**
-- [Join the studies](/eps/intro.md)
-- [Study Group archive](/eps/archive.md)
+- [Start here](/eps/intro.md)
+- [Study Group content](/eps/schedule.md)
+  - **Introduction**
+  - [Prepare for studies](/eps/week0.md)
+  - [Protocol intro and overview](/eps/week1.md)
+  - [CL intro](/eps/week3.md)
+  - [EL intro](/eps/week2.md)
+  - [Using clients](/eps/nodes_workshop.md)
+  - [CL/EL specs](/eps/week6-dev.md)
+  - [Testing and security](/eps/week4.md)
+  - [Local prototyping](/eps/week9-dev.md)
+  - [Research overview](/eps/week5.md)
+  - **Consensus Layer**
+  - [Gasper](/eps/day16.md)
+  - [CL client architecture](/eps/week8-dev.md)
+  - [CL Data structures](/eps/day22.md)
+  - [libp2p](/eps/day19.md)
+  - [Validator Client](/eps/day20.md)
+  - **Execution Layer**
+  - [EL client architecture](/eps/week7-dev.md)
+  - [EVM](/eps/day17.md)
+  - [EL Data](/eps/day23.md)
+  - [devp2p](/eps/day18.md)
+  - [Engine API](/eps/day21.md)
+  - [EL precompiles](/eps/week10-dev.md)
+  - **Research**
+  - [Upcoming upgrades](/eps/day24.md)
+  - [Sharding and DAS](/eps/week6-research.md)
+  - [Verkle trees](/eps/week7-research.md)
+  - [MEV and censorship](/eps/week8-research.md)
+  - [Purge and Portal Network](/eps/week9-research.md)
+  - [SSF and PoS Upgrades](/eps/week10-research.md)
+
+- [Contributing](contributing.md)
 - **Protocol Wiki**
 - The Protocol
   - [Prehistory](/wiki/protocol/prehistory.md)
