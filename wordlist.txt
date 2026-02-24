@@ -1028,4 +1028,11 @@ eas
 alt
 asm
 bn
-sys
+sysethproofs
+leanroadmap
+Plonky
+Binius
+Brevis
+ZisK
+ZKM
+unprovable
