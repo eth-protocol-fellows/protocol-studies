@@ -80,7 +80,7 @@ kurtosis enclave rm <enclave-name> -f
 
 Explore the enclave in the web interface by clicking on the enclave's name:
 
-![Kurtosis enclave in web interface](./kurtosis-web-enclave.png)
+![Kurtosis enclave in web interface](./img/kurtosis-web-enclave.png)
 
 You can run multiple enclaves at the same time, but be cautious of your machine's resources to avoid performance issues. Additionally, assigning a custom name to each enclave can be useful when managing several enclaves simultaneously.
 
@@ -168,11 +168,11 @@ The full list of services can be found [here](https\://ethpandaops.io/posts/kurt
 
 Some of these tools have a web interface. To open the interface, use the link provided in the user services list:
 
-![Kurtosis tools](./kurtosis-tools.png)
+![Kurtosis tools](./img/kurtosis-tools.png)
 
 Dora is one of the most commonly used tools for the Beacon Chain. Here is how its interface looks like:
 
-![Dora](./kurtosis-dora.png)
+![Dora](./img/kurtosis-dora.png)
 
 ## Working with Logs
 
