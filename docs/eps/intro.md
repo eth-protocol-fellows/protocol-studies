@@ -14,13 +14,37 @@ Originally started in 2024, the study group is a participatory educational progr
 
 The study group content is structured into 3 modules. Introduction with high level overview of the protocol, development process and research. Then it dives deeper into each part of the protocol in consensus and execution layer. 
 
-### Study Group content
+### Study Group Curriculum
 
 **The study group curriculum is available at https://study.epf.wiki**
 
 This is a learning platform that contains interactive sessions, excercises, quizes and more resources to get you started learning about the protocol in depth. 
 
 The original study group content that was present here is still available under [archive.md].
+
+### New Study Group Content in 2026
+
+This year, we will be hosting 2 new modules - the cryptography of Ethereum and zkEVM/Lean Ethereum.
+
+#### Cryptography
+| Date       | Session                    | Teacher |
+|------------|----------------------------|---------|
+| 2026-03-09 | Finite Groups & Fields     | Matan Prasma   |
+| 2026-03-16 | Discrete Fourier Transform | Matan Prasma   |
+| 2026-03-23 | Elliptic Curves & Pairings | Matan Prasma   |
+| 2026-03-30 | BLS Signatures             | Matan Prasma   |
+| 2026-04-07 | Proof Systems              | Matan Prasma   |
+
+---
+
+#### zkEVM/Lean Ethereum
+| Date       | Session                    | Teacher |
+|------------|----------------------------|---------|
+| 2026-03-11 | Lean Consensus Overview    | Emile   |
+| 2026-03-18 | Lean Client Architecture   | TBA     |
+| 2026-03-25 | zkEVM Fundamentals         | Cody Gunton & Ignacio Hagiopan   |
+| 2026-04-01 | TBA                        | TBA            |
+| 2026-04-09 | Post-Quantum Cryptography  | Justin Drake   |
 
 ### Program structure 
 
