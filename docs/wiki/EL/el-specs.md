@@ -363,7 +363,7 @@ $$
 | $I_{chainId}$             | Identifier for the blockchain, ensuring transactions are signed for a specific chain.                                    |
 | $I_{traces}$              | A placeholder for execution traces, intended for future use or debugging purposes.                                       |
 | $I_{excessBlobGas}$       | Calculated from the parent block, it represents surplus gas allocated for blob transactions.                             |
-| $I_{blobVersionedHashes}$ |                                                                                                                          |
+| $I_{blobVersionedHashes}$ |                      the ordered list of versioned hashes of blobs that are attached to the current transaction.                                                                                                     |
 
 ## Gas Accounting
 
@@ -1018,9 +1018,82 @@ TODO
 
 TODO
 
-## Block holistic Validity
+## Block Holistic Validity
 
-TODO
+Block Holistic Validity refers to the correctness of a block as a single atomic state transition, obtained by composing the ordered execution of all transactions and verifying that their aggregate effects are consistent with the commitments declared in the block header.
+
+Although the Yellow Paper specifies transaction execution and block validity through distinct functions, block holistic validity emerges from their composition and is formalized through the reconstruction and verification of execution results at the block level.
+
+---
+
+### State Initialization
+
+Execution of a block begins from an initial state derived from the parent block. The function $\Gamma$ maps a block to its initial execution state:
+
+$$
+\Gamma(B) \equiv 
+\begin{cases} 
+\sigma_0 & \text{if } P(B_H) = \emptyset \\
+\sigma_i \text{ such that } \text{TRIE}(LS(\sigma_i)) = P(B_H)_H & \text{otherwise}
+\end{cases}
+$$
+
+| Symbol | Description |
+| ------ | ----------- |
+| $\sigma_0$ | The genesis state. |
+| $P(B_H)_H$ | The parent block’s state root. |
+| $LS$ | The state-mapping function (World State). |
+
+This ensures that all nodes begin execution from the same cryptographically committed state.
+
+---
+
+### Block Transition Function
+
+Let $B_T$ denote the ordered list of transactions in the block. Transactions are executed sequentially, where each transaction operates on the state produced by its predecessor. This sequential execution is captured by the block transition function $\Pi$:
+
+$$\Pi(\sigma, B) \equiv \sigma'$$
+
+where $\sigma'$ is the final post-transaction state obtained by applying all transactions in order, including any post-execution state transitions defined at the block level. As a consequence, transaction validity is context-dependent and sensitive to ordering and cumulative effects.
+
+### Gas Accumulation and Receipts
+
+Each transaction execution produces a receipt containing execution status, logs, and cumulative gas usage. Let $R[n]$ denote the cumulative gas used after executing the $n$-th transaction. Gas accumulation is defined recursively:
+
+$$
+R[n] \equiv 
+\begin{cases} 
+0 & \text{if } n < 0 \\
+\Upsilon^g(\sigma[n-1], B_T[n]) + R[n-1] & \text{otherwise}
+\end{cases}
+$$
+
+where $\Upsilon^g$ extracts the gas consumed by executing transaction $B_T[n]$ in state $\sigma[n-1]$.
+
+---
+
+### Commitment Verification
+
+The ordered sequence of transaction receipts and the final world state are committed using a Merkle–Patricia Trie. The block is valid only if these computed roots match the block header:
+
+1.  **Receipts Root:** $B_{H_r} = \text{TRIE}(LS(R))$
+2.  **State Root:** $B_{H_s} = \text{TRIE}(LS(\sigma'))$
+
+**Validity Requirements:**
+* Computed receipts root must match the header.
+* Final state root must match the header.
+* Cumulative gas usage must respect the block gas limit ($R[n] \le B_{H_l}$).
+
+Block validity is **atomic**. The block-level transition function $\Phi$ maps an initial state and block to a complete block result. The block is accepted if and only if all reconstruction, execution, accumulation, and commitment checks succeed. There is no notion of partial acceptance of transactions within a block.
+
+---
+
+**Implementation Reference:**
+The semantics described above are based on the [Ethereum Yellow Paper](https://ethereum.github.io/yellowpaper/paper.pdf):
+- **Section 12:** Block Finalisation
+- **Section 12.1:** Executing Withdrawals
+- **Section 12.2:** Transaction Validation
+- **Section 12.3:** State Validation
 
 ### Gas Accounting Examples
 Up to this point, we've talked about EL post-merge gas mechanics in a variety of scenarios. Let's tie it all together with some examples.
