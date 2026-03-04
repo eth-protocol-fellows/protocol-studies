@@ -514,6 +514,8 @@ MDS
 meldsun
 mem
 Mempool
+mempools
+Mempools
 Menezes
 merkle
 Merkleization
@@ -748,6 +750,8 @@ SHA
 Shacham
 shadowfork
 Shafu
+sharded
+Sharded
 ShardedKey
 sharding
 ShareAlike
@@ -841,6 +845,7 @@ trustlessness
 TrustLook
 TSTORE
 TTD
+TTL
 Tx
 txcreate
 txdatanonzero
