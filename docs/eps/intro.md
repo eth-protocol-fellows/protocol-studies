@@ -41,9 +41,9 @@ This year, we will be hosting 2 new modules - the cryptography of Ethereum and z
 | Date       | Session                    | Teacher |
 |------------|----------------------------|---------|
 | 2026-03-11 | Lean Consensus Overview    | Emile   |
-| 2026-03-18 | Lean Client Architecture   | TBA     |
+| 2026-03-24 | Lean Client Architecture   | Kolby     |
 | 2026-03-25 | zkEVM Fundamentals         | Cody Gunton & Ignacio Hagiopan   |
-| 2026-04-01 | TBA                        | TBA            |
+| 2026-04-01 | leanSpec and tooling       | O            |
 | 2026-04-09 | Post-Quantum Cryptography  | Justin Drake   |
 
 ### Program structure 
