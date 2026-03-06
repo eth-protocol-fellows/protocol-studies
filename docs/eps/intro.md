@@ -18,7 +18,7 @@ The study group content is structured into 3 modules. Introduction with high lev
 
 **The study group curriculum is available at https://study.epf.wiki**
 
-This is a learning platform that contains interactive sessions, excercises, quizes and more resources to get you started learning about the protocol in depth. 
+This is a learning platform that contains interactive sessions, exercises, quizzes and more resources to get you started learning about the protocol in depth. 
 
 The original study group content that was present here is still available under [archive.md].
 

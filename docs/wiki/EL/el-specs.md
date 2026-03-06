@@ -1090,7 +1090,7 @@ Block validity is **atomic**. The block-level transition function $\Phi$ maps an
 
 **Implementation Reference:**
 The semantics described above are based on the [Ethereum Yellow Paper](https://ethereum.github.io/yellowpaper/paper.pdf):
-- **Section 12:** Block Finalisation
+- **Section 12:** Block Finalization
 - **Section 12.1:** Executing Withdrawals
 - **Section 12.2:** Transaction Validation
 - **Section 12.3:** State Validation
