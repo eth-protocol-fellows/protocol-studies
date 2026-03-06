@@ -1,10 +1,10 @@
 # **Welcome to the Protocol!**
 
-The EPF Wiki is a collection of technical resources about the Ethereum protocol. It's home to all resources from EPF Study Group and the Protocol Wiki. These include technical information covering all core protocol domains and ongoing research. It's dedicated to serve aspiring core contributors and does not cover any smart contract or other high level development. This servers also as an introduction for Protocol Fellowship for those who wish to dive even deeper and work directly on Ethereum protocol.  
+The EPF Wiki is a collection of technical resources about the Ethereum protocol. It's home to all resources from EPF Study Group and the Protocol Wiki. These include technical information covering all core protocol domains and ongoing research. It's dedicated to serve aspiring core contributors and does not cover any smart contract or other high level development. This serves also as an introduction for Protocol Fellowship for those who wish to dive even deeper and work directly on Ethereum protocol.  
 
 ## Protocol Study Group
 
-Ethereum Protocol Study Group (EPS) is an open study program for anyone interested in learning about internals of the protocol. The study group resources are available as self study curriculum but there is also live Study Group organized annualy between February-April. Following blog.ethereum.org for announcements to join a community of students. 
+Ethereum Protocol Study Group (EPS) is an open study program for anyone interested in learning about internals of the protocol. The study group resources are available as self study curriculum but there is also live Study Group organized annually between February-April. Following blog.ethereum.org for announcements to join a community of students. 
 
 **Study Group 2026** is starting on February 23rd with 8 weeks of content. Learn with us at [study.epf.wiki](https://study.epf.wiki)
 
@@ -20,7 +20,7 @@ Protocol Wiki is a technical documentation of the main parts of Ethereum core de
 
 ## Protocol Fellowship 
 
-[Ethereum Protocol Fellowship](/wiki/epf) (EPF) is a program for developers and researchers deeply interested in working on the protocol. It's an opportunity to work directly with client teams on their and contribute by building projects with larger scope. It's 5 month program, normally organized annualy June-November. Stay tuned for announcement for applications. 
+[Ethereum Protocol Fellowship](/wiki/epf) (EPF) is a program for developers and researchers deeply interested in working on the protocol. It's an opportunity to work directly with client teams on their and contribute by building projects with larger scope. It's 5 month program, normally organized annually June-November. Stay tuned for announcement for applications. 
 
 
 ![](https://raw.githubusercontent.com/eth-protocol-fellows/protocol-studies/wiki-pages/docs/images/epfsg_hero.jpg)
