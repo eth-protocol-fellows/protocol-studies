@@ -193,7 +193,7 @@ During heavy load, the CL may import a beacon block optimistically without waiti
 
 ### Fusaka (Fulu/Osaka, December 3, 2025, epoch 411392)
 
-Fusaka's 13 EIPs span DA scaling, execution performance, and protocol cleanup. Key Engine API impacts:
+The Fusaka upgrade spans 13 EIPs covering DA scaling, execution performance, and protocol cleanup. Key Engine API impacts:
 
 **Data availability:**
 - **EIP-7594 (PeerDAS)**: Nodes sample small column subsets instead of downloading full blobs, enabling safe blob throughput increases. `engine_getPayloadBodiesByHashV2` and `engine_getPayloadBodiesByRangeV2` are updated to support PeerDAS cell proof structures.
