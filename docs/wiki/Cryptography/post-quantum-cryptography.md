@@ -59,9 +59,9 @@ Post-quantum cryptography is an active area of research. Several organizations a
 
 The [NIST Post-Quantum Cryptography standardization](https://csrc.nist.gov/projects/post-quantum-cryptography) conducted a multi-year international competition to evaluate and standardize quantum-resistant cryptographic algorithms. In August 2024, NIST published the first set of finalized **PQC standards** as Federal Information Processing Standards (FIPS):
 
-### Published Standards (August 2024):
+### Published Standards (August 2024)
 
-1. **Key encapsulation mechanism:**
+**Key encapsulation mechanism:**
 
 - **ML-KEM** ([FIPS 203](https://doi.org/10.6028/NIST.FIPS.203)) derived from CRYSTALS-Kyber. A **key-encapsulation mechanism (KEM)**: a set of three algorithms (KeyGen, Encaps, Decaps) that establish a shared secret key over a public channel. Based on the **Module Learning With Errors (MLWE)** problem.
 
@@ -71,7 +71,7 @@ The [NIST Post-Quantum Cryptography standardization](https://csrc.nist.gov/proje
 | ML-KEM-768 | 192 bits | 3 |
 | ML-KEM-1024 | 256 bits | 5 |
 
-2. **Digital signature algorithms:**
+**Digital signature algorithms:**
 
 - **ML-DSA** ([FIPS 204](https://doi.org/10.6028/NIST.FIPS.204)) derived from CRYSTALS-Dilithium. Lattice-based digital signature algorithm.
 
@@ -83,16 +83,16 @@ The [NIST Post-Quantum Cryptography standardization](https://csrc.nist.gov/proje
 
 - **SLH-DSA** ([FIPS 205](https://doi.org/10.6028/NIST.FIPS.205)) derived from SPHINCS+. NIST's stateless hash-based digital signature standard.
 
-It is constructed from three well-studied components:
-- **WOTS+** (Winternitz One Time Signature Plus), one time signing primitive
-- **XMSS** (eXtended Merkle Signature Scheme), multi-time scheme built on WOTS+
-- **FORS** (Forest of Random Subsets), few time scheme for signing message digests
+  It is constructed from three well-studied components:
+  - **WOTS+** (Winternitz One Time Signature Plus), one time signing primitive
+  - **XMSS** (eXtended Merkle Signature Scheme), multi-time scheme built on WOTS+
+  - **FORS** (Forest of Random Subsets), few time scheme for signing message digests
 
-Unlike ML-DSA, SLH-DSA requires **no number-theoretic hardness assumptions**. Security depends only on standard hash-function properties (preimage resistance and related properties), making it resistant to quantum attacks without any algebraic structure that Shor’s algorithm could exploit.
+  Unlike ML-DSA, SLH-DSA requires **no number-theoretic hardness assumptions**. Security depends only on standard hash-function properties (preimage resistance and related properties), making it resistant to quantum attacks without any algebraic structure that Shor’s algorithm could exploit.
 
-Each security level offers two variants:
-- `s` = smaller signatures, slower signing
-- `f` = larger signatures, faster signing
+  Each security level offers two variants:
+  - `s` = smaller signatures, slower signing
+  - `f` = larger signatures, faster signing
 
 | Parameter Set                          | Security Category | Signature Size |
 |----------------------------------------|-------------------|----------------|
@@ -103,9 +103,11 @@ Each security level offers two variants:
 | SLH-DSA-SHA2-256s / SLH-DSA-SHAKE-256s | 5                 | 29,792 bytes   |
 | SLH-DSA-SHA2-256f / SLH-DSA-SHAKE-256f | 5                 | 49,856 bytes   |
 
-The SHA2 and SHAKE variants differ only in the internal hash-function instantiation (SHA-2 family vs SHAKE from FIPS 202),not in security level or signature structure.
+The SHA2 and SHAKE variants differ only in the internal hash-function instantiation (SHA-2 family vs SHAKE from FIPS 202), not in security level or signature structure.
+
+- **FN-DSA** (forthcoming as [FIPS 206](https://csrc.nist.gov/presentations/2025/fips-206-fn-dsa-falcon)) derived from FALCON. Full name: **Fast-Fourier Transform over NTRU-Lattice-Based Digital Signature Algorithm**. A lattice-based scheme in the Hash-Then-Sign paradigm, signing produces a lattice point close to a target derived from a randomized message hash, using **FFT** and an **LDL tree** for discrete Gaussian sampling. This gives FN-DSA significantly smaller signatures and public keys than ML-DSA, making it suited for bandwidth-constrained environments such as certificate chains or protocols with strict size limits.
   
-NIST's ["Status Report on the Fourth Round of the NIST Post-Quantum Cryptography Standardization Process"](https://nvlpubs.nist.gov/nistpubs/ir/2025/NIST.IR.8545.pdf) T(March 2025) summarizes the ongoing fourth round.
+NIST's ["Status Report on the Fourth Round of the NIST Post-Quantum Cryptography Standardization Process"](https://nvlpubs.nist.gov/nistpubs/ir/2025/NIST.IR.8545.pdf) (March 2025) summarizes the ongoing fourth round.
 
 
 ### Post-Quantum Cryptography Alliance
