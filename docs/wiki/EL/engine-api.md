@@ -56,14 +56,14 @@ An optional method allowing the CL and EL to identify each other's software. Eac
 
 | Code | EL Client | Code | CL Client |
 |------|-----------|------|-----------|
-| BU | Besu | GR | Grandine |
-| EG | Erigon | LH | Lighthouse |
-| EJ | EthereumJS | LS | Lodestar |
-| EX | Ethrex | NB | Nimbus |
-| GE | Geth | PM | Prysm |
-| NM | Nethermind | TK | Teku |
-| RH | Reth | | |
-| TE | Trin-Execution | | |
+| `BU` | Besu | `GR` | Grandine |
+| `EG` | Erigon | `LH` | Lighthouse |
+| `EJ` | EthereumJS | `LS` | Lodestar |
+| `EX` | Ethrex | `NB` | Nimbus |
+| `GE` | Geth | `PM` | Prysm |
+| `NM` | Nethermind | `TK` | Teku |
+| `RH` | Reth | | |
+| `TE` | Trin-Execution | | |
 
 The EL must not log errors if this method is never called.
 
