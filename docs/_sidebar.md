@@ -68,7 +68,8 @@
   - [Light clients](/wiki/research/light-clients.md)
   - Account abstraction
     - [EIP-7702](/wiki/research/account-abstraction/eip-7702.md)
-- [Cryptography](/wiki/Cryptography/intro.md)
+- Cryptography
+  - [Intro](/wiki/Cryptography/intro.md)
   - [ECDSA](/wiki/Cryptography/ecdsa.md)
   - [BLS](/wiki/Cryptography/bls.md)
   - [Keccak256](/wiki/Cryptography/keccak256.md)
