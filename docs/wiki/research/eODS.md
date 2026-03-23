@@ -1,7 +1,7 @@
 # Enshrined Operator-delegator separation (eODS)
 
-> [!WARNING]
-> This document covers an active area of research, may be outdated at time of reading and subject to future updates, as the design space around Validator roles unbundling evolves.
+> :warning: 
+This document covers an active area of research, may be outdated at time of reading and subject to future updates, as the design space around Validator roles unbundling evolves.
 
 ## Roadmap tracker
 
