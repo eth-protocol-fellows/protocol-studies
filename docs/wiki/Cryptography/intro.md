@@ -8,7 +8,7 @@ Cryptography researchers craft the weapons or implements of change that develope
 
 Ethereum’s security model depends on carefully chosen cryptographic constructions, each addressing specific constraints—whether in transaction validation, consensus, or scalability. Below is a breakdown of the key schemes and their protocol-level functions at a high-level. Some of the schemes are discussed in a more detailed level in the Cryptography subsections.
 
-1. ### ECDSA and Transaction Authentication**
+1. ### ECDSA and Transaction Authentication
 **Usage:** Every Ethereum transaction must be signed using ECDSA over the secp256k1 curve.
 
 #### Why It Matters:
