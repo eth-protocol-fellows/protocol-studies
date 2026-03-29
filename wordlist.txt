@@ -48,6 +48,7 @@ auth
 autoplay
 AVS
 backend
+backends
 backfill
 backfills
 backfilling
@@ -652,6 +653,7 @@ preconfirms
 preconfs
 preimage
 Prest
+prev
 prevRandao
 PREVRANDAO
 privateKey
@@ -696,6 +698,7 @@ reciept
 referrerpolicy
 remerkleable
 reentrancy
+reimplementations
 reorganisation
 reorganisations
 replayable
@@ -1028,6 +1031,7 @@ multibase
 Multicast
 kad
 OOG
+memtable
 memtables
 eas
 alt

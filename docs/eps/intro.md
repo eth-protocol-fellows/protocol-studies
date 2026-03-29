@@ -18,7 +18,7 @@ The study group content is structured into 3 modules. Introduction with high lev
 
 **The study group curriculum is available at https://study.epf.wiki**
 
-This is a learning platform that contains interactive sessions, excercises, quizes and more resources to get you started learning about the protocol in depth. 
+This is a learning platform that contains interactive sessions, exercises, quizzes and more resources to get you started learning about the protocol in depth. 
 
 The original study group content that was present here is still available under [archive.md].
 
@@ -41,9 +41,9 @@ This year, we will be hosting 2 new modules - the cryptography of Ethereum and z
 | Date       | Session                    | Teacher |
 |------------|----------------------------|---------|
 | 2026-03-11 | Lean Consensus Overview    | Emile   |
-| 2026-03-18 | Lean Client Architecture   | TBA     |
+| 2026-03-24 | Lean Client Architecture   | Kolby     |
 | 2026-03-25 | zkEVM Fundamentals         | Cody Gunton & Ignacio Hagiopan   |
-| 2026-04-01 | TBA                        | TBA            |
+| 2026-04-01 | leanSpec and tooling       | O            |
 | 2026-04-09 | Post-Quantum Cryptography  | Justin Drake   |
 
 ### Program structure 
