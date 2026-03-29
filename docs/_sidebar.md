@@ -62,6 +62,7 @@
   - [eODS](/wiki/research/eODS.md)
   - [PeerDAS](/wiki/research/peerdas.md)
   - [FCR](/wiki/research/FCR/FCR.md)
+  - [Stateless](/wiki/research/stateless/stateless.md)
   - Preconfirmations
     - [Preconfirmations](/wiki/research/Preconfirmations/Preconfirmations.md)
     - [Based Sequencing with Preconfs](/wiki/research/Preconfirmations/BasedSequencingPreconfs.md)
