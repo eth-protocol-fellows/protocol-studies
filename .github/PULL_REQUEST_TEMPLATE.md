@@ -12,7 +12,7 @@ Thank you for contributing to the Protocol Wiki! Before you open a PR, make sure
 1. Install [aspell](https://www.gnu.org/software/aspell/) for your platform.
 2. Navigate to the project root and run the script:
 ```
-bash check_typos.sh
+./check_typos.sh
 ```
 
 ℹ️ Fixing typos
