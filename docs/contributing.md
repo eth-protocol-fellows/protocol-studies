@@ -51,7 +51,7 @@ docsify serve ./docs
 ```
 
 ## Fixing typos locally
-The aspell typo checker must be run prior to submitting a pull request and all flagged words must be resolved.
+The aspell typo checker is run on every PR and checks all files, it's advised to run it locally prior to submitting a pull request to resolve flagged words in your changes.
 
 To check for typos locally:
 1. Install [aspell](https://www.gnu.org/software/aspell/) for your platform.
