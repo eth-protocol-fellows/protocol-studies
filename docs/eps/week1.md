@@ -16,7 +16,7 @@ This is an introductory talk which doesn't assume a lot of prior knowledge. Chec
 
 - [Inevitable Ethereum - World Computer](https://inevitableeth.com/home/ethereum/world-computer)
 - [Ethereum in 30 minutes](https://www.youtube.com/watch?v=UihMqcj-cqc)
-- [Ethereum.org docs](https://ethereum.org/what-is-ethereum)
+- [Ethereum.org docs](https://ethereum.org/en/what-is-ethereum/)
 
 Check out resources within the following text and additional reading. All resources will be explained in the week 1 presentation.
 

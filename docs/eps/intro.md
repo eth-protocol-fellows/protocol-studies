@@ -6,72 +6,51 @@ The protocol evolves and grows quickly, it's an always-changing infinite garden.
 
 Originally started in 2024, the study group is a participatory educational program that aims to improve core protocol education by introducing a curriculum focused on all parts of the Ethereum stack, building a wiki knowledge base and creating a community focused on learning about the protocol.
 
-> The study group in 2025 is 8 week long program starting in February 17. If you'd like to participate, join our [Discord server](https://discord.gg/8RPnPGEQtJ), attend the [town hall](https://bordel.wtf/epstownhall25.ics) on Feb 12 at 1500 UTC and fill out [the participant survey](https://forms.gle/G5V95qyGV8uMjKGcA).
+> The Study Group is active for 2 months starting February 23rd 2026, meeting live and creating new content. Join our [community chat](https://discord.gg/8RPnPGEQtJ) and start your studies journey
 
 ![Ethereum Protocol Studies](https://raw.githubusercontent.com/eth-protocol-fellows/protocol-studies/376d1fca6907d2796da0a7876703b525ef528727/docs/images/EPS2-1080.jpg)
 
-## Program Structure
+## Learn and participate 
 
-The study group content is structured in 2 stages - an intense introduction and deep dive. The first 2 weeks consist of studying existing curriculum from [previous study group](https://blog.ethereum.org/2024/02/07/epf-study-group). The following 6 weeks will provide new live lectures from core developers and researchers with materials covering parts of the execution and consensus layers of Ethereum. 
+The study group content is structured into 3 modules. Introduction with high level overview of the protocol, development process and research. Then it dives deeper into each part of the protocol in consensus and execution layer. 
 
-### Schedule
+### Study Group Curriculum
 
-Each session is created by a core developer or researcher, comes with reading materials to get you familiar with the topic context and some also include exercises to strengthen and practice your understanding. More resources on each topic can be found in the wiki section and if they are any missing, contribute to add them. 
+**The study group curriculum is available at https://study.epf.wiki**
 
-> Study Group events like Office Hours are published in the Discord server or you can subscribe to [this calendar](https://calendar.google.com/calendar/u/0?cid=Y18xY2RhMjMxNzc5NmI4NDgzZTliMjBhMGVjZTFkMDFhZWFkN2U1ZTY3N2IxNjVhOGUzZTJlMjQ3ZTQ0M2UwODhkQGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20) to follow all sessions
+This is a learning platform that contains interactive sessions, exercises, quizzes and more resources to get you started learning about the protocol in depth. 
 
-During first 2 weeks, participants watch previous videos and study existing materials for the given day in their own time. Every day at _3PM UTC we will hold a daily office hours running for 2 hours_ where everyone can discuss their learnings, ask questions, exchange knowledge, etc. Join at the [Office Hours call link](https://meet.ethereum.org/eps-office-hours).
+The original study group content that was present here is still available under [archive.md].
 
-> We recommend watching videos from the study group using faster playback speed, 1.25 or 1.5x to save some time
+### New Study Group Content in 2026
 
-#### Week 1
+This year, we will be hosting 2 new modules - the cryptography of Ethereum and zkEVM/Lean Ethereum.
 
-The first week will cover the first five weeks of previous Study Group content. The first day provides an introduction to the Study Group and the protocol itself. Then, we will dive into each part of the protocol. On Wednesday, the node workshop will also be held live during office hours.
+#### Cryptography
+| Date       | Session                    | Teacher |
+|------------|----------------------------|---------|
+| 2026-03-09 | Finite Groups & Fields     | Matan Prasma   |
+| 2026-03-16 | Discrete Fourier Transform | Matan Prasma   |
+| 2026-03-23 | Elliptic Curves & Pairings | Matan Prasma   |
+| 2026-03-30 | BLS Signatures             | Matan Prasma   |
+| 2026-04-07 | Proof Systems              | Matan Prasma   |
 
-| Day           | Topic                                               | Speaker                                         |
-| ------------- | --------------------------------------------------- | ----------------------------------------------- |
-| Day 1, Feb 17 | [Intro to EPS and Ethereum protocol](/eps/week1.md) | [Mario Havel](https://github.com/taxmeifyoucan) |
-| Day 2, Feb 18 | [Consensus layer](/eps/week3.md)                    | [Alex Stokes](https://github.com/ralexstokes)   |
-| Day 3, Feb 19 | [Execution Layer](/eps/week2.md)                    | [Lightclient](https://github.com/lightclient)   |
-| Day 3, Feb 19 | [Using clients, nodes](/eps/nodes_workshop.md)      | [Mario](https://github.com/taxmeifyoucan)       |
-| Day 4, Feb 20 | [Testing and security](/eps/week4.md)               | [Mario Vega](https://github.com/marioevz)       |
-| Day 5, Feb 21 | [Roadmap and research](/eps/week5.md)               | [Domothy](https://github.com/domothyb)          |
+---
 
-#### Week 2
+#### zkEVM/Lean Ethereum
+| Date       | Session                    | Teacher |
+|------------|----------------------------|---------|
+| 2026-03-11 | Lean Consensus Overview    | Emile   |
+| 2026-03-24 | Lean Client Architecture   | Kolby     |
+| 2026-03-25 | zkEVM Fundamentals         | Cody Gunton & Ignacio Hagiopan   |
+| 2026-04-01 | leanSpec and tooling       | O            |
+| 2026-04-09 | Post-Quantum Cryptography  | Justin Drake   |
 
-The second week of the study group provides an overview of developer experience in Ethereum protocol. It covers the development track of the previous study group and provides an insight into various parts of the development process - from specification, CL/EL client architecture to hands on devops and testing. 
-
-| Day, Date      | Topic                                              | Speaker                                                                                |
-| -------------- | -------------------------------------------------- | -------------------------------------------------------------------------------------- |
-| Day 6, Feb 24  | [Consensus and Execution specs](/eps/week6-dev.md) | [Hsiao-Wei Wang](https://github.com/hwwhww), [Sam Wilson](https://github.com/SamWilsn) |
-| Day 7, Feb 25  | [Execution client architecture](/eps/week7-dev.md) | [Dragan Pilipovic](https://github.com/dragan2234)                                      |
-| Day 8, Feb 26  | [Consensus client architecture](/eps/week8-dev.md) | [Paul Harris](https://github.com/rolfyone)                                             |
-| Day 9, Feb 27  | [Devops and testing](/eps/week9-dev.md)            | [Parithosh](https://github.com/parithosh)                                              |
-| Day 10, Feb 28 | [EL precompiles](/eps/week10-dev.md)               | [Danno Ferrin](https://github.com/shemnon)                                             |
-
-Third week covers the research track and it's the last week using the original study group materials. Each lecture provides a technical explanation of an active area of research, covering major important items from most [Ethereum roadmap](https://epf.wiki/#/wiki/research/roadmap) tracks. 
-
-### Week 3
-
-| Day, Date     | Topic                                              | Speaker                                            |
-| ------------- | -------------------------------------------------- | -------------------------------------------------- |
-| Day 11, Mar 3 | [Sharding and DAS](/eps/week6-research.md)         | [Dankrad Feist](https://github.com/dankrad)        |
-| Day 12, Mar 4 | [Verkle trees](/eps/week7-research.md)             | [Josh Rudolf](https://github.com/jrudolf)          |
-| Day 13, Mar 5 | [MEV and censorship](/eps/week8-research.md)       | [Barnabe Monnot](https://github.com/barnabemonnot) |
-| Day 14, Mar 6 | [Purge and Portal Network](/eps/week9-research.md) | [Piper Merriam](https://github.com/pipermerriam)   |
-| Day 15, Mar 7 | [SSF and PoS Upgrades](/eps/week10-research.md)    | [Francesco D'Amato](https://github.com/fradamt)    |     
-
-### Streams and recordings
-
-Talks and calls are announced week in advance based on the schedule above. Recordings of all talks can be found on [Youtube](https://www.youtube.com/@ethprotocolfellows) or [StreamEth](https://streameth.org/archive?organization=ethereum_protocol_fellowship) archive. 
-
-Apart from weekly lectures, there are less regular, ad-hoc hangout calls for informal chats and calls for wiki contributors working the content. Join the Discord group to get notified about all of these events.
-
-## Participate
+### Program structure 
 
 The study group is an open and permissionless, and it is up to each participant as to how they want to approach it. Whether you want to learn as much as possible, focus only on certain topics or share your knowledge with others, you are welcomed. 
 
-> Join our community in [Discord server](https://discord.gg/8RPnPGEQtJ). We use it for the easiest community engagement but we are aware that Discord is proprietary and doesn't respect user privacy. Consider using alternative FOSS clients like [Dissent](https://github.com/diamondburned/dissent) or [Discordo](https://github.com/ayn2op/discordo). For enhancing the regular client, check [BetterDiscord](https://github.com/BetterDiscord/BetterDiscord/) project.
+> Join our community in [Discord server](https://discord.gg/8RPnPGEQtJ). We use it for the easiest community engagement but we are aware that Discord is proprietary and doesn't respect user privacy. Consider using alternative FOSS clients like [Dissent](https://github.com/diamondburned/dissent) or [WebCord](https://github.com/SpacingBat3/WebCord). For enhancing the regular client, check [BetterDiscord](https://github.com/BetterDiscord/BetterDiscord/) project.
 
 Study group participants collaboratively develop the [Protocol wiki](/wiki/wiki-intro.md), serving as an evolving knowledge base for current and future core developers. This can provide students with practical experience in contributing to open source resources, while gaining invaluable experience in documentation and community-driven development.
 
@@ -89,7 +68,7 @@ While this program is designed to act as a precursor to the Ethereum Protocol Fe
 
 ## Calls troubleshooting
 
-For our weekly meetings, we are using a self-hosted FOSS platform Jitsi. Even though we are doing our best, some people might experience problems during these calls, here are few tips on troubleshooting:
+For our weekly meetings, we are using a self-hosted FOSS platform Jitsi. Even though we are doing our best, some people might experience problems during these calls, here are a few tips on troubleshooting:
 
 - Restart your browser and rejoin
 - Try a different browser (especially if you are using a Chromium based, try Firefox and vice versa)

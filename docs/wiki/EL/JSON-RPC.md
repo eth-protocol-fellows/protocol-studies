@@ -1,6 +1,6 @@
 # JSON-RPC
 
-The JSON-RPC specification is a remote procedure call protocol encoded in JSON based on [OpenRPC](https://open-rpc.org/getting-started). It allows calling functions on a remote server, and for the return of the results.
+The JSON-RPC specification is a remote procedure call protocol encoded in JSON based on [OpenRPC](https://www.open-rpc.org/docs/getting-started). It allows calling functions on a remote server, and for the return of the results.
 It is part of the Execution API specification which provides a set of methods to interact with the Ethereum blockchain.
 It is better known to be the way of how the users interact with the network using a client, even how the consensus layer (CL) and the execution layer (EL) interact through the Engine API.
 This section provides a description of the JSON-RPC methods.
@@ -28,7 +28,7 @@ Where:
 
 Every method is composed of a namespace prefix and the method name, separated by an underscore.
 
-Ethereum clients must implement the basic minimum set of RPC methods required by spec to interact with the network. On top of that, there are also client specific methods for controlling the node or implementing extra unique features. Always refer to client documentation listing available methods and namespace, for example notice different namespaces in [Geth](https://geth.ethereum.org/docs/interacting-with-geth/rpc) and [Reth](https://paradigmxyz.github.io/reth/jsonrpc/intro.html) docs. 
+Ethereum clients must implement the basic minimum set of RPC methods required by spec to interact with the network. On top of that, there are also client specific methods for controlling the node or implementing extra unique features. Always refer to client documentation listing available methods and namespace, for example notice different namespaces in [Geth](https://geth.ethereum.org/docs/interacting-with-geth/rpc) and [Reth](https://reth.rs/jsonrpc/intro/) docs. 
 
 Here are examples of most common namespaces: 
 
@@ -83,18 +83,20 @@ Here are basic examples of debug methods:
 
 #### Engine
 
-[Engine API](https://hackmd.io/@danielrachi/engine_api) is different from aforementioned methods. Clients serve Engine API on a different and authenticated endpoint rather than normal http JSON RPC because it is not a user facing API. It's intended for connection between consensus and execution client, making it basically an internal node communication process. 
-Inter-client communication exchanging information about consensus, forkchoice, validation of blocks, etc: 
+[Engine API](https://hackmd.io/@danielrachi/engine_api) is different from the aforementioned general Ethereum JSON‑RPC methods. Execution clients serve the Engine API on a separate, authenticated endpoint rather than on the normal HTTP JSON‑RPC port because it is not a user-facing API. Its sole purpose is to facilitate inter-client communication exchanging information about consensus, fork choice, and block validation between the consensus and execution clients.
 
+Inter-client communication operates over a JSON‑RPC interface over HTTP and is secured using a JSON Web Token (JWT). The JWT authenticates the sender as a valid consensus layer client, although it does not provide traffic encryption. Furthermore, the Engine JSON‑RPC endpoint is only accessible by the consensus layer, ensuring that malicious external parties cannot interact with it.
+
+The following table lists core Engine API methods and provides a brief description of their purpose and the parameters they accept:
 | **Method**                               |               **Params**               | **Description**                                                           |
 |------------------------------------------|:--------------------------------------:|---------------------------------------------------------------------------|
-| engine_exchangeTransitionConfigurationV1 |        Consensus client config         | exchanges client configuration                                            |
-| engine_forkchoiceUpdatedV1*              |  forkchoice_state, payload attributes  | updates the forkchoice state                                              |
-| engine_getPayloadBodiesByHashV1*         |           block_hash (array)           | given block hashes returns bodies of the corresponding execution payloads |
-| engine_getPayloadV1*                     |  forkchoice_state, payload attributes  | obtains execution payload from payload build process                      |
-| debug_newPayloadV1*                      |                tx_hash                 | returns execution payload validation                                      |
+| engine_exchangeTransitionConfigurationV1 |        Consensus client config         | Exchanges configuration details between CL and EL                                            |
+| engine_forkchoiceUpdatedV1*              |  forkchoice_state, payload attributes  | Updates the forkchoice state and optionally initiates payload building                                            |
+| engine_getPayloadBodiesByHashV1*         |           block_hash (array)           | Given block hashes, returns the corresponding execution payload bodies |
+| engine_getPayloadV1*                     |  forkchoice_state, payload attributes  | Obtains an execution payload that has been built by the EL                      |
+| debug_newPayloadV1*                      |                tx_hash                 | Returns execution payload validation details for debugging purposes                                      |
 
-Those methods marked with an asterisk (*) have more than one version. The [Ethereum JSON-RPC specification](https://ethereum.github.io/execution-apis/api-documentation/) provides a detailed description.
+Those methods marked with an asterisk (*) have more than one version to support network upgrades and evolving protocol features. The [Ethereum JSON-RPC specification](https://ethereum.github.io/execution-apis/api-documentation/) provides detailed documentation on these methods.
 
 ## Encoding
 
@@ -103,9 +105,9 @@ There is a convention for encoding the parameters of the JSON-RPC methods, which
   * For example, the number 65 is represented as "0x41".
   * The number 0 is represented as "0x0".
   * Some invalid usages are "0x" and "ff". Since the first case does not have a following digit and the second one is not prefixed with "0x". 
-* Unformatted data is, such as hashes, account addresses or byte arrays are hex encoded using a "0x" prefix as well.
+* Unformatted data, such as hashes, account addresses or byte arrays, are hex encoded using a "0x" prefix as well.
   * For example: 0x400 (1014 in decimal)
-  * An invalid case is 0x400 because there are no leading zeroes allowed
+  * An invalid case is 0x0400 because leading zeroes are not allowed
 
 ## Transport agnostic
 
@@ -125,7 +127,7 @@ curl <node-endpoint> \
 -H "Content-Type: application/json" \
 -d '{"jsonrpc":"2.0","method":"eth_blockNumber","params":[],"id":1}'
 ```
-Please note how the *params* field is empty, as the method pass "latest" as default value.
+Please note how the *params* field is empty, as the method passes "latest" as its default value.
 
 Another way is to use the `axios` library in Javascript/TypeScript. For example, to get the address balance, you can use the following code:
 
@@ -177,6 +179,7 @@ Usually, all the web3 libraries wrap the JSON-RPC methods providing a more frien
 ### Further Reading
 * [Ethereum JSON-RPC Specification](https://ethereum.github.io/execution-apis/api-documentation/)
 * [Execution API Specification](https://github.com/ethereum/execution-apis/tree/main)
-* [JSON-RPC | Infura docs](https://docs.infura.io/api/networks/ethereum/json-rpc-methods)
-* [reth book | JSON-RPC](https://paradigmxyz.github.io/reth/jsonrpc/intro.html)
-* [OpenRPC](https://open-rpc.org/getting-started)
+* [JSON-RPC | Infura docs](https://docs.metamask.io/services/reference/ethereum/json-rpc-methods/)
+* [reth book | JSON-RPC](https://reth.rs/jsonrpc/intro/)
+* [OpenRPC](https://www.open-rpc.org/docs/getting-started)
+* [Engine API | Mikhail | Lecture 21](https://youtu.be/fR7LBXAMH7g)

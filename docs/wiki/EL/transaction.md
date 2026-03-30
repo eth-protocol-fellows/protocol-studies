@@ -249,6 +249,54 @@ Simulation of contract execution:
 
 ![Contract execution](../../images/evm/contract-execution.gif)
 
+## Receipts
+Receipts are the output artifacts of the EVM state transition function. Each successfully or unsuccessfully executed transaction results in a corresponding receipt as described in the wiki's [data structures](./data-structures.md#receipt-trie) section.   Here, we will provide provides additional detail on receipt structure and its evolution.
+
+The contents of a `receipt` are a tuple of five items:
+- **Transaction Type**: This distinguish between legacy and typed transactions and will be discussed more later.
+- **Status**: The transaction status is either `0` or `1` where `1` indicates a successful transaction and `0` is for a failed transaction.
+- **Gas Used**: Total gas consumed by all previous transactions in the block + the current transaction's gas used.
+- **Logs**: A log entry is a tuple of the logger's address, a possibly empty series of indexed 32-byte log topics, and some number of non-indexed bytes of raw event data.
+- **Logs Bloom**: A 256-byte bloom filter used to quickly search for relevant logs in a block, which allows applications to efficiently check if an address or event signature is included in logs.
+
+Some additional information on how logs bloom is used to allow applications to efficiently check if an address or event signature is included in logs can be found [here](https://medium.com/coinmonks/ethereum-data-transaction-receipt-trie-and-logs-simplified-30e3ae8dc3cf#:~:text=the%20sections%20below.-,Logs%20Bloom,-Assume%20we%20want).
+
+The `receipt` is committed to the block's **Receipt Trie**.
+
+## Typed Transactions and Receipts
+
+EIP-2718 introduces a unified and extensible format for both transactions and receipts through the concept of *typed envelopes*. This extension simplifies the introduction of new transaction and receipt types, while maintaining full backward compatibility with legacy transactions.
+
+Prior to EIP-2718, adding new transaction types required cumbersome techniques to differentiate them within the constraints of RLP encoding, leading to brittle designs. EIP-2718 solves this by defining a dedicated ***Transaction Type*** prefix.
+
+Transactions after EIP-2718 follow the envelope format: `Typed Transaction = Transaction Type + Transaction Payload`
+
+Where:
+- ***Transaction Type***: a single-byte identifier specifying the transaction type.
+- ***Transaction Payload***: an opaque byte array defined by the respective transaction type's specification.
+
+Note that legacy transactions are formatted as `RLP([nonce, gasPrice, ..., s])`
+
+### Receipt Encoding
+
+Receipts now adopt the same envelope pattern: `Typed Receipt = Receipt Type + Receipt Payload`
+
+Where:
+- ***Transaction Type***: a single-byte identifier specifying the transaction type.
+- ***Receipt Payload***: is interpreted based on the associated ***Transaction Type*** definition.
+
+Note that legacy receipts are formatted as `RLP([status, gasUsed, bloom, logs])`
+
+Both transactions and receipts can be efficiently identified:
+- If the first byte `∈ [0x00, 0x7f]`, it is a **typed** transaction or receipt.
+- If the first byte `≥ 0xc0`, it is a **legacy** transaction or receipt, as dictated by RLP list encoding.
+
+> The first byte of a typed receipt **must** be the same as the `TransactionType` of its associated transaction.
+
+This rule ensures that clients can deterministically decode receipts without needing additional metadata.
+
+In summary, EIP-2718 made Ethereum transactions and receipts more extensible while preserving backward compatibility with legacy clients.
+
 ## Appendix A: Transaction signer
 
 `signer.js`: A simple [node.js](https://nodejs.org/) script for signing transactions. See comments for explanation:
@@ -303,3 +351,6 @@ console.log(rlp.encode(payload).toString("hex"));
 - 🎥 Lefteris Karapetsas, ["Understanding Transactions in EVM-Compatible Blockchains."](https://archive.devcon.org/archive/watch/6/understanding-transactions-in-evm-compatible-blockchains-powered-by-opensource/?tab=YouTube)
 - 🎥 Austin Griffith, ["Transactions - ETH.BUILD."](https://www.youtube.com/watch?v=er-0ihqFQB0)
 - 🧮 Paradigm, ["Foundry: Ethereum development toolkit."](https://github.com/foundry-rs/foundry)
+- [Receipts in Wire Protocol](https://github.com/ethereum/devp2p/blob/master/caps/eth.md) • [archived](https://web.archive.org/web/20250328095848/https://github.com/ethereum/devp2p/blob/master/caps/eth.md)
+- [EiP-2718](https://eips.ethereum.org/EIPS/eip-2718) • [archived](https://web.archive.org/web/20250328095848/https://eips.ethereum.org/EIPS/eip-2718)
+- [Receipt Contents](https://medium.com/coinmonks/ethereum-data-transaction-receipt-trie-and-logs-simplified-30e3ae8dc3cf) • [archived](https://web.archive.org/web/20250000000000/https://medium.com/coinmonks/ethereum-data-transaction-receipt-trie-and-logs-simplified-30e3ae8dc3cf)

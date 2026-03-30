@@ -32,12 +32,12 @@ Lighthouse is licensed under Apache 2.0 and known for its robustness in producti
 Lighthouse provides binaries for every platform including ARM and allows cross compilation. There are portable versions which are compromising compiler performance options for a better platform compatibility. Released binaries are signed by gpg key `15E66D941F697E28F49381F426416DC3F30674B0` from security@sigmaprime.io.
 
 Noteworthy Features:
-- [Cross compilation](https://lighthouse-book.sigmaprime.io/cross-compiling.html)
-- [Slashing Protection](https://lighthouse-book.sigmaprime.io/slashing-protection.html)
-- [Doppelganger Protection](https://lighthouse-book.sigmaprime.io/validator-doppelganger.html#doppelganger-protection)
-- [Running a Slasher](https://lighthouse-book.sigmaprime.io/slasher.html)
-- [Block Proposer-only](https://lighthouse-book.sigmaprime.io/advanced-proposer-only.html)
-- [Prometheus and Grafana](https://lighthouse-book.sigmaprime.io/advanced_metrics.html)
+- [Cross compilation](https://lighthouse-book.sigmaprime.io/installation_cross_compiling.html)
+- [Slashing Protection](https://lighthouse-book.sigmaprime.io/validator_slashing_protection.html)
+- [Doppelganger Protection](https://lighthouse-book.sigmaprime.io/validator_doppelganger.html)
+- [Running a Slasher](https://lighthouse-book.sigmaprime.io/advanced_slasher.html)
+- [Block Proposer-only](https://lighthouse-book.sigmaprime.io/advanced_proposer_only.html)
+- [Prometheus and Grafana](https://lighthouse-book.sigmaprime.io/api_metrics.html)
 
 
 

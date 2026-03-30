@@ -13,7 +13,7 @@ Watch the presentation by [Danno Ferrin](https://twitter.com/shemnon), on [Strea
 
 Before starting with the week 10 development content, make yourself familiar with resources in previous weeks, especially Day 2 on EL and Day 7 on EL client. You should have understanding of the execution client architecture and EVM. 
 
-The talk will use examples from Besu, a Java implementation of execution client. At least basic understanding of Java syntax is recommended.
+The talk will use examples from Besu, a Java implementation of execution client. At least a basic understanding of Java syntax is recommended.
 
 Additionally, you can get ready by studying the following resources:
 - [Exploring Precompiled Contracts on Ethereum: A Deep Dive](https://lucasmartincalderon.medium.com/exploring-precompiled-contracts-on-ethereum-a-deep-dive-4e9f9682e0aa)

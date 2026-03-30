@@ -407,6 +407,7 @@ print("Success!")
 You can follow the instructions at [running the specs](https://eth2book.info/capella/appendices/running/) to execute the above code.
 
 ## Resources
+
 - [Hash Tree Roots and Merkleization](https://eth2book.info/capella/part2/building_blocks/merkleization/)
 - [SSZ](https://ethereum.org/en/developers/docs/data-structures-and-encoding/ssz/)
 - [Protolambda on Merkleization](https://github.com/protolambda/eth2-docs?tab=readme-ov-file#ssz-hash-tree-root-and-merkleization)

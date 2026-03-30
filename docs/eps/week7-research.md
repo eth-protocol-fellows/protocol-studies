@@ -8,7 +8,7 @@ Watch the talk by [Guillaume](https://twitter.com/gballet/), [Ignacio](https://t
 
 ## Pre-reading
 
-Before starting with the the content, make yourself familiar with resources in previous weeks, especially Day 3 and other content focused on execution layer. You should have at least understanding of merkle trees and current data structures in Ethereum.
+Before starting with the content, make yourself familiar with resources in previous weeks, especially Day 3 and other content focused on execution layer. You should have at least understanding of merkle trees and current data structures in Ethereum.
 
 Additionally, you can read and get ready by studying the following resources:
 
@@ -27,6 +27,7 @@ Additionally, you can read and get ready by studying the following resources:
 
 ## Additional reading and exercises 
 
+- [Stateless book](https://stateless.fyi)
 - [Anatomy of a verkle proof](https://ihagopian.com/posts/anatomy-of-a-verkle-proof)
 - Overview of many various resources https://verkle.info
 - Checkout [verkle implementers calls](https://github.com/ethereum/pm/issues/977)

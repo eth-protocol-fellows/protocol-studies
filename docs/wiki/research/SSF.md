@@ -7,7 +7,7 @@
 |   SSF   | the Merge |   -   | PoS upgrades, finality and security | intersection with: [MAX_EB](/docs/wiki/research/cl-upgrades.md), [ePBS](/docs/wiki/research/PBS/ePBS.md) |
 
 [Single Slot Finality](/docs/eps/week10-research.md) is a research concept of an improvement to Beacon Chain's consensus mechanism that addresses inefficiencies associated with the time it takes to finalize blocks. It's proposing a significant raise in blocks validation efficiency and a drastic reduction of time-to-finality.
-Instead of waiting for 2 epochs, blocks could get proposed and finalized in the same slot. The topic was also covered in (EPS week 10](https://github.com/eth-protocol-fellows/protocol-studies/blob/ssf/docs/eps/week10-research.md).
+Instead of waiting for 2 epochs, blocks could get proposed and finalized in the same slot. The topic was also covered in [EPS week 10](https://github.com/eth-protocol-fellows/protocol-studies/blob/ssf/docs/eps/week10-research.md).
 
 ## Context and Motivation
 Ethereum consensus layer implements Gasper protocol which includes Casper Friendly Finality Gadget. Casper FFG ensures that the network keeps producing blocks and accumulates validator attentions for each epoch. Finality is the ultimate state of PoS economic security and its change would require 2/3 of the validator set to be slashed. 
@@ -25,8 +25,7 @@ Today's consensus mechanism relies on the coupling[^1] between Casper-FFG (the a
 The fork choice algorithm only considers blocks since the last finalized block. Under SSF there will not be any blocks for the fork choice rule to consider, because finality occurs in the same slot as the block is proposed. This means that under SSF **either** the fork choice algorithm **or** the finality gadget would be active at any time. 
 The finality gadget will finalize blocks where $2/3$ of validators were online and attesting honestly. If a block is not able to exceed the $2/3$ threshold, the fork choice rule would kick in to determine which chain to follow. This also creates an opportunity to maintain the inactivity leak mechanism that recovers a chain where $>1/3$ validators go offline. If a block is not able to exceed the $2/3$ threshold, the fork choice rule would kick in to determine which chain to follow.
 
-Some interaction issues between the fork choice and the consensus do remain in any such design, and it’s still important to work through them. 
-Short-term improvements to the existing fork choice (eg. view-merge) may also feed into work on the SSF fork choice.[^2]
+Some interaction issues between the fork choice and the consensus do remain in any such design, and it’s still important to work through them. Short-term improvements to the existing fork choice (eg. view-merge) may also feed into work on the SSF fork choice.[^2]
 
 ## What are the key questions we need to solve to implement single slot finality?
 Three open questions outlined by Vitalik[^4]: 

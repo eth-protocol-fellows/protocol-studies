@@ -1,29 +1,8 @@
 - [Home](readme.md)
-- **Study Group**
-- [Start here](/eps/intro.md)
-- [Study Group content](/eps/schedule.md)
-  - **Week 1 - Intro**
-  - [Week 0](/eps/week0.md)
-  - [Lecture 1 - Intro](/eps/week1.md)
-  - [Lecture 2 - CL](/eps/week3.md)
-  - [Lecture 3 - EL](/eps/week2.md)
-  - [Lecture 4 - Testing](/eps/week4.md)
-  - [Lecture 5 - Roadmap](/eps/week5.md)
-  - [Node Workshop](/eps/nodes_workshop.md)
-  - **Week 2 - Development**
-  - [Lecture 6 - Specs](/eps/week6-dev.md)
-  - [Lecture 7 - EL Client](/eps/week7-dev.md)
-  - [Lecture 8 - CL Client](/eps/week8-dev.md)
-  - [Lecture 9 - Devops](/eps/week9-dev.md)
-  - [Lecture 10 - Precompiles](/eps/week10-dev.md)
-  - **Week 3 - Research**
-  - [Lecture 11 - DAS](/eps/week6-research.md)  
-  - [Lecture 12 | Verkle](/eps/week7-research.md)
-  - [Lecture 13 | MEV](/eps/week8-research.md)
-  - [Lecture 14 | Portal](/eps/week9-research.md)
-  - [Lecture 15 | SSF](/eps/week10-research.md)
-  
 - [Contributing](contributing.md)
+- **Study Group**
+- [Join the studies](/eps/intro.md)
+- [Study Group archive](/eps/archive.md)
 - **Protocol Wiki**
 - The Protocol
   - [Prehistory](/wiki/protocol/prehistory.md)
@@ -40,10 +19,12 @@
     - [Precompiled Contracts](/wiki/EL/precompiled-contracts.md)
   - [Block Building](/wiki/EL/block-production.md)
   - [Data Structures](/wiki/EL/data-structures.md)
+    - [Summary](/wiki/EL/el-data-structures-summary.md)
   - [Transaction anatomy](/wiki/EL/transaction.md)
   - [JSON-RPC](/wiki/EL/JSON-RPC.md)
   - [DevP2P](/wiki/EL/devp2p.md)
   - [RLP Serialization](/wiki/EL/RLP.md)
+  - [EOF](/wiki/EL/eof.md)
 - Consensus Layer
   - [Overview](/wiki/CL/overview.md)
   - [Client architecture](/wiki/CL/cl-architecture.md)
@@ -80,6 +61,7 @@
     - [ET](/wiki/research/PBS/ET.md)
   - [eODS](/wiki/research/eODS.md)
   - [PeerDAS](/wiki/research/peerdas.md)
+  - [FCR](/wiki/research/FCR/FCR.md)
   - Preconfirmations
     - [Preconfirmations](/wiki/research/Preconfirmations/Preconfirmations.md)
     - [Based Sequencing with Preconfs](/wiki/research/Preconfirmations/BasedSequencingPreconfs.md)

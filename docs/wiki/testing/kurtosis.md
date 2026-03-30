@@ -207,3 +207,4 @@ docker logs <container-id>
 - [Kurtosis Official Documentation](https://docs.kurtosis.com)
 - [Kurtosis Deep Dive (EthPandaOps blog post)](https://ethpandaops.io/posts/kurtosis-deep-dive/)
 - [Kurtosis Workshop by EthPandaOps Team (Youtube)](https://www.youtube.com/watch?v=mywpmp2sPt0)
+- [3-minute introduction of running local devnet using ethereum-package by James (Prysm)](https://www.loom.com/share/f7d32d0af14f4f24b63bf3cebfdc796a)

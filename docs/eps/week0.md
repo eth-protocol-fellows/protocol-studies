@@ -6,7 +6,7 @@ First, please check out the [announcement blog post](https://blog.ethereum.org/2
 
 ## Town Hall
 
-The call discussed the program details, schedule and answer your questions. Recording can be found at https://www.youtube.com/watch?v=7L1270CWjXw
+The call discussed the program details, schedule and answered your questions. Recording can be found at https://www.youtube.com/watch?v=7L1270CWjXw
 
 [recording](https://www.youtube.com/embed/7L1270CWjXw?si=fVXN913ZOJytR8Rv ':include :type=iframe width=100% height=560 frameborder="0" allow="fullscreen" allowfullscreen encrypted-media gyroscope picture-in-picture web-share')
 

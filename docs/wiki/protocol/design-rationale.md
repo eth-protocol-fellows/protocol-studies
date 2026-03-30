@@ -40,13 +40,13 @@ The preference order for where the complexity goes in: layer 2 > client implemen
 # [Blockchain level protocol](#blockchain-level-protocol)
 
 ### **Accounts over UTXOs**
-Earliest implementations of blockchain including bitcoin and it's derivatives, store user balance in a structure based on unspent transaction outputs (UTXOs). Ethereum on the other hand uses an account based model.
+Earliest implementations of blockchain including bitcoin and its derivatives, store user balance in a structure based on unspent transaction outputs (UTXOs). Ethereum on the other hand uses an account based model.
 
 > **UTXO**: an unspent transaction output (UTXO) is a distinctive element in a subset of digital currency models. A UTXO represents a certain amount of cryptocurrency that has been authorized by a sender and is available to be spent by a recipient.
 
 A user's "balance" in the system is thus the total value of the set of coins for which the user has a private key capable of producing a valid signature. The account based model is more flexible and allows for more complex transactions.
 
-Ethereum follows an accounts based model over the UTXOs. While UTXOs provide a higher degree of privacy, they also introduce more complexity to a system like Ethereum. Accounts are also fungible, enabling greater flexibility of implementations such as decentralized exchanges, which aligns with Ethereum's original purpose.
+Ethereum follows an account-based model over the UTXOs. While UTXOs provide a higher degree of privacy, they also introduce more complexity to a system like Ethereum. Accounts are also fungible, enabling greater flexibility of implementations such as decentralized exchanges, which aligns with Ethereum's original purpose.
 
 #### Benefits of Accounts
 - **Space Saving**: for example, if an account has 5 UTXO, then switching from a UTXO model to an account model would reduce the space requirements from (20 + 32 + 8) * 5 = 300 bytes (20 for the address, 32 for the transactionId and 8 for the value) to 20 + 8 + 2 = 30 bytes (20 for the address, 8 for the value, 2 for a nonce(see below)). In reality savings are not nearly this massive because accounts need to be stored in a Patricia tree (see below) but they are nevertheless large. Additionally, transactions can be smaller (eg. 100 bytes in Ethereum vs. 200-250 bytes in Bitcoin) because every transaction need only make one reference and one signature and produces one output.
@@ -71,7 +71,7 @@ There is an ongoing research of new data structures enabling better features and
 MPTs are currently employed in a variety of application in which membership proofs are sent across a network, including protocols, public-key directories, cryptocurrencies such as Bitcoin, and Secure File Systems. A Merkle Tree with $n$ leaves has $O(log{_2}{n})$-sized proofs. Although, $O(log{n})$ complexity can be quite comforting, however, in large trees, sending proofs can dominate bandwidth consumption. Verkle tree with branching factor $k$ achieve $O(kn)$ construction time and $O(log{_k}{n})$ membership proof-size. This means that the branching factor $k$ offers a trade-off between computational power and bandwidth.
 
 
-One of the pressing problems of Ethereum is the current state size. Estimate at around 1-2TB(at the time of writing this article). It is impractical for nodes to hold in working memory or even in slower permanent storage per se, thus, the need for statelessness becomes crucial to growth of the network. Verkle trees with it's vector commitments allow for much smaller proofs (**called witnesses**). Instead of needing to provide hashes of all "sibling nodes" at each level, Merkle Trees, the prover needs only to provide all parent nodes(plus an extra proof, called an optional) along the path from each each leaf to the root.
+One of the pressing problems of Ethereum is the current state size. Estimate at around 1-2TB(at the time of writing this article). It is impractical for nodes to hold in working memory or even in slower permanent storage per se, thus, the need for statelessness becomes crucial to growth of the network. Verkle trees with its vector commitments allow for much smaller proofs (**called witnesses**). Instead of needing to provide hashes of all "sibling nodes" at each level, Merkle Trees, the prover needs only to provide all parent nodes(plus an extra proof, called an optional) along the path from each leaf to the root.
 
 ### **Recursive Length Prefix (RLP)**
 Complete implementation and details can be found on [RLP page](/wiki/EL/RLP.md)
@@ -82,9 +82,9 @@ The notion of complete anonymity of the data structure to the serialization algo
 
 ### **Simple serialize (SSZ)**
 
-Serialization is the process of converting data structures into a format that can be transmitted and reconstructed later. SSZ is a serialization format used in Ethereum 2.0 Beacon chain. Designed to be serialization scheme that is not self-describing -- rather it relies on a schema that must be known in advance. SSZ has a bunch of advantages over RLP, like efficient re-hashing of objects and fast indexing, which RLP lacks resulting in $O(N)$ complexity.
+Serialization is the process of converting data structures into a format that can be transmitted and reconstructed later. SSZ is a serialization format used in Ethereum 2.0 Beacon chain. Designed to be serialization scheme that is not self-describing -- rather, it relies on a schema that must be known in advance. SSZ has a bunch of advantages over RLP, like efficient re-hashing of objects and fast indexing, which RLP lacks resulting in $O(N)$ complexity.
 
-Based on [Vitalik's comment](https://ethresear.ch/t/replacing-ssz-with-rlp-zip-and-sha256/5706/12), one of the major problem SSZ tries to solve is RLP doesn't allow Merkleization, and this would mean disqualifying any possibility of succinct light client proofs of anything. Thus, leaving no scope of achieving statelessness -- while statelessness remains a crucial objective of current Ethereum's R&D.
+Based on [Vitalik's comment](https://ethresear.ch/t/replacing-ssz-with-rlp-zip-and-sha256/5706/12), one of the major problems SSZ tries to solve is RLP doesn't allow Merkleization, and this would mean disqualifying any possibility of succinct light client proofs of anything. Thus, leaving no scope of achieving statelessness -- while statelessness remains a crucial objective of current Ethereum's R&D.
 
 Further implementation and details can be found on [Simple Serialize page](/wiki/CL/ssz.md)
 
@@ -96,7 +96,7 @@ The [Casper FFG](https://arxiv.org/abs/1710.09437v4) is an overlay atop a propos
 Simply put, each validator votes on the checkpoint, and after two rounds of voting, the checkpoint is **finalized**. All finalized checkpoints become part of the canonical chain (part of the blockchain history). While Casper guarantees **finality** through attestations to the latest block addition to the canonical chain, it requires a fork-choice rule where validators attest to blocks to signal support for those blocks.
 
 - ***LMD GHOST***
-Latest Message Driven Greediest Heaviest Observed Sub-Tree (LMD-GHOST) is a *fork choice rule* where validators attests to blocks to signal support for those blocks. This similar in some ways to the fork choice rule used in Proof-of-work network, where the fork with the most work done is selected as the canonical chain.
+Latest Message Driven Greediest Heaviest Observed Sub-Tree (LMD-GHOST) is a *fork choice rule* where validators attests to blocks to signal support for those blocks. This is similar in some ways to the fork choice rule used in Proof-of-work network, where the fork with the most work done is selected as the canonical chain.
 
 ![LMD-GHOST-Algorithm](./img/lmt-ghost.png)
 
@@ -106,7 +106,7 @@ Gasper is full Proof-of-stake protocol that serves as an idealized abstraction o
 
 ![P2P Networks Comparison](./img/p2p-nets-comp.png)
 
-The main benefit of DHTs is that lookups only generate logarithmic communication overhead in the network. This makes them suitable to find (query) content in a p2p network. But an immediate question arises, why do we need to *find* content in Ethereum if most nodes are interested in the same content, the latest block? The tip of the chain is always the same based on consensus slot which has only one block to be gossiped. A DHT is used in protocols like [bittorrent](https://www.bittorrent.org/beps/bep_0005.html) and IPFS which store a wide range of content and users try to *find* the content they are interested in. DHT is used in Ethereum networking to find to find different peers, not blocks.
+The main benefit of DHTs is that lookups only generate logarithmic communication overhead in the network. This makes them suitable to find (query) content in a p2p network. But an immediate question arises, why do we need to *find* content in Ethereum if most nodes are interested in the same content, the latest block? The tip of the chain is always the same based on consensus slot which has only one block to be gossiped. A DHT is used in protocols like [bittorrent](https://www.bittorrent.org/beps/bep_0005.html) and IPFS which store a wide range of content and users try to *find* the content they are interested in. DHT is used in Ethereum networking to find different peers, not blocks.
 
 The discovery protocol in the networking layer of Ethereum uses, discv5, a [kademlia based DHT](https://github.com/ethereum/devp2p/blob/master/discv5/discv5.md) to store [ENR records](https://github.com/ethereum/devp2p/blob/master/enr.md). ENR records contain routing information (of the internet layer) to establish connections between peer. Peers joining the network use *bootstrap* nodes to relay lookup queries for its own `node_id` in the DHT. In the process they discover ENR records of other peers which help them populate their routing table. Routinely, peers also look up random `node_id`s to enumerate the network i.e. find all peers. 
 

@@ -137,7 +137,7 @@ _The key to the keys. This is how we will depict the various components in the d
 
 A key pair is a secret key along with its public key. Together these irrefutably link each validator with its actions.
 
-Each validator is equipped with atleast 1 primary "signing key" used for routine operations like creating blocks, making attestations etc. Depending on their withdrawal credentials, a validator may also have a secondary "withdrawal key," which is stored offline for added security.
+Each validator is equipped with at least 1 primary "signing key" used for routine operations like creating blocks, making attestations etc. Depending on their withdrawal credentials, a validator may also have a secondary "withdrawal key," which is stored offline for added security.
 
 The secret key should be randomly generated within the range $[1,r)$, adhering to the [EIP-2333](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-2333.md) standard, which recommends using the [`KeyGen`](https://datatracker.ietf.org/doc/html/draft-irtf-cfrg-bls-signature-04#section-2.3) method from the draft IRTF BLS signature standard. Although compliance with this method is not mandatory, deviating from it is generally discouraged. Most stakers generate their keys using the [`eth2.0-deposit-cli`](https://github.com/ethereum/eth2.0-deposit-cli) tool from the Ethereum Foundation. For security, key pairs are typically stored in password-protected [EIP-2335](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-2335.md) keystore files.
 

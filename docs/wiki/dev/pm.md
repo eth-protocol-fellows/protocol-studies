@@ -19,4 +19,4 @@ The [ethereum/pm](https://github.com/ethereum/pm) repository is used for Ethereu
 
 ### Resources
 
-[Ethereum Governance by Tim Beiko](https://hackmd.io/@timbeiko/eth-governance)
+- [Ethereum Governance by Tim Beiko](https://hackmd.io/@timbeiko/eth-governance)

@@ -11,6 +11,9 @@ For a comprehensive list of Ethereum incidents and their detailed analysis, you 
 
 ## Recent Incidents
 
+- [Post-Mortem, Holesky Finality Issue (24/02/2025)](https://github.com/ethereum/pm/blob/master/Pectra/holesky-postmortem.md)
+  In February 2025, after Pectra upgrade on Holesky testnet, blocks were not getting finalized due to many EL clients having incorrect deposit contract address configurations. This caused some EL clients to reject the invalid blocks while others accepted them, resulting in network split.
+
 - [Post-Mortem, Blob Propagation Issues (27/03/2024)](https://gist.github.com/benhenryhunter/687299bcfe064674537dc9348d771e83)
   In March 2024, after Dencun upgrade, blobs attached to blocks from certain builders propagated too slowly over p2p which caused a client implementation to miss few slots.
 
@@ -19,6 +22,9 @@ For a comprehensive list of Ethereum incidents and their detailed analysis, you 
 
 - [Post-Mortem Report: Ethereum Mainnet Finality (05/11/2023)](https://medium.com/offchainlabs/post-mortem-report-ethereum-mainnet-finality-05-11-2023-95e271dfd8b2)
   The Mainnet had some disruptions, which led to blocks not getting produced leading to a significant delay in transactions reaching finality, this continued for two days and resulted in an inactivity consequence, the network fully recovered without intervention.
+
+- [Reth Mainnet State Root Mismatch (01/09/2025](https://laced-king-de5.notion.site/Incident-Post-Mortem-Reth-Mainnet-State-Root-Mismatch-26732f2c348480dea8b8c2a8753696dc)
+  A bug in Reth’s handling of trie updates caused trie tables in Reth nodes to contain incorrect information, resulting in nodes computing an incorrect state root at later blocks. 
 
 ## Historical Incidents
 
