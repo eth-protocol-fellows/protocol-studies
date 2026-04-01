@@ -297,6 +297,65 @@ This rule ensures that clients can deterministically decode receipts without nee
 
 In summary, EIP-2718 made Ethereum transactions and receipts more extensible while preserving backward compatibility with legacy clients.
 
+## Overview of Transaction Types
+
+### Legacy Transaction (type 0x00)
+Legacy transactions were the only transaction format before [EIP-2718](https://eips.ethereum.org/EIPS/eip-2718) introduced the concept of transaction type. Such transactions are still compatible in Ethereum. Even with updates such as [EIP-1559](https://eips.ethereum.org/EIPS/eip-1559), legacy transactions are translated into EIP-1559-compatibility by setting the `max_fee_per_gas` and the `max_priority_fee_per_gas` to the legacy transaction `gas_price`.
+
+### Access List Transaction (type 0x01)
+Access list transactions are similar to legacy transactions but they also include an optional `access_list` field listing all the addresses and storage slots required to run the transaction.
+
+*Motivation*
+
+In 2016, attackers targeted the network in an event called the Shanghai DoS attacks by - as the most successful strategy - sending malicious transactions accessing a large amount of addresses and storage slots. The attack forced the clients to search for the information on disk, resulting in IO-heavy transactions that took a long time to process. The attack was low cost for the attacker but high cost for the clients.
+
+As a result, [EIP-2929](https://eips.ethereum.org/EIPS/eip-2929) was proposed to increase the gas cost of opcodes accessing storage "cold" (for the first time, before the data has been copied to RAM). This would have the effect of making further DoS attack economically prohibitive.
+
+EIP-2929 introduced potential contract breakage due to increased gas cost for storage access. Therefore, [EIP-2930](https://eips.ethereum.org/EIPS/eip-2930) introduced an access list (the `access_list` field) specifying all the accounts and storage slots to be accessed in the transaction. As a result, clients could now pre-load the data, resulting in lower gas costs for transactions including an access list.
+
+### Dynamic-Fee Transaction (type 0x02) 
+Type 2 transactions brought in a new fee market change described in [EIP-1559](https://eips.ethereum.org/EIPS/eip-1559) and introduced in the London fork. The network would attempt to maintain a target gas usage per block of 50% of maximum capacity by adjusting the gas base fee. If the current gas usage is higher than the target, gas prices are raised, which lowers demand. If on the other hand, blocks aren't using enough gas, the gas base fee is lowered to compensate, which stimulates demand. The base fee is then burn, reducing the total supply of Eth.
+
+A crucial aspect of this increase or decrease of base fee is that this change can only occur by maximum increments of 1/1024th of the parent's gas limit. This ensures that the gas price can react quickly to changes in demand while also preventing wild fluctuations.
+
+Furthermore, the transaction can include an additional priority fee to incentivize a particular transaction for inclusion in the block over others. This priority fee is not burned but is paid to the validator.
+
+*Motivation*
+
+Why change the gas fee market in the first place?
+Pre-EIP-1559, gas price fluctuated wildly with network demand. A common occurrence was sending a transaction with a particular gas price and having the transaction getting stuck in the mempool due an unexpected spike in gas price. This resulted in a poor user experience, fixed by the newly-added gradual increases of the base fee.
+
+Why is the base fee burned?
+In addition to providing an economic benefit to holders of Eth by providing a mechanism for reducing the supply and counterbalancing inflation, the base fee burn mitigates the risks of fee manipulation, preventing validators from flooding the block with "free" transactions and keeping gas prices artificially elevated.
+
+### Blob-Carrying Transaction (type 0x03) 
+</br>
+<img src="images/el-transactions/blob.png" alt="blob" />
+
+[EIP-4844](https://eips.ethereum.org/EIPS/eip-4844) introduced short-lived blob data storage which the network keeps available for a temporary period (currently at 4096 epochs, or about 18 days).
+
+The blobs are not stored on the blockchain, neither on the header or the body. Rather the blob data is sent together with the block - like a sidecar - with the transaction data and made available by the nodes. The header will simply contain a KZG commitment for each blob of data.
+
+Similarly to EIP-1559 transactions (though the math is different) blob transactions have their own gas price market which adjusts as a function of demand to attain a target usage of 50% of total capacity.
+
+*Motivation*
+
+In Ethereum, the long term vision for scalability includes both the layer 1 (the execution layer and consensus layer) and layer 2 chains worked together, with the layer 1 providing security guarantees for layer 2. As such, layer 2s are first class citizen in Ethereum. 
+
+We care about blob data availability because maintaining temporarily available data is necessary for servicing layer 2s. For example, optimistic rollups like Optimism optimistically push a commitment of a transaction batch on chain. It's possible that a transaction was maliciously omitted (e.g. Bob has 10 eth, but the committed transactions says he has 0 eth). If that is the case, the user whose funds are compromised can publish a fraud proof to prove bad behavior and correct the situation. Creating this fraud proof requires access to transaction data, hence Ethereum makes this data available for a short period as blobs, giving users a reasonable time to react. Thus, data availability is necessary to ensure compliant state transition of layer 2s. 
+
+### Set Code Transaction for EOAs (type 0x04)
+Type 4 transactions aims to attach smart contract code to an Externally-Owned Account. Let's recall that EOAs have an empty `code_hash` field, thus they normally have no programs themselves. [EIP-7702](https://eips.ethereum.org/EIPS/eip-7702) changes that by setting the values to the value of `(0xef0100 || delegated_contract_address)` where `||` represents concatenation. Once the code is set, an EOA can delegate its code execution to that of the saved address. It's important to point out that an EOA doesn't hold code itself, but just a pointer towards code. This pointer can be removed or changed with another type 4 transaction. Because we can distinguish between an EOA and a contract, [EIP-3607](https://eips.ethereum.org/EIPS/eip-3607), preventing an attacker from producing an address colliding with an existing contract and stealing funds, can still be respected.
+
+The value `0xef0100` which precedes the delegated contract address was chosen to provide a unique identifier for which no collision can occur.
+In effect, `0xef` is a reserved byte according to [EIP-3541](https://eips.ethereum.org/EIPS/eip-3541). The `0100` added afterwards is an identifier to indicate an EIP-7702 delegated address. Thus, it is still possible to distinguish between smart contract and EOAs by looking at the code hash, since EOAs will either have nothing or a value starting with `0xef0100`.
+
+*Motivation*
+
+Pure EOA accounts without EIP-7702 suffered from several UX problems. For instance, sending ERC-20 tokens through a smart contract would be done through an `approve/transferFrom` pattern requiring two separate transactions. Account abstraction (smart contract wallets) described in [ERC-4337](https://eips.ethereum.org/EIPS/eip-4337) aimed to fix this issue, in addition to providing additional functionality such as batching of transaction, gas sponsorship, etc...
+
+With EIP-7702, the Ethereum ecosystem as a whole can now benefit from account abstraction by enabling EOAs to opt-in.
+
 ## Appendix A: Transaction signer
 
 `signer.js`: A simple [node.js](https://nodejs.org/) script for signing transactions. See comments for explanation:
