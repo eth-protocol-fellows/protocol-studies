@@ -2,12 +2,12 @@
 
 The EVM Object Format (EOF) is an extensible and versioned container format for EVM bytecode with a once-off validation at deploy time.
 
-Currently, EVM Bytecode is an unstructured sequence of instructions. EOF introduces the concept of a container, which brings structure to bytecode, making it easier to parse by the EVM and analyze. Its primary goal is to enable major upgrades to the EVM by allowing once-off code validation at deploy time and by strictly separating code from data.
+Currently, [EVM Bytecode](/wiki/EL/evm.md#evm-bytecode) is an unstructured sequence of instructions. EOF introduces the concept of a container, which brings structure to bytecode, making it easier to parse by the EVM and analyze. Its primary goal is to enable major upgrades to the EVM by allowing once-off code validation at deploy time and by strictly separating code from data.
 
-For example, EOF1 bytecode begins with a 2-byte magic `0xEF00` and version, followed by a list of section headers and a `0x00` terminator. This structure allows validators to check an entire contract's correctness , including stack safety and jump targets before execution begins.
+For example, EOF1 bytecode begins with a 2-byte magic `0xEF00` and version, followed by a list of section headers and a `0x00` terminator. This structure allows EVM implementations to verify an entire contract's correctness at deploy time, including stack depth and structural validity, before any execution begins.
 ```
 // Example layout of an EOF container (bytecode):
-Magic (0xEF00) | Version | (section_kind, section_size)* | 0x00
+Magic (0xEF00) | Version | (section_kind, section_size_or_sizes)+ | 0x00
 [types section] [code section 0] [code section 1] … [data section]
 ```
 
@@ -22,10 +22,6 @@ EOF was designed to address several limitations of the original EVM bytecode for
 - **Improved Execution Efficiency:** Facilitates optimization of EVM execution through better-defined code sections and the removal of runtime JUMPDEST scans.
 
 - **Enhanced Security:** Reduces attack vectors by enforcing stricter code structure rules and eliminating legacy quirks (like SELFDESTRUCT or DELEGATECALL issues) through validation.
-
-- **Stack Reliability:** Through EIP-5450, a validation pass guarantees no stack underflow or overflow occurs. Once validated, most runtime stack checks can be omitted for efficiency.
-
-- **Future-Proofing:** Provides a foundation for future EVM improvements through versioned containers. This allows the introduction of new opcodes without breaking backward compatibility for legacy contracts.
 
 - **Code/Data Separation:** By keeping data (e.g., compiler metadata) in a separate section, tools like verifiers and L2s can easily distinguish executable code from arbitrary data, improving both security and gas efficiency.
 
@@ -87,13 +83,18 @@ EOF is specified in several EIPs covering different features, changes to various
 
 ---
 
-## Implementation Status and Roadmap
+## Current Status
 
-EOF is not yet deployed on Ethereum mainnet, but remains a centerpiece of EVM modernization efforts.
+EOF was formally removed from the Fusaka hard fork on April 28, 2025, during the [Interop Testing #34 call](https://ethereum-magicians.org/t/interop-testing-34-april-28-2025/23822/2). The decision was confirmed by Tim Beiko in a [GitHub PR updating EIP-7607](https://github.com/ethereum/EIPs/pull/9703).
 
-- **Development:** Client developers have maintained dedicated "EOF Devnets" to test the interlocking EIPs.
+The main reasons cited for removal were:
 
-- **Historical Context:** In a Sept 2022 Prague core dev call, concerns were raised about EOF's complexity potentially delaying the Shanghai upgrade. Consequently, the scope was refined and moved to later forks to ensure network stability while allowing the specification to mature.
+- **Complexity:** Critics, including developer Pascal Caversaccio in a [March 2025 Ethereum Magicians post](https://ethereum-magicians.org/t/evm-object-format-eof/5727), argued EOF introduces too many simultaneous changes , new semantics, over a dozen opcode additions and removals and that its benefits could be achieved through smaller, more targeted updates instead.
+- **Maintenance burden:** Shipping EOF would require maintaining both legacy EVM and EOF contracts indefinitely, increasing long-term complexity for client teams.
+- **Process failures:** Beiko acknowledged in the removal PR that the ACD process failed to adequately resolve community objections across multiple upgrade cycles, despite core devs repeatedly agreeing to ship it.
+- **Timeline risk:** With PeerDAS being the primary Fusaka priority, the ongoing spec debate around EOF variants was seen as a risk to the overall upgrade schedule.
+
+EOF's champions were left open to present a case for inclusion in the subsequent **Glamsterdam** hard fork, but no inclusion has been scheduled as of now. The specification and its constituent EIPs remain available as a historical reference.
 
 ---
 
@@ -104,5 +105,3 @@ EOF is not yet deployed on Ethereum mainnet, but remains a centerpiece of EVM mo
 - [**Ethereum Magicians: EVM Object Format (EOF)**](https://ethereum-magicians.org/t/evm-object-format-eof/5727) — The original EIP discussion thread where EOF was proposed and debated by core developers.
 
 - [**Ethereum Notes: EOF**](https://notes.ethereum.org/t-1tLFnLSKCtLZpb-Rw0IA) — Community notes and working documents on the EOF specification and open design questions.
-
-- [**DeepWiki: EVM Object Format (EOF)**](https://deepwiki.com/ethereum/EIPs/4.1-evm-object-format-(eof)) — A structured wiki-style breakdown of EOF across its constituent EIPs, useful for getting an overview at a glance.
