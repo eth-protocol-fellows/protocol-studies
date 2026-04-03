@@ -1,6 +1,6 @@
 # Transaction
 
-A **transaction** is a cryptographically-signed instruction issued by **an external account**, broadcasted to the entire network using [JSON-RPC](/wiki/EL/JSON-RPC.md).
+A **transaction** is a cryptographically-signed instruction issued by **an external account**, submitted to an execution client via [JSON-RPC](/wiki/EL/JSON-RPC.md) and then broadcasted to the entire network using [DevP2p](/wiki/EL/devp2p).
 
 A transaction contains following fields:
 
@@ -279,7 +279,7 @@ Note that legacy transactions are formatted as `RLP([nonce, gasPrice, ..., s])`
 
 ### Receipt Encoding
 
-Receipts now adopt the same envelope pattern: `Typed Receipt = Receipt Type + Receipt Payload`
+Receipts now adopt the same envelope pattern: `Typed Receipt = Transaction Type + Receipt Payload`
 
 Where:
 - ***Transaction Type***: a single-byte identifier specifying the transaction type.
