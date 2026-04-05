@@ -50,6 +50,27 @@ cd protocol-studies
 docsify serve ./docs
 ```
 
+## Fixing typos locally
+The aspell typo checker is run on every PR and checks all files, it's advised to run it locally prior to submitting a pull request to resolve flagged words in your changes.
+
+To check for typos locally:
+1. Install [aspell](https://www.gnu.org/software/aspell/) for your platform.
+2. Navigate to the project root and run the script:
+```
+bash check_typos.sh
+```
+
+To fix the typos:
+1. Open the relevant files and fix any identified typos.
+2. Update wordlist: If a flagged word is actually a project-specific term add it to `wordlist.txt` in the project root.
+   Each word should be listed on a separate line.
+ * Remember:
+    * When adding new words it must NOT have any spaces or special characters within or around it.
+    * \`wordlist\` is NOT case sensitive.
+    * Use backticks to quote code variables so as to not bloat the \`wordlist\`.
+    * Use the HTML tag <name> to surround proper names. <name>John Doe</name>
+
+
 ## Style guide
 
 Wiki pages follow standard Markdown which can be rendered by Github or Docsify. For details on using it, look into the Markdown [guide](https://www.markdownguide.org/). 
