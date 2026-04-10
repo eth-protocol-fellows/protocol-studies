@@ -12,6 +12,7 @@
 - Execution Layer
   - [EL Specs](/wiki/EL/el-specs.md)
   - [Client architecture](/wiki/EL/el-architecture.md)
+  - [Engine API](/wiki/EL/engine-api.md)
   - [EL Clients](/wiki/EL/el-clients.md)
     - [Besu](/wiki/EL/clients/besu.md)
     - [Reth](/wiki/EL/clients/reth.md)
