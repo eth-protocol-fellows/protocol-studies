@@ -10,13 +10,13 @@
 
 History expiry is the idea that nodes should not be required to store historical data forever. Every Ethereum full node stores two categories of data. State is the current account, contract storage, and code. History is past block headers, bodies, and receipts.
 
-Up until recently, full nodes were expected to store and serve all historical data, over the peer-to-peer network, even if the data is not needed to validate a block. That data has grown with every block since genesis. Today, running a full node takes well over a terabyte of disk space, and both client load and sync times keep increasing even as the chain's capacity remains the same.
+Up until recently, full nodes were expected to store and serve all historical data, over the peer-to-peer network, even if the data is not needed to validate a block. That data has grown with every block since genesis. Today, running a full node takes well over a terabyte of disk space, and both client load and sync times keep increasing even as the chain's capacity remains the same. Removing this data might sound risky, but Ethereum's default sync strategy already does not validate every block from genesis. [Snap sync](https://ethereum.org/en/developers/docs/nodes-and-clients/#snap-sync) starts from a recent state snapshot and [weak subjectivity checkpoints](https://epf.wiki/#/wiki/CL/syncing) anchor the chain to a trusted finalized point. Although historical validation is still possible, it is not compulsory.
 
 To solve this, [EIP-4444](https://eips.ethereum.org/EIPS/eip-4444) proposes that nodes may prune historical data and receipts older than a set threshold and stop serving them over the peer-to-peer network. Once a client has synced to the tip of the chain, historical data is only retrieved when requested explicitly over the JSON-RPC or when a peer attempts to sync. For this to work, the peer-to-peer protocol itself needed to change.
 
 ## DevP2P Changes
 
-Under `eth/68`, nodes assumed every peer stored the full chain from genesis. A node pruning old history while still advertising itself on `eth/68` would break that assumption and disrupt sync for peers requesting old blocks. [EIP-7642](https://eips.ethereum.org/EIPS/eip-7642) introduces `eth/69`, which removes this assumption. Prior to `eth/69`, when two nodes connect, they exchange a Status message containing the network ID, genesis hash, fork ID, and the hash of the node's latest block, but now the status handshake includes two new fields, `earliestBlock` and `latestBlock` that store the block range.
+Under `eth/68` and older `eth` protocols, nodes assumed every peer stored the full chain from genesis. A node pruning old history while still advertising itself on `eth/68` would break that assumption and disrupt sync for peers requesting old blocks. [EIP-7642](https://eips.ethereum.org/EIPS/eip-7642) introduces `eth/69`, which removes this assumption. Prior to `eth/69`, when two nodes connect, they exchange a Status message containing the network ID, genesis hash, fork ID, and the hash of the node's latest block, but now the status handshake includes two new fields, `earliestBlock` and `latestBlock` that store the block range.
 
 ```python
     # Old eth/68 Status
@@ -34,22 +34,11 @@ Under `eth/68`, nodes assumed every peer stored the full chain from genesis. A n
 
 `eth/69` also adds a new message, BlockRangeUpdate. As a node prunes more data or downloads more history, it sends this message to its connected peers so they can update their view of what blocks that node can serve. This only needs to be sent once per epoch.
 
-`eth/69`'s linear range works for Phase 1 where nodes either hold pre-merge data or they don't. For Phase 2, where nodes may hold non-contiguous slices of history, proposals like [EIP-7801](https://eips.ethereum.org/EIPS/eip-7801), still in draft, introduce a bitmask-based subprotocol called `etha` that lets nodes advertise exactly which segments of the chain they store. While the eth protocol continues to handle live chain operations like block propagation, transaction gossip, and syncing to the tip, the `etha` subprotocol is dedicated entirely to serving historical data. This means historical block requests will no longer travel over the same channel as live chain, so a node that is looking for old blocks queries peers over etha, and nodes that do not support history sharding are never bothered with those requests again.
+`eth/69`'s linear range works for Phase 1 where nodes either hold pre-Merge (old PoW chain) data or they don't. For Phase 2, where nodes may hold non-contiguous slices of history, proposals like [EIP-7801](https://eips.ethereum.org/EIPS/eip-7801), introduce a bitmask-based subprotocol called `etha` that lets nodes advertise exactly which segments of the chain they store. While the eth protocol continues to handle live chain operations like block propagation, transaction gossip, and syncing to the tip, the `etha` subprotocol is dedicated entirely to serving historical data. This means historical block requests will no longer travel over the same channel as live chain, so a node that is looking for old blocks queries peers over etha, and nodes that do not support history sharding are never bothered with those requests again.
 
 The core idea of `etha` is that the chain history will be divided into repeating windows of 1,064,960 blocks. Each window is split into 10 equal spans of 106,496 blocks. Each bit in the bitmask represents one of those spans. If a node sets bit 3, that node is committing to hold every third span out of ten not just in the segment alone, but the entire chain from blocks 0 through 1,064,960, and from blocks 1,064,960 through 2,129,920, and so on all the way to the chain head. As new blocks are produced and new spans are created, the node must continue storing the spans that correspond to its committed bit.
 
 **Window: Blocks 0 — 1,064,960**
-
-|              | Span 0 | Span 1 | Span 2 | Span 3 | Span 4 | Span 5 | Span 6 | Span 7 | Span 8 | Span 9 |
-|--------------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|
-| Node A       |   X    |        |        |        |        |        |        |        |        |        |
-| Node B       |        |        |        |   X    |        |        |        |        |        |        |
-| Node C       |        |        |        |        |        |        |        |   X    |        |        |
-| Node D       |        |   X    |        |        |        |        |        |        |        |        |
-| Node E       |        |        |        |        |        |   X    |        |        |        |        |
-| Node F       |        |        |        |        |        |        |        |        |        |   X    |
-
-**Window: Blocks 1,064,960 — 2,129,920**
 
 |              | Span 0 | Span 1 | Span 2 | Span 3 | Span 4 | Span 5 | Span 6 | Span 7 | Span 8 | Span 9 |
 |--------------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|
@@ -270,13 +259,13 @@ $$13 + 11 = 24 \text{ hashes} \times 32 \text{ bytes} = 768 \text{ bytes}$$
 
 to prove any pre-merge block is canonical.
 
-This is what the [Portal Network](https://www.ethportal.net/) uses. When a node requests a historical block from the network, the response includes the block data plus a Merkle proof against the accumulator.
+This is the verification mechanism the [Portal Network](https://www.ethportal.net/) was designed to use. When a node requests a historical block from the network, the response includes the block data plus a Merkle proof against the accumulator.
 
 ### Distribution
 
 ERA1 files follow the naming convention `<network>-<epoch>-<hexroot>.era1`, for example `mainnet-00000-5ec1ffb8.era1` for the first 8,192 blocks on mainnet. The hex portion is a truncated accumulator root, so the filename itself is a quick integrity check. The BlockIndex at the end of the file stores relative offsets to each block tuple, making random access by block number possible without scanning the entire file.
 
-The [eth-clients/history-endpoints](https://github.com/eth-clients/history-endpoints) registry maintains a community list of providers serving ERA1 and ERA files over HTTP and torrents. Providers like [ethPandaOps](https://ethpandaops.io/data/history/) host the full set of mainnet ERA1 files with SHA256 checksums for verification. Files can also be shared over BitTorrent. The goal is that no single provider is required and the data remains available through multiple independent channels.
+The [eth-clients/history-endpoints](https://github.com/eth-clients/history-endpoints) registry maintains a community list of providers serving ERA1 and ERA files over HTTP and torrents. Providers like [ethPandaOps](https://ethpandaops.io/data/history/) host the full set of mainnet ERA1 files with SHA256 checksums for verification. Files can also be shared over [BitTorrent](magnet:?xt=urn:btih:edcc7c112bae520e3226065a61817d3575904e0d&dn=EthereumMainnetPreMergeEraFiles&xl=458498121702&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce&tr=udp%3A%2F%2Fbt1.archive.org%3A6969%2Fannounce). The goal is that no single provider is required and the data remains available through multiple independent channels.
 
 Client support is already in place. [Geth](https://geth.ethereum.org/docs/fundamentals/downloadera), [Nimbus](https://nimbus.guide/era-store.html), [Besu](https://besu.hyperledger.org/public-networks/how-to/era1-file-full-sync), and [Reth](https://reth.rs/docs/reth_era/index.html) all support ERA1 imports. Each etha span of 106,496 blocks is exactly 13 ERA1 files (13 × 8,192 = 106,496), so a node's storage boundaries under etha map directly to whole ERA1 files.
 
@@ -284,121 +273,19 @@ Client support is already in place. [Geth](https://geth.ethereum.org/docs/fundam
 
 ERA files solve the archival problem but they are static. A node that needs a single old block should not have to download an entire 8,192-block file to get it. The [Portal Network](https://www.ethportal.net/) provides the on-demand retrieval layer. It is a lightweight peer-to-peer network where each participating node stores a small slice of Ethereum's data and serves it when requested. Unlike the existing DevP2P network where every full node is expected to hold everything, Portal is designed so that every node that joins adds capacity rather than consuming it.
 
-The old approach for light clients was the Light Ethereum Subprotocol (LES) on DevP2P, which followed a client/server model. The total capacity of the LES network was capped by the number of servers. If demand exceeded that capacity, the whole network degraded. After nearly three years of trying to build a functional light client on the existing network, the team behind the Trinity client concluded that DevP2P was simply not flexible enough, and that gave rise to the Portal Network.
+Portal runs on top of [Discovery v5](https://github.com/ethereum/devp2p/blob/master/discv5/discv5.md) over UDP and is split into independent sub-networks for history, beacon chain data, and state. Each sub-network forms its own overlay DHT. Data enters through bridge nodes that pull from full nodes over JSON-RPC and push into the appropriate sub-network. Every piece of data is identified by a content key and each node stores content based on its XOR distance to that key, controlled by a self-declared radius. Retrieval is verified using accumulator proofs for pre-merge data and beacon chain `historical_summaries` for post-merge data.
 
-### Architecture
+However, Portal Network development has largely stalled and it is not currently an active part of
+the history expiry roadmap. Four client implementations exist ([Trin](https://github.com/ethereum/trin),
+[Fluffy](https://github.com/status-im/nimbus-eth1/tree/master/fluffy),
+[Ultralight](https://github.com/ethereumjs/ultralight),
+[Shisui](https://github.com/optimism-java/shisui)) although active work has slowed down significantly.
 
-Portal runs on top of [Discovery v5](https://github.com/ethereum/devp2p/blob/master/discv5/discv5.md) over UDP, using the built-in `TALKREQ` and `TALKRESP` messages to build custom sub-protocols. The network is composed of multiple independent sub-protocols, each forming its own overlay DHT (Distributed Hash Table) separate from the base Discovery v5 DHT.
 
-The History Network serves block headers, bodies, and receipts. The Beacon Network supplies beacon chain light client data such as bootstraps, updates, and finality updates. The State Network provides current and historical account and contract state. Future planned networks include Canonical Transaction Index, Transaction Gossip, and Verkle State. Each sub-protocol is independent. A node can participate in just one without joining the others.
+## Current Status
 
-```mermaid
-graph TB
-    subgraph portal[Portal Network]
-        direction LR
-        HN[History Network]
-        BN[Beacon Network]
-        SN[State Network]
-    end
+Phase 1 of history expiry is already underway with EIP-6110 shipped as part of the Pectra upgrade. Phase 1 targets pre-Merge (PoW) history, which accounts for the bulk of stored data on most nodes. Phase 2 covers post-Merge history with non-contiguous sharding through etha (EIP-7801) and is still in active development.
 
-    subgraph bridge[Bridge Nodes]
-        FN[Full Node JSON-RPC] --> BR[Bridge Node]
-    end
-
-    BR -->|push headers, bodies, receipts| HN
-    BR -->|push beacon data| BN
-    BR -->|push state| SN
-
-    HN -->|serve on demand| LC[Light Client]
-    BN -->|serve on demand| LC
-```
-
-Data enters the Portal Network through bridge nodes. A bridge node connects to a standard full node over JSON-RPC, pulls data from it, and pushes that data into the respective Portal sub-networks.
-
-### Content Keys and Storage
-
-Every piece of data in the Portal Network is identified by a content key. A content key is a byte string composed of a single-byte type identifier followed by the block hash. The [History Network](https://github.com/ethereum/portal-network-specs) defines four content types.
-
-```python
-    # History Network Content Types
-    # 0x00 = Block Header
-    # 0x01 = Block Body
-    # 0x02 = Receipt
-    # 0x03 = Header Epoch Accumulator (pre-merge only)
-
-    # A content key is constructed as
-    # content_key = content_type_byte + block_hash
-
-    # Example: content key for block body of block with hash 0xabc...
-    # content_key = 0x01 + 0xabc...
-```
-
-The content key is hashed to produce a content ID. Each node in the network has a node ID derived from its [ENR](https://eips.ethereum.org/EIPS/eip-778) (Ethereum Node Record). Whether a node stores a particular piece of content is determined by the XOR distance between the node ID and the content ID, compared against the node's self-declared radius.
-
-$$\text{store if } \quad d(\text{node\_id}, \ \text{content\_id}) \leq \text{radius}$$
-
-where
-
-$$d(a, b) = a \oplus b$$
-
-$$\text{content\_id} = \text{sha256}(\text{content\_key})$$
-
-The radius is a 256-bit integer ranging from $0$ to $2^{256} - 1$. A node that sets its radius to $2^{256} - 1$ is willing to store everything that falls near it in the DHT address space. A node with a small radius stores very little. Each node advertises its current radius in PING and PONG messages so peers know what to expect from it.
-
-```python
-    # Storage decision for a node
-    #
-    # node_id     = derived from the node's ENR
-    # content_id  = sha256(content_key)
-    # radius      = node's self-declared storage radius (0 to 2^256 - 1)
-    #
-    # if XOR(node_id, content_id) <= radius:
-    #     store the content
-    # else:
-    #     do not store, but can route the request to a closer node
-```
-
-### Retrieval and Verification
-
-When a client wants a historical block, it constructs the content key, computes the content ID, and queries nodes that are closest to that content ID in the DHT. The [Portal wire protocol](https://github.com/ethereum/portal-network-specs/blob/master/portal-wire-protocol.md) defines the following core messages for this.
-
-```python
-    # Portal Wire Protocol Messages
-    #
-    # PING / PONG              -> liveness check, includes radius
-    # FINDNODES / NODES        -> discover peers
-    # FINDCONTENT / CONTENT    -> request specific content by content key
-    # OFFER / ACCEPT           -> proactively push content to nearby nodes
-```
-
-For large data transfers that exceed the size of a single UDP packet, the protocol uses uTP (micro Transport Protocol) tunneled over Discovery v5.
-
-For block headers, the node already knows the expected block hash and rejects any response with a mismatched hash. For block bodies, the node verifies the response against the `transactionsRoot` in the corresponding header. For receipts, the node verifies against the `receiptsRoot`. For pre-merge headers specifically, the node verifies using the accumulator Merkle proofs from EIP-7643, the same mechanism described in the ERA files section. The proof is $O(\log n)$ in size rather than requiring the full header chain.
-
-$$\text{Pre-merge verification: Merkle proof against EIP-7643 accumulator}$$
-
-$$\text{Post-merge verification: proof against beacon chain } \texttt{historical\_summaries}$$
-
-Post-merge historical data is verified using the beacon chain's built-in history accumulators. Before the Capella upgrade, this used `historical_roots`. After Capella, it uses `historical_summaries`. This is why the Beacon sub-network exists alongside the History sub-network. A node validating post-merge history needs beacon chain data to anchor its proofs.
-
-### Client Implementations
-
-There are currently four Portal Network client implementations.
-
-| Client      | Language   | Team                    |
-|-------------|------------|-------------------------|
-| [Trin](https://github.com/ethereum/trin)        | Rust       | Ethereum Foundation     |
-| [Fluffy](https://github.com/status-im/nimbus-eth1/tree/master/fluffy)      | Nim        | Nimbus / Status         |
-| [Ultralight](https://github.com/ethereumjs/ultralight)  | TypeScript | EthereumJS              |
-| [Shisui](https://github.com/optimism-java/shisui)      | Go         | Community               |
-
-[GlaDOS](https://glados.ethportal.net/) is the cross-client network health monitoring tool used to track content availability and network performance across all implementations.
-
-### Connection to History Expiry
-
- When a full node prunes its historical data under EIP-4444, that data does not disappear from the network. It remains available through Portal's History Network, distributed across thousands of lightweight nodes, each holding a small piece. Any node or application that needs an old block or receipt can retrieve it on demand, verify it locally using accumulator proofs, and never depend on a single centralized provider.
-
-While ERA files are for bulk distribution or archiving the full chain on disk. Portal is for on-demand lookups, retrieving individual blocks without downloading everything. Together they ensure that pruning history from full nodes does not make the data inaccessible.
 
 ## Resources
 
