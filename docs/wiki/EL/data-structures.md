@@ -119,22 +119,11 @@ A transaction is mapped in the trie so that the key is a transaction index and t
 transaction index and the transaction itself are RLP encoded. It compose a key-value pair, stored in the trie:
 `𝑅𝐿𝑃 (𝑖𝑛𝑑𝑒𝑥) → 𝑅𝐿𝑃 (𝑇)`
 
-The structure `T` consists of the following:
-
-- **Nonce**: For every new transaction submitted by the same sender, the nonce is increased. This value allows for tracking order of transactions and prevents replay attacks.
-- **maxPriorityFeePerGas** - The maximum price of the consumed gas to be included as a tip to the validator.
-- **gasLimit**: The maximum amount of gas units that can be consumed by the transaction.
-- **maxFeePerGas** - the maximum fee per unit of gas willing to be paid for the transaction (including baseFeePerGas and maxPriorityFeePerGas).
-- **from** – The address of the sender, that will be signing the transaction. This must be an externally-owned account as contract accounts cannot send transactions.
-- **to**: Address of an account to receive funds, or zero for contract creation.
-- **value**: amount of ETH to transfer from sender to recipient.
-- **input data**: optional field to include arbitrary data.
-- **data**: Input data for a message call together with the message signature.
-- **(v, r, s)**: Values encoding signature of a sender. Serves as identifier of the sender.
+See the [summary](/wiki/EL/el-data-structures-summary?id=transaction-trie) for the field definitions of the different transaction types in the transaction trie.
 
 ##  Receipt Trie
 
-The Receipt Trie is similar to the Transaction Trie in that it is a block level data structure, and each leaf of the trie represents some RLP-encoded data related to the transaction. However, the Receipt Trie is used to verify that the instructions in each transaction were actually executed.  This verification data is held in the leaf node and contains a few fields, which are described in the [transaction anatomy](wiki/EL/transaction.md#receipts) section of the wiki.
+The Receipt Trie is similar to the Transaction Trie in that it is a block level data structure, and each leaf of the trie represents some RLP-encoded data related to the transaction. However, the Receipt Trie is used to verify that the instructions in each transaction were actually executed.  This verification data is held in the leaf node and contains a few fields, which are described in the [transaction anatomy](/wiki/EL/transaction.md#receipts) section of the wiki.
 
 In this section, we will focus on the `Receipt Trie` itself.
 
@@ -149,17 +138,13 @@ The primary role of the receipts trie is to provide a canonical, authenticated r
 
 While receipts enable light clients to verify transaction outcomes via Merkle proofs against the receiptsRoot, this is a secondary use. Since light clients only store block headers, they rely on full nodes to query for these proofs and `receiptsRoot`.  This structure allows light clients to independently verify the legitimacy of the data without storing the full transaction history.
 
+See the [summary](/wiki/EL/el-data-structures-summary?id=receipts-trie) for the field definitions of receipts.
+
 ## World State Trie
 
 The **World State Trie** is the core data structure that represents Ethereum's current state. It maps the keccak-256 hashed 20 byte account addresses to their RLP encoded states utilizing a **Merkle Patricia Trie** where the key-value pairs are stored as byte arrays to byte arrays in the leaves of the trie.
 
 Accounts can be categorized as either smart contract accounts with code or Externally Owned Accounts (EOAs) associated with private keys. EOAs are used to initiate transactions with other EOAs or smart contract accounts, triggering the execution of the associated contract code.
-
-Each account consists of the following fields:
-- **Nonce**: A scalar value identifying the number of transactions successfully sent from this account.
-- **Balance**: The amount of ETH in Wei owned by this account.
-- **Code Hash**: The hash of the EVM code if it's a contract account. For EOAs, it's the keccak-256 hash of an empty string `(keccak256(''))`, which uniquely identifies the account as an EOA.
-- **Storage Root Hash**: The 32 byte hash that points to the root of the account’s ***Storage Trie***, which would be an empty trie for an EOA.
 
 The **World State Trie** is not stored in the chain, but the 32-byte keccak-256 **state root** of the trie is stored in every block header after all transactions in a block have been processed.  The **state root** is used as a cryptographic commitment for the entire system state since it's cryptographically dependent on all the data in the trie.  For example, a node can prove an account's existence given the **state root** and a **Merkle proof** containing the account and it's sibling nodes needed to recreate the **state root**.  Furthermore, the **state root** in each block anchors Ethereum’s consensus: any node can independently compute or verify this root by applying the block’s transactions to the previous state trie.
 
@@ -182,6 +167,9 @@ Let's traverse the trie to find the account with a **45 ETH** balance. The key f
 3. **Leaf Node**
    - Consuming all nibbles brings us to the **leaf node**. In our simplified example, its stored value is **“45 ETH”**.
    - In Ethereum’s real MPT, this leaf node actually holds the RLP-encoded account object `[nonce, balance, storageRoot, codeHash]`.
+
+
+See the [summary](/wiki/EL/el-data-structures-summary?id=state-trie) for the field definitions of accounts in the state trie.
 
 ### Persistent Storage
 

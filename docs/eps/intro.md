@@ -29,11 +29,11 @@ This year, we will be hosting 2 new modules - the cryptography of Ethereum and z
 #### Cryptography
 | Date       | Session                    | Teacher |
 |------------|----------------------------|---------|
-| 2026-03-09 | Finite Groups & Fields     | Matan Prasma   |
-| 2026-03-16 | Discrete Fourier Transform | Matan Prasma   |
-| 2026-03-23 | Elliptic Curves & Pairings | Matan Prasma   |
-| 2026-03-30 | BLS Signatures             | Matan Prasma   |
-| 2026-04-07 | Proof Systems              | Matan Prasma   |
+| 2026-03-09 | Finite Groups & Fields     | <name>Matan Prasma</name>   |
+| 2026-03-16 | Discrete Fourier Transform | <name>Matan Prasma</name>   |
+| 2026-03-23 | Elliptic Curves & Pairings | <name>Matan Prasma</name>   |
+| 2026-03-30 | BLS Signatures             | <name>Matan Prasma</name>   |
+| 2026-04-07 | Proof Systems              | <name>Matan Prasma</name>   |
 
 ---
 
@@ -41,8 +41,8 @@ This year, we will be hosting 2 new modules - the cryptography of Ethereum and z
 | Date       | Session                    | Teacher |
 |------------|----------------------------|---------|
 | 2026-03-11 | Lean Consensus Overview    | Emile   |
-| 2026-03-24 | Lean Client Architecture   | Kolby     |
-| 2026-03-25 | zkEVM Fundamentals         | Cody Gunton & Ignacio Hagiopan   |
+| 2026-03-24 | Lean Client Architecture   | <name>Kolby</name>     |
+| 2026-03-25 | zkEVM Fundamentals         | <name>Cody Gunton</name> & <name>Ignacio Hagiopan</name>   |
 | 2026-04-01 | leanSpec and tooling       | O            |
 | 2026-04-09 | Post-Quantum Cryptography  | Justin Drake   |
 
