@@ -205,7 +205,17 @@ enr:-Jq4QOXd31zNJBTBAT0ZZIRWH4z_NmRhnmAFfwNan0zr_-IUUAsOTbU_Lhzh4BSq8UknFGvr1rXQ
 `
 ## discv5
 
-Discovery Version 5 [(discv5)][discv5] (Protocol version v5.1) runs on UDP and meant for peer discovery only. It enables nodes to exchange and update ENRs dynamically, ensuring up-to-date peer discovery. It runs in parallel with libp2p.
+Discovery Version 5 [(discv5)][discv5] (Protocol version v5.1) is a
+UDP-based node discovery protocol. It is used to discover peers and retrieve
+the latest Ethereum Node Records (ENRs). Its three core functions are:
+
+- Sampling the set of all live participants
+- Searching for participants providing a certain service
+- Authoritative resolution of node records by retrieving the latest record for
+  a known node ID
+
+In Ethereum consensus clients, discv5 typically runs alongside libp2p, which
+handles peer connections and protocol traffic.
 
 <figure class="diagram" style="text-align:center">
 
