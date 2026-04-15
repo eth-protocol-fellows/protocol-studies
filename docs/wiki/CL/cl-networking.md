@@ -215,8 +215,7 @@ Its three core functions are:
 - Searching for participants providing a certain service through topic advertisements and lookups around the topic hash
 - Authoritative resolution of node records by retrieving the latest ENR for a known node ID and comparing ENR sequence numbers
 
-In Ethereum consensus clients, discv5 typically runs alongside libp2p, which
-handles peer connections and protocol traffic.
+In Ethereum consensus clients, discv5 typically runs alongside libp2p, which handles peer connections and protocol traffic.
 
 <figure class="diagram" style="text-align:center">
 
