@@ -1,5 +1,4 @@
 personal_ws-1.1 en 10000 utf-8
-
 aantop
 ABI
 accelerometer
@@ -9,6 +8,7 @@ accesslistAddress
 accesslistaddress
 accessliststorage
 accesslistStorageKeys
+arity
 ACD
 ACL
 addons
@@ -63,6 +63,7 @@ backfilling
 backfills
 backticks
 Bankless
+balancer
 Banksy
 Barnabe
 Barnabé
@@ -128,7 +129,10 @@ canonicalized
 Caplin
 Carb
 cartelization
+canonicalness
+Caversaccio
 Casper
+CBOR
 CDAP
 cdot
 cdots
@@ -155,6 +159,7 @@ codec
 CODECOPY
 codecs
 coinbase
+colapse
 collateralised
 collateralized
 COMIS
@@ -172,6 +177,7 @@ Coq
 Corbellini
 CPUs
 CRS
+CPerezz
 Crypto
 cryptocurrencies
 cryptocurrency
@@ -291,6 +297,7 @@ Elmore
 ELs
 emptyset
 Encodings
+Encaps
 Endian
 endian
 enode
@@ -301,6 +308,7 @@ env
 EOA
 EOAs
 EOF
+EOF's
 EOY
 eP
 ePBS
@@ -355,8 +363,13 @@ Feist
 Femboy
 Ferrin
 FFG
+FFT
+FIPS
+FN
+FORS
 finalise
 financials
+filesystem
 Flashbot's
 Flashbots
 Flashboys
@@ -468,6 +481,8 @@ Infura
 init
 initating
 initializationCode
+InitcodeTransaction
+intra
 InsertCoin
 instantiation
 intermediated
@@ -521,6 +536,7 @@ Lamport's
 Lange
 lceil
 ldots
+LDL
 learnings
 Ledgerwatch
 Leffew
@@ -578,6 +594,7 @@ memtables
 Menezes
 merkle
 Merkleization
+merkelization
 Merkleize
 Merkleized
 Merkleizing
@@ -592,6 +609,7 @@ minimalistic
 misconfigure
 Mitigations
 mload
+MLWE
 MMPTs
 MODEXP
 modularity
@@ -650,6 +668,7 @@ nonce
 nonces
 nonumber
 NOXX
+NTRU
 NSS
 NYU
 Occhipinti
@@ -739,6 +758,7 @@ Prest
 prev
 PREVRANDAO
 prevRandao
+predeploy
 privateKey
 probabilistically
 programmability
@@ -874,6 +894,7 @@ SPHINCS
 Sproul
 src
 SSD
+SLH
 ssd
 SSF
 SSLE
@@ -1003,6 +1024,7 @@ Vitalik
 Vitalik's
 VM
 Vyper
+VOPS
 walkthrough
 WB
 webkit
@@ -1015,7 +1037,9 @@ WIP
 Wireshark
 withdrawable
 withdrawalHash
+Winternitz
 wordlist
+WOTS
 WSL
 WSS
 Xatu
@@ -1126,6 +1150,7 @@ Plaintext
 digram
 initating
 decrypts
+Decaps
 ECIES
 KDF
 HMAC
@@ -1156,6 +1181,7 @@ backticks
 etha
 uTP
 canonicalness
+Caversaccio
 Shisui
 GlaDOS
 EthereumJS

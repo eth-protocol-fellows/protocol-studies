@@ -207,22 +207,17 @@ Polynomial commitments are a special kind of "**hash**" of a polynomial (where t
 
 One of the main extra properties is that:
 - If the prover has polynomial `P`, and a coordinate `z`
-    - he can produce an opening proof `Q` that allows a verifier to check that `P(z) = a`.
+    - he can produce an [**opening**](/docs/wiki/Cryptography/KZG.md#opening-of-the-polynomial) proof `Q` that allows a verifier to check that `P(z) = a`.
 
 This lets us represent data as a polynomial and prove values.
 
 ### Two main families of polynomial commitments
-1. **Kate** commitments
-    - To prove that `P(z) = a`, we check that `(X - z)` is a factor of `P(x) - a`
-        > in other words we prove it by proving that `P(x) - a` has `0` at `z`
-    - This is done by providing a commitment to `Q(x) = (P(x) - a) / (X - z)`
-    - The verifier can then check the equation: `Q(x) * (X - z) + a = P(x)`.
-        > This proves that `P(x)` has the value `a` at `z`.
-    - We can verify this equation with [elliptic curve pairing](https://medium.com/@VitalikButerin/exploring-elliptic-curve-pairings-c73c1864e627).
+1. **Pairing-based** commitments (e.g. [KZG](/docs/wiki/Cryptography/KZG.md#kzg-polynomial-commitment-scheme), also known as Kate commitments)
+    - Verification is done using pairings - eg. [elliptic curve pairing](https://medium.com/@VitalikButerin/exploring-elliptic-curve-pairings-c73c1864e627).
 
 2. **FRI** commitments
     - Is hash-based polynomial commitment scheme (**post quantum secure** and **potentially faster to prove**)
-    - This is a different process where the polynomial is recursively split into **even** and **odd** parts and **combined randomly** at each step until a constant polynomial is obtained (or low enough degree polynomial which is easy for direct check/verify).
+    - Uses recursive folding of the polynomial (even/odd decomposition).
     
 ### **Multi openings**
 
@@ -241,7 +236,7 @@ This is very valuable for stateless clients, because it allows them to verify a 
 # Current challenges
 - All required EIPs for statelessness must be implemented before the transition.
 - Block verification must be fast(so proofs should not be large).
-- State availability in wallets is still a question - a solution like the Portal Network could be useful.
+- State availability in wallets is still a question - a solution like the [Portal Network](https://ethportal.net/overview) could be useful.
 - In the current MPT, every value can be accessed via its key, where the key is a hash of the account address or storage slot. Since we are changing the hash function, we need to rehash the entire state, which cannot be done in one slot and could take months to complete.
     > the conversion process is described here: [The Verge - Converting the Ethereum state to Verkle trees](https://www.youtube.com/watch?v=F1Ne19Vew6w)
 
