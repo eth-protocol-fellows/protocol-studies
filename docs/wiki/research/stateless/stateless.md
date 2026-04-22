@@ -241,7 +241,7 @@ This is very valuable for stateless clients, because it allows them to verify a 
 # Current challenges
 - All required EIPs for statelessness must be implemented before the transition.
 - Block verification must be fast(so proofs should not be large).
-- State availability in wallets is still a question - a solution like the Portal Network could be useful.
+- State availability in wallets is still a question - a solution like the [Portal Network](https://ethportal.net/overview) could be useful.
 - In the current MPT, every value can be accessed via its key, where the key is a hash of the account address or storage slot. Since we are changing the hash function, we need to rehash the entire state, which cannot be done in one slot and could take months to complete.
     > the conversion process is described here: [The Verge - Converting the Ethereum state to Verkle trees](https://www.youtube.com/watch?v=F1Ne19Vew6w)
 
