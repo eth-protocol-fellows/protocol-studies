@@ -80,6 +80,7 @@ bilinearity
 BIP
 bitlist
 Bitlists
+bitmask
 bitrate
 bitvector
 bitvector's
@@ -96,6 +97,7 @@ blocksize
 bloXroute
 bloXroute's
 BLS
+blst
 bn
 Bogotá
 boltdb
@@ -187,6 +189,7 @@ Cryptopedia
 cryptopunks
 cryptosystem
 cryptosystems
+Csaba
 CSP
 curation
 customizable
@@ -213,6 +216,7 @@ deboost
 Decaps
 decrementation
 decrementing
+decrypt
 decrypted
 decrypts
 DeFi
@@ -223,6 +227,7 @@ delegators
 deliverables
 Dencun
 deployer
+Der
 descendent
 deserialization
 Deserialize
@@ -322,6 +327,7 @@ Ethereum's
 EthereumJS
 Ethernodes
 ethers
+Etherscan
 Ethervm
 ethone
 ethone's
@@ -424,16 +430,19 @@ Grandine's
 Grigore
 Grup
 Guillaume
+Gunton
 gwei
 hackathon
 hackmd
 Hager
+Hagiopan
 halmos
 hardcoded
 hardfork
 HashedStorages
 Havel
 Herc's
+herumi
 hevm
 HMAC
 hoc
@@ -511,8 +520,11 @@ KEVM
 keystore
 Kira
 Kira's
+Kiraly
 Kleppmann
 Koblitz
+Kolby
+Kripalani
 Kubernetes
 Kurose
 Kurtosis
@@ -562,6 +574,7 @@ mainnet
 Mana
 Manas
 Manu
+Matan
 mathbb
 maxEB
 Maximalism
@@ -580,6 +593,7 @@ Merkleization
 Merkleize
 Merkleized
 Merkleizing
+Merkling
 MEV
 mevboost
 Michaël
@@ -673,6 +687,7 @@ Parametrizing
 params
 Pari
 Parithosh
+Pawe
 Pawel
 PBS
 Pectra
@@ -708,6 +723,8 @@ PQCA
 PQS
 PR
 PR'ed
+Prasma
+Pratap
 pre
 preAccesedStorageKeys
 prebuilt
@@ -769,6 +786,7 @@ rahul
 Rahul's
 RANDAO
 Rareskills
+Raúl
 RB
 rceil
 reachability
@@ -813,6 +831,7 @@ RPCs
 RSA
 RSA's
 runtime
+Saltini
 Satisfiability
 Satoshi
 Satoshi's
@@ -1000,6 +1019,7 @@ Wetherall
 Whistleblower
 Whitepaper
 WHOAREYOU
+Wijden
 Winternitz
 WIP
 Wireshark
