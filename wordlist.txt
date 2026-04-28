@@ -571,6 +571,8 @@ MDS
 meldsun
 mem
 Mempool
+mempools
+Mempools
 memtable
 memtables
 Menezes
@@ -836,6 +838,8 @@ SHA
 Shacham
 shadowfork
 Shafu
+sharded
+Sharded
 Shamir
 Shapella
 Sharded
@@ -943,6 +947,7 @@ trustlessness
 TrustLook
 TSTORE
 TTD
+TTL
 Tx
 txcreate
 txdatanonzero
