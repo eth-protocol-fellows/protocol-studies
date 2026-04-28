@@ -10,9 +10,9 @@ Thank you for contributing to the Protocol Wiki! Before you open a PR, make sure
 <!--
 ℹ️ Checking for typos locally
 1. Install [aspell](https://www.gnu.org/software/aspell/) for your platform.
-2. Navigate to the project root and run:
+2. Navigate to the project root and run the script:
 ```
- for f in **/*.md ; do echo $f ; aspell --lang=en_US --mode=markdown --home-dir=. --personal=wordlist.txt --ignore-case=true --camel-case --add-sgml-skip name list < $f | sort | uniq -c ; done
+./check_typos.sh
 ```
 
 ℹ️ Fixing typos
@@ -23,4 +23,5 @@ Thank you for contributing to the Protocol Wiki! Before you open a PR, make sure
     * When adding new words it must NOT have any spaces or special characters within or around it.
     * \`wordlist\` is NOT case sensitive.
     * Use backticks to quote code variables so as to not bloat the \`wordlist\`.
+    * Use the HTML tag <name> to surround proper names. <name>John Doe</name>
 -->

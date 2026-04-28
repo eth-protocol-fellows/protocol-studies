@@ -12,6 +12,7 @@
 - Execution Layer
   - [EL Specs](/wiki/EL/el-specs.md)
   - [Client architecture](/wiki/EL/el-architecture.md)
+  - [Engine API](/wiki/EL/engine-api.md)
   - [EL Clients](/wiki/EL/el-clients.md)
     - [Besu](/wiki/EL/clients/besu.md)
     - [Reth](/wiki/EL/clients/reth.md)
@@ -62,6 +63,7 @@
   - [eODS](/wiki/research/eODS.md)
   - [PeerDAS](/wiki/research/peerdas.md)
   - [FCR](/wiki/research/FCR/FCR.md)
+  - [History Expiry](/wiki/research/history-expiry/history-expiry.md)
   - Preconfirmations
     - [Preconfirmations](/wiki/research/Preconfirmations/Preconfirmations.md)
     - [Based Sequencing with Preconfs](/wiki/research/Preconfirmations/BasedSequencingPreconfs.md)

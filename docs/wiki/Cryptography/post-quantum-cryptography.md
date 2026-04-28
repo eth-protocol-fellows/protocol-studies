@@ -55,23 +55,60 @@ Further, KZG commitment schemes powering [EIP-4844](/wiki/research/scaling/core-
 
 Post-quantum cryptography is an active area of research. Several organizations are working on prototyping, development, and standardization of new post-quantum algorithms.
 
-### NIST Post-Quantum Cryptography
+## NIST Post-Quantum Cryptography
 
-The [NIST Post-Quantum Cryptography standardization](https://csrc.nist.gov/projects/post-quantum-cryptography) effort is a competition like process to solicit, evaluate, and standardize one or more quantum-resistant public-key cryptographic algorithms.
+The [NIST Post-Quantum Cryptography standardization](https://csrc.nist.gov/projects/post-quantum-cryptography) conducted a multi-year international competition to evaluate and standardize quantum-resistant cryptographic algorithms. In August 2024, NIST published the first set of finalized **PQC standards** as Federal Information Processing Standards (FIPS):
 
-### Selected Algorithms by NIST as part of third round in 2022
+### Published Standards (August 2024)
 
-#### I. Public-key Encryption and key-establishment algorithms
+**Key encapsulation mechanism:**
 
-- [CRYSTALS-KYBER](https://pq-crystals.org/) by Peter Schwabe et al.
+- **ML-KEM** ([FIPS 203](https://doi.org/10.6028/NIST.FIPS.203)) derived from CRYSTALS-Kyber. A **key-encapsulation mechanism (KEM)**: a set of three algorithms (KeyGen, Encaps, Decaps) that establish a shared secret key over a public channel. Based on the **Module Learning With Errors (MLWE)** problem.
 
-#### II. Digital signature algorithm
+| Parameter Set | Security Strength | Security Category |
+|---|---|---|
+| ML-KEM-512 | 128 bits | 1 |
+| ML-KEM-768 | 192 bits | 3 |
+| ML-KEM-1024 | 256 bits | 5 |
 
-- [CRYSTALS-DILITHIUM](https://pq-crystals.org/) by Vadim Lyubashevsky et al.
-- [FALCON](https://falcon-sign.info/) by Thomas Prest et al.
-- [SPHINCS+](https://falcon-sign.info/) by Andreas Hulsing et al.
+**Digital signature algorithms:**
 
-NIST's ["2022 status report"](https://tsapps.nist.gov/publication/get_pdf.cfm?pub_id=934458) documents the standardization process, evaluation criteria, and security models.
+- **ML-DSA** ([FIPS 204](https://doi.org/10.6028/NIST.FIPS.204)) derived from CRYSTALS-Dilithium. Lattice-based digital signature algorithm.
+
+| Parameter Set | Security Strength | Security Category |
+|---|---|---|
+| ML-DSA-44 | 128 bits | 2 |
+| ML-DSA-65 | 192 bits | 3 |
+| ML-DSA-87 | 256 bits | 5 |
+
+- **SLH-DSA** ([FIPS 205](https://doi.org/10.6028/NIST.FIPS.205)) derived from SPHINCS+. NIST's stateless hash-based digital signature standard.
+
+  It is constructed from three well-studied components:
+  - **WOTS+** (Winternitz One Time Signature Plus), one time signing primitive
+  - **XMSS** (eXtended Merkle Signature Scheme), multi-time scheme built on WOTS+
+  - **FORS** (Forest of Random Subsets), few time scheme for signing message digests
+
+  Unlike ML-DSA, SLH-DSA requires **no number-theoretic hardness assumptions**. Security depends only on standard hash-function properties (preimage resistance and related properties), making it resistant to quantum attacks without any algebraic structure that Shor’s algorithm could exploit.
+
+  Each security level offers two variants:
+  - `s` = smaller signatures, slower signing
+  - `f` = larger signatures, faster signing
+
+| Parameter Set                          | Security Category | Signature Size |
+|----------------------------------------|-------------------|----------------|
+| SLH-DSA-SHA2-128s / SLH-DSA-SHAKE-128s | 1                 | 7,856 bytes    |
+| SLH-DSA-SHA2-128f / SLH-DSA-SHAKE-128f | 1                 | 17,088 bytes   |
+| SLH-DSA-SHA2-192s / SLH-DSA-SHAKE-192s | 3                 | 16,224 bytes   |
+| SLH-DSA-SHA2-192f / SLH-DSA-SHAKE-192f | 3                 | 35,664 bytes   |
+| SLH-DSA-SHA2-256s / SLH-DSA-SHAKE-256s | 5                 | 29,792 bytes   |
+| SLH-DSA-SHA2-256f / SLH-DSA-SHAKE-256f | 5                 | 49,856 bytes   |
+
+The SHA2 and SHAKE variants differ only in the internal hash-function instantiation (SHA-2 family vs SHAKE from FIPS 202), not in security level or signature structure.
+
+- **FN-DSA** (forthcoming as [FIPS 206](https://csrc.nist.gov/presentations/2025/fips-206-fn-dsa-falcon)) derived from FALCON. Full name: **Fast-Fourier Transform over NTRU-Lattice-Based Digital Signature Algorithm**. A lattice-based scheme in the Hash-Then-Sign paradigm, signing produces a lattice point close to a target derived from a randomized message hash, using **FFT** and an **LDL tree** for discrete Gaussian sampling. This gives FN-DSA significantly smaller signatures and public keys than ML-DSA, making it suited for bandwidth-constrained environments such as certificate chains or protocols with strict size limits.
+  
+NIST's ["Status Report on the Fourth Round of the NIST Post-Quantum Cryptography Standardization Process"](https://nvlpubs.nist.gov/nistpubs/ir/2025/NIST.IR.8545.pdf) (March 2025) summarizes the ongoing fourth round.
+
 
 ### Post-Quantum Cryptography Alliance
 
