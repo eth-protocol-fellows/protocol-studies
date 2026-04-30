@@ -1,6 +1,6 @@
 # Portal Network
 
-> :warning: This document covers an active area of research and development. The Portal Network is not yet production-ready and all client implementations are experimental. Content may be outdated at time of reading and subject to future updates.
+> :warning: This document covers a project that is no longer under active development. The Portal Network never reached production readiness and active maintenance across most client implementations has stopped. Content may be outdated at time of reading.
 
 
 > **Recommended pre-reading**
@@ -12,7 +12,7 @@
 
 The Portal Network is a lightweight peer-to-peer network built on top of Discovery v5, where each participating node stores a small slice of Ethereum's data and serves it on request. The term "portal" is used to indicate that these networks provide a view into the protocol but are not critical to the operation of the core Ethereum protocol.
 
-Before Portal, lightweight access to Ethereum relied on the **Light Ethereum Subprotocol** (LES) running on DevP2P. LES followed a client/server model, where a light client requests data from a full node, the server. It was ambitious but faced a real performance bottleneck as a LES client was just a consumer of full node's resources and didn't return anything back. Multiple LES clients relied on the far fewer full nodes who were willing to serve, and every new LES client that joined added demand to the same limited pool worsening the performance. The Trinity team at the Ethereum Foundation spent nearly three years attempting to build a functional light client without success, and the conclusion was that the bottleneck was not in their implementation but in the design itself. Portal Network came to flip that model by ensuring that every portal client contributes by storing a small part of Ethereum and serving it to other clients.
+The network is composed of multiple independent overlay networks, each serving a specific type of data such as block history, chain state, or beacon chain information. Nodes participate only in the sub-networks they choose, and each sub-network maintains its own routing table independently of the others. Portal clients are designed for a small resource footprint, requiring no chain sync or block execution, and minimal local storage, making them practical for integration into browser extensions, mobile applications, and other lightweight environments. Active development across Portal client teams has slowed significantly, and the project is no longer under active maintenance.
 
 
 ## Architecture
@@ -101,7 +101,7 @@ The radius is a 256-bit integer ranging from $0$ to $2^{256} - 1$. A node that s
 
 Nodes do not set their radius once and leave it fixed when they newly join a portal network. As a node's local database fills up, it shrinks its radius to stop accepting content that is far from its node ID. If storage frees up, the node can expand its radius again. This is exactly how each node independently decides how much it stores based on its own capacity without any central coordination.
 
-Most times, multiple nodes will have overlapping radii covering the same region of the address space. The redundancy is intentional because if one node goes offline, the content still remains available from other nodes nearby in the DHT. So it follows that if there are more nodes in the network, the more resilient the network becomes when compared to the LES protocol.
+Most times, multiple nodes will have overlapping radii covering the same region of the address space. The redundancy is intentional because if one node goes offline, the content still remains available from other nodes nearby in the DHT. So it follows that if there are more nodes in the network, the more resilient the network becomes.
 
 Lastly, when a node receives new content either from a bridge node or from another peer, the content doesn't just sit passively on that node waiting to be requested. It offers that content to other nodes whose node IDs are close to the content ID, and they accept if the content falls within their own radii.
 
@@ -149,29 +149,28 @@ It is worth emphasizing that the requesting node never has to trust the peer ser
 
 ## Client Implementation
 
-There are currently four Portal Network client implementations, and they are as follows:
+Four Portal Network client implementations were developed, each in a different language:
 
-- **Trin** is the reference implementation that is developed by the Ethereum Foundation's Portal team. It is the most feature-complete Portal client and runs on the Portal mainnet by default, supporting the History and Beacon sub-networks.
-- **Fluffy** is the Nim implementation built by the Nimbus team. It is designed to be lightweight enough to embed in wallets and mobile devices. It implements the History sub-network by default and the Beacon sub-network available as an experimental option.
-- **Ultralight** is the TypeScript implementation from the EthereumJS team, originally built with the goal of running a Portal Network client in the browser through a UDP proxy. However, the EF JavaScript team was dissolved during the Ethereum Foundation's 2025 organizational restructuring, and the path forward for Ultralight is currently unclear.
-- **Shisui** is the Go implementation, that was originally developed under the `optimism-java` organization and since migrated to `zen-eth`. It is built on top of go-ethereum and still remains under development. Worthy to note is that `shisui2` is being integrated directly into go-ethereum as a dependency to support [EIP-4444](https://eips.ethereum.org/EIPS/eip-4444) history expiry, allowing Geth nodes to drop pre-merge history while still retrieving it through the Portal Network when needed.
+- **Trin** was the reference implementation developed by the Ethereum Foundation's Portal team. It was the most feature-complete Portal client, supporting the History and Beacon sub-networks. It is no longer actively maintained.
+- **Fluffy** is the Nim implementation built by the Nimbus team, designed to be lightweight enough to embed in wallets and mobile devices. It has since been renamed to Nimbus Portal Client and continues under independent development.
+- **Ultralight** was the TypeScript implementation from the EthereumJS team, originally built with the goal of running a Portal Network client in the browser through a UDP proxy. Development stopped when the EF JavaScript team was dissolved.
+- **Shisui** is the Go implementation, originally developed under the `optimism-java` organization and since migrated to `zen-eth`. It is built on top of go-ethereum and continues under independent development.
 
-| Client | Language | Team |
-|---|---|---|
-| [Trin](https://github.com/ethereum/trin) | Rust | Ethereum Foundation |
-| [Fluffy](https://github.com/status-im/nimbus-eth1/tree/master/fluffy) | Nim | Nimbus / Status |
-| [Ultralight](https://github.com/ethereumjs/ultralight) | TypeScript | EthereumJS |
-| [Shisui](https://github.com/zen-eth/shisui) | Go | Zen-eth (Community) |
+| Client | Language | Team | Status |
+|---|---|---|---|
+| [Trin](https://github.com/ethereum/trin) | Rust | Ethereum Foundation | Inactive |
+| [Fluffy](https://github.com/status-im/nimbus-eth1/tree/master/fluffy) | Nim | Nimbus / Status | Active |
+| [Ultralight](https://github.com/ethereumjs/ultralight) | TypeScript | EthereumJS | Inactive |
+| [Shisui](https://github.com/zen-eth/shisui) | Go | Zen-eth (Community) | Active |
 
-Although the four clients are still experimental and have not had a production release, the Portal Network developers have pursued client diversity from the start as a deliberate strategy in order to achieve a healthy distribution of clients. Cross-client interoperability is tested through portal-hive, a Portal-specific extension of the Ethereum [Hive](https://github.com/ethereum/hive) testing framework that runs automated integration tests between clients. Network-wide health is monitored through [GlaDOS](https://glados.ethportal.net/), which tracks content availability and retrieval success rates across all implementations.
+None of the four clients reached a production release. Cross-client interoperability was tested through portal-hive, a Portal-specific extension of the Ethereum [Hive](https://github.com/ethereum/hive) testing framework. Network-wide health was monitored through [GlaDOS](https://glados.ethportal.net/), which tracked content availability and retrieval success rates across implementations.
 
-## Conclusion
 
-The Portal Network is directly tied to [The Purge](https://vitalik.eth.limo/general/2024/10/26/futures5.html), the stage of Ethereum's roadmap focused on reducing historical data storage and simplifying the protocol. One of the central proposals under The Purge is [EIP-4444](https://eips.ethereum.org/EIPS/eip-4444), which allows execution clients to drop data that is older than a defined period. This reduces the storage burden on full nodes, but it raises an important question, where does the expired data go? Yes, the Portal Network is the answer. The Portal Network distributes that data across thousands of lightweight nodes, each storing a small slice and serving it on demand with full cryptographic verification.
+## Current Status
 
-The network is still in its early stages. The [History sub-network](https://ethportal.net/concepts/protocols/portal-sub-protocols/history) is the most mature sub-protocol and is live on the Portal mainnet, but it is [not yet fully production-ready](https://github.com/ethereum/portal-network-specs/issues/398). The Beacon sub-network is functional but still experimental, the State sub-network depends on bridge node infrastructure that is still being built, and several other sub-protocols like the Canonical Transaction Index and Transaction Gossip networks remain at the preliminary specification stage. The dissolution of the EF JavaScript team also leaves uncertainty around the Ultralight client and browser-based access to the network.
+As of mid-2025, active development across Portal client teams has slowed significantly. Of the four client implementations, [Trin](https://github.com/ethereum/trin) (Rust) and [Ultralight](https://github.com/ethereumjs/ultralight) (TypeScript) are no longer actively maintained. [Fluffy](https://github.com/status-im/nimbus-eth1/tree/master/fluffy) (now Nimbus Portal Client) and [Shisui](https://github.com/zen-eth/shisui) (Go) continue under independent teams.
 
-Despite this, the core design still seems solid and better than the previous LES clients. If the network reaches maturity, any device, a laptop, a phone, or even a smart watch, could access any piece of Ethereum's history without downloading the full chain or trusting a centralized provider.
+Portal was originally designed to let lightweight clients serve the full Ethereum JSON-RPC API without relying on centralized providers, but network latencies made this impractical for endpoints like `eth_call`, and the project narrowed its scope to just historical data retrieval. This positioned Portal as the natural retrieval layer for [EIP-4444](https://eips.ethereum.org/EIPS/eip-4444) history expiry, which allows execution clients to drop historical data but requires that the data remain retrievable through some alternative route. However, none of the Portal client implementations reached a production release, and only the History sub-network managed to approach operational maturity, making it impractical for client teams to depend on. Thus, History expiry moved forward without Portal, with [ERA files](https://geth.ethereum.org/docs/fundamentals/downloadera) served over HTTP and [EIP-7801](https://eips.ethereum.org/EIPS/eip-7801)'s DevP2P range filling the retrieval gap instead.
 
 ## Resources
 

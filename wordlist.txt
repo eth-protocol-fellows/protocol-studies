@@ -533,6 +533,7 @@ KZG
 Lamport
 Lamport's
 Lange
+latencies
 lceil
 LDL
 ldots
