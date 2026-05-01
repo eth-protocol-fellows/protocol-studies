@@ -34,11 +34,12 @@ Upgrades relating to the switch from proof-of-work to proof-of-stake. The Merge 
 
 **TODO** 
 | Upgrade                              |                                                                 Description                                                                  |                                                                                                                                                                                                                  Expected effect                                                                                                                                                                                                                   | State of the art                                                                                                  |
-| :----------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------: | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------------------- |
+| :----------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------------------- |
 | Single slot finality (SSF)           |                                           Blocks could be proposed and finalized in the same slot                                            | (i) More convenient for apps (transactions finalization time improved by an order of magnitude, i.e. 12 seconds instead of 12 minutes means better UX for all. Under [full rollup scaling](#the-surge), with real-time SNARK proofs implemented, single slot finality would also mean faster bridging for L2s ), (ii) Much more difficult to attack (multi block MEV re-orgs can be eliminated and the complexity in consensus mechanism, reduced) | in research </br>(i) VB's SSF notes[^3] </br>(ii) 8192 signatures post-SSF[^4] </br>(iii) simple SSF protocol[^5] |
 | Single Secret Leader Election (SSLE) |                        Allow elected block proposers to remain private until block publishing, to prevent DoS attacks                        |                                                                                                                                                                                     Only the selected validator knows it has been selected to propose a block.                                                                                                                                                                                     | in research </br>EIP-7441[^6]                                                                                     |
 | Enable more Validators               | The technical challenge of efficiently coordinating an ever increasing number of validators to achieve SSF with the best trade-offs possible |                                                                                                                                                                   Greater redundancy, a broader range of proposers, a wider array of attesters, and overall increased resilience                                                                                                                                                                   | in research </br> (i) EIP-7514[^7] </br>(ii) EIP-7251[^8] </br> (iii) 8192 signatures[^5]                         |
 | Quantum-safe signatures              |                               Proactive research and integration of quantum-resistant cryptographic algorithms                               |                                                                                                                                                                        Quantum-safe, aggregation-friendly signatures will enhance protocol security against quantum attacks                                                                                                                                                                        | in research </br> (i) lattice-based[^9] </br>(ii) STARK-based [^10] systems                                      |
+
 ### The Surge
 Upgrades related to scalability by Roll-ups and Data Sharding. 
 
@@ -56,7 +57,7 @@ Upgrades related to scalability by Roll-ups and Data Sharding.
 | Quantum-safe and Trusted-Setup-Free Commitments |   -   |              -              |                      replace KZG commitments with commitments that don't require a trusted setup and are quantum safe                      |                                                                                                                                                                                                                                               Quantum-safe Commitments                                                                                                                                                                                                                                               | in research </br>                                                                                                                                                                                                                                              |
 
 ### The Scourge
-Upgrades related to censorship resistance, decentralization and mitigating protocol risks from MEV  and liquid staking/pooling. 
+Upgrades related to censorship resistance, decentralization and mitigating protocol risks from MEV and liquid staking/pooling. 
 
 **IMPLEMENTED**
 | Upgrade   |   Track   |               Topic               |        Description         |                                                                 Effect                                                                  | State of the art                                 |
@@ -65,7 +66,6 @@ Upgrades related to censorship resistance, decentralization and mitigating proto
 | Increase MAX_EFFECTIVE_BALANCE | Staking Economics | Raising Validator Cap | Increase the maximum effective balance for Ethereum validators from 32 ETH to 2048 ETH | Consolidates validators, reduces network load, and simplifies operations for large stakers | shipped </br> EIP-7251[^27] |
 
 **TODO** 
-
 | Upgrade                            |   Track   |               Topic               |                                                                       Description                                                                        |                                                                                                                                                                                                                             Expected effect                                                                                                                                                                                                                              | State of the art                                                                                           |
 | :--------------------------------- | :-------: | :-------------------------------: | :------------------------------------------------------------------------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------------------------------- |
 | ePBS                               | MEV-Track | Endgame Block Production Pipeline |        Enshrinement of block Proposer and block Builder separation at protocol level, because of anti-censorship and MEV risk mitigation reasons         |                                                                       (i) creates opportunities to prevent transaction censorship at the protocol level </br> (ii) prevents hobbyist validators from being out-competed by institutional players that can better optimize the profitability of their block building </br> (iii) helps with scaling Ethereum by enabling the Danksharding upgrades                                                                        | [in research](/wiki/research/PBS/ePBS.md)[^18] </br>                                                       |
@@ -75,43 +75,46 @@ Upgrades related to censorship resistance, decentralization and mitigating proto
 | Distributed Block Building         | MEV-Track | Endgame Block Production Pipeline |                                               Decentralize the block building process, by distributing it                                                |                                                                              Decentralize different parts of the Builder: </br> (i) the algorithms for choosing transactions (the block building transaction ordering) </br> (ii) resources for block construction, especially under full Danksharding (split-up big blocks)  </br> (iii) add extra builder services (e.g.Preconfirmations)                                                                              | in research </br> [Preconfirmations](/wiki/research/Preconfirmations/Preconfirmations.md),</br> SUAVE[^24] |
 | Application Layer MEV Minimization | MEV-Track |                 -                 |                                                         App layer effort to minimize harmful MEV                                                         |                                                                                                                                                                                        The minimization techniques target: </br>(i) frontrunning, and </br>(ii) sandwich attacks                                                                                                                                                                                         | Examples[^25]                                                                                              |
 | Preconfirmations                   | MEV-Track |                 -                 |                       Users preconfirmations on transaction execution, for a competitive user experience in Ethereum interactions                        |                                                                                                                                  Block builders could publicly agree to include transactions with a priority fee over a certain amount, and send users a receipt indicating their intent to include the transaction in a specific block                                                                                                                                  | [in research](/wiki/research/Preconfirmations/Preconfirmations.md)[^26]                                    |
-| Cheaper Nodes  | Staking Economics | Improve Node Operator Usability| Make nodes cheaper and easier to operate using verkle trees and SNARKs | Lower SSD requirements, faster sync times, easier node operation | Research/Proposal: [in eps node workshop](/docs/eps/nodes_workshop.md)[^28] |
-| Capping Validator Set | Staking Economics | Explore Total Stake Capping | Cap the total amount of stake to manage communication overhead between validators | Prevents excessive validator participation, maintains network efficiency | Research/Proposals: [in research](/wiki/research/eODS.md)[^29] |
-|Combat LST Centralization | Staking Economics |  Explore Solutions to Liquid Staking Centralization | Solutions to reduce centralization in the Liquid Staking Token (LST) market | Prevents large LST providers from gaining too much control over the network | Research/Proposals: [^30], [^31], [^32], [^33],[^34] |
+| Cheaper Nodes | Staking Economics | Improve Node Operator Usability | Make nodes cheaper and easier to operate using Verkle trees and SNARKs. | Lower SSD requirements, faster sync times, and lower barriers to entry for solo stakers. | Research/Proposal: [in eps node workshop](/docs/eps/nodes_workshop.md)[^28] |
+| Capping Validator Set / Orbit SSF | Staking Economics | Validator Management | Implement Orbit SSF to manage the validator set size efficiently while achieving single slot finality. | Prevents excessive validator participation from slowing down the network; maintains decentralization for solo stakers. | Research/Proposals: [in research](/wiki/research/eODS.md)[^29] |
+| Combat LST Centralization | Staking Economics | Liquid Staking | Explore solutions like rainbow staking or two-tiered staking to reduce the influence of dominant LST providers. | Prevents large liquid staking pools from gaining a "king-making" position or systemic control over the network. | Research/Proposals: [^30], [^31], [^32], [^33],[^34] |
 
-
-                                              
 ### The Verge
-Upgrades related to verifying blocks more easily
-Succinct proofs for light-client security and state verification.
+Upgrades related to verifying blocks more easily. The goal is to reach a state where anyone can verify the Ethereum chain with minimal resources (e.g., on a phone or smartwatch) by making the cost of verification independent of the state size. This is primarily achieved through statelessness and succinct proofs.
 
-| Upgrade                          | Track           | Topic                    | Description                                                              | Expected effect                                       | State of the art           |
-|:--------------------------------:|:---------------:|:------------------------:|:------------------------------------------------------------------------:|:-----------------------------------------------------:|:--------------------------:|
-| Data Availability Sampling (DAS)| Full rollup     | Blob data verification   | Probabilistic blob sampling for light clients without full downloads.     | Secures L2 DA & light clients with minimal overhead.  | in research / EIP-7594 ([eips.ethereum.org](https://eips.ethereum.org/EIPS/eip-7594))         |
-| Verkle Tree Commitments          | Statelessness   | Verifiable trie proofs   | Replace Merkle proofs with vector commitments for O(1)-sized proofs.      | Dramatically smaller proofs; leaner light clients.     | draft / EIP-7736 ([eips.ethereum.org](https://eips.ethereum.org/EIPS/eip-7736))              |
+**TODO**
+| Upgrade | Track | Topic | Description | Expected effect | State of the art |
+| :--- | :---: | :---: | :--- | :--- | :--- |
+| Verkle Trees | Statelessness | State commitment | Replace Merkle Patricia Trees with Verkle trees to enable much smaller witnesses. | Enables stateless clients; nodes can verify blocks without needing the full state locally. | [in research](https://verkle.info/)[^35] |
+| Data Availability Sampling (DAS) | Full Rollup | Blob verification | Probabilistic blob sampling for light clients without full downloads. | Secures L2 data availability and light clients with minimal overhead. | [in research / EIP-7594](https://eips.ethereum.org/EIPS/eip-7594) |
+| `SNARKed` Beacon Chain | Succinctness | Consensus verification | Use ZK-SNARKs to prove the validity of the beacon chain state transitions. | Light clients get full-node security guarantees with minimal resources. | [in research](https://ethresear.ch/t/snarking-the-beacon-chain-for-light-clients/14115)[^36] |
+| `SNARKed` L1 EVM | Succinctness | Execution verification | Create SNARK proofs for the entire L1 execution layer. | Dramatically reduces the cost of running a verifying node. | in research |
 
-### The Purge  
+### The Purge
+Targets protocol and data bloat by pruning historical and inactive state, simplifying the protocol, and removing technical debt to keep the network efficient over time.
 
-Targets protocol and data bloat by pruning historical and inactive state.  
+**TODO**
+| Upgrade | Topic | Description | Expected effect | State of the art |
+| :--- | :---: | :--- | :--- | :--- |
+| History Expiry (EIP-4444) | Storage | Nodes stop storing execution history older than one year on the p2p layer. | Significantly lowers disk space requirements for running a node (~terabytes to gigabytes). | [EIP-4444](https://eips.ethereum.org/EIPS/eip-4444)[^37] |
+| State Expiry | Storage | Prune state that has not been accessed for a long time into a "cold" storage or archive. | Keeps the active state size manageable indefinitely, preventing "state bloat." | [in research](https://notes.ethereum.org/@vbuterin/state_expiry_paths)[^38] |
+| Protocol Cleanup | Technical Debt | Removing old precompiles and simplifying complex opcodes like SELFDESTRUCT. | Reduces client complexity, security surface area, and maintenance burden. | EIP-6780 (shipped), EIP-7523 (shipped)[^39] |
 
-Vitalik’s “Possible Futures” Part 5: “The Purge” stresses history and state expiry to balance permanence with efficiency  ([Possible futures of the Ethereum protocol, part 5: The Purge](https://vitalik.eth.limo/general/2024/10/26/futures5.html)).  
+### The Splurge
+Encompasses miscellaneous improvements that don't fit into other categories but are essential for Ethereum's long-term health, user experience, and resilience.
 
-| Upgrade                          | Topic                  | Description                                                                                                                 | Expected effect                                 | State of the art                                                      |
-|:---------------------------------|:-----------------------:|:---------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------:|:--------------------------------------------------------------------:|
-| History Expiry (EIP-4444)        | Prune old blocks        | Clients prune execution-layer blocks and receipts older than ~1 year, bounding disk usage.                                  | Lowers storage requirements for full nodes.     | draft / EIP-4444[^2search0]                                           |
-| State Expiry (EIP-7736)          | Verkle-based expiry     | Remove inactive Verkle leaves not accessed for a defined period; resurrect via proofs when needed.                         | Shrinks active state size to ~20–50 GB.         | draft / EIP-7736[^3search0]                                            |
+**IMPLEMENTED**
+| Upgrade | Category | Topic | Description | Effect | State of the art |
+| :--- | :---: | :---: | :--- | :--- | :--- |
+| EIP-1559 | Economics | Fee Market | Introduced a base fee and a burn mechanism for ETH. | More predictable transaction fees and ETH supply management. | [shipped](https://eips.ethereum.org/EIPS/eip-1559) |
+| ERC-4337 | UX | Account Abstraction | Standard for smart contract wallets using a separate mempool and bundlers. | Social recovery, sponsored transactions, and batched operations. | [shipped](https://eips.ethereum.org/EIPS/eip-4337)[^40] |
 
----
-
-### The Splurge  
-
-Encompasses additional features that, while non-urgent, greatly improve usability, security, and long-term resilience.  
-
-| Upgrade                             | Category               | Description                                                                                                                   | Expected effect                                   | State of the art                                                                        |
-|:------------------------------------|:----------------------:|:-----------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------:|:---------------------------------------------------------------------------------------:|
-| Account Abstraction (EIP-4337)       | UX / Wallets           | Introduces UserOperation mempool, bundlers, and paymasters for smart-contract wallet txs without consensus changes.           | Enables social recovery, sponsored txs, batched ops. | shipped / EIP-4337[^5search0]                                                             |
-| Quantum-Safe Signatures             | Future-proofing        | Research into hash-based, lattice-based, and STARK-based multi-signature schemes to replace BLS/ECDSA for validator and user signatures. | Protects PoS and user accounts from quantum attacks. | research / hash-based PQS[^6search1], NIST PQC overview[^6search3]                           |
-| Formal Verification Tooling         | Safety / Audits        | Expand toolchain for proving correctness of protocol clients and smart contracts using Coq, SMT, TLA+, Dafny, Isabelle/HOL. | Higher assurance of protocol invariants and client safety. | evolving / [ethereum.org][^7search0], benchmarking tools[^7search1] |
+**TODO**
+| Upgrade | Category | Description | Expected effect | State of the art |
+| :--- | :---: | :--- | :--- | :--- |
+| EOF (EVM Object Format) | EVM | A new container format for EVM bytecode with explicit versioning and structured headers. | Safer and more efficient EVM execution; easier static analysis. | [EIP-7692](https://eips.ethereum.org/EIPS/eip-7692)[^41] |
+| Account Abstraction (EIP-7702) | UX | Allow EOAs to temporarily act as smart contracts for a single transaction. | Brings AA features to existing wallets without forcing a full migration. | [EIP-7702](https://eips.ethereum.org/EIPS/eip-7702)[^42] |
+| Multidimensional Gas | Economics | Separate pricing and limits for different resources (execution, blobs, storage). | Better resource allocation and higher network throughput. | [in research](https://vitalik.eth.limo/general/2024/05/09/multidim.html)[^43] |
 
 ---
 
@@ -163,7 +166,7 @@ Encompasses additional features that, while non-urgent, greatly improve usabilit
 
 [^23] : [Committee-enforced inclusion sets (COMIS)](https://ethresear.ch/t/the-more-the-less-censored-introducing-committee-enforced-inclusion-sets-comis-on-ethereum/18835), [[archived]](https://web.archive.org/web/20240310000045/https://ethresear.ch/t/the-more-the-less-censored-introducing-committee-enforced-inclusion-sets-comis-on-ethereum/18835)
 
-[^24] : [SUAVE](https://writings.flashbots.net/the-future-of-mev-is-suave), [[archived]](https://writings.flashbots.net/the-future-of-mev-is-suave)
+[^24] : [SUAVE](https://writings.flashbots.net/the-future-of-mev-is-suave), [[archived]](https://web.archive.org/web/20240310000045/https://writings.flashbots.net/the-future-of-mev-is-suave)
 
 [^25] : [Examples of app layer MEV minimization](https://herccc.substack.com/i/142947825/examples-of-the-defensive-side-of-mev)
 
@@ -185,9 +188,26 @@ Encompasses additional features that, while non-urgent, greatly improve usabilit
 
 [^34] : [Two-tiered staking from Mike Neuder](https://ethresear.ch/t/two-tiered-staking/11049)
 
+[^35]: [Verkle Trees](https://verkle.info/)
+
+[^36]: [`SNARKing` the Beacon Chain for Light Clients](https://ethresear.ch/t/snarking-the-beacon-chain-for-light-clients/14115)
+
+[^37]: [EIP-4444: Bound Historical Data in Execution Clients](https://eips.ethereum.org/EIPS/eip-4444)
+
+[^38]: [State expiry paths](https://notes.ethereum.org/@vbuterin/state_expiry_paths)
+
+[^39]: [EIP-7523: Empty accounts deprecation](https://eips.ethereum.org/EIPS/eip-7523)
+
+[^40]: [ERC-4337: Account Abstraction via Entry Point](https://eips.ethereum.org/EIPS/eip-4337)
+
+[^41]: [EIP-7692: EVM Object Format (EOF2) Meta](https://eips.ethereum.org/EIPS/eip-7692)
+
+[^42]: [EIP-7702: Set EOA implementation code](https://eips.ethereum.org/EIPS/eip-7702)
+
+[^43]: [Multidimensional Gas Pricing](https://vitalik.eth.limo/general/2024/05/09/multidim.html)
+
 [ethereum/EIPs github repository](https://github.com/ethereum/EIPs/tree/master#ethereum-improvement-proposals-eips)
 
 [Roadmap on Ethereum.org](https://ethereum.org/en/roadmap/)
 
 [ethroadmap.com](https://ethroadmap.com/)
-
