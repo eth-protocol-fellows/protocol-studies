@@ -248,7 +248,7 @@ This separation matters because discovery and transport have different constrain
 
 ### Security and handshake
 
-discv5 does not send discovery traffic as plain unauthenticated UDP. Ordinary packets are encrypted and authenticated, and when a node cannot decrypt a message from an endpoint it answers with a `WHOAREYOU` challenge instead of blindly returning discovery data. This forces the initiator to prove control of its node identity and establish fresh session keys before the recipient accepts requests such as `FINDNODE`.
+discv5 does not send discovery traffic as plain unauthenticated UDP. Ordinary packets are encrypted and authenticated, and when a node cannot `decrypt` a message from an endpoint it answers with a `WHOAREYOU` challenge instead of blindly returning discovery data. This forces the initiator to prove control of its node identity and establish fresh session keys before the recipient accepts requests such as `FINDNODE`.
 
 At a high level, the exchange works as follows:
 

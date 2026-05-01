@@ -55,6 +55,22 @@ Learn more about Homestead in the following resources:
 - [The Robustness Principle Reconsidered](https://queue.acm.org/detail.cfm?id=1999945)
 - [Homestead blog release post](https://blog.ethereum.org/2016/02/29/homestead-release)
 - [The Homestead release - github](https://github.com/ethereum/homestead-guide/blob/master/source/introduction/the-homestead-release.rst)
+ 
+ ## London
+ 
+ The London upgrade, which went live on August 5, 2021, introduced several significant changes to the Ethereum protocol, most notably [EIP-1559](https://eips.ethereum.org/EIPS/eip-1559). EIP-1559 overhauled Ethereum's fee market by replacing the first-price auction model with a base fee and a tip. The base fee is automatically adjusted by the protocol based on network demand and is burned, reducing the total supply of Ether. This change was aimed at making transaction fees more predictable and aligning the incentives of the network with those of its users.
+ 
+ Other EIPs included in the London upgrade:
+ - [EIP-3198](https://eips.ethereum.org/EIPS/eip-3198): Adds the `BASEFEE` opcode, which returns the base fee of the current block.
+ - [EIP-3529](https://eips.ethereum.org/EIPS/eip-3529): Reduces gas refunds to improve network stability.
+ - [EIP-3541](https://eips.ethereum.org/EIPS/eip-3541): Rejects new contracts starting with the `0xEF` byte, paving the way for future EVM improvements.
+ - [EIP-3554](https://eips.ethereum.org/EIPS/eip-3554): Delays the difficulty bomb.
+ 
+ Learn more about London in the following resources:
+ - [Ethereum London Upgrade](https://ethereum.org/en/history/#london)
+ - [EIP-1559: Fee market change for ETH 1.0 chain](https://eips.ethereum.org/EIPS/eip-1559)
+ - [London Mainnet Announcement](https://blog.ethereum.org/2021/07/15/london-mainnet-announcement)
+ 
 
 ## The Merge
 
