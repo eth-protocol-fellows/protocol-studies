@@ -10,4 +10,4 @@ You can visit the wiki at https://epf.wiki or head to `/docs` for the source.
 
 [Join us](https://discord.com/invite/addwpQbhpq) to learn about the protocol and start [contributing](/docs/contributing.md).
 
-![](/docs/images/epfsg_hero.jpg)
+![](/docs/images/epf7_hero.png)

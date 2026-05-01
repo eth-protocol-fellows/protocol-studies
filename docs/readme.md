@@ -10,7 +10,7 @@ Ethereum Protocol Study Group (EPS) is an open study program for anyone interest
 
 > The study group is not just a list of resources but a community of people maintaining them and learning about the core protocol. **Join the community in our [Discord server](https://discord.gg/8RPnPGEQtJ)**.
 
-## Protocol Wiki 
+## Protocol Wiki
 
 Protocol Wiki is a technical documentation of the main parts of Ethereum core development and research. It guides anyone interested in looking under the hood of the protocol and contributing. The wiki is maintained by the community formed around the study group and keeps following the latest research. 
 
@@ -18,9 +18,9 @@ Protocol Wiki is a technical documentation of the main parts of Ethereum core de
 >
 >
 
-## Protocol Fellowship 
+## Protocol Fellowship
 
 [Ethereum Protocol Fellowship](/wiki/epf) (EPF) is a program for developers and researchers deeply interested in working on the protocol. It's an opportunity to work directly with client teams on their and contribute by building projects with larger scope. It's 5 month program, normally organized annually June-November. Stay tuned for announcement for applications. 
 
 
-![](https://raw.githubusercontent.com/eth-protocol-fellows/protocol-studies/wiki-pages/docs/images/epfsg_hero.jpg)
+![](https://raw.githubusercontent.com/eth-protocol-fellows/protocol-studies/wiki-pages/docs/images/epf7_hero.png)

@@ -205,7 +205,17 @@ enr:-Jq4QOXd31zNJBTBAT0ZZIRWH4z_NmRhnmAFfwNan0zr_-IUUAsOTbU_Lhzh4BSq8UknFGvr1rXQ
 `
 ## discv5
 
-Discovery Version 5 [(discv5)][discv5] (Protocol version v5.1) runs on UDP and meant for peer discovery only. It enables nodes to exchange and update ENRs dynamically, ensuring up-to-date peer discovery. It runs in parallel with libp2p.
+Discovery Version 5 [(discv5)][discv5] (Protocol version v5.1) is a UDP-based node discovery protocol. At a protocol level, it is a Kademlia-inspired DHT that stores and relays signed Ethereum Node Records (ENRs) rather than arbitrary key-value pairs. Each node organizes other nodes by XOR distance between node IDs in a routing table of k-buckets, letting it keep track of nearby peers in the address space and progressively improve its view of the network.
+
+Peer discovery in discv5 happens through iterative lookups. A node starts with the closest peers it already knows, sends `FINDNODE` queries, receives `NODES` responses, and continues querying closer results until the lookup converges on the nearest reachable nodes for a target. This same lookup machinery underpins network sampling, service discovery, and ENR resolution. Unlike libp2p, which is responsible for maintaining peer connections and carrying protocol traffic, discv5 focuses on maintaining a searchable discovery index of live nodes and their advertised capabilities.
+
+Its three core functions are:
+
+- Sampling the set of all live participants by walking the discovery DHT and refreshing the local routing table over time
+- Searching for participants providing a certain service through topic advertisements and lookups around the topic hash
+- Authoritative resolution of node records by retrieving the latest ENR for a known node ID and comparing ENR sequence numbers
+
+In Ethereum consensus clients, discv5 typically runs alongside libp2p, which handles peer connections and protocol traffic.
 
 <figure class="diagram" style="text-align:center">
 
@@ -217,6 +227,39 @@ _discv5_
 
 </figcaption>
 </figure>
+
+### Lookup flow
+
+A discv5 lookup is an iterative search over node ID space, not a broadcast to the whole network. The initiator repeatedly asks nodes that are already close to the target for even closer nodes, which gives Kademlia its logarithmic scaling properties and lets the discovery table improve as a side effect of normal operation.
+
+1. A node selects the closest known peers to a target node ID from its local routing table.
+2. It sends `FINDNODE` requests to a small concurrent set of those peers.
+3. Responding peers return `NODES` messages containing ENRs near the queried  distance.
+4. The initiator merges the returned ENRs into its local view, sorts them by XOR distance to the target, and continues querying closer candidates.
+5. The lookup converges once the node has queried the closest reachable candidates it has learned about.
+
+This same pattern is reused for multiple tasks. Random targets let a node walk the DHT and sample live participants. A known node ID lets the caller resolve the freshest ENR for that node. Topic-based discovery reuses Kademlia lookups around the hash of a topic so nodes can find peers advertising a specific service.
+
+### discv5 and libp2p
+
+In consensus clients, discv5 and libp2p solve adjacent but different problems. discv5 is the discovery plane: it maintains a searchable index of signed node records, verifies liveness, and helps nodes learn who exists and how to reach them. libp2p is the transport and messaging plane: once useful peers are known, the client dials them through libp2p and then exchanges beacon-chain traffic over gossip and request/response protocols.
+
+This separation matters because discovery and transport have different constraints. discv5 uses UDP and an encrypted handshake optimized for many short interactions with a large set of remote nodes. libp2p, by contrast, maintains longer-lived authenticated connections and carries the actual application protocols such as gossipsub, ping, and req/resp. In practice, discv5 answers "which peers should I try next?" while libp2p answers "how do I maintain a session with them and exchange protocol messages?"
+
+### Security and handshake
+
+discv5 does not send discovery traffic as plain unauthenticated UDP. Ordinary packets are encrypted and authenticated, and when a node cannot decrypt a message from an endpoint it answers with a `WHOAREYOU` challenge instead of blindly returning discovery data. This forces the initiator to prove control of its node identity and establish fresh session keys before the recipient accepts requests such as `FINDNODE`.
+
+At a high level, the exchange works as follows:
+
+1. Node A sends an ordinary request, for example `FINDNODE`, to node B.
+2. If node B has no valid session for that endpoint, it replies with `WHOAREYOU`, carrying a nonce and the ENR sequence number it currently knows for A.
+3. Node A re-sends the request as a handshake packet, including an identity signature, an ephemeral public key, and its ENR when B needs a newer copy.
+4. Both sides derive session keys, authenticate the packet, and continue with encrypted request/response messages.
+
+This handshake serves several purposes at once. It reduces amplification risk because an unknown sender first receives only a small challenge packet. It ties session state to a specific node ID and UDP endpoint, which makes spoofing and cross-endpoint replay harder. It also gives nodes a built-in path for ENR synchronization: when the recipient advertises an older `enr-seq`, the sender can attach its newer record during the handshake or later refresh it through `PING`/`PONG` and explicit ENR retrieval.
+
+UDP is still a deliberate choice even with this cryptographic machinery. Discovery traffic consists of many short-lived interactions with many remote nodes, frequent table refreshes, and repeated liveness checks. Using UDP keeps those exchanges lightweight and avoids the connection-management overhead of establishing full transport sessions just to ask a few discovery questions. The tradeoff is that packets may be lost or arrive out of order, so discv5 is designed around short timeouts, retry through new lookups, and a routing table that is continuously refreshed rather than assumed to be perfect at any single moment.
 
 ## SSZ - Encoding
 
