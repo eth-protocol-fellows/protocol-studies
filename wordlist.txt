@@ -1031,5 +1031,3 @@ zkEVMs
 ZKSNARK
 ZKSNARKs
 Zksync
-bitmask
-decrypt
