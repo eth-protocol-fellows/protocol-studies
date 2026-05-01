@@ -87,8 +87,8 @@ Upgrades related to verifying blocks more easily. The goal is to reach a state w
 | :--- | :---: | :---: | :--- | :--- | :--- |
 | Verkle Trees | Statelessness | State commitment | Replace Merkle Patricia Trees with Verkle trees to enable much smaller witnesses. | Enables stateless clients; nodes can verify blocks without needing the full state locally. | [in research](https://verkle.info/)[^35] |
 | Data Availability Sampling (DAS) | Full Rollup | Blob verification | Probabilistic blob sampling for light clients without full downloads. | Secures L2 data availability and light clients with minimal overhead. | [in research / EIP-7594](https://eips.ethereum.org/EIPS/eip-7594) |
-| SNARKed Beacon Chain | Succinctness | Consensus verification | Use ZK-SNARKs to prove the validity of the beacon chain state transitions. | Light clients get full-node security guarantees with minimal resources. | [in research](https://ethresear.ch/t/snarking-the-beacon-chain-for-light-clients/14115)[^36] |
-| SNARKed L1 EVM | Succinctness | Execution verification | Create SNARK proofs for the entire L1 execution layer. | Dramatically reduces the cost of running a verifying node. | in research |
+| `SNARKed` Beacon Chain | Succinctness | Consensus verification | Use ZK-SNARKs to prove the validity of the beacon chain state transitions. | Light clients get full-node security guarantees with minimal resources. | [in research](https://ethresear.ch/t/snarking-the-beacon-chain-for-light-clients/14115)[^36] |
+| `SNARKed` L1 EVM | Succinctness | Execution verification | Create SNARK proofs for the entire L1 execution layer. | Dramatically reduces the cost of running a verifying node. | in research |
 
 ### The Purge
 Targets protocol and data bloat by pruning historical and inactive state, simplifying the protocol, and removing technical debt to keep the network efficient over time.
@@ -190,7 +190,7 @@ Encompasses miscellaneous improvements that don't fit into other categories but 
 
 [^35]: [Verkle Trees](https://verkle.info/)
 
-[^36]: [SNARKing the Beacon Chain for Light Clients](https://ethresear.ch/t/snarking-the-beacon-chain-for-light-clients/14115)
+[^36]: [`SNARKing` the Beacon Chain for Light Clients](https://ethresear.ch/t/snarking-the-beacon-chain-for-light-clients/14115)
 
 [^37]: [EIP-4444: Bound Historical Data in Execution Clients](https://eips.ethereum.org/EIPS/eip-4444)
 
