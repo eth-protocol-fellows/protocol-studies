@@ -2,7 +2,7 @@ name: 'Check Markdown links'
 
 on:
   push:
-    branches: [main]
+    branches: [main, add-link-checker-workflow]
     paths:
       - '**.md'
   pull_request:
