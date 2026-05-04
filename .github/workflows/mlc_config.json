@@ -1,0 +1,19 @@
+{
+  "retryCount": 3,
+  "retryDelay": 5,
+  "aliveStatusCodes": [200, 429],
+  "ignorePatterns": [
+    {
+      "pattern": "^https?://web.archive.org"
+    },
+    {
+      "pattern": "^https?://github.com/eth-protocol-fellows/protocol-studies/(issues|pulls)"
+    },
+    {
+      "pattern": "^https?://yewtu.be"
+    },
+    {
+      "pattern": "^https?://www.gnu.org"
+    }
+  ]
+}
