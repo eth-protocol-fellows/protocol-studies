@@ -1,3 +1,6 @@
+> :bulb: EPF7 applications are now open! Read the [announcement](https://blog.ethereum.org/2026/04/30/epf-7) and [submit yours](https://epf.wiki/#/wiki/epf)
+>
+
 # **Welcome to the Protocol!**
 
 The EPF Wiki is a collection of technical resources about the Ethereum protocol. It's home to all resources from EPF Study Group and the Protocol Wiki. These include technical information covering all core protocol domains and ongoing research. It's dedicated to serve aspiring core contributors and does not cover any smart contract or other high level development. This serves also as an introduction for Protocol Fellowship for those who wish to dive even deeper and work directly on Ethereum protocol.  
