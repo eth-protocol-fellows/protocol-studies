@@ -10,8 +10,11 @@ An introductory town hall will be held on May 6 at 15:00 UTC. [Add it to your ca
 
 **Fill the application before May 13 deadline**
 
-<iframe src="https://efdn.notion.site/ebd//343d9895554180638396c34f1077cc9f" width="100%" height="1000" frameborder="0" allowfullscreen />
+<iframe src="https://efdn.notion.site/ebd//343d9895554180638396c34f1077cc9f" width="100%" height="1000" frameborder="0">
 
+[recording]( image.png ':include :type=iframe width=100% height=560 frameborder="0" allow="fullscreen" allowfullscreen encrypted-media gyroscope picture-in-picture web-share')
+
+![alt text](image.png)
 ### About the program
 
 EPF is a program for everyone interested in starting to contribute to Ethereum core protocol. Organized by EF Protocol Support, the program is divided into yearly cohorts, each running for 4-5 months. The program was originally started as CDAP by Piper Merriam and grew with each cohort.
