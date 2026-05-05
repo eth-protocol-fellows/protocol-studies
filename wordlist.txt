@@ -80,6 +80,7 @@ bilinearity
 BIP
 bitlist
 Bitlists
+bitmask
 bitrate
 bitvector
 bitvector's
@@ -213,6 +214,7 @@ deboost
 Decaps
 decrementation
 decrementing
+decrypt
 decrypted
 decrypts
 DeFi
