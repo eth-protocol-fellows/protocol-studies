@@ -80,6 +80,7 @@ bilinearity
 BIP
 bitlist
 Bitlists
+bitmask
 bitrate
 bitvector
 bitvector's
@@ -213,6 +214,7 @@ deboost
 Decaps
 decrementation
 decrementing
+decrypt
 decrypted
 decrypts
 DeFi
@@ -405,6 +407,7 @@ ghost
 Gilles
 GlaDOS
 Glamsterdam
+Gloas
 Goerli
 Golang
 Goldwasser
@@ -433,8 +436,11 @@ hardcoded
 hardfork
 HashedStorages
 Havel
+Hegota
 Herc's
+Herc’s
 hevm
+Heze
 HMAC
 hoc
 HOL
@@ -580,6 +586,7 @@ Merkleization
 Merkleize
 Merkleized
 Merkleizing
+Merkle’s
 MEV
 mevboost
 Michaël
@@ -669,6 +676,7 @@ orgs
 OSI
 OSI's
 Parallelization
+Parameterization
 Parametrizing
 params
 Pari
@@ -909,6 +917,7 @@ Tani
 TBD
 tbhl
 TCP
+TCP's
 Teku
 testnet
 testnets
@@ -943,6 +952,7 @@ trustlessness
 TrustLook
 TSTORE
 TTD
+tunable
 Tx
 txcreate
 txdatanonzero
@@ -964,6 +974,7 @@ unguessable
 unhandled
 unincentivized
 upstreamed
+UTF
 utils
 uTP
 UTXO
@@ -974,6 +985,7 @@ validator
 validator's
 validators
 Vanstone
+varint
 Varun
 Vasa
 VB's
