@@ -1,6 +1,6 @@
 # Maximal Extractable Value (previously Miner Extractable Value)
 
-Maximal Extractable Value (MEV) refers to the the maximum value that can be extracted from block production beyond the standard block reward and gas fees by strategically ordering, including, or excluding transactions in a block.
+Maximal Extractable Value (MEV) refers to the maximum value that can be extracted from block production beyond the standard block reward and gas fees by strategically ordering, including, or excluding transactions in a block.
 
 In Ethereum, MEV has gained greater attention as validators extract increasingly more value, especially in DeFi (Decentralized Finance) applications. Arbitrage opportunities facilitated by strategies like front-running, sandwiching or back-running are possible by ordering transactions in the block. This can also lead to negative consequences, such as unfair advantages for large-scale pools, censorship or increased slippage for DeFi users.
 
