@@ -63,6 +63,7 @@
   - [eODS](/wiki/research/eODS.md)
   - [PeerDAS](/wiki/research/peerdas.md)
   - [FCR](/wiki/research/FCR/FCR.md)
+  - [Stateless](/wiki/research/stateless/stateless.md)
   - [History Expiry](/wiki/research/history-expiry/history-expiry.md)
   - Preconfirmations
     - [Preconfirmations](/wiki/research/Preconfirmations/Preconfirmations.md)
