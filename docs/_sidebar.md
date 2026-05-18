@@ -61,6 +61,7 @@
     - [TBHL](/wiki/research/PBS/TBHL.md)
     - [ET](/wiki/research/PBS/ET.md)
   - [eODS](/wiki/research/eODS.md)
+  - [Portal Network](/wiki/research/portal-network.md)
   - [PeerDAS](/wiki/research/peerdas.md)
   - [FCR](/wiki/research/FCR/FCR.md)
   - [History Expiry](/wiki/research/history-expiry/history-expiry.md)
