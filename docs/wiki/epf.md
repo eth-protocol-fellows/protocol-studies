@@ -1,20 +1,21 @@
 # Ethereum Protocol Fellowship Cohort 7 
 
-EPF opens its doors once again with new cohort 7 in 2026! Learn more about the program and find the application below.
+EPF opens its doors once again with new cohort 7 in 2026!
 
 ### Town Hall
 
-An introductory town hall will be held on May 6 at 15:00 UTC. [Add it to your calendar](https://calendar.google.com/calendar/event?action=TEMPLATE&tmeid=MG8wdDEzMGtqYXNxZTFqdWw3NWVsNWphbWggY18xY2RhMjMxNzc5NmI4NDgzZTliMjBhMGVjZTFkMDFhZWFkN2U1ZTY3N2IxNjVhOGUzZTJlMjQ3ZTQ0M2UwODhkQGc&tmsrc=c_1cda2317796b8483e9b20a0ece1d01aead7e5e677b165a8e3e2e247e443e088d%40group.calendar.google.com) and join us to ask any questions about the upcoming cohort at meet.ethereum.org/epf-town-hall 
-    
-### Application 
+Check out the town hall recording, presentation about the program: 
 
-**Fill the application before May 13 deadline**
+<iframe width="560" height="315" src="https://www.youtube.com/embed/nDBWizEOCE4?si=f5V4GgJoAdUhJdZB" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
-<iframe src="https://efdn.notion.site/ebd//343d9895554180638396c34f1077cc9f" width="100%" height="1000" frameborder="0">
+### Applications are closed!
 
-[recording]( image.png ':include :type=iframe width=100% height=560 frameborder="0" allow="fullscreen" allowfullscreen encrypted-media gyroscope picture-in-picture web-share')
+We have received hundreds of applications, thank you so much for all continued interest in EPF! Please give us couple of weeks to get back to you. 
+
+Application closed on May 13. 
 
 ![alt text](image.png)
+
 ### About the program
 
 EPF is a program for everyone interested in starting to contribute to Ethereum core protocol. Organized by EF Protocol Support, the program is divided into yearly cohorts, each running for 4-5 months. The program was originally started as CDAP by Piper Merriam and grew with each cohort.
