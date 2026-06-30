@@ -61,7 +61,9 @@
     - [TBHL](/wiki/research/PBS/TBHL.md)
     - [ET](/wiki/research/PBS/ET.md)
   - [eODS](/wiki/research/eODS.md)
-  - [PeerDAS](/wiki/research/peerdas.md)
+  - PeerDAS
+    - [Introduction](/wiki/research/peerdas/introduction.md)
+    - [Protocol Overview](/wiki/research/peerdas/protocol-overview.md)
   - [FCR](/wiki/research/FCR/FCR.md)
   - [History Expiry](/wiki/research/history-expiry/history-expiry.md)
   - Preconfirmations
