@@ -52,7 +52,7 @@ Overall, PeerDAS integrates deterministic custody allocation, probabilistic data
 
 - [EIP-7594: PeerDAS](https://eips.ethereum.org/EIPS/eip-7594)
 - [Fulu specifications including PeerDAS](https://github.com/ethereum/consensus-specs/tree/master/specs/fulu)
-- [Protocol overview of PeerDAS by Daniel Pham](/wiki/research/peerdas/protocol-overview.md)
+- [Protocol overview of PeerDAS by <name>Daniel Pham</name>](/wiki/research/peerdas/protocol-overview.md)
 - [Scaling Ethereum L1 with PeerDAS - dapplion, presentation](https://www.youtube.com/watch?v=_PW6jFTWLPc)
 - [PeerDAS in Pectra and beyond - Francesco D'Amato, presentation](https://www.youtube.com/watch?v=WOdpO1tH_Us)
 - [PeerDAS Book by Manu Nalepa](https://hackmd.io/@manunalepa/peerDAS/https%3A%2F%2Fhackmd.io%2F%40manunalepa%2FB1idHCOfke)

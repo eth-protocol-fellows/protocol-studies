@@ -35,7 +35,7 @@ Instead of broadcasting full blob data for every blob:
 - before Fulu, a `BlobSidecar` contains one full blob
 - from Fulu, a `DataColumnSidecar` contains one column of data across blobs
 
-Each node custodies and serves specific columns based on its custody groups. If enough columns are available, the full blob data can be reconstructed.
+Each node stores and serves specific columns based on its custody groups. If enough columns are available, the full blob data can be reconstructed.
 
 ## Encoding
 
@@ -118,4 +118,4 @@ The practical constraint is that block propagation, column propagation, and samp
 
 - [EIP-7594: PeerDAS](https://eips.ethereum.org/EIPS/eip-7594)
 - [Fulu consensus specifications](https://github.com/ethereum/consensus-specs/tree/master/specs/fulu)
-- [Original notes: Overview of PeerDAS by Daniel Pham](https://hackmd.io/d5KkrGRMROq7-hLW3m7Org)
+- [Original notes: Overview of PeerDAS by <name>Daniel Pham</name>](https://hackmd.io/d5KkrGRMROq7-hLW3m7Org)
