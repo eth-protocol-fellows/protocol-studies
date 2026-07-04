@@ -119,20 +119,14 @@ Recursive Length Prefix (RLP) is a fundamental data serialization technique used
 
 The RLP decoding process is based on the structure and specifics of the encoded data:
 
-**Determine Data Type**:
-  - The first byte (prefix) of the encoded data determines the type and length of the data that follows. This byte is critical in guiding the decoding process.
-**Decoding Single Bytes**:
-  - If the prefix byte is in the range `0x00` to `0x7F`, the byte itself represents the decoded data. This case is straightforward as the byte is encoded directly.
-**Decoding Strings and Lists**:
-  - The complexity in decoding arises with strings and lists, which have varying lengths and may contain nested structures.
-**Short Strings (0x80 to 0xB7)**:
-  - If the prefix byte is between `0x80` and `0xB7`, it indicates a string whose length can be directly determined by subtracting `0x80` from the prefix. The following bytes equal the length are the string.
-**Long Strings (0xB8 to 0xBF)**:
-  - For longer strings, if the prefix byte is between `0xB8` and `0xBF`, the number of length bytes is determined by subtracting `0xB7` from the prefix. The subsequent bytes represent the length of the string, and the bytes following represent the string itself.
-**Short Lists (0xC0 to 0xF7)**:
-  - Similar to short strings, a prefix between `0xC0` and `0xF7` indicates a list. The length of the list's encoded data can be determined by subtracting `0xC0` from the prefix. The bytes that follow must then be decoded recursively as individual RLP encoded items.
-**Long Lists (0xF8 to 0xFF)**:
-  - For longer lists, a prefix between `0xF8` and `0xFF` indicates that the next few bytes (determined by subtracting `0xF7` from the prefix) will tell the length of the list's encoded data. The data following these length bytes is then recursively decoded into RLP items.
+##### **Determine Data Type**:
+The first byte (prefix) of the encoded data determines the type and length of the data that follows. This byte is critical in guiding the decoding process.
+ - **Decoding Single Bytes**: If the prefix byte is in the range `0x00` to `0x7F`, the byte itself represents the decoded data. This case is straightforward as the byte is encoded directly.
+ - **Decoding Strings and Lists**: The complexity in decoding arises with strings and lists, which have varying lengths and may contain nested structures.
+ - **Short Strings (0x80 to 0xB7)**: If the prefix byte is between `0x80` and `0xB7`, it indicates a string whose length can be directly determined by subtracting `0x80` from the prefix. The following bytes equal the length are the string.
+ - **Long Strings (0xB8 to 0xBF)**: For longer strings, if the prefix byte is between `0xB8` and `0xBF`, the number of length bytes is determined by subtracting `0xB7` from the prefix. The subsequent bytes represent the length of the string, and the bytes following represent the string itself.
+ - **Short Lists (0xC0 to 0xF7)**: Similar to short strings, a prefix between `0xC0` and `0xF7` indicates a list. The length of the list's encoded data can be determined by subtracting `0xC0` from the prefix. The bytes that follow must then be decoded recursively as individual RLP encoded items.
+ - **Long Lists (0xF8 to 0xFF)**: For longer lists, a prefix between `0xF8` and `0xFF` indicates that the next few bytes (determined by subtracting `0xF7` from the prefix) will tell the length of the list's encoded data. The data following these length bytes is then recursively decoded into RLP items.
 
 **Examples of RLP Decoding of `[0xc8, 0x83, 0x63, 0x61, 0x74, 0x83, 0x64, 0x6f, 0x67]`**
 
