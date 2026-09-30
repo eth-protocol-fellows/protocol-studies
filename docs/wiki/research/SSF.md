@@ -4,9 +4,9 @@
 
 | Upgrade |   URGE    | Track |          Topic           |                                               Cross-references                                               |
 | :-----: | :-------: | :---: | :----------------------: | :----------------------------------------------------------------------------------------------------------: |
-|   SSF   | the Merge |   -   | PoS upgrades, finality and security | intersection with: [MAX_EB](/docs/wiki/research/cl-upgrades.md), [ePBS](/docs/wiki/research/PBS/ePBS.md) |
+|   SSF   | the Merge |   -   | PoS upgrades, finality and security | intersection with: [MAX_EB](/wiki/research/cl-upgrades.md), [ePBS](/wiki/research/PBS/ePBS.md) |
 
-[Single Slot Finality](/docs/eps/week10-research.md) is a research concept of an improvement to Beacon Chain's consensus mechanism that addresses inefficiencies associated with the time it takes to finalize blocks. It's proposing a significant raise in blocks validation efficiency and a drastic reduction of time-to-finality.
+[Single Slot Finality](/eps/week10-research.md) is a research concept of an improvement to Beacon Chain's consensus mechanism that addresses inefficiencies associated with the time it takes to finalize blocks. It's proposing a significant raise in blocks validation efficiency and a drastic reduction of time-to-finality.
 Instead of waiting for 2 epochs, blocks could get proposed and finalized in the same slot. The topic was also covered in [EPS week 10](https://github.com/eth-protocol-fellows/protocol-studies/blob/ssf/docs/eps/week10-research.md).
 
 ## Context and Motivation
