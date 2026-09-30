@@ -158,7 +158,7 @@ _A validator randomly generates its secret key. Its public key is then derived f
 
 ### Signing in the Beacon Chain
 
-In Ethereum's beacon chain, the only messages that get signed are the [hash tree roots](https://eth2book.info/capella/part2/building_blocks/merkleization/) of objects. These roots, called "signing roots," are 32-byte strings. The [`compute_signing_root()`](/wiki/CL/functions#compute_signing_root) function integrates the hash tree root with a specific "domain," enhancing the security.
+In Ethereum's beacon chain, the only messages that get signed are the [hash tree roots](https://eth2book.info/capella/part2/building_blocks/merkleization/) of objects. These roots, called "signing roots," are 32-byte strings. The [`compute_signing_root()`](https://ethereum.github.io/consensus-specs/specs/phase0/beacon-chain/#compute_signing_root) function integrates the hash tree root with a specific "domain," enhancing the security.
 
 <!-- define and link context (domain separation and forks) in CL-->
 
