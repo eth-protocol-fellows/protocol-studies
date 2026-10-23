@@ -17,7 +17,7 @@ Recent proposals and development towards enshrining Proposer-Builder Separation 
 
 ## Attester-Proposer Separation (APS) a.k.a. Validator-Proposer Separation
 
-MEV-boost is an out-of-protocol side-car, outside of the protocol's reach and control. This limitation is addressed within the context of PBS, by the [APS](#attester-proposer-separation-aps-aka-validator-proposer-separation-design-rationale) (Attester-Proposer Separation) design philosophy with the aim of getting some of this infrastructure back into the the protocol's fold. 
+MEV-boost is an out-of-protocol side-car, outside of the protocol's reach and control. This limitation is addressed within the context of PBS, by the [APS](#attester-proposer-separation-aps-aka-validator-proposer-separation-design-rationale) (Attester-Proposer Separation) design philosophy with the aim of getting some of this infrastructure back into the protocol's fold. 
 
 APS design rationale is closely related to **ePBS - enshrined Proposer-Builder Separation** design space.
 
