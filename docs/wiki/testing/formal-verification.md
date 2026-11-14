@@ -34,6 +34,14 @@ Types of formal verification:
 
 [Z3](https://www.microsoft.com/en-us/research/project/z3-3/) is a symbolic logic solver developed by Microsoft research. It is used in a wide range of software engineering applications, ranging from [program verification](https://www.aon.com/cyber-solutions/aon_cyber_labs/exploring-soliditys-model-checker/), compiler validation, testing, fuzzing, and optimization.
 
+### EthLib
+
+[EthLib](https://github.com/ethereum/EthLib) is a [Lean](https://lean-lang.org/) library that specifies Ethereum primitives and proves their properties, so that Lean projects build on one shared set of definitions instead of each keeping its own. It spans the protocol from the bottom up: hashing, secp256k1, alt_bn128, BLS12-381 and KZG, the RLP and SSZ serialization and the peer-to-peer encodings of both layers, the EVM with its precompiles, the [execution](/wiki/EL/el-specs.md) and [consensus](/wiki/CL/cl-specs.md) layers, and models of Casper FFG and fork choice. Its [soundness document](https://github.com/ethereum/EthLib/blob/master/SOUNDNESS.md) lists what every theorem assumes, including the remaining gap between a proved definition and the code a client actually runs.
+
+### VCVio
+
+[VCVio](https://github.com/Verified-zkEVM/VCVio) is a Lean library for machine-checked cryptographic proofs, built on [Mathlib](https://github.com/leanprover-community/mathlib4). It models computations with oracle access, gives them a probabilistic semantics for reasoning about event probabilities, equality in distribution and distance between distributions, and provides a program logic for game-based proofs. On top of that framework it defines signatures, $\Sigma$-protocols, and the Fiat-Shamir and Fischlin transforms, and implements the post-quantum schemes ML-DSA, ML-KEM, Falcon and SLH-DSA, the hash-based one with a proved quantitative bound against signature forgery. EthLib uses VCVio for the security proofs in its soundness document, so the two libraries compose: one carries the protocol definitions, the other the cryptographic reasoning about them.
+
 ## Example
 
 Formal verification of a system begins by selectively abstracting the system to create a focused model for correctness testing.
@@ -100,6 +108,8 @@ Safety and liveliness assurance is central to Ethereum's decentralized infrastru
 Formal verification is used by the [Runtime Verification team](https://github.com/runtimeverification) to verify [bacon chain specification](https://runtimeverification.com/blog/a-formal-model-in-k-of-the-beacon-chain-ethereum-2-0s-primary-proof-of-stake-blockchain), and the [Gasper finality mechanism](https://runtimeverification.com/blog/formally-verifying-finality-in-gasper-the-core-of-the-beacon-chain).
 
 [KEVM](https://github.com/runtimeverification/evm-semantics) builds upon [K framework](https://kframework.org/) for crafting formal semantics and conducting verification of the [Ethereum Virtual Machine (EVM)](/wiki/EL/evm.md) specification for correctness.
+
+[EthLib](https://github.com/ethereum/EthLib) takes the other direction. Where KEVM gives an executable formal semantics of the EVM and verifies programs against it, EthLib writes the protocol itself as Lean definitions, layer by layer from hashing and encodings up to the state transition and fork choice, and proves theorems about those definitions.
 
 Formal verification is an essential tool in the test suite and was used to discover a subtle [array-out-of-bound runtime error](https://consensys.io/blog/formal-verification-of-ethereum-2-0-part-1-fixing-the-array-out-of-bound-runtime-error) within the state transition component.
 

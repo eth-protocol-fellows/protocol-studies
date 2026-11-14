@@ -323,6 +323,7 @@ EthereumJS
 Ethernodes
 ethers
 Ethervm
+EthLib
 ethone
 ethone's
 EthPandaOps
@@ -358,6 +359,7 @@ filesystem
 finalise
 financials
 FIPS
+Fischlin
 Flashbot's
 Flashbots
 Flashboys
@@ -563,6 +565,7 @@ Mana
 Manas
 Manu
 mathbb
+Mathlib
 maxEB
 Maximalism
 Mayowa
@@ -977,6 +980,7 @@ Vanstone
 Varun
 Vasa
 VB's
+VCVio
 VDF
 VDFs
 Vec
