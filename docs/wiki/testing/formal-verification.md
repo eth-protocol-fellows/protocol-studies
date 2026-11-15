@@ -34,6 +34,14 @@ Types of formal verification:
 
 [Z3](https://www.microsoft.com/en-us/research/project/z3-3/) is a symbolic logic solver developed by Microsoft research. It is used in a wide range of software engineering applications, ranging from [program verification](https://www.aon.com/cyber-solutions/aon_cyber_labs/exploring-soliditys-model-checker/), compiler validation, testing, fuzzing, and optimization.
 
+### EthLib
+
+[EthLib](https://github.com/ethereum/EthLib) is a [Lean](https://lean-lang.org/) library that specifies Ethereum primitives and proves their properties, so that Lean projects build on one shared set of definitions instead of each keeping its own. It spans the protocol from the bottom up: hashing, secp256k1, alt_bn128, BLS12-381 and KZG, the RLP and SSZ serialization and the peer-to-peer encodings of both layers, the EVM with its precompiles, the [execution](/wiki/EL/el-specs.md) and [consensus](/wiki/CL/cl-specs.md) layers, and models of Casper FFG and fork choice. Its [soundness document](https://github.com/ethereum/EthLib/blob/master/SOUNDNESS.md) lists what every theorem assumes, including the remaining gap between a proved definition and the code a client actually runs.
+
+### VCVio
+
+[VCVio](https://github.com/Verified-zkEVM/VCVio) is a Lean library for machine-checked cryptographic proofs, built on [Mathlib](https://github.com/leanprover-community/mathlib4). It models computations with oracle access, gives them a probabilistic semantics for reasoning about event probabilities, equality in distribution and distance between distributions, and provides a program logic for game-based proofs. On top of that framework it defines signatures, $\Sigma$-protocols, and the Fiat-Shamir and Fischlin transforms, and implements the post-quantum schemes ML-DSA, ML-KEM, Falcon and SLH-DSA, the hash-based one with a proved quantitative bound against signature forgery. EthLib uses VCVio for the security proofs in its soundness document, so the two libraries compose: one carries the protocol definitions, the other the cryptographic reasoning about them.
+
 ## Example
 
 Formal verification of a system begins by selectively abstracting the system to create a focused model for correctness testing.
@@ -101,6 +109,8 @@ Formal verification is used by the [Runtime Verification team](https://github.co
 
 [KEVM](https://github.com/runtimeverification/evm-semantics) builds upon [K framework](https://kframework.org/) for crafting formal semantics and conducting verification of the [Ethereum Virtual Machine (EVM)](/wiki/EL/evm.md) specification for correctness.
 
+[EthLib](https://github.com/ethereum/EthLib) takes the other direction. Where KEVM gives an executable formal semantics of the EVM and verifies programs against it, EthLib writes the protocol itself as Lean definitions, layer by layer from hashing and encodings up to the state transition and fork choice, and proves theorems about those definitions.
+
 Formal verification is an essential tool in the test suite and was used to discover a subtle [array-out-of-bound runtime error](https://consensys.io/blog/formal-verification-of-ethereum-2-0-part-1-fixing-the-array-out-of-bound-runtime-error) within the state transition component.
 
 ![Formal verification as part of testing suite](./img/fv-and-testing.jpg)
@@ -115,6 +125,12 @@ Equivalence checking is extensively used for software optimization. For example,
 Bugs or vulnerabilities in smart contracts can have devastating consequences, leading to financial losses and undermining user trust. Formal verification tools like tools [Certora Prover](https://docs.certora.com/en/latest/docs/prover/index.html) and [halmos](https://github.com/a16z/halmos) helps identify these issues.
 
 For example, Runtime Verification formally verified a [deposit smart contract application](https://runtimeverification.com/blog/formal-verification-of-ethereum-2-0-deposit-contract-part-1) and found a [subtle bug](https://github.com/ethereum/deposit_contract/issues/26).
+
+[usdt-verify](https://github.com/Giulio2002/usdt-verify) takes the bytecode-level route. In Lean, on top of EthLib's EVM model, it proves theorems about the USDT contract as it is deployed on mainnet. The runtime code is read from the chain, and the facts the proofs rely on, such as the dispatcher and the storage layout, are recovered from those bytes rather than taken from the Solidity source or trusted to the compiler.
+
+Its scope is the whole contract rather than a handful of properties. Each function first gets a specification in terms of the call data, the storage words read and written, the logs appended, and the bytes returned or the revert, together with the exact gas under the fork's price schedule. Completeness theorems then show that every successful run is one of the proved paths, and the converses pin down the exact conditions under which a call succeeds. A supply invariant holds across sequences of calls, and five security properties follow for arbitrary calls: access control, pause, blacklist, allowances and supply. The contract's deprecated mode, where it forwards calls to an upgraded address, is covered too, there under explicit assumptions about what that address does.
+
+What the proofs rest on is stated rather than hidden: the Lean kernel, EthLib's EVM model (tested against the official vectors, but not itself proved), the provenance of the bytecode, and keccak hypotheses local to each call. This is complementary to source-level verification. [Certora](https://docs.certora.com/en/latest/docs/prover/index.html) verified Tether's newer TetherToken contracts from Solidity source; usdt-verify targets the original 2017 contract at the level of what actually executes, where the compiler plays no part.
 
 Formal verification has always been an integral part of the [Solidity](https://soliditylang.org/) language. Here Christian from the Solidity team from an early workshop:
 
